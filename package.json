@@ -1,0 +1,39 @@
+{
+  "name": "danestves",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/styles": "latest",
+    "@zeit/next-css": "latest",
+    "aos": "latest",
+    "axios": "latest",
+    "browser-monads": "latest",
+    "classnames": "latest",
+    "clsx": "latest",
+    "cross-fetch": "^3.0.4",
+    "dotenv": "^8.0.0",
+    "graphql-react": "latest",
+    "next": "latest",
+    "next-compose-plugins": "latest",
+    "next-graphql-react": "latest",
+    "nextjs-progressbar": "latest",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-helmet": "latest",
+    "styled-components": "latest",
+    "styled-icons": "latest"
+  },
+  "scripts": {
+    "dev": "dotenv npm run dev:next",
+    "dev:next": "next -p $PORT",
+    "build": "dotenv next build",
+    "start": "dotenv npm run start:next",
+    "start:next": "next start -p $PORT",
+    "deploy": "now && now alias"
+  },
+  "devDependencies": {
+    "babel-plugin-inline-svg": "latest"
+  }
+}

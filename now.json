@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "alias": "danestves",
+  "build": {
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "@github_personal_access_token"
+    }
+  }
+}
