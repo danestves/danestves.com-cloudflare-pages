@@ -27,7 +27,7 @@ export default function Index () {
   const { data } = getGitHubData()
 
   return (
-    <h1>Hola {console.log(data)}</h1>
+    <h1>Hola {data.viewer.login}</h1>
   )
 
   // return (
