@@ -2,11 +2,7 @@ import 'cross-fetch/polyfill'
 import React from 'react'
 import App, { Container } from 'next/app'
 import Head from 'next/head'
-import {
-  ThemeProvider,
-  createGenerateClassName,
-  StylesProvider
-} from '@material-ui/styles'
+import { ThemeProvider, StylesProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Helmet from 'react-helmet'
 import AOS from 'aos'
@@ -20,10 +16,6 @@ import { Navbar } from '../components/Navbar'
 import '../styles/styles.css'
 
 const location = window.location.href
-
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'de'
-})
 
 class MyApp extends App {
   componentDidMount () {
@@ -70,7 +62,7 @@ class MyApp extends App {
           />
         </Head>
         <NProgress color='#fff' spinner={false} />
-        <StylesProvider generateClassName={generateClassName}>
+        <StylesProvider injectFirst>
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <Navbar />

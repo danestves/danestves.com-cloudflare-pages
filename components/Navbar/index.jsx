@@ -86,7 +86,7 @@ export const Navbar = props => {
             <>
               <IconButton
                 className={classes.menuButton}
-                color='inherit'
+                color='default'
                 aria-label='Menu'
                 onClick={toggleDrawer(true)}
               >
@@ -100,7 +100,7 @@ export const Navbar = props => {
                 component={Link}
                 href='/'
                 activeClassName={classes.activeItem}
-                color='inherit'
+                color='default'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
@@ -108,7 +108,7 @@ export const Navbar = props => {
               Inicio
               </Button>
               <Button
-                color='inherit'
+                color='default'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu,
@@ -123,7 +123,7 @@ export const Navbar = props => {
                 component={Link}
                 href='/portfolio/'
                 activeClassName={classes.activeItem}
-                color='inherit'
+                color='default'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
@@ -134,7 +134,7 @@ export const Navbar = props => {
                 component={Link}
                 href='/blog/'
                 activeClassName={classes.activeItem}
-                color='inherit'
+                color='default'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
@@ -145,7 +145,7 @@ export const Navbar = props => {
                 component={Link}
                 href='/contact/'
                 activeClassName={classes.activeItem}
-                color='inherit'
+                color='default'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu

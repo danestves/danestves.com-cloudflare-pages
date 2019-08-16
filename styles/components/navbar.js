@@ -11,11 +11,13 @@ const styles = theme => ({
     }
   },
   menuButton: {
-    margin: '4px 0'
+    margin: '4px 0',
+    color: '#fff'
   },
   navButton: {
     padding: theme.spacing(2, 1),
-    borderRadius: 0
+    borderRadius: 0,
+    color: '#fff'
   },
   outlinedNavMenu: {
     position: 'relative',
