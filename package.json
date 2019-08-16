@@ -26,12 +26,13 @@
     "styled-icons": "latest"
   },
   "scripts": {
-    "dev": "dotenv npm run dev:next",
+    "dev": "npm run dev:next",
     "dev:next": "next -p $PORT",
-    "build": "dotenv next build",
-    "start": "dotenv npm run start:next",
+    "build": "next build",
+    "now-build": "next build",
+    "start": "npm run start:next",
     "start:next": "next start -p $PORT",
-    "deploy": "now && now alias"
+    "deploy": "now"
   },
   "devDependencies": {
     "babel-plugin-inline-svg": "latest"

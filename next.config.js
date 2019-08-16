@@ -10,7 +10,7 @@ module.exports = withPlugins(
     withGraphQLConfig
   ],
   {
-    distDir: 'build',
+    target: 'serverless',
     webpack (config) {
       config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
 
