@@ -32,6 +32,7 @@
     "deploy": "now"
   },
   "devDependencies": {
-    "babel-plugin-inline-svg": "latest"
+    "babel-plugin-inline-svg": "latest",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3"
   }
 }
