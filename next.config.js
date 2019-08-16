@@ -1,8 +1,8 @@
 const withCSS = require('@zeit/next-css')
 const withPlugins = require('next-compose-plugins')
-const { parsed: localEnv } = require('dotenv').config()
 const webpack = require('webpack')
 const { withGraphQLConfig } = require('next-graphql-react/server')
+require('dotenv').config()
 
 module.exports = withPlugins(
   [
@@ -12,7 +12,7 @@ module.exports = withPlugins(
   {
     target: 'serverless',
     webpack (config) {
-      config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
+      config.plugins.push(new webpack.EnvironmentPlugin(process.env))
 
       return config
     }
