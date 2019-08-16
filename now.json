@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "name": "danestves",
   "build": {
     "env": {
       "GITHUB_PERSONAL_ACCESS_TOKEN": "@github_personal_access_token"

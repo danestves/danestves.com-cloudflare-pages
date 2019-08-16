@@ -26,12 +26,9 @@
     "styled-icons": "latest"
   },
   "scripts": {
-    "dev": "npm run dev:next",
-    "dev:next": "next -p $PORT",
+    "dev": "next",
     "build": "next build",
-    "now-build": "next build",
-    "start": "npm run start:next",
-    "start:next": "next start -p $PORT",
+    "start": "next start",
     "deploy": "now"
   },
   "devDependencies": {

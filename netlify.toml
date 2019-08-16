@@ -1,6 +1,0 @@
-[build]
-  publish = "out"
-  command = "yarn build"
-[build.environment]
-  YARN_VERSION = "1.17.3"
-  YARN_FLAGS = "--no-ignore-optional"
