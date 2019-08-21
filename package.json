@@ -13,10 +13,13 @@
     "clsx": "latest",
     "cross-fetch": "^3.0.4",
     "dotenv": "^8.0.0",
+    "express": "^4.17.1",
     "graphql-react": "latest",
     "next": "latest",
     "next-compose-plugins": "latest",
     "next-graphql-react": "latest",
+    "next-progressbar": "^1.0.0",
+    "next-routes": "^1.4.2",
     "nextjs-progressbar": "latest",
     "prop-types": "latest",
     "react": "latest",
@@ -26,9 +29,9 @@
     "styled-icons": "latest"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "node ssr-server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node ssr-server.js",
     "deploy": "now"
   },
   "devDependencies": {

@@ -18,7 +18,7 @@ import Link from '../../src/Link'
 
 const useStyles = makeStyles(styles)
 
-export const Navbar = props => {
+export default function Navbar () {
   const [anchor, setAnchor] = useState(null)
   const [open, setOpen] = useState(false)
 
@@ -68,7 +68,7 @@ export const Navbar = props => {
 
   const aboutURLs =
       pathname === '/about/' ||
-      pathname === '/certifications/' ||
+      pathname === '/certificaciones/' ||
       pathname === '/curriculum/'
 
   return (
@@ -79,6 +79,8 @@ export const Navbar = props => {
             <img
               src='/static/isotype-negative.svg'
               alt='Daniel Esteves | Desarrollador Web Frontend - TSU en Informática'
+              width='48'
+              height='48'
             />
           </Link>
 
@@ -100,7 +102,7 @@ export const Navbar = props => {
                 component={Link}
                 href='/'
                 activeClassName={classes.activeItem}
-                color='default'
+                color='inherit'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
@@ -108,7 +110,7 @@ export const Navbar = props => {
               Inicio
               </Button>
               <Button
-                color='default'
+                color='inherit'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu,
@@ -123,7 +125,7 @@ export const Navbar = props => {
                 component={Link}
                 href='/portfolio/'
                 activeClassName={classes.activeItem}
-                color='default'
+                color='inherit'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
@@ -134,7 +136,7 @@ export const Navbar = props => {
                 component={Link}
                 href='/blog/'
                 activeClassName={classes.activeItem}
-                color='default'
+                color='inherit'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
@@ -145,7 +147,7 @@ export const Navbar = props => {
                 component={Link}
                 href='/contact/'
                 activeClassName={classes.activeItem}
-                color='default'
+                color='inherit'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
@@ -165,14 +167,16 @@ export const Navbar = props => {
           component={Link}
           href='/curriculum/'
           activeClassName={classes.activeSubItem}
+          color='inherit'
           className={classes.outlinedNavSubMenu}
           onClick={handleClose}>
             Curriculum
         </MenuItem>
         <MenuItem
           component={Link}
-          href='/certifications/'
+          href='/certificaciones/'
           activeClassName={classes.activeSubItem}
+          color='inherit'
           className={classes.outlinedNavSubMenu}
           onClick={handleClose}>
             Certificaciones

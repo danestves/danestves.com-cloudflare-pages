@@ -45,7 +45,7 @@ export default function DrawerMenu (props) {
             <ListItemIcon><Profile size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Curriculum' />
           </ListItem>
-          <ListItem button component={Link} href='/certifications/'>
+          <ListItem button component={Link} href='/certificaciones/'>
             <ListItemIcon><Graduation size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Certificaciones' />
           </ListItem>
