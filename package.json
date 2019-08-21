@@ -13,7 +13,6 @@
     "clsx": "latest",
     "cross-fetch": "^3.0.4",
     "dotenv": "^8.0.0",
-    "express": "^4.17.1",
     "graphql-react": "latest",
     "next": "latest",
     "next-compose-plugins": "latest",
@@ -29,9 +28,9 @@
     "styled-icons": "latest"
   },
   "scripts": {
-    "dev": "node ssr-server.js",
+    "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node ssr-server.js",
+    "start": "next start",
     "deploy": "now"
   },
   "devDependencies": {

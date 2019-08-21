@@ -2,18 +2,6 @@
   "name": "danestves",
   "version": 2,
   "alias": "dev.danestves.com",
-  "builds": [
-    {
-      "src": "ssr-server.js",
-      "use": "@now/node-server"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/ssr-server.js"
-    }
-  ],
   "build": {
     "env": {
       "GITHUB_PERSONAL_ACCESS_TOKEN": "@danestves-gpat"
