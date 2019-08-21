@@ -5,23 +5,7 @@
   "builds": [
     {
       "src": "ssr-server.js",
-      "use": "@now/node-server"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/pages/index.js",
-      "methods": [
-        "GET"
-      ]
-    },
-    {
-      "src": "/certificaciones",
-      "dest": "/pages/certifications.js",
-      "methods": [
-        "GET"
-      ]
+      "use": "@now/node"
     }
   ],
   "build": {
