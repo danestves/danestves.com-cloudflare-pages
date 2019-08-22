@@ -13,6 +13,7 @@
     "clsx": "latest",
     "cross-fetch": "^3.0.4",
     "dotenv": "^8.0.0",
+    "express": "^4.17.1",
     "graphql-react": "latest",
     "next": "latest",
     "next-compose-plugins": "latest",
@@ -28,13 +29,8 @@
     "styled-icons": "latest"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
-    "deploy": "now"
-  },
-  "devDependencies": {
-    "babel-plugin-inline-svg": "latest",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.3"
+    "start": "NODE_ENV=production node server.js"
   }
 }

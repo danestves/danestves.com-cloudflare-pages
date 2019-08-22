@@ -1,7 +1,3 @@
 {
-  "presets": ["next/babel"],
-  "plugins": [
-    "inline-svg",
-    "transform-inline-environment-variables"
-  ]
+  "presets": ["next/babel"]
 }

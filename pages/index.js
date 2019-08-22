@@ -29,7 +29,7 @@ export default function Index () {
         <Typography variant='h4' component='h1' gutterBottom>
           Next.js example
         </Typography>
-        <Link route='/sobre/'>
+        <Link href='/sobre/'>
           <a>
             Go to the about page
           </a>
