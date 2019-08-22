@@ -1,0 +1,11 @@
+{
+  "name": "danestves",
+  "version": 2,
+  "alias": "dev.danestves.com",
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "@danestves-gpat"
+    }
+  }
+}

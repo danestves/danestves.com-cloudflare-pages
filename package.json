@@ -1,6 +1,6 @@
 {
   "name": "danestves",
-  "version": "0.0.1",
+  "version": "0.0.8",
   "private": true,
   "dependencies": {
     "@material-ui/core": "latest",
@@ -29,8 +29,8 @@
     "styled-icons": "latest"
   },
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start"
   }
 }
