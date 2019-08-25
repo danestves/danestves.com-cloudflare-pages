@@ -113,7 +113,10 @@ module.exports = withPlugins([
     }
   },
   webpack (config) {
-    config.plugins.push(new webpack.EnvironmentPlugin(process.env))
+    config.plugins.push(
+      new webpack.EnvironmentPlugin(process.env),
+      new webpack.IgnorePlugin(/^encoding$/, /node-fetch/)
+    )
 
     return config
   }
