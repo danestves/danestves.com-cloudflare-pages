@@ -1,3 +1,5 @@
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
+const nextOffline = require('next-offline')
 const withCSS = require('@zeit/next-css')
 const withPlugins = require('next-compose-plugins')
 const webpack = require('webpack')
@@ -14,7 +16,8 @@ module.exports = withPlugins([
         profile: true
       }
     }
-  ]
+  ],
+  [nextOffline, ['!', PHASE_DEVELOPMENT_SERVER]]
 ], {
   target: 'serverless',
   webpack (config) {

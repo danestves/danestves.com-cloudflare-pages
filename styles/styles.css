@@ -1,5 +1,3 @@
-@import '~react-animated-slider/build/horizontal.css';
-
 body {
   font-family: 'Poppins', system-ui;
   padding-top: 56px;
@@ -14,3 +12,6 @@ body {
     padding-top: 64px;
   }
 }
+
+@import '~react-animated-slider/build/horizontal.css';
+@import './_fonts.css';

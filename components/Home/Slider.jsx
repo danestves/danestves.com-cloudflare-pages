@@ -22,7 +22,7 @@ export default function SliderHome () {
       >
         <img
           src='/static/isotype-negative.svg'
-          alt={document.title}
+          alt={document.title || ''}
           className={classes.img}
           width='128'
           height='128'

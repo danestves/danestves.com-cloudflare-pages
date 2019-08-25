@@ -164,6 +164,34 @@ const styles = theme => ({
     opacity: 0,
     width: '100%',
     maxWidth: 320
+  },
+  skillsContainer: {
+    margin: theme.spacing(2, 0)
+  },
+  skill: {
+    display: 'flex'
+  },
+  skillBoxContainer: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    borderRadius: theme.spacing(2)
+  },
+  iconSkill: {
+    fontSize: '3rem',
+    margin: theme.spacing(0, 0, 1),
+    display: 'block',
+    background: 'linear-gradient(-135deg, #307FE2, #0090DA, #00A3E1, #00A9E0)',
+    '-webkit-background-clip': 'text',
+    '-webkit-text-fill-color': 'transparent'
+  },
+  titleSkill: {
+    fontFamily: '"Google Sans", system-ui',
+    fontSize: '1.2rem',
+    fontWeight: 600,
+    margin: theme.spacing(0, 0, 2)
+  },
+  contentSkill: {
+    fontFamily: '"Poppins", system-ui'
   }
 })
 

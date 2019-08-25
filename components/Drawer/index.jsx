@@ -14,7 +14,7 @@ import { Work } from 'styled-icons/material/Work'
 import { Blog } from 'styled-icons/icomoon/Blog'
 import { ContactMail } from 'styled-icons/material/ContactMail'
 import styles from '../../styles/components/drawer'
-import Link from '../../src/Link'
+import { Link } from '../'
 
 const useStyles = makeStyles(styles)
 

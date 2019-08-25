@@ -1,26 +1,54 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import ProTip from '../src/ProTip'
-import Link from '../src/Link'
-import { Slider } from '../components'
+import { Typography, Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+import { Slider, Link, Skills, Loading } from '../components'
+import styles from '../styles/pages/home'
+import { getSkills } from '../helpers'
+
+const useStyles = makeStyles(styles)
 
 export default function Index () {
+  const classes = useStyles()
+  const { loading, data: skills } = getSkills()
   return (
     <>
       <Slider />
-      <Container maxWidth='sm'>
-        <Box my={4}>
-          <Typography variant='h4' component='h1' gutterBottom>
-          Next.js example
-          </Typography>
-          <Link href='/about' as='/about/'>
-          Go to the about page
-          </Link>
-          <ProTip />
-        </Box>
-      </Container>
+      <div data-aos='fade-in' className={classes.container}>
+        <Typography
+          variant='h4'
+          component='h2'
+          align='center'
+          className={classes.description}
+        >
+          <strong>¡Hola! Soy Daniel</strong>, desarrollador web frontend.
+          Tengo una gran experiencia en el diseño y construcción de sitios web,
+          personalización y optimización. Manejo tecnologías, lenguajes y librerías como:{' '}
+          <strong>
+            HTML, CSS, JavaScript, React, Gatsby, Next.js, Sass, WordPress,
+            Bootstrap y más
+          </strong>
+          .
+        </Typography>
+
+        <Button
+          component={Link}
+          href='/curriculum/'
+          variant='outlined'
+          color='primary'
+          size='large'
+          className={classes.knowMore}
+        >
+          ¡Quiero saber más!
+        </Button>
+
+        {skills ? (
+          <Skills skills={skills.skills} />
+        ) : loading ? (
+          <Loading />
+        ) : (
+          'Error!'
+        )}
+      </div>
     </>
   )
 }
