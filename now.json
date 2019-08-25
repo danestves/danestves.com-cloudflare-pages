@@ -10,6 +10,10 @@
         "cache-control": "public, max-age=43200, immutable",
         "Service-Worker-Allowed": "/"
       }
+    },
+    {
+      "src": "^/robots.txt$",
+      "dest": "/_next/static/robots.txt"
     }
   ],
   "builds": [
