@@ -13,7 +13,6 @@ export default function Skills ({ skills }) {
   return (
     <Grid
       container
-      spacing={2}
       className={classes.skillsContainer}
     >
       {skills.map(skill => (
