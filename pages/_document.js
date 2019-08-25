@@ -1,12 +1,15 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/styles'
+import Manifest from 'next-manifest/manifest'
 
 class MyDocument extends Document {
   render () {
     return (
       <html lang='es' prefix='og: http://ogp.me/ns#'>
-        <Head />
+        <Head>
+          <Manifest href={'/static/manifest.json'} themeColor={'#0090da'} />
+        </Head>
         <body>
           <Main />
           <NextScript />

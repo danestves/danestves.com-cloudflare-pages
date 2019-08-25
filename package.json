@@ -18,10 +18,12 @@
     "next": "latest",
     "next-compose-plugins": "latest",
     "next-graphql-react": "latest",
+    "next-manifest": "^3.0.1",
     "next-offline": "^4.0.5",
     "next-progressbar": "^1.0.0",
     "next-routes": "^1.4.2",
     "nextjs-progressbar": "latest",
+    "nextjs-sitemap-generator": "^0.1.1",
     "prop-types": "latest",
     "react": "latest",
     "react-animated-slider": "^1.1.4",
@@ -33,6 +35,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "now-build": "yarn build && node scripts/postExport.js"
   }
 }

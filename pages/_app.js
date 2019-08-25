@@ -16,6 +16,16 @@ import { keywords } from '../constants'
 import '../styles/styles.css'
 
 class MyApp extends App {
+  static async getInitialProps ({ Component, ctx }) {
+    let pageProps = {}
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
+    return { pageProps }
+  }
+
   componentDidMount () {
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
