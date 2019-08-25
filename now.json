@@ -13,7 +13,10 @@
     },
     {
       "src": "^/robots.txt$",
-      "dest": "/_next/static/robots.txt"
+      "dest": "/_next/static/robots.txt",
+      "headers": {
+        "Content-Type": "text/plain;charset=UTF-8"
+      }
     }
   ],
   "builds": [
