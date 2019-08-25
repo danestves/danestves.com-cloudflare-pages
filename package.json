@@ -35,7 +35,6 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "now-build": "yarn build && node scripts/postExport.js"
+    "start": "next start"
   }
 }
