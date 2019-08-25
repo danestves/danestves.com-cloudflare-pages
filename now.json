@@ -13,7 +13,7 @@
     },
     {
       "src": "^/robots.txt$",
-      "dest": "/.next/robots.txt",
+      "dest": "/utils/robots.txt",
       "headers": {
         "Content-Type": "text/plain;charset=UTF-8"
       }
@@ -30,6 +30,10 @@
     {
       "src": "next.config.js",
       "use": "@now/next"
+    },
+    {
+      "src": "utils/robots.txt",
+      "use": "@now/static"
     }
   ],
   "build": {
