@@ -20,6 +20,9 @@ module.exports = withPlugins([
   [nextOffline, ['!', PHASE_DEVELOPMENT_SERVER]]
 ], {
   target: 'serverless',
+  workboxOpts: {
+    swDest: 'static/service-worker.js'
+  },
   webpack (config) {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env))
 

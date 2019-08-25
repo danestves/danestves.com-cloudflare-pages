@@ -2,6 +2,16 @@
   "name": "danestves",
   "version": 2,
   "alias": "dev.danestves.com",
+  "routes": [
+    {
+      "src": "^/service-worker.js$",
+      "dest": "/_next/static/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    }
+  ],
   "build": {
     "env": {
       "NODE_ENV": "production",
