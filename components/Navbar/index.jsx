@@ -11,7 +11,7 @@ import {
 import { makeStyles, useTheme } from '@material-ui/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Menu as MenuIcon } from 'styled-icons/boxicons-regular/Menu'
-import { window, document } from 'browser-monads'
+import { window } from 'browser-monads'
 import styles from '../../styles/components/navbar'
 import Drawer from '../Drawer'
 import { Link } from '../'
@@ -78,7 +78,7 @@ export default function Navbar () {
           <Link href='/' className={classes.logo}>
             <img
               src='/static/isotype-negative.svg'
-              alt={document.title || ''}
+              alt='Daniel Esteves | Desarrollador Web | @danestves'
               width='48'
               height='48'
             />

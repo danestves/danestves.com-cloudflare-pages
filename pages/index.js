@@ -42,7 +42,7 @@ export default function Index () {
         </Button>
 
         {skills ? (
-          <Skills skills={skills.skills} />
+          <div className={classes.containerSkills}><Skills skills={skills.skills} /></div>
         ) : loading ? (
           <Loading />
         ) : (

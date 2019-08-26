@@ -49,6 +49,9 @@ const styles = theme => ({
     left: '50%',
     transform: 'translateX(-50%)',
     margin: theme.spacing(2, 0)
+  },
+  containerSkills: {
+    margin: theme.spacing(2, 0)
   }
 })
 

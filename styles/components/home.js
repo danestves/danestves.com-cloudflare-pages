@@ -165,9 +165,6 @@ const styles = theme => ({
     width: '100%',
     maxWidth: 320
   },
-  skillsContainer: {
-    margin: theme.spacing(2, 0)
-  },
   skill: {
     display: 'flex'
   },

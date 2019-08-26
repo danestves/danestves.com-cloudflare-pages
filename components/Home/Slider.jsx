@@ -2,7 +2,6 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import Slider from 'react-animated-slider'
-import { document } from 'browser-monads'
 import { ReactLogo } from 'styled-icons/fa-brands/ReactLogo'
 import { Wordpress as WordPressLogo } from 'styled-icons/boxicons-logos/Wordpress'
 import styles from '../../styles/components/home.js'
@@ -22,7 +21,7 @@ export default function SliderHome () {
       >
         <img
           src='/static/isotype-negative.svg'
-          alt={document.title || ''}
+          alt='Daniel Esteves | Desarrollador Web | @danestves'
           className={classes.img}
           width='128'
           height='128'
