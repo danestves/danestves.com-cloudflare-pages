@@ -5,7 +5,6 @@ const withPlugins = require('next-compose-plugins')
 const webpack = require('webpack')
 const { withGraphQLConfig } = require('next-graphql-react/server')
 const withProgressBar = require('next-progressbar')
-const getPathsObject = require('./scripts/getPathsObject')
 const withManifest = require('next-manifest')
 require('dotenv').config()
 
@@ -104,13 +103,6 @@ module.exports = withPlugins([
         }
       }
     ]
-  },
-  exportPathMap: function () {
-    const fileObj = getPathsObject()
-    return {
-      ...fileObj,
-      '/': { page: '/' }
-    }
   },
   webpack (config) {
     config.plugins.push(
