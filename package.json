@@ -26,6 +26,7 @@
     "react-animated-slider": "^1.1.4",
     "react-dom": "latest",
     "react-helmet": "latest",
+    "react-vertical-timeline-component": "^2.4.0",
     "styled-components": "latest",
     "styled-icons": "latest"
   },

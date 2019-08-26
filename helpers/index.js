@@ -60,3 +60,37 @@ export function getSkills () {
     ...errors
   }
 }
+
+export function getEducationsAndExperiences () {
+  const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
+    fetchOptionsOverride (options) {
+      options.url = `${process.env.API_URL}`
+    },
+    operation: {
+      query: /* GraphQL */ `
+        {
+          educations {
+            title
+            subtitle
+            content
+            date
+            finished
+          }
+          experiences {
+            title
+            subtitle
+            content
+            date
+            finished
+          }
+      }
+      `
+    }
+  })
+
+  return {
+    loading,
+    data,
+    ...errors
+  }
+}
