@@ -23,8 +23,9 @@ const styles = theme => ({
       maxWidth: 1140
     }
   },
-  containerGrid: {
-    padding: theme.spacing(3, 0)
+  containerGrid: {},
+  titleItem: {
+    margin: theme.spacing(2, 0)
   }
 })
 

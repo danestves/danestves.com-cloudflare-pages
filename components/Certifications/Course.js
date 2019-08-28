@@ -17,7 +17,8 @@ export default function Course (props) {
         href={`https://platzi.com${course.diploma_link}`}
         target='_blank'
         rel='noopener noreferrer'
-        className={classes.link}>
+        className={classes.link}
+      >
         <Paper className={classes.paper} elevation={0}>
           <Grid container alignItems='center'>
             <Grid item xs={4}>

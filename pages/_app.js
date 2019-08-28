@@ -1,6 +1,6 @@
 import 'cross-fetch/polyfill'
 import React from 'react'
-import App, { Container } from 'next/app'
+import App from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider, StylesProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -39,7 +39,7 @@ class MyApp extends App {
     const { Component, pageProps, graphql, router } = this.props
 
     return (
-      <Container>
+      <>
         <Head>
           <meta charSet='utf-8' />
           <meta
@@ -122,7 +122,7 @@ class MyApp extends App {
             </GraphQLProvider>
           </ThemeProvider>
         </StylesProvider>
-      </Container>
+      </>
     )
   }
 }

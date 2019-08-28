@@ -51,9 +51,16 @@ export default function Certifications () {
           spacing={2}
           justify='center'
           alignItems='center'
-          className={classes.containerGrid}>
+          className={classes.containerGrid}
+        >
           <Grid item xs={12}>
-            <Typography variant='h4' component='div' align='center'>
+            <Typography
+              variant='h4'
+              component='div'
+              align='center'
+              data-aos='zoom-in'
+              className={classes.titleItem}
+            >
               Carreras
             </Typography>
           </Grid>
@@ -65,7 +72,13 @@ export default function Certifications () {
             ))}
 
           <Grid item xs={12}>
-            <Typography variant='h4' component='div' align='center'>
+            <Typography
+              variant='h4'
+              component='div'
+              align='center'
+              data-aos='fade-up'
+              className={classes.titleItem}
+            >
               JavaScript
             </Typography>
           </Grid>
@@ -77,7 +90,13 @@ export default function Certifications () {
             ))}
 
           <Grid item xs={12}>
-            <Typography variant='h4' component='div' align='center'>
+            <Typography
+              variant='h4'
+              component='div'
+              align='center'
+              data-aos='fade-up'
+              className={classes.titleItem}
+            >
               Inglés
             </Typography>
           </Grid>
@@ -89,7 +108,13 @@ export default function Certifications () {
             ))}
 
           <Grid item xs={12}>
-            <Typography variant='h4' component='div' align='center'>
+            <Typography
+              variant='h4'
+              component='div'
+              align='center'
+              data-aos='fade-up'
+              className={classes.titleItem}
+            >
               Otros
             </Typography>
           </Grid>
