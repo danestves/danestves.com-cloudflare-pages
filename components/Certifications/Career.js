@@ -1,6 +1,5 @@
 import React from 'react'
-import { Paper, Grid } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { Paper, Grid, makeStyles } from '@material-ui/core'
 import styles from '../../styles/components/certifications'
 
 const useStyles = makeStyles(styles)

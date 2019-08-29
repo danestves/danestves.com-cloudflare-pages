@@ -4,9 +4,9 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  makeStyles
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
 import { Home } from 'styled-icons/boxicons-regular/Home'
 import { Profile } from 'styled-icons/icomoon/Profile'
 import { Graduation } from 'styled-icons/boxicons-solid/Graduation'
@@ -41,23 +41,23 @@ export default function DrawerMenu (props) {
             <ListItemIcon><Home size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Inicio' />
           </ListItem>
-          <ListItem button component={Link} href='/curriculum/'>
+          <ListItem button component={Link} href='/curriculum'>
             <ListItemIcon><Profile size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Curriculum' />
           </ListItem>
-          <ListItem button component={Link} href='/certificaciones/'>
+          <ListItem button component={Link} href='/certificaciones'>
             <ListItemIcon><Graduation size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Certificaciones' />
           </ListItem>
-          <ListItem button component={Link} href='/portfolio/'>
+          <ListItem button component={Link} href='/portafolio'>
             <ListItemIcon><Work size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Portafolio' />
           </ListItem>
-          <ListItem button component={Link} href='/blog/'>
+          <ListItem button component={Link} href='/blog'>
             <ListItemIcon><Blog size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Blog' />
           </ListItem>
-          <ListItem button component={Link} href='/contact/'>
+          <ListItem button component={Link} href='/contact'>
             <ListItemIcon><ContactMail size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Contacto' />
           </ListItem>

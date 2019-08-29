@@ -1,7 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/styles'
-import { Typography } from '@material-ui/core'
-import { document } from 'browser-monads'
+import { Typography, makeStyles } from '@material-ui/core'
 import styles from '../../styles/components/hero'
 
 const useStyles = makeStyles(styles)
@@ -13,7 +11,7 @@ export default function Hero ({ title, img }) {
     <div className={classes.container}>
       <img
         src={img}
-        alt={document.title}
+        alt='Daniel Esteves | Desarrollador Web Frontend - @danestves'
         className={classes.img}
         width='1920'
         height='320'

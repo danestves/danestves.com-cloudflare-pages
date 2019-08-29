@@ -6,9 +6,10 @@ import {
   Button,
   IconButton,
   Menu,
-  MenuItem
+  MenuItem,
+  makeStyles,
+  useTheme
 } from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Menu as MenuIcon } from 'styled-icons/boxicons-regular/Menu'
 import { window } from 'browser-monads'
@@ -106,7 +107,8 @@ export default function Navbar () {
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
-                )}>
+                )}
+              >
               Inicio
               </Button>
               <Button
@@ -118,67 +120,74 @@ export default function Navbar () {
                 )}
                 aria-owns={anchor ? 'about' : undefined}
                 aria-haspopup='true'
-                onClick={handleClick}>
+                onClick={handleClick}
+              >
               Sobre
               </Button>
               <Button
                 component={Link}
-                href='/portfolio/'
+                href='/portafolio'
                 activeClassName={classes.activeItem}
                 color='inherit'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
-                )}>
+                )}
+              >
               Portafolio
               </Button>
               <Button
                 component={Link}
-                href='/blog/'
+                href='/blog'
                 activeClassName={classes.activeItem}
                 color='inherit'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
-                )}>
+                )}
+              >
               Blog
               </Button>
               <Button
                 component={Link}
-                href='/contact/'
+                href='/contact'
                 activeClassName={classes.activeItem}
                 color='inherit'
                 className={classNames(
                   classes.navButton,
                   classes.outlinedNavMenu
-                )}>
+                )}
+              >
               Contacto
               </Button>
             </>
-          ) }
+          )}
         </Toolbar>
       </AppBar>
       <Menu
         id='about'
         anchorEl={anchor}
         open={Boolean(anchor)}
-        onClose={handleClose}>
+        onClose={handleClose}
+      >
         <MenuItem
           component={Link}
-          href='/curriculum/'
+          href='/curriculum'
           activeClassName={classes.activeSubItem}
           color='inherit'
           className={classes.outlinedNavSubMenu}
-          onClick={handleClose}>
+          onClick={handleClose}
+        >
             Curriculum
         </MenuItem>
         <MenuItem
           component={Link}
-          href='/certificaciones/'
+          href='/certificaciones'
           activeClassName={classes.activeSubItem}
           color='inherit'
           className={classes.outlinedNavSubMenu}
-          onClick={handleClose}>
+          onClick={handleClose}
+        >
             Certificaciones
         </MenuItem>
       </Menu>

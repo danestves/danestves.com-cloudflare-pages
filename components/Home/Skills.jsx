@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Grid, Paper, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { Grid, Paper, Typography, makeStyles } from '@material-ui/core'
 import styles from '../../styles/components/home'
 
 const useStyles = makeStyles(styles)

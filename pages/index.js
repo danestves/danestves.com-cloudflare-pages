@@ -1,6 +1,5 @@
 import React from 'react'
-import { Typography, Button } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { Typography, Button, makeStyles } from '@material-ui/core'
 import { Slider, Link, Skills, Loading } from '../components'
 import styles from '../styles/pages/home'
 import { getSkills } from '../helpers'

@@ -1,6 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/styles'
-import { Typography } from '@material-ui/core'
+import { Typography, makeStyles } from '@material-ui/core'
 import {
   VerticalTimeline,
   VerticalTimelineElement
@@ -27,17 +26,20 @@ export default function Timeline (props) {
               ? { background: 'rgb(16, 204, 82)', color: '#fff' }
               : { background: 'rgb(33, 150, 243)', color: '#fff' }
           }
-          icon={item.finished ? <Check size='1.5rem' /> : <TimeFive size='1.5rem' />}>
+          icon={item.finished ? <Check size='1.5rem' /> : <TimeFive size='1.5rem' />}
+        >
           <Typography
             className={classes.timelineTitle}
             component='h2'
-            variant='h6'>
+            variant='h6'
+          >
             {item.title}
           </Typography>
           <Typography
             className={classes.timelineSubtitle}
             component='h3'
-            variant='subtitle1'>
+            variant='subtitle1'
+          >
             {item.subtitle}
           </Typography>
           <p>{item.content}</p>
