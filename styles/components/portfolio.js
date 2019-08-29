@@ -1,16 +1,14 @@
 const styles = theme => ({
-  // index.js
   containerPortfolios: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: theme.spacing(2)
   },
-  // Portfolio Container
   linkPortfolioContainer: {
     margin: theme.spacing(2),
     textDecoration: 'none'
   },
-  // Portfolio Summary
   paperPortfolioSummary: {
     width: '100%',
     maxWidth: 300,
