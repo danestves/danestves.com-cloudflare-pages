@@ -111,7 +111,7 @@ export function getEducationsAndExperiences () {
   }
 }
 
-export function getPortfolios () {
+export function getPortfolios (page) {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride (options) {
       options.url = `${process.env.API_URL}`
@@ -119,7 +119,7 @@ export function getPortfolios () {
     operation: {
       query: /* GraphQL */ `
         {
-          portfolios {
+          portfolios(limit: 10, start: page, sort: "title:ASC") {
             id
             slug
             title
