@@ -58,7 +58,7 @@ const styles = theme => ({
       left: theme.spacing(2),
       height: '100%',
       width: 4,
-      background: '#fff',
+      background: theme.palette.type === 'dark' ? '#424242' : '#fff',
 
       '@media only screen and (min-width: 1170px)': {
         left: '50%',
@@ -127,7 +127,7 @@ const styles = theme => ({
         height: 40,
         borderRadius: '50%',
         boxShadow:
-          '0 0 0 4px #fff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05)',
+          `0 0 0 4px ${theme.palette.type === 'dark' ? '#424242' : '#fff'}, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05)`,
 
         '@media only screen and (min-width: 1170px)': {
           width: 60,
@@ -160,10 +160,10 @@ const styles = theme => ({
       '& .vertical-timeline-element-content': {
         position: 'relative',
         marginLeft: 60,
-        background: '#fff',
+        background: theme.palette.type === 'dark' ? '#424242' : '#fff',
         borderRadius: '0.25em',
         padding: '1em',
-        boxShadow: '0 3px 0 #ddd',
+        boxShadow: `0 3px 0 ${theme.palette.type === 'dark' ? '#6e6e6e' : '#ddd'}`,
 
         '@media only screen and (max-width: 1169px)': {
           visibility: 'visible',
@@ -195,7 +195,7 @@ const styles = theme => ({
           height: 0,
           width: 0,
           border: '7px solid transparent',
-          borderRight: '7px solid #fff',
+          borderRight: `7px solid ${theme.palette.type === 'dark' ? '#7f7f7f' : '#fff'}`,
 
           '@media only screen and (min-width: 1170px)': {
             top: theme.spacing(3),
@@ -218,7 +218,7 @@ const styles = theme => ({
         opacity: 0.7,
         display: 'inline-block',
         fontWeight: 500,
-        color: '#333',
+        color: theme.palette.type === 'dark' ? '#999' : '#333',
 
         '@media only screen and (min-width: 1170px)': {
           position: 'absolute',
@@ -236,7 +236,7 @@ const styles = theme => ({
   },
   timelineSubtitle: {
     margin: 0,
-    color: 'rgba(128, 128, 128, 0.75)'
+    color: theme.palette.type === 'dark' ? 'rgba(191, 191, 191, 0.75)' : 'rgba(128, 128, 128, 0.75)'
   }
 })
 
