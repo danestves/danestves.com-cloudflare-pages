@@ -24,6 +24,7 @@ let theme = createMuiTheme({
     }
   },
   palette: {
+    type: 'light',
     primary: {
       main: '#307FE2',
       light: '#0090DA'
@@ -40,11 +41,7 @@ let theme = createMuiTheme({
 responsiveFontSizes(theme)
 
 const overrides = {
-  MuiAppBar: {
-    colorPrimary: {
-      background: 'linear-gradient(-135deg, #307FE2, #0090DA, #00A3E1, #00A9E0)'
-    }
-  },
+  MuiAppBar: {},
   MuiToolbar: {
     regular: {
       minHeight: 0

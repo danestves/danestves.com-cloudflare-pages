@@ -19,13 +19,14 @@ import { Link } from '../'
 
 const useStyles = makeStyles(styles)
 
-export default function Navbar () {
+export default function Navbar ({ toggleTheme, theme: localTheme }) {
+  const [dark, setDark] = useState(false)
   const [anchor, setAnchor] = useState(null)
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
     window.addEventListener('load', handleNavbarAnimation())
-  })
+  }, [])
 
   const handleNavbarAnimation = () => {
     const onm = document.getElementsByClassName(classes.outlinedNavMenu)
@@ -62,6 +63,12 @@ export default function Navbar () {
     setOpen(open)
   }
 
+  const setDarkTheme = () => {
+    setDark(!dark)
+
+    toggleTheme(dark ? 'dark' : 'light')
+  }
+
   const pathname = window.location.pathname
   const classes = useStyles()
   const theme = useTheme()
@@ -74,7 +81,7 @@ export default function Navbar () {
 
   return (
     <div className={classes.root}>
-      <AppBar position='fixed'>
+      <AppBar className={classes.appBar} position='fixed'>
         <Toolbar>
           <Link href='/' className={classes.logo}>
             <img
@@ -162,6 +169,29 @@ export default function Navbar () {
               </Button>
             </>
           )}
+
+          <div className='toggleWrapper'>
+            <input
+              type='checkbox'
+              className='dn'
+              id='dn'
+              checked={localTheme === 'dark'}
+              onChange={setDarkTheme}
+            />
+            <label htmlFor='dn' className='toggle'>
+              <span className='toggle__handler'>
+                <span className='crater crater--1' />
+                <span className='crater crater--2' />
+                <span className='crater crater--3' />
+              </span>
+              <span className='star star--1' />
+              <span className='star star--2' />
+              <span className='star star--3' />
+              <span className='star star--4' />
+              <span className='star star--5' />
+              <span className='star star--6' />
+            </label>
+          </div>
         </Toolbar>
       </AppBar>
       <Menu

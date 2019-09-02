@@ -2,6 +2,12 @@ const styles = theme => ({
   root: {
     flexGrow: 1
   },
+  appBar: {
+    background: theme.palette.type === 'light'
+      ? 'linear-gradient(-135deg, #307FE2, #0090DA, #00A3E1, #00A9E0)'
+      : 'linear-gradient(-135deg, #103e78, #00486d, #005170, #005470)',
+    color: '#fff'
+  },
   logo: {
     width: theme.spacing(6),
     marginRight: 'auto',
@@ -16,8 +22,7 @@ const styles = theme => ({
   },
   navButton: {
     padding: theme.spacing(2, 1),
-    borderRadius: 0,
-    color: '#fff'
+    borderRadius: 0
   },
   outlinedNavMenu: {
     position: 'relative',

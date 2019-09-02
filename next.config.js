@@ -1,6 +1,7 @@
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 const nextOffline = require('next-offline')
 const withCSS = require('@zeit/next-css')
+const withSass = require('@zeit/next-sass')
 const withPlugins = require('next-compose-plugins')
 const webpack = require('webpack')
 const { withGraphQLConfig } = require('next-graphql-react/server')
@@ -67,6 +68,7 @@ const defaults = {
 module.exports = withPlugins([
   withGraphQLConfig,
   withCSS,
+  withSass,
   [
     withProgressBar, {
       progressBar: {

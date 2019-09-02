@@ -1,0 +1,205 @@
+body {
+  font-family: 'Poppins', system-ui;
+  padding-top: 56px;
+}
+
+#nprogress .bar {
+  z-index: 2200 !important;
+}
+
+@media (min-width: 600px) {
+  body {
+    padding-top: 64px;
+  }
+}
+
+@import '~react-animated-slider/build/horizontal.css';
+@import './_fonts';
+
+.toggleWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+
+  input {
+    position: absolute;
+    left: -99em;
+  }
+
+  .toggle {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 45px;
+    height: 25px;
+    background-color: #83d8ff;
+    border-radius: 90px - 6;
+    transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  }
+  
+  .toggle__handler {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    top: 3px;
+    left: 3px;
+    width: 25px - 6;
+    height: 25px - 6;
+    background-color: #ffcf96;
+    border-radius: 50px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: rotate(-22.5deg);
+  
+    .crater {
+      position: absolute;
+      background-color: #e8cda5;
+      opacity: 0;
+      transition: opacity 200ms ease-in-out;
+      border-radius: 100%;
+    }
+  
+    .crater--1 {
+      top: 9px;
+      left: 5px;
+      width: 2px;
+      height: 2px;
+    }
+  
+    .crater--2 {
+      top: 14px;
+      left: 11px;
+      width: 3px;
+      height: 3px;
+    }
+  
+    .crater--3 {
+      top: 5px;
+      left: 12.5px;
+      width: 4px;
+      height: 4px;
+    }
+  }
+  
+  .star {
+    position: absolute;
+    background-color: #ffffff;
+    transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    border-radius: 50%;
+  }
+  
+  .star--1 {
+    top: 5px;
+    left: 17.5px;
+    z-index: 0;
+    width: 15px;
+    height: 1.5px;
+  }
+  
+  .star--2 {
+    top: 9px;
+    left: 14px;
+    z-index: 1;
+    width: 15px;
+    height: 1.5px;
+  }
+  
+  .star--3 {
+    top: 13.5px;
+    left: 20px;
+    z-index: 0;
+    width: 15px;
+    height: 1.5px;
+  }
+  
+  .star--4,
+  .star--5,
+  .star--6 {
+    opacity: 0;
+    transition: all 300ms 0 cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  }
+  
+  .star--4 {
+    top: 8px;
+    left: 5.5px;
+    z-index: 0;
+    width: 1px;
+    height: 1px;
+    transform: translate3d(1.5px, 0, 0);
+  }
+  
+  .star--5 {
+    top: 16px;
+    left: 8.5px;
+    z-index: 0;
+    width: 1.5px;
+    height: 1.5px;
+    transform: translate3d(1.5px, 0, 0);
+  }
+  
+  .star--6 {
+    top: 18px;
+    left: 14px;
+    z-index: 0;
+    width: 1px;
+    height: 1px;
+    transform: translate3d(1.5px, 0, 0);
+  }
+  
+  input:checked {
+    + .toggle {
+      background-color: #749dd6;
+  
+      &:before {
+        color: #749ed7;
+      }
+  
+      &:after {
+        color: #ffffff;
+      }
+  
+      .toggle__handler {
+        background-color: #ffe5b5;
+        transform: translate3d(20px, 0, 0) rotate(0);
+  
+        .crater {
+          opacity: 1;
+        }
+      }
+  
+      .star--1 {
+        width: 1px;
+        height: 1px;
+      }
+  
+      .star--2 {
+        width: 2px;
+        height: 2px;
+        transform: translate3d(-2.5px, 0, 0);
+      }
+  
+      .star--3 {
+        width: 1px;
+        height: 1px;
+        transform: translate3d(-3.5px, 0, 0);
+      }
+  
+      .star--4,
+      .star--5,
+      .star--6 {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+      .star--4 {
+        transition: all 300ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      }
+      .star--5 {
+        transition: all 300ms 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      }
+      .star--6 {
+        transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+      }
+    }
+  }
+}
+

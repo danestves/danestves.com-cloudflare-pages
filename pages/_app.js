@@ -3,6 +3,7 @@ import React from 'react'
 import App from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider, StylesProvider } from '@material-ui/styles'
+import { createMuiTheme } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -10,12 +11,20 @@ import NProgress from 'nextjs-progressbar'
 import { GraphQLProvider } from 'graphql-react'
 import { withGraphQLApp } from 'next-graphql-react'
 import { Router as Router2, withRouter } from 'next/router'
-import theme from '../src/theme'
+import { window } from 'browser-monads'
+import themeFile from '../src/theme'
 import { Navbar } from '../components'
 import { keywords } from '../constants'
-import '../styles/styles.css'
+import '../styles/styles.scss'
 
 class MyApp extends App {
+  constructor (props) {
+    super(props)
+    this.state = {
+      theme: themeFile
+    }
+  }
+
   static async getInitialProps ({ Component, ctx }) {
     let pageProps = {}
 
@@ -33,10 +42,35 @@ class MyApp extends App {
     }
 
     AOS.init()
+
+    this.setState({
+      theme: {
+        ...this.state.theme,
+        palette: {
+          type: window.__theme
+        }
+      }
+    })
+
+    window.__onThemeChange = () => {
+      this.setState({
+        theme: {
+          ...this.state.theme,
+          palette: {
+            type: window.__theme
+          }
+        }
+      })
+    }
+  }
+
+  toggleTheme (theme) {
+    window.__setPreferredTheme(theme)
   }
 
   render () {
     const { Component, pageProps, graphql, router } = this.props
+    const theme = createMuiTheme(this.state.theme)
 
     return (
       <>
@@ -109,7 +143,7 @@ class MyApp extends App {
           <meta name='msvalidate.01' content='F4F455B991A40467C9C79C17B6AC2894' />
           <link
             rel='stylesheet'
-            href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
+            href='https://fonts.googleapis.com/css?family=Google+Sans:400,700|Poppins:400,500,600&display=swap'
           />
         </Head>
         <NProgress color='#fff' spinner={false} />
@@ -117,7 +151,7 @@ class MyApp extends App {
           <ThemeProvider theme={theme}>
             <GraphQLProvider graphql={graphql}>
               <CssBaseline />
-              <Navbar />
+              <Navbar toggleTheme={this.toggleTheme} theme={window.__theme} />
               <Component {...pageProps} />
             </GraphQLProvider>
           </ThemeProvider>
