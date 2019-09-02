@@ -37,27 +37,27 @@ export default function DrawerMenu (props) {
         onKeyDown={toggleDrawer(false)}
       >
         <List>
-          <ListItem button component={Link} href='/'>
+          <ListItem button component={Link} href='/' color='inherit'>
             <ListItemIcon><Home size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Inicio' />
           </ListItem>
-          <ListItem button component={Link} href='/curriculum'>
+          <ListItem button component={Link} href='/curriculum' color='inherit'>
             <ListItemIcon><Profile size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Curriculum' />
           </ListItem>
-          <ListItem button component={Link} href='/certificaciones'>
+          <ListItem button component={Link} href='/certificaciones' color='inherit'>
             <ListItemIcon><Graduation size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Certificaciones' />
           </ListItem>
-          <ListItem button component={Link} href='/portafolio'>
+          <ListItem button component={Link} href='/portafolio' color='inherit'>
             <ListItemIcon><Work size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Portafolio' />
           </ListItem>
-          <ListItem button component={Link} href='/blog'>
+          <ListItem button component={Link} href='/blog' color='inherit'>
             <ListItemIcon><Blog size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Blog' />
           </ListItem>
-          <ListItem button component={Link} href='/contact'>
+          <ListItem button component={Link} href='/contact' color='inherit'>
             <ListItemIcon><ContactMail size='1.5rem' /></ListItemIcon>
             <ListItemText primary='Contacto' />
           </ListItem>
