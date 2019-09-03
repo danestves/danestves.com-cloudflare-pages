@@ -1,7 +1,7 @@
 import React from 'react'
 import { Paper, Typography, makeStyles } from '@material-ui/core'
 import styles from '../../styles/components/portfolio'
-import { Link } from '../'
+import { Link, Image } from '../'
 
 const useStyles = makeStyles(styles)
 
@@ -28,6 +28,7 @@ export default function PortfolioRoll ({ portfolios }) {
               <div className={classes.imagePortfolioSummary}>
                 <img
                   data-src={portfolio.cover.url}
+                  src='/static/portfolio-placeholder.jpg'
                   alt={`${portfolio.title} - Portfolio | Daniel Esteves`}
                   height={200}
                   wdith={300}
