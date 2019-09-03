@@ -26,6 +26,7 @@ const styles = theme => ({
   },
   outlinedNavMenu: {
     position: 'relative',
+    color: '#fff',
 
     '&:hover': {
       '&::after': {
