@@ -50,9 +50,9 @@ const styles = theme => ({
     transform: 'translateX(-50%)',
     margin: theme.spacing(2, 0),
     color: theme.palette.type === 'dark'
-      ? '#fff' : null,
+      ? '#fff' : '#0090DA',
     border: theme.palette.type === 'dark'
-      ? '1px solid rgba(255, 255, 255, 0.5)' : null,
+      ? '1px solid rgba(255, 255, 255, 0.5)' : '1px solid #0090DA',
 
     '&:hover': {
       border: theme.palette.type === 'dark'

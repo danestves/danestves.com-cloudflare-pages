@@ -119,7 +119,7 @@ export function getPortfolios (page) {
     operation: {
       query: /* GraphQL */ `
         {
-          portfolios(limit: 10, start: ${page}, sort: "title:ASC") {
+          portfolios {
             id
             slug
             title

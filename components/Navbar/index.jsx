@@ -83,12 +83,14 @@ export default function Navbar ({ toggleTheme, theme: localTheme }) {
     <div className={classes.root}>
       <AppBar className={classes.appBar} position='fixed'>
         <Toolbar>
-          <Link href='/' className={classes.logo}>
+          <Link href='' className={classes.logo}>
             <img
-              src='/static/isotype-negative.svg'
+              data-src='/static/isotype-negative.svg'
               alt='Daniel Esteves | Desarrollador Web | @danestves'
               width='48'
               height='48'
+              loading='lazy'
+              className='lazyload'
             />
           </Link>
 

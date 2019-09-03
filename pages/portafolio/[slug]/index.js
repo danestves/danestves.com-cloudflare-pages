@@ -18,8 +18,6 @@ export default function Portfolio(props) {
 
   const portfolio = data && data.portfolios[0]
 
-  console.log(portfolio)
-
   return data ? (
     <div className={classes.containerPortfolio}>
       <Grid container spacing={2} alignItems='center' justify='center'>

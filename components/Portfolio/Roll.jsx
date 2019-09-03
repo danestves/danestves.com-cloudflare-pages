@@ -27,10 +27,12 @@ export default function PortfolioRoll ({ portfolios }) {
             >
               <div className={classes.imagePortfolioSummary}>
                 <img
-                  src={portfolio.cover.url}
+                  data-src={portfolio.cover.url}
                   alt={`${portfolio.title} - Portfolio | Daniel Esteves`}
                   height={200}
                   wdith={300}
+                  className='lazyload'
+                  loading='lazy'
                 />
               </div>
               <Typography

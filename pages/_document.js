@@ -17,26 +17,22 @@ class MyDocument extends Document {
             id='lazy-loading'
             dangerouslySetInnerHTML={{
               __html: `
-function lazyLoading () {
-  if ('loading' in HTMLImageElement.prototype) {
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-      img.src = img.src;
-      img.loading = 'lazy';
-      img.setAttribute('data-src', img.src);
-    });
-  } else {
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-      img.classList.add('lazyload');
-    });
-    // Dynamically import the LazySizes library
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js';
-    document.body.appendChild(script);
-  }
+function lazyload() {
+  (async () => {
+    if ('loading' in HTMLImageElement.prototype) {
+      const images = document.querySelectorAll('img.lazyload')
+      images.forEach(img => {
+        img.src = img.dataset.src
+      })
+    } else {
+      // Dynamically import the LazySizes library
+      const script = document.createElement('script')
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js'
+      document.body.appendChild(script)
+    }
+  })()
 }
-setInterval(lazyLoading, 5000);
+setInterval(lazyload, 1000)
               `
             }}
           />

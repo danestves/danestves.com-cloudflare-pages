@@ -31,9 +31,8 @@ export default function Index () {
 
         <Button
           component={Link}
-          href='/curriculum/'
+          href='/curriculum'
           variant='outlined'
-          color='primary'
           size='large'
           className={classes.knowMore}
         >
