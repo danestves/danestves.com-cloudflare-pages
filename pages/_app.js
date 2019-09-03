@@ -12,7 +12,7 @@ import { GraphQLProvider } from 'graphql-react'
 import { withGraphQLApp } from 'next-graphql-react'
 import { Router as Router2, withRouter } from 'next/router'
 import { window } from 'browser-monads'
-import themeFile from '../src/theme'
+import themeObject from '../src/theme'
 import { Navbar } from '../components'
 import { keywords } from '../constants'
 import '../styles/styles.scss'
@@ -21,7 +21,7 @@ class MyApp extends App {
   constructor (props) {
     super(props)
     this.state = {
-      theme: themeFile
+      theme: themeObject
     }
   }
 
@@ -33,9 +33,11 @@ class MyApp extends App {
 
     AOS.init()
 
+    const { theme } = this.state
+
     this.setState({
       theme: {
-        ...this.state.theme,
+        ...theme,
         palette: {
           type: window.__theme
         }
@@ -45,7 +47,7 @@ class MyApp extends App {
     window.__onThemeChange = () => {
       this.setState({
         theme: {
-          ...this.state.theme,
+          ...theme,
           palette: {
             type: window.__theme
           }
@@ -60,7 +62,8 @@ class MyApp extends App {
 
   render () {
     const { Component, pageProps, graphql, router } = this.props
-    const theme = createMuiTheme(this.state.theme)
+    const { theme } = this.state
+    const themeConfig = createMuiTheme(theme)
 
     return (
       <>
@@ -138,7 +141,7 @@ class MyApp extends App {
         </Head>
         <NProgress color='#fff' spinner={false} />
         <StylesProvider injectFirst>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={themeConfig}>
             <GraphQLProvider graphql={graphql}>
               <CssBaseline />
               <Navbar toggleTheme={this.toggleTheme} theme={window.__theme} />

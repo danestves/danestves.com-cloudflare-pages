@@ -1,5 +1,10 @@
 import React from 'react'
+import { Hero } from '../../components'
 
 export default () => {
-  return <p>Blog</p>
+  return (
+    <>
+      <Hero img='/static/blog.jpg' title='Blog' />
+    </>
+  )
 }

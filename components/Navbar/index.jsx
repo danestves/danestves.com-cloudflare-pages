@@ -19,8 +19,7 @@ import { Link } from '../'
 
 const useStyles = makeStyles(styles)
 
-export default function Navbar ({ toggleTheme, theme: localTheme }) {
-  const [dark, setDark] = useState(false)
+export default function Navbar ({ toggleTheme, theme }) {
   const [anchor, setAnchor] = useState(null)
   const [open, setOpen] = useState(false)
 
@@ -63,16 +62,10 @@ export default function Navbar ({ toggleTheme, theme: localTheme }) {
     setOpen(open)
   }
 
-  const setDarkTheme = () => {
-    setDark(!dark)
-
-    toggleTheme(dark ? 'dark' : 'light')
-  }
-
   const pathname = window.location.pathname
   const classes = useStyles()
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down('xs'))
+  const themeMui = useTheme()
+  const matches = useMediaQuery(themeMui.breakpoints.down('xs'))
 
   const aboutURLs =
       pathname === '/about/' ||
@@ -177,8 +170,8 @@ export default function Navbar ({ toggleTheme, theme: localTheme }) {
               type='checkbox'
               className='dn'
               id='dn'
-              checked={localTheme === 'dark'}
-              onChange={setDarkTheme}
+              checked={theme === 'dark'}
+              onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
             />
             <label htmlFor='dn' className='toggle'>
               <span className='toggle__handler'>
