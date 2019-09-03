@@ -3,6 +3,7 @@ import { Typography, makeStyles } from '@material-ui/core'
 import Slider from 'react-animated-slider'
 import { ReactLogo } from 'styled-icons/fa-brands/ReactLogo'
 import { Wordpress as WordPressLogo } from 'styled-icons/boxicons-logos/Wordpress'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import styles from '../../styles/components/home.js'
 
 const useStyles = makeStyles(styles)
@@ -18,7 +19,7 @@ export default function SliderHome () {
       <div
         className={classes.sliderItem}
       >
-        <img
+        <LazyLoadImage
           src='/static/isotype-negative.svg'
           alt='Daniel Esteves | Desarrollador Web | @danestves'
           className={classes.img}

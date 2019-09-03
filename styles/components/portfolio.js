@@ -1,13 +1,4 @@
 const styles = theme => ({
-  '@keyframes loaded': {
-    '0%': {
-      opacity: 0.1
-    },
-
-    '100%': {
-      opacity: 1
-    }
-  },
   containerPortfolios: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -30,12 +21,7 @@ const styles = theme => ({
       display: 'block',
       width: 300,
       height: 200,
-      // I use utilitary classes instead of props to avoid style regenerating
-      '&.loaded:not(.has-error)': {
-        animation: '$loaded 300ms ease-in-out'
-      },
-
-      '&.has-error': {}
+      objectFit: 'cover'
     }
   },
   portfolioTitle: {

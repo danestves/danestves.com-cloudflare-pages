@@ -13,6 +13,7 @@ import {
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Menu as MenuIcon } from 'styled-icons/boxicons-regular/Menu'
 import { window, document } from 'browser-monads'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import styles from '../../styles/components/navbar'
 import Drawer from '../Drawer'
 import { Link } from '../'
@@ -77,13 +78,12 @@ export default function Navbar ({ toggleTheme, theme }) {
       <AppBar className={classes.appBar} position='fixed'>
         <Toolbar>
           <Link href='' className={classes.logo}>
-            <img
-              data-src='/static/isotype-negative.svg'
+            <LazyLoadImage
+              src='/static/isotype-negative.svg'
               alt='Daniel Esteves | Desarrollador Web | @danestves'
-              width='48'
-              height='48'
-              loading='lazy'
-              className='lazyload'
+              width={48}
+              effect='blur'
+              height={48}
             />
           </Link>
 

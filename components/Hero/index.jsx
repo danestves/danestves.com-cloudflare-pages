@@ -1,5 +1,6 @@
 import React from 'react'
 import { Typography, makeStyles } from '@material-ui/core'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import styles from '../../styles/components/hero'
 
 const useStyles = makeStyles(styles)
@@ -9,12 +10,11 @@ export default function Hero ({ title, img }) {
 
   return (
     <div className={classes.container}>
-      <img
+      <LazyLoadImage
         src={img}
         alt='Daniel Esteves | Desarrollador Web Frontend - @danestves'
         className={classes.img}
-        width='1920'
-        height='320'
+        effect='blur'
       />
       <Typography component='h1' className={classes.title}>
         {title}

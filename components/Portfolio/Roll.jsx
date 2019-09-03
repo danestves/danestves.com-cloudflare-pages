@@ -1,11 +1,12 @@
 import React from 'react'
 import { Paper, Typography, makeStyles } from '@material-ui/core'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import styles from '../../styles/components/portfolio'
-import { Link, Image } from '../'
+import { Link } from '../'
 
 const useStyles = makeStyles(styles)
 
-export default function PortfolioRoll ({ portfolios }) {
+export default ({ portfolios }) => {
   const classes = useStyles()
 
   return (
@@ -26,14 +27,14 @@ export default function PortfolioRoll ({ portfolios }) {
               data-aos-anchor-placement='center-bottom'
             >
               <div className={classes.imagePortfolioSummary}>
-                <img
-                  data-src={portfolio.cover.url}
-                  src='/static/portfolio-placeholder.jpg'
+                <LazyLoadImage
+                  // data-src={portfolio.cover.url}
+                  // src='/static/portfolio-placeholder.jpg'
+                  src={portfolio.cover.url}
                   alt={`${portfolio.title} - Portfolio | Daniel Esteves`}
                   height={200}
-                  wdith={300}
-                  className='lazyload'
-                  loading='lazy'
+                  width={300}
+                  effect='blur'
                 />
               </div>
               <Typography

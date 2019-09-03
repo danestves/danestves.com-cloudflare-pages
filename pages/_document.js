@@ -13,29 +13,6 @@ class MyDocument extends Document {
         <body>
           <Main />
           <script
-            id='lazy-loading'
-            dangerouslySetInnerHTML={{
-              __html: `
-function lazyload() {
-  (async () => {
-    if ('loading' in HTMLImageElement.prototype) {
-      const images = document.querySelectorAll('img.lazyload')
-      images.forEach(img => {
-        img.src = img.dataset.src
-      })
-    } else {
-      // Dynamically import the LazySizes library
-      const script = document.createElement('script')
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js'
-      document.body.appendChild(script)
-    }
-  })()
-}
-setInterval(lazyload, 1000)
-              `
-            }}
-          />
-          <script
             id='dark-mode'
             dangerouslySetInnerHTML={{
               __html: `
