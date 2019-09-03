@@ -26,7 +26,7 @@ export default function Navbar ({ toggleTheme, theme: localTheme }) {
 
   useEffect(() => {
     window.addEventListener('load', handleNavbarAnimation())
-  }, [])
+  })
 
   const handleNavbarAnimation = () => {
     const onm = document.getElementsByClassName(classes.outlinedNavMenu)
