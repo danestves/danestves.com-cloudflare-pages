@@ -12,7 +12,6 @@ class MyDocument extends Document {
         </Head>
         <body>
           <Main />
-          <NextScript />
           <script
             id='lazy-loading'
             dangerouslySetInnerHTML={{
@@ -67,6 +66,7 @@ void function() {
               `
             }}
           />
+          <NextScript />
         </body>
       </html>
     )

@@ -18,7 +18,9 @@ const styles = theme => ({
   imagePortfolioSummary: {
     '& img': {
       maxWidth: '100%',
-      display: 'block'
+      display: 'block',
+      width: 300,
+      height: 200
     }
   },
   portfolioTitle: {

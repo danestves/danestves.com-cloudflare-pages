@@ -9,7 +9,7 @@ const NextComposed = React.forwardRef(function NextComposed (props, ref) {
   const { as, href, prefetch, ...other } = props
 
   return (
-    <NextLink href={href} prefetch={prefetch} as={as || `${href}/`}>
+    <NextLink href={href} as={as || `${href}/`}>
       <a ref={ref} rel='alternate' hrefLang='es' {...other} />
     </NextLink>
   )
@@ -21,8 +21,6 @@ NextComposed.propTypes = {
   prefetch: PropTypes.bool
 }
 
-// A styled version of the Next.js Link component:
-// https://nextjs.org/docs/#with-link
 function Link (props) {
   const {
     activeClassName = 'active',

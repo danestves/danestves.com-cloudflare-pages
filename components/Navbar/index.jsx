@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { Menu as MenuIcon } from 'styled-icons/boxicons-regular/Menu'
-import { window } from 'browser-monads'
+import { window, document } from 'browser-monads'
 import styles from '../../styles/components/navbar'
 import Drawer from '../Drawer'
 import { Link } from '../'
@@ -110,7 +110,7 @@ export default function Navbar ({ toggleTheme, theme: localTheme }) {
             <>
               <Button
                 component={Link}
-                href='/'
+                href=''
                 activeClassName={classes.activeItem}
                 color='inherit'
                 className={classNames(
