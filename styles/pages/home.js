@@ -1,14 +1,4 @@
 const styles = theme => ({
-  seeMore: {
-    left: '50%',
-    transform: 'translateX(-50%)',
-    marginTop: -theme.spacing(13),
-    color: '#fff',
-    border: '1px solid rgba(255, 255, 255, 0.5)',
-    zIndex: 1000,
-
-    '&:hover': {}
-  },
   container: {
     width: '100%',
     paddingRight: theme.spacing(2),

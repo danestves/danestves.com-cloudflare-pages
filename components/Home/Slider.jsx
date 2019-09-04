@@ -15,6 +15,7 @@ export default function SliderHome () {
     <Slider
       autoplay={6000}
       className={classes.slider}
+      touchDisabled
     >
       <div
         className={classes.sliderItem}

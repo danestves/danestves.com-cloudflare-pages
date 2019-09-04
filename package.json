@@ -29,7 +29,6 @@
     "react-dom": "latest",
     "react-helmet": "latest",
     "react-lazy-load-image-component": "^1.3.2",
-    "react-scroll": "^1.7.14",
     "react-vertical-timeline-component": "latest",
     "styled-components": "latest",
     "styled-icons": "latest"

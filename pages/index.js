@@ -1,6 +1,5 @@
 import React from 'react'
 import { Typography, Button, makeStyles } from '@material-ui/core'
-import { Link as LinkScroll } from 'react-scroll'
 import { Slider, Link, Skills, Loading } from '../components'
 import styles from '../styles/pages/home'
 import { getSkills } from '../helpers'
@@ -13,16 +12,6 @@ export default function Index () {
   return (
     <>
       <Slider />
-      <Button
-        to='about'
-        offset={-64}
-        variant='outlined'
-        size='large'
-        className={classes.seeMore}
-        component={LinkScroll}
-      >
-          Ver más
-      </Button>
       <div data-aos='fade-in' className={classes.container} id='about'>
         <Typography
           variant='h4'
