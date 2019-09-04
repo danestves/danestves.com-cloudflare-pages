@@ -12,7 +12,15 @@ export default function Index () {
   return (
     <>
       <Slider />
-      <div data-aos='fade-in' className={classes.container}>
+      <Button
+        href='#about'
+        variant='outlined'
+        size='large'
+        className={classes.knowMore}
+      >
+          Ver más
+      </Button>
+      <div data-aos='fade-in' className={classes.container} id='about'>
         <Typography
           variant='h4'
           component='h2'
