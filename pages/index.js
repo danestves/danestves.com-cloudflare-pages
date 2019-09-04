@@ -1,5 +1,6 @@
 import React from 'react'
 import { Typography, Button, makeStyles } from '@material-ui/core'
+import { Link as LinkScroll } from 'react-scroll'
 import { Slider, Link, Skills, Loading } from '../components'
 import styles from '../styles/pages/home'
 import { getSkills } from '../helpers'
@@ -13,10 +14,12 @@ export default function Index () {
     <>
       <Slider />
       <Button
-        href='#about'
+        to='about'
+        offset={-64}
         variant='outlined'
         size='large'
-        className={classes.knowMore}
+        className={classes.seeMore}
+        component={LinkScroll}
       >
           Ver más
       </Button>
