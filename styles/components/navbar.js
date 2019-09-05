@@ -13,7 +13,8 @@ const styles = theme => ({
     marginRight: 'auto',
 
     '& img': {
-      display: 'block'
+      display: 'block',
+      marginTop: 2
     }
   },
   menuButton: {
