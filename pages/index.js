@@ -12,7 +12,7 @@ export default function Index () {
   return (
     <>
       <Slider />
-      <div data-aos='fade-in' className={classes.container} id='about'>
+      <div data-aos='fade-in' className={classes.container}>
         <Typography
           variant='h4'
           component='h2'
