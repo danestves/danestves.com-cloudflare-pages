@@ -9,7 +9,7 @@ const NextComposed = React.forwardRef(function NextComposed (props, ref) {
   const { as, href, prefetch, ...other } = props
 
   return (
-    <NextLink href={href} as={as || `${href}/`}>
+    <NextLink href={href} as={as}>
       <a ref={ref} rel='alternate' hrefLang='es' {...other} />
     </NextLink>
   )

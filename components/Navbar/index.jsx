@@ -77,7 +77,7 @@ export default function Navbar ({ toggleTheme, theme }) {
     <div className={classes.root}>
       <AppBar className={classes.appBar} position='fixed'>
         <Toolbar>
-          <Link href='' className={classes.logo}>
+          <Link href='/' className={classes.logo}>
             <LazyLoadImage
               src='/static/isotype-negative.svg'
               alt='Daniel Esteves | Desarrollador Web | @danestves'
@@ -103,7 +103,7 @@ export default function Navbar ({ toggleTheme, theme }) {
             <>
               <Button
                 component={Link}
-                href=''
+                href='/'
                 activeClassName={classes.activeItem}
                 color='inherit'
                 className={classNames(
