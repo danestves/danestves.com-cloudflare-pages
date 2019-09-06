@@ -213,3 +213,21 @@ body {
   }
 }
 
+.markdown-content {
+  font-size: 16px;
+
+  & :not(pre)>code {
+    padding: 0.1em;
+    border-radius: 0.3em;
+    white-space: normal;
+    background: #272822;
+    color: #f8f8f2;
+  }
+
+  & .prism-code {
+    line-height: 24px;
+    padding: 1em;
+    overflow: auto;
+    border-radius: 0.3em;
+  }
+}
