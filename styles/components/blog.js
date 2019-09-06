@@ -22,13 +22,15 @@ const styles = theme => ({
     },
 
     '& img': {
-      width: 300,
+      maxWidth: 300,
+      width: '100%',
       borderRadius: 4,
       height: 157,
       display: 'block',
 
       [theme.breakpoints.down('xs')]: {
-        width: 400,
+        maxWidth: 400,
+        width: '100%',
         height: 210
       }
     }
