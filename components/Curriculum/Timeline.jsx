@@ -26,7 +26,7 @@ export default function Timeline (props) {
               ? { background: 'rgb(16, 204, 82)', color: '#fff' }
               : { background: 'rgb(33, 150, 243)', color: '#fff' }
           }
-          icon={item.finished ? <Check size='1.5rem' /> : <TimeFive size='1.5rem' />}
+          icon={item.finished ? <Check size='24' /> : <TimeFive size='24' />}
         >
           <Typography
             className={classes.timelineTitle}

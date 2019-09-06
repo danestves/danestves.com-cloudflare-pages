@@ -20,7 +20,3 @@ yarn-error.log*
 /.next
 /build
 /out
-
-# Lock files
-package-lock.json
-yarn.lock

@@ -14,7 +14,7 @@ export default function Portfolio(props) {
   const classes = useStyles()
   const router = useRouter();
   const { slug } = router.query
-  const { loading, data } = getSinglePortfolio(slug)
+  const { loading, data, ...errors } = getSinglePortfolio(slug)
 
   const portfolio = data && data.portfolios[0]
 
@@ -83,6 +83,6 @@ export default function Portfolio(props) {
   ) : loading ? (
     <Loading />
   ) : (
-        'Error!'
+        `Error! ${errors}`
       )
 }

@@ -5,7 +5,7 @@ import styles from '../../styles/components/hero'
 
 const useStyles = makeStyles(styles)
 
-export default function Hero ({ title, img }) {
+export default ({ title, img }) => {
   const classes = useStyles()
 
   return (
@@ -16,7 +16,7 @@ export default function Hero ({ title, img }) {
         className={classes.img}
         effect='blur'
       />
-      <Typography component='h1' className={classes.title}>
+      <Typography component='h1' className={classes.titleBlogpost}>
         {title}
       </Typography>
     </div>

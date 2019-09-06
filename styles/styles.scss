@@ -214,20 +214,35 @@ body {
 }
 
 .markdown-content {
-  font-size: 16px;
+  font-size: 1.25em;
 
-  & :not(pre)>code {
-    padding: 0.1em;
-    border-radius: 0.3em;
-    white-space: normal;
-    background: #272822;
-    color: #f8f8f2;
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6,
+  & p,
+  & ul,
+  & ol,
+  & :not(pre)>div {
+    margin: 1em 0;
+    line-height: 1.6em;
+  }
+
+  & h2 {
+    border-bottom: 1px solid #d3d3d3;
   }
 
   & .prism-code {
-    line-height: 24px;
-    padding: 1em;
+    line-height: 1.25;
+    padding: 0.7em;
     overflow: auto;
     border-radius: 0.3em;
+    font-size: 16px;
+    margin: 1.5em 0;
+    tab-size: 2;
+    -moz-tab-size: 2;
+    -o-tab-size: 2;
   }
 }

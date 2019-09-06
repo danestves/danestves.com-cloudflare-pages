@@ -95,7 +95,7 @@ export default function Navbar ({ toggleTheme, theme }) {
                 aria-label='Menu'
                 onClick={toggleDrawer(true)}
               >
-                <MenuIcon size='1.5rem' />
+                <MenuIcon size='24' />
               </IconButton>
               <Drawer open={open} toggleDrawer={toggleDrawer} />
             </>

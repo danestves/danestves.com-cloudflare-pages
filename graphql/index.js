@@ -11,11 +11,46 @@ export function getBlogs () {
           blogs {
             id
             slug
-            cover {
+            ogCover {
               url
             }
             title
             content
+            date
+          }
+        }
+      `
+    }
+  })
+
+  return {
+    loading,
+    data,
+    ...errors
+  }
+}
+
+export function getSingleBlog (slug) {
+  const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
+    fetchOptionsOverride (options) {
+      options.url = `${process.env.API_URL}`
+    },
+    operation: {
+      query: /* GraphQL */ `
+        {
+          blogs(where: { slug_contains: "${slug}" }) {
+            title
+            content
+            date
+            cover {
+              url
+            }
+            ogCover {
+              url
+            }
+            tags {
+              name
+            }
           }
         }
       `
