@@ -43,6 +43,32 @@ void function() {
               `
             }}
           />
+          <script
+            dangerouslySetInnetHTML={{
+              __html: `
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "Daniel Esteves",
+  "description": "Desarrollador web frontend en Venezuela.",
+  "url": "https://danestves.com",
+  "foundingDate": "2016-06-01",
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Daniel Esteves"
+    }
+  ],
+  "sameAs": [
+    "https://facebook.com/danestvesve/",
+    "https://twitter.com/danestves/",
+    "https://instagram.com/danestves",
+    "https://www.linkedin.com/in/danestves/"
+  ]
+}
+            `
+            }}
+          />
           <NextScript />
         </body>
       </html>

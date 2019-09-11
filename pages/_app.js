@@ -14,7 +14,7 @@ import { Router as Router2, withRouter } from 'next/router'
 import { window } from 'browser-monads'
 import themeObject from '../src/theme'
 import { Navbar } from '../components'
-import { keywords } from '../constants'
+import { KEYWORDS } from '../constants'
 import '../styles/styles.scss'
 
 class MyApp extends App {
@@ -80,7 +80,7 @@ class MyApp extends App {
           />
           <meta
             name='keywords'
-            content={keywords}
+            content={KEYWORDS}
           />
           <meta name='author' content='Daniel Esteves' />
           <meta name='copyright' content='Daniel Esteves' />
@@ -106,7 +106,7 @@ class MyApp extends App {
             content='Daniel Esteves | Desarrollador Web - TSU en Informática'
           />
           <meta property='og:type' content='website' />
-          <meta property='og:image' content='https://danestves.com/img/og.jpg' />
+          <meta property='og:image' content='https://danestves.com/static/og.jpg' />
           <meta
             property='og:description'
             content='Desarrollador web en Venezuela. Experiencia en el diseño y construcción de sitios web, personalización y optimización. JavaScript, React, Gatsby y WordPress.'
@@ -124,7 +124,7 @@ class MyApp extends App {
             name='twitter:description'
             content='Desarrollador web en Venezuela. Experiencia en el diseño y construcción de sitios web, personalización y optimización. JavaScript, React, Gatsby y WordPress.'
           />
-          <meta name='twitter:image' content='https://danestves.com/img/og.jpg' />
+          <meta name='twitter:image' content='https://danestves.com/static/og.jpg' />
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:site' content='@danestves' />
           <meta
