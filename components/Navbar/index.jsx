@@ -152,7 +152,7 @@ export default function Navbar ({ toggleTheme, theme }) {
               </Button>
               <Button
                 component={Link}
-                href='/contact'
+                href='/contacto'
                 activeClassName={classes.activeItem}
                 color='inherit'
                 className={classNames(

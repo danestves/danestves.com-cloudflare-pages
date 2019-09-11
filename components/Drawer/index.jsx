@@ -57,7 +57,7 @@ export default function DrawerMenu (props) {
             <ListItemIcon><Blog size='24' /></ListItemIcon>
             <ListItemText primary='Blog' />
           </ListItem>
-          <ListItem button component={Link} href='/contact' color='inherit'>
+          <ListItem button component={Link} href='/contacto' color='inherit'>
             <ListItemIcon><ContactMail size='24' /></ListItemIcon>
             <ListItemText primary='Contacto' />
           </ListItem>

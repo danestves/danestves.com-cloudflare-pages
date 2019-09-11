@@ -26,7 +26,7 @@ let theme = createMuiTheme({
   palette: {
     type: 'light',
     primary: {
-      main: '#307FE2',
+      main: '#0090DA',
       light: '#0090DA'
     },
     secondary: {
@@ -51,6 +51,38 @@ const overrides = {
     padding: {
       paddingTop: 0,
       paddingBottom: 0
+    }
+  },
+  MuiOutlinedInput: {
+    root: {
+      '&$focused $notchedOutline': {
+        borderColor: '#0090DA',
+        borderWidth: 2
+      }
+    }
+  },
+  MuiFormLabel: {
+    root: {
+      '&$focused': {
+        color: '#0090DA'
+      }
+    }
+  },
+  MuiButton: {
+    outlinedPrimary: {
+      border: '1px solid #0090DA',
+      color: '#0090DA',
+
+      '&:hover': {
+        border: '1px solid #0090DA'
+      }
+    },
+    containedPrimary: {
+      backgroundColor: '#0090DA',
+
+      '&:hover': {
+        backgroundColor: 'rgba(0, 144, 218, 0.9)'
+      }
     }
   }
 }
