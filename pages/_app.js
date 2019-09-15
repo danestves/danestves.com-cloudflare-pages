@@ -76,7 +76,7 @@ class MyApp extends App {
           <title>Daniel Esteves | Desarrollador Web - TSU en Informática</title>
           <meta
             name='description'
-            content='Desarrollador web en Venezuela. Experiencia en el diseño y construcción de sitios web, personalización y optimización. JavaScript, React, Gatsby y WordPress.'
+            content='Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para realizar tu sueño.'
           />
           <meta
             name='keywords'
@@ -109,7 +109,7 @@ class MyApp extends App {
           <meta property='og:image' content='https://danestves.com/static/og.jpg' />
           <meta
             property='og:description'
-            content='Desarrollador web en Venezuela. Experiencia en el diseño y construcción de sitios web, personalización y optimización. JavaScript, React, Gatsby y WordPress.'
+            content='Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para realizar tu sueño.'
           />
           <meta
             property='og:url'
@@ -122,7 +122,7 @@ class MyApp extends App {
           />
           <meta
             name='twitter:description'
-            content='Desarrollador web en Venezuela. Experiencia en el diseño y construcción de sitios web, personalización y optimización. JavaScript, React, Gatsby y WordPress.'
+            content='Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para realizar tu sueño.'
           />
           <meta name='twitter:image' content='https://danestves.com/static/og.jpg' />
           <meta name='twitter:card' content='summary_large_image' />

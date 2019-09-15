@@ -1,4 +1,5 @@
 import React, { createRef, useState, useRef, useEffect } from 'react'
+import Head from 'next/head'
 import ReCAPTCHA from 'react-google-recaptcha'
 import {
   makeStyles,
@@ -15,6 +16,7 @@ import {
 import axios from 'axios'
 import { window } from 'browser-monads'
 import { Hero, Snackbar } from '../components'
+import { KEYWORDS } from '../constants'
 import styles from '../styles/pages/contact'
 
 const useStyles = makeStyles(styles)
@@ -47,7 +49,6 @@ export default () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // window.fbq('track', 'Contact')
 
     await ReCAPTCHARef.current.execute()
     await axios.post('https://email.danestves.com', {
@@ -76,6 +77,28 @@ export default () => {
 
   return (
     <>
+      <Head>
+        <title>Contacto | Daniel Esteves - Desarrollador Web Frontend</title>
+        <meta name='description' content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          name='keywords'
+          content={`Curriculum, curriculum de daniel esteves, curriculum de danestves, ${KEYWORDS}`}
+        />
+        <meta
+          property='og:title'
+          content='Contacto | Daniel Esteves - Desarrollador Web Frontend'
+        />
+        <meta property='og:description' content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          name='twitter:title'
+          content='Contacto | Daniel Esteves - Desarrollador Web Frontend'
+        />
+        <meta name='twitter:description' content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          name='twitter:image:alt'
+          content='Contacto | Daniel Esteves - Desarrollador Web Frontend'
+        />
+      </Head>
       <Hero img='/static/contact.jpg' title='Contacto' />
       <Snackbar
         open={open}
