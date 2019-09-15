@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import { Grid, Typography, makeStyles } from '@material-ui/core'
 import { Hero, Timeline } from '../components'
 import { getEducationsAndExperiences } from '../helpers'
@@ -12,6 +13,24 @@ export default function Curriculum () {
 
   return (
     <>
+      <Head>
+        <title>Curriculum | Daniel Esteves</title>
+        <meta name='description' content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          property='og:title'
+          content='Curriculum | Daniel Esteves'
+        />
+        <meta property='og:description' content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          name='twitter:title'
+          content='Curriculum | Daniel Esteves'
+        />
+        <meta name='twitter:description' content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          name='twitter:image:alt'
+          content='Curriculum | Daniel Esteves'
+        />
+      </Head>
       <Hero title='Curriculum' img='/static/curriculum.jpg' />
       <div className={classes.container}>
         <Grid container spacing={2}>
