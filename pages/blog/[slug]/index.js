@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core'
 import { useTheme } from '@material-ui/styles'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import removeMd from 'remove-markdown'
 import { TimeFive } from 'styled-icons/boxicons-regular/TimeFive'
 import { Tag } from 'styled-icons/fa-solid/Tag'
@@ -36,6 +37,7 @@ import {
   Link
 } from '../../../components'
 import { getSingleBlog } from '../../../graphql'
+import { KEYWORDS } from '../../../constants'
 import styles from '../../../styles/pages/[slug]-blog'
 
 const useStyles = makeStyles(styles)
@@ -97,6 +99,44 @@ export default () => {
   return data
     ? (
       <>
+        <Head>
+          <title>{blog.title} | Daniel Esteves</title>
+          <meta
+            name='description'
+            content={removeMd(blog.content.substr(0, 154)) + '...'}
+            key='description'
+          />
+          <meta
+            name='keywords'
+            content={`${blog.tags.map(tag => tag.name).toString()}, ${KEYWORDS}`}
+            key='keywords'
+          />
+          <meta
+            property='og:title'
+            content={`${blog.title} | Daniel Esteves`}
+            key='og:title'
+          />
+          <meta 
+            property='og:description'
+            content={removeMd(blog.content.substr(0, 154)) + '...'}
+            key='og:description'
+          />
+          <meta
+            name='twitter:title'
+            content={`${blog.title} | Daniel Esteves`}
+            key='twitter:title'
+          />
+          <meta 
+            name='twitter:description'
+            content={removeMd(blog.content.substr(0, 154)) + '...'}
+            key='twitter:description'
+          />
+          <meta
+            name='twitter:image:alt'
+            content={`${blog.title} | Daniel Esteves`}
+            key='twitter:image:alt'
+          />
+        </Head>
         <HeroBlogpost img={blog.cover.url} title={blog.title} />
         <div className={classes.container}>
           <div className={classes.metadataBlogpost}>

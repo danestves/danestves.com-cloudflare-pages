@@ -47,24 +47,40 @@ export default function Certifications () {
     <>
       <Head>
         <title>Certificaciones | Daniel Esteves - Desarrollador Web Frontend</title>
-        <meta name='description' content='Certificaciones de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          name='description'
+          content='Certificaciones de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
+          key='description'
+        />
         <meta
           name='keywords'
           content={`Certificaciones, certificaciones de daniel esteves, certificaciones de danestves, ${KEYWORDS}`}
+          key='keywords'
         />
         <meta
           property='og:title'
           content='Certificaciones | Daniel Esteves - Desarrollador Web Frontend'
+          key='og:title'
         />
-        <meta property='og:description' content='Certificaciones de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          property='og:description'
+          content='Certificaciones de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
+          key='og:description'
+        />
         <meta
           name='twitter:title'
           content='Certificaciones | Daniel Esteves - Desarrollador Web Frontend'
+          key='twitter:title'
         />
-        <meta name='twitter:description' content='Certificaciones de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          name='twitter:description'
+          content='Certificaciones de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
+          key='twitter:description'
+        />
         <meta
           name='twitter:image:alt'
           content='Certificaciones | Daniel Esteves - Desarrollador Web Frontend'
+          key='twitter:image:alt'
         />
       </Head>
       <Hero img='/static/portafolio.jpg' title='Portafolio' />

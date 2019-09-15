@@ -16,24 +16,40 @@ export default function Curriculum () {
     <>
       <Head>
         <title>Curriculum | Daniel Esteves - Desarrollador Web Frontend</title>
-        <meta name='description' content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          name='description'
+          content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
+          key='description'
+        />
         <meta
           name='keywords'
           content={`Curriculum, curriculum de daniel esteves, curriculum de danestves, ${KEYWORDS}`}
+          key='keywords'
         />
         <meta
           property='og:title'
           content='Curriculum | Daniel Esteves - Desarrollador Web Frontend'
+          key='og:title'
         />
-        <meta property='og:description' content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          property='og:description'
+          content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
+          key='og:description'
+        />
         <meta
           name='twitter:title'
           content='Curriculum | Daniel Esteves - Desarrollador Web Frontend'
+          key='twitter:title'
         />
-        <meta name='twitter:description' content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.' />
+        <meta
+          name='twitter:description'
+          content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
+          key='twitter:description'
+        />
         <meta
           name='twitter:image:alt'
           content='Curriculum | Daniel Esteves - Desarrollador Web Frontend'
+          key='twitter:image:alt'
         />
       </Head>
       <Hero title='Curriculum' img='/static/curriculum.jpg' />

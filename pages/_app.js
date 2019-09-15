@@ -77,10 +77,12 @@ class MyApp extends App {
           <meta
             name='description'
             content='Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para realizar tu sueño.'
+            key='description'
           />
           <meta
             name='keywords'
             content={KEYWORDS}
+            key='keywords'
           />
           <meta name='author' content='Daniel Esteves' />
           <meta name='copyright' content='Daniel Esteves' />
@@ -104,12 +106,14 @@ class MyApp extends App {
           <meta
             property='og:title'
             content='Daniel Esteves | Desarrollador Web - TSU en Informática'
+            key='og:title'
           />
           <meta property='og:type' content='website' />
-          <meta property='og:image' content='https://danestves.com/static/og.jpg' />
+          <meta property='og:image' content='https://danestves.com/static/og.jpg' key='og:image' />
           <meta
             property='og:description'
             content='Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para realizar tu sueño.'
+            key='og:description'
           />
           <meta
             property='og:url'
@@ -119,17 +123,20 @@ class MyApp extends App {
           <meta
             name='twitter:title'
             content='Daniel Esteves | Desarrollador Web - TSU en Informática'
+            key='twitter:title'
           />
           <meta
             name='twitter:description'
             content='Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para realizar tu sueño.'
+            key='twitter:description'
           />
-          <meta name='twitter:image' content='https://danestves.com/static/og.jpg' />
+          <meta name='twitter:image' content='https://danestves.com/static/og.jpg' key='twitter:image' />
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:site' content='@danestves' />
           <meta
             name='twitter:image:alt'
             content='Daniel Esteves | Desarrollador Web - TSU en Informática'
+            key='twitter:image:alt'
           />
           {/* Google */}
           <meta name='google-site-verification' content='z1laVtIbEpQYtR9llP5ICFgSwfLoEDHmfi_rbTh8oRg' />
