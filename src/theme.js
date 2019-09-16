@@ -41,7 +41,6 @@ let theme = createMuiTheme({
 responsiveFontSizes(theme)
 
 const overrides = {
-  MuiAppBar: {},
   MuiToolbar: {
     regular: {
       minHeight: 0

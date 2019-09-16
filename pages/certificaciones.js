@@ -83,7 +83,7 @@ export default function Certifications () {
           key='twitter:image:alt'
         />
       </Head>
-      <Hero img='/static/portafolio.jpg' title='Portafolio' />
+      <Hero img='/static/certifications.jpg' title='Certificaciones' />
       {loading ? (
         <Loading />
       ) : courses && careers ? (

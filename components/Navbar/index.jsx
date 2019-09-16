@@ -16,11 +16,11 @@ import { window, document } from 'browser-monads'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import styles from '../../styles/components/navbar'
 import Drawer from '../Drawer'
-import { Link } from '../'
+import { Link, useChangeTheme } from '../'
 
 const useStyles = makeStyles(styles)
 
-export default function Navbar ({ toggleTheme, theme }) {
+export default function Navbar () {
   const [anchor, setAnchor] = useState(null)
   const [open, setOpen] = useState(false)
 
@@ -63,10 +63,17 @@ export default function Navbar ({ toggleTheme, theme }) {
     setOpen(open)
   }
 
+  const changeTheme = useChangeTheme()
+  const handleTogglePaletteType = () => {
+    const paletteType = theme.palette.type === 'light' ? 'dark' : 'light'
+
+    changeTheme({ paletteType })
+  }
+
   const pathname = window.location.pathname
   const classes = useStyles()
-  const themeMui = useTheme()
-  const matches = useMediaQuery(themeMui.breakpoints.down('xs'))
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down('xs'))
 
   const aboutURLs =
       pathname === '/about/' ||
@@ -170,8 +177,8 @@ export default function Navbar ({ toggleTheme, theme }) {
               type='checkbox'
               className='dn'
               id='dn'
-              checked={theme === 'dark'}
-              onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')}
+              checked={theme.palette.type === 'dark'}
+              onChange={e => handleTogglePaletteType()}
             />
             <label htmlFor='dn' className='toggle'>
               <span className='toggle__handler'>

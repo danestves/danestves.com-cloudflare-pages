@@ -112,6 +112,11 @@ export default () => {
             key='keywords'
           />
           <meta
+            property='og:image'
+            content={blog.ogCover.url}
+            key='og:image'
+          />
+          <meta
             property='og:title'
             content={`${blog.title} | Daniel Esteves`}
             key='og:title'
@@ -120,6 +125,11 @@ export default () => {
             property='og:description'
             content={removeMd(blog.content.substr(0, 154)) + '...'}
             key='og:description'
+          />
+          <meta
+            name='twitter:image'
+            content={blog.ogCover.url}
+            key='twitter:image'
           />
           <meta
             name='twitter:title'

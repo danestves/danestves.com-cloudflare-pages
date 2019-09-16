@@ -5,11 +5,6 @@ html {
 body {
   font-family: 'Poppins', system-ui;
   padding-top: 56px;
-  background: #eaeff1;
-
-  &.dark {
-    background: #303030;
-  }
 }
 
 #nprogress .bar {
