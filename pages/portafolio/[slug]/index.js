@@ -89,14 +89,14 @@ export default function Portfolio(props) {
             </Typography>
             <div className={classes.metadata}>
               <Typography className={classes.category} variant='h6' component='p'>
-                <Tag size='1.2rem' className={classes.categoryIcon} />
+                <Tag size='24' className={classes.categoryIcon} />
                 Categoría:{' '}
                 {portfolio.category.name}
               </Typography>
             </div>
 
             <Typography align='center' variant='h6' component='p'>
-              <LaptopCode size='1.2rem' className={classes.tecnologyIcon} />
+              <LaptopCode size='24' className={classes.tecnologyIcon} />
               Tecnologías:{' '}
               {portfolio.technologies.map(tecnology => (
                 <Chip
@@ -118,7 +118,7 @@ export default function Portfolio(props) {
               className={classes.buttonUrl}
             >
               Ver proyecto
-              <LinkAlt size='1.2rem' className={classes.linkPortfolio} />
+              <LinkAlt size='24' className={classes.linkPortfolio} />
             </Button>
           </Grid>
         </Grid>
