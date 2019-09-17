@@ -43,6 +43,7 @@ function AppWrapper({ graphql, children }) {
         <meta name='author' content='Daniel Esteves' />
         <meta name='copyright' content='Daniel Esteves' />
         <link rel='alternate' hrefLang='es' href='https://danestves.com/' />
+        <link rel='canonical' href='https://danestves.com/' />
         <link
           rel='apple-touch-icon'
           sizes='57x57'
