@@ -17,10 +17,6 @@
       "headers": {
         "Content-Type": "text/plain;charset=UTF-8"
       }
-    },
-    {
-      "src": "/(.*)",
-      "headers": { "Cache-Control": "max-age=604800" }
     }
   ],
   "builds": [
