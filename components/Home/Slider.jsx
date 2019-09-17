@@ -52,14 +52,14 @@ export default function SliderHome () {
         />
         <Typography
           variant='h4'
-          component='h1'
+          component='h2'
           className={classes.title}
         >
           WordPress
         </Typography>
         <Typography
           variant='h5'
-          component='h2'
+          component='h3'
           align='center'
           className={classes.description}
         >
@@ -75,14 +75,14 @@ export default function SliderHome () {
         />
         <Typography
           variant='h4'
-          component='h1'
+          component='h2'
           className={classes.title}
         >
           React
         </Typography>
         <Typography
           variant='h5'
-          component='h2'
+          component='h3'
           align='center'
           className={classes.description}
         >
