@@ -4,6 +4,15 @@
   "alias": "danestves.com",
   "routes": [
     {
+      "src": "/(.*)",
+      "status": 301,
+      "headers": { "Location": "https://danestves.com/$1" }
+    },
+    {
+      "src": "/(.*)",
+      "headers": { "Cache-Control": "s-maxage=604800" }
+    },
+    {
       "src": "^/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
       "headers": {
