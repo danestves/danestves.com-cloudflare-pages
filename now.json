@@ -1,7 +1,7 @@
 {
   "name": "danestves",
   "version": 2,
-  "alias": "dev.danestves.com",
+  "alias": "danestves.com",
   "routes": [
     {
       "src": "^/service-worker.js$",
