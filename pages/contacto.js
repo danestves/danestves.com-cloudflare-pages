@@ -86,12 +86,12 @@ export default () => {
         <title>Contacto | Daniel Esteves - Desarrollador Web Frontend</title>
         <meta
           name='description'
-          content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
+          content='Contacto de Daniel Esteves. Escríbeme para ejecutar tus más deseados proyectos de la mano de un profesional en el desarrollo web frontend. Responderé todas tus inquietudes lo más rápido posible.'
           key='description'
         />
         <meta
           name='keywords'
-          content={`Curriculum, curriculum de daniel esteves, curriculum de danestves, ${KEYWORDS}`}
+          content={`Contacto, contacto de daniel esteves, contacto de danestves, ${KEYWORDS}`}
           key='keywords'
         />
         <meta
@@ -101,7 +101,7 @@ export default () => {
         />
         <meta
           property='og:description'
-          content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
+          content='Contacto de Daniel Esteves. Escríbeme para ejecutar tus más deseados proyectos de la mano de un profesional en el desarrollo web frontend. Responderé todas tus inquietudes lo más rápido posible.'
           key='og:description'
         />
         <meta
@@ -111,7 +111,7 @@ export default () => {
         />
         <meta
           name='twitter:description'
-          content='Curriculum de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
+          content='Contacto de Daniel Esteves. Escríbeme para ejecutar tus más deseados proyectos de la mano de un profesional en el desarrollo web frontend. Responderé todas tus inquietudes lo más rápido posible.'
           key='twitter:description'
         />
         <meta
