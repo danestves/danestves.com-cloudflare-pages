@@ -4,7 +4,7 @@
   "alias": "danestves.com",
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "https://www.danestves.com",
       "status": 301,
       "headers": { "Location": "https://danestves.com/$1" }
     },
