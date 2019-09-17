@@ -51,9 +51,14 @@ export default () => {
     e.preventDefault()
 
     await ReCAPTCHARef.current.execute()
-    await axios.post('https://email.danestves.com', {
-      ...inputs
-    }, config)
+    await axios
+      .post(
+        'https://email.danestves.com',
+        {
+          ...inputs
+        },
+        config
+      )
       .then(res => {
         setOpen(true)
         setTimeout(() => {
@@ -161,23 +166,42 @@ export default () => {
                 required
               >
                 <InputLabel ref={inputLabel} htmlFor='subject'>
-                Asunto
+                  Asunto
                 </InputLabel>
                 <Select
                   value={inputs.subject}
                   onChange={handleChange}
-                  input={<OutlinedInput labelWidth={labelWidth} name='subject' id='subject' />}
+                  input={
+                    <OutlinedInput
+                      labelWidth={labelWidth}
+                      name='subject'
+                      id='subject'
+                    />
+                  }
                   required
                 >
                   <MenuItem value=' ' disabled selected>
-                    <span className={classes.defaultValueSelect} id='helperSelect'>Ninguno</span>
+                    <span
+                      className={classes.defaultValueSelect}
+                      id='helperSelect'
+                    >
+                      Ninguno
+                    </span>
                   </MenuItem>
-                  <MenuItem value='Actualización de sitio'>Actualización de sitio</MenuItem>
+                  <MenuItem value='Actualización de sitio'>
+                    Actualización de sitio
+                  </MenuItem>
                   <MenuItem value='Consulta'>Consulta</MenuItem>
                   <MenuItem value='Cotización'>Cotización</MenuItem>
-                  <MenuItem value='Desarrollo de sitio'>Desarrollo de sitio</MenuItem>
-                  <MenuItem value='Desarrollo de tema en WordPress'>Desarrollo de tema en WordPress</MenuItem>
-                  <MenuItem value='Desarrollo de sitio con Gatsby'>Desarrollo de sitio con Gatsby</MenuItem>
+                  <MenuItem value='Desarrollo de sitio'>
+                    Desarrollo de sitio
+                  </MenuItem>
+                  <MenuItem value='Desarrollo de tema en WordPress'>
+                    Desarrollo de tema en WordPress
+                  </MenuItem>
+                  <MenuItem value='Desarrollo de sitio con Gatsby'>
+                    Desarrollo de sitio con Gatsby
+                  </MenuItem>
                 </Select>
               </FormControl>
 
@@ -192,8 +216,17 @@ export default () => {
                 rows='4'
                 required
               />
-              <Typography variant='caption' component='small' className={classes.helperGoogle} id='helperGoogle'>
-              This site is protected by reCAPTCHA and the Google <a href='https://policies.google.com/privacy'>Privacy Policy</a> and <a href='https://policies.google.com/terms'>Terms of Service</a> apply.
+              <Typography
+                variant='caption'
+                component='small'
+                className={classes.helperGoogle}
+                id='helperGoogle'
+              >
+                This site is protected by reCAPTCHA and the Google{' '}
+                <a href='https://policies.google.com/privacy'>Privacy Policy</a>{' '}
+                and{' '}
+                <a href='https://policies.google.com/terms'>Terms of Service</a>{' '}
+                apply.
               </Typography>
 
               <ReCAPTCHA
@@ -203,8 +236,17 @@ export default () => {
               />
 
               <div className={classes.actionButtons}>
-                <Button variant='outlined' color='primary' type='reset'>Limpiar</Button>
-                <Button variant='contained' color='primary' type='submit' disabled={!isValidated}>Enviar</Button>
+                <Button variant='outlined' color='primary' type='reset'>
+                  Limpiar
+                </Button>
+                <Button
+                  variant='contained'
+                  color='primary'
+                  type='submit'
+                  disabled={!isValidated}
+                >
+                  Enviar
+                </Button>
               </div>
             </form>
           </Grid>

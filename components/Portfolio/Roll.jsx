@@ -17,8 +17,7 @@ export default ({ portfolios }) => {
             key={portfolio.id}
             className={classes.linkPortfolioContainer}
             title={portfolio.title}
-            href='/portafolio/[slug]'
-            as={`/portafolio/${portfolio.slug}/`}
+            href={`/portafolio/${portfolio.slug}`}
           >
             <Paper
               elevation={0}

@@ -1,8 +1,8 @@
 import { useGraphQL } from 'graphql-react'
 
-export function getBlogs () {
+export function getBlogs() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
-    fetchOptionsOverride (options) {
+    fetchOptionsOverride(options) {
       options.url = `${process.env.API_URL}`
     },
     operation: {
@@ -30,9 +30,9 @@ export function getBlogs () {
   }
 }
 
-export function getSingleBlog (slug) {
+export function getSingleBlog(slug) {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
-    fetchOptionsOverride (options) {
+    fetchOptionsOverride(options) {
       options.url = `${process.env.API_URL}`
     },
     operation: {

@@ -28,10 +28,16 @@ const styles = theme => ({
     padding: theme.spacing(0, 2)
   },
   defaultValueSelect: {
-    color: theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.54)' : 'rgba(255, 255, 255, 0.54)'
+    color:
+      theme.palette.type === 'light'
+        ? 'rgba(0, 0, 0, 0.54)'
+        : 'rgba(255, 255, 255, 0.54)'
   },
   helperGoogle: {
-    color: theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.54)' : 'rgba(255, 255, 255, 0.54)',
+    color:
+      theme.palette.type === 'light'
+        ? 'rgba(0, 0, 0, 0.54)'
+        : 'rgba(255, 255, 255, 0.54)',
 
     '& a': {
       textDecoration: 'none',

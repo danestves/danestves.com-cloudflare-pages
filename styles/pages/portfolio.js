@@ -56,11 +56,17 @@ const styles = theme => ({
   divider: {
     width: '100%',
     height: 1,
-    background: 'rgba(0, 0, 0, 0.25)',
+    background:
+      theme.palette.type === 'light'
+        ? 'rgba(0, 0, 0, 0.25)'
+        : 'rgba(255, 255, 255, 0.25)',
     margin: '40px auto'
   },
   helpText: {
-    color: 'rgba(0, 0, 0, 0.45)'
+    color:
+      theme.palette.type === 'light'
+        ? 'rgba(0, 0, 0, 0.45)'
+        : 'rgba(255, 255, 255, 0.45)'
   }
 })
 

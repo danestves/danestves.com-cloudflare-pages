@@ -6,7 +6,7 @@ import { getSkills } from '../helpers'
 
 const useStyles = makeStyles(styles)
 
-export default function Index () {
+export default function Index() {
   const classes = useStyles()
   const { loading, data: skills } = getSkills()
   return (
@@ -19,9 +19,10 @@ export default function Index () {
           align='center'
           className={classes.description}
         >
-          <strong>¡Hola! Soy Daniel</strong>, desarrollador web frontend.
-          Tengo una gran experiencia en el diseño y construcción de sitios web,
-          personalización y optimización. Manejo tecnologías, lenguajes y librerías como:{' '}
+          <strong>¡Hola! Soy Daniel</strong>, desarrollador web frontend. Tengo
+          una gran experiencia en el diseño y construcción de sitios web,
+          personalización y optimización. Manejo tecnologías, lenguajes y
+          librerías como:{' '}
           <strong>
             HTML, CSS, JavaScript, React, Gatsby, Next.js, Sass, WordPress,
             Bootstrap y más
@@ -40,7 +41,9 @@ export default function Index () {
         </Button>
 
         {skills ? (
-          <div className={classes.containerSkills}><Skills skills={skills.skills} /></div>
+          <div className={classes.containerSkills}>
+            <Skills skills={skills.skills} />
+          </div>
         ) : loading ? (
           <Loading />
         ) : (

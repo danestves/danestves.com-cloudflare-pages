@@ -8,31 +8,36 @@ import styles from '../styles/pages/certifications'
 
 const useStyles = makeStyles(styles)
 
-export default function Certifications () {
+export default function Certifications() {
   const { loading, courses, careers } = usePlatziData()
   const classes = useStyles()
 
   const coursesJS = courses.filter(course => {
     if (course.career !== null) {
-      return course.career.toLowerCase().match('js') ||
+      return (
+        course.career.toLowerCase().match('js') ||
         course.career.toLowerCase().match('javascript') ||
         course.title.toLowerCase().match('javascript') ||
         course.title.toLowerCase().match('js')
+      )
     }
   })
 
   const coursesEnglish = courses.filter(course => {
     if (course.career !== null) {
-      return course.career.toLowerCase().match('ingles') ||
+      return (
+        course.career.toLowerCase().match('ingles') ||
         course.career.toLowerCase().match('inglés') ||
         course.title.toLowerCase().match('ingles') ||
         course.title.toLowerCase().match('inglés')
+      )
     }
   })
 
   const coursesOther = courses.filter(course => {
     if (course.career !== null) {
-      return !course.career.toLowerCase().match('ingles') &&
+      return (
+        !course.career.toLowerCase().match('ingles') &&
         !course.career.toLowerCase().match('inglés') &&
         !course.title.toLowerCase().match('ingles') &&
         !course.title.toLowerCase().match('inglés') &&
@@ -40,13 +45,16 @@ export default function Certifications () {
         !course.career.toLowerCase().match('javascript') &&
         !course.title.toLowerCase().match('javascript') &&
         !course.title.toLowerCase().match('js')
+      )
     }
   })
 
   return (
     <>
       <Head>
-        <title>Certificaciones | Daniel Esteves - Desarrollador Web Frontend</title>
+        <title>
+          Certificaciones | Daniel Esteves - Desarrollador Web Frontend
+        </title>
         <meta
           name='description'
           content='Certificaciones de Daniel Esteves. Educación autodidacta en distintas plataformas como Platzi e Udemy. Experiencia en trabajos freelance usando WordPress y React.'
@@ -103,15 +111,15 @@ export default function Certifications () {
                 data-aos='zoom-in'
                 className={classes.titleItem}
               >
-              Carreras
+                Carreras
               </Typography>
             </Grid>
             {careers &&
-            careers.map(career => (
-              <Grid item xs={12} sm={6} md={4} key={career.id}>
-                <Career career={career} />
-              </Grid>
-            ))}
+              careers.map(career => (
+                <Grid item xs={12} sm={6} md={4} key={career.id}>
+                  <Career career={career} />
+                </Grid>
+              ))}
 
             <Grid item xs={12}>
               <Typography
@@ -121,15 +129,15 @@ export default function Certifications () {
                 data-aos='fade-up'
                 className={classes.titleItem}
               >
-              JavaScript
+                JavaScript
               </Typography>
             </Grid>
             {coursesJS &&
-            coursesJS.map(course => (
-              <Grid item xs={12} sm={6} md={4} key={course.id}>
-                <Course course={course} />
-              </Grid>
-            ))}
+              coursesJS.map(course => (
+                <Grid item xs={12} sm={6} md={4} key={course.id}>
+                  <Course course={course} />
+                </Grid>
+              ))}
 
             <Grid item xs={12}>
               <Typography
@@ -139,15 +147,15 @@ export default function Certifications () {
                 data-aos='fade-up'
                 className={classes.titleItem}
               >
-              Inglés
+                Inglés
               </Typography>
             </Grid>
             {coursesEnglish &&
-            coursesEnglish.map(course => (
-              <Grid item xs={12} sm={6} md={4} key={course.id}>
-                <Course course={course} />
-              </Grid>
-            ))}
+              coursesEnglish.map(course => (
+                <Grid item xs={12} sm={6} md={4} key={course.id}>
+                  <Course course={course} />
+                </Grid>
+              ))}
 
             <Grid item xs={12}>
               <Typography
@@ -157,15 +165,15 @@ export default function Certifications () {
                 data-aos='fade-up'
                 className={classes.titleItem}
               >
-              Otros
+                Otros
               </Typography>
             </Grid>
             {coursesOther &&
-            coursesOther.map(course => (
-              <Grid item xs={12} sm={6} md={4} key={course.id}>
-                <Course course={course} />
-              </Grid>
-            ))}
+              coursesOther.map(course => (
+                <Grid item xs={12} sm={6} md={4} key={course.id}>
+                  <Course course={course} />
+                </Grid>
+              ))}
           </Grid>
         </div>
       ) : (

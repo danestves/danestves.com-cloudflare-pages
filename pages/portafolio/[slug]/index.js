@@ -15,7 +15,7 @@ const useStyles = makeStyles(styles)
 
 export default function Portfolio(props) {
   const classes = useStyles()
-  const router = useRouter();
+  const router = useRouter()
   const { slug } = router.query
   const { loading, data, ...errors } = getSinglePortfolio(slug)
 
@@ -24,7 +24,9 @@ export default function Portfolio(props) {
   return data ? (
     <>
       <Head>
-        <title>{portfolio.title} | Daniel Esteves - Desarrollador Web Frontend</title>
+        <title>
+          {portfolio.title} | Daniel Esteves - Desarrollador Web Frontend
+        </title>
         <meta
           name='description'
           content={removeMd(portfolio.content.substr(0, 154)) + '...'}
@@ -45,7 +47,7 @@ export default function Portfolio(props) {
           content={`${portfolio.title} | Daniel Esteves - Desarrollador Web Frontend`}
           key='og:title'
         />
-        <meta 
+        <meta
           property='og:description'
           content={removeMd(portfolio.content.substr(0, 154)) + '...'}
           key='og:description'
@@ -60,7 +62,7 @@ export default function Portfolio(props) {
           content={`${portfolio.title} | Daniel Esteves - Desarrollador Web Frontend`}
           key='twitter:title'
         />
-        <meta 
+        <meta
           name='twitter:description'
           content={removeMd(portfolio.content.substr(0, 154)) + '...'}
           key='twitter:description'
@@ -84,14 +86,18 @@ export default function Portfolio(props) {
             <Typography
               align='center'
               component='h1'
-              className={classes.titlePortfolio}>
+              className={classes.titlePortfolio}
+            >
               {portfolio.title}
             </Typography>
             <div className={classes.metadata}>
-              <Typography className={classes.category} variant='h6' component='p'>
+              <Typography
+                className={classes.category}
+                variant='h6'
+                component='p'
+              >
                 <Tag size='24' className={classes.categoryIcon} />
-                Categoría:{' '}
-                {portfolio.category.name}
+                Categoría: {portfolio.category.name}
               </Typography>
             </div>
 
@@ -104,6 +110,7 @@ export default function Portfolio(props) {
                   label={tecnology.name}
                   variant='outlined'
                   className={classes.chipTag}
+                  component='span'
                 />
               ))}
             </Typography>
@@ -128,14 +135,14 @@ export default function Portfolio(props) {
         <Typography align='center' className={classes.helpText} id='helpText'>
           El desarrollador web cumple con realizar la página solicitada y no se
           hace responsable por enlaces caídos o cambios en el diseño. El uso
-          posterior de la página queda a criterio y bajo completa responsabilidad
-          del cliente
+          posterior de la página queda a criterio y bajo completa
+          responsabilidad del cliente
         </Typography>
       </div>
     </>
   ) : loading ? (
     <Loading />
   ) : (
-        `Error! ${errors}`
-      )
+    `Error! ${errors}`
+  )
 }

@@ -4,7 +4,7 @@ import { ServerStyleSheets } from '@material-ui/styles'
 import Manifest from 'next-manifest/manifest'
 
 class MyDocument extends Document {
-  render () {
+  render() {
     return (
       <html lang='es' prefix='og: http://ogp.me/ns#'>
         <Head>

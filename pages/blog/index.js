@@ -53,22 +53,17 @@ export default () => {
         />
       </Head>
       <Hero img='/static/blog.jpg' title='Blog' />
-      {
-        data
-          ? (
-            <div className={classes.container}>
-              <div className={classes.blogRoll}>
-                <BlogRoll
-                  blogs={data.blogs}
-                />
-              </div>
-            </div>
-          ) : loading ? (
-            <Loading />
-          ) : (
-            `Error! ${errors}`
-          )
-      }
+      {data ? (
+        <div className={classes.container}>
+          <div className={classes.blogRoll}>
+            <BlogRoll blogs={data.blogs} />
+          </div>
+        </div>
+      ) : loading ? (
+        <Loading />
+      ) : (
+        `Error! ${errors}`
+      )}
     </>
   )
 }

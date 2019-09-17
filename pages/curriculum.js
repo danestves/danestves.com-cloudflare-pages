@@ -8,7 +8,7 @@ import styles from '../styles/pages/curriculum'
 
 const useStyles = makeStyles(styles)
 
-export default function Curriculum () {
+export default function Curriculum() {
   const classes = useStyles()
   const { loading, data } = getEducationsAndExperiences()
 
@@ -60,7 +60,13 @@ export default function Curriculum () {
               Experiencia
             </Typography>
 
-            {data ? <Timeline items={data.experiences} /> : loading ? 'Loading...' : ''}
+            {data ? (
+              <Timeline items={data.experiences} />
+            ) : loading ? (
+              'Loading...'
+            ) : (
+              ''
+            )}
           </Grid>
 
           <Grid item xs={12} md={6}>
@@ -68,7 +74,13 @@ export default function Curriculum () {
               Eduación
             </Typography>
 
-            {data ? <Timeline items={data.educations} /> : loading ? 'Loading...' : ''}
+            {data ? (
+              <Timeline items={data.educations} />
+            ) : loading ? (
+              'Loading...'
+            ) : (
+              ''
+            )}
           </Grid>
         </Grid>
       </div>

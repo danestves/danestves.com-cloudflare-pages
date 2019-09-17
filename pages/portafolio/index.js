@@ -4,7 +4,7 @@ import { Hero, PortfolioRoll, Loading } from '../../components'
 import { KEYWORDS } from '../../constants'
 import { getPortfolios } from '../../helpers'
 
-export default function Portafolio () {
+export default function Portafolio() {
   const { data, loading } = getPortfolios()
 
   return (

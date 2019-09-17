@@ -29,7 +29,10 @@ const styles = theme => ({
   },
   portfolioCategory: {
     padding: theme.spacing(0, 0, 1),
-    color: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.4)'
+    color:
+      theme.palette.type === 'dark'
+        ? 'rgba(255, 255, 255, 0.4)'
+        : 'rgba(0, 0, 0, 0.4)'
   }
 })
 

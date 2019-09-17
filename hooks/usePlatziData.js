@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-export function usePlatziData () {
+export function usePlatziData() {
   const [loading, setLoading] = useState(true)
   const [careers, setCareers] = useState([])
   const [courses, setCourses] = useState([])

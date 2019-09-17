@@ -61,18 +61,21 @@ export default () => {
     const noOfWords = text.split(/\s/g).length
     const minutes = noOfWords / wordsPerMinute
     const readTime = Math.ceil(minutes)
-    return readTime === 1 ? `${readTime} minuto de lectura ☕` : `${readTime} minutos de lectura ☕☕`
+    return readTime === 1
+      ? `${readTime} minuto de lectura ☕`
+      : `${readTime} minutos de lectura ☕☕`
   }
 
   const webShareAPI = (title, excerpt) => {
     if (window.navigator.share) {
-      window.navigator.share({
-        title: title,
-        text: excerpt,
-        url: window.location.href
-      })
+      window.navigator
+        .share({
+          title: title,
+          text: excerpt,
+          url: window.location.href
+        })
         .then(() => console.log('Thanks for sharing!'))
-        .catch((error) => console.log('Error sharing: ', error))
+        .catch(error => console.log('Error sharing: ', error))
     } else {
       setOpen(true)
     }
@@ -96,184 +99,192 @@ export default () => {
   const matches = useMediaQuery(theme.breakpoints.down('xs'))
   const blog = data && data.blogs[0]
 
-  return data
-    ? (
-      <>
-        <Head>
-          <title>{blog.title} | Daniel Esteves</title>
-          <meta
-            name='description'
-            content={removeMd(blog.content.substr(0, 154)) + '...'}
-            key='description'
-          />
-          <meta
-            name='keywords'
-            content={`${blog.tags.map(tag => tag.name).toString()}, ${KEYWORDS}`}
-            key='keywords'
-          />
-          <meta
-            property='og:image'
-            content={blog.ogCover.url}
-            key='og:image'
-          />
-          <meta
-            property='og:title'
-            content={`${blog.title} | Daniel Esteves`}
-            key='og:title'
-          />
-          <meta 
-            property='og:description'
-            content={removeMd(blog.content.substr(0, 154)) + '...'}
-            key='og:description'
-          />
-          <meta
-            name='twitter:image'
-            content={blog.ogCover.url}
-            key='twitter:image'
-          />
-          <meta
-            name='twitter:title'
-            content={`${blog.title} | Daniel Esteves`}
-            key='twitter:title'
-          />
-          <meta 
-            name='twitter:description'
-            content={removeMd(blog.content.substr(0, 154)) + '...'}
-            key='twitter:description'
-          />
-          <meta
-            name='twitter:image:alt'
-            content={`${blog.title} | Daniel Esteves`}
-            key='twitter:image:alt'
-          />
-        </Head>
-        <HeroBlogpost img={blog.cover.url} title={blog.title} />
-        <div className={classes.container}>
-          <div className={classes.metadataBlogpost}>
-            {blog.tags && blog.tags.length ? (
-              <div className={classes.containerTags}>
-                <Typography
-                  component='h4'
-                  variant='h6'
-                  className={classes.titleTags}
-                >
-                  <Tag size='24' /> Tags:
-                </Typography>
-                {blog.tags.map(tag => (
-                  <Chip
-                    key={tag.name + 'tag'}
-                    label={tag.name}
-                    variant='outlined'
-                    size={matches ? 'small' : 'medium'}
-                    component={Link}
-                    href={`/tags/${tag.name}`}
-                    className={classes.chipTag}
-                  />
-                ))}
-              </div>
-            ) : null}
-            <div className={classes.containerReadingTime}>
-              <Typography component='h4' variant='h6' className={classes.titleReadingTime}>
-                <TimeFive size='24' /> {readingTime(blog.content)}
+  return data ? (
+    <>
+      <Head>
+        <title>{blog.title} | Daniel Esteves</title>
+        <meta
+          name='description'
+          content={removeMd(blog.content.substr(0, 154)) + '...'}
+          key='description'
+        />
+        <meta
+          name='keywords'
+          content={`${blog.tags.map(tag => tag.name).toString()}, ${KEYWORDS}`}
+          key='keywords'
+        />
+        <meta property='og:image' content={blog.ogCover.url} key='og:image' />
+        <meta
+          property='og:title'
+          content={`${blog.title} | Daniel Esteves`}
+          key='og:title'
+        />
+        <meta
+          property='og:description'
+          content={removeMd(blog.content.substr(0, 154)) + '...'}
+          key='og:description'
+        />
+        <meta
+          name='twitter:image'
+          content={blog.ogCover.url}
+          key='twitter:image'
+        />
+        <meta
+          name='twitter:title'
+          content={`${blog.title} | Daniel Esteves`}
+          key='twitter:title'
+        />
+        <meta
+          name='twitter:description'
+          content={removeMd(blog.content.substr(0, 154)) + '...'}
+          key='twitter:description'
+        />
+        <meta
+          name='twitter:image:alt'
+          content={`${blog.title} | Daniel Esteves`}
+          key='twitter:image:alt'
+        />
+      </Head>
+      <HeroBlogpost img={blog.cover.url} title={blog.title} />
+      <div className={classes.container}>
+        <div className={classes.metadataBlogpost}>
+          {blog.tags && blog.tags.length ? (
+            <div className={classes.containerTags}>
+              <Typography
+                component='h4'
+                variant='h6'
+                className={classes.titleTags}
+              >
+                <Tag size='24' /> Tags:
               </Typography>
+              {blog.tags.map(tag => (
+                <Chip
+                  key={tag.name + 'tag'}
+                  label={tag.name}
+                  variant='outlined'
+                  size={matches ? 'small' : 'medium'}
+                  component={Link}
+                  href={`/tags/${tag.name}`}
+                  className={classes.chipTag}
+                />
+              ))}
             </div>
+          ) : null}
+          <div className={classes.containerReadingTime}>
+            <Typography
+              component='h4'
+              variant='h6'
+              className={classes.titleReadingTime}
+            >
+              <TimeFive size='24' /> {readingTime(blog.content)}
+            </Typography>
           </div>
-          <Markdown
-            className='markdown-content'
-            source={blog.content}
-            renderers={markdownRenderers}
-          />
-          <Fab
-            onClick={() => webShareAPI(blog.title, removeMd(blog.content.substr(0, 154)))}
-            className={classes.fabWebShare}
-            size='medium'
-          >
-            <ShareAlt size='24' />
-          </Fab>
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby='share-title'
-            aria-describedby='share-content'
-          >
-            <DialogTitle id='share-title'>Compártelo en:</DialogTitle>
-            <DialogContent>
-              <div className={classes.sharerList}>
-                <div>
-                  <Button
-                    className={classNames(
-                      classes.sharerButton,
-                      classes.sharerFacebook
-                    )}
-                    href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
-                    target='_blank'
-                    fullWidth
-                  >
-                    <Facebook size='24' />
-                  </Button>
-                  <Button
-                    className={classNames(
-                      classes.sharerButton,
-                      classes.sharerTwitter
-                    )}
-                    href={`https://twitter.com/intent/tweet?text=${blog.title}&url=${window.location.href}&via=@danestves`}
-                    target='_blank'
-                    fullWidth
-                  >
-                    <Twitter size='24' />
-                  </Button>
-                </div>
-
-                <div>
-                  <Button
-                    className={classNames(
-                      classes.sharerButton,
-                      classes.sharerLinkedin
-                    )}
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
-                    target='_blank'
-                    fullWidth
-                  >
-                    <LinkedinSquare size='24' />
-                  </Button>
-                  <Button
-                    className={classNames(
-                      classes.sharerButton,
-                      classes.sharerWhatsapp
-                    )}
-                    href={`https://api.whatsapp.com/send?text=*${blog.title}* ${removeMd(blog.content.substr(0, 154))}... ${window.location.url}`}
-                    target='_blank'
-                    fullWidth
-                  >
-                    <Whatsapp size='24' />
-                  </Button>
-                </div>
-
-                <div>
-                  <TextField
-                    id='url'
-                    value={window.location.href}
-                    disabled
-                    fullWidth
-                  />
-                  <Button
-                    className={classes.sharerLink}
-                    fullWidth
-                    onClick={copyLink}
-                  >Copiar link <LinkAlt size='24' />
-                  </Button>
-                </div>
-              </div>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} autoFocus>
-              Listo
-              </Button>
-            </DialogActions>
-          </Dialog>
         </div>
-      </>
-    ) : loading ? (
-      <Loading />
-    ) : `Error! ${errors}`
+        <Markdown
+          className='markdown-content'
+          source={blog.content}
+          renderers={markdownRenderers}
+        />
+        <Fab
+          onClick={() =>
+            webShareAPI(blog.title, removeMd(blog.content.substr(0, 154)))
+          }
+          className={classes.fabWebShare}
+          size='medium'
+        >
+          <ShareAlt size='24' />
+        </Fab>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby='share-title'
+          aria-describedby='share-content'
+        >
+          <DialogTitle id='share-title'>Compártelo en:</DialogTitle>
+          <DialogContent>
+            <div className={classes.sharerList}>
+              <div>
+                <Button
+                  className={classNames(
+                    classes.sharerButton,
+                    classes.sharerFacebook
+                  )}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+                  target='_blank'
+                  fullWidth
+                >
+                  <Facebook size='24' />
+                </Button>
+                <Button
+                  className={classNames(
+                    classes.sharerButton,
+                    classes.sharerTwitter
+                  )}
+                  href={`https://twitter.com/intent/tweet?text=${blog.title}&url=${window.location.href}&via=@danestves`}
+                  target='_blank'
+                  fullWidth
+                >
+                  <Twitter size='24' />
+                </Button>
+              </div>
+
+              <div>
+                <Button
+                  className={classNames(
+                    classes.sharerButton,
+                    classes.sharerLinkedin
+                  )}
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
+                  target='_blank'
+                  fullWidth
+                >
+                  <LinkedinSquare size='24' />
+                </Button>
+                <Button
+                  className={classNames(
+                    classes.sharerButton,
+                    classes.sharerWhatsapp
+                  )}
+                  href={`https://api.whatsapp.com/send?text=*${
+                    blog.title
+                  }* ${removeMd(blog.content.substr(0, 154))}... ${
+                    window.location.url
+                  }`}
+                  target='_blank'
+                  fullWidth
+                >
+                  <Whatsapp size='24' />
+                </Button>
+              </div>
+
+              <div>
+                <TextField
+                  id='url'
+                  value={window.location.href}
+                  disabled
+                  fullWidth
+                />
+                <Button
+                  className={classes.sharerLink}
+                  fullWidth
+                  onClick={copyLink}
+                >
+                  Copiar link <LinkAlt size='24' />
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} autoFocus>
+              Listo
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    </>
+  ) : loading ? (
+    <Loading />
+  ) : (
+    `Error! ${errors}`
+  )
 }

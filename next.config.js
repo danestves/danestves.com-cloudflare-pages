@@ -10,9 +10,7 @@ const withManifest = require('next-manifest')
 require('dotenv').config()
 
 const defaults = {
-  // next-manifest options
   output: './static/',
-  // manifest options
   name: 'Daniel Esteves - Desarrollador Web Frontend',
   short_name: 'Daniel E.',
   theme_color: '#0090DA',
@@ -65,53 +63,58 @@ const defaults = {
   splash_pages: null
 }
 
-module.exports = withPlugins([
-  withGraphQLConfig,
-  withCSS,
-  withSass,
+module.exports = withPlugins(
   [
-    withProgressBar, {
-      progressBar: {
-        profile: true
-      }
-    }
-  ],
-  [nextOffline, ['!', PHASE_DEVELOPMENT_SERVER]],
-  [
-    withManifest, {
-      manifest: {
-        ...defaults
-      }
-    }
-  ]
-], {
-  target: 'serverless',
-  workboxOpts: {
-    swDest: 'static/service-worker.js',
-    runtimeCaching: [
+    withGraphQLConfig,
+    withCSS,
+    withSass,
+    [
+      withProgressBar,
       {
-        urlPattern: /^https?.*/,
-        handler: 'NetworkFirst',
-        options: {
-          cacheName: 'https-calls',
-          networkTimeoutSeconds: 15,
-          expiration: {
-            maxEntries: 150,
-            maxAgeSeconds: 30 * 24 * 60 * 60
-          },
-          cacheableResponse: {
-            statuses: [0, 200]
-          }
+        progressBar: {
+          profile: true
+        }
+      }
+    ],
+    [nextOffline, ['!', PHASE_DEVELOPMENT_SERVER]],
+    [
+      withManifest,
+      {
+        manifest: {
+          ...defaults
         }
       }
     ]
-  },
-  webpack (config) {
-    config.plugins.push(
-      new webpack.EnvironmentPlugin(process.env),
-      new webpack.IgnorePlugin(/^encoding$/, /node-fetch/)
-    )
+  ],
+  {
+    target: 'serverless',
+    workboxOpts: {
+      swDest: 'static/service-worker.js',
+      runtimeCaching: [
+        {
+          urlPattern: /^https?.*/,
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'https-calls',
+            networkTimeoutSeconds: 15,
+            expiration: {
+              maxEntries: 150,
+              maxAgeSeconds: 30 * 24 * 60 * 60
+            },
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        }
+      ]
+    },
+    webpack(config) {
+      config.plugins.push(
+        new webpack.EnvironmentPlugin(process.env),
+        new webpack.IgnorePlugin(/^encoding$/, /node-fetch/)
+      )
 
-    return config
+      return config
+    }
   }
-})
+)

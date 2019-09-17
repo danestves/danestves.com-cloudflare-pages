@@ -13,9 +13,10 @@ const styles = theme => ({
       width: '100%',
       height: '100%',
       position: 'absolute',
-      background: theme.palette.type === 'dark'
-        ? 'linear-gradient(-135deg, #103e78, #00486d, #005170, #005470)'
-        : 'linear-gradient(-135deg, #307FE2, #0090DA, #00A3E1, #00A9E0)',
+      background:
+        theme.palette.type === 'dark'
+          ? 'linear-gradient(-135deg, #103e78, #00486d, #005170, #005470)'
+          : 'linear-gradient(-135deg, #307FE2, #0090DA, #00A3E1, #00A9E0)',
       opacity: 0.85
     },
 
@@ -32,7 +33,7 @@ const styles = theme => ({
         color: '#fff',
         padding: 10,
         textDecoration: 'none',
-        backfaceVisibility: 'hidden', /* prevent jump effect when scaling */
+        backfaceVisibility: 'hidden' /* prevent jump effect when scaling */,
 
         '&:not(.disabled):hover': {
           transform: 'translateY(-50%) scale(1.25)',
@@ -179,9 +180,10 @@ const styles = theme => ({
     fontSize: '3rem',
     margin: theme.spacing(0, 0, 1),
     display: 'block',
-    background: theme.palette.type === 'dark'
-      ? '#fff'
-      : 'linear-gradient(-135deg, #307FE2, #0090DA, #00A3E1, #00A9E0)',
+    background:
+      theme.palette.type === 'dark'
+        ? '#fff'
+        : 'linear-gradient(-135deg, #307FE2, #0090DA, #00A3E1, #00A9E0)',
     '-webkit-background-clip': 'text',
     '-webkit-text-fill-color': 'transparent'
   },

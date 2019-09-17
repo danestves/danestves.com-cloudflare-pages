@@ -55,7 +55,10 @@ const styles = theme => ({
     }
   },
   excerptPost: {
-    color: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.57)' : 'rgba(0, 0, 0, 0.57)',
+    color:
+      theme.palette.type === 'dark'
+        ? 'rgba(255, 255, 255, 0.57)'
+        : 'rgba(0, 0, 0, 0.57)',
 
     [theme.breakpoints.up('sm')]: {
       width: '92%'

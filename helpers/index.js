@@ -1,17 +1,21 @@
 import { useGraphQL } from 'graphql-react'
 
-export function getCookie (name) {
+export function getCookie(name) {
   const regex = new RegExp(`(?:(?:^|.*;*)${name}*=*([^;]*).*$)|^.*$`)
   return document.cookie.replace(regex, '$1')
 }
 
-export function toSlug (string) {
-  const a = 'àáäâãåăæąçćčđďèéěėëêęğǵḧìíïîįłḿǹńňñòóöôœøṕŕřßşśšșťțùúüûǘůűūųẃẍÿýźžż·/_,:;'
-  const b = 'aaaaaaaaacccddeeeeeeegghiiiiilmnnnnooooooprrsssssttuuuuuuuuuwxyyzzz------'
+export function toSlug(string) {
+  const a =
+    'àáäâãåăæąçćčđďèéěėëêęğǵḧìíïîįłḿǹńňñòóöôœøṕŕřßşśšșťțùúüûǘůűūųẃẍÿýźžż·/_,:;'
+  const b =
+    'aaaaaaaaacccddeeeeeeegghiiiiilmnnnnooooooprrsssssttuuuuuuuuuwxyyzzz------'
   const p = new RegExp(a.split('').join('|'), 'g')
 
   /* eslint-disable no-useless-escape */
-  return string.toString().toLowerCase()
+  return string
+    .toString()
+    .toLowerCase()
     .replace(/\s+/g, '-') // Replace spaces with -
     .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
     .replace(/&/g, '-and-') // Replace & with 'and'
@@ -21,9 +25,9 @@ export function toSlug (string) {
     .replace(/-+$/, '') // Trim - from end of text
 }
 
-export function getGitHubRepositories () {
+export function getGitHubRepositories() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
-    fetchOptionsOverride (options) {
+    fetchOptionsOverride(options) {
       options.url = `${process.env.GITHUB_API_URL}`
       options.headers = {
         Authorization: `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`
@@ -57,9 +61,9 @@ export function getGitHubRepositories () {
   }
 }
 
-export function getSkills () {
+export function getSkills() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
-    fetchOptionsOverride (options) {
+    fetchOptionsOverride(options) {
       options.url = `${process.env.API_URL}`
     },
     operation: {
@@ -82,9 +86,9 @@ export function getSkills () {
   }
 }
 
-export function getEducationsAndExperiences () {
+export function getEducationsAndExperiences() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
-    fetchOptionsOverride (options) {
+    fetchOptionsOverride(options) {
       options.url = `${process.env.API_URL}`
     },
     operation: {
@@ -116,9 +120,9 @@ export function getEducationsAndExperiences () {
   }
 }
 
-export function getPortfolios (page) {
+export function getPortfolios(page) {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
-    fetchOptionsOverride (options) {
+    fetchOptionsOverride(options) {
       options.url = `${process.env.API_URL}`
     },
     operation: {
@@ -147,9 +151,9 @@ export function getPortfolios (page) {
   }
 }
 
-export function getSinglePortfolio (slug) {
+export function getSinglePortfolio(slug) {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
-    fetchOptionsOverride (options) {
+    fetchOptionsOverride(options) {
       options.url = `${process.env.API_URL}`
     },
     operation: {
