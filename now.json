@@ -1,7 +1,7 @@
 {
   "name": "danestves",
   "version": 2,
-  "alias": ["danestves.com", "www.danestves.com"],
+  "alias": "www.danestves.com",
   "routes": [
     {
       "src": "^/service-worker.js$",
@@ -19,14 +19,14 @@
       }
     },
     {
-      "src": "https://www.danestves.com",
+      "src": "/(.*)",
       "status": 301,
       "headers": { "Location": "https://danestves.com/$1" }
     },
     {
       "src": "/(.*)",
       "headers": { "Cache-Control": "max-age=604800" }
-    },
+    }
   ],
   "builds": [
     {
