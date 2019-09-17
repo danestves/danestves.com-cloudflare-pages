@@ -1,17 +1,8 @@
 {
   "name": "danestves",
   "version": 2,
-  "alias": "danestves.com",
+  "alias": ["danestves.com", "www.danestves.com"],
   "routes": [
-    {
-      "src": "https://www.danestves.com",
-      "status": 301,
-      "headers": { "Location": "https://danestves.com/$1" }
-    },
-    {
-      "src": "/(.*)",
-      "headers": { "Cache-Control": "max-age=604800" }
-    },
     {
       "src": "^/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
@@ -26,7 +17,16 @@
       "headers": {
         "Content-Type": "text/plain;charset=UTF-8"
       }
-    }
+    },
+    {
+      "src": "https://www.danestves.com",
+      "status": 301,
+      "headers": { "Location": "https://danestves.com/$1" }
+    },
+    {
+      "src": "/(.*)",
+      "headers": { "Cache-Control": "max-age=604800" }
+    },
   ],
   "builds": [
     {
