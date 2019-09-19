@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography, Button, makeStyles } from '@material-ui/core'
 import { Slider, Link, Skills, Loading } from '../components'
 import styles from '../styles/pages/home'
-import { getSkills } from '../helpers'
+import { getSkills } from '../graphql'
 
 const useStyles = makeStyles(styles)
 

@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { Grid, Typography, makeStyles } from '@material-ui/core'
 import { Hero, Timeline } from '../components'
-import { getEducationsAndExperiences } from '../helpers'
+import { getEducationsAndExperiences } from '../graphql'
 import { KEYWORDS } from '../constants'
 import styles from '../styles/pages/curriculum'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { Hero, PortfolioRoll, Loading } from '../../components'
 import { KEYWORDS } from '../../constants'
-import { getPortfolios } from '../../helpers'
+import { getPortfolios } from '../../graphql'
 
 export default function Portafolio() {
   const { data, loading } = getPortfolios()
