@@ -71,7 +71,7 @@ export default function Curriculum() {
 
           <Grid item xs={12} md={6}>
             <Typography variant='h4' component='h2' align='center'>
-              Eduación
+              Educación
             </Typography>
 
             {data ? (
