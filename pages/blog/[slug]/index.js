@@ -27,6 +27,7 @@ import { LinkAlt } from 'styled-icons/boxicons-regular/LinkAlt'
 import { window, document } from 'browser-monads'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import classNames from 'classnames'
+import { DiscussionEmbed } from 'disqus-react'
 import {
   HeroBlogpost,
   Image,
@@ -66,12 +67,11 @@ export default () => {
       : `${readTime} minutos de lectura ☕☕`
   }
 
-  const webShareAPI = (title, excerpt) => {
+  const webShareAPI = () => {
     if (window.navigator.share) {
       window.navigator
         .share({
-          title: title,
-          text: excerpt,
+          title: document.title,
           url: window.location.href
         })
         .then(() => console.log('Thanks for sharing!'))
@@ -98,6 +98,13 @@ export default () => {
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down('xs'))
   const blog = data && data.blogs[0]
+
+  const disqusConfig = {
+    url: "http://localhost:3000",
+    identifier: data && blog.id,
+    title: data && blog.title,
+  };
+  const disqusShortname = process.env.DISQUS_SHORTNAME
 
   return data ? (
     <>
@@ -185,9 +192,15 @@ export default () => {
           source={blog.content}
           renderers={markdownRenderers}
         />
+        
+        <DiscussionEmbed 
+          shortname={disqusShortname}
+          config={disqusConfig} 
+        />
+
         <Fab
           onClick={() =>
-            webShareAPI(blog.title, removeMd(blog.content.substr(0, 154)))
+            webShareAPI()
           }
           className={classes.fabWebShare}
           size='medium'

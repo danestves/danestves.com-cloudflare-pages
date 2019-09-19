@@ -20,7 +20,7 @@ import { Link, useChangeTheme } from '../'
 
 const useStyles = makeStyles(styles)
 
-export default function Navbar () {
+export default function Navbar() {
   const [anchor, setAnchor] = useState(null)
   const [open, setOpen] = useState(false)
 
@@ -30,6 +30,7 @@ export default function Navbar () {
 
   const handleNavbarAnimation = () => {
     const onm = document.getElementsByClassName(classes.outlinedNavMenu)
+
     for (let i = 0; i < onm.length; i++) {
       onm[i].onmouseenter = onm[i].onmouseleave = e => {
         const tolerance = 5
@@ -76,9 +77,9 @@ export default function Navbar () {
   const matches = useMediaQuery(theme.breakpoints.down('xs'))
 
   const aboutURLs =
-      pathname === '/about/' ||
-      pathname === '/certificaciones/' ||
-      pathname === '/curriculum/'
+    pathname === '/about' ||
+    pathname === '/certificaciones' ||
+    pathname === '/curriculum'
 
   return (
     <div className={classes.root}>
@@ -118,7 +119,7 @@ export default function Navbar () {
                   classes.outlinedNavMenu
                 )}
               >
-              Inicio
+                Inicio
               </Button>
               <Button
                 color='inherit'
@@ -131,7 +132,7 @@ export default function Navbar () {
                 aria-haspopup='true'
                 onClick={handleClick}
               >
-              Sobre
+                Sobre
               </Button>
               <Button
                 component={Link}
@@ -143,7 +144,7 @@ export default function Navbar () {
                   classes.outlinedNavMenu
                 )}
               >
-              Portafolio
+                Portafolio
               </Button>
               <Button
                 component={Link}
@@ -155,7 +156,7 @@ export default function Navbar () {
                   classes.outlinedNavMenu
                 )}
               >
-              Blog
+                Blog
               </Button>
               <Button
                 component={Link}
@@ -167,7 +168,7 @@ export default function Navbar () {
                   classes.outlinedNavMenu
                 )}
               >
-              Contacto
+                Contacto
               </Button>
             </>
           )}
@@ -210,7 +211,7 @@ export default function Navbar () {
           className={classes.outlinedNavSubMenu}
           onClick={handleClose}
         >
-            Curriculum
+          Curriculum
         </MenuItem>
         <MenuItem
           component={Link}
@@ -220,7 +221,7 @@ export default function Navbar () {
           className={classes.outlinedNavSubMenu}
           onClick={handleClose}
         >
-            Certificaciones
+          Certificaciones
         </MenuItem>
       </Menu>
     </div>

@@ -203,6 +203,7 @@ export function getSingleBlog(slug) {
       query: `
         {
           blogs(where: { slug_contains: "${slug}" }) {
+            id
             title
             content
             date
