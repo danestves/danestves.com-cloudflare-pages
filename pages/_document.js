@@ -68,13 +68,6 @@ MyDocument.getInitialProps = async ctx => {
         dangerouslySetInnerHTML={{ __html: css }}
       />
     )
-    // styles: [
-    //   <React.Fragment key='styles'>
-    //     {initialProps.styles}
-
-    //     {sheets.getStyleElement()}
-    //   </React.Fragment>
-    // ]
   }
 }
 
