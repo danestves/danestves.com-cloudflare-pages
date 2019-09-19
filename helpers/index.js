@@ -1,16 +1,16 @@
-import { useGraphQL } from 'graphql-react';
+import { useGraphQL } from 'graphql-react'
 
 export function getCookie(name) {
-  const regex = new RegExp(`(?:(?:^|.*;*)${name}*=*([^;]*).*$)|^.*$`);
-  return document.cookie.replace(regex, '$1');
+  const regex = new RegExp(`(?:(?:^|.*;*)${name}*=*([^;]*).*$)|^.*$`)
+  return document.cookie.replace(regex, '$1')
 }
 
 export function toSlug(string) {
   const a =
-    'àáäâãåăæąçćčđďèéěėëêęğǵḧìíïîįłḿǹńňñòóöôœøṕŕřßşśšșťțùúüûǘůűūųẃẍÿýźžż·/_,:;';
+    'àáäâãåăæąçćčđďèéěėëêęğǵḧìíïîįłḿǹńňñòóöôœøṕŕřßşśšșťțùúüûǘůűūųẃẍÿýźžż·/_,:;'
   const b =
-    'aaaaaaaaacccddeeeeeeegghiiiiilmnnnnooooooprrsssssttuuuuuuuuuwxyyzzz------';
-  const p = new RegExp(a.split('').join('|'), 'g');
+    'aaaaaaaaacccddeeeeeeegghiiiiilmnnnnooooooprrsssssttuuuuuuuuuwxyyzzz------'
+  const p = new RegExp(a.split('').join('|'), 'g')
 
   /* eslint-disable no-useless-escape */
   return string
@@ -22,16 +22,16 @@ export function toSlug(string) {
     .replace(/[^\w\-]+/g, '') // Remove all non-word characters
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
     .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, ''); // Trim - from end of text
+    .replace(/-+$/, '') // Trim - from end of text
 }
 
 export function getGitHubRepositories() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.GITHUB_API_URL}`;
+      options.url = `${process.env.GITHUB_API_URL}`
       options.headers = {
         Authorization: `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`
-      };
+      }
     },
     operation: {
       query: /* GraphQL */ `
@@ -52,19 +52,19 @@ export function getGitHubRepositories() {
         }
       `
     }
-  });
+  })
 
   return {
     loading,
     data,
     ...errors
-  };
+  }
 }
 
 export function getSkills() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`;
+      options.url = `${process.env.API_URL}`
     },
     operation: {
       query: /* GraphQL */ `
@@ -77,19 +77,19 @@ export function getSkills() {
         }
       `
     }
-  });
+  })
 
   return {
     loading,
     data,
     ...errors
-  };
+  }
 }
 
 export function getEducationsAndExperiences() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`;
+      options.url = `${process.env.API_URL}`
     },
     operation: {
       query: /* GraphQL */ `
@@ -111,19 +111,19 @@ export function getEducationsAndExperiences() {
         }
       `
     }
-  });
+  })
 
   return {
     loading,
     data,
     ...errors
-  };
+  }
 }
 
 export function getPortfolios(page) {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`;
+      options.url = `${process.env.API_URL}`
     },
     operation: {
       query: /* GraphQL */ `
@@ -142,19 +142,19 @@ export function getPortfolios(page) {
         }
       `
     }
-  });
+  })
 
   return {
     loading,
     data,
     ...errors
-  };
+  }
 }
 
 export function getSinglePortfolio(slug) {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`;
+      options.url = `${process.env.API_URL}`
     },
     operation: {
       query: /* GraphQL */ `
@@ -180,11 +180,11 @@ export function getSinglePortfolio(slug) {
         }
       `
     }
-  });
+  })
 
   return {
     loading,
     data,
     ...errors
-  };
+  }
 }
