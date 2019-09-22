@@ -170,6 +170,7 @@ function AppWrapper({ graphql, children }) {
           content='z1laVtIbEpQYtR9llP5ICFgSwfLoEDHmfi_rbTh8oRg'
         />
         <meta name='msvalidate.01' content='F4F455B991A40467C9C79C17B6AC2894' />
+        <meta name="yandex-verification" content="ca013f8e5304f0ad" />
         <link
           rel='stylesheet'
           href='https://fonts.googleapis.com/css?family=Google+Sans:400,700|Poppins:400,500,600&display=swap'
