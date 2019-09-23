@@ -1,8 +1,19 @@
 import React from 'react'
-import { Link } from '@material-ui/core'
+import { Link, makeStyles } from '@material-ui/core'
 
-export default ({ href, children }) => (
-  <Link href={href} target='_blank'>
-    {children}
-  </Link>
-)
+const styles = theme => ({
+  root: {
+    textDecoration: theme.palette.type === 'light' ? 'none' : 'underline'
+  }
+})
+const useStyles = makeStyles(styles)
+
+export default ({ href, children }) => {
+  const classes = useStyles()
+
+  return (
+    <Link href={href} target='_blank' className={classes.root}>
+      {children}
+    </Link>
+  )
+}
