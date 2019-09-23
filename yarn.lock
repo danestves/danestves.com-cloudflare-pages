@@ -2552,11 +2552,6 @@ dir-glob@^2.0.0:
   dependencies:
     path-type "^3.0.0"
 
-disqus-react@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/disqus-react/-/disqus-react-1.0.7.tgz#61061d3b6237b956baa9c5d96780fd311cdbecfc"
-  integrity sha512-7sPHIauS5mUxkZtGtik/ELZ38kOGH3N+YFNt7U4ncczNdAVmWNmAetDE+dHYnrL1Xx+Pgueh1uKpvfUIeu7WuQ==
-
 dom-helpers@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.1.0.tgz#57a726de04abcc2a8bbfe664b3e21c584bde514e"
@@ -5588,6 +5583,11 @@ react-async-script@^1.1.1:
   dependencies:
     hoist-non-react-statics "^3.3.0"
     prop-types "^15.5.0"
+
+react-disqus-comments@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-disqus-comments/-/react-disqus-comments-1.4.0.tgz#bf56ff319a35d086f3070d31a4f70ed21ce3a958"
+  integrity sha512-NkCNsnBSujliii5N2HbA6Wy5z2s6GtCtPaJ0D6GWNMSKnP8wmEtQ3u2qAeG9+xHJE2cMRFmfqMpDeJtBay38RA==
 
 react-dom@^16.9.0:
   version "16.9.0"

@@ -27,7 +27,6 @@ import { LinkAlt } from 'styled-icons/boxicons-regular/LinkAlt'
 import { window, document } from 'browser-monads'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import classNames from 'classnames'
-import { DiscussionEmbed } from 'disqus-react'
 import {
   HeroBlogpost,
   Image,
@@ -36,8 +35,7 @@ import {
   CodeBlock,
   Loading,
   Link,
-  MarkdownLink,
-  Comments
+  MarkdownLink
 } from '../../../components'
 import { getSingleBlog } from '../../../graphql'
 import { KEYWORDS } from '../../../constants'
@@ -102,12 +100,10 @@ export default () => {
   const matches = useMediaQuery(theme.breakpoints.down('xs'))
   const blog = data && data.blogs[0]
 
-  const disqusConfig = ({ slug, identifier, title }) => ({
-    slug,
-    identifier,
-    title
-  })
-  const disqusShortname = process.env.DISQUS_SHORTNAME
+  useEffect(() => {
+    window.urlDisqus = `https://danielestves.com/blog/${slug}`
+    window.identifierDisqus = blog.id
+  }, [blog])
 
   return data ? (
     <>
@@ -196,13 +192,9 @@ export default () => {
           renderers={markdownRenderers}
           escapeHtml={false}
         />
-        
-        <Comments
-          identifier={blog.id}
-          title={blog.title}
-          slug={slug}
-        />
 
+        <div id="disqus_thread" />
+        
         <Fab
           onClick={() => webShareAPI()}
           className={classes.fabWebShare}

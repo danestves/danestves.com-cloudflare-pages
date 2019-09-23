@@ -14,7 +14,6 @@ export { default as Paragraph } from './Markdown/Paragraph'
 export { default as InlineCode } from './Markdown/InlineCode'
 export { default as CodeBlock } from './Markdown/CodeBlock'
 export { default as MarkdownLink } from './Markdown/Link'
-export { default as Comments } from './Blog/Comment'
 export { default as Link } from './Link'
 export { default as Snackbar } from './Snackbar'
 
