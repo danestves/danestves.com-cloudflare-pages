@@ -172,7 +172,7 @@ export function getBlogs() {
     operation: {
       query: `
         {
-          blogs {
+          blogs(sort: "date:desc") {
             id
             slug
             ogCover {
