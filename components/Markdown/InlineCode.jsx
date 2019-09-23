@@ -7,7 +7,8 @@ const styles = ({
     borderRadius: '0.3em',
     whiteSpace: 'normal',
     background: '#272822',
-    color: '#f8f8f2'
+    color: '#f8f8f2',
+    fontFamily: '"Fira Code", monospace'
   }
 })
 

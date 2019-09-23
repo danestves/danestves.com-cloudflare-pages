@@ -7,7 +7,8 @@
 var theme /*: PrismTheme */ = {
   plain: {
     color: '#F8F8F2',
-    backgroundColor: '#272822'
+    backgroundColor: '#272822',
+    fontFamily: '"Fira Code", monospace'
   },
   styles: [
     {
