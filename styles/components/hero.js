@@ -13,7 +13,7 @@ const styles = theme => ({
       width: '100%',
       height: '100%',
       background: '#181818',
-      opacity: 0.45
+      opacity: 0.60
     }
   },
   img: {
