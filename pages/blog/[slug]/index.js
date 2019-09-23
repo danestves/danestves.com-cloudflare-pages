@@ -35,7 +35,8 @@ import {
   Paragraph,
   CodeBlock,
   Loading,
-  Link
+  Link,
+  MarkdownLink
 } from '../../../components'
 import { getSingleBlog } from '../../../graphql'
 import { KEYWORDS } from '../../../constants'
@@ -47,7 +48,8 @@ const markdownRenderers = {
   code: CodeBlock,
   paragraph: Paragraph,
   inlineCode: InlineCode,
-  image: Image
+  image: Image,
+  link: MarkdownLink
 }
 
 export default () => {
