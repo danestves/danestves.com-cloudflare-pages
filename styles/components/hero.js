@@ -19,7 +19,8 @@ const styles = theme => ({
   img: {
     maxWidth: '100%',
     verticalAlign: 'middle',
-    height: 'auto'
+    height: 'auto',
+    filter: 'blur(1.5px)'
   },
   title: {
     position: 'absolute',
