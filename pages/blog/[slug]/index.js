@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Markdown from 'react-markdown'
 import {
   makeStyles,
@@ -101,11 +101,11 @@ export default () => {
   const matches = useMediaQuery(theme.breakpoints.down('xs'))
   const blog = data && data.blogs[0]
 
-  const disqusConfig = {
-    url: window.location.href,
-    identifier: data && blog.id,
-    title: data && blog.title,
-  };
+  const disqusConfig = ({ slug, identifier, title }) => ({
+    slug,
+    identifier,
+    title
+  })
   const disqusShortname = process.env.DISQUS_SHORTNAME
 
   return data ? (
@@ -195,16 +195,18 @@ export default () => {
           renderers={markdownRenderers}
           escapeHtml={false}
         />
-        
-        <DiscussionEmbed 
+
+        <DiscussionEmbed
           shortname={disqusShortname}
-          config={disqusConfig} 
+          config={disqusConfig({
+            slug: `https://danestves.com/blog/${slug}`,
+            identifier: blog.id,
+            title: blog.title
+          })}
         />
 
         <Fab
-          onClick={() =>
-            webShareAPI()
-          }
+          onClick={() => webShareAPI()}
           className={classes.fabWebShare}
           size='medium'
         >
@@ -263,9 +265,9 @@ export default () => {
                   )}
                   href={`https://api.whatsapp.com/send?text=*${
                     blog.title
-                  }* ${removeMd(blog.content.substr(0, 154))}... https://danestves.com/blog/${
-                    slug
-                  }`}
+                  }* ${removeMd(
+                    blog.content.substr(0, 154)
+                  )}... https://danestves.com/blog/${slug}`}
                   target='_blank'
                   fullWidth
                 >
