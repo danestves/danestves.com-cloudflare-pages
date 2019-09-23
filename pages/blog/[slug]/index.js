@@ -100,7 +100,7 @@ export default () => {
   const blog = data && data.blogs[0]
 
   const disqusConfig = {
-    url: "http://localhost:3000",
+    url: window.location.href,
     identifier: data && blog.id,
     title: data && blog.title,
   };
@@ -191,6 +191,7 @@ export default () => {
           className='markdown-content'
           source={blog.content}
           renderers={markdownRenderers}
+          escapeHtml={false}
         />
         
         <DiscussionEmbed 
