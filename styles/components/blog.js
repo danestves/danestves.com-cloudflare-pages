@@ -1,7 +1,8 @@
 const styles = theme => ({
   linkPost: {
     textDecoration: 'none',
-    width: '100%'
+    width: '100%',
+    margin: theme.spacing(1, 0)
   },
   paperPost: {
     padding: theme.spacing(2, 3),
