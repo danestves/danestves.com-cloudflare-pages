@@ -263,8 +263,8 @@ export default () => {
                   )}
                   href={`https://api.whatsapp.com/send?text=*${
                     blog.title
-                  }* ${removeMd(blog.content.substr(0, 154))}... ${
-                    window.location.url
+                  }* ${removeMd(blog.content.substr(0, 154))}... https://danestves.com/blog/${
+                    slug
                   }`}
                   target='_blank'
                   fullWidth
