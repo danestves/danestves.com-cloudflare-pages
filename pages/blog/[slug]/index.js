@@ -170,8 +170,8 @@ export default () => {
                   label={tag.name}
                   variant='outlined'
                   size={matches ? 'small' : 'medium'}
-                  component={Link}
-                  href={`/tags/${tag.name}`}
+                  // component={Link}
+                  // href={`/tags/${tag.name}`}
                   className={classes.chipTag}
                 />
               ))}
