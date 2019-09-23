@@ -236,7 +236,7 @@ export default () => {
                     classes.sharerButton,
                     classes.sharerTwitter
                   )}
-                  href={`https://twitter.com/intent/tweet?text=${blog.title}&url=${window.location.href}&via=@danestves`}
+                  href={`https://twitter.com/intent/tweet?text=${blog.title}&url=${window.location.href}&via=danestves`}
                   target='_blank'
                   fullWidth
                 >
