@@ -36,7 +36,8 @@ import {
   CodeBlock,
   Loading,
   Link,
-  MarkdownLink
+  MarkdownLink,
+  Comments
 } from '../../../components'
 import { getSingleBlog } from '../../../graphql'
 import { KEYWORDS } from '../../../constants'
@@ -195,14 +196,11 @@ export default () => {
           renderers={markdownRenderers}
           escapeHtml={false}
         />
-
-        <DiscussionEmbed
-          shortname={disqusShortname}
-          config={disqusConfig({
-            slug: `https://danestves.com/blog/${slug}`,
-            identifier: blog.id,
-            title: blog.title
-          })}
+        
+        <Comments
+          identifier={blog.id}
+          title={blog.title}
+          slug={slug}
         />
 
         <Fab
