@@ -39,13 +39,13 @@ const styles = theme => ({
     margin: theme.spacing(1, 0)
   },
   title: {
-    fontFamily: '"Google Sans", system-ui',
+    fontFamily: '"Poppins", system-ui',
     fontSize: '1.2rem',
     padding: '0 5px 0 0',
     fontWeight: 600
   },
   description: {
-    fontFamily: '"Google Sans", system-ui',
+    fontFamily: '"Poppins", system-ui',
     display: 'block',
     color: 'rgba(128, 128, 128, 0.75)'
   }

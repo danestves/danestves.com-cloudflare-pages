@@ -27,7 +27,7 @@ const styles = theme => ({
   titlePortfolio: {
     margin: '10px auto',
     fontSize: theme.spacing(4),
-    fontFamily: '"Google Sans", sans-serif',
+    fontFamily: '"Poppins", sans-serif',
     fontWeight: 700
   },
   buttonUrl: {

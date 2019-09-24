@@ -29,6 +29,7 @@ const styles = theme => ({
   outlinedNavMenu: {
     position: 'relative',
     color: '#fff',
+    fontFamily: '"Poppins", system-ui',
 
     '&:hover': {
       '&::after': {

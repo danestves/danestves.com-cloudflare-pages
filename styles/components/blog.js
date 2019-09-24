@@ -26,13 +26,12 @@ const styles = theme => ({
       maxWidth: 300,
       width: '100%',
       borderRadius: 4,
-      height: 157,
+      height: 'auto',
       display: 'block',
 
       [theme.breakpoints.down('xs')]: {
         maxWidth: 400,
-        width: '100%',
-        height: 210
+        width: '100%'
       }
     }
   },

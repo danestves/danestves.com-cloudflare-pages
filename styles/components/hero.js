@@ -32,7 +32,7 @@ const styles = theme => ({
     fontSize: theme.spacing(6),
     zIndex: 1,
     transition: 'all .2s ease-in-out',
-    fontFamily: '"Google Sans", sans-serif',
+    fontFamily: '"Poppins", sans-serif',
 
     [theme.breakpoints.down('xs')]: {
       fontSize: theme.spacing(4)
@@ -48,7 +48,7 @@ const styles = theme => ({
     fontSize: theme.spacing(3),
     zIndex: 1,
     transition: 'all .2s ease-in-out',
-    fontFamily: '"Google Sans", sans-serif',
+    fontFamily: '"Poppins", sans-serif',
     width: '90%',
     textAlign: 'center',
 

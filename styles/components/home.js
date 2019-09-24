@@ -188,13 +188,13 @@ const styles = theme => ({
     '-webkit-text-fill-color': 'transparent'
   },
   titleSkill: {
-    fontFamily: '"Google Sans", system-ui',
+    fontFamily: '"Poppins", system-ui',
     fontSize: '1.2rem',
     fontWeight: 600,
     margin: theme.spacing(0, 0, 2)
   },
   contentSkill: {
-    fontFamily: '"Poppins", system-ui'
+    fontFamily: '"Open Sans", system-ui'
   }
 })
 
