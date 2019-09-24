@@ -159,24 +159,24 @@ export function ThemeProvider (props) {
       themeDecorator({
         typography: {
           useNextVariants: true,
-          fontFamily: ['"Poppins"', 'system-ui'].join(', '),
+          fontFamily: ['"Open Sans"', 'system-ui'].join(', '),
           h1: {
-            fontFamily: '"Google Sans", system-ui'
+            fontFamily: '"Poppins", system-ui'
           },
           h2: {
-            fontFamily: '"Google Sans", system-ui'
+            fontFamily: '"Poppins", system-ui'
           },
           h3: {
-            fontFamily: '"Google Sans", system-ui'
+            fontFamily: '"Poppins", system-ui'
           },
           h4: {
-            fontFamily: '"Google Sans", system-ui'
+            fontFamily: '"Poppins", system-ui'
           },
           h5: {
-            fontFamily: '"Google Sans", system-ui'
+            fontFamily: '"Poppins", system-ui'
           },
           h6: {
-            fontFamily: '"Google Sans", system-ui'
+            fontFamily: '"Poppins", system-ui'
           }
         },
         palette: {
