@@ -173,7 +173,7 @@ function AppWrapper({ graphql, children }) {
         <meta name="yandex-verification" content="ca013f8e5304f0ad" />
         <link
           rel='stylesheet'
-          href='https://fonts.googleapis.com/css?family=Google+Sans:400,700|Poppins:400,500,600|Fira+Code&display=swap'
+          href='https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,500,600|Fira+Code&display=swap'
         />
       </Head>
       <NProgress color='#fff' spinner={false} />
