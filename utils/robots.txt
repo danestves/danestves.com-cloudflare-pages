@@ -1,3 +1,4 @@
 Sitemap: https://danestves.com/sitemap.xml
 User-agent: *
 Allow: /
+Disallow: /dayairis

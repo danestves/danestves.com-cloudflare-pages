@@ -17,13 +17,6 @@
       "headers": {
         "Content-Type": "text/plain;charset=UTF-8"
       }
-    },
-    {
-      "src": "^/sitemap.xml$",
-      "dest": "/utils/sitemap.xml",
-      "headers": {
-        "Content-Type": "text/xml;charset=UTF-8"
-      }
     }
   ],
   "builds": [
@@ -33,10 +26,6 @@
     },
     {
       "src": "utils/robots.txt",
-      "use": "@now/static"
-    },
-    {
-      "src": "utils/sitemap.xml",
       "use": "@now/static"
     }
   ],
