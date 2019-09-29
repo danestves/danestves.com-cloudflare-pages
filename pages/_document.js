@@ -66,8 +66,21 @@ var disqus_config = function () {
               `
             }}
           />
-          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <noscript>
+            Please enable JavaScript to view the{' '}
+            <a href='https://disqus.com/?ref_noscript' rel='nofollow'>
+              comments powered by Disqus.
+            </a>
+          </noscript>
           <NextScript />
+          <script
+            type='text/javascript'
+            dangerouslySetInnerHTML={{
+              __html: `
+window.$crisp=[];window.CRISP_WEBSITE_ID="d478fe87-1333-4a2d-834c-5908620fa639";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+            `
+            }}
+          />
         </body>
       </html>
     )
