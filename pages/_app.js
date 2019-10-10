@@ -176,6 +176,17 @@ function AppWrapper({ graphql, children }) {
           href='https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,500,600|Fira+Code&display=swap'
         />
         <script data-ad-client="ca-pub-7198929108201296" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script
+          type='text/javascript'
+          dangerouslySetInnerHTML={{
+            __html: `
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "pub-7198929108201296",
+enable_page_level_ads: true
+});
+              `
+            }}
+        />
       </Head>
       <NProgress color='#fff' spinner={false} />
       <GraphQLProvider graphql={graphql}>
