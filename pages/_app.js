@@ -175,6 +175,7 @@ function AppWrapper({ graphql, children }) {
           rel='stylesheet'
           href='https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,500,600|Fira+Code&display=swap'
         />
+        <script data-ad-client="ca-pub-7198929108201296" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       </Head>
       <NProgress color='#fff' spinner={false} />
       <GraphQLProvider graphql={graphql}>
