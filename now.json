@@ -17,6 +17,13 @@
       "headers": {
         "Content-Type": "text/plain;charset=UTF-8"
       }
+    },
+    {
+      "src": "^/ads.txt$",
+      "dest": "/utils/ads.txt",
+      "headers": {
+        "Content-Type": "text/plain;charset=UTF-8"
+      }
     }
   ],
   "builds": [
