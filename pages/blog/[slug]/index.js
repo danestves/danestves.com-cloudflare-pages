@@ -186,6 +186,7 @@ export default () => {
             </Typography>
           </div>
         </div>
+
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
@@ -193,10 +194,10 @@ export default () => {
         <ins
           className="adsbygoogle"
           style={{ display: "block" }}
-          data-ad-format="fluid"
-          data-ad-layout-key="-gu-18+5g-2f-83"
           data-ad-client="ca-pub-7198929108201296"
-          data-ad-slot="5646374893"
+          data-ad-slot="2462163573"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
         ></ins>
         <script
           dangerouslySetInnerHTML={{
@@ -205,6 +206,7 @@ export default () => {
           `
           }}
         />
+
         <Markdown
           className="markdown-content"
           source={blog.content}
