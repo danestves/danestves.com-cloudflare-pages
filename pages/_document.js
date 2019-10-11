@@ -10,33 +10,26 @@ class MyDocument extends Document {
         <Head>
           <Manifest href="/static/manifest.json" themeColor="#0090da" />
           <script
-            async
-            src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
-          <script
             dangerouslySetInnerHTML={{
               __html: `
-(adsbygoogle = window.adsbygoogle || []).push({});    
-            `
-            }}
-          />
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-138339985-1"
-          ></script>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'UA-138339985-1');
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TVDJW37');
             `
             }}
           />
         </Head>
         <body>
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-TVDJW37"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            ></iframe>
+          </noscript>
           <Main />
           <script
             type="application/ld+json"
