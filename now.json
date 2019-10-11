@@ -34,6 +34,10 @@
     {
       "src": "utils/robots.txt",
       "use": "@now/static"
+    },
+    {
+      "src": "utils/ads.txt",
+      "use": "@now/static"
     }
   ],
   "build": {
