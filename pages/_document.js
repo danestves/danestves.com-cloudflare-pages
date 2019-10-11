@@ -1,19 +1,45 @@
-import React from 'react'
-import Document, { Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheets } from '@material-ui/styles'
-import Manifest from 'next-manifest/manifest'
+import React from "react";
+import Document, { Head, Main, NextScript } from "next/document";
+import { ServerStyleSheets } from "@material-ui/styles";
+import Manifest from "next-manifest/manifest";
 
 class MyDocument extends Document {
   render() {
     return (
-      <html lang='es' prefix='og: http://ogp.me/ns#'>
+      <html lang="es" prefix="og: http://ogp.me/ns#">
         <Head>
-          <Manifest href='/static/manifest.json' themeColor='#0090da' />
+          <Manifest href="/static/manifest.json" themeColor="#0090da" />
+          <script
+            async
+            src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+(adsbygoogle = window.adsbygoogle || []).push({});    
+            `
+            }}
+          />
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-138339985-1"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-138339985-1');
+            `
+            }}
+          />
         </Head>
         <body>
           <Main />
           <script
-            type='application/ld+json'
+            type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: `
 {
@@ -40,7 +66,7 @@ class MyDocument extends Document {
             }}
           />
           <script
-            type='text/javascript'
+            type="text/javascript"
             dangerouslySetInnerHTML={{
               __html: `
 /**
@@ -67,14 +93,14 @@ var disqus_config = function () {
             }}
           />
           <noscript>
-            Please enable JavaScript to view the{' '}
-            <a href='https://disqus.com/?ref_noscript' rel='nofollow'>
+            Please enable JavaScript to view the{" "}
+            <a href="https://disqus.com/?ref_noscript" rel="nofollow">
               comments powered by Disqus.
             </a>
           </noscript>
           <NextScript />
           <script
-            type='text/javascript'
+            type="text/javascript"
             dangerouslySetInnerHTML={{
               __html: `
 window.$crisp=[];window.CRISP_WEBSITE_ID="d478fe87-1333-4a2d-834c-5908620fa639";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
@@ -83,33 +109,33 @@ window.$crisp=[];window.CRISP_WEBSITE_ID="d478fe87-1333-4a2d-834c-5908620fa639";
           />
         </body>
       </html>
-    )
+    );
   }
 }
 
 MyDocument.getInitialProps = async ctx => {
-  const sheets = new ServerStyleSheets()
-  const originalRenderPage = ctx.renderPage
+  const sheets = new ServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
 
-  const css = sheets.toString()
+  const css = sheets.toString();
 
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: App => props => sheets.collect(<App {...props} />)
-    })
+    });
 
-  const initialProps = await Document.getInitialProps(ctx)
+  const initialProps = await Document.getInitialProps(ctx);
 
   return {
     ...initialProps,
     styles: (
       <style
-        id='jss-server-side'
+        id="jss-server-side"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: css }}
       />
     )
-  }
-}
+  };
+};
 
-export default MyDocument
+export default MyDocument;
