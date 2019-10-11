@@ -192,11 +192,11 @@ export default () => {
         ></script>
         <ins
           className="adsbygoogle"
-          style={{ display: "block" }}
+          style={{ display: "block", textAlign: "center" }}
+          data-ad-layout="in-article"
           data-ad-format="fluid"
-          data-ad-layout-key="-gu-18+5g-2f-83"
           data-ad-client="ca-pub-7198929108201296"
-          data-ad-slot="5646374893"
+          data-ad-slot="5818938746"
         ></ins>
         <script
           dangerouslySetInnerHTML={{
