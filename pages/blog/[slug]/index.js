@@ -186,14 +186,25 @@ export default () => {
             </Typography>
           </div>
         </div>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
         <ins
           className="adsbygoogle"
-          style={{ display: "block", textAlign: "center" }}
-          data-ad-layout="in-article"
+          style={{ display: "block" }}
           data-ad-format="fluid"
+          data-ad-layout-key="-gu-18+5g-2f-83"
           data-ad-client="ca-pub-7198929108201296"
-          data-ad-slot="5818938746"
+          data-ad-slot="5646374893"
         ></ins>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(adsbygoogle = window.adsbygoogle || []).push({}); 
+          `
+          }}
+        />
         <Markdown
           className="markdown-content"
           source={blog.content}
