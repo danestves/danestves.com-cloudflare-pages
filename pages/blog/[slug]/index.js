@@ -203,8 +203,7 @@ export default () => {
           dangerouslySetInnerHTML={{
             __html: `
 (adsbygoogle = window.adsbygoogle || []).push({
-  google_ad_client: "pub-7198929108201296",
-  enable_page_level_ads: true
+  google_ad_client: "pub-7198929108201296"
 }); 
           `
           }}
