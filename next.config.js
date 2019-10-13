@@ -93,6 +93,20 @@ module.exports = withPlugins(
       offlineGoogleAnalytics: true,
       runtimeCaching: [
         {
+          urlPattern: /^https?:\/\/api.danestves.com\/graphql\/.*/,
+          handler: "StaleWhileRevalidate"
+        },
+        {
+          urlPattern: /^https:\/\/fonts.(?:googleapis|gstatic).com\/(.*)/,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "google-fonts",
+            expiration: {
+              maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
+            }
+          }
+        },
+        {
           urlPattern: /\.(?:js|css|html)$/,
           handler: "NetworkFirst"
         },
