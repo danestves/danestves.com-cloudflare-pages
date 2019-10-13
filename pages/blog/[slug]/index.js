@@ -100,11 +100,6 @@ export default () => {
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
   const blog = data && data.blogs[0];
 
-  useEffect(() => {
-    window.urlDisqus = `https://danielestves.com/blog/${slug}`;
-    window.identifierDisqus = blog.id;
-  }, [blog]);
-
   return data ? (
     <>
       <Head>
@@ -187,64 +182,12 @@ export default () => {
           </div>
         </div>
 
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        ></script>
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-7198929108201296"
-          data-ad-slot="2462163573"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-(adsbygoogle = window.adsbygoogle || []).push({
-  google_ad_client: "pub-7198929108201296"
-}); 
-          `
-          }}
-        />
-
         <Markdown
           className="markdown-content"
           source={blog.content}
           renderers={markdownRenderers}
           escapeHtml={false}
         />
-
-        <div id="disqus_thread" />
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-var urlDisqus;
-var identifierDisqus;
-var disqus_config = function () {
-    this.page.url = urlDisqus;
-    this.page.identifier = identifierDisqus;
-};
-
-(function() {
-    var d = document, s = d.createElement('script');
-    
-    s.src = 'https://daniel-esteves.disqus.com/embed.js';
-    
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();
-              `
-          }}
-        />
-        <noscript>
-          Please enable JavaScript to view the{" "}
-          <a href="https://disqus.com/?ref_noscript" rel="nofollow">
-            comments powered by Disqus.
-          </a>
-        </noscript>
 
         <Fab
           onClick={() => webShareAPI()}
