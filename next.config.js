@@ -93,6 +93,10 @@ module.exports = withPlugins(
       offlineGoogleAnalytics: true,
       runtimeCaching: [
         {
+          urlPattern: /\.(?:js|css|html)$/,
+          handler: "NetworkFirst"
+        },
+        {
           urlPattern: /^https?./,
           handler: "NetworkFirst",
           options: {
