@@ -1,6 +1,6 @@
-import React, { createRef, useState, useRef, useEffect } from 'react'
-import Head from 'next/head'
-import ReCAPTCHA from 'react-google-recaptcha'
+import React, { createRef, useState, useRef, useEffect } from "react";
+import Head from "next/head";
+import ReCAPTCHA from "react-google-recaptcha";
 import {
   makeStyles,
   Grid,
@@ -12,160 +12,160 @@ import {
   OutlinedInput,
   Typography,
   Button
-} from '@material-ui/core'
-import axios from 'axios'
-import { window } from 'browser-monads'
-import { Hero, Snackbar } from '../components'
-import { KEYWORDS } from '../constants'
-import styles from '../styles/pages/contact'
+} from "@material-ui/core";
+import axios from "axios";
+import { window } from "browser-monads";
+import { Hero, Snackbar } from "../components";
+import { KEYWORDS } from "../constants";
+import styles from "../styles/pages/contact";
 
-const useStyles = makeStyles(styles)
-const ReCAPTCHARef = createRef()
+const useStyles = makeStyles(styles);
+const ReCAPTCHARef = createRef();
 const config = {
   headers: {
-    'Content-Type': 'application/json'
+    "Content-Type": "application/json"
   }
-}
+};
 
 export default () => {
-  const inputLabel = useRef(null)
-  const [labelWidth, setLabelWidth] = useState(0)
-  const [open, setOpen] = useState(false)
+  const inputLabel = useRef(null);
+  const [labelWidth, setLabelWidth] = useState(0);
+  const [open, setOpen] = useState(false);
   const [inputs, setInputs] = useState({
-    name: '',
-    email: '',
-    subject: ' ',
-    message: ''
-  })
+    name: "",
+    email: "",
+    subject: " ",
+    message: ""
+  });
 
   useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth)
-  }, [])
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
 
   const handleChange = e => {
-    e.persist()
-    setInputs(inputs => ({ ...inputs, [e.target.name]: e.target.value }))
-  }
+    e.persist();
+    setInputs(inputs => ({ ...inputs, [e.target.name]: e.target.value }));
+  };
 
   const handleSubmit = async e => {
-    e.preventDefault()
+    e.preventDefault();
 
-    await ReCAPTCHARef.current.execute()
+    await ReCAPTCHARef.current.execute();
     await axios
       .post(
-        'https://email.danestves.com',
+        "https://email-server.danestves.now.sh/",
         {
           ...inputs
         },
         config
       )
       .then(res => {
-        setOpen(true)
+        setOpen(true);
         setTimeout(() => {
-          window.location.reload()
-        }, 4000)
+          window.location.reload();
+        }, 4000);
       })
-      .catch(error => console.log(error))
-  }
+      .catch(error => console.log(error));
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
-  const classes = useStyles()
-  const { name, email, subject, message } = inputs
+  const classes = useStyles();
+  const { name, email, subject, message } = inputs;
   const isValidated =
     name.length > 0 &&
     email.length > 0 &&
     subject.length > 3 &&
-    message.length > 0
+    message.length > 0;
 
   return (
     <>
       <Head>
         <title>Contacto | Daniel Esteves - Desarrollador Web Frontend</title>
         <meta
-          name='description'
-          content='Contacto de Daniel Esteves. Escríbeme para ejecutar tus más deseados proyectos de la mano de un profesional en el desarrollo web frontend. Responderé todas tus inquietudes lo más rápido posible.'
-          key='description'
+          name="description"
+          content="Contacto de Daniel Esteves. Escríbeme para ejecutar tus más deseados proyectos de la mano de un profesional en el desarrollo web frontend. Responderé todas tus inquietudes lo más rápido posible."
+          key="description"
         />
         <meta
-          name='keywords'
+          name="keywords"
           content={`Contacto, contacto de daniel esteves, contacto de danestves, ${KEYWORDS}`}
-          key='keywords'
+          key="keywords"
         />
         <meta
-          property='og:title'
-          content='Contacto | Daniel Esteves - Desarrollador Web Frontend'
-          key='og:title'
+          property="og:title"
+          content="Contacto | Daniel Esteves - Desarrollador Web Frontend"
+          key="og:title"
         />
         <meta
-          property='og:description'
-          content='Contacto de Daniel Esteves. Escríbeme para ejecutar tus más deseados proyectos de la mano de un profesional en el desarrollo web frontend. Responderé todas tus inquietudes lo más rápido posible.'
-          key='og:description'
+          property="og:description"
+          content="Contacto de Daniel Esteves. Escríbeme para ejecutar tus más deseados proyectos de la mano de un profesional en el desarrollo web frontend. Responderé todas tus inquietudes lo más rápido posible."
+          key="og:description"
         />
         <meta
-          name='twitter:title'
-          content='Contacto | Daniel Esteves - Desarrollador Web Frontend'
-          key='twitter:title'
+          name="twitter:title"
+          content="Contacto | Daniel Esteves - Desarrollador Web Frontend"
+          key="twitter:title"
         />
         <meta
-          name='twitter:description'
-          content='Contacto de Daniel Esteves. Escríbeme para ejecutar tus más deseados proyectos de la mano de un profesional en el desarrollo web frontend. Responderé todas tus inquietudes lo más rápido posible.'
-          key='twitter:description'
+          name="twitter:description"
+          content="Contacto de Daniel Esteves. Escríbeme para ejecutar tus más deseados proyectos de la mano de un profesional en el desarrollo web frontend. Responderé todas tus inquietudes lo más rápido posible."
+          key="twitter:description"
         />
         <meta
-          name='twitter:image:alt'
-          content='Contacto | Daniel Esteves - Desarrollador Web Frontend'
-          key='twitter:image:alt'
+          name="twitter:image:alt"
+          content="Contacto | Daniel Esteves - Desarrollador Web Frontend"
+          key="twitter:image:alt"
         />
       </Head>
-      <Hero img='/static/contact.jpg' title='Contacto' />
+      <Hero img="/static/contact.jpg" title="Contacto" />
       <Snackbar
         open={open}
         handleClose={handleClose}
-        message='Su mensaje ha sido enviado con éxito.'
-        variant='success'
+        message="Su mensaje ha sido enviado con éxito."
+        variant="success"
       />
       <div className={classes.container}>
-        <Grid container justify='center' spacing={2}>
+        <Grid container justify="center" spacing={2}>
           <Grid item xs={12}>
             <form
-              name='contact'
+              name="contact"
               onSubmit={handleSubmit}
               className={classes.form}
             >
               <TextField
-                label='Nombre'
-                name='name'
-                autoComplete='name'
-                margin='normal'
-                variant='outlined'
+                label="Nombre"
+                name="name"
+                autoComplete="name"
+                margin="normal"
+                variant="outlined"
                 onChange={handleChange}
                 fullWidth
                 required
               />
 
               <TextField
-                label='Correo'
-                type='email'
-                name='email'
-                autoComplete='email'
-                margin='normal'
-                variant='outlined'
+                label="Correo"
+                type="email"
+                name="email"
+                autoComplete="email"
+                margin="normal"
+                variant="outlined"
                 onChange={handleChange}
                 fullWidth
                 required
               />
 
               <FormControl
-                variant='outlined'
+                variant="outlined"
                 className={classes.formControl}
-                margin='normal'
+                margin="normal"
                 fullWidth
                 required
               >
-                <InputLabel ref={inputLabel} htmlFor='subject'>
+                <InputLabel ref={inputLabel} htmlFor="subject">
                   Asunto
                 </InputLabel>
                 <Select
@@ -174,75 +174,75 @@ export default () => {
                   input={
                     <OutlinedInput
                       labelWidth={labelWidth}
-                      name='subject'
-                      id='subject'
+                      name="subject"
+                      id="subject"
                     />
                   }
                   required
                 >
-                  <MenuItem value=' ' disabled selected>
+                  <MenuItem value=" " disabled selected>
                     <span
                       className={classes.defaultValueSelect}
-                      id='helperSelect'
+                      id="helperSelect"
                     >
                       Ninguno
                     </span>
                   </MenuItem>
-                  <MenuItem value='Actualización de sitio'>
+                  <MenuItem value="Actualización de sitio">
                     Actualización de sitio
                   </MenuItem>
-                  <MenuItem value='Consulta'>Consulta</MenuItem>
-                  <MenuItem value='Cotización'>Cotización</MenuItem>
-                  <MenuItem value='Desarrollo de sitio'>
+                  <MenuItem value="Consulta">Consulta</MenuItem>
+                  <MenuItem value="Cotización">Cotización</MenuItem>
+                  <MenuItem value="Desarrollo de sitio">
                     Desarrollo de sitio
                   </MenuItem>
-                  <MenuItem value='Desarrollo de tema en WordPress'>
+                  <MenuItem value="Desarrollo de tema en WordPress">
                     Desarrollo de tema en WordPress
                   </MenuItem>
-                  <MenuItem value='Desarrollo de sitio con Gatsby'>
+                  <MenuItem value="Desarrollo de sitio con Gatsby">
                     Desarrollo de sitio con Gatsby
                   </MenuItem>
                 </Select>
               </FormControl>
 
               <TextField
-                label='Mensaje'
-                name='message'
+                label="Mensaje"
+                name="message"
                 multiline
-                margin='normal'
-                variant='outlined'
+                margin="normal"
+                variant="outlined"
                 onChange={handleChange}
                 fullWidth
-                rows='4'
+                rows="4"
                 required
               />
               <Typography
-                variant='caption'
-                component='small'
+                variant="caption"
+                component="small"
                 className={classes.helperGoogle}
-                id='helperGoogle'
+                id="helperGoogle"
               >
-                This site is protected by reCAPTCHA and the Google{' '}
-                <a href='https://policies.google.com/privacy'>Privacy Policy</a>{' '}
-                and{' '}
-                <a href='https://policies.google.com/terms'>Terms of Service</a>{' '}
+                This site is protected by reCAPTCHA and the Google{" "}
+                <a href="https://policies.google.com/privacy">Privacy Policy</a>{" "}
+                and{" "}
+                <a href="https://policies.google.com/terms">Terms of Service</a>{" "}
                 apply.
               </Typography>
 
               <ReCAPTCHA
                 sitekey={process.env.RECAPTCHA_SITEKEY}
-                size='invisible'
+                size="invisible"
                 ref={ReCAPTCHARef}
               />
 
               <div className={classes.actionButtons}>
-                <Button variant='outlined' color='primary' type='reset'>
+                <Button variant="outlined" color="primary" type="reset">
                   Limpiar
                 </Button>
                 <Button
-                  variant='contained'
-                  color='primary'
-                  type='submit'
+                  variant="contained"
+                  color="primary"
+                  type="submit"
                   disabled={!isValidated}
                 >
                   Enviar
@@ -253,5 +253,5 @@ export default () => {
         </Grid>
       </div>
     </>
-  )
-}
+  );
+};
