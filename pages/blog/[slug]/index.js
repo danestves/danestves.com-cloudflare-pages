@@ -147,7 +147,7 @@ export default () => {
         />
       </Head>
       <HeroBlogpost img={blog.cover.url} title={blog.title} />
-      <div className={classes.container}>
+      <div className="container">
         <div className={classes.metadataBlogpost}>
           {blog.tags && blog.tags.length ? (
             <div className={classes.containerTags}>

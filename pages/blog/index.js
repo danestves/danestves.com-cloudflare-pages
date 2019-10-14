@@ -54,7 +54,7 @@ export default () => {
       </Head>
       <Hero img='/static/blog.jpg' title='Blog' />
       {data ? (
-        <div className={classes.container}>
+        <div className="container">
           <div className={classes.blogRoll}>
             <BlogRoll blogs={data.blogs} />
           </div>

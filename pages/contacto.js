@@ -127,7 +127,7 @@ export default () => {
         message="Su mensaje ha sido enviado con éxito."
         variant="success"
       />
-      <div className={classes.container}>
+      <div className="container">
         <Grid container justify="center" spacing={2}>
           <Grid item xs={12}>
             <form

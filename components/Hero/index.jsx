@@ -1,12 +1,12 @@
-import React from 'react'
-import { Typography, makeStyles } from '@material-ui/core'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import styles from '../../styles/components/hero'
+import React from "react";
+import { Typography, makeStyles } from "@material-ui/core";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import styles from "../../styles/components/hero";
 
-const useStyles = makeStyles(styles)
+const useStyles = makeStyles(styles);
 
-export default function Hero ({ title, img }) {
-  const classes = useStyles()
+export default function Hero({ title, img }) {
+  const classes = useStyles();
 
   return (
     <div className={classes.container}>
@@ -14,11 +14,11 @@ export default function Hero ({ title, img }) {
         src={img}
         alt={`${title} | Daniel Esteves - @danestves`}
         className={classes.img}
-        effect='blur'
+        effect="blur"
       />
-      <Typography component='h1' className={classes.title}>
+      <Typography component="h1" className={classes.title}>
         {title}
       </Typography>
     </div>
-  )
+  );
 }

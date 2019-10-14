@@ -7,7 +7,7 @@ export default () => {
   const classes = useStyles()
 
   return (
-    <div className={classes.container}>
+    <div className="container">
       <Typography variant='h5' align='center' className={classes.title}>
         Hola amor 🥰, tal vez te estés preguntando{' '}
         <b>

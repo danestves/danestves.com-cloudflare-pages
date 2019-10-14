@@ -28,7 +28,6 @@
     "prism-react-renderer": "^0.1.7",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
-    "react-animated-slider": "^1.1.4",
     "react-dom": "^16.9.0",
     "react-google-recaptcha": "^2.0.0-rc.1",
     "react-helmet": "^5.2.1",

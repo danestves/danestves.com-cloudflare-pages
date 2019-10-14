@@ -1,19 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { Grid, Paper, Typography, makeStyles } from '@material-ui/core'
-import styles from '../../styles/components/home'
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { Grid, Paper, Typography, makeStyles } from "@material-ui/core";
+import styles from "../../styles/components/home";
 
-const useStyles = makeStyles(styles)
+const useStyles = makeStyles(styles);
 
-export default function Skills ({ skills }) {
-  const classes = useStyles()
+export default function Skills({ skills }) {
+  const classes = useStyles();
 
   return (
-    <Grid
-      container
-      spacing={2}
-    >
+    <Grid container spacing={2}>
       {skills.map(skill => (
         <Grid
           item
@@ -22,7 +19,6 @@ export default function Skills ({ skills }) {
           md={4}
           key={skill.title}
           className={classes.skill}
-          data-aos='fade-in'
         >
           <Paper className={classes.skillBoxContainer}>
             <i
@@ -39,7 +35,7 @@ export default function Skills ({ skills }) {
         </Grid>
       ))}
     </Grid>
-  )
+  );
 }
 
 Skills.propTypes = {
@@ -50,4 +46,4 @@ Skills.propTypes = {
       content: PropTypes.string
     })
   )
-}
+};

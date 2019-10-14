@@ -95,7 +95,7 @@ export default function Certifications() {
       {loading ? (
         <Loading />
       ) : courses && careers ? (
-        <div className={classes.container}>
+        <div className="container">
           <Grid
             container
             spacing={2}
