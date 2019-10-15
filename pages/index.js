@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Button, makeStyles, Grid } from "@material-ui/core";
-import { Link, Skills, Loading } from "../components";
+import { Link, Skills, Loading, Dialog } from "../components";
 import styles from "../styles/pages/home";
 import { getSkills } from "../graphql";
 
@@ -9,6 +9,16 @@ const useStyles = makeStyles(styles);
 export default function Index() {
   const classes = useStyles();
   const { loading, data: skills } = getSkills();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <div className={classes.bannerContainer}>
@@ -126,7 +136,12 @@ export default function Index() {
               <li className="pricing-features-item">incluye blog</li>
               <li className="pricing-features-item">formulario de contacto</li>
             </ul>
-            <Button variant="outlined" color="primary" size="large">
+            <Button
+              variant="outlined"
+              color="primary"
+              size="large"
+              onClick={handleClickOpen}
+            >
               más información
             </Button>
           </div>
@@ -149,7 +164,12 @@ export default function Index() {
               <li className="pricing-features-item">incluye blog</li>
               <li className="pricing-features-item">formulario de contacto</li>
             </ul>
-            <Button variant="contained" color="primary" size="large">
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              onClick={handleClickOpen}
+            >
               más información
             </Button>
           </div>
@@ -175,11 +195,17 @@ export default function Index() {
               <li className="pricing-features-item">incluye blog</li>
               <li className="pricing-features-item">formulario de contacto</li>
             </ul>
-            <Button variant="outlined" color="primary" size="large">
+            <Button
+              variant="outlined"
+              color="primary"
+              size="large"
+              onClick={handleClickOpen}
+            >
               más información
             </Button>
           </div>
         </div>
+        <Dialog open={open} handleClose={handleClose} />
       </div>
     </>
   );

@@ -1,20 +1,21 @@
-export { default as Loading } from './Loading'
-export { default as Navbar } from './Navbar'
-export { default as Hero } from './Hero'
-export { default as Slider } from './Home/Slider'
-export { default as Skills } from './Home/Skills'
-export { default as Timeline } from './Curriculum/Timeline'
-export { default as Career } from './Certifications/Career'
-export { default as Course } from './Certifications/Course'
-export { default as PortfolioRoll } from './Portfolio/Roll'
-export { default as HeroBlogpost } from './Blog/Hero'
-export { default as BlogRoll } from './Blog/Roll'
-export { default as Image } from './Markdown/Image'
-export { default as Paragraph } from './Markdown/Paragraph'
-export { default as InlineCode } from './Markdown/InlineCode'
-export { default as CodeBlock } from './Markdown/CodeBlock'
-export { default as MarkdownLink } from './Markdown/Link'
-export { default as Link } from './Link'
-export { default as Snackbar } from './Snackbar'
+export { default as Loading } from "./Loading";
+export { default as Navbar } from "./Navbar";
+export { default as Hero } from "./Hero";
+export { default as Slider } from "./Home/Slider";
+export { default as Skills } from "./Home/Skills";
+export { default as Dialog } from "./Home/Dialog";
+export { default as Timeline } from "./Curriculum/Timeline";
+export { default as Career } from "./Certifications/Career";
+export { default as Course } from "./Certifications/Course";
+export { default as PortfolioRoll } from "./Portfolio/Roll";
+export { default as HeroBlogpost } from "./Blog/Hero";
+export { default as BlogRoll } from "./Blog/Roll";
+export { default as Image } from "./Markdown/Image";
+export { default as Paragraph } from "./Markdown/Paragraph";
+export { default as InlineCode } from "./Markdown/InlineCode";
+export { default as CodeBlock } from "./Markdown/CodeBlock";
+export { default as MarkdownLink } from "./Markdown/Link";
+export { default as Link } from "./Link";
+export { default as Snackbar } from "./Snackbar";
 
-export * from './ThemeContext'
+export * from "./ThemeContext";

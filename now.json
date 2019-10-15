@@ -47,7 +47,8 @@
       "GITHUB_API_URL": "@danestves-gau",
       "API_URL": "@danestves-au",
       "RECAPTCHA_SITEKEY": "@danestves-rs",
-      "DISQUS_SHORTNAME": "@danestves-ds"
+      "SENDGRID_API_KEY": "@danestves-sak",
+      "EMAIL": "@danestves-email"
     }
   }
 }
