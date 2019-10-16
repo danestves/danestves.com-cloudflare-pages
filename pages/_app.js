@@ -15,14 +15,6 @@ import { KEYWORDS } from "../constants";
 import "../styles/styles.scss";
 
 function AppWrapper({ graphql, children }) {
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles.parentNode.removeChild(jssStyles);
-    }
-  }, []);
-
   const router = useRouter();
 
   return (
@@ -178,7 +170,7 @@ function AppWrapper({ graphql, children }) {
       </Head>
       <NProgress color="#fff" spinner={false} />
       <GraphQLProvider graphql={graphql}>
-        <StylesProvider injectFirst>
+        <StylesProvider>
           <ThemeProvider>
             <CssBaseline />
             <Navbar />
