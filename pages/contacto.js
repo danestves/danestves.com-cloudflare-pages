@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import { window } from "browser-monads";
+import nprogress from "nprogress";
 import { Hero, Snackbar } from "../components";
 import { KEYWORDS } from "../constants";
 import styles from "../styles/pages/contact";
@@ -49,17 +50,19 @@ export default () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    nprogress.start();
 
     await ReCAPTCHARef.current.execute();
     await axios
       .post(
-        "https://email-server.danestves.now.sh/",
+        "/api/contact",
         {
           ...inputs
         },
         config
       )
       .then(res => {
+        nprogress.done();
         setOpen(true);
         setTimeout(() => {
           window.location.reload();

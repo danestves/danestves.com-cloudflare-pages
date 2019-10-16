@@ -9,7 +9,7 @@ export default async function(req, res) {
     to: process.env.EMAIL,
     from: email,
     replyTo: email,
-    subject: `Información de Planes - ${name}`,
+    subject: `Contacto - ${name}`,
     text: message,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html style="width:100%;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0;">
@@ -162,7 +162,7 @@ export default async function(req, res) {
                          <tr style="border-collapse:collapse;"> 
                           <td align="left" style="padding:0;Margin:0;"> 
                             <h3>Nombre: <span style="font-weight: 400;">${name}</span></h3>
-                            <h3>Plan: <span style="font-weight: 400;">${subject}</span></h3>
+                            <h3>Asunto: <span style="font-weight: 400;">${subject}</span></h3>
                             <h3>Mensaje: <span style="font-weight: 400;">${message}</span></h3>
                           </td> 
                          </tr> 

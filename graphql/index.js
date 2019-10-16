@@ -1,9 +1,9 @@
-import { useGraphQL } from 'graphql-react'
+import { useGraphQL } from "graphql-react";
 
 export function getSkills() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`
+      options.url = `${process.env.API_URL}`;
     },
     operation: {
       query: `
@@ -16,19 +16,19 @@ export function getSkills() {
         }
       `
     }
-  })
+  });
 
   return {
     loading,
     data,
     ...errors
-  }
+  };
 }
 
 export function getEducationsAndExperiences() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`
+      options.url = `${process.env.API_URL}`;
     },
     operation: {
       query: `
@@ -40,7 +40,7 @@ export function getEducationsAndExperiences() {
             date
             finished
           }
-          experiences {
+          experiences(sort: "date:desc") {
             title
             subtitle
             content
@@ -50,22 +50,22 @@ export function getEducationsAndExperiences() {
         }
       `
     }
-  })
+  });
 
   return {
     loading,
     data,
     ...errors
-  }
+  };
 }
 
 export function getGitHubRepositories() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.GITHUB_API_URL}`
+      options.url = `${process.env.GITHUB_API_URL}`;
       options.headers = {
         Authorization: `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`
-      }
+      };
     },
     operation: {
       query: `
@@ -86,24 +86,24 @@ export function getGitHubRepositories() {
         }
       `
     }
-  })
+  });
 
   return {
     loading,
     data,
     ...errors
-  }
+  };
 }
 
 export function getPortfolios(page) {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`
+      options.url = `${process.env.API_URL}`;
     },
     operation: {
       query: `
         {
-          portfolios {
+          portfolios(sort: "title:asc") {
             id
             slug
             title
@@ -117,19 +117,19 @@ export function getPortfolios(page) {
         }
       `
     }
-  })
+  });
 
   return {
     loading,
     data,
     ...errors
-  }
+  };
 }
 
 export function getSinglePortfolio(slug) {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`
+      options.url = `${process.env.API_URL}`;
     },
     operation: {
       query: `
@@ -155,19 +155,19 @@ export function getSinglePortfolio(slug) {
         }
       `
     }
-  })
+  });
 
   return {
     loading,
     data,
     ...errors
-  }
+  };
 }
 
 export function getBlogs() {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`
+      options.url = `${process.env.API_URL}`;
     },
     operation: {
       query: `
@@ -185,19 +185,19 @@ export function getBlogs() {
         }
       `
     }
-  })
+  });
 
   return {
     loading,
     data,
     ...errors
-  }
+  };
 }
 
 export function getSingleBlog(slug) {
   const { loading, cacheValue: { data, ...errors } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = `${process.env.API_URL}`
+      options.url = `${process.env.API_URL}`;
     },
     operation: {
       query: `
@@ -220,11 +220,11 @@ export function getSingleBlog(slug) {
         }
       `
     }
-  })
+  });
 
   return {
     loading,
     data,
     ...errors
-  }
+  };
 }

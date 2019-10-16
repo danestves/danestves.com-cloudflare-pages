@@ -10,7 +10,7 @@ const withManifest = require("next-manifest");
 require("dotenv").config();
 
 const defaults = {
-  output: "./static/",
+  output: "./public/static/",
   name: "Daniel Esteves - Desarrollador Web Frontend",
   short_name: "Daniel E.",
   theme_color: "#0090DA",

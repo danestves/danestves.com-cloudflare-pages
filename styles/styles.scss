@@ -102,32 +102,6 @@ ul {
   }
 }
 
-.pricing-button {
-  border: 1px solid #9dd1ff;
-  border-radius: 10px;
-  color: #348efe;
-  display: inline-block;
-  margin: 25px 0;
-  padding: 15px 35px;
-  text-decoration: none;
-  transition: all 150ms ease-in-out;
-
-  &:hover,
-  &:focus {
-    background-color: #e1f1ff;
-  }
-}
-
-.pricing-button.is-featured {
-  background-color: #48aaff;
-  color: #fff;
-
-  &:hover,
-  &:focus {
-    background-color: #269aff;
-  }
-}
-
 @media (min-width: 600px) {
   body {
     padding-top: 64px;

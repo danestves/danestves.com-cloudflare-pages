@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import { Typography, Button, makeStyles, Grid } from "@material-ui/core";
-import { Link, Skills, Loading, Dialog } from "../components";
+import clsx from "clsx";
+import ReCAPTCHA from "react-google-recaptcha";
+import axios from "axios";
+import nprogress from "nprogress";
+import { Link, Skills, Loading, Dialog, Snackbar } from "../components";
 import styles from "../styles/pages/home";
 import { getSkills } from "../graphql";
 
 const useStyles = makeStyles(styles);
+const config = {
+  headers: {
+    "Content-Type": "application/json"
+  }
+};
+const ReCAPTCHARef = createRef();
 
 export default function Index() {
   const classes = useStyles();
   const { loading, data: skills } = getSkills();
   const [open, setOpen] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    subject: " ",
+    message: ""
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -19,8 +36,49 @@ export default function Index() {
     setOpen(false);
   };
 
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+
+  const handleChange = e => {
+    e.persist();
+    setInputs(inputs => ({ ...inputs, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    nprogress.start();
+
+    await ReCAPTCHARef.current.execute();
+    await axios
+      .post(
+        "/api/cotization",
+        {
+          ...inputs
+        },
+        config
+      )
+      .then(res => {
+        nprogress.done();
+        setOpenSnackbar(true);
+        setOpen(false);
+      })
+      .catch(error => {
+        nprogress.start();
+        console.log(error);
+      });
+  };
+
+  const { name, email, subject, message } = inputs;
+
   return (
     <>
+      <Snackbar
+        open={openSnackbar}
+        handleClose={handleCloseSnackbar}
+        message="Su mensaje ha sido enviado con éxito."
+        variant="success"
+      />
       <div className={classes.bannerContainer}>
         <Grid container alignItems="center">
           <Grid item xs={12} sm={6}>
@@ -111,10 +169,10 @@ export default function Index() {
           align="center"
           className={classes.titlePricing}
         >
-          Hice unos planes especiales para ti que te podrían interesar 🤙
+          Hice unos planes especiales para ti que te podrían interesar 🤘
         </Typography>
 
-        <div className="panel pricing-table">
+        <div className={clsx(classes.panel, classes.pricingTable)}>
           <div className="pricing-plan">
             <img
               src="/static/startup-onepage.png"
@@ -205,7 +263,22 @@ export default function Index() {
             </Button>
           </div>
         </div>
-        <Dialog open={open} handleClose={handleClose} />
+        <Dialog
+          open={open}
+          handleClose={handleClose}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          name={name}
+          email={email}
+          subject={subject}
+          message={message}
+        />
+
+        <ReCAPTCHA
+          sitekey={process.env.RECAPTCHA_SITEKEY}
+          size="invisible"
+          ref={ReCAPTCHARef}
+        />
       </div>
     </>
   );
