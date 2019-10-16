@@ -87,7 +87,7 @@ module.exports = withPlugins(
     ]
   ],
   {
-    target: "serverless",
+    target: "server",
     workboxOpts: {
       swDest: "static/service-worker.js",
       offlineGoogleAnalytics: true,
