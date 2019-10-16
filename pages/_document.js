@@ -10,6 +10,8 @@ class MyDocument extends Document {
         <Head>
           <Manifest href="/static/manifest.json" themeColor="#0090da" />
           <script
+            type="text/javascript"
+            async
             dangerouslySetInnerHTML={{
               __html: `
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -20,6 +22,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             `
             }}
           />
+          <link rel="alternate" hrefLang="es" href="https://danestves.com/" />
+          <link rel="canonical" href="https://danestves.com/" />
+          <link rel="shortcut icon" href="/static/favicons/favicon.ico" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/favicons/apple-icon-180x180.png"
+          />
+          <link
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+            crossOrigin="anonymous"
+          />
+          <style id="insertion-point-jss" />
         </Head>
         <body>
           <noscript>
@@ -61,10 +77,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <NextScript />
           <script
             type="text/javascript"
+            async
             dangerouslySetInnerHTML={{
               __html: `
 window.$crisp=[];window.CRISP_WEBSITE_ID="d478fe87-1333-4a2d-834c-5908620fa639";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
             `
+            }}
+          />
+          <script
+            type="text/javascript"
+            async
+            dangerouslySetInnerHTML={{
+              __html: `
+$crisp.push(["safe", true])
+              `
             }}
           />
         </body>

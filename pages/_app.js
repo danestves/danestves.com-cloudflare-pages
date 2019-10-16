@@ -2,7 +2,7 @@ import "cross-fetch/polyfill";
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
-import { StylesProvider } from "@material-ui/styles";
+import { StylesProvider, jssPreset } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -10,16 +10,38 @@ import NProgress from "nextjs-progressbar";
 import { GraphQLProvider } from "graphql-react";
 import { withGraphQLApp } from "next-graphql-react";
 import { Router as Router2, useRouter } from "next/router";
+import { create } from "jss";
+import rtl from "jss-rtl";
 import { Navbar, ThemeProvider } from "../components";
 import { KEYWORDS } from "../constants";
 import "../styles/styles.scss";
 
+const jss = create({
+  plugins: [...jssPreset().plugins, rtl()],
+  insertionPoint: process.browser
+    ? document.querySelector("#insertion-point-jss")
+    : null
+});
+
 function AppWrapper({ graphql, children }) {
   const router = useRouter();
+
+  let pathname = router.pathname;
+  let fonts = [
+    "https://fonts.googleapis.com/css?family=Open+Sans|Poppins&display=swap"
+  ];
+  if (pathname.match(/blog/)) {
+    fonts = [
+      "https://fonts.googleapis.com/css?family=Open+Sans|Poppins|Fira+Code&display=swap"
+    ];
+  }
 
   return (
     <>
       <Head>
+        {fonts.map(font => (
+          <link rel="stylesheet" href={font} key={font} />
+        ))}
         <meta charSet="utf-8" />
         <meta
           name="viewport"
@@ -34,82 +56,6 @@ function AppWrapper({ graphql, children }) {
         <meta name="keywords" content={KEYWORDS} key="keywords" />
         <meta name="author" content="Daniel Esteves" />
         <meta name="copyright" content="Daniel Esteves" />
-        <link rel="alternate" hrefLang="es" href="https://danestves.com/" />
-        <link rel="canonical" href="https://danestves.com/" />
-        <link
-          rel="apple-touch-icon"
-          sizes="57x57"
-          href="/static/favicons/apple-icon-57x57.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="60x60"
-          href="/static/favicons/apple-icon-60x60.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="72x72"
-          href="/static/favicons/apple-icon-72x72.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="76x76"
-          href="/static/favicons/apple-icon-76x76.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="114x114"
-          href="/static/favicons/apple-icon-114x114.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="120x120"
-          href="/static/favicons/apple-icon-120x120.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="144x144"
-          href="/static/favicons/apple-icon-144x144.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href="/static/favicons/apple-icon-152x152.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/static/favicons/apple-icon-180x180.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-          href="/static/favicons/android-icon-192x192.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/static/favicons/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="/static/favicons/favicon-96x96.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/static/favicons/favicon-16x16.png"
-        />
-        <meta name="msapplication-TileColor" content="#0090da" />
-        <meta
-          name="msapplication-TileImage"
-          content="/static/favicons/ms-icon-144x144.png"
-        />
         {/* Facebook */}
         <meta
           property="og:title"
@@ -163,14 +109,10 @@ function AppWrapper({ graphql, children }) {
         />
         <meta name="msvalidate.01" content="F4F455B991A40467C9C79C17B6AC2894" />
         <meta name="yandex-verification" content="ca013f8e5304f0ad" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,500,600|Fira+Code&display=swap"
-        />
       </Head>
       <NProgress color="#fff" spinner={false} />
       <GraphQLProvider graphql={graphql}>
-        <StylesProvider>
+        <StylesProvider jss={jss}>
           <ThemeProvider>
             <CssBaseline />
             <Navbar />
