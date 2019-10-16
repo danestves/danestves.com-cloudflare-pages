@@ -173,26 +173,28 @@ export default function Index() {
         </Typography>
 
         <div className={clsx(classes.panel, classes.pricingTable)}>
-          <div className="pricing-plan">
+          <div className={classes.pricingPlan}>
             <img
               src="/static/startup-onepage.png"
               alt=""
-              className="pricing-img"
+              className={classes.pricingImg}
             />
-            <h2 className="pricing-header">Startup OnePage</h2>
-            <ul className="pricing-features">
-              <li className="pricing-features-item">
+            <h2 className={classes.pricingHeader}>Startup OnePage</h2>
+            <ul className={classes.pricingFeatures}>
+              <li className={classes.pricingFeaturesItem}>
                 website con la información en una página
               </li>
-              <li className="pricing-features-item">diseño moderno</li>
-              <li className="pricing-features-item">
+              <li className={classes.pricingFeaturesItem}>diseño moderno</li>
+              <li className={classes.pricingFeaturesItem}>
                 imágenes de ejemplo incluidas
               </li>
-              <li className="pricing-features-item">
+              <li className={classes.pricingFeaturesItem}>
                 diseño adaptable a todos los dispositivos
               </li>
-              <li className="pricing-features-item">incluye blog</li>
-              <li className="pricing-features-item">formulario de contacto</li>
+              <li className={classes.pricingFeaturesItem}>incluye blog</li>
+              <li className={classes.pricingFeaturesItem}>
+                formulario de contacto
+              </li>
             </ul>
             <Button
               variant="outlined"
@@ -204,23 +206,29 @@ export default function Index() {
             </Button>
           </div>
 
-          <div className="pricing-plan">
-            <img src="/static/startup.png" alt="" className="pricing-img" />
-            <h2 className="pricing-header">Startup</h2>
-            <ul className="pricing-features">
-              <li className="pricing-features-item">
+          <div className={classes.pricingPlan}>
+            <img
+              src="/static/startup.png"
+              alt=""
+              className={classes.pricingImg}
+            />
+            <h2 className={classes.pricingHeader}>Startup</h2>
+            <ul className={classes.pricingFeatures}>
+              <li className={classes.pricingFeaturesItem}>
                 website con hasta cinco pestañas (Ej: Inicio, Sobre, Servicios,
                 Blog, Contacto)
               </li>
-              <li className="pricing-features-item">diseño moderno</li>
-              <li className="pricing-features-item">
+              <li className={classes.pricingFeaturesItem}>diseño moderno</li>
+              <li className={classes.pricingFeaturesItem}>
                 imágenes de ejemplo incluidas
               </li>
-              <li className="pricing-features-item">
+              <li className={classes.pricingFeaturesItem}>
                 diseño adaptable a todos los dispositivos
               </li>
-              <li className="pricing-features-item">incluye blog</li>
-              <li className="pricing-features-item">formulario de contacto</li>
+              <li className={classes.pricingFeaturesItem}>incluye blog</li>
+              <li className={classes.pricingFeaturesItem}>
+                formulario de contacto
+              </li>
             </ul>
             <Button
               variant="contained"
@@ -232,26 +240,32 @@ export default function Index() {
             </Button>
           </div>
 
-          <div className="pricing-plan">
-            <img src="/static/online-shop.png" alt="" className="pricing-img" />
-            <h2 className="pricing-header">Tienda Virtual</h2>
-            <ul className="pricing-features">
-              <li className="pricing-features-item">
+          <div className={classes.pricingPlan}>
+            <img
+              src="/static/online-shop.png"
+              alt=""
+              className={classes.pricingImg}
+            />
+            <h2 className={classes.pricingHeader}>Tienda Virtual</h2>
+            <ul className={classes.pricingFeatures}>
+              <li className={classes.pricingFeaturesItem}>
                 website con hasta cinco pestañas (Ej: Inicio, Sobre, Servicios,
                 Blog, Contacto)
               </li>
-              <li className="pricing-features-item">
+              <li className={classes.pricingFeaturesItem}>
                 Hasta 20 productos iniciales
               </li>
-              <li className="pricing-features-item">diseño moderno</li>
-              <li className="pricing-features-item">
+              <li className={classes.pricingFeaturesItem}>diseño moderno</li>
+              <li className={classes.pricingFeaturesItem}>
                 imágenes de ejemplo incluidas
               </li>
-              <li className="pricing-features-item">
+              <li className={classes.pricingFeaturesItem}>
                 diseño adaptable a todos los dispositivos
               </li>
-              <li className="pricing-features-item">incluye blog</li>
-              <li className="pricing-features-item">formulario de contacto</li>
+              <li className={classes.pricingFeaturesItem}>incluye blog</li>
+              <li className={classes.pricingFeaturesItem}>
+                formulario de contacto
+              </li>
             </ul>
             <Button
               variant="outlined"

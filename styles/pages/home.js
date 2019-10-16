@@ -78,7 +78,7 @@ const styles = theme => ({
     marginBottom: theme.spacing(4)
   },
   panel: {
-    backgroundColor: "#fff",
+    backgroundColor: theme.palette.type === "dark" ? "#222" : "#fff",
     borderRadius: 10,
     padding: "15px 25px",
     position: "relative",
@@ -87,7 +87,9 @@ const styles = theme => ({
   },
   pricingTable: {
     boxShadow:
-      "0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02)",
+      theme.palette.type === "dark"
+        ? "0px 10px 13px -6px rgba(255, 255, 255, 0.08), 0px 20px 31px 3px rgba(255, 255, 255, 0.09), 0px 8px 20px 7px rgba(255, 255, 255, 0.02)"
+        : "0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02)",
     display: "flex",
     flexDirection: "column",
 
@@ -96,7 +98,7 @@ const styles = theme => ({
       textTransform: "uppercase"
     },
 
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       flexDirection: "row"
     }
   },
@@ -108,9 +110,12 @@ const styles = theme => ({
       borderBottom: "none"
     },
 
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       borderBottom: "none",
-      borderRight: "1px solid #e1f1ff",
+      borderRight:
+        theme.palette.type === "dark"
+          ? "1px solid #1E0E00"
+          : "1px solid #e1f1ff",
       flexBasis: "100%",
       padding: "25px 50px",
 
@@ -125,24 +130,28 @@ const styles = theme => ({
     maxWidth: 90
   },
   pricingHeader: {
-    color: "#888",
+    color: theme.palette.type === "dark" ? "#fff" : "#888",
     fontWeight: 600,
     letterSpacing: 1
   },
   pricingFeatures: {
-    color: "#00a3e1",
+    color: theme.palette.type === "dark" ? "#ccc" : "#00a3e1",
     fontWeight: 600,
     letterSpacing: 1,
     margin: "50px 0 25px"
   },
   pricingFeaturesItem: {
-    borderTop: "1px solid #e1f1ff",
+    borderTop:
+      theme.palette.type === "dark" ? "1px solid #1E0E00" : "1px solid #e1f1ff",
     fontSize: 12,
     lineHeight: 1.5,
     padding: "15px 0",
 
     "&:last-child": {
-      borderBottom: "1px solid #e1f1ff"
+      borderBottom:
+        theme.palette.type === "dark"
+          ? "1px solid #1E0E00"
+          : "1px solid #e1f1ff"
     }
   }
 });
