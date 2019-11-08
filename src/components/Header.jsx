@@ -12,7 +12,7 @@ const WrapperMenuButton = tw.div`flex-shrink-0 pr-4 md:hidden`
 const MenuButton = tw.button`block text-gray-600 focus:outline-none focus:text-gray-900`
 const MenuButtonSvg = tw.svg`fill-current h-6 w-6`
 const WrapperMenu = tw.div`hidden md:block md:ml-10 md:flex md:items-baseline md:justify-between md:bg-transparent`
-const Menu = tw.div`lg:absolute inset-0 flex items-center justify-center`
+const Menu = tw.div`flex items-center justify-center`
 const MenuItem = tw(
   Link
 )`ml-10 text-sm font-medium text-gray-900 hover:text-gray-700`
