@@ -1,11 +1,11 @@
 import React from "react"
-import tw from "tailwind.macro"
-
-const Svg = tw.svg`fill-current text-indigo-700 inline-block h-8 w-8`
 
 export default () => {
   return (
-    <Svg viewBox="0 0 1080 1080">
+    <svg
+      viewBox="0 0 1080 1080"
+      className="fill-current text-indigo-700 inline-block h-8 w-8"
+    >
       <path
         className="prefix__cls-1"
         d="M1061.237 540.246c-.105 288.558-237.61 520.991-526.204 520.991H207.654A188.891 188.891 0 0118.763 872.346V705.883a23.728 23.728 0 0123.71-23.727h24.166a46.911 46.911 0 0146.894 46.929V872.24a94.209 94.209 0 0094.226 94.226h327.608c235.697 0 430.275-189.278 431.1-424.975C967.292 305.25 776.013 113.533 540 113.533H207.76a94.226 94.226 0 00-94.227 94.191v143.227a46.911 46.911 0 01-46.894 46.893H42.473a23.71 23.71 0 01-23.71-23.692V207.654A188.927 188.927 0 01207.654 18.763H540c287.944 0 521.36 233.416 521.237 521.483z"
@@ -27,6 +27,6 @@ export default () => {
         fill="currentColor"
         strokeWidth={1.755}
       />
-    </Svg>
+    </svg>
   )
 }

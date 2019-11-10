@@ -1,28 +1,8 @@
 import React, { useState } from "react"
-import tw from "tailwind.macro"
 import { Link } from "gatsby"
 import { useTransition, animated, config } from "react-spring"
 
 import { Navbar, Logo } from "./"
-
-const Wrapper = tw.div`bg-white shadow`
-const WrapperChild = tw.div`md:px-8`
-const WrapperLogo = tw.div`relative z-10 flex-shrink-0 pl-4 py-4 md:p-0`
-const WrapperMenuButton = tw.div`flex-shrink-0 pr-4 md:hidden`
-const MenuButton = tw.button`block text-gray-600 focus:outline-none focus:text-gray-900`
-const MenuButtonSvg = tw.svg`fill-current h-6 w-6`
-const WrapperMenu = tw.div`hidden md:block md:ml-10 md:flex md:items-baseline md:justify-between md:bg-transparent`
-const Menu = tw.div`flex items-center justify-center`
-const MenuItem = tw(
-  Link
-)`ml-10 text-sm font-medium text-gray-900 hover:text-gray-700`
-const WrapperMobileMenu = tw.div`md:hidden`
-const MobileMenuItem = tw(
-  Link
-)`block font-medium text-gray-900 hover:text-gray-700`
-const MobileMenuItemButton = tw(
-  Link
-)`block px-3 py-3 font-medium text-center bg-gray-300 rounded-lg text-gray-900 hover:bg-gray-400 focus:outline-none focus:bg-gray-400`
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -44,40 +24,66 @@ export default () => {
   })
 
   return (
-    <Wrapper>
-      <WrapperChild>
+    <div className="bg-white shadow">
+      <div className="md:px-8">
         <Navbar>
-          <WrapperLogo>
+          <div className="relative z-10 flex-shrink-0 pl-4 py-4 md:p-0">
             <Logo />
-          </WrapperLogo>
+          </div>
 
-          <WrapperMenuButton>
-            <MenuButton
+          <div className="flex-shrink-0 pr-4 md:hidden">
+            <button
               type="button"
               aria-label="Menu"
               onClick={() => setIsOpen(!isOpen)}
+              className="block text-gray-600 focus:outline-none focus:text-gray-900"
             >
-              <MenuButtonSvg viewBox="0 0 24 24">
+              <svg viewBox="0 0 24 24" className="fill-current h-6 w-6">
                 <path d="M3 6C3 5.44772 3.44772 5 4 5H20C20.5523 5 21 5.44772 21 6C21 6.55228 20.5523 7 20 7H4C3.44772 7 3 6.55228 3 6Z" />
                 <path d="M3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12Z" />
                 <path d="M4 17C3.44772 17 3 17.4477 3 18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18C21 17.4477 20.5523 17 20 17H4Z" />
-              </MenuButtonSvg>
-            </MenuButton>
-          </WrapperMenuButton>
+              </svg>
+            </button>
+          </div>
 
-          <WrapperMenu>
-            <Menu>
-              <MenuItem to="/">Inicio</MenuItem>
-              <MenuItem to="/">Sobre</MenuItem>
-              <MenuItem to="/">Portafolio</MenuItem>
-              <MenuItem to="/">Blog</MenuItem>
-              <MenuItem to="/">Contacto</MenuItem>
-            </Menu>
-          </WrapperMenu>
+          <div className="hidden md:block md:ml-10 md:flex md:items-baseline md:justify-between md:bg-transparent">
+            <div className="flex items-center justify-center">
+              <Link
+                to="/"
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+              >
+                Inicio
+              </Link>
+              <Link
+                to="/"
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+              >
+                Sobre
+              </Link>
+              <Link
+                to="/"
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+              >
+                Portafolio
+              </Link>
+              <Link
+                to="/"
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+              >
+                Blog
+              </Link>
+              <Link
+                to="/"
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+              >
+                Contacto
+              </Link>
+            </div>
+          </div>
         </Navbar>
-      </WrapperChild>
+      </div>
 
-      <WrapperMobileMenu>
+      <div className="md:hidden">
         {openTransition.map(
           ({ item, key, props }) =>
             item && (
@@ -130,34 +136,52 @@ export default () => {
                       src="/img/example-logo.svg"
                       alt=""
                     />
-                    <MobileMenuItem to="/" className="mt-8">
+                    <Link
+                      to="/"
+                      className="mt-8 block font-medium text-gray-900 hover:text-gray-700"
+                    >
                       Inicio
-                    </MobileMenuItem>
-                    <MobileMenuItem to="/" className="mt-4">
+                    </Link>
+                    <Link
+                      to="/"
+                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
+                    >
                       Curriculum
-                    </MobileMenuItem>
-                    <MobileMenuItem to="/" className="mt-4">
+                    </Link>
+                    <Link
+                      to="/"
+                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
+                    >
                       Certificaciones
-                    </MobileMenuItem>
-                    <MobileMenuItem to="/" className="mt-4">
+                    </Link>
+                    <Link
+                      to="/"
+                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
+                    >
                       Portafolio
-                    </MobileMenuItem>
-                    <MobileMenuItem to="/" className="mt-4">
+                    </Link>
+                    <Link
+                      to="/"
+                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
+                    >
                       Blog
-                    </MobileMenuItem>
+                    </Link>
                   </div>
                 </div>
                 <div className="relative bg-white">
                   <div className="p-4">
-                    <MobileMenuItemButton to="/">
+                    <Link
+                      to="/"
+                      className="block px-3 py-3 font-medium text-center bg-gray-300 rounded-lg text-gray-900 hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+                    >
                       Contactame
-                    </MobileMenuItemButton>
+                    </Link>
                   </div>
                 </div>
               </animated.div>
             )
         )}
-      </WrapperMobileMenu>
-    </Wrapper>
+      </div>
+    </div>
   )
 }
