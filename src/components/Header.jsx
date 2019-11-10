@@ -17,6 +17,12 @@ const MenuItem = tw(
   Link
 )`ml-10 text-sm font-medium text-gray-900 hover:text-gray-700`
 const WrapperMobileMenu = tw.div`md:hidden`
+const MobileMenuItem = tw(
+  Link
+)`block font-medium text-gray-900 hover:text-gray-700`
+const MobileMenuItemButton = tw(
+  Link
+)`block px-3 py-3 font-medium text-center bg-gray-300 rounded-lg text-gray-900 hover:bg-gray-400 focus:outline-none focus:bg-gray-400`
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -124,74 +130,28 @@ export default () => {
                       src="/img/example-logo.svg"
                       alt=""
                     />
-                    <a
-                      href="!#"
-                      className="mt-8 block text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                    >
-                      Products
-                    </a>
-                    <a
-                      href="!#"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Checkout
-                    </a>
-                    <a
-                      href="!#"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Payments
-                    </a>
-                    <a
-                      href="!#"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Billing
-                    </a>
-                    <a
-                      href="!#"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Insights
-                    </a>
-                  </div>
-                  <div className="border-t-2 border-gray-200 px-4 pt-6">
-                    <a
-                      href="!#"
-                      className="block font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Marketplace
-                    </a>
-                    <a
-                      href="!#"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Partners
-                    </a>
-                    <a
-                      href="!#"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      About
-                    </a>
+                    <MobileMenuItem to="/" className="mt-8">
+                      Inicio
+                    </MobileMenuItem>
+                    <MobileMenuItem to="/" className="mt-4">
+                      Curriculum
+                    </MobileMenuItem>
+                    <MobileMenuItem to="/" className="mt-4">
+                      Certificaciones
+                    </MobileMenuItem>
+                    <MobileMenuItem to="/" className="mt-4">
+                      Portafolio
+                    </MobileMenuItem>
+                    <MobileMenuItem to="/" className="mt-4">
+                      Blog
+                    </MobileMenuItem>
                   </div>
                 </div>
                 <div className="relative bg-white">
-                  <div className="px-4 pt-4 pb-6">
-                    <a
-                      href="!#"
-                      className="block font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Log in
-                    </a>
-                  </div>
                   <div className="p-4">
-                    <a
-                      href="!#"
-                      className="block px-3 py-3 font-medium text-center bg-gray-300 rounded-lg text-gray-900 hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
-                    >
-                      Create Account
-                    </a>
+                    <MobileMenuItemButton to="/">
+                      Contactame
+                    </MobileMenuItemButton>
                   </div>
                 </div>
               </animated.div>
