@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Daniel Esteves`,
+    description: `Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.`,
+    author: `@danestves`,
   },
   plugins: [
     `gatsby-plugin-postcss`,
@@ -19,17 +19,29 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Daniel Esteves`,
+        short_name: `Daniel Esteves`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        background_color: `#0090da`,
+        theme_color: `#0090da`,
+        display: `standalone`,
+        icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `https://api.danestves.com`,
+        queryLimit: 1000, // Default to 100
+        contentTypes: [
+          `skills`,
+          `educations`,
+          `experiences`,
+          `portfolios`,
+          `blogs`,
+        ],
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 }
