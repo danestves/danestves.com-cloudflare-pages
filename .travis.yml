@@ -1,10 +1,12 @@
+# xenial (the default) or newer required
 language: node_js
 node_js:
-  - 10 # use Node 10 LTS or later
+  - 10 # Node 10 LTS or later required
+addons:
+  chrome: stable # make sure to have Chrome available
 before_install:
-  - npm install -g @lhci/cli@0.3.x
+  - npm install -g @lhci/cli@0.3.x # install LHCI
 script:
   - npm run build # build your site
-  - lhci autorun # run lighthouse CI
-addons:
-  chrome: stable # make sure you have Chrome available
+  - npm test # run your normal tests
+  - lhci autorun # run lighthouse CI against your static site
