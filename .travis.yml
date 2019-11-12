@@ -5,7 +5,7 @@ node_js:
 addons:
   chrome: stable # make sure to have Chrome available
 before_install:
-  - npm install -g @lhci/cli@0.3.x # install LHCI
+  - npm install -g @lhci/cli@latest # install LHCI
 script:
   - npm run build # build your site
   - npm test # run your normal tests
