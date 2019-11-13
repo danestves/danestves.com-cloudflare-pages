@@ -49,12 +49,9 @@ const IndexPage = ({ data }) => (
       options={{
         type: "carousel",
         controls: true,
-        perView: 4,
+        perView: 3,
         focusAt: "center",
         breakpoints: {
-          1024: {
-            perView: 3,
-          },
           768: {
             perView: 2,
           },
