@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
           class: "bg-gray-200",
         }}
       />
-      <main className="container mx-auto px-2 md:px-0">{children}</main>
+      <main className="container mx-auto px-5 md:px-0">{children}</main>
     </>
   )
 }
