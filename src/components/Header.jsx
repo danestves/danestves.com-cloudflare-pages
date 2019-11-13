@@ -13,14 +13,10 @@ export default () => {
     config: { ...config.wobbly, clamp: true },
   })
   const drawerTransition = useTransition(isOpen, null, {
-    from: { transform: `translateX(${100}%)` },
-    enter: { transform: `translateX(${0}%)` },
-    leave: { transform: `translateX(${100}%)` },
-    config: {
-      mass: 1,
-      tension: 200,
-      friction: 30,
-    },
+    from: { right: `-${100}%` },
+    enter: { right: `${0}` },
+    leave: { right: `-${100}%` },
+    config: { mass: 1, tension: 200, friction: 30, clamp: true },
   })
 
   return (
@@ -107,13 +103,13 @@ export default () => {
               <animated.div
                 key={key}
                 style={props}
-                className="z-10 fixed inset-y-0 right-0 max-w-xs w-full bg-white transition-transform overflow-y-auto"
+                className="z-10 fixed inset-y-0 max-w-xs w-full bg-white transition-transform overflow-y-auto"
               >
                 <div className="relative z-10 bg-white">
                   <div
                     className={`${
                       isOpen ? "block" : "hidden"
-                    } absolute top-0 right-0 p-4`}
+                    } absolute top-0 p-4`}
                   >
                     <button
                       onClick={() => setIsOpen(!isOpen)}

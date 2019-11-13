@@ -9,22 +9,14 @@ import {
   ReactIcon,
 } from "./"
 
-export default ({ element = "glide", services, options, children }) => {
+export default ({ element = "glide", services, options }) => {
   const [slider] = useState(new Glide(`.${element}`, options))
 
   useEffect(() => {
     slider.mount()
 
-    // subscribe to an event
-    slider.on("run.before", event => {
-      // ... do something cool here
-    })
-
-    // cleanup when unmounting component
     return () => slider.destroy()
   }, [])
-
-  console.log(services)
 
   const printIcon = icon => {
     switch (icon) {

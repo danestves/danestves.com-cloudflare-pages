@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Coding, Services, HTMLIcon } from "../components"
+import { Coding, Services } from "../components"
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -63,17 +63,7 @@ const IndexPage = ({ data }) => (
           },
         },
       }}
-    >
-      <div className="bg-white rounded shadow-md py-6 px-10">
-        <HTMLIcon className="h-16 w-16 text-indigo-700 fill-current mx-auto" />
-        <h2 className="text-2xl text-center capitalize mt-1">desarrollo web</h2>
-        <p className="text-base text-center mt-2">
-          Sitios web modernos y listos para dispositivos móviles que ayudará a
-          su comercialización.
-        </p>
-      </div>
-      <div className="bg-white rounded shadow p-10">hola</div>
-    </Services>
+    />
   </Layout>
 )
 
