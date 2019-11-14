@@ -11,7 +11,7 @@ const IndexPage = ({ data }) => (
 
     <div className="flex flex-wrap items-center py-12">
       <div className="w-full md:w-3/5 order-2 md:order-1">
-        <h1 className="text-6xl leading-none font-bold text-center md:text-left mt-5 md:mt-0">
+        <h1 className="text-6xl text-indigo-800 leading-none font-bold text-center md:text-left mt-5 md:mt-0">
           Daniel Esteves
         </h1>
         <h2 className="text-3xl font-normal text-gray-700 text-center md:text-left">
