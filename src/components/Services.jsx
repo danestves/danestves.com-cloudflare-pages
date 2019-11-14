@@ -53,7 +53,7 @@ export default ({ element = "glide", services, options }) => {
   return (
     <div className={element}>
       <div className="glide__track" data-glide-el="track">
-        <ul className="glide__slides py-6">
+        <ul className="glide__slides justify-center py-6">
           {services.map((service, index) => (
             <div
               key={index}
