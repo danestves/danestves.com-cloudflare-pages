@@ -57,7 +57,7 @@ export default ({ element = "glide", services, options }) => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="glide__slide bg-white rounded-lg shadow-lg flex flex-col justify-between h-auto py-6 px-5 mx-3"
+              className="glide__slide bg-white rounded-lg shadow-lg flex flex-col justify-between h-auto py-6 px-5"
             >
               {printIcon(service.icon)}
               <h2 className="text-2xl text-center capitalize mt-1">
