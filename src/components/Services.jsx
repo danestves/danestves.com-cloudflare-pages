@@ -4,7 +4,6 @@ import {
   HTMLIcon,
   CSSIcon,
   CodeIcon,
-  SEOIcon,
   WordPressIcon,
   ReactIcon,
   ArrowIcon,
@@ -32,10 +31,6 @@ export default ({ element = "glide", services, options }) => {
       case "code":
         return (
           <CodeIcon className="h-16 w-16 text-indigo-700 fill-current mx-auto" />
-        )
-      case "seo":
-        return (
-          <SEOIcon className="h-16 w-16 text-indigo-700 fill-current mx-auto" />
         )
       case "wordpress":
         return (
