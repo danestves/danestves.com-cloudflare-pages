@@ -15,7 +15,7 @@ export default ({
       ? `translateY(${0}%) scale(${1})`
       : `translateY(${100}%) scale(${0})`,
     config: {
-      ass: 1,
+      mass: 1,
       tension: 200,
       friction: 30,
       clamp: true,
