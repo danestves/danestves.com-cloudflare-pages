@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSpring, config } from "react-spring"
-import { useIntersectionObserver } from "./"
+import { useIntersectionObserver } from "."
 
 export default ({
   root = null,
@@ -10,10 +10,12 @@ export default ({
 }) => {
   const [isIntersected, toggle] = useState()
 
-  const fade = useSpring({
-    opacity: isIntersected ? 1 : 0,
+  const scale = useSpring({
+    transform: isIntersected
+      ? `translateY(${0}%) scale(${1})`
+      : `translateY(${100}%) scale(${0})`,
     config: {
-      ...config.wobbly,
+      ...config.slow,
       clamp: true,
     },
   })
@@ -30,5 +32,5 @@ export default ({
     rootMargin,
   })
 
-  return fade
+  return scale
 }

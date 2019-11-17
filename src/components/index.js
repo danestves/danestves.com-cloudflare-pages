@@ -16,3 +16,4 @@ export { default as DesignSystemIcon } from "./DesignSystemIcon"
 
 // Animations
 export { default as Fade } from "./Fade"
+export { default as Scale } from "./Scale"
