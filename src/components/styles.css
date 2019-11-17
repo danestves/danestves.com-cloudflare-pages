@@ -1,9 +1,9 @@
 @import "~@glidejs/glide/dist/css/glide.core.min.css";
 @import "~@glidejs/glide/dist/css/glide.theme.min.css";
 
-@import "tailwindcss/base";
+@tailwind base;
 
-@import "tailwindcss/components";
+@tailwind components;
 
 .markdown p {
   @apply my-3;
@@ -17,7 +17,7 @@
   @apply mb-0;
 }
 
-@import "tailwindcss/utilities";
+@tailwind utilities;
 
 .drop-shadow {
   filter: drop-shadow(0px 10px 12px rgba(0, 0, 0, 0.3));
