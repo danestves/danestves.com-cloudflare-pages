@@ -7,14 +7,14 @@
 
 .markdown p {
   @apply my-3;
+}
 
-  &:first-child {
-    @apply mt-0;
-  }
+.markdown p:first-child {
+  @apply mt-0;
+}
 
-  &:last-child {
-    @apply mb-0;
-  }
+.markdown p:last-child {
+  @apply mb-0;
 }
 
 @import "tailwindcss/utilities";
