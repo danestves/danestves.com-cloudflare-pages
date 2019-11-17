@@ -57,13 +57,13 @@ export default () => {
                 Sobre
               </Link>
               <Link
-                to="/"
+                to="/portafolio"
                 className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
               >
                 Portafolio
               </Link>
               <Link
-                to="/"
+                to="/blog"
                 className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
               >
                 Blog
@@ -151,13 +151,13 @@ export default () => {
                       Certificaciones
                     </Link>
                     <Link
-                      to="/"
+                      to="/portafolio"
                       className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
                     >
                       Portafolio
                     </Link>
                     <Link
-                      to="/"
+                      to="/blog"
                       className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
                     >
                       Blog

@@ -13,3 +13,6 @@ export { default as ReactIcon } from "./React"
 export { default as ArrowIcon } from "./ArrowLeft"
 export { default as InterfaceIcon } from "./InterfaceIcon"
 export { default as DesignSystemIcon } from "./DesignSystemIcon"
+
+// Animations
+export { default as Fade } from "./Fade"
