@@ -3,7 +3,12 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Coding, Services } from "../components"
+import {
+  Coding,
+  Services,
+  InterfaceIcon,
+  DesignSystemIcon,
+} from "../components"
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -41,6 +46,42 @@ const IndexPage = ({ data }) => (
 
       <div className="w-full md:w-2/5 order-1 md:order-2">
         <Coding className="w-64 h-64 mx-auto drop-shadow" />
+      </div>
+    </div>
+
+    <h2 className="text-5xl leading-none text-center text-indigo-800 font-medium mt-5 mb-12">
+      ¿Cómo haré realidad tu sueño?
+    </h2>
+
+    <div className="flex flex-wrap items-center mb-10">
+      <div className="w-full md:w-3/5 order-2 md:order-1">
+        <h3 className="text-4xl leading-none text-indigo-800 font-medium mb-5">
+          Interfaces limpias
+        </h3>
+
+        <p className="text-2xl text-gray-700 mb-5 md:mb-0">
+          Al momento de realizar los prototipos de tus diseños se harán en base
+          a estándares y accesibilidad con el cual tu sitio se verá muy limpio y
+          rápido.
+        </p>
+      </div>
+      <div className="w-full md:w-2/5 order-1 md:order-2">
+        <DesignSystemIcon className="w-56 h-56 d-block mx-auto mb-5 md:mb-0" />
+      </div>
+
+      <div className="w-full md:w-2/5 order-4 md:order-3">
+        <InterfaceIcon className="w-56 h-56 d-block mx-auto mb-5 md:mb-0" />
+      </div>
+      <div className="w-full md:w-3/5 order-4 md:order-3">
+        <h3 className="text-4xl leading-none text-indigo-800 text-right font-medium mb-5">
+          Adaptable a todos los dispositivos
+        </h3>
+
+        <p className="text-2xl text-gray-700 text-right mb-5 md:mb-0">
+          Al momento de realizar los prototipos de tus diseños se harán en base
+          a estándares de diseño y accesibilidad con el cual el diseño de tu
+          sitio se verá muy limpio y rápido.
+        </p>
       </div>
     </div>
 
