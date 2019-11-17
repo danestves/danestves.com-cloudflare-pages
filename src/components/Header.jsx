@@ -127,11 +127,6 @@ export default () => {
                     </button>
                   </div>
                   <div className="px-4 pt-4 pb-6">
-                    <img
-                      className="h-8 w-8"
-                      src="/img/example-logo.svg"
-                      alt=""
-                    />
                     <Link
                       to="/"
                       className="mt-8 block font-medium text-gray-900 hover:text-gray-700"

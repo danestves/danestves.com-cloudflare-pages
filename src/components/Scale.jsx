@@ -4,13 +4,13 @@ import { useOnScrollScale } from "../hooks"
 
 export default ({ children, ...props }) => {
   const ref = useRef()
-  const fade = useOnScrollScale({
+  const scale = useOnScrollScale({
     target: ref,
-    threshold: [0, 1],
+    threshold: [0.5, 1],
   })
 
   return (
-    <animated.div ref={ref} style={fade} {...props}>
+    <animated.div ref={ref} style={scale} {...props}>
       {children}
     </animated.div>
   )
