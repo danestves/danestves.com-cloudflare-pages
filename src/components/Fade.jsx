@@ -6,7 +6,7 @@ export default ({ children, ...props }) => {
   const ref = useRef()
   const fade = useOnScrollFade({
     target: ref,
-    threshold: [0.3, 1],
+    threshold: [0, 1],
   })
 
   return (

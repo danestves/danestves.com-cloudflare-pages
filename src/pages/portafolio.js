@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
-import { Scale } from "../components"
+import { Fade } from "../components"
 
 export default ({ data }) => (
   <Layout>
@@ -10,7 +10,7 @@ export default ({ data }) => (
     <div className="flex flex-wrap justify-center py-5">
       {data
         ? data.allStrapiPortfolios.nodes.map(item => (
-            <Scale className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 my-3 px-3">
+            <Fade className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 my-3 px-3">
               <Img
                 fluid={item.cover.childImageSharp.fluid}
                 className="w-full rounded-lg shadow-2xl"
@@ -26,7 +26,7 @@ export default ({ data }) => (
                   </h3>
                 </div>
               </div>
-            </Scale>
+            </Fade>
           ))
         : ""}
     </div>
