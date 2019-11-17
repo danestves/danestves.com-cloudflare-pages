@@ -13,6 +13,9 @@ export { default as ReactIcon } from "./React"
 export { default as ArrowIcon } from "./ArrowLeft"
 export { default as InterfaceIcon } from "./InterfaceIcon"
 export { default as DesignSystemIcon } from "./DesignSystemIcon"
+export { default as CategoryIcon } from "./Category"
+export { default as TechnologyIcon } from "./Technology"
+export { default as LinkIcon } from "./Link"
 
 // Animations
 export { default as Fade } from "./Fade"

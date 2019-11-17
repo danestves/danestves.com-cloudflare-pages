@@ -20,11 +20,13 @@ export default () => {
   })
 
   return (
-    <div className="bg-white shadow">
+    <header className="bg-white shadow">
       <div className="md:px-8">
         <Navbar>
           <div className="relative z-10 flex-shrink-0 pl-4 py-4 md:p-0">
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
           </div>
 
           <div className="flex-shrink-0 pr-4 md:hidden">
@@ -173,6 +175,6 @@ export default () => {
             )
         )}
       </div>
-    </div>
+    </header>
   )
 }

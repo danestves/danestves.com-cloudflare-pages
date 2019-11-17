@@ -5,6 +5,13 @@ module.exports = {
     author: `@danestves`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#4c51bf`,
+        showSpinner: false,
+      },
+    },
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     {
@@ -25,7 +32,7 @@ module.exports = {
         background_color: `#0090da`,
         theme_color: `#0090da`,
         display: `standalone`,
-        icon: `src/images/logo.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`,
       },
     },
     {
