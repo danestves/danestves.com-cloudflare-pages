@@ -2,7 +2,7 @@ import React from "react"
 
 export default ({ children }) => {
   return (
-    <nav className="relative flex flex-wrap items-center justify-between md:py-4 container mx-auto">
+    <nav className="container relative flex flex-wrap items-center justify-between mx-auto md:py-4">
       {children}
     </nav>
   )

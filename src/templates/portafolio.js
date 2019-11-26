@@ -10,50 +10,50 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <div className="py-5 flex flex-wrap items-center">
-        <div className="w-full md:w-1/2">
+      <div className="flex flex-wrap items-center py-5">
+        <div className="w-full px-2 md:w-1/2 md:px-5">
           <Img
             fluid={portfolio.cover.childImageSharp.fluid}
             alt={`Portafolio: ${portfolio.title} | Daniel Esteves`}
-            className="block mx-auto rounded-lg max-w-lg"
+            className="block max-w-lg mx-auto rounded-lg"
           />
 
-          <h1 className="text-4xl text-center font-medium leading-none mt-3 mb-6">
+          <h1 className="mt-3 mb-6 text-4xl font-medium leading-none text-center">
             {portfolio.title}
           </h1>
-          <h2 className="text-2xl text-gray-700 leading-none font-light flex justify-center items-center mb-6">
-            <CategoryIcon className="fill-current w-6 h-6 mr-3" /> Categoría:{" "}
+          <h2 className="flex flex-wrap items-center justify-center mb-6 text-2xl font-light leading-none text-gray-700">
+            <CategoryIcon className="w-6 h-6 mr-3 fill-current" /> Categoría:{" "}
             {portfolio.category.name}
           </h2>
-          <h3 className="text-2xl text-gray-700 leading-none font-light flex justify-center items-center mb-8">
-            <TechnologyIcon className="fill-current w-6 h-6 mr-3" />{" "}
+          <h3 className="flex flex-wrap items-center justify-center mb-8 text-2xl font-light leading-none text-gray-700">
+            <TechnologyIcon className="w-6 h-6 mr-3 fill-current" />{" "}
             Tecnologías:{" "}
             {portfolio.technologies.map(item => (
               <div
                 key={item.id}
-                className="text-lg leading-none py-1 px-3 mx-1 first:ml-3 rounded-full border border-gray-700"
+                className="px-3 py-1 mx-1 text-lg leading-none border border-gray-700 rounded-full first:ml-3"
               >
                 {item.name}
               </div>
             ))}
           </h3>
 
-          <div className="flex justify-center items-center">
+          <div className="flex items-center justify-center">
             <a
               href={portfolio.url}
               rel="noopener noreferrer"
               target="_blank"
-              className="text-xl text-white leading-none bg-indigo-700 hover:bg-indigo-600 rounded px-5 py-2 flex items-center transition-all transition-250 transition-ease-in-out"
+              className="flex items-center px-5 py-2 text-xl leading-none text-white bg-indigo-700 rounded hover:bg-indigo-600 transition-all transition-250 transition-ease-in-out"
             >
-              Ver Proyecto <LinkIcon className="fill-current w-6 h-6 ml-3" />
+              Ver Proyecto <LinkIcon className="w-6 h-6 ml-3 fill-current" />
             </a>
           </div>
         </div>
 
-        <div className="w-full md:w-1/2">
+        <div className="w-full px-2 md:w-1/2 md:px-5">
           <Markdown
             tagName="div"
-            className="markdown py-5 text-lg text-gray-600 text-justify"
+            className="py-5 text-lg text-gray-600 markdown text-justify"
             content={portfolio.content}
             parser={{ html: true }}
           />

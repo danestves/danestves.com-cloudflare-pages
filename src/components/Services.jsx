@@ -15,6 +15,7 @@ export default ({ element = "glide", services, options }) => {
   useEffect(() => {
     slider.mount()
 
+    /* eslint-disable react-hooks/exhaustive-deps */
     return () => slider.destroy()
   }, [])
 
@@ -22,23 +23,23 @@ export default ({ element = "glide", services, options }) => {
     switch (icon) {
       case "html":
         return (
-          <HTMLIcon className="h-16 w-16 text-indigo-700 fill-current mx-auto" />
+          <HTMLIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current" />
         )
       case "css":
         return (
-          <CSSIcon className="h-16 w-16 text-indigo-700 fill-current mx-auto" />
+          <CSSIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current" />
         )
       case "code":
         return (
-          <CodeIcon className="h-16 w-16 text-indigo-700 fill-current mx-auto" />
+          <CodeIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current" />
         )
       case "wordpress":
         return (
-          <WordPressIcon className="h-16 w-16 text-indigo-700 fill-current mx-auto" />
+          <WordPressIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current" />
         )
       case "react":
         return (
-          <ReactIcon className="h-16 w-16 text-indigo-700 fill-current mx-auto" />
+          <ReactIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current" />
         )
       default:
         break
@@ -48,17 +49,17 @@ export default ({ element = "glide", services, options }) => {
   return (
     <div className={element}>
       <div className="glide__track" data-glide-el="track">
-        <ul className="glide__slides justify-center py-6">
+        <ul className="justify-center py-6 glide__slides">
           {services.map((service, index) => (
             <div
               key={index}
-              className="glide__slide bg-white rounded-lg shadow-lg flex flex-col justify-between h-auto py-6 px-5"
+              className="flex flex-col justify-between h-auto px-5 py-6 bg-white rounded-lg shadow-lg glide__slide"
             >
               {printIcon(service.icon)}
-              <h2 className="text-2xl text-center capitalize mt-1">
+              <h2 className="mt-1 text-2xl capitalize text-center">
                 {service.title}
               </h2>
-              <p className="text-base text-center mt-2">{service.content}</p>
+              <p className="mt-2 text-base text-center">{service.content}</p>
             </div>
           ))}
         </ul>
@@ -66,16 +67,16 @@ export default ({ element = "glide", services, options }) => {
 
       <div className="glide__arrows" data-glide-el="controls">
         <button
-          className="glide__arrow glide__arrow--left rounded-full bg-indigo-700 hover:bg-indigo-500 text-white border-none left-0 transition-all transition-250"
+          className="left-0 text-white bg-indigo-700 border-none rounded-full glide__arrow glide__arrow--left hover:bg-indigo-500 transition-all transition-250"
           data-glide-dir="<"
         >
-          <ArrowIcon className="fill-current text-white h-5 w-5 rotate-180" />
+          <ArrowIcon className="w-5 h-5 text-white fill-current rotate-180" />
         </button>
         <button
-          className="glide__arrow glide__arrow--right rounded-full bg-indigo-700 hover:bg-indigo-500 text-white border-none right-0 transition-all transition-250"
+          className="right-0 text-white bg-indigo-700 border-none rounded-full glide__arrow glide__arrow--right hover:bg-indigo-500 transition-all transition-250"
           data-glide-dir=">"
         >
-          <ArrowIcon className="fill-current text-white h-5 w-5" />
+          <ArrowIcon className="w-5 h-5 text-white fill-current" />
         </button>
       </div>
     </div>

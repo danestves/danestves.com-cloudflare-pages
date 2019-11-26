@@ -19,4 +19,3 @@ export { default as LinkIcon } from "./Link"
 
 // Animations
 export { default as Fade } from "./Fade"
-export { default as Scale } from "./Scale"

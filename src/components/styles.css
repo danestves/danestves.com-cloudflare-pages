@@ -17,6 +17,11 @@
   @apply mb-0;
 }
 
+.portfolio-link:hover .portfolio-image,
+.portfolio-link:hover .portfolio-meta {
+  @apply border-indigo-700;
+}
+
 #nprogress {
   pointer-events: none;
 }
@@ -41,7 +46,7 @@
   width: 100px;
   height: 100%;
   box-shadow: 0 0 10px red, 0 0 5px red;
-  opacity: 1.0;
+  opacity: 1;
   transform: rotate(3deg) translate(0px, -4px);
 }
 
@@ -77,8 +82,12 @@
 }
 
 @keyframes nprogress-spinner {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @tailwind utilities;

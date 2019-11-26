@@ -23,7 +23,7 @@ export default () => {
     <header className="bg-white shadow">
       <div className="md:px-8">
         <Navbar>
-          <div className="relative z-10 flex-shrink-0 pl-4 py-4 md:p-0">
+          <div className="relative z-10 flex-shrink-0 py-4 pl-4 md:p-0">
             <Link to="/">
               <Logo />
             </Link>
@@ -36,7 +36,7 @@ export default () => {
               onClick={() => setIsOpen(!isOpen)}
               className="block text-gray-600 focus:outline-none focus:text-gray-900"
             >
-              <svg viewBox="0 0 24 24" className="fill-current h-6 w-6">
+              <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
                 <path d="M3 6C3 5.44772 3.44772 5 4 5H20C20.5523 5 21 5.44772 21 6C21 6.55228 20.5523 7 20 7H4C3.44772 7 3 6.55228 3 6Z" />
                 <path d="M3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12Z" />
                 <path d="M4 17C3.44772 17 3 17.4477 3 18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18C21 17.4477 20.5523 17 20 17H4Z" />
@@ -88,7 +88,7 @@ export default () => {
               <animated.div
                 key={key}
                 style={props}
-                className="z-10 fixed inset-0"
+                className="fixed inset-0 z-10"
               >
                 <div
                   onClick={() => setIsOpen(!isOpen)}
@@ -105,7 +105,7 @@ export default () => {
               <animated.div
                 key={key}
                 style={props}
-                className="z-10 fixed inset-y-0 max-w-xs w-full bg-white transition-transform overflow-y-auto"
+                className="fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto bg-white transition-transform"
               >
                 <div className="relative z-10 bg-white">
                   <div
@@ -120,7 +120,7 @@ export default () => {
                       aria-label="Close"
                     >
                       <svg
-                        className="h-6 w-6"
+                        className="w-6 h-6"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -131,31 +131,31 @@ export default () => {
                   <div className="px-4 pt-4 pb-6">
                     <Link
                       to="/"
-                      className="mt-8 block font-medium text-gray-900 hover:text-gray-700"
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700"
                     >
                       Inicio
                     </Link>
                     <Link
                       to="/"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
+                      className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
                     >
                       Curriculum
                     </Link>
                     <Link
                       to="/"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
+                      className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
                     >
                       Certificaciones
                     </Link>
                     <Link
                       to="/portafolio"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
+                      className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
                     >
                       Portafolio
                     </Link>
                     <Link
                       to="/blog"
-                      className="mt-4 block font-medium text-gray-900 hover:text-gray-700"
+                      className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
                     >
                       Blog
                     </Link>
@@ -165,7 +165,7 @@ export default () => {
                   <div className="p-4">
                     <Link
                       to="/"
-                      className="block px-3 py-3 font-medium text-center bg-gray-300 rounded-lg text-gray-900 hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+                      className="block px-3 py-3 font-medium text-gray-900 bg-gray-300 rounded-lg text-center hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
                     >
                       Contactame
                     </Link>

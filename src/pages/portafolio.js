@@ -12,20 +12,20 @@ export default ({ data }) => (
         ? data.allStrapiPortfolios.nodes.map(item => (
             <Link
               to={`portafolio/${item.slug}`}
-              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 my-3 px-3"
+              className="w-full px-3 my-3 sm:w-1/2 md:w-1/3 lg:w-1/4 portfolio-link"
             >
               <Fade>
                 <Img
                   fluid={item.cover.childImageSharp.fluid}
-                  className="w-full rounded-lg shadow-2xl"
+                  className="w-full border rounded-lg shadow-2xl portfolio-image transition-all transition-250"
                 />
 
-                <div className="relative -mt-10 px-4">
-                  <div className="bg-white rounded-lg flex flex-col">
-                    <h2 className="text-2xl lg:text-xl text-center leading-none my-2">
+                <div className="relative px-4 -mt-10">
+                  <div className="flex flex-col bg-white border rounded-lg portfolio-meta transition-all transition-250">
+                    <h2 className="my-2 text-2xl leading-none lg:text-xl text-center">
                       {item.title}
                     </h2>
-                    <h3 className="text-xl lg:text-lg text-center leading-none text-gray-400 font-light mb-2">
+                    <h3 className="mb-2 text-xl font-light leading-none text-gray-400 lg:text-lg text-center">
                       {item.category.name}
                     </h3>
                   </div>
