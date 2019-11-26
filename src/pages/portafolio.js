@@ -25,7 +25,7 @@ export default ({ data }) => (
                     <h2 className="my-2 text-2xl leading-none lg:text-xl text-center">
                       {item.title}
                     </h2>
-                    <h3 className="mb-2 text-xl font-light leading-none text-gray-400 lg:text-lg text-center">
+                    <h3 className="mb-2 text-xl font-light leading-none text-gray-500 lg:text-lg text-center">
                       {item.category.name}
                     </h3>
                   </div>
