@@ -282,6 +282,7 @@ module.exports = {
     inset: {
       "0": "0",
       auto: "auto",
+      "1/2": "50%",
     },
     letterSpacing: {
       tighter: "-0.05em",
@@ -475,6 +476,7 @@ module.exports = {
     },
     translate: {
       "1/2": "50%",
+      "n-1/2": "-50%",
       full: "100%",
       "right-up": ["100%", "-100%"],
       "3d": ["40px", "-60px", "-130px"],
@@ -531,7 +533,7 @@ module.exports = {
     borderColor: ["responsive", "hover", "focus"],
     borderRadius: ["responsive"],
     borderStyle: ["responsive"],
-    borderWidth: ["responsive"],
+    borderWidth: ["responsive", "hover"],
     boxShadow: ["responsive", "hover", "focus"],
     cursor: ["responsive"],
     display: ["responsive"],

@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Markdown from "@danestves/react-markdown"
+
 import Layout from "../components/layout"
 import { CategoryIcon, TechnologyIcon, LinkIcon } from "../components"
 
