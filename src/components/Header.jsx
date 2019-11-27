@@ -6,6 +6,7 @@ import { Navbar, Logo } from "./"
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false)
   const openTransition = useTransition(isOpen, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -17,6 +18,16 @@ export default () => {
     enter: { right: `${0}` },
     leave: { right: `-${100}%` },
     config: { mass: 1, tension: 200, friction: 30, clamp: true },
+  })
+  const dropdownTransition = useTransition(isOpenDropdown, null, {
+    from: {
+      opacity: 0,
+      transform: `scale(${0.9})`,
+      transformOrigin: "top right",
+    },
+    enter: { opacity: 1, transform: `scale(${1})` },
+    leave: { opacity: 0, transform: `scale(${0.9})` },
+    config: config.wobbly,
   })
 
   return (
@@ -52,12 +63,39 @@ export default () => {
               >
                 Inicio
               </Link>
-              <Link
-                to="/"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+              <button
+                onClick={() => setIsOpenDropdown(!isOpenDropdown)}
+                className="relative ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
               >
                 Sobre
-              </Link>
+                {dropdownTransition.map(
+                  ({ item, key, props }) =>
+                    item && (
+                      <animated.div
+                        key={key}
+                        style={props}
+                        className="absolute right-0 z-10 mt-6 rounded shadow origin-top-right"
+                      >
+                        <div className="w-40 bg-white rounded-lg shadow-lg text-left">
+                          <div className="py-1">
+                            <Link
+                              to="/curriculum"
+                              className="block px-6 py-3 leading-tight hover:bg-gray-200"
+                            >
+                              Curriculum
+                            </Link>
+                            <Link
+                              to="/certificaciones"
+                              className="block px-6 py-3 leading-tight hover:bg-gray-200"
+                            >
+                              Certificaciones
+                            </Link>
+                          </div>
+                        </div>
+                      </animated.div>
+                    )
+                )}
+              </button>
               <Link
                 to="/portafolio"
                 className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
@@ -80,6 +118,16 @@ export default () => {
           </div>
         </Navbar>
       </div>
+
+      {isOpenDropdown ? (
+        <div
+          onClick={() => setIsOpenDropdown(false)}
+          className="fixed inset-0"
+          tabIndex="-1"
+        />
+      ) : (
+        ""
+      )}
 
       <div className="md:hidden">
         {openTransition.map(
