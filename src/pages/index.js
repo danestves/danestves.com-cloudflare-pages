@@ -3,12 +3,8 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {
-  Coding,
-  Services,
-  InterfaceIcon,
-  DesignSystemIcon,
-} from "../components"
+import { Services } from "../components"
+import { Coding, InterfaceIcon, DesignSystemIcon } from "../icons"
 
 const IndexPage = ({ data }) => (
   <Layout>

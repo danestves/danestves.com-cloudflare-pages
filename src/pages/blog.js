@@ -2,7 +2,8 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-import { Fade, ClockIcon } from "../components"
+import { Fade } from "../components"
+import { ClockIcon } from "../icons"
 import Layout from "../components/layout"
 import removeMarkdown from "../helpers/removeMarkdown"
 

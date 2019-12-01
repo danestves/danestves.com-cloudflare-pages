@@ -4,19 +4,6 @@ export { default as Services } from "./Services"
 
 // Icons
 export { default as Logo } from "./Logo"
-export { default as Coding } from "./Coding"
-export { default as HTMLIcon } from "./HTML"
-export { default as CSSIcon } from "./CSS"
-export { default as CodeIcon } from "./Code"
-export { default as WordPressIcon } from "./WordPress"
-export { default as ReactIcon } from "./React"
-export { default as ArrowIcon } from "./ArrowLeft"
-export { default as InterfaceIcon } from "./InterfaceIcon"
-export { default as DesignSystemIcon } from "./DesignSystemIcon"
-export { default as CategoryIcon } from "./Category"
-export { default as TechnologyIcon } from "./Technology"
-export { default as LinkIcon } from "./Link"
-export { default as ClockIcon } from "./Clock"
 
 // Animations
 export { default as Fade } from "./Fade"

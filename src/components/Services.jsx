@@ -1,5 +1,6 @@
 import Glide from "@glidejs/glide"
 import React, { useState, useEffect } from "react"
+
 import {
   HTMLIcon,
   CSSIcon,
@@ -7,7 +8,7 @@ import {
   WordPressIcon,
   ReactIcon,
   ArrowIcon,
-} from "./"
+} from "../icons"
 
 export default ({ element = "glide", services, options }) => {
   const [slider] = useState(new Glide(`.${element}`, options))
