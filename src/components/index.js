@@ -19,3 +19,11 @@ export { default as LinkIcon } from "./Link"
 
 // Animations
 export { default as Fade } from "./Fade"
+
+// Markdown
+export { default as CodeBlock } from "./CodeBlock"
+export { default as Paragraph } from "./Paragraph"
+export { default as InlineCode } from "./InlineCode"
+export { default as MarkdownImage } from "./MarkdownImage"
+export { default as MarkdownLink } from "./MarkdownLink"
+export { default as Heading } from "./Heading"

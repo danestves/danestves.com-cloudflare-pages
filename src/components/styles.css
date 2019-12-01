@@ -23,48 +23,27 @@
 }
 
 .markdown-content {
-  font-size: 1.25em;
+  @apply text-xl;
 }
 
-.markdown-content h1,
-.markdown-content h2,
-.markdown-content h3,
-.markdown-content h4,
-.markdown-content h5,
-.markdown-content h6,
-.markdown-content p,
 .markdown-content ul,
 .markdown-content ol,
 .markdown-content :not(pre) > div {
-  margin: 1em 0;
-  line-height: 1.6em;
-}
-
-.markdown-content h2 {
-  border-bottom: 1px solid #d3d3d3;
-}
-
-.markdown-content h1,
-.markdown-content h2 {
-  @apply text-4xl;
+  @apply my-4;
+  @apply mx-0;
+  @apply leading-relaxed;
 }
 
 .markdown-content code {
-  padding: 0.1em;
-  border-radius: 0.3em;
-  white-space: normal;
-  background: #272822;
-  color: #f8f8f2;
   font-family: "Fira Code", monospace;
 }
 
+.markdown-content ul {
+  @apply list-disc;
+  @apply pl-4;
+}
+
 .markdown-content .prism-code {
-  line-height: 1.25;
-  padding: 0.7em;
-  overflow: auto;
-  border-radius: 0.3em;
-  font-size: 16px;
-  margin: 1.5em 0;
   tab-size: 2;
 }
 

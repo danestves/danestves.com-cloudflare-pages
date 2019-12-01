@@ -2,33 +2,24 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Markdown from "react-markdown"
-import Highlight, { defaultProps } from "prism-react-renderer"
 
+import {
+  CodeBlock,
+  Paragraph,
+  InlineCode,
+  MarkdownImage,
+  MarkdownLink,
+  Heading,
+} from "../components"
 import Layout from "../components/layout"
-import theme from "../helpers/okaidia"
-
-export const CodeBlock = ({ language, value }) => (
-  <Highlight {...defaultProps} code={value} language={language} theme={theme}>
-    {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <pre className={className} style={style}>
-        {tokens.map((line, i) => (
-          <div key={i} {...getLineProps({ line, key: i })}>
-            {line.map((token, key) => (
-              <span key={key} {...getTokenProps({ token, key })} />
-            ))}
-          </div>
-        ))}
-      </pre>
-    )}
-  </Highlight>
-)
 
 const markdownRenderers = {
   code: CodeBlock,
-  // paragraph: Paragraph,
-  // inlineCode: InlineCode,
-  // image: Image,
-  // link: MarkdownLink,
+  paragraph: Paragraph,
+  inlineCode: InlineCode,
+  image: MarkdownImage,
+  link: MarkdownLink,
+  heading: Heading,
 }
 
 export default ({ data }) => {
@@ -60,44 +51,44 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <div className="relative shadow-xl rounded overflow-hidden">
+      <div className="relative overflow-hidden rounded shadow-xl">
         <Img fluid={blog.cover.childImageSharp.fluid} />
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-        <h1 className="absolute w-full text-2xl md:text-4xl lg:text-5xl font-bold leading-none text-white top-1/2 text-center translate-y-n-1/2">
+        <h1 className="absolute w-full text-2xl font-bold leading-none text-center text-white md:text-4xl lg:text-5xl top-1/2 translate-y-n-1/2">
           {blog.title}
         </h1>
       </div>
 
-      <div className="py-5 flex items-center justify-between">
-        <div className="flex items-center flex-wrap">
+      <div className="flex flex-wrap items-center justify-center py-5 sm:justify-between">
+        <div className="flex flex-wrap items-center">
           <svg
             width={542.183}
             height={542.183}
             viewBox="0 0 512 604"
-            className="fill-current text-indigo-700 h-12 w-12 mr-1"
+            className="w-12 h-12 mr-1 text-indigo-700 fill-current"
           >
             <path d="M432.544 310.636c0-9.897-3.521-18.559-10.564-25.984L217.844 80.8c-7.232-7.238-16.939-13.374-29.121-18.416-12.181-5.043-23.319-7.565-33.407-7.565H36.545c-9.896 0-18.464 3.619-25.694 10.848C3.616 72.9 0 81.466 0 91.365v118.771c0 10.088 2.519 21.219 7.564 33.404 5.046 12.185 11.187 21.792 18.417 28.837L230.12 476.799c7.043 7.043 15.608 10.564 25.694 10.564 9.898 0 18.562-3.521 25.984-10.564l140.186-140.47c7.039-7.045 10.56-15.604 10.56-25.693zM117.204 172.02c-7.139 7.138-15.752 10.709-25.841 10.709-10.085 0-18.698-3.571-25.837-10.709-7.139-7.139-10.705-15.749-10.705-25.837 0-10.089 3.566-18.702 10.705-25.837 7.139-7.139 15.752-10.71 25.837-10.71 10.089 0 18.702 3.571 25.841 10.71 7.135 7.135 10.707 15.749 10.707 25.837-.001 10.088-3.572 18.698-10.707 25.837z" />
             <path d="M531.612 284.655L327.473 80.804c-7.23-7.238-16.939-13.374-29.122-18.417-12.177-5.042-23.313-7.564-33.402-7.564h-63.953c10.088 0 21.222 2.522 33.402 7.564 12.185 5.046 21.892 11.182 29.125 18.417L467.66 284.655c7.046 7.423 10.571 16.084 10.571 25.981 0 10.089-3.525 18.647-10.571 25.693l-134.191 134.19c5.718 5.9 10.759 10.182 15.133 12.847 4.38 2.666 9.996 3.998 16.844 3.998 9.903 0 18.565-3.521 25.98-10.564l140.186-140.47c7.046-7.046 10.571-15.604 10.571-25.693-.004-9.898-3.525-18.559-10.571-25.982z" />
           </svg>
 
-          <h2 className="text-xl mr-3">Tags:</h2>
+          <h2 className="mr-3 text-xl">Tags:</h2>
 
           {blog.tags.map(item => (
             <div
               key={item.id}
-              className="px-3 py-1 mx-1 text-lg leading-none border-2 border-gray-700 hover:border-indigo-700 rounded-full transition-all transition-250"
+              className="px-3 py-1 mx-1 text-lg leading-none border-2 border-gray-700 rounded-full hover:border-indigo-700 transition-all transition-250"
             >
               {item.name}
             </div>
           ))}
         </div>
 
-        <div className="flex items-center flex-wrap">
+        <div className="flex flex-wrap items-center">
           <svg
             width={512}
             height={512}
             viewBox="0 0 512 512"
-            className="h-12 w-12 mr-1"
+            className="w-12 h-12 mr-1"
           >
             <path
               fill="#ffbe52"
