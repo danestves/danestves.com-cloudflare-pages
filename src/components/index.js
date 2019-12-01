@@ -16,6 +16,7 @@ export { default as DesignSystemIcon } from "./DesignSystemIcon"
 export { default as CategoryIcon } from "./Category"
 export { default as TechnologyIcon } from "./Technology"
 export { default as LinkIcon } from "./Link"
+export { default as ClockIcon } from "./Clock"
 
 // Animations
 export { default as Fade } from "./Fade"
