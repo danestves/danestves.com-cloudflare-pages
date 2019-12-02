@@ -1,5 +1,6 @@
 import React from "react"
 
+import { Fade } from "../components"
 import Layout from "../components/layout"
 import { usePlatziData } from "../hooks"
 
@@ -49,9 +50,9 @@ export default () => {
         <p>Loading...</p>
       ) : courses && careers ? (
         <div className="flex flex-wrap items-center justify-center">
-          <div className="w-full">
+          <Fade className="w-full">
             <h2 className="my-4 text-3xl text-center">Carreras</h2>
-          </div>
+          </Fade>
 
           {careers &&
             careers.map(career => (
@@ -73,7 +74,7 @@ export default () => {
                         className="block mx-auto"
                       />
                     </div>
-                    <div className="w-3/4">
+                    <div className="w-3/4 px-3">
                       <h3 className="text-xl font-semibold">{career.title}</h3>
                     </div>
                   </div>
@@ -81,19 +82,19 @@ export default () => {
               </div>
             ))}
 
-          <div className="w-full">
+          <Fade className="w-full">
             <h2 className="my-4 text-3xl text-center">JavaScript</h2>
-          </div>
+          </Fade>
 
           {coursesJS &&
             coursesJS.map(course => (
-              <div
-                className="w-full px-2 my-2 sm:w-1/2 md:w-1/3"
+              <Fade
+                className="self-stretch w-full px-2 my-2 sm:w-1/2 md:w-1/3"
                 key={course.id}
               >
                 <a
                   href={`https://platzi.com/${course.diploma_link}`}
-                  className="block p-3 bg-white border border-transparent rounded-lg shadow-md hover:shadow-lg transition-all transition-250 hover:border-indigo-700"
+                  className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow-md hover:shadow-lg transition-all transition-250 hover:border-indigo-700"
                 >
                   <div className="flex items-center justify-center">
                     <div className="w-1/4">
@@ -105,7 +106,7 @@ export default () => {
                         className="block mx-auto"
                       />
                     </div>
-                    <div className="w-3/4">
+                    <div className="w-3/4 px-3">
                       <h3 className="text-xl font-semibold">{course.title}</h3>
                       <h4 className="text-sm text-gray-500">
                         Carrera: {course.career}
@@ -113,29 +114,77 @@ export default () => {
                     </div>
                   </div>
                 </a>
-              </div>
+              </Fade>
             ))}
 
-          <div className="w-full">
+          <Fade className="w-full">
             <h2 className="my-4 text-3xl text-center">Inglés</h2>
-          </div>
+          </Fade>
 
           {coursesEnglish &&
             coursesEnglish.map(course => (
-              <div className="w-full sm:w-1/2 md:w-1/3" key={course.id}>
-                {course.title}
-              </div>
+              <Fade
+                className="self-stretch w-full px-2 my-2 sm:w-1/2 md:w-1/3"
+                key={course.id}
+              >
+                <a
+                  href={`https://platzi.com/${course.diploma_link}`}
+                  className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow-md hover:shadow-lg transition-all transition-250 hover:border-indigo-700"
+                >
+                  <div className="flex items-center justify-center">
+                    <div className="w-1/4">
+                      <img
+                        src={course.badge}
+                        alt={`${course.title} | Daniel Esteves`}
+                        height="75px"
+                        width="75px"
+                        className="block mx-auto"
+                      />
+                    </div>
+                    <div className="w-3/4 px-3">
+                      <h3 className="text-xl font-semibold">{course.title}</h3>
+                      <h4 className="text-sm text-gray-500">
+                        Carrera: {course.career}
+                      </h4>
+                    </div>
+                  </div>
+                </a>
+              </Fade>
             ))}
 
-          <div className="w-full">
+          <Fade className="w-full">
             <h2 className="my-4 text-3xl text-center">Otros</h2>
-          </div>
+          </Fade>
 
           {coursesOther &&
             coursesOther.map(course => (
-              <div className="w-full sm:w-1/2 md:w-1/3" key={course.id}>
-                {course.title}
-              </div>
+              <Fade
+                className="self-stretch w-full px-2 my-2 sm:w-1/2 md:w-1/3"
+                key={course.id}
+              >
+                <a
+                  href={`https://platzi.com/${course.diploma_link}`}
+                  className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow-md hover:shadow-lg transition-all transition-250 hover:border-indigo-700"
+                >
+                  <div className="flex items-center justify-center">
+                    <div className="w-1/4">
+                      <img
+                        src={course.badge}
+                        alt={`${course.title} | Daniel Esteves`}
+                        height="75px"
+                        width="75px"
+                        className="block mx-auto"
+                      />
+                    </div>
+                    <div className="w-3/4 px-3">
+                      <h3 className="text-xl font-semibold">{course.title}</h3>
+                      <h4 className="text-sm text-gray-500">
+                        Carrera: {course.career}
+                      </h4>
+                    </div>
+                  </div>
+                </a>
+              </Fade>
             ))}
         </div>
       ) : (
