@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSpring, config } from "react-spring"
-import { useIntersectionObserver } from "./"
+import { useIntersectionObserver } from "."
 
 export default ({
   root = null,
