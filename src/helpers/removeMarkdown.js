@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default function removeMarkdown(md, options) {
   options = options || {}
   options.listUnicodeChar = options.hasOwnProperty("listUnicodeChar")

@@ -1,6 +1,7 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import { default as Link } from "gatsby-plugin-transition-link"
 
 import { Fade } from "../components"
 import { ClockIcon } from "../icons"

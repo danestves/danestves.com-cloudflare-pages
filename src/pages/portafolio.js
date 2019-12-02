@@ -1,6 +1,7 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import { default as Link } from "gatsby-plugin-transition-link/AniLink"
 
 import Layout from "../components/layout"
 import { Fade } from "../components"
@@ -14,6 +15,9 @@ export default ({ data }) => (
               to={`portafolio/${item.slug}`}
               key={item.id}
               className="w-full px-3 my-3 sm:w-1/2 md:w-1/3 lg:w-1/4 portfolio-link"
+              swipe
+              direction="down"
+              entryOffset={80}
             >
               <Fade>
                 <Img

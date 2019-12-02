@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
 import { useTransition, animated, config } from "react-spring"
+import { TransitionLink as Link } from "gatsby-plugin-transition-link/components/TransitionLink"
 
 import { Navbar, Logo } from "./"
 
@@ -34,7 +34,7 @@ export default () => {
     <header className="bg-white shadow">
       <div className="md:px-8">
         <Navbar>
-          <div className="relative z-10 flex-shrink-0 py-4 pl-4 md:p-0">
+          <div className="relative flex-shrink-0 py-4 pl-4 md:p-0">
             <Link to="/">
               <Logo />
             </Link>

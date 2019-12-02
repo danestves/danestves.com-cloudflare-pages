@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Markdown from "react-markdown"
+import { useTransition, animated, config } from "react-spring"
+import { window } from "browser-monads"
 
 import {
   CodeBlock,
@@ -11,6 +13,14 @@ import {
   MarkdownLink,
   Heading,
 } from "../components"
+import {
+  ShareIcon,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsAppIcon,
+  LinkedInIcon,
+  LinkIcon,
+} from "../icons"
 import Layout from "../components/layout"
 
 const markdownRenderers = {
@@ -23,7 +33,21 @@ const markdownRenderers = {
 }
 
 export default ({ data }) => {
+  const [modal, setModal] = useState(false)
   const blog = data.strapiBlogs
+
+  const modalTransition = useTransition(modal, null, {
+    from: { opacity: 0, transform: `scale(${0})` },
+    enter: { opacity: 1, transform: `scale(${1})` },
+    leave: { opacity: 0, transform: `scale(${0})` },
+    config: config.wobbly,
+  })
+  const modalOverlayTransition = useTransition(modal, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: config.wobbly,
+  })
 
   const readingTime = text => {
     const wordsPerMinute = 200
@@ -45,7 +69,17 @@ export default ({ data }) => {
         .then(() => console.log("Thanks for sharing!"))
         .catch(error => console.log("Error sharing: ", error))
     } else {
-      console.log("jelou")
+      setModal(true)
+    }
+  }
+
+  const copyLink = async () => {
+    const copyText = document.getElementById("url")
+
+    try {
+      await navigator.clipboard.writeText(copyText.value)
+    } catch (err) {
+      console.error("Failed to copy: ", err)
     }
   }
 
@@ -54,7 +88,7 @@ export default ({ data }) => {
       <div className="relative overflow-hidden rounded shadow-xl">
         <Img fluid={blog.cover.childImageSharp.fluid} />
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-        <h1 className="absolute w-full text-2xl font-bold leading-none text-center text-white md:text-4xl lg:text-5xl top-1/2 translate-y-n-1/2">
+        <h1 className="absolute w-full px-5 text-xl font-bold leading-none text-center text-white sm:text-2xl md:text-4xl lg:text-5xl top-1/2 translate-y-n-1/2">
           {blog.title}
         </h1>
       </div>
@@ -114,6 +148,105 @@ export default ({ data }) => {
         renderers={markdownRenderers}
         escapeHtml={false}
       />
+
+      <button
+        onClick={webShareAPI}
+        className="fixed bottom-0 right-0 p-4 mb-4 mr-4 bg-indigo-700 rounded-full hover:bg-indigo-600 transition-250 transition-all"
+      >
+        <ShareIcon className="w-6 h-6 text-white fill-current" />
+      </button>
+
+      {modalOverlayTransition.map(
+        ({ item, key, props }) =>
+          item && (
+            <animated.div
+              key={key}
+              style={props}
+              onClick={() => setModal(false)}
+              className="fixed top-0 right-0 w-screen h-screen bg-black opacity-50"
+              tabIndex="-1"
+            />
+          )
+      )}
+
+      {modalTransition.map(
+        ({ item, key, props }) =>
+          item && (
+            <animated.div
+              key={key}
+              style={props}
+              className="fixed z-10 w-full top-1/2 left-1/2 translate-center"
+            >
+              <div className="w-full p-4 mx-auto text-left bg-white rounded-lg md:w-1/2">
+                <p className="mb-4 text-lg">Compártelo en:</p>
+
+                <div className="flex flex-wrap items-center">
+                  <div className="w-1/2 px-1">
+                    <div className="flex flex-wrap">
+                      <div className="w-1/2 px-1 my-1">
+                        <a
+                          href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block py-2 border border-gray-400 rounded shadow"
+                        >
+                          <FacebookIcon class="w-6 h-6 mx-auto text-indigo-700 fill-current" />
+                        </a>
+                      </div>
+                      <div className="w-1/2 px-1 my-1">
+                        <a
+                          href={`https://twitter.com/intent/tweet?text=${blog.title}&url=${window.location.href}&via=danestves`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block py-2 border border-gray-400 rounded shadow"
+                        >
+                          <TwitterIcon class="w-6 h-6 mx-auto text-indigo-700 fill-current" />
+                        </a>
+                      </div>
+                      <div className="w-1/2 px-1 my-1">
+                        <a
+                          href={`https://api.whatsapp.com/send?text=*${blog.title}* ${window.location.href}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block py-2 border border-gray-400 rounded shadow"
+                        >
+                          <WhatsAppIcon class="w-6 h-6 mx-auto text-indigo-700 fill-current" />
+                        </a>
+                      </div>
+                      <div className="w-1/2 px-1 my-1">
+                        <a
+                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block py-2 border border-gray-400 rounded shadow"
+                        >
+                          <LinkedInIcon class="w-8 h-6 mx-auto text-indigo-700 fill-current" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-1/2 px-1">
+                    <input
+                      class="block w-full px-4 py-2 leading-normal bg-white border border-gray-300 rounded-lg appearance-none"
+                      id="url"
+                      type="url"
+                      disabled
+                      value={window.location.href}
+                    />
+
+                    <button
+                      className="flex items-center justify-center block w-full py-1 mt-3 uppercase border border-gray-500 rounded"
+                      onClick={copyLink}
+                    >
+                      copiar enlace{" "}
+                      <LinkIcon className="w-6 h-6 ml-3 fill-current" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </animated.div>
+          )
+      )}
     </Layout>
   )
 }
