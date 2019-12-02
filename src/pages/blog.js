@@ -10,7 +10,6 @@ import removeMarkdown from "../helpers/removeMarkdown"
 
 export default ({ data }) => (
   <Layout>
-    {console.log(data.allStrapiBlogs)}
     {data
       ? data.allStrapiBlogs.nodes.map(item => (
           <Fade key={item.id}>

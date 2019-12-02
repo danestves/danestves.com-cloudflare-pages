@@ -76,7 +76,7 @@ export default () => {
                         style={props}
                         className="absolute right-0 z-10 mt-6 rounded shadow origin-top-right"
                       >
-                        <div className="w-40 bg-white rounded-lg shadow-lg text-left">
+                        <div className="w-40 text-left bg-white rounded-lg shadow-lg">
                           <div className="py-1">
                             <Link
                               to="/curriculum"
@@ -109,7 +109,7 @@ export default () => {
                 Blog
               </Link>
               <Link
-                to="/"
+                to="/contacto"
                 className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
               >
                 Contacto
@@ -184,13 +184,13 @@ export default () => {
                       Inicio
                     </Link>
                     <Link
-                      to="/"
+                      to="/curriculum"
                       className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
                     >
                       Curriculum
                     </Link>
                     <Link
-                      to="/"
+                      to="/certificaciones"
                       className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
                     >
                       Certificaciones
@@ -212,8 +212,8 @@ export default () => {
                 <div className="relative bg-white">
                   <div className="p-4">
                     <Link
-                      to="/"
-                      className="block px-3 py-3 font-medium text-gray-900 bg-gray-300 rounded-lg text-center hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+                      to="/contacto"
+                      className="block px-3 py-3 font-medium text-center text-gray-900 bg-gray-300 rounded-lg hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
                     >
                       Contactame
                     </Link>
