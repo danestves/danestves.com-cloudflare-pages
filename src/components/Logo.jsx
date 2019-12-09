@@ -1,10 +1,15 @@
 import React from "react"
+import useDarkMode from "use-dark-mode"
 
 export default () => {
+  const darkMode = useDarkMode()
+
   return (
     <svg
       viewBox="0 0 1080 1080"
-      className="fill-current text-indigo-700 inline-block h-8 w-8"
+      className={`inline-block w-8 h-8 ${
+        darkMode.value ? "text-white" : "text-indigo-700"
+      } fill-current`}
     >
       <path
         className="prefix__cls-1"

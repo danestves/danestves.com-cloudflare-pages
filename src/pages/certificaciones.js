@@ -1,4 +1,5 @@
 import React from "react"
+import useDarkMode from "use-dark-mode"
 
 import { Fade } from "../components"
 import Layout from "../components/layout"
@@ -6,6 +7,7 @@ import { usePlatziData } from "../hooks"
 
 export default () => {
   const { loading, courses, careers } = usePlatziData()
+  const darkMode = useDarkMode()
 
   const coursesJS = courses.filter(course => {
     if (course.career !== null) {
@@ -62,7 +64,17 @@ export default () => {
               >
                 <a
                   href={`https://platzi.com/${career.diploma_link}`}
-                  className="block p-3 bg-white border border-transparent rounded-lg shadow-md hover:shadow-lg transition-all transition-250 hover:border-indigo-700"
+                  className={`block p-3 ${
+                    darkMode.value ? "bg-indigo-900" : "bg-white"
+                  } border border-transparent rounded-lg ${
+                    darkMode.value
+                      ? "shadow-white-md hover:shadow-white-lg"
+                      : "shadow-md hover:shadow-lg"
+                  } transition-all transition-250 ${
+                    darkMode.value
+                      ? "hover:border-white"
+                      : "hover:border-indigo-700"
+                  }`}
                 >
                   <div className="flex items-center justify-center">
                     <div className="w-1/4">
@@ -94,7 +106,17 @@ export default () => {
               >
                 <a
                   href={`https://platzi.com/${course.diploma_link}`}
-                  className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow-md hover:shadow-lg transition-all transition-250 hover:border-indigo-700"
+                  className={`flex items-center h-full p-3 ${
+                    darkMode.value ? "bg-indigo-900" : "bg-white"
+                  } border border-transparent rounded-lg ${
+                    darkMode.value
+                      ? "shadow-md hover:shadow-lg"
+                      : "shadow-md hover:shadow-lg"
+                  } transition-all transition-250 ${
+                    darkMode.value
+                      ? "hover:border-white"
+                      : "hover:border-indigo-700"
+                  }`}
                 >
                   <div className="flex items-center justify-center">
                     <div className="w-1/4">
@@ -129,7 +151,17 @@ export default () => {
               >
                 <a
                   href={`https://platzi.com/${course.diploma_link}`}
-                  className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow-md hover:shadow-lg transition-all transition-250 hover:border-indigo-700"
+                  className={`flex items-center h-full p-3 ${
+                    darkMode.value ? "bg-indigo-900" : "bg-white"
+                  } border border-transparent rounded-lg ${
+                    darkMode.value
+                      ? "shadow-md hover:shadow-lg"
+                      : "shadow-md hover:shadow-lg"
+                  } transition-all transition-250 ${
+                    darkMode.value
+                      ? "hover:border-white"
+                      : "hover:border-indigo-700"
+                  }`}
                 >
                   <div className="flex items-center justify-center">
                     <div className="w-1/4">
@@ -164,7 +196,17 @@ export default () => {
               >
                 <a
                   href={`https://platzi.com/${course.diploma_link}`}
-                  className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow-md hover:shadow-lg transition-all transition-250 hover:border-indigo-700"
+                  className={`flex items-center h-full p-3 ${
+                    darkMode.value ? "bg-indigo-900" : "bg-white"
+                  } border border-transparent rounded-lg ${
+                    darkMode.value
+                      ? "shadow-md hover:shadow-lg"
+                      : "shadow-md hover:shadow-lg"
+                  } transition-all transition-250 ${
+                    darkMode.value
+                      ? "hover:border-white"
+                      : "hover:border-indigo-700"
+                  }`}
                 >
                   <div className="flex items-center justify-center">
                     <div className="w-1/4">

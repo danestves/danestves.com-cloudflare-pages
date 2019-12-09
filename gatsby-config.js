@@ -16,6 +16,7 @@ module.exports = {
         showSpinner: false,
       },
     },
+    `gatsby-plugin-use-dark-mode`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     {

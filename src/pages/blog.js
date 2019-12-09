@@ -2,48 +2,59 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { default as Link } from "gatsby-plugin-transition-link"
+import useDarkMode from "use-dark-mode"
 
 import { Fade } from "../components"
 import { ClockIcon } from "../icons"
 import Layout from "../components/layout"
 import removeMarkdown from "../helpers/removeMarkdown"
 
-export default ({ data }) => (
-  <Layout>
-    {data
-      ? data.allStrapiBlogs.nodes.map(item => (
-          <Fade key={item.id}>
-            <Link
-              to={`blog/${item.slug}`}
-              className="flex flex-wrap items-stretch my-5 overflow-hidden bg-white border rounded-lg shadow hover:shadow-lg transition-all transition-250"
-            >
-              <Img
-                fluid={item.cover.childImageSharp.fluid}
-                className="w-full sm:w-2/5 lg:w-1/3 xl:w-1/5 transition-all transition-250"
-              />
+export default ({ data }) => {
+  const darkMode = useDarkMode()
 
-              <div className="w-full px-4 py-5 sm:w-3/5 lg:w-2/3 xl:w-4/5 transition-all transition-250">
-                <div className="flex flex-col justify-around h-full">
-                  <h2 className="my-2 text-2xl leading-none text-center lg:text-3xl xl:text-left">
-                    {item.title}
-                  </h2>
+  return (
+    <Layout>
+      {data
+        ? data.allStrapiBlogs.nodes.map(item => (
+            <Fade key={item.id}>
+              <Link
+                to={`blog/${item.slug}`}
+                className={`flex flex-wrap items-stretch my-5 overflow-hidden ${
+                  darkMode.value ? "bg-indigo-900" : "bg-white"
+                } rounded-lg ${
+                  darkMode.value
+                    ? "shadow-white hover:shadow-white-lg"
+                    : "shadow hover:shadow-lg"
+                } transition-all transition-250`}
+              >
+                <Img
+                  fluid={item.cover.childImageSharp.fluid}
+                  className="w-full sm:w-2/5 lg:w-1/3 xl:w-1/5 transition-all transition-250"
+                />
 
-                  <span className="flex justify-center mt-2 text-gray-600 xl:justify-start">
-                    <ClockIcon className="w-6 h-6 mr-2 fill-current" />{" "}
-                    {item.date}
-                  </span>
+                <div className="w-full px-4 py-5 sm:w-3/5 lg:w-2/3 xl:w-4/5 transition-all transition-250">
+                  <div className="flex flex-col justify-around h-full">
+                    <h2 className="my-2 text-2xl leading-none text-center lg:text-3xl xl:text-left">
+                      {item.title}
+                    </h2>
 
-                  <p className="mt-4 font-light text-gray-500 lg:text-2xl xl:text-xl">
-                    {removeMarkdown(item.content.substr(0, 154))}...
-                  </p>
+                    <span className="flex justify-center mt-2 text-gray-600 xl:justify-start">
+                      <ClockIcon className="w-6 h-6 mr-2 fill-current" />{" "}
+                      {item.date}
+                    </span>
+
+                    <p className="mt-4 font-light text-gray-500 lg:text-2xl xl:text-xl">
+                      {removeMarkdown(item.content.substr(0, 154))}...
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </Fade>
-        ))
-      : ""}
-  </Layout>
-)
+              </Link>
+            </Fade>
+          ))
+        : ""}
+    </Layout>
+  )
+}
 
 export const query = graphql`
   query Blogs {

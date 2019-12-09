@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useTransition, animated, config } from "react-spring"
 import { TransitionLink as Link } from "gatsby-plugin-transition-link/components/TransitionLink"
+import useDarkMode from "use-dark-mode"
 
 import { Navbar, Logo } from "./"
 
@@ -29,12 +30,17 @@ export default () => {
     leave: { opacity: 0, transform: `scale(${0.9})` },
     config: config.wobbly,
   })
+  const darkMode = useDarkMode(false)
 
   return (
-    <header className="bg-white shadow">
+    <header
+      className={`${
+        darkMode.value ? "bg-indigo-900 shadow-white" : "bg-white shadow"
+      }`}
+    >
       <div className="md:px-8">
         <Navbar>
-          <div className="relative flex-shrink-0 py-4 pl-4 md:p-0">
+          <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
             <Link to="/">
               <Logo />
             </Link>
@@ -45,7 +51,11 @@ export default () => {
               type="button"
               aria-label="Menu"
               onClick={() => setIsOpen(!isOpen)}
-              className="block text-gray-600 focus:outline-none focus:text-gray-900"
+              className={`block ${
+                darkMode.value
+                  ? "text-white focus:outline-none focus:text-gray-900"
+                  : "text-gray-600 focus:outline-none focus:text-gray-900"
+              }`}
             >
               <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
                 <path d="M3 6C3 5.44772 3.44772 5 4 5H20C20.5523 5 21 5.44772 21 6C21 6.55228 20.5523 7 20 7H4C3.44772 7 3 6.55228 3 6Z" />
@@ -55,17 +65,25 @@ export default () => {
             </button>
           </div>
 
-          <div className="hidden md:block md:ml-10 md:flex md:items-baseline md:justify-between md:bg-transparent">
+          <div className="hidden md:block md:ml-10 md:flex md:items-baseline md:bg-transparent">
             <div className="flex items-center justify-center">
               <Link
                 to="/"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+                className={`ml-10 text-sm font-medium ${
+                  darkMode.value
+                    ? "text-white hover:text-gray-400"
+                    : "text-gray-900 hover:text-gray-700"
+                } transition-all transition-250`}
               >
                 Inicio
               </Link>
               <button
                 onClick={() => setIsOpenDropdown(!isOpenDropdown)}
-                className="relative ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+                className={`relative ml-10 text-sm font-medium ${
+                  darkMode.value
+                    ? "text-white hover:text-gray-400"
+                    : "text-gray-900 hover:text-gray-700"
+                } transition-all transition-250`}
               >
                 Sobre
                 {dropdownTransition.map(
@@ -76,17 +94,29 @@ export default () => {
                         style={props}
                         className="absolute right-0 z-10 mt-6 rounded shadow origin-top-right"
                       >
-                        <div className="w-40 text-left bg-white rounded-lg shadow-lg">
+                        <div
+                          className={`w-40 text-left ${
+                            darkMode.value ? "bg-indigo-900" : "bg-white"
+                          } rounded-lg shadow-lg`}
+                        >
                           <div className="py-1">
                             <Link
                               to="/curriculum"
-                              className="block px-6 py-3 leading-tight hover:bg-gray-200"
+                              className={`block px-6 py-3 leading-tight ${
+                                darkMode.value
+                                  ? "text-white hover:text-gray-400"
+                                  : "text-gray-900 hover:text-gray-700"
+                              } transition-all transition-250`}
                             >
                               Curriculum
                             </Link>
                             <Link
                               to="/certificaciones"
-                              className="block px-6 py-3 leading-tight hover:bg-gray-200"
+                              className={`block px-6 py-3 leading-tight ${
+                                darkMode.value
+                                  ? "text-white hover:text-gray-400"
+                                  : "text-gray-900 hover:text-gray-700"
+                              } transition-all transition-250`}
                             >
                               Certificaciones
                             </Link>
@@ -98,23 +128,58 @@ export default () => {
               </button>
               <Link
                 to="/portafolio"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+                className={`ml-10 text-sm font-medium ${
+                  darkMode.value
+                    ? "text-white hover:text-gray-400"
+                    : "text-gray-900 hover:text-gray-700"
+                } transition-all transition-250`}
               >
                 Portafolio
               </Link>
               <Link
                 to="/blog"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+                className={`ml-10 text-sm font-medium ${
+                  darkMode.value
+                    ? "text-white hover:text-gray-400"
+                    : "text-gray-900 hover:text-gray-700"
+                } transition-all transition-250`}
               >
                 Blog
               </Link>
               <Link
                 to="/contacto"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700"
+                className={`ml-10 text-sm font-medium ${
+                  darkMode.value
+                    ? "text-white hover:text-gray-400"
+                    : "text-gray-900 hover:text-gray-700"
+                } transition-all transition-250`}
               >
                 Contacto
               </Link>
             </div>
+          </div>
+
+          <div className="flex items-center px-3 ml-4 toggleWrapper">
+            <input
+              type="checkbox"
+              className="absolute dn"
+              id="dn"
+              checked={darkMode.value}
+              onChange={darkMode.toggle}
+            />
+            <label htmlFor="dn" className="toggle">
+              <span className="toggle__handler">
+                <span className="crater crater--1" />
+                <span className="crater crater--2" />
+                <span className="crater crater--3" />
+              </span>
+              <span className="star star--1" />
+              <span className="star star--2" />
+              <span className="star star--3" />
+              <span className="star star--4" />
+              <span className="star star--5" />
+              <span className="star star--6" />
+            </label>
           </div>
         </Navbar>
       </div>
@@ -153,9 +218,15 @@ export default () => {
               <animated.div
                 key={key}
                 style={props}
-                className="fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto bg-white transition-transform"
+                className={`fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto ${
+                  darkMode.value ? "bg-purple-900" : "bg-white"
+                } transition-transform`}
               >
-                <div className="relative z-10 bg-white">
+                <div
+                  className={`relative z-10 ${
+                    darkMode.value ? "bg-purple-900" : "bg-white"
+                  }`}
+                >
                   <div
                     className={`${
                       isOpen ? "block" : "hidden"
@@ -168,7 +239,9 @@ export default () => {
                       aria-label="Close"
                     >
                       <svg
-                        className="w-6 h-6"
+                        className={`w-6 h-6 ${
+                          darkMode.value ? "text-white" : "text-indigo-700"
+                        }`}
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -176,40 +249,40 @@ export default () => {
                       </svg>
                     </button>
                   </div>
-                  <div className="px-4 pt-4 pb-6">
+                  <div className="px-4 pt-8 pb-6">
                     <Link
                       to="/"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700"
+                      className={`block mt-8 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
                     >
                       Inicio
                     </Link>
                     <Link
                       to="/curriculum"
-                      className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
+                      className={`block mt-4 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
                     >
                       Curriculum
                     </Link>
                     <Link
                       to="/certificaciones"
-                      className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
+                      className={`block mt-4 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
                     >
                       Certificaciones
                     </Link>
                     <Link
                       to="/portafolio"
-                      className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
+                      className={`block mt-4 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
                     >
                       Portafolio
                     </Link>
                     <Link
                       to="/blog"
-                      className="block mt-4 font-medium text-gray-900 hover:text-gray-700"
+                      className={`block mt-4 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
                     >
                       Blog
                     </Link>
                   </div>
                 </div>
-                <div className="relative bg-white">
+                <div className="relative">
                   <div className="p-4">
                     <Link
                       to="/contacto"

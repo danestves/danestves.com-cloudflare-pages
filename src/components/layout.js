@@ -8,20 +8,25 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import "./styles.css"
+import useDarkMode from "use-dark-mode"
 
 import { Header } from "./"
+import "./styles.css"
 
 const Layout = ({ children }) => {
+  const darkmode = useDarkMode()
+
   return (
     <>
       <Header />
       <Helmet
         bodyAttributes={{
-          class: "bg-gray-200",
+          class: `${
+            darkmode.value ? "bg-black text-white" : "bg-gray-200"
+          } transition-all transition-250`,
         }}
       />
-      <main className="container mx-auto px-5 md:px-0">{children}</main>
+      <main className="container px-5 mx-auto md:px-0">{children}</main>
     </>
   )
 }

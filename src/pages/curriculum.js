@@ -1,11 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
+import useDarkMode from "use-dark-mode"
 
 import { Fade } from "../components"
 import Layout from "../components/layout"
 import { CheckIcon, ClockIcon } from "../icons"
 
 export default ({ data }) => {
+  const darkMode = useDarkMode()
+
   return (
     <Layout>
       <div className="flex flex-wrap py-5">
@@ -15,7 +18,9 @@ export default ({ data }) => {
           {data &&
             data.allStrapiExperiences.nodes.map(item => (
               <Fade
-                className="flex items-center w-full px-8 py-4 my-4 bg-white rounded-lg shadow-md"
+                className={`flex items-center w-full px-8 py-4 my-4 ${
+                  darkMode.value ? "bg-indigo-900" : "bg-white"
+                } rounded-lg ${darkMode.value ? "shadow-md" : "shadow-md"}`}
                 key={item.id}
               >
                 <div className="w-4/5 pr-1">
@@ -24,7 +29,13 @@ export default ({ data }) => {
                   </h3>
                   <h2 className="text-lg">{item.title}</h2>
 
-                  <p className="mt-3 text-base text-gray-700">{item.content}</p>
+                  <p
+                    className={`mt-3 text-base ${
+                      darkMode.value ? "text-gray-600" : "text-gray-700"
+                    }`}
+                  >
+                    {item.content}
+                  </p>
                 </div>
                 <div className="w-1/5">
                   {item.finished ? (
@@ -42,7 +53,11 @@ export default ({ data }) => {
           {data &&
             data.allStrapiEducations.nodes.map(item => (
               <Fade
-                className="flex items-center w-full px-8 py-4 my-4 bg-white rounded-lg shadow-md"
+                className={`flex items-center w-full px-8 py-4 my-4 ${
+                  darkMode.value ? "bg-indigo-900" : "bg-white"
+                } rounded-lg ${
+                  darkMode.value ? "shadow-white-md" : "shadow-md"
+                }`}
                 key={item.id}
               >
                 <div className="w-4/5 pr-1">
@@ -51,7 +66,13 @@ export default ({ data }) => {
                   </h3>
                   <h2 className="text-lg">{item.title}</h2>
 
-                  <p className="mt-3 text-base text-gray-700">{item.content}</p>
+                  <p
+                    className={`mt-3 text-base ${
+                      darkMode.value ? "text-gray-600" : "text-gray-700"
+                    }`}
+                  >
+                    {item.content}
+                  </p>
                 </div>
                 <div className="w-1/5">
                   {item.finished ? (
