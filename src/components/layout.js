@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
       <Helmet
         bodyAttributes={{
           class: `${
-            darkmode.value ? "bg-black text-white" : "bg-gray-200"
+            darkmode.value ? "bg-gray-900 text-white" : "bg-gray-200"
           } transition-all transition-250`,
         }}
       />
