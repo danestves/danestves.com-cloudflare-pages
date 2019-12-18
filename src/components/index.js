@@ -1,6 +1,7 @@
 export { default as Header } from "./Header"
 export { default as Navbar } from "./Navbar"
 export { default as Services } from "./Services"
+export { default as GoogleTranslate } from "./GoogleTranslate"
 
 // Icons
 export { default as Logo } from "./Logo"

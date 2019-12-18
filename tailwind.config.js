@@ -534,7 +534,7 @@ module.exports = {
     alignSelf: ["responsive"],
     appearance: ["responsive"],
     backgroundAttachment: ["responsive"],
-    backgroundColor: ["responsive", "hover", "focus"],
+    backgroundColor: ["responsive", "hover", "dark"],
     backgroundPosition: ["responsive"],
     backgroundRepeat: ["responsive"],
     backgroundSize: ["responsive"],
@@ -584,7 +584,7 @@ module.exports = {
     stroke: ["responsive"],
     tableLayout: ["responsive"],
     textAlign: ["responsive"],
-    textColor: ["responsive", "hover", "focus"],
+    textColor: ["responsive", "hover", "dark"],
     textDecoration: ["responsive", "hover", "focus"],
     textTransform: ["responsive"],
     userSelect: ["responsive"],
@@ -613,6 +613,7 @@ module.exports = {
   },
   corePlugins: {},
   plugins: [
+    require("@danestves/tailwindcss-darkmode")(),
     require("tailwindcss-transitions")(),
     require("tailwindcss-transforms")({
       "3d": true,
