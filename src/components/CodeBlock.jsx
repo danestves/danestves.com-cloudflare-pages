@@ -6,7 +6,7 @@ export default ({ language, value }) => (
   <Highlight {...defaultProps} code={value} language={language} theme={theme}>
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
       <pre
-        className={`${className} leading-tight p-3 overflow-auto rounded text-base my-6 mx-0`}
+        className={`${className} leading-tight p-3 overflow-auto rounded text-base my-6 mx-0 font-light`}
         style={style}
       >
         {tokens.map((line, i) => (

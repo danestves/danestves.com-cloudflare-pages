@@ -22,14 +22,13 @@ const Layout = ({ children }) => {
       <Helmet
         htmlAttributes={{
           class: darkmode.value ? "dark-mode" : "light-mode",
-          lang: "es",
         }}
         bodyAttributes={{
           class:
             "bg-gray-200 dark:bg-gray-900 dark:text-white transition-all transition-250",
         }}
       />
-      <GoogleTranslate />
+      {/* <GoogleTranslate /> */}
       <main className="container px-5 mx-auto md:px-0">{children}</main>
     </>
   )

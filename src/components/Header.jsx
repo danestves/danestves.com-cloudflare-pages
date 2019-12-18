@@ -33,11 +33,7 @@ export default () => {
   const darkMode = useDarkMode(false)
 
   return (
-    <header
-      className={`${
-        darkMode.value ? "bg-indigo-900 shadow-white" : "bg-white shadow"
-      }`}
-    >
+    <header className="bg-white shadow dark:bg-indigo-900 dark:shadow-white-md">
       <div className="md:px-8">
         <Navbar>
           <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
@@ -51,11 +47,7 @@ export default () => {
               type="button"
               aria-label="Menu"
               onClick={() => setIsOpen(!isOpen)}
-              className={`block ${
-                darkMode.value
-                  ? "text-white focus:outline-none focus:text-gray-900"
-                  : "text-gray-600 focus:outline-none focus:text-gray-900"
-              }`}
+              className="block text-gray-600 focus:outline-none focus:text-gray-900 dark:text-white"
             >
               <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
                 <path d="M3 6C3 5.44772 3.44772 5 4 5H20C20.5523 5 21 5.44772 21 6C21 6.55228 20.5523 7 20 7H4C3.44772 7 3 6.55228 3 6Z" />
@@ -69,21 +61,13 @@ export default () => {
             <div className="flex items-center justify-center">
               <Link
                 to="/"
-                className={`ml-10 text-sm font-medium ${
-                  darkMode.value
-                    ? "text-white hover:text-gray-400"
-                    : "text-gray-900 hover:text-gray-700"
-                } transition-all transition-250`}
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
               >
                 Inicio
               </Link>
               <button
                 onClick={() => setIsOpenDropdown(!isOpenDropdown)}
-                className={`relative ml-10 text-sm font-medium ${
-                  darkMode.value
-                    ? "text-white hover:text-gray-400"
-                    : "text-gray-900 hover:text-gray-700"
-                } transition-all transition-250`}
+                className="relative ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
               >
                 Sobre
                 {dropdownTransition.map(
@@ -94,29 +78,17 @@ export default () => {
                         style={props}
                         className="absolute right-0 z-10 mt-6 rounded shadow origin-top-right"
                       >
-                        <div
-                          className={`w-40 text-left ${
-                            darkMode.value ? "bg-indigo-900" : "bg-white"
-                          } rounded-lg shadow-lg`}
-                        >
+                        <div className="w-40 text-left bg-white rounded-lg shadow-lg dark:bg-indigo-900">
                           <div className="py-1">
                             <Link
                               to="/curriculum"
-                              className={`block px-6 py-3 leading-tight ${
-                                darkMode.value
-                                  ? "text-white hover:text-gray-400"
-                                  : "text-gray-900 hover:text-gray-700"
-                              } transition-all transition-250`}
+                              className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                             >
                               Curriculum
                             </Link>
                             <Link
                               to="/certificaciones"
-                              className={`block px-6 py-3 leading-tight ${
-                                darkMode.value
-                                  ? "text-white hover:text-gray-400"
-                                  : "text-gray-900 hover:text-gray-700"
-                              } transition-all transition-250`}
+                              className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                             >
                               Certificaciones
                             </Link>
@@ -128,31 +100,19 @@ export default () => {
               </button>
               <Link
                 to="/portafolio"
-                className={`ml-10 text-sm font-medium ${
-                  darkMode.value
-                    ? "text-white hover:text-gray-400"
-                    : "text-gray-900 hover:text-gray-700"
-                } transition-all transition-250`}
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
               >
                 Portafolio
               </Link>
               <Link
                 to="/blog"
-                className={`ml-10 text-sm font-medium ${
-                  darkMode.value
-                    ? "text-white hover:text-gray-400"
-                    : "text-gray-900 hover:text-gray-700"
-                } transition-all transition-250`}
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
               >
                 Blog
               </Link>
               <Link
                 to="/contacto"
-                className={`ml-10 text-sm font-medium ${
-                  darkMode.value
-                    ? "text-white hover:text-gray-400"
-                    : "text-gray-900 hover:text-gray-700"
-                } transition-all transition-250`}
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
               >
                 Contacto
               </Link>
@@ -218,15 +178,9 @@ export default () => {
               <animated.div
                 key={key}
                 style={props}
-                className={`fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto ${
-                  darkMode.value ? "bg-purple-900" : "bg-white"
-                } transition-transform`}
+                className="fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto bg-white dark:bg-indigo-900 transition-transform"
               >
-                <div
-                  className={`relative z-10 ${
-                    darkMode.value ? "bg-purple-900" : "bg-white"
-                  }`}
-                >
+                <div className="relative z-10 bg-white dark:bg-indigo-900">
                   <div
                     className={`${
                       isOpen ? "block" : "hidden"
@@ -239,9 +193,7 @@ export default () => {
                       aria-label="Close"
                     >
                       <svg
-                        className={`w-6 h-6 ${
-                          darkMode.value ? "text-white" : "text-indigo-700"
-                        }`}
+                        className="w-6 h-6 text-indigo-700 dark:text-white"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -252,31 +204,31 @@ export default () => {
                   <div className="px-4 pt-8 pb-6">
                     <Link
                       to="/"
-                      className={`block mt-8 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Inicio
                     </Link>
                     <Link
                       to="/curriculum"
-                      className={`block mt-4 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Curriculum
                     </Link>
                     <Link
                       to="/certificaciones"
-                      className={`block mt-4 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Certificaciones
                     </Link>
                     <Link
                       to="/portafolio"
-                      className={`block mt-4 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Portafolio
                     </Link>
                     <Link
                       to="/blog"
-                      className={`block mt-4 font-medium ${darkMode.value ? "text-white hover:text-gray-400" : "text-gray-900 hover:text-gray-700"} transition-all transition-250`}
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Blog
                     </Link>

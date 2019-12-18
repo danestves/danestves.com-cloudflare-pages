@@ -22,7 +22,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Fira Code`],
+        fonts: [`Fira Code`, `Poppins`],
         display: "swap",
       },
     },
@@ -47,8 +47,8 @@ module.exports = {
         name: `Daniel Esteves`,
         short_name: `Daniel Esteves`,
         start_url: `/`,
-        background_color: `#0090da`,
-        theme_color: `#0090da`,
+        background_color: `#4c51bf`,
+        theme_color: `#4c51bf`,
         display: `standalone`,
         icon: `src/images/logo.png`,
       },

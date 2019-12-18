@@ -4,7 +4,6 @@ import Img from "gatsby-image"
 import Markdown from "react-markdown"
 import { useTransition, animated, config } from "react-spring"
 import { window } from "browser-monads"
-import useDarkMode from "use-dark-mode"
 
 import {
   CodeBlock,
@@ -36,7 +35,6 @@ const markdownRenderers = {
 export default ({ data }) => {
   const [modal, setModal] = useState(false)
   const blog = data.strapiBlogs
-  const darkMode = useDarkMode()
 
   const modalTransition = useTransition(modal, null, {
     from: { opacity: 0, transform: `scale(${0})` },
@@ -87,7 +85,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <div className="relative overflow-hidden rounded shadow-xl">
+      <div className="relative overflow-hidden rounded shadow-lg dark:shadow-white-lg">
         <Img fluid={blog.cover.childImageSharp.fluid} />
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
         <h1 className="absolute w-full px-5 text-xl font-bold leading-none text-center text-white sm:text-2xl md:text-4xl lg:text-5xl top-1/2 translate-y-n-1/2">
@@ -179,11 +177,7 @@ export default ({ data }) => {
               style={props}
               className="fixed z-10 w-full top-1/2 left-1/2 translate-center"
             >
-              <div
-                className={`w-full p-4 mx-auto text-left ${
-                  darkMode.value ? "bg-indigo-900" : "bg-white"
-                } rounded-lg md:w-1/2`}
-              >
+              <div className="w-full p-4 mx-auto text-left bg-white rounded-lg dark:bg-indigo-900 md:w-1/2">
                 <p className="mb-4 text-lg">Compártelo en:</p>
 
                 <div className="flex flex-wrap items-center">
@@ -196,11 +190,7 @@ export default ({ data }) => {
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
                         >
-                          <FacebookIcon
-                            class={`w-6 h-6 mx-auto ${
-                              darkMode.value ? "text-white" : "text-indigo-700"
-                            } fill-current`}
-                          />
+                          <FacebookIcon className="w-6 h-6 mx-auto text-indigo-700 fill-current dark:text-white" />
                         </a>
                       </div>
                       <div className="w-1/2 px-1 my-1">
@@ -210,11 +200,7 @@ export default ({ data }) => {
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
                         >
-                          <TwitterIcon
-                            class={`w-6 h-6 mx-auto ${
-                              darkMode.value ? "text-white" : "text-indigo-700"
-                            } fill-current`}
-                          />
+                          <TwitterIcon className="w-6 h-6 mx-auto text-indigo-700 fill-current dark:text-white" />
                         </a>
                       </div>
                       <div className="w-1/2 px-1 my-1">
@@ -224,11 +210,7 @@ export default ({ data }) => {
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
                         >
-                          <WhatsAppIcon
-                            class={`w-6 h-6 mx-auto ${
-                              darkMode.value ? "text-white" : "text-indigo-700"
-                            } fill-current`}
-                          />
+                          <WhatsAppIcon className="w-6 h-6 mx-auto text-indigo-700 fill-current dark:text-white" />
                         </a>
                       </div>
                       <div className="w-1/2 px-1 my-1">
@@ -238,20 +220,14 @@ export default ({ data }) => {
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
                         >
-                          <LinkedInIcon
-                            class={`w-8 h-6 mx-auto ${
-                              darkMode.value ? "text-white" : "text-indigo-700"
-                            } fill-current`}
-                          />
+                          <LinkedInIcon className="w-6 h-6 mx-auto text-indigo-700 fill-current dark:text-white" />
                         </a>
                       </div>
                     </div>
                   </div>
                   <div className="w-1/2 px-1">
                     <input
-                      class={`block w-full px-4 py-2 leading-normal ${
-                        darkMode.value ? "bg-transparent" : "bg-white"
-                      } border border-gray-300 rounded-lg appearance-none`}
+                      className="block w-full px-4 py-2 leading-normal bg-white border border-gray-300 rounded-lg appearance-none dark:bg-transparent"
                       id="url"
                       type="url"
                       disabled
