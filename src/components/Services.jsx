@@ -24,23 +24,23 @@ export default ({ element = "glide", services, options }) => {
     switch (icon) {
       case "html":
         return (
-          <HTMLIcon className="w-16 h-16 mx-auto text-indigo-800 fill-current dark:text-indigo-400" />
+          <HTMLIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current dark:text-indigo-400" />
         )
       case "css":
         return (
-          <CSSIcon className="w-16 h-16 mx-auto text-indigo-800 fill-current dark:text-indigo-400" />
+          <CSSIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current dark:text-indigo-400" />
         )
       case "code":
         return (
-          <CodeIcon className="w-16 h-16 mx-auto text-indigo-800 fill-current dark:text-indigo-400" />
+          <CodeIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current dark:text-indigo-400" />
         )
       case "wordpress":
         return (
-          <WordPressIcon className="w-16 h-16 mx-auto text-indigo-800 fill-current dark:text-indigo-400" />
+          <WordPressIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current dark:text-indigo-400" />
         )
       case "react":
         return (
-          <ReactIcon className="w-16 h-16 mx-auto text-indigo-800 fill-current dark:text-indigo-400" />
+          <ReactIcon className="w-16 h-16 mx-auto text-indigo-700 fill-current dark:text-indigo-400" />
         )
       default:
         break
@@ -54,7 +54,7 @@ export default ({ element = "glide", services, options }) => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="flex flex-col justify-between h-auto px-5 py-6 bg-white rounded-lg shadow-lg dark:big-indigo-900 glide__slide"
+              className="flex flex-col justify-between h-auto px-5 py-6 bg-white rounded-lg shadow-lg dark:bg-indigo-900 glide__slide"
             >
               {printIcon(service.icon)}
               <h2 className="mt-1 text-2xl text-center capitalize">
