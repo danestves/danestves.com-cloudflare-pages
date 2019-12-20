@@ -291,3 +291,7 @@ body {
 .drop-shadow {
   filter: drop-shadow(0px 10px 12px rgba(0, 0, 0, 0.3));
 }
+
+.dark-mode .drop-shadow {
+  filter: drop-shadow(0px 10px 12px rgba(255, 255, 255, 0.3));
+}

@@ -7,6 +7,7 @@ import { usePlatziData } from "../hooks"
 export default () => {
   const { loading, courses, careers } = usePlatziData()
 
+  /* eslint-disable */
   const coursesJS = courses.filter(course => {
     if (course.career !== null) {
       return (
@@ -18,6 +19,7 @@ export default () => {
     }
   })
 
+  /* eslint-disable */
   const coursesEnglish = courses.filter(course => {
     if (course.career !== null) {
       return (
@@ -29,6 +31,7 @@ export default () => {
     }
   })
 
+  /* eslint-disable */
   const coursesOther = courses.filter(course => {
     if (course.career !== null) {
       return (
