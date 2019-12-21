@@ -1,4 +1,3 @@
-export { default as Coding } from "./Coding"
 export { default as HTMLIcon } from "./HTML"
 export { default as CSSIcon } from "./CSS"
 export { default as CodeIcon } from "./Code"

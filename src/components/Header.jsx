@@ -76,9 +76,9 @@ export default () => {
                       <animated.div
                         key={key}
                         style={props}
-                        className="absolute right-0 z-10 mt-6 rounded shadow origin-top-right"
+                        className="absolute right-0 z-10 mt-6 rounded shadow origin-top-right dark:shadow-white"
                       >
-                        <div className="w-40 text-left bg-white rounded-lg shadow-lg dark:bg-indigo-900">
+                        <div className="w-40 text-left bg-white rounded-lg shadow-lg dark:bg-gray-800">
                           <div className="py-1">
                             <Link
                               to="/curriculum"
