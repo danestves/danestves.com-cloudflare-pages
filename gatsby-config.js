@@ -20,13 +20,6 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`Fira Code`, `Poppins`],
-        display: "swap",
-      },
-    },
-    {
       resolve: "gatsby-plugin-transition-link",
       options: {
         injectPageProps: false,
