@@ -1,11 +1,12 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
+import { TransitionLink as Link } from "gatsby-plugin-transition-link/components/TransitionLink"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Services } from "../components"
 import { InterfaceIcon, DesignSystemIcon } from "../icons"
-import Profile from "../images/profile.jpeg"
+import Profile from "../images/profile.jpg"
 
 const IndexPage = ({ data }) => (
   <Layout>
