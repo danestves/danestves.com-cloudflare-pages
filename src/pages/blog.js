@@ -14,7 +14,7 @@ export default ({ data }) => (
       ? data.allStrapiBlogs.nodes.map(item => (
           <Fade key={item.id}>
             <Link
-              to={`blog/${item.slug}`}
+              to={`/blog/${item.slug}`}
               className="flex flex-wrap items-stretch my-5 overflow-hidden bg-white border border-transparent rounded-lg shadow hover:border-indigo-900 dark:hover:border-white dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250"
             >
               <Img
