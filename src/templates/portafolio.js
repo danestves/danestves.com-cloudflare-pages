@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Markdown from "react-markdown"
 import removeMD from "remove-markdown"
+import { window } from "browser-monads"
 
 import { Layout, SEO, Blockquote, MarkdownLink } from "../components"
 import { CategoryIcon, TechnologyIcon, LinkIcon } from "../icons"
