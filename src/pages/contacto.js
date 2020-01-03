@@ -6,7 +6,7 @@ import {
   GoogleReCaptcha,
 } from "react-google-recaptcha-v3"
 
-import Layout from "../components/layout"
+import { Layout, SEO } from "../components"
 import { ContactIcon } from "../icons"
 import { window } from "browser-monads"
 
@@ -55,6 +55,8 @@ export default () => {
       language="es"
     >
       <Layout>
+        <SEO title="Contacto" isTemplate />
+
         <div className="py-10">
           <h1 className="mb-5 text-3xl text-center md:text-left">
             ¿Tienes alguna pregunta o quieres solicitar un trabajo?

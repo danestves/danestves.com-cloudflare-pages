@@ -2,15 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import { TransitionLink as Link } from "gatsby-plugin-transition-link/components/TransitionLink"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { Services } from "../components"
+import { Layout, SEO, Services } from "../components"
 import { InterfaceIcon, DesignSystemIcon } from "../icons"
 import Profile from "../images/profile.jpg"
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Inicio" isTemplate />
 
     <div className="flex flex-wrap items-center py-12">
       <div className="order-2 w-full md:w-3/5 md:order-1">

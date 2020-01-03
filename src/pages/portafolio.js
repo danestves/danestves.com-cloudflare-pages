@@ -4,8 +4,7 @@ import Img from "gatsby-image"
 import { default as Link } from "gatsby-plugin-transition-link/AniLink"
 import { useTransition, animated, config } from "react-spring"
 
-import Layout from "../components/layout"
-import { Fade } from "../components"
+import { Fade, SEO, Layout } from "../components"
 
 export default ({ data }) => {
   const [portfolios, setPortfolios] = useState([])
@@ -26,6 +25,7 @@ export default ({ data }) => {
 
     setPortfolios(portfoliosData)
     setFilteredPortfolios(portfoliosData)
+    // eslint-disable-next-line
   }, [])
 
   const filter = name => {
@@ -40,67 +40,36 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <div className="flex flex-wrap justify-center py-5">
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("")}
-        >
-          Todos
-        </button>
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("Educativa")}
-        >
-          Educativa
-        </button>
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("Diseño Web")}
-        >
-          Diseño Web
-        </button>
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("Moda")}
-        >
-          Moda
-        </button>
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("Gastronomía")}
-        >
-          Gastronomía
-        </button>
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("Medicinal")}
-        >
-          Medicinal
-        </button>
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("Tienda Virtual")}
-        >
-          Tienda Virtual
-        </button>
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("Informativa")}
-        >
-          Informativa
-        </button>
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("Inmobiliaria")}
-        >
-          Inmobiliaria
-        </button>
-        <button
-          className="px-5 py-2 m-2 text-black bg-white rounded-full shadow dark:text-white dark:bg-indigo-900 dark:shadow-white"
-          onClick={() => filter("Diseño")}
-        >
-          Diseño
-        </button>
+      <SEO title="Portafolio" isTemplate />
+
+      <div className="text-right mt-3 mb-5">
+        <p className="mb-3 text-lg">Filtrar por:</p>
+        <div class="inline-block relative w-64">
+          <select
+            onChange={e => filter(e.target.value)}
+            class="block appearance-none w-full bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="">Mostrar todos</option>
+            <option value="Educativa">Educativa</option>
+            <option value="Diseño Web">Diseño Web</option>
+            <option value="Moda">Moda</option>
+            <option value="Gastronomía">Gastronomía</option>
+            <option value="Medicinal">Medicinal</option>
+            <option value="Tienda Virtual">Tienda Virtual</option>
+            <option value="Informativa">Informativa</option>
+            <option value="Inmobiliaria">Inmobiliaria</option>
+            <option value="Diseño">Diseño</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       <hr className="border-gray-400" />

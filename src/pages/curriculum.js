@@ -1,12 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Fade } from "../components"
-import Layout from "../components/layout"
+import { Fade, SEO, Layout } from "../components"
 import { CheckIcon, ClockIcon } from "../icons"
 
 export default ({ data }) => (
   <Layout>
+    <SEO title="Curriculum" isTemplate />
+
     <div className="flex flex-wrap py-5">
       <div className="w-full px-5 md:w-1/2">
         <h2 className="text-3xl text-center">Experiencia</h2>

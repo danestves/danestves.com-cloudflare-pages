@@ -1,16 +1,54 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Markdown from "@danestves/react-markdown"
+import Markdown from "react-markdown"
+import removeMD from "remove-markdown"
 
-import Layout from "../components/layout"
+import { Layout, SEO, Blockquote, MarkdownLink } from "../components"
 import { CategoryIcon, TechnologyIcon, LinkIcon } from "../icons"
+
+const markdownRenderers = {
+  blockquote: Blockquote,
+  link: MarkdownLink,
+}
 
 export default ({ data }) => {
   const portfolio = data.strapiPortfolios
 
   return (
     <Layout>
+      <SEO
+        isTemplate
+        title={portfolio.title}
+        description={`${removeMD(portfolio.content).substr(0, 157)}...`}
+        meta={[
+          {
+            name: "language",
+            content: "ES",
+          },
+          {
+            name: "url",
+            content: window.location.href,
+          },
+          {
+            property: "og:image",
+            content: portfolio.ogCover.publicURL,
+          },
+          {
+            property: "og:url",
+            content: window.location.href,
+          },
+          {
+            name: "twitter:image",
+            content: portfolio.ogCover.publicURL,
+          },
+          {
+            name: "twitter:image:alt",
+            content: portfolio.title,
+          },
+        ]}
+      />
+
       <div className="flex flex-wrap items-center py-5">
         <div className="w-full px-2 md:w-1/2 md:px-5">
           <Img
@@ -53,10 +91,10 @@ export default ({ data }) => {
 
         <div className="w-full px-2 md:w-1/2 md:px-5">
           <Markdown
-            tagName="div"
-            className="py-5 text-lg text-gray-600 markdown text-justify"
-            content={portfolio.content}
-            parser={{ html: true }}
+            className="py-5 text-lg text-gray-600 markdown text-justify markdown-content"
+            source={portfolio.content}
+            renderers={markdownRenderers}
+            escapeHtml={false}
           />
         </div>
       </div>
@@ -77,11 +115,7 @@ export const query = graphql`
         }
       }
       ogCover {
-        childImageSharp {
-          fluid(maxWidth: 1200, maxHeight: 628) {
-            ...GatsbyImageSharpFluid
-          }
-        }
+        publicURL
       }
       category {
         name

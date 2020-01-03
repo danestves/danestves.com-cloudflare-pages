@@ -3,13 +3,14 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { default as Link } from "gatsby-plugin-transition-link"
 
-import { Fade } from "../components"
+import { Fade, SEO, Layout } from "../components"
 import { ClockIcon } from "../icons"
-import Layout from "../components/layout"
 import removeMarkdown from "../helpers/removeMarkdown"
 
 export default ({ data }) => (
   <Layout>
+    <SEO title="Blog" isTemplate />
+
     {data
       ? data.allStrapiBlogs.nodes.map(item => (
           <Fade key={item.id}>

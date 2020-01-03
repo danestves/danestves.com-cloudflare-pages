@@ -4,6 +4,7 @@ import Img from "gatsby-image"
 import Markdown from "react-markdown"
 import { useTransition, animated, config } from "react-spring"
 import { window } from "browser-monads"
+import removeMD from "remove-markdown"
 
 import {
   CodeBlock,
@@ -12,6 +13,7 @@ import {
   MarkdownImage,
   MarkdownLink,
   Heading,
+  SEO,
 } from "../components"
 import {
   ShareIcon,
@@ -85,9 +87,44 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <SEO
+        title={blog.title}
+        description={`${removeMD(blog.content).substr(0, 157)}...`}
+        meta={[
+          {
+            name: "keywords",
+            content: `${blog.tags.map(tag => `${tag.name}`)}`,
+          },
+          {
+            name: "language",
+            content: "ES",
+          },
+          {
+            name: "url",
+            content: window.location.href,
+          },
+          {
+            property: "og:image",
+            content: blog.ogCover.publicURL,
+          },
+          {
+            property: "og:url",
+            content: window.location.href,
+          },
+          {
+            name: "twitter:image",
+            content: blog.ogCover.publicURL,
+          },
+          {
+            name: "twitter:image:alt",
+            content: blog.title,
+          },
+        ]}
+      />
+
       <div className="relative overflow-hidden rounded shadow-lg dark:shadow-white-lg">
         <Img fluid={blog.cover.childImageSharp.fluid} />
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
         <h1 className="absolute w-full px-5 text-xl font-bold leading-none text-center text-white sm:text-2xl md:text-4xl lg:text-5xl top-1/2 translate-y-n-1/2">
           {blog.title}
         </h1>
@@ -185,7 +222,9 @@ export default ({ data }) => {
                     <div className="flex flex-wrap">
                       <div className="w-1/2 px-1 my-1">
                         <a
-                          href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+                          href={`https://www.facebook.com/sharer/sharer.php?u=${
+                            window.location.href
+                          }`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
@@ -195,7 +234,9 @@ export default ({ data }) => {
                       </div>
                       <div className="w-1/2 px-1 my-1">
                         <a
-                          href={`https://twitter.com/intent/tweet?text=${blog.title}&url=${window.location.href}&via=danestves`}
+                          href={`https://twitter.com/intent/tweet?text=${
+                            blog.title
+                          }&url=${window.location.href}&via=danestves`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
@@ -205,7 +246,9 @@ export default ({ data }) => {
                       </div>
                       <div className="w-1/2 px-1 my-1">
                         <a
-                          href={`https://api.whatsapp.com/send?text=*${blog.title}* ${window.location.href}`}
+                          href={`https://api.whatsapp.com/send?text=*${
+                            blog.title
+                          } | @danestves* ${window.location.href}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
@@ -215,7 +258,9 @@ export default ({ data }) => {
                       </div>
                       <div className="w-1/2 px-1 my-1">
                         <a
-                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
+                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${
+                            window.location.href
+                          }`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
@@ -260,6 +305,9 @@ export const query = graphql`
             ...GatsbyImageSharpFluid
           }
         }
+      }
+      ogCover {
+        publicURL
       }
       title
       tags {

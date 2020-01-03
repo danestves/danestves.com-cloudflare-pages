@@ -1,7 +1,6 @@
 import React from "react"
 
-import { Fade } from "../components"
-import Layout from "../components/layout"
+import { Fade, SEO, Layout } from "../components"
 import { usePlatziData } from "../hooks"
 
 export default () => {
@@ -49,6 +48,8 @@ export default () => {
 
   return (
     <Layout>
+      <SEO title="Certificaciones" isTemplate />
+
       {loading ? (
         <p>Loading...</p>
       ) : courses && careers ? (
