@@ -1,44 +1,58 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  <a href="https://danestves.com">
+    <img alt="Daniel Esteves" src="https://avatars3.githubusercontent.com/u/31737273?s=60&v=4" width="60" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby's default starter
+  Daniel Esteves Portfolio
 </h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+This repository contain all the code that Daniel Esteves use in the frontend of his site.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+Fell free to create Issues or PR if you think the code can be better.
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+1.  **Install dependencies.**
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
-
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
+    I recommend you to use yarn instead of npm
 
     ```shell
-    cd my-default-starter/
-    gatsby develop
+    cd danestves/
+    yarn
     ```
 
-1.  **Open the source code and start editing!**
+2.  **Start developing.**
 
-    Your site is now running at `http://localhost:8000`!
+    Start it up.
+
+    ```shell
+    yarn dev
+    ```
+
+3.  **Open the source code and start editing!**
+
+    The site is now running at `http://localhost:8000`!
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    Open the `danestves` directory in your code editor of choice and edit. Save your changes and the browser will update in real time!
+    
+## Enviroment variables
+
+This website use some variables for the contact section and recaptcha, i use StaticKit to send emails and Recaptcha v3 to avoid the spam.
+
+`GATSBY_SITE`: The key of site that StaticKit gives you.
+`GATSBY_CONTACT`: The name of form that StaticKit gives you.
+`GATSBY_RECAPTCHA`: Key that you can generate [here](https://www.google.com/recaptcha/intro/v3.html).
+
+```env
+// .env
+
+GATSBY_SITE=
+GATSBY_CONTACT=
+GATSBY_RECAPTCHA=
+```
 
 ## 🧐 What's inside?
 
@@ -92,6 +106,4 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 ## 💫 Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=hhttps://github.com/danestves/danestves)
