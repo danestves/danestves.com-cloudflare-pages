@@ -40,9 +40,13 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Portafolio" isTemplate />
+      <SEO 
+        isTemplate 
+        title="Portafolio" 
+        description="Portafolio de Daniel Esteves para mostrar sus proyectos realizados en todo su trayecto como desarrollador web frontend. React, NextJS, Gatsby y WordPress."
+      />
 
-      <div className="text-right mt-3 mb-5">
+      <div className="mt-3 mb-5 text-right">
         <p className="mb-3 text-lg">Filtrar por:</p>
         <div class="inline-block relative w-64">
           <select

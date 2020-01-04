@@ -82,9 +82,10 @@ const IndexPage = ({ data }) => (
         </h3>
 
         <p className="mb-5 text-2xl text-center text-gray-700 md:text-right md:mb-0 dark:text-gray-500">
-          Al momento de realizar los prototipos de tus diseños se harán en base
-          a estándares de diseño y accesibilidad con el cual el diseño de tu
-          sitio se verá muy limpio y rápido.
+          Todos los diseños y desarrollos que realizo son y serán adaptables a
+          todos los dispositivos para que cualquier persona pueda entrar a su
+          web o aplicación y verla perfecta como si fuera nativa de su
+          dispositivo.
         </p>
       </div>
     </div>

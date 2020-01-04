@@ -6,7 +6,7 @@ import { usePlatziData } from "../hooks"
 export default () => {
   const { loading, courses, careers } = usePlatziData()
 
-  /* eslint-disable */
+  /* eslint-disable-next-line */
   const coursesJS = courses.filter(course => {
     if (course.career !== null) {
       return (
@@ -18,7 +18,7 @@ export default () => {
     }
   })
 
-  /* eslint-disable */
+  /* eslint-disable-next-line */
   const coursesEnglish = courses.filter(course => {
     if (course.career !== null) {
       return (
@@ -30,7 +30,7 @@ export default () => {
     }
   })
 
-  /* eslint-disable */
+  /* eslint-disable-next-line */
   const coursesOther = courses.filter(course => {
     if (course.career !== null) {
       return (
@@ -48,7 +48,11 @@ export default () => {
 
   return (
     <Layout>
-      <SEO title="Certificaciones" isTemplate />
+      <SEO
+        isTemplate
+        title="Certificaciones"
+        description="Cursos y carreras que Daniel Esteves ha realizado para especializarse en el area del desarrollo web así como también para obtener conocimientos varios."
+      />
 
       {loading ? (
         <p>Loading...</p>

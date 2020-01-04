@@ -6,7 +6,11 @@ import { CheckIcon, ClockIcon } from "../icons"
 
 export default ({ data }) => (
   <Layout>
-    <SEO title="Curriculum" isTemplate />
+    <SEO
+      isTemplate
+      title="Curriculum"
+      description="Experiencia y educicación de Daniel Esteves obtenido a través del tiempo ejerciendo su trabajo como desarrollador web. Empleando tecnologías como React y WordPress."
+    />
 
     <div className="flex flex-wrap py-5">
       <div className="w-full px-5 md:w-1/2">
@@ -73,7 +77,9 @@ export default ({ data }) => (
 
 export const query = graphql`
   query EducationsAndExperiences {
-    allStrapiEducations(sort: { order: ASC, fields: finished }) {
+    allStrapiEducations(
+      sort: { order: [ASC, DESC, DESC], fields: [finished, date, title] }
+    ) {
       nodes {
         id
         title
@@ -83,7 +89,9 @@ export const query = graphql`
         finished
       }
     }
-    allStrapiExperiences(sort: { order: ASC, fields: finished }) {
+    allStrapiExperiences(
+      sort: { order: [ASC, DESC, DESC], fields: [finished, date, title] }
+    ) {
       nodes {
         id
         title

@@ -1,7 +1,7 @@
 {
   "name": "danestves",
   "private": true,
-  "description": "",
+  "description": "Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.",
   "version": "2.0.0",
   "author": "Daniel Esteves <estevesd8@gmail.com>",
   "dependencies": {
@@ -44,21 +44,20 @@
     "tailwindcss-transforms": "^2.2.0",
     "tailwindcss-transitions": "^2.1.0"
   },
-  "keywords": [],
+  "keywords": ["danestves", "react", "gatsby", "tailwindcss"],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "serve": "gatsby serve"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/danestves/danestves"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/danestves/danestves/issues"
   }
 }

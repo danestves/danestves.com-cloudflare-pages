@@ -14,6 +14,7 @@ import {
   MarkdownLink,
   Heading,
   SEO,
+  Layout,
 } from "../components"
 import {
   ShareIcon,
@@ -23,7 +24,6 @@ import {
   LinkedInIcon,
   LinkIcon,
 } from "../icons"
-import Layout from "../components/layout"
 
 const markdownRenderers = {
   code: CodeBlock,
@@ -222,9 +222,7 @@ export default ({ data }) => {
                     <div className="flex flex-wrap">
                       <div className="w-1/2 px-1 my-1">
                         <a
-                          href={`https://www.facebook.com/sharer/sharer.php?u=${
-                            window.location.href
-                          }`}
+                          href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
@@ -234,9 +232,7 @@ export default ({ data }) => {
                       </div>
                       <div className="w-1/2 px-1 my-1">
                         <a
-                          href={`https://twitter.com/intent/tweet?text=${
-                            blog.title
-                          }&url=${window.location.href}&via=danestves`}
+                          href={`https://twitter.com/intent/tweet?text=${blog.title}&url=${window.location.href}&via=danestves`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
@@ -246,9 +242,7 @@ export default ({ data }) => {
                       </div>
                       <div className="w-1/2 px-1 my-1">
                         <a
-                          href={`https://api.whatsapp.com/send?text=*${
-                            blog.title
-                          } | @danestves* ${window.location.href}`}
+                          href={`https://api.whatsapp.com/send?text=*${blog.title} | @danestves* ${window.location.href}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"
@@ -258,9 +252,7 @@ export default ({ data }) => {
                       </div>
                       <div className="w-1/2 px-1 my-1">
                         <a
-                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${
-                            window.location.href
-                          }`}
+                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block py-2 border border-gray-400 rounded shadow"

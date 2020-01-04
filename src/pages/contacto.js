@@ -55,7 +55,11 @@ export default () => {
       language="es"
     >
       <Layout>
-        <SEO title="Contacto" isTemplate />
+        <SEO 
+          isTemplate
+          title="Contacto"
+          description="Página de contacto para cotizar servicios web con Daniel Esteves enfocado en el área de React, NextJS, Gatsby y WordPress para su rápida ejecución. 🚀😎"
+        />
 
         <div className="py-10">
           <h1 className="mb-5 text-3xl text-center md:text-left">

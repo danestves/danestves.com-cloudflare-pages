@@ -92,7 +92,7 @@ export default ({ data }) => {
 
         <div className="w-full px-2 md:w-1/2 md:px-5">
           <Markdown
-            className="py-5 text-lg text-gray-600 markdown text-justify markdown-content"
+            className="py-5 text-lg text-justify text-gray-600 markdown markdown-content"
             source={portfolio.content}
             renderers={markdownRenderers}
             escapeHtml={false}

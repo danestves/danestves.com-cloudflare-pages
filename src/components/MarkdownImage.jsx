@@ -16,5 +16,5 @@ export default ({ alt, src }) => {
     }
   }, [])
 
-  return <img src={src} alt={`${alt} | Daniel Esteves`} />
+  return <img src={src} loading="lazy" alt={`${alt} | Daniel Esteves`} />
 }

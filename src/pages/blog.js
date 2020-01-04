@@ -9,7 +9,11 @@ import removeMarkdown from "../helpers/removeMarkdown"
 
 export default ({ data }) => (
   <Layout>
-    <SEO title="Blog" isTemplate />
+    <SEO
+      isTemplate
+      title="Blog"
+      description="Blog de Daniel Esteves para dar a conocer a la comunidad información sobre frameworks, snippets de código y enseñanzas que ha aprendido con el tiempo."
+    />
 
     {data
       ? data.allStrapiBlogs.nodes.map(item => (
