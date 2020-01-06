@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Layout } from "../components"
+import { Layout, SEO } from "../components"
 
 export default ({
   data: {
@@ -17,6 +17,14 @@ export default ({
   },
 }) => (
   <Layout>
+    <SEO
+      isTemplate
+      title="Dayairis"
+      description="Daya, quiero agradecerte por estos ya dos años que has estado junto a
+        mi. Se que no ha sido fácil, hemos tenido miles de peleas, muchas
+        molestias; pero a pesar de todo eso aún seguimos juntos."
+    />
+
     <div className="container py-5">
       <h2 className="text-3xl text-center">
         Hola amor{" "}
