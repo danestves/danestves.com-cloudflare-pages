@@ -1,0 +1,13 @@
+{
+  "name": "danestves",
+  "version": 2,
+  "alias": "danestves.com",
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "GATSBY_SITE": "@danestves-gs",
+      "GATSBY_CONTACT": "@danestves-gc",
+      "GATSBY_RECAPTCHA": "@danestves-grc"
+    }
+  }
+}
