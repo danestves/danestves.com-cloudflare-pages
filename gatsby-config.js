@@ -7,6 +7,7 @@ module.exports = {
     title: `Daniel Esteves - Desarrollador Web`,
     description: `Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.`,
     author: `@danestves`,
+    siteUrl: `https://danestves.com`,
   },
   plugins: [
     {
@@ -19,6 +20,15 @@ module.exports = {
     `gatsby-plugin-use-dark-mode`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://danestves.com',
+        sitemap: 'https://danestves.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/', disallow: '/dayairis' }]
+      }
+    },
     {
       resolve: "gatsby-plugin-transition-link",
       options: {
