@@ -102,7 +102,7 @@ export default ({
       <div className="flex flex-wrap items-center justify-center py-5">
         <h2 className="w-full mb-6 text-2xl text-center">
           Las salidas contigo que espero nunca falten{" "}
-          <span rol="img" aria-label="Hands up">
+          <span role="img" aria-label="Hands up">
             🙌
           </span>
           :

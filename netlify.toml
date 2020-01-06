@@ -1,0 +1,8 @@
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+
+  [headers.values]
+    # Multi-value headers are expressed with multi-line strings.
+    cache-control = '''
+    max-age=15768000,
