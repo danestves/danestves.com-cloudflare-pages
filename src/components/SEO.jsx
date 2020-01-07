@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { window } from "browser-monads"
 
 function SEO({ description, lang, meta, title, isTemplate }) {
-  const { site, og: file } = useStaticQuery(
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -14,10 +14,6 @@ function SEO({ description, lang, meta, title, isTemplate }) {
             description
             author
           }
-        }
-
-        og: file(relativePath: { eq: "og.jpg" }) {
-          publicURL
         }
       }
     `
@@ -69,7 +65,8 @@ function SEO({ description, lang, meta, title, isTemplate }) {
         },
         {
           property: `og:image`,
-          content: file.publicURL,
+          content:
+            "https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg",
         },
         {
           property: `og:url`,
@@ -97,7 +94,8 @@ function SEO({ description, lang, meta, title, isTemplate }) {
         },
         {
           name: `twitter:image`,
-          content: file.publicURL,
+          content:
+            "https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg",
         },
         {
           name: `twitter:image:alt`,
