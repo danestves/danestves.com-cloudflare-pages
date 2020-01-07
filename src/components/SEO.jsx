@@ -33,7 +33,7 @@ function SEO({ description, lang, meta, title, isTemplate }) {
       title={title}
       titleTemplate={
         isTemplate
-          ? `%s | ${site.siteMetadata.title} - Desarrollador Web`
+          ? `%s | ${site.siteMetadata.title}`
           : "%s | @danestves"
       }
       meta={[
