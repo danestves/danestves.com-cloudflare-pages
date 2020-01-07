@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { window } from "browser-monads"
 
 function SEO({ description, lang, meta, title, isTemplate }) {
   const { site, og: file } = useStaticQuery(
@@ -32,7 +33,7 @@ function SEO({ description, lang, meta, title, isTemplate }) {
       title={title}
       titleTemplate={
         isTemplate
-          ? `%s | ${site.siteMetadata.title} - Desarrollador Web`
+          ? `%s | ${site.siteMetadata.title}`
           : "%s | @danestves"
       }
       meta={[
@@ -63,6 +64,10 @@ function SEO({ description, lang, meta, title, isTemplate }) {
         {
           property: `og:image`,
           content: file.publicURL,
+        },
+        {
+          property: `og:url`,
+          content: window.location.href
         },
         {
           name: `twitter:card`,
