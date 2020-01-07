@@ -40,6 +40,10 @@ function SEO({ description, lang, meta, title, isTemplate }) {
           content: metaDescription,
         },
         {
+          name: `keywords`,
+          content: `Daniel Esteves, Daniel, Esteves`,
+        },
+        {
           property: `og:title`,
           content: isTemplate
             ? `${title} | ${site.siteMetadata.title}`
