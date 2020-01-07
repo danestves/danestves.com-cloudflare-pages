@@ -37,7 +37,7 @@ const IndexPage = ({ data }) => (
               to="/contacto"
               className="block w-full px-8 py-2 text-xl font-semibold text-center text-white capitalize bg-indigo-700 rounded hover:bg-indigo-600 transition-colors transition-250"
             >
-              contactame
+              contáctame
             </Link>
           </div>
         </div>
@@ -63,9 +63,9 @@ const IndexPage = ({ data }) => (
         </h3>
 
         <p className="mb-5 text-2xl text-center text-gray-700 md:text-left md:mb-0 dark:text-gray-500">
-          Al momento de realizar los prototipos de tus diseños se harán en base
-          a estándares y accesibilidad con el cual tu sitio se verá muy limpio y
-          rápido.
+          Al momento de realizar los prototipos de tus diseños se harán con base
+          en estándares y accesibilidad con el cual tu sitio se verá muy limpio
+          y rápido.
         </p>
       </div>
       <div className="order-1 w-full my-3 md:w-2/5 md:order-2">
@@ -82,9 +82,8 @@ const IndexPage = ({ data }) => (
 
         <p className="mb-5 text-2xl text-center text-gray-700 md:text-right md:mb-0 dark:text-gray-500">
           Todos los diseños y desarrollos que realizo son y serán adaptables a
-          todos los dispositivos para que cualquier persona pueda entrar a su
-          web o aplicación y verla perfecta como si fuera nativa de su
-          dispositivo.
+          dispositivos para que cualquiera pueda entrar a su web o aplicación y
+          verla adaptada con completo funcionamiento en ese dispositivo.
         </p>
       </div>
     </div>
