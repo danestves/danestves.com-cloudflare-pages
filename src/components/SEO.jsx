@@ -33,8 +33,10 @@ function SEO({ description, lang, meta, title, isTemplate }) {
       title={title}
       titleTemplate={
         isTemplate
-          ? `%s | ${site.siteMetadata.title}`
-          : "%s | @danestves"
+          ? `${title} | ${site.siteMetadata.title}`
+          : `${
+              title.length > 50 ? `${title.substr(0, 53)}...` : title
+            } | @danestves`
       }
       meta={[
         {
@@ -43,7 +45,11 @@ function SEO({ description, lang, meta, title, isTemplate }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: isTemplate
+            ? `${title} | ${site.siteMetadata.title}`
+            : `${
+                title.length > 50 ? `${title.substr(0, 53)}...` : title
+              } | @danestves`,
         },
         {
           property: `og:description`,
@@ -67,7 +73,7 @@ function SEO({ description, lang, meta, title, isTemplate }) {
         },
         {
           property: `og:url`,
-          content: window.location.href
+          content: window.location.href,
         },
         {
           name: `twitter:card`,
@@ -79,7 +85,11 @@ function SEO({ description, lang, meta, title, isTemplate }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: isTemplate
+            ? `${title} | ${site.siteMetadata.title}`
+            : `${
+                title.length > 50 ? `${title.substr(0, 53)}...` : title
+              } | @danestves`,
         },
         {
           name: `twitter:description`,
@@ -91,7 +101,11 @@ function SEO({ description, lang, meta, title, isTemplate }) {
         },
         {
           name: `twitter:image:alt`,
-          content: title,
+          content: isTemplate
+            ? `${title} | ${site.siteMetadata.title}`
+            : `${
+                title.length > 50 ? `${title.substr(0, 53)}...` : title
+              } | @danestves`,
         },
       ].concat(meta)}
     />

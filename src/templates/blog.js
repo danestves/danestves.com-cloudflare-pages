@@ -104,6 +104,16 @@ export default ({ data }) => {
             content: window.location.href,
           },
           {
+            name: "date",
+            content: blog.createdAt,
+            schema: "YYYY-MM-DD",
+          },
+          {
+            name: "identifier",
+            content: "0-2345-6634-6",
+            scheme: "ISBN",
+          },
+          {
             property: "og:image",
             content: blog.ogCover.publicURL,
           },
@@ -307,6 +317,7 @@ export const query = graphql`
         name
       }
       content
+      createdAt(formatString: "YYYY-MM-DD")
     }
   }
 `

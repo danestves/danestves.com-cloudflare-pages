@@ -10,11 +10,6 @@ body {
 
 @tailwind components;
 
-.profile-photo {
-  max-height: 400px;
-  width: 400px;
-}
-
 @media screen and (max-width: 640px) {
   .profile-photo {
     width: 300px;

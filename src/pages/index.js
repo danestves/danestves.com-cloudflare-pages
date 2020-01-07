@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { TransitionLink as Link } from "gatsby-plugin-transition-link/components/TransitionLink"
+import Img from "gatsby-image"
 
 import { Layout, SEO, Services } from "../components"
 import { InterfaceIcon, DesignSystemIcon } from "../icons"
-import Profile from "../images/profile.jpg"
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -44,12 +44,11 @@ const IndexPage = ({ data }) => (
       </div>
 
       <div className="order-1 w-full md:w-2/5 md:order-2">
-        <img
-          src={Profile}
+        <Img
+          fluid={data.profile.childImageSharp.fluid}
           alt="Daniel Esteves"
-          className="block object-cover object-center mx-auto rounded-full shadow-2xl transition-all transition-250 profile-photo"
+          className="block object-cover object-center max-w-sm mx-auto rounded-full shadow-2xl transition-all transition-250 profile-photo"
         />
-        {/* <Coding className="w-64 h-64 mx-auto drop-shadow" /> */}
       </div>
     </div>
 
@@ -112,6 +111,14 @@ const IndexPage = ({ data }) => (
 
 export const query = graphql`
   query Services {
+    profile: file(relativePath: { eq: "profile.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, maxHeight: 400) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
     allStrapiSkills {
       nodes {
         icon
