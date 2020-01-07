@@ -1473,10 +1473,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@danestves/tailwindcss-darkmode@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@danestves/tailwindcss-darkmode/-/tailwindcss-darkmode-1.1.3.tgz#48de64cce4e31436067c23ca407a3c32c0228ae2"
-  integrity sha512-rQIqjhudpNEUdd0+V2052edr2bicCjABrW2xOUWkv7/O9ZeCCf2z8pLsBE+YUMiFZEEDfzvYuMAIytvXPvZ06g==
+"@danestves/tailwindcss-darkmode@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@danestves/tailwindcss-darkmode/-/tailwindcss-darkmode-1.1.4.tgz#11a63f588cb693dccb318681775e2795a292889c"
+  integrity sha512-9XVuJ5iCKkwBNUUkVp7KhrnzJtvVfM8ChpUY5xIKFTjvSPoEQANOtvzgvWB5BCM38990ajEIFXgoph5nvb/e5Q==
   dependencies:
     tailwindcss "^1.1.4"
 
