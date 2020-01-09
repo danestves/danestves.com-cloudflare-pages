@@ -98,7 +98,7 @@ export default () => {
                 key={career.id}
               >
                 <a
-                  href={`https://platzi.com/${career.diploma_link}`}
+                  href={`https://platzi.com${career.diploma_link}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white"
@@ -134,7 +134,7 @@ export default () => {
                 key={course.id}
               >
                 <a
-                  href={`https://platzi.com/${course.diploma_link}`}
+                  href={`https://platzi.com${course.diploma_link}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white"
@@ -173,7 +173,7 @@ export default () => {
                 key={course.id}
               >
                 <a
-                  href={`https://platzi.com/${course.diploma_link}`}
+                  href={`https://platzi.com${course.diploma_link}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white"
@@ -212,7 +212,7 @@ export default () => {
                 key={course.id}
               >
                 <a
-                  href={`https://platzi.com/${course.diploma_link}`}
+                  href={`https://platzi.com${course.diploma_link}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white"
