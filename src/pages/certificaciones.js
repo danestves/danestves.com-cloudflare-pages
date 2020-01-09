@@ -46,6 +46,8 @@ export default () => {
     }
   })
 
+  const fakeData = [{ fake: "fake" }, { fake: "fake" }, { fake: "fake" }]
+
   return (
     <Layout>
       <SEO
@@ -55,16 +57,43 @@ export default () => {
       />
 
       {loading ? (
-        <p>Loading...</p>
+        <div className="flex flex-wrap items-center justify-center py-5">
+          <Fade className="w-full my-4">
+            <div className="w-full max-w-xs mx-auto">
+              <div className="h-8 rounded title loading" />
+            </div>
+          </Fade>
+
+          {fakeData.map((fake, index) => (
+            <Fade className="w-full px-2 my-2 sm:w-1/2 md:w-1/3" key={index}>
+              <div className="block p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white">
+                <div className="flex items-center justify-center">
+                  <div className="w-1/4">
+                    <div
+                      style={{ height: 75, width: 75 }}
+                      className="block mx-auto rounded-full loading"
+                    />
+                  </div>
+                  <div className="w-3/4 px-3">
+                    <div className="mb-4 rounded title loading" />
+                    <div className="rounded description loading" />
+                  </div>
+                </div>
+              </div>
+            </Fade>
+          ))}
+        </div>
       ) : courses && careers ? (
         <div className="flex flex-wrap items-center justify-center">
-          <Fade className="w-full">
-            <h2 className="my-4 text-3xl text-center">Carreras</h2>
-          </Fade>
+          {careers && (
+            <Fade className="w-full">
+              <h2 className="my-4 text-3xl text-center">Carreras</h2>
+            </Fade>
+          )}
 
           {careers &&
             careers.map(career => (
-              <div
+              <Fade
                 className="w-full px-2 my-2 sm:w-1/2 md:w-1/3"
                 key={career.id}
               >
@@ -87,12 +116,14 @@ export default () => {
                     </div>
                   </div>
                 </a>
-              </div>
+              </Fade>
             ))}
 
-          <Fade className="w-full">
-            <h2 className="my-4 text-3xl text-center">JavaScript</h2>
-          </Fade>
+          {coursesJS && (
+            <Fade className="w-full">
+              <h2 className="my-4 text-3xl text-center">JavaScript</h2>
+            </Fade>
+          )}
 
           {coursesJS &&
             coursesJS.map(course => (
@@ -125,9 +156,11 @@ export default () => {
               </Fade>
             ))}
 
-          <Fade className="w-full">
-            <h2 className="my-4 text-3xl text-center">Inglés</h2>
-          </Fade>
+          {coursesEnglish && (
+            <Fade className="w-full">
+              <h2 className="my-4 text-3xl text-center">Inglés</h2>
+            </Fade>
+          )}
 
           {coursesEnglish &&
             coursesEnglish.map(course => (
@@ -160,9 +193,11 @@ export default () => {
               </Fade>
             ))}
 
-          <Fade className="w-full">
-            <h2 className="my-4 text-3xl text-center">Otros</h2>
-          </Fade>
+          {coursesOther && (
+            <Fade className="w-full">
+              <h2 className="my-4 text-3xl text-center">Otros</h2>
+            </Fade>
+          )}
 
           {coursesOther &&
             coursesOther.map(course => (

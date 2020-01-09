@@ -12,13 +12,16 @@ export default function() {
 
   const getDataFromPlatzi = async () => {
     try {
-      const res = await axios.get(
-        "https://platzi-user-api.jecsham.com/api/v1/getUserSummary/@danestves"
-      )
-
-      await setLoading(false)
-      await setCareers(res.data.userData.careers)
-      await setCourses(res.data.userData.courses)
+      await axios
+        .get(
+          "https://platzi-user-api.jecsham.com/api/v1/getUserSummary/@danestves"
+        )
+        .then(res => {
+          setCareers(res.data.userData.careers)
+          setCourses(res.data.userData.courses)
+          setLoading(false)
+        })
+        .catch(err => console.error(err))
     } catch (error) {
       console.error(error)
     }
