@@ -111,8 +111,7 @@ export default ({ data }) => {
               ""
             ) : (
               <p className="max-w-xs mx-auto mt-4 text-sm text-center text-red-700">
-                Este proyecto ha dejado de funcionar debido a que el cliente ha
-                dejado de pagar el dominio y/o el hosting.
+                Este proyecto ha dejado de ser accesible debido a que su contrato de hospedaje web no ha sido renovado por su responsable designado.
               </p>
             )}
           </div>
