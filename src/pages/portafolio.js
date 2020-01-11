@@ -6,7 +6,11 @@ import { useTransition, animated, config } from "react-spring"
 
 import { Fade, SEO, Layout } from "../components"
 
-export default ({ data }) => {
+export default ({
+  data: {
+    allStrapiPortfolios: { nodes: portfoliosData },
+  },
+}) => {
   const [portfolios, setPortfolios] = useState([])
   const [filteredPortfolios, setFilteredPortfolios] = React.useState([])
   const portfoliosTransition = useTransition(
@@ -21,11 +25,8 @@ export default ({ data }) => {
   )
 
   useEffect(() => {
-    const portfoliosData = data.allStrapiPortfolios.nodes
-
     setPortfolios(portfoliosData)
     setFilteredPortfolios(portfoliosData)
-    // eslint-disable-next-line
   }, [])
 
   const filter = name => {
@@ -40,9 +41,9 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <SEO 
-        isTemplate 
-        title="Portafolio" 
+      <SEO
+        isTemplate
+        title="Portafolio"
         description="Portafolio de Daniel Esteves para mostrar sus proyectos realizados en todo su trayecto como desarrollador web frontend. React, NextJS, Gatsby y WordPress."
       />
 
@@ -116,39 +117,6 @@ export default ({ data }) => {
             )
         )}
       </div>
-
-      {/* <div className="flex flex-wrap justify-center py-5">
-        {data
-          ? filteredPortfolios.map(item => (
-              <Link
-                to={`/portafolio/${item.slug}`}
-                key={item.id}
-                className="w-full px-3 my-3 sm:w-1/2 md:w-1/3 lg:w-1/4 portfolio-link"
-                swipe
-                direction="down"
-                entryOffset={80}
-              >
-                <Fade>
-                  <Img
-                    fluid={item.cover.childImageSharp.fluid}
-                    className="w-full border rounded-lg shadow-xl portfolio-image transition-all transition-250 hover:shadow-2xl dark:shadow-white-xl dark:hover:shadow-white-2xl"
-                  />
-
-                  <div className="relative px-4 -mt-10">
-                    <div className="flex flex-col bg-white border rounded-lg dark:bg-indigo-900 portfolio-meta transition-all transition-250">
-                      <h2 className="my-2 text-2xl leading-none text-center lg:text-xl">
-                        {item.title}
-                      </h2>
-                      <h3 className="mb-2 text-xl font-light leading-none text-center text-gray-500 lg:text-lg">
-                        {item.category.name}
-                      </h3>
-                    </div>
-                  </div>
-                </Fade>
-              </Link>
-            ))
-          : ""}
-      </div> */}
     </Layout>
   )
 }

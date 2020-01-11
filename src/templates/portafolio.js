@@ -16,12 +16,16 @@ const markdownRenderers = {
 export default ({ data }) => {
   const portfolio = data.strapiPortfolios
 
+  const disableAnchorHref = e => {
+    e.preventDefault()
+  }
+
   return (
     <Layout>
       <SEO
         isTemplate
         title={portfolio.title}
-        description={`${removeMD(portfolio.content).substr(0, 157)}...`}
+        description={`${removeMD(portfolio.body).substr(0, 157)}...`}
         meta={[
           {
             name: "language",
@@ -88,27 +92,50 @@ export default ({ data }) => {
             ))}
           </h3>
 
-          <div className="flex items-center justify-center">
+          <div className="flex flex-col items-center justify-center">
             <a
               href={portfolio.url}
               rel="noopener noreferrer"
               target="_blank"
-              className="flex items-center px-5 py-2 text-xl leading-none text-white bg-indigo-700 rounded hover:bg-indigo-600 transition-all transition-250 transition-ease-in-out"
+              type="button"
+              className={`flex items-center px-5 py-2 text-xl leading-none text-white bg-indigo-700 rounded hover:bg-indigo-600 ${
+                portfolio.isActive ? "" : "opacity-50 cursor-not-allowed"
+              } transition-all transition-250 transition-ease-in-out`}
+              disabled={!portfolio.isActive}
+              onClick={portfolio.isActive ? "" : disableAnchorHref}
             >
               Ver Proyecto <LinkIcon className="w-6 h-6 ml-3 fill-current" />
             </a>
+
+            {portfolio.isActive ? (
+              ""
+            ) : (
+              <p className="max-w-xs mx-auto mt-4 text-sm text-center text-red-700">
+                Este proyecto ha dejado de funcionar debido a que el cliente ha
+                dejado de pagar el dominio y/o el hosting.
+              </p>
+            )}
           </div>
         </div>
 
         <div className="w-full px-2 md:w-1/2 md:px-5">
           <Markdown
             className="py-5 text-lg text-justify text-gray-600 markdown markdown-content"
-            source={portfolio.content}
+            source={portfolio.body}
             renderers={markdownRenderers}
             escapeHtml={false}
           />
         </div>
       </div>
+
+      <hr className="my-8 border-gray-400 dark:border-gray-700" />
+
+      <p className="text-center text-gray-500 dark:text-gray-700">
+        El desarrollador web cumple con realizar la página solicitada y no se
+        hace responsable por enlaces caídos o cambios en el diseño. El uso
+        posterior de la página queda a criterio y bajo completa responsabilidad
+        del cliente
+      </p>
     </Layout>
   )
 }
@@ -117,7 +144,7 @@ export const query = graphql`
   query($slug: String!) {
     strapiPortfolios(slug: { eq: $slug }) {
       title
-      content
+      body
       cover {
         childImageSharp {
           fluid(maxWidth: 700) {
@@ -137,6 +164,7 @@ export const query = graphql`
       }
       url
       createdAt(formatString: "YYYY-MM-DD")
+      isActive
     }
   }
 `
