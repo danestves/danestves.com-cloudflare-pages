@@ -130,10 +130,7 @@ export default ({ data }) => {
       <hr className="my-8 border-gray-400 dark:border-gray-700" />
 
       <p className="text-center text-gray-500 dark:text-gray-700">
-        El desarrollador web cumple con realizar la página solicitada y no se
-        hace responsable por enlaces caídos o cambios en el diseño. El uso
-        posterior de la página queda a criterio y bajo completa responsabilidad
-        del cliente
+        Este portafolio tiene como objetivo mostrar trabajos previamente realizados a través de enlaces externos. El desarrollador no se hace responsable por enlaces inaccesibles o trabajos modificados posterior a su entrega. Una vez entregado el trabajo encargado. queda a responsabilidad total del cliente el mantenimiento y buen uso del servicio solicitado originalmente.
       </p>
     </Layout>
   )
