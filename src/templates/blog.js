@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Markdown from "react-markdown"
 import { useTransition, animated, config } from "react-spring"
 import { window } from "browser-monads"
 import removeMD from "remove-markdown"
+import Disqus from "disqus-react"
 
 import {
   CodeBlock,
@@ -24,6 +26,8 @@ import {
   LinkedInIcon,
   LinkIcon,
 } from "../icons"
+import Logo from "../images/logo.png"
+import Profile from "../images/profile.jpg"
 
 const markdownRenderers = {
   code: CodeBlock,
@@ -85,6 +89,54 @@ export default ({ data }) => {
     }
   }
 
+  const disqusShortname = "daniel-esteves"
+  const disqusConfig = {
+    url: `https://danestves.com/blog/${blog.slug}`,
+    identifier: blog.id,
+    title: blog.title,
+  }
+
+  const jsonLd = {
+    "@context": `https://schema.org/`,
+    "@type": `Article`,
+    author: {
+      "@type": `Person`,
+      name: `Daniel Esteves`,
+      image: `https://danestves.com${Profile}`,
+      sameAs: ["https://danestves.com", "https://twitter.com/danestves"],
+    },
+    keywords: blog.tags.length
+      ? blog.tags.map(tag => `${tag.name}`)
+      : undefined,
+    headline: `${
+      blog.title.length > 50 ? `${blog.title.substr(0, 53)}...` : blog.title
+    } | @danestves`,
+    url: `https://danestves.com/blog/${blog.slug}`,
+    datePublished: blog.createdAt,
+    dateModified: blog.updatedAt,
+    image: {
+      "@type": `ImageObject`,
+      url: `https://danestves.com${blog.ogCover.publicURL}`,
+      width: 1200,
+      height: 628,
+    },
+    publisher: {
+      "@type": `Organization`,
+      name: `Daniel Esteves`,
+      logo: {
+        "@type": `ImageObject`,
+        url: `https://danestves.com${Logo}`,
+        width: 60,
+        height: 60,
+      },
+    },
+    description: `${removeMD(blog.body).substr(0, 157)}...`,
+    mainEntityOfPage: {
+      "@type": `WebPage`,
+      "@id": `https://danestves.com`,
+    },
+  }
+
   return (
     <Layout>
       <SEO
@@ -122,6 +174,10 @@ export default ({ data }) => {
             content: window.location.href,
           },
           {
+            property: "og:type",
+            content: "article",
+          },
+          {
             name: "twitter:image",
             content: blog.ogCover.publicURL,
           },
@@ -131,6 +187,11 @@ export default ({ data }) => {
           },
         ]}
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd, undefined, 4)}
+        </script>
+      </Helmet>
 
       <div className="relative overflow-hidden rounded shadow-lg dark:shadow-white-lg">
         <Img fluid={blog.cover.childImageSharp.fluid} />
@@ -195,6 +256,13 @@ export default ({ data }) => {
         renderers={markdownRenderers}
         escapeHtml={false}
       />
+
+      <div className="mt-8">
+        <Disqus.DiscussionEmbed
+          shortname={disqusShortname}
+          config={disqusConfig}
+        />
+      </div>
 
       <button
         onClick={webShareAPI}
@@ -301,6 +369,7 @@ export default ({ data }) => {
 export const query = graphql`
   query($slug: String!) {
     strapiBlogs(slug: { eq: $slug }) {
+      id
       cover {
         childImageSharp {
           fluid(maxWidth: 1920) {
@@ -318,6 +387,7 @@ export const query = graphql`
       }
       body
       createdAt(formatString: "YYYY-MM-DD")
+      updatedAt(formatString: "YYYY-MM-DD")
     }
   }
 `
