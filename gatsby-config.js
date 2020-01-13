@@ -22,17 +22,23 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: 'https://danestves.com',
-        sitemap: 'https://danestves.com/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/', disallow: '/dayairis' }]
-      }
+        host: "https://danestves.com",
+        sitemap: "https://danestves.com/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/", disallow: "/dayairis" }],
+      },
     },
     {
       resolve: "gatsby-plugin-transition-link",
       options: {
         injectPageProps: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `danestves`,
       },
     },
     {

@@ -6,7 +6,7 @@ import Markdown from "react-markdown"
 import { useTransition, animated, config } from "react-spring"
 import { window } from "browser-monads"
 import removeMD from "remove-markdown"
-import Disqus from "disqus-react"
+import { Disqus } from "gatsby-plugin-disqus"
 
 import {
   CodeBlock,
@@ -95,6 +95,7 @@ export default ({ data }) => {
     identifier: blog.id,
     title: blog.title,
   }
+  console.log(disqusConfig)
 
   const jsonLd = {
     "@context": `https://schema.org/`,
@@ -257,11 +258,8 @@ export default ({ data }) => {
         escapeHtml={false}
       />
 
-      <div className="mt-8">
-        <Disqus.DiscussionEmbed
-          shortname={disqusShortname}
-          config={disqusConfig}
-        />
+      <div className="mt-8 border-t border-gray-500 pt-4">
+        <Disqus config={disqusConfig} />
       </div>
 
       <button
