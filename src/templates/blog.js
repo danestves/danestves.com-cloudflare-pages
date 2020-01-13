@@ -102,7 +102,7 @@ export default ({ data }) => {
     author: {
       "@type": `Person`,
       name: `Daniel Esteves`,
-      image: `https://danestves.com${Profile}`,
+      image: Profile,
       sameAs: ["https://danestves.com", "https://twitter.com/danestves"],
     },
     keywords: blog.tags.length
@@ -116,7 +116,7 @@ export default ({ data }) => {
     dateModified: blog.updatedAt,
     image: {
       "@type": `ImageObject`,
-      url: `https://danestves.com${blog.ogCover.publicURL}`,
+      url: blog.ogCover.publicURL,
       width: 1200,
       height: 628,
     },
@@ -125,7 +125,7 @@ export default ({ data }) => {
       name: `Daniel Esteves`,
       logo: {
         "@type": `ImageObject`,
-        url: `https://danestves.com${Logo}`,
+        url: Logo,
         width: 60,
         height: 60,
       },
@@ -167,7 +167,7 @@ export default ({ data }) => {
           },
           {
             name: "twitter:image",
-            content: `https://danestves.com${blog.ogCover.publicURL}`,
+            content: blog.ogCover.publicURL,
           },
           {
             name: "twitter:image:alt",
@@ -176,10 +176,7 @@ export default ({ data }) => {
         ]}
       />
       <Helmet>
-        <meta
-          property="og:image"
-          content={`https://danestves.com${blog.ogCover.publicURL}`}
-        />
+        <meta property="og:image" content={blog.ogCover.publicURL} />
         {blog.tags &&
           blog.tags.map((keyword, i) => (
             <meta property="article:tag" content={keyword.name} key={i} />
