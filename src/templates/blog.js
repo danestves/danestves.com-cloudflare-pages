@@ -164,6 +164,7 @@ export default ({ data }) => {
           {
             property: "og:image",
             content: `https://danestves.com${blog.ogCover.publicURL}`,
+            key: `og:image`,
           },
           {
             property: "og:url",
