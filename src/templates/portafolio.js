@@ -102,7 +102,7 @@ export default ({ data }) => {
                 portfolio.isActive ? "" : "opacity-50 cursor-not-allowed"
               } transition-all transition-250 transition-ease-in-out`}
               disabled={!portfolio.isActive}
-              onClick={portfolio.isActive ? "" : disableAnchorHref}
+              onClick={portfolio.isActive ? null : disableAnchorHref}
             >
               Ver Proyecto <LinkIcon className="w-6 h-6 ml-3 fill-current" />
             </a>
@@ -111,7 +111,9 @@ export default ({ data }) => {
               ""
             ) : (
               <p className="max-w-xs mx-auto mt-4 text-sm text-center text-red-700">
-                Este proyecto ha dejado de ser accesible debido a que su contrato de hospedaje web no ha sido renovado por su responsable designado.
+                Este proyecto ha dejado de ser accesible debido a que su
+                contrato de hospedaje web no ha sido renovado por su responsable
+                designado.
               </p>
             )}
           </div>
@@ -130,7 +132,12 @@ export default ({ data }) => {
       <hr className="my-8 border-gray-400 dark:border-gray-700" />
 
       <p className="text-center text-gray-500 dark:text-gray-700">
-        Este portafolio tiene como objetivo mostrar trabajos previamente realizados a través de enlaces externos. El desarrollador no se hace responsable por enlaces inaccesibles o trabajos modificados posterior a su entrega. Una vez entregado el trabajo encargado. queda a responsabilidad total del cliente el mantenimiento y buen uso del servicio solicitado originalmente.
+        Este portafolio tiene como objetivo mostrar trabajos previamente
+        realizados a través de enlaces externos. El desarrollador no se hace
+        responsable por enlaces inaccesibles o trabajos modificados posterior a
+        su entrega. Una vez entregado el trabajo encargado. queda a
+        responsabilidad total del cliente el mantenimiento y buen uso del
+        servicio solicitado originalmente.
       </p>
     </Layout>
   )

@@ -49,10 +49,10 @@ export default ({
 
       <div className="mt-3 mb-5 text-right">
         <p className="mb-3 text-lg">Filtrar por:</p>
-        <div class="inline-block relative w-64">
+        <div className="relative inline-block w-64">
           <select
             onChange={e => filter(e.target.value)}
-            class="block appearance-none w-full bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            className="block w-full px-4 py-2 pr-8 leading-tight bg-transparent border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline"
           >
             <option value="">Mostrar todos</option>
             <option value="Educativa">Educativa</option>
@@ -65,9 +65,9 @@ export default ({
             <option value="Inmobiliaria">Inmobiliaria</option>
             <option value="Diseño">Diseño</option>
           </select>
-          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <div className="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
             <svg
-              class="fill-current h-4 w-4"
+              className="w-4 h-4 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
             >
