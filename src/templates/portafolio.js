@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Markdown from "react-markdown"
@@ -14,6 +14,7 @@ const markdownRenderers = {
 }
 
 export default ({ data }) => {
+  const [collapsed, setCollapsed] = useState(false)
   const portfolio = data.strapiPortfolios
 
   const disableAnchorHref = e => {
@@ -69,8 +70,22 @@ export default ({ data }) => {
           <Img
             fluid={portfolio.cover.childImageSharp.fluid}
             alt={`Portafolio: ${portfolio.title} | Daniel Esteves`}
-            className="block max-w-lg mx-auto rounded-lg"
+            className="block max-w-lg mx-auto rounded-lg cursor-pointer"
+            style={{ maxHeight: collapsed ? `100%` : 340 }}
+            imgStyle={{ objectPosition: `top center` }}
+            onClick={() => setCollapsed(!collapsed)}
           />
+          <small className="block text-center">
+            Click en la imagen para ver más. Puedes ver la imagen original{" "}
+            <a
+              href={portfolio.cover.publicURL}
+              target="_blank"
+              className="font-bold underline"
+              rel="noopener noreferrer"
+            >
+              aquí
+            </a>
+          </small>
 
           <h1 className="mt-3 mb-6 text-4xl font-medium leading-none text-center">
             {portfolio.title}
@@ -154,6 +169,7 @@ export const query = graphql`
             ...GatsbyImageSharpFluid
           }
         }
+        publicURL
       }
       ogCover {
         publicURL
