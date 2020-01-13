@@ -37,7 +37,7 @@ export default () => {
       <div className="md:px-8">
         <Navbar>
           <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
-            <Link to="/">
+            <Link to="/" title="Inicio">
               <Logo />
             </Link>
           </div>
@@ -61,6 +61,7 @@ export default () => {
             <div className="flex items-center justify-center">
               <Link
                 to="/"
+                title="Inicio"
                 className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
               >
                 Inicio
@@ -82,12 +83,14 @@ export default () => {
                           <div className="py-1">
                             <Link
                               to="/curriculum"
+                              title="Curriculum"
                               className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                             >
                               Curriculum
                             </Link>
                             <Link
                               to="/certificaciones"
+                              title="Certificaciones"
                               className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                             >
                               Certificaciones
@@ -100,18 +103,21 @@ export default () => {
               </button>
               <Link
                 to="/portafolio"
+                title="Portafolio"
                 className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
               >
                 Portafolio
               </Link>
               <Link
                 to="/blog"
+                title="Blog"
                 className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
               >
                 Blog
               </Link>
               <Link
                 to="/contacto"
+                title="Contacto"
                 className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
               >
                 Contacto
@@ -204,30 +210,35 @@ export default () => {
                   <div className="px-4 pt-8 pb-6">
                     <Link
                       to="/"
+                      title="Inicio"
                       className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Inicio
                     </Link>
                     <Link
                       to="/curriculum"
+                      title="Curriculum"
                       className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Curriculum
                     </Link>
                     <Link
                       to="/certificaciones"
+                      title="Certificaciones"
                       className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Certificaciones
                     </Link>
                     <Link
                       to="/portafolio"
+                      title="Portafolio"
                       className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Portafolio
                     </Link>
                     <Link
                       to="/blog"
+                      title="Blog"
                       className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
                     >
                       Blog
@@ -238,6 +249,7 @@ export default () => {
                   <div className="p-4">
                     <Link
                       to="/contacto"
+                      title="Contacto"
                       className="block px-3 py-3 font-medium text-center text-gray-900 bg-gray-300 rounded-lg hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
                     >
                       Contactame

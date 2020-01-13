@@ -22,6 +22,13 @@ const Layout = ({ children }) => {
         }}
       />
       <main className="container px-5 mx-auto xl:px-0">{children}</main>
+      <footer className="py-5 mt-5 bg-white shadow dark:bg-indigo-900">
+        <div className="container">
+          <p className="text-sm">
+            Daniel Esteves © 2019 - Todos los derechos reservados
+          </p>
+        </div>
+      </footer>
     </>
   )
 }

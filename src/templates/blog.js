@@ -89,13 +89,11 @@ export default ({ data }) => {
     }
   }
 
-  const disqusShortname = "danestves"
   const disqusConfig = {
     url: `https://danestves.com/blog/${blog.slug}`,
     identifier: blog.id,
     title: blog.title,
   }
-  console.log(disqusConfig)
 
   const jsonLd = {
     "@context": `https://schema.org/`,

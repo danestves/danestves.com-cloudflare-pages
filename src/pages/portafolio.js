@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { default as Link } from "gatsby-plugin-transition-link/AniLink"
@@ -11,8 +11,8 @@ export default ({
     allStrapiPortfolios: { nodes: portfoliosData },
   },
 }) => {
-  const [portfolios, setPortfolios] = useState([])
-  const [filteredPortfolios, setFilteredPortfolios] = React.useState([])
+  const [portfolios] = useState(portfoliosData)
+  const [filteredPortfolios, setFilteredPortfolios] = useState(portfoliosData)
   const portfoliosTransition = useTransition(
     filteredPortfolios,
     item => item.id,
@@ -23,11 +23,6 @@ export default ({
       config: { ...config.wobbly, clamp: true },
     }
   )
-
-  useEffect(() => {
-    setPortfolios(portfoliosData)
-    setFilteredPortfolios(portfoliosData)
-  }, [])
 
   const filter = name => {
     if (name === "") {
