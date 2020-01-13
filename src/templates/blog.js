@@ -89,7 +89,7 @@ export default ({ data }) => {
     }
   }
 
-  const disqusShortname = "daniel-esteves"
+  const disqusShortname = "danestves"
   const disqusConfig = {
     url: `https://danestves.com/blog/${blog.slug}`,
     identifier: blog.id,
