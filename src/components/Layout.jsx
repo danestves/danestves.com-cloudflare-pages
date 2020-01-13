@@ -1,13 +1,18 @@
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import useDarkMode from "use-dark-mode"
+import { document } from "browser-monads"
 
 import { Header } from "."
 import "./styles.css"
 
 const Layout = ({ children }) => {
   const darkmode = useDarkMode()
+  
+  useEffect(() => {
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+  }, [])
 
   return (
     <>
@@ -25,7 +30,7 @@ const Layout = ({ children }) => {
       <footer className="py-5 mt-5 bg-white shadow dark:bg-indigo-900">
         <div className="container">
           <p className="text-sm">
-            Daniel Esteves © 2019 - Todos los derechos reservados
+            Daniel Esteves © <span id="year" /> - Todos los derechos reservados
           </p>
         </div>
       </footer>
