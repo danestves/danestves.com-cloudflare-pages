@@ -99,6 +99,7 @@ function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {
           property: `og:image`,
           content:
             "https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg",
+          key: `og:image`,
         },
         {
           property: `og:image:width`,
