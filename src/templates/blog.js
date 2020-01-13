@@ -116,7 +116,7 @@ export default ({ data }) => {
     dateModified: blog.updatedAt,
     image: {
       "@type": `ImageObject`,
-      url: blog.ogCover.publicURL,
+      url: `https://danestves.com${blog.ogCover.publicURL}`,
       width: 1200,
       height: 628,
     },
@@ -162,21 +162,12 @@ export default ({ data }) => {
             schema: "YYYY-MM-DD",
           },
           {
-            property: "og:image",
-            content: `${blog.ogCover.publicURL}`,
-            key: `og:image`,
-          },
-          {
-            property: "og:url",
-            content: window.location.href,
-          },
-          {
             property: "og:type",
             content: "article",
           },
           {
             name: "twitter:image",
-            content: `${blog.ogCover.publicURL}`,
+            content: `https://danestves.com${blog.ogCover.publicURL}`,
           },
           {
             name: "twitter:image:alt",
@@ -185,6 +176,10 @@ export default ({ data }) => {
         ]}
       />
       <Helmet>
+        <meta
+          property="og:image"
+          content={`https://danestves.com${blog.ogCover.publicURL}`}
+        />
         {blog.tags &&
           blog.tags.map((keyword, i) => (
             <meta property="article:tag" content={keyword.name} key={i} />
@@ -378,6 +373,7 @@ export const query = graphql`
   query($slug: String!) {
     strapiBlogs(slug: { eq: $slug }) {
       id
+      slug
       cover {
         childImageSharp {
           fluid(maxWidth: 1920) {
