@@ -116,7 +116,7 @@ export default ({ data }) => {
     dateModified: blog.updatedAt,
     image: {
       "@type": `ImageObject`,
-      url: `https://danestves.com${blog.ogCover.publicURL}`,
+      url: blog.ogCover.publicURL,
       width: 1200,
       height: 628,
     },
