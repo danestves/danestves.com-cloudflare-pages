@@ -163,7 +163,7 @@ export default ({ data }) => {
           },
           {
             property: "og:image",
-            content: blog.ogCover.publicURL,
+            content: `${blog.ogCover.publicURL}`,
             key: `og:image`,
           },
           {
@@ -176,7 +176,7 @@ export default ({ data }) => {
           },
           {
             name: "twitter:image",
-            content: blog.ogCover.publicURL,
+            content: `${blog.ogCover.publicURL}`,
           },
           {
             name: "twitter:image:alt",
