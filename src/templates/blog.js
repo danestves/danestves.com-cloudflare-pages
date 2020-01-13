@@ -111,7 +111,7 @@ export default ({ data }) => {
     headline: `${
       blog.title.length > 50 ? `${blog.title.substr(0, 53)}...` : blog.title
     } | @danestves`,
-    url: `https://danestves.com/blog/${blog.slug}`,
+    url: window.location.href,
     datePublished: blog.createdAt,
     dateModified: blog.updatedAt,
     image: {
@@ -142,6 +142,7 @@ export default ({ data }) => {
       <SEO
         title={blog.title}
         description={`${removeMD(blog.body).substr(0, 157)}...`}
+        jsonLdProps={jsonLd}
         meta={[
           {
             name: "keywords",
@@ -161,13 +162,8 @@ export default ({ data }) => {
             schema: "YYYY-MM-DD",
           },
           {
-            name: "identifier",
-            content: "0-2345-6634-6",
-            scheme: "ISBN",
-          },
-          {
             property: "og:image",
-            content: blog.ogCover.publicURL,
+            content: `https://danestves.com${blog.ogCover.publicURL}`,
           },
           {
             property: "og:url",
@@ -179,7 +175,7 @@ export default ({ data }) => {
           },
           {
             name: "twitter:image",
-            content: blog.ogCover.publicURL,
+            content: `https://danestves.com${blog.ogCover.publicURL}`,
           },
           {
             name: "twitter:image:alt",
@@ -188,9 +184,20 @@ export default ({ data }) => {
         ]}
       />
       <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd, undefined, 4)}
-        </script>
+        {blog.tags &&
+          blog.tags.map((keyword, i) => (
+            <meta property="article:tag" content={keyword.name} key={i} />
+          ))}
+        <meta property="article:published_time" content={blog.createdAt} />
+        <meta property="article:modified_time" content={blog.updatedAt} />
+        <meta
+          property="article:author"
+          content="https://facebook.com/danestves"
+        />
+        <meta name="twitter:label1" content="Written by" />
+        <meta name="twitter:data1" content="Daniel Esteves" />
+        {blog.tags && <meta name="twitter:label2" content="Filed under" />}
+        {blog.tags && <meta name="twitter:data2" content={blog.tags[0].name} />}
       </Helmet>
 
       <div className="relative overflow-hidden rounded shadow-lg dark:shadow-white-lg">

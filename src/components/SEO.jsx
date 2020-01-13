@@ -4,7 +4,9 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { window } from "browser-monads"
 
-function SEO({ description, lang, meta, title, isTemplate }) {
+import Logo from "../images/logo.png"
+
+function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -20,6 +22,32 @@ function SEO({ description, lang, meta, title, isTemplate }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const jsonLd = {
+    "@context": `https://schema.org/`,
+    "@type": `WebSite`,
+    url: window.location.href,
+    image: {
+      "@type": `ImageObject`,
+      url: `https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg`,
+      width: 1200,
+      height: 628,
+    },
+    publisher: {
+      "@type": `Organization`,
+      name: `Daniel Esteves`,
+      logo: {
+        "@type": `ImageObject`,
+        url: `https://danestves.com${Logo}`,
+        width: 60,
+        height: 60,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": `WebPage`,
+      "@id": `https://danestves.com`,
+    },
+    description,
+  }
 
   return (
     <Helmet
@@ -73,6 +101,14 @@ function SEO({ description, lang, meta, title, isTemplate }) {
             "https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg",
         },
         {
+          property: `og:image:width`,
+          content: 1200,
+        },
+        {
+          property: `og:image:height`,
+          content: 628,
+        },
+        {
           property: `og:url`,
           content: window.location.href,
         },
@@ -110,7 +146,12 @@ function SEO({ description, lang, meta, title, isTemplate }) {
               } | @danestves`,
         },
       ].concat(meta)}
-    />
+    >
+      <link rel="canonical" href={window.location.href} />
+      <script type="application/ld+json">
+        {JSON.stringify(jsonLdProps ? jsonLdProps : jsonLd, undefined, 4)}
+      </script>
+    </Helmet>
   )
 }
 
