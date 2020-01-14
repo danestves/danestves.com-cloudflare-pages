@@ -39,6 +39,7 @@ body {
 
 .portfolio-link .portfolio-image {
   max-height: 200px;
+  height: 200px;
 }
 
 .portfolio-link:hover .portfolio-image,
