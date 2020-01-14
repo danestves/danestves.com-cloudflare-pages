@@ -94,6 +94,8 @@ export default ({
                     <Img
                       fluid={item.cover.childImageSharp.fluid}
                       className="w-full border rounded-lg shadow-xl portfolio-image transition-all transition-250 hover:shadow-2xl dark:shadow-white-xl dark:hover:shadow-white-2xl"
+                      style={{ maxHeight: 200 }}
+                      imgStyle={{ objectPosition: "top center" }}
                     />
 
                     <div className="relative px-4 -mt-10">
@@ -125,7 +127,7 @@ export const query = graphql`
         title
         cover {
           childImageSharp {
-            fluid(maxWidth: 300, maxHeight: 200) {
+            fluid(maxWidth: 300, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
