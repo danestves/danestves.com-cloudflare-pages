@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Markdown from "react-markdown"
@@ -47,16 +48,8 @@ export default ({ data }) => {
             scheme: "ISBN",
           },
           {
-            property: "og:image",
-            content: `https://danestves.com${portfolio.ogCover.publicURL}`,
-          },
-          {
             property: "og:url",
             content: window.location.href,
-          },
-          {
-            name: "twitter:image",
-            content: `https://danestves.com${portfolio.ogCover.publicURL}`,
           },
           {
             name: "twitter:image:alt",
@@ -64,6 +57,10 @@ export default ({ data }) => {
           },
         ]}
       />
+      <Helmet>
+        <meta property="og:image" content={portfolio.ogCover.publicURL} />
+        <meta property="twitter:image" content={portfolio.ogCover.publicURL} />
+      </Helmet>
 
       <div className="flex flex-wrap items-center py-5">
         <div className="w-full px-2 md:w-1/2 md:px-5">
