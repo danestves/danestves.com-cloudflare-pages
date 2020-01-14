@@ -37,6 +37,10 @@ body {
   @apply border-transparent;
 }
 
+.portfolio-link .portfolio-image {
+  max-height: 200px;
+}
+
 .portfolio-link:hover .portfolio-image,
 .portfolio-link:hover .portfolio-meta {
   @apply border-indigo-700;
