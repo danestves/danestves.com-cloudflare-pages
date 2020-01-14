@@ -166,7 +166,7 @@ export default ({ data }) => {
           },
           {
             name: "twitter:image",
-            content: blog.ogCover.publicURL,
+            content: `https://danestves.com${blog.ogCover.publicURL}`,
           },
           {
             name: "twitter:image:alt",
