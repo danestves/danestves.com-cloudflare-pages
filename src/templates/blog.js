@@ -165,10 +165,6 @@ export default ({ data }) => {
             content: "article",
           },
           {
-            name: "twitter:image",
-            content: blog.ogCover.publicURL,
-          },
-          {
             name: "twitter:image:alt",
             content: blog.title,
           },
@@ -190,6 +186,7 @@ export default ({ data }) => {
         <meta name="twitter:data1" content="Daniel Esteves" />
         {blog.tags && <meta name="twitter:label2" content="Filed under" />}
         {blog.tags && <meta name="twitter:data2" content={blog.tags[0].name} />}
+        <meta property="twitter:image" content={blog.ogCover.publicURL} />
       </Helmet>
 
       <div className="relative overflow-hidden rounded shadow-lg dark:shadow-white-lg">
