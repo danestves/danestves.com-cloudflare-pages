@@ -48,7 +48,7 @@ export default ({ data }) => {
           },
           {
             property: "og:image",
-            content: portfolio.ogCover.publicURL,
+            content: `https://danestves.com${portfolio.ogCover.publicURL}`,
           },
           {
             property: "og:url",
@@ -56,7 +56,7 @@ export default ({ data }) => {
           },
           {
             name: "twitter:image",
-            content: portfolio.ogCover.publicURL,
+            content: `https://danestves.com${portfolio.ogCover.publicURL}`,
           },
           {
             name: "twitter:image:alt",
