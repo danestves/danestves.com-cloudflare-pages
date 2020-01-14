@@ -51,6 +51,10 @@ export default ({ data }) => {
             property: "og:url",
             content: window.location.href,
           },
+           {
+            name: "twitter:image",
+            content: `https://danestves.com${portfolio.ogCover.publicURL}`,
+          },
           {
             name: "twitter:image:alt",
             content: portfolio.title,
@@ -59,7 +63,6 @@ export default ({ data }) => {
       />
       <Helmet>
         <meta property="og:image" content={portfolio.ogCover.publicURL} />
-        <meta property="twitter:image" content={portfolio.ogCover.publicURL} />
       </Helmet>
 
       <div className="flex flex-wrap items-center py-5">
