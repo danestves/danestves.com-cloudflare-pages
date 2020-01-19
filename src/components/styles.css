@@ -1,7 +1,9 @@
 @import "@glidejs/glide/dist/css/glide.core.min.css";
 @import "@glidejs/glide/dist/css/glide.theme.min.css";
 
+/* purgecss start ignore */
 @tailwind base;
+/* purgecss end ignore */
 
 body {
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -11,7 +13,9 @@ body {
 /*
  * Components
 */
+/* purgecss start ignore */
 @tailwind components;
+/* purgecss end ignore */
 
 @media screen and (max-width: 640px) {
   .profile-photo {
