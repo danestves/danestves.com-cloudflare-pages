@@ -65,7 +65,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   progress.setStatus(
     "Called createPage for " +
-      (portfolios.data.allStrapiPortfolios.nodes.length - 1) +
+      (portfolios.data.allStrapiPortfolios.edges.length - 1) +
       " pages at " +
       (portfolios.data.allStrapiPortfolios.edges.length - 1) /
         ((Date.now() - start) / 1000) +
