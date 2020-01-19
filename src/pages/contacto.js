@@ -11,10 +11,7 @@ import { ContactIcon } from "../icons"
 import { window } from "browser-monads"
 
 export default () => {
-  const [state, submit] = useForm({
-    site: process.env.GATSBY_SITE,
-    form: process.env.GATSBY_CONTACT,
-  })
+  const [state, submit] = useForm(process.env.GATSBY_CONTACT)
   const [token, setToken] = useState("")
   const succeededTrantisiton = useTransition(state.succeeded, null, {
     from: {
@@ -55,7 +52,7 @@ export default () => {
       language="es"
     >
       <Layout>
-        <SEO 
+        <SEO
           isTemplate
           title="Contacto"
           description="Página de contacto para cotizar servicios web con Daniel Esteves enfocado en el área de React, NextJS, Gatsby y WordPress para su rápida ejecución. 🚀😎"
