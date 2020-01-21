@@ -51,7 +51,7 @@ export default ({ data }) => {
             property: "og:url",
             content: window.location.href,
           },
-           {
+          {
             name: "twitter:image",
             content: `https://danestves.com${portfolio.ogCover.publicURL}`,
           },
@@ -67,14 +67,18 @@ export default ({ data }) => {
 
       <div className="flex flex-wrap items-center py-5">
         <div className="w-full px-2 md:w-1/2 md:px-5">
-          <Img
-            fluid={portfolio.cover.childImageSharp.fluid}
-            alt={`Portafolio: ${portfolio.title} | Daniel Esteves`}
-            className="block max-w-lg mx-auto rounded-lg cursor-pointer"
+          <div
+            className="overflow-hidden rounded-lg cursor-pointer"
             style={{ maxHeight: collapsed ? `100%` : 340 }}
-            imgStyle={{ objectPosition: `top center` }}
             onClick={() => setCollapsed(!collapsed)}
-          />
+          >
+            <Img
+              fluid={portfolio.cover.childImageSharp.fluid}
+              alt={`Portafolio: ${portfolio.title} | Daniel Esteves`}
+              className="block max-w-lg mx-auto rounded-lg"
+              imgStyle={{ objectPosition: `top center` }}
+            />
+          </div>
           <small className="block text-center">
             Click en la imagen para ver más. Puedes ver la imagen original{" "}
             <a
