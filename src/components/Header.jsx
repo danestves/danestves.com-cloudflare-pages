@@ -153,8 +153,10 @@ export default () => {
       {isOpenDropdown ? (
         <div
           onClick={() => setIsOpenDropdown(false)}
+          onKeyDown={() => setIsOpenDropdown(false)}
           className="fixed inset-0"
           tabIndex="-1"
+          role="button"
         />
       ) : (
         ""
@@ -171,8 +173,10 @@ export default () => {
               >
                 <div
                   onClick={() => setIsOpen(!isOpen)}
+                  onKeyDown={() => setIsOpen(!isOpen)}
                   className="absolute inset-0 bg-black opacity-50"
                   tabIndex="-1"
+                  role="button"
                 />
               </animated.div>
             )
