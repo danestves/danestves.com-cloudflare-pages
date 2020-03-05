@@ -7,9 +7,9 @@
   Daniel Esteves Portfolio
 </h1>
 
-This repository contain all the code that Daniel Esteves use in the frontend of his site.
+This repository contains all the code that Daniel Esteves used in the frontend of his site.
 
-Fell free to create Issues or PR if you think the code can be better.
+Feel free to create Issues or a PR if you think the code can be better.
 
 ## 🚀 Quick start
 
@@ -40,10 +40,10 @@ Fell free to create Issues or PR if you think the code can be better.
     
 ## Enviroment variables
 
-This website use some variables for the contact section and recaptcha, i use StaticKit to send emails and Recaptcha v3 to avoid the spam.
+This website uses some variables for the contact section and recaptcha, i use StaticKit to send emails and Recaptcha v3 to avoid the spam.
 
-`GATSBY_SITE`: The key of site that StaticKit gives you.
-`GATSBY_CONTACT`: The name of form that StaticKit gives you.
+`GATSBY_SITE`: The key of the site that StaticKit gives you.
+`GATSBY_CONTACT`: The name of the form that StaticKit gives you.
 `GATSBY_RECAPTCHA`: Key that you can generate [here](https://www.google.com/recaptcha/intro/v3.html).
 
 ```env
@@ -72,7 +72,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     ├── package.json
     └── README.md
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+1.  **`/node_modules`**: This directory contains all of the code modules that your project depends on, (npm packages) are automatically installed.
 
 2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
 
@@ -80,7 +80,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow the customization/extension of default Gatsby settings affecting the browser.
 
 6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
 
