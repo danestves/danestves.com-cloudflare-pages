@@ -34,6 +34,16 @@ const Layout = ({ children }) => {
           </p>
         </div>
       </footer>
+
+      <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.7.0/intersection-observer.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@13.0.1/dist/lazyload.min.js"></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `var lazyLoadInstance = new LazyLoad({
+              elements_selector: ".lazy"
+          });`,
+        }}
+      />
     </>
   )
 }
