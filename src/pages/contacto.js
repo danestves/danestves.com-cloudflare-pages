@@ -1,3 +1,4 @@
+// Dependencies
 import React, { useEffect, useState } from "react"
 import { useForm, ValidationError } from "@statickit/react"
 import { animated, useTransition, config } from "react-spring"
@@ -5,12 +6,16 @@ import {
   GoogleReCaptchaProvider,
   GoogleReCaptcha,
 } from "react-google-recaptcha-v3"
-
-import { Layout, SEO } from "../components"
-import { ContactIcon } from "../icons"
 import { window } from "browser-monads"
 
+// Components
+import { Layout, SEO } from "../components"
+
+// Icons
+import { ContactIcon } from "../icons"
+
 export default () => {
+  // States
   const [state, submit] = useForm(process.env.GATSBY_CONTACT)
   const [token, setToken] = useState("")
   const succeededTrantisiton = useTransition(state.succeeded, null, {
@@ -30,6 +35,7 @@ export default () => {
     config: config.wobbly,
   })
 
+  // Effects
   useEffect(() => {
     if (state.succeeded) {
       setTimeout(() => {
@@ -38,6 +44,7 @@ export default () => {
     }
   }, [state.succeeded])
 
+  // Functions
   const handleSubmit = e => {
     e.preventDefault()
 
@@ -46,6 +53,7 @@ export default () => {
     }
   }
 
+  // Renders
   return (
     <GoogleReCaptchaProvider
       reCaptchaKey={process.env.GATSBY_RECAPTCHA}

@@ -1,19 +1,26 @@
+// Dependencies
 import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import useDarkMode from "use-dark-mode"
 import { document } from "browser-monads"
 
+// Components
 import { Header } from "."
+
+// Styles
 import "./styles.css"
 
 const Layout = ({ children }) => {
+  // States
   const darkmode = useDarkMode()
 
+  // Effects
   useEffect(() => {
     document.getElementById("year").innerHTML = new Date().getFullYear()
   }, [])
 
+  // Render
   return (
     <>
       <Header />

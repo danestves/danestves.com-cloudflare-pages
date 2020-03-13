@@ -1,9 +1,11 @@
+// Dependencies
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { default as Link } from "gatsby-plugin-transition-link/AniLink"
 import { useTransition, animated, config } from "react-spring"
 
+// Components
 import { Fade, SEO, Layout } from "../components"
 
 export default ({
@@ -11,6 +13,7 @@ export default ({
     allStrapiPortfolios: { nodes: portfoliosData },
   },
 }) => {
+  // States
   const [portfolios] = useState(portfoliosData)
   const [filteredPortfolios, setFilteredPortfolios] = useState(portfoliosData)
   const portfoliosTransition = useTransition(
@@ -24,6 +27,7 @@ export default ({
     }
   )
 
+  // Functions
   const filter = name => {
     if (name === "") {
       setFilteredPortfolios(portfolios)
@@ -34,6 +38,7 @@ export default ({
     }
   }
 
+  // Render
   return (
     <Layout>
       <SEO

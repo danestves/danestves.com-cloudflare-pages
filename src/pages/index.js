@@ -1,9 +1,13 @@
+// Dependencies
 import React from "react"
 import { graphql } from "gatsby"
 import { TransitionLink as Link } from "gatsby-plugin-transition-link/components/TransitionLink"
 import Img from "gatsby-image"
 
+// Components
 import { Layout, SEO, Services } from "../components"
+
+// Icons
 import { InterfaceIcon, DesignSystemIcon } from "../icons"
 
 const IndexPage = ({ data }) => (

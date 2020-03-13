@@ -1,3 +1,4 @@
+// Dependencies
 import React, { useState } from "react"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
@@ -6,7 +7,10 @@ import Markdown from "react-markdown"
 import removeMD from "remove-markdown"
 import { window } from "browser-monads"
 
+// Components
 import { Layout, SEO, Blockquote, MarkdownLink } from "../components"
+
+// Icons
 import { CategoryIcon, TechnologyIcon, LinkIcon } from "../icons"
 
 const markdownRenderers = {
@@ -15,13 +19,16 @@ const markdownRenderers = {
 }
 
 export default ({ data }) => {
+  // States
   const [collapsed, setCollapsed] = useState(false)
   const portfolio = data.strapiPortfolios
 
+  // Functions
   const disableAnchorHref = e => {
     e.preventDefault()
   }
 
+  // Render
   return (
     <Layout>
       <SEO

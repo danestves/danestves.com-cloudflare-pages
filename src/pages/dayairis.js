@@ -1,6 +1,8 @@
+// Dependencies
 import React from "react"
 import { graphql } from "gatsby"
 
+// Components
 import { Layout, SEO } from "../components"
 
 export default ({

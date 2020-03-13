@@ -1,11 +1,17 @@
+// Dependencies
 import React from "react"
 
+// Components
 import { Fade, SEO, Layout } from "../components"
+
+// Hooks
 import { usePlatziData } from "../hooks"
 
 export default () => {
+  // States
   const { loading, courses, careers } = usePlatziData()
 
+  // Functions
   /* eslint-disable-next-line */
   const coursesJS = courses.filter(course => {
     if (course.career !== null) {
@@ -48,6 +54,7 @@ export default () => {
 
   const fakeData = [{ fake: "fake" }, { fake: "fake" }, { fake: "fake" }]
 
+  // Render
   return (
     <Layout>
       <SEO

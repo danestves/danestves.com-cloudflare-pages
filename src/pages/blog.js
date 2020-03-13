@@ -1,10 +1,16 @@
+// Dependencies
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { default as Link } from "gatsby-plugin-transition-link"
 
+// Components
 import { Fade, SEO, Layout } from "../components"
+
+// Icons
 import { ClockIcon } from "../icons"
+
+// Helpers
 import removeMarkdown from "../helpers/removeMarkdown"
 
 export default ({

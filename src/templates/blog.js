@@ -1,3 +1,4 @@
+// Dependencies
 import React, { useState } from "react"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
@@ -8,6 +9,7 @@ import { window } from "browser-monads"
 import removeMD from "remove-markdown"
 import { Disqus } from "gatsby-plugin-disqus"
 
+// Components
 import {
   CodeBlock,
   Paragraph,
@@ -18,6 +20,8 @@ import {
   SEO,
   Layout,
 } from "../components"
+
+// Icons
 import {
   ShareIcon,
   FacebookIcon,
@@ -26,6 +30,8 @@ import {
   LinkedInIcon,
   LinkIcon,
 } from "../icons"
+
+// Images
 import Logo from "../images/logo.png"
 import Profile from "../images/profile.jpg"
 
@@ -39,6 +45,7 @@ const markdownRenderers = {
 }
 
 export default ({ data }) => {
+  // States
   const [modal, setModal] = useState(false)
   const blog = data.strapiBlogs
 
@@ -55,6 +62,7 @@ export default ({ data }) => {
     config: config.wobbly,
   })
 
+  // Functions
   const readingTime = text => {
     const wordsPerMinute = 200
     const noOfWords = text.split(/\s/g).length
@@ -136,6 +144,7 @@ export default ({ data }) => {
     },
   }
 
+  // Render
   return (
     <Layout>
       <SEO

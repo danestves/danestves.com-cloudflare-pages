@@ -1,11 +1,14 @@
+// Dependencies
 import React, { useState } from "react"
 import { useTransition, animated, config } from "react-spring"
 import { TransitionLink as Link } from "gatsby-plugin-transition-link/components/TransitionLink"
 import useDarkMode from "use-dark-mode"
 
+// Components
 import { Navbar, Logo } from "./"
 
 export default () => {
+  // States
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenDropdown, setIsOpenDropdown] = useState(false)
   const openTransition = useTransition(isOpen, null, {
@@ -32,6 +35,7 @@ export default () => {
   })
   const darkMode = useDarkMode(false)
 
+  // Render
   return (
     <header className="bg-white shadow dark:bg-indigo-900 dark:shadow-white-md">
       <div className="md:px-8">

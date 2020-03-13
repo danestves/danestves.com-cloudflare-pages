@@ -1,6 +1,8 @@
+// Dependencies
 import Glide from "@glidejs/glide"
 import React, { useState, useEffect } from "react"
 
+// Icons
 import {
   HTMLIcon,
   CSSIcon,
@@ -11,8 +13,10 @@ import {
 } from "../icons"
 
 export default ({ element = "glide", services, options }) => {
+  // States
   const [slider] = useState(new Glide(`.${element}`, options))
 
+  // Effects
   useEffect(() => {
     slider.mount()
 
@@ -20,6 +24,7 @@ export default ({ element = "glide", services, options }) => {
     return () => slider.destroy()
   }, [])
 
+  // Functions
   const printIcon = icon => {
     switch (icon) {
       case "html":
@@ -47,6 +52,7 @@ export default ({ element = "glide", services, options }) => {
     }
   }
 
+  // Render
   return (
     <div className={element}>
       <div className="glide__track" data-glide-el="track">
