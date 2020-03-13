@@ -81,7 +81,7 @@ export default ({
               <animated.div
                 key={key}
                 style={props}
-                className="w-full px-3 my-3 sm:w-1/2 md:w-1/3 lg:w-1/4 transition-all duration-200"
+                className="w-full px-3 my-3 transition-all duration-200 sm:w-1/2 md:w-1/3 lg:w-1/4"
               >
                 <Link
                   to={`/portafolio/${item.slug}`}
@@ -93,12 +93,12 @@ export default ({
                   <Fade>
                     <Img
                       fluid={item.cover.childImageSharp.fluid}
-                      className="w-full border rounded-lg shadow-xl portfolio-image transition-all duration-200 hover:shadow-2xl dark:shadow-white-xl dark:hover:shadow-white-2xl"
+                      className="w-full transition-all duration-200 border rounded-lg shadow-xl portfolio-image hover:shadow-2xl dark:shadow-white-xl dark:hover:shadow-white-2xl"
                       imgStyle={{ objectPosition: "top center" }}
                     />
 
                     <div className="relative px-4 -mt-10">
-                      <div className="flex flex-col bg-white border rounded-lg dark:bg-indigo-900 portfolio-meta transition-all duration-200">
+                      <div className="flex flex-col transition-all duration-200 bg-white border rounded-lg dark:bg-indigo-900 portfolio-meta">
                         <h2 className="my-2 text-2xl leading-none text-center lg:text-xl">
                           {item.title}
                         </h2>

@@ -19,7 +19,8 @@ export default ({ alt, src }) => {
 
   useEffect(() => {
     const script = document.createElement("script")
-    script.src= "https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js"
+    script.src =
+      "https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js"
     document.body.appendChild(script)
   }, [])
 

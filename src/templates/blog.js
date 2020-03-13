@@ -218,7 +218,7 @@ export default ({ data }) => {
           {blog.tags.map(item => (
             <div
               key={item.id}
-              className="px-3 py-1 mx-1 text-lg leading-none border-2 border-gray-700 rounded-full hover:border-indigo-700 transition-all duration-200"
+              className="px-3 py-1 mx-1 text-lg leading-none transition-all duration-200 border-2 border-gray-700 rounded-full hover:border-indigo-700"
             >
               {item.name}
             </div>
@@ -257,13 +257,13 @@ export default ({ data }) => {
         escapeHtml={false}
       />
 
-      <div className="mt-8 border-t border-gray-500 pt-4">
+      <div className="pt-4 mt-8 border-t border-gray-500">
         <Disqus config={disqusConfig} />
       </div>
 
       <button
         onClick={webShareAPI}
-        className="fixed bottom-0 right-0 p-4 mb-4 mr-4 bg-indigo-700 rounded-full hover:bg-indigo-600 transition-250 transition-all"
+        className="fixed bottom-0 right-0 p-4 mb-4 mr-4 transition-all bg-indigo-700 rounded-full hover:bg-indigo-600 transition-250"
       >
         <ShareIcon className="w-6 h-6 text-white fill-current" />
       </button>

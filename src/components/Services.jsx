@@ -70,13 +70,13 @@ export default ({ element = "glide", services, options }) => {
 
       <div className="glide__arrows" data-glide-el="controls">
         <button
-          className="left-0 text-white bg-indigo-700 border-none rounded-full glide__arrow glide__arrow--left hover:bg-indigo-500 transition-all duration-200 dark:bg-gray-200"
+          className="left-0 text-white transition-all duration-200 bg-indigo-700 border-none rounded-full glide__arrow glide__arrow--left hover:bg-indigo-500 dark:bg-gray-200"
           data-glide-dir="<"
         >
-          <ArrowIcon className="w-5 h-5 text-white fill-current rotate-180 dark:text-gray-700" />
+          <ArrowIcon className="w-5 h-5 text-white rotate-180 fill-current dark:text-gray-700" />
         </button>
         <button
-          className="right-0 text-white bg-indigo-700 border-none rounded-full glide__arrow glide__arrow--right hover:bg-indigo-500 transition-all duration-200 dark:bg-gray-200"
+          className="right-0 text-white transition-all duration-200 bg-indigo-700 border-none rounded-full glide__arrow glide__arrow--right hover:bg-indigo-500 dark:bg-gray-200"
           data-glide-dir=">"
         >
           <ArrowIcon className="w-5 h-5 text-white fill-current dark:text-gray-700" />

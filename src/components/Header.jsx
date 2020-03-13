@@ -62,13 +62,13 @@ export default () => {
               <Link
                 to="/"
                 title="Inicio"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
               >
                 Inicio
               </Link>
               <button
                 onClick={() => setIsOpenDropdown(!isOpenDropdown)}
-                className="relative ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                className="relative ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
               >
                 Sobre
                 {dropdownTransition.map(
@@ -77,21 +77,21 @@ export default () => {
                       <animated.div
                         key={key}
                         style={props}
-                        className="absolute right-0 z-10 mt-6 rounded shadow origin-top-right dark:shadow-white"
+                        className="absolute right-0 z-10 mt-6 origin-top-right rounded shadow dark:shadow-white"
                       >
                         <div className="w-40 text-left bg-white rounded-lg shadow-lg dark:bg-gray-800">
                           <div className="py-1">
                             <Link
                               to="/curriculum"
                               title="Curriculum"
-                              className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                              className="block px-6 py-3 leading-tight text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
                             >
                               Curriculum
                             </Link>
                             <Link
                               to="/certificaciones"
                               title="Certificaciones"
-                              className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                              className="block px-6 py-3 leading-tight text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
                             >
                               Certificaciones
                             </Link>
@@ -104,21 +104,21 @@ export default () => {
               <Link
                 to="/portafolio"
                 title="Portafolio"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
               >
                 Portafolio
               </Link>
               <Link
                 to="/blog"
                 title="Blog"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
               >
                 Blog
               </Link>
               <Link
                 to="/contacto"
                 title="Contacto"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
               >
                 Contacto
               </Link>
@@ -188,7 +188,7 @@ export default () => {
               <animated.div
                 key={key}
                 style={props}
-                className="fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto bg-white dark:bg-indigo-900 transition-transform"
+                className="fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto transition-transform bg-white dark:bg-indigo-900"
               >
                 <div className="relative z-10 bg-white dark:bg-indigo-900">
                   <div
@@ -215,35 +215,35 @@ export default () => {
                     <Link
                       to="/"
                       title="Inicio"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                      className="block mt-8 font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
                     >
                       Inicio
                     </Link>
                     <Link
                       to="/curriculum"
                       title="Curriculum"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                      className="block mt-8 font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
                     >
                       Curriculum
                     </Link>
                     <Link
                       to="/certificaciones"
                       title="Certificaciones"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                      className="block mt-8 font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
                     >
                       Certificaciones
                     </Link>
                     <Link
                       to="/portafolio"
                       title="Portafolio"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                      className="block mt-8 font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
                     >
                       Portafolio
                     </Link>
                     <Link
                       to="/blog"
                       title="Blog"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
+                      className="block mt-8 font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
                     >
                       Blog
                     </Link>

@@ -27,7 +27,7 @@ const IndexPage = ({ data }) => (
           <div className="w-full my-2 md:w-1/2 md:pr-2 md:my-0">
             <Link
               to="/curriculum"
-              className="block w-full px-8 py-2 text-xl font-semibold text-center text-indigo-700 capitalize bg-transparent border border-indigo-700 rounded hover:bg-indigo-700 hover:text-white hover:border-transparent transition-all duration-200 dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-400 dark:hover:text-indigo-700"
+              className="block w-full px-8 py-2 text-xl font-semibold text-center text-indigo-700 capitalize transition-all duration-200 bg-transparent border border-indigo-700 rounded hover:bg-indigo-700 hover:text-white hover:border-transparent dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-400 dark:hover:text-indigo-700"
             >
               curriculum
             </Link>
@@ -35,7 +35,7 @@ const IndexPage = ({ data }) => (
           <div className="w-full my-2 md:w-1/2 md:pl-2 md:my-0">
             <Link
               to="/contacto"
-              className="block w-full px-8 py-2 text-xl font-semibold text-center text-white capitalize bg-indigo-700 rounded hover:bg-indigo-600 transition-all duration-200"
+              className="block w-full px-8 py-2 text-xl font-semibold text-center text-white capitalize transition-all duration-200 bg-indigo-700 rounded hover:bg-indigo-600"
             >
               contáctame
             </Link>
@@ -47,7 +47,7 @@ const IndexPage = ({ data }) => (
         <Img
           fluid={data.profile.childImageSharp.fluid}
           alt="Daniel Esteves"
-          className="block object-cover object-center max-w-sm mx-auto rounded-full shadow-2xl transition-all duration-200 profile-photo"
+          className="block object-cover object-center max-w-sm mx-auto transition-all duration-200 rounded-full shadow-2xl profile-photo"
         />
       </div>
     </div>
