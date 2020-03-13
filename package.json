@@ -24,6 +24,7 @@
     "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-plugin-sharp": "^2.4.3",
     "gatsby-plugin-sitemap": "^2.2.26",
+    "gatsby-plugin-statickit": "^1.1.1",
     "gatsby-plugin-transition-link": "^1.17.7",
     "gatsby-plugin-use-dark-mode": "^1.1.2",
     "gatsby-source-filesystem": "^2.1.46",
@@ -42,8 +43,6 @@
     "react-spring": "^8.0.27",
     "remove-markdown": "^0.3.0",
     "tailwindcss": "^1.1.4",
-    "tailwindcss-transforms": "^2.2.0",
-    "tailwindcss-transitions": "^2.1.0",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {

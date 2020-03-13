@@ -62,13 +62,13 @@ export default () => {
               <Link
                 to="/"
                 title="Inicio"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
               >
                 Inicio
               </Link>
               <button
                 onClick={() => setIsOpenDropdown(!isOpenDropdown)}
-                className="relative ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                className="relative ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
               >
                 Sobre
                 {dropdownTransition.map(
@@ -84,14 +84,14 @@ export default () => {
                             <Link
                               to="/curriculum"
                               title="Curriculum"
-                              className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                              className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
                             >
                               Curriculum
                             </Link>
                             <Link
                               to="/certificaciones"
                               title="Certificaciones"
-                              className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                              className="block px-6 py-3 leading-tight text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
                             >
                               Certificaciones
                             </Link>
@@ -104,21 +104,21 @@ export default () => {
               <Link
                 to="/portafolio"
                 title="Portafolio"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
               >
                 Portafolio
               </Link>
               <Link
                 to="/blog"
                 title="Blog"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
               >
                 Blog
               </Link>
               <Link
                 to="/contacto"
                 title="Contacto"
-                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                className="ml-10 text-sm font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
               >
                 Contacto
               </Link>
@@ -215,35 +215,35 @@ export default () => {
                     <Link
                       to="/"
                       title="Inicio"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
                     >
                       Inicio
                     </Link>
                     <Link
                       to="/curriculum"
                       title="Curriculum"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
                     >
                       Curriculum
                     </Link>
                     <Link
                       to="/certificaciones"
                       title="Certificaciones"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
                     >
                       Certificaciones
                     </Link>
                     <Link
                       to="/portafolio"
                       title="Portafolio"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
                     >
                       Portafolio
                     </Link>
                     <Link
                       to="/blog"
                       title="Blog"
-                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all transition-250"
+                      className="block mt-8 font-medium text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-gray-400 transition-all duration-200"
                     >
                       Blog
                     </Link>

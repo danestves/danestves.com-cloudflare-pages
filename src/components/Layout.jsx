@@ -9,9 +9,9 @@ import "./styles.css"
 
 const Layout = ({ children }) => {
   const darkmode = useDarkMode()
-  
+
   useEffect(() => {
-    document.getElementById("year").innerHTML = new Date().getFullYear();
+    document.getElementById("year").innerHTML = new Date().getFullYear()
   }, [])
 
   return (
@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
         }}
         bodyAttributes={{
           class:
-            "bg-gray-200 dark:bg-gray-900 dark:text-white transition-all transition-250",
+            "bg-gray-200 dark:bg-gray-900 dark:text-white transition-all duration-200",
         }}
       />
       <main className="container px-5 mx-auto xl:px-0">{children}</main>

@@ -156,7 +156,7 @@ export default () => {
                         <button
                           type="submit"
                           className={`block w-full py-3 font-bold text-white capitalize bg-indigo-700 border border-indigo-700 rounded ${state.submitting &&
-                            "opacity-50 cursor-not-allowed"} transition-all transition-250`}
+                            "opacity-50 cursor-not-allowed"} transition-all duration-200`}
                           disabled={state.submitting}
                         >
                           {state.submitting ? "Enviando..." : "Enviar"}

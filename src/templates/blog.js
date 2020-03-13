@@ -218,7 +218,7 @@ export default ({ data }) => {
           {blog.tags.map(item => (
             <div
               key={item.id}
-              className="px-3 py-1 mx-1 text-lg leading-none border-2 border-gray-700 rounded-full hover:border-indigo-700 transition-all transition-250"
+              className="px-3 py-1 mx-1 text-lg leading-none border-2 border-gray-700 rounded-full hover:border-indigo-700 transition-all duration-200"
             >
               {item.name}
             </div>
