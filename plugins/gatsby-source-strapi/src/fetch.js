@@ -26,8 +26,11 @@ module.exports = async ({
   // Make API request.
   const documents = await axios(apiEndpoint, fetchRequestConfig)
 
+  // Make sure response is an array.
+  const response = documents.data.length ? documents.data : [documents.data]
+
   // Map and clean data.
-  return documents.data.map(item => clean(item))
+  return response.map(item => clean(item))
 }
 
 /**
