@@ -1,3 +1,4 @@
+// Dependencies
 import { useEffect } from "react"
 
 export default ({
@@ -7,6 +8,7 @@ export default ({
   threshold = 1.0,
   rootMargin = "0px",
 }) => {
+  // Effects
   useEffect(() => {
     if (!target) {
       console.error("Inteception Observer needs a target to work")

@@ -1,7 +1,6 @@
 export { default as Header } from "./Header"
 export { default as Navbar } from "./Navbar"
 export { default as Services } from "./Services"
-export { default as GoogleTranslate } from "./GoogleTranslate"
 export { default as SEO } from "./SEO"
 export { default as Layout } from "./Layout"
 

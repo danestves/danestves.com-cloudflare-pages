@@ -1,5 +1,8 @@
+// Dependencies
 import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
+
+// Theme
 import theme from "../helpers/okaidia"
 
 export default ({ language, value }) => (

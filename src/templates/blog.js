@@ -1,3 +1,4 @@
+// Dependencies
 import React, { useState } from "react"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
@@ -8,6 +9,7 @@ import { window } from "browser-monads"
 import removeMD from "remove-markdown"
 import { Disqus } from "gatsby-plugin-disqus"
 
+// Components
 import {
   CodeBlock,
   Paragraph,
@@ -18,6 +20,8 @@ import {
   SEO,
   Layout,
 } from "../components"
+
+// Icons
 import {
   ShareIcon,
   FacebookIcon,
@@ -26,6 +30,8 @@ import {
   LinkedInIcon,
   LinkIcon,
 } from "../icons"
+
+// Images
 import Logo from "../images/logo.png"
 import Profile from "../images/profile.jpg"
 
@@ -39,6 +45,7 @@ const markdownRenderers = {
 }
 
 export default ({ data }) => {
+  // States
   const [modal, setModal] = useState(false)
   const blog = data.strapiBlogs
 
@@ -55,6 +62,7 @@ export default ({ data }) => {
     config: config.wobbly,
   })
 
+  // Functions
   const readingTime = text => {
     const wordsPerMinute = 200
     const noOfWords = text.split(/\s/g).length
@@ -136,6 +144,7 @@ export default ({ data }) => {
     },
   }
 
+  // Render
   return (
     <Layout>
       <SEO
@@ -218,7 +227,7 @@ export default ({ data }) => {
           {blog.tags.map(item => (
             <div
               key={item.id}
-              className="px-3 py-1 mx-1 text-lg leading-none border-2 border-gray-700 rounded-full hover:border-indigo-700 transition-all transition-250"
+              className="px-3 py-1 mx-1 text-lg leading-none transition-all duration-200 border-2 border-gray-700 rounded-full hover:border-indigo-700"
             >
               {item.name}
             </div>
@@ -257,13 +266,13 @@ export default ({ data }) => {
         escapeHtml={false}
       />
 
-      <div className="mt-8 border-t border-gray-500 pt-4">
+      <div className="pt-4 mt-8 border-t border-gray-500">
         <Disqus config={disqusConfig} />
       </div>
 
       <button
         onClick={webShareAPI}
-        className="fixed bottom-0 right-0 p-4 mb-4 mr-4 bg-indigo-700 rounded-full hover:bg-indigo-600 transition-250 transition-all"
+        className="fixed bottom-0 right-0 p-4 mb-4 mr-4 transition-all bg-indigo-700 rounded-full hover:bg-indigo-600 transition-250"
       >
         <ShareIcon className="w-6 h-6 text-white fill-current" />
       </button>

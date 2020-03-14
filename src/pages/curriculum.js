@@ -1,7 +1,11 @@
+// Dependencies
 import React from "react"
 import { graphql } from "gatsby"
 
+// Components
 import { Fade, SEO, Layout } from "../components"
+
+// Icons
 import { CheckIcon, ClockIcon } from "../icons"
 
 export default ({ data }) => (

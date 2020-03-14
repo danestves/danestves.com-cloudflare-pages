@@ -1,8 +1,12 @@
+// Dependencies
 import React, { useRef } from "react"
 import { animated } from "react-spring"
+
+// Hooks
 import { useOnScrollFade } from "../hooks"
 
 export default ({ children, ...props }) => {
+  // States and refs
   const ref = useRef()
   const fade = useOnScrollFade({
     target: ref,

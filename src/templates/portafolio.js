@@ -1,3 +1,4 @@
+// Dependencies
 import React, { useState } from "react"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
@@ -6,7 +7,10 @@ import Markdown from "react-markdown"
 import removeMD from "remove-markdown"
 import { window } from "browser-monads"
 
+// Components
 import { Layout, SEO, Blockquote, MarkdownLink } from "../components"
+
+// Icons
 import { CategoryIcon, TechnologyIcon, LinkIcon } from "../icons"
 
 const markdownRenderers = {
@@ -15,13 +19,16 @@ const markdownRenderers = {
 }
 
 export default ({ data }) => {
+  // States
   const [collapsed, setCollapsed] = useState(false)
   const portfolio = data.strapiPortfolios
 
+  // Functions
   const disableAnchorHref = e => {
     e.preventDefault()
   }
 
+  // Render
   return (
     <Layout>
       <SEO
@@ -119,7 +126,7 @@ export default ({ data }) => {
               type="button"
               className={`flex items-center px-5 py-2 text-xl leading-none text-white bg-indigo-700 rounded hover:bg-indigo-600 ${
                 portfolio.isActive ? "" : "opacity-50 cursor-not-allowed"
-              } transition-all transition-250 transition-ease-in-out`}
+              } transition-all duration-200 transition-ease-in-out`}
               disabled={!portfolio.isActive}
               onClick={portfolio.isActive ? null : disableAnchorHref}
             >

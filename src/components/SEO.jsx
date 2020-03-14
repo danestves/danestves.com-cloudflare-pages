@@ -1,9 +1,11 @@
+// Dependencies
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { window } from "browser-monads"
 
+// Images
 import Logo from "../images/logo.png"
 
 function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {

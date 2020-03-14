@@ -1,11 +1,17 @@
+// Dependencies
 import React from "react"
 
+// Components
 import { Fade, SEO, Layout } from "../components"
+
+// Hooks
 import { usePlatziData } from "../hooks"
 
 export default () => {
+  // States
   const { loading, courses, careers } = usePlatziData()
 
+  // Functions
   /* eslint-disable-next-line */
   const coursesJS = courses.filter(course => {
     if (course.career !== null) {
@@ -48,6 +54,7 @@ export default () => {
 
   const fakeData = [{ fake: "fake" }, { fake: "fake" }, { fake: "fake" }]
 
+  // Render
   return (
     <Layout>
       <SEO
@@ -66,7 +73,7 @@ export default () => {
 
           {fakeData.map((fake, index) => (
             <Fade className="w-full px-2 my-2 sm:w-1/2 md:w-1/3" key={index}>
-              <div className="block p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white">
+              <div className="block p-3 transition-all duration-200 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg hover:border-indigo-700 dark:hover:border-white">
                 <div className="flex items-center justify-center">
                   <div className="w-1/4">
                     <div
@@ -101,7 +108,7 @@ export default () => {
                   href={`https://platzi.com${career.diploma_link}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white"
+                  className="block p-3 transition-all duration-200 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg hover:border-indigo-700 dark:hover:border-white"
                 >
                   <div className="flex items-center justify-center">
                     <div className="w-1/4">
@@ -137,7 +144,7 @@ export default () => {
                   href={`https://platzi.com${course.diploma_link}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white"
+                  className="flex items-center h-full p-3 transition-all duration-200 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg hover:border-indigo-700 dark:hover:border-white"
                 >
                   <div className="flex items-center justify-center">
                     <div className="w-1/4">
@@ -176,7 +183,7 @@ export default () => {
                   href={`https://platzi.com${course.diploma_link}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white"
+                  className="flex items-center h-full p-3 transition-all duration-200 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg hover:border-indigo-700 dark:hover:border-white"
                 >
                   <div className="flex items-center justify-center">
                     <div className="w-1/4">
@@ -215,7 +222,7 @@ export default () => {
                   href={`https://platzi.com${course.diploma_link}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center h-full p-3 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg transition-all transition-250 hover:border-indigo-700 dark:hover:border-white"
+                  className="flex items-center h-full p-3 transition-all duration-200 bg-white border border-transparent rounded-lg shadow dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg hover:border-indigo-700 dark:hover:border-white"
                 >
                   <div className="flex items-center justify-center">
                     <div className="w-1/4">

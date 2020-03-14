@@ -1,3 +1,4 @@
+// Dependencies
 import { useState } from "react"
 import { useSpring, config } from "react-spring"
 import { useIntersectionObserver } from "."
@@ -8,6 +9,7 @@ export default ({
   threshold = 0.5,
   rootMargin = "0px",
 }) => {
+  // States
   const [isIntersected, toggle] = useState()
 
   const fade = useSpring({
@@ -18,6 +20,7 @@ export default ({
     },
   })
 
+  // Functions
   const handleObserver = entries => {
     entries.map(entry => (entry.isIntersecting ? toggle(true) : toggle(false)))
   }

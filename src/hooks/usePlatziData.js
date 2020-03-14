@@ -1,15 +1,19 @@
+// Dependencies
 import { useState, useEffect } from "react"
 import axios from "axios"
 
 export default function() {
+  // States
   const [loading, setLoading] = useState(true)
   const [careers, setCareers] = useState([])
   const [courses, setCourses] = useState([])
 
+  // Effects
   useEffect(() => {
     getDataFromPlatzi()
   }, [])
 
+  // Functions
   const getDataFromPlatzi = async () => {
     try {
       await axios
@@ -27,5 +31,6 @@ export default function() {
     }
   }
 
+  // Return
   return { loading, careers, courses }
 }
