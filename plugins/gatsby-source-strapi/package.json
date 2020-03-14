@@ -1,0 +1,58 @@
+{
+  "name": "gatsby-source-strapi",
+  "version": "0.0.11",
+  "description": "Gatsby source plugin for building websites using Strapi as a data source",
+  "author": {
+    "email": "hi@strapi.io",
+    "name": "Strapi Solutions",
+    "url": "http://strapi.io"
+  },
+  "maintainers": [
+    {
+      "name": "Strapi Solutions",
+      "email": "hi@strapi.io",
+      "url": "http://strapi.io"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/strapi/gatsby-source-strapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/strapi/gatsby-source-strapi/issues"
+  },
+  "license": "MIT",
+  "homepage": "http://strapi.io",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src --out-dir .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write 'src/**/*.js'",
+    "watch": "babel -w src --out-dir ."
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source-plugin",
+    "strapi"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0",
+    "gatsby-node-helpers": "^0.3.0",
+    "gatsby-source-filesystem": "^1.5.39",
+    "lodash": "^4.17.11",
+    "pluralize": "^7.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.5.3"
+  },
+  "pre-commit": [
+    "format"
+  ]
+}

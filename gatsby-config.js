@@ -71,10 +71,10 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://api.danestves.com`,
+        apiURL: `${process.env.GATSBY_API}`,
         queryLimit: 1000, // Default to 100
         contentTypes: [
-          `skills`,
+          `home`,
           `educations`,
           `experiences`,
           `portfolios`,
