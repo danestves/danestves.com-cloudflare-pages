@@ -69,17 +69,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-strapi`,
+      resolve: `gatsby-source-strapi-v2`,
       options: {
         apiURL: `${process.env.GATSBY_API}`,
         queryLimit: 1000, // Default to 100
-        contentTypes: [
-          `home`,
-          `educations`,
-          `experiences`,
-          `portfolios`,
-          `blogs`,
-        ],
+        contentTypes: [`educations`, `experiences`, `portfolios`, `blogs`],
+        singleTypes: [`home`],
       },
     },
     `gatsby-plugin-offline`,
