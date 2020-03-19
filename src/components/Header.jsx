@@ -83,7 +83,7 @@ export default () => {
                         style={props}
                         className="absolute right-0 z-10 mt-6 origin-top-right rounded shadow dark:shadow-white"
                       >
-                        <div className="w-40 text-left bg-white rounded-lg shadow-lg dark:bg-indigo-900">
+                        <div className="w-40 text-left bg-white rounded-lg shadow-lg dark:bg-gray-800">
                           <div className="py-1">
                             <Link
                               to="/curriculum"
