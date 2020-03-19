@@ -91,9 +91,7 @@ export default ({
                 <Link
                   to={`/portafolio/${item.slug}`}
                   className="block portfolio-link"
-                  swipe
                   direction="down"
-                  entryOffset={80}
                 >
                   <Fade>
                     <Img

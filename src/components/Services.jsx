@@ -79,7 +79,7 @@ export default ({ element = "glide", services, options }) => {
           className="left-0 text-white transition-all duration-200 bg-indigo-700 border-none rounded-full glide__arrow glide__arrow--left hover:bg-indigo-500 dark:bg-gray-200"
           data-glide-dir="<"
         >
-          <ArrowIcon className="w-5 h-5 text-white rotate-180 fill-current dark:text-gray-700" />
+          <ArrowIcon className="w-5 h-5 text-white transform rotate-180 fill-current dark:text-gray-700" />
         </button>
         <button
           className="right-0 text-white transition-all duration-200 bg-indigo-700 border-none rounded-full glide__arrow glide__arrow--right hover:bg-indigo-500 dark:bg-gray-200"

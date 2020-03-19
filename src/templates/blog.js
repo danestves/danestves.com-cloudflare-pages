@@ -6,8 +6,10 @@ import Img from "gatsby-image"
 import Markdown from "react-markdown"
 import { useTransition, animated, config } from "react-spring"
 import { window } from "browser-monads"
-import removeMD from "remove-markdown"
 import { Disqus } from "gatsby-plugin-disqus"
+
+// Helpers
+import removeMarkdown from "../helpers/removeMarkdown"
 
 // Components
 import {
@@ -137,7 +139,7 @@ export default ({ data }) => {
         height: 60,
       },
     },
-    description: `${removeMD(blog.body).substr(0, 157)}...`,
+    description: `${removeMarkdown(blog.body).substr(0, 157)}...`,
     mainEntityOfPage: {
       "@type": `WebPage`,
       "@id": `https://danestves.com`,
@@ -149,7 +151,7 @@ export default ({ data }) => {
     <Layout>
       <SEO
         title={blog.title}
-        description={`${removeMD(blog.body).substr(0, 157)}...`}
+        description={`${removeMarkdown(blog.body).substr(0, 157)}...`}
         jsonLdProps={jsonLd}
         meta={[
           {

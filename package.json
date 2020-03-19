@@ -41,7 +41,6 @@
     "react-helmet": "^5.2.1",
     "react-markdown": "^4.3.1",
     "react-spring": "^8.0.27",
-    "remove-markdown": "^0.3.0",
     "tailwindcss": "^1.2.0",
     "use-dark-mode": "^2.3.1"
   },

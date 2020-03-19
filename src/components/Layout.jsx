@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
         }}
       />
       <main className="container px-5">{children}</main>
-      <footer className="py-5 mt-5 bg-white shadow dark:bg-indigo-900">
+      <footer className="py-5 mt-5 bg-white shadow dark:bg-gray-800">
         <div className="container px-5">
           <p className="text-sm">
             Daniel Esteves © <span id="year" /> - Todos los derechos reservados
