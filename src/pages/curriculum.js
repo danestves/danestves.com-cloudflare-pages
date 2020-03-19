@@ -23,7 +23,7 @@ export default ({ data }) => (
         {data &&
           data.allStrapiExperiences.nodes.map(item => (
             <Fade
-              className="flex items-center w-full px-8 py-4 my-4 bg-white rounded-lg shadow-md dark:bg-indigo-900 dark:shadow-white-md"
+              className="flex items-center w-full px-8 py-4 my-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
               key={item.id}
             >
               <div className="w-4/5 pr-1">
@@ -52,7 +52,7 @@ export default ({ data }) => (
         {data &&
           data.allStrapiEducations.nodes.map(item => (
             <Fade
-              className="flex items-center w-full px-8 py-4 my-4 bg-white rounded-lg shadow-md dark:bg-indigo-900 dark:shadow-white-md"
+              className="flex items-center w-full px-8 py-4 my-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
               key={item.id}
             >
               <div className="w-4/5 pr-1">

@@ -4,8 +4,10 @@ import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Markdown from "react-markdown"
-import removeMD from "remove-markdown"
 import { window } from "browser-monads"
+
+// Helpers
+import removeMarkdown from "../helpers/removeMarkdown"
 
 // Components
 import { Layout, SEO, Blockquote, MarkdownLink } from "../components"
@@ -34,7 +36,7 @@ export default ({ data }) => {
       <SEO
         isTemplate
         title={portfolio.title}
-        description={`${removeMD(portfolio.body).substr(0, 157)}...`}
+        description={`${removeMarkdown(portfolio.body).substr(0, 157)}...`}
         meta={[
           {
             name: "language",

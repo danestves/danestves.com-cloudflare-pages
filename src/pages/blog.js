@@ -4,14 +4,14 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { default as Link } from "gatsby-plugin-transition-link"
 
+// Helpers
+import removeMarkdown from "../helpers/removeMarkdown"
+
 // Components
 import { Fade, SEO, Layout } from "../components"
 
 // Icons
 import { ClockIcon } from "../icons"
-
-// Helpers
-import removeMarkdown from "../helpers/removeMarkdown"
 
 export default ({
   data: {
@@ -30,7 +30,7 @@ export default ({
           <Fade key={blog.id}>
             <Link
               to={`/blog/${blog.slug}`}
-              className="flex flex-wrap items-stretch my-5 overflow-hidden transition-all duration-200 bg-white border border-transparent rounded-lg shadow hover:border-indigo-900 dark:hover:border-white dark:bg-indigo-900 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg"
+              className="flex flex-wrap items-stretch my-5 overflow-hidden transition-all duration-200 bg-white border border-transparent rounded-lg shadow hover:border-indigo-900 dark:hover:border-white dark:bg-gray-700 hover:shadow-lg"
             >
               <Img
                 fluid={blog.cover.childImageSharp.fluid}

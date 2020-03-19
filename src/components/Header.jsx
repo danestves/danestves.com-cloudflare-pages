@@ -37,7 +37,7 @@ export default () => {
 
   // Render
   return (
-    <header className="bg-white shadow dark:bg-indigo-900 dark:shadow-white-md">
+    <header className="bg-white shadow dark:bg-gray-800 dark:shadow-white-md">
       <div className="md:px-8">
         <Navbar>
           <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
@@ -72,9 +72,9 @@ export default () => {
               </Link>
               <button
                 onClick={() => setIsOpenDropdown(!isOpenDropdown)}
-                className="relative ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                className="relative ml-10 text-sm font-medium text-gray-900 transition-all duration-200 focus:outline-none hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
               >
-                Sobre
+                Sobre Mí
                 {dropdownTransition.map(
                   ({ item, key, props }) =>
                     item && (
@@ -192,9 +192,9 @@ export default () => {
               <animated.div
                 key={key}
                 style={props}
-                className="fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto transition-transform bg-white dark:bg-indigo-900"
+                className="fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto transition-transform bg-white dark:bg-gray-800"
               >
-                <div className="relative z-10 bg-white dark:bg-indigo-900">
+                <div className="relative z-10">
                   <div
                     className={`${
                       isOpen ? "block" : "hidden"

@@ -7,7 +7,8 @@
       "NODE_ENV": "production",
       "GATSBY_SITE": "@danestves-gs",
       "GATSBY_CONTACT": "@danestves-gc",
-      "GATSBY_RECAPTCHA": "@danestves-grc"
+      "GATSBY_RECAPTCHA": "@danestves-grc",
+      "GATSBY_API": "@danestves-api"
     }
   }
 }

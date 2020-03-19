@@ -33,9 +33,9 @@ const Layout = ({ children }) => {
             "bg-gray-200 dark:bg-gray-900 dark:text-white transition-all duration-200",
         }}
       />
-      <main className="container px-5 mx-auto xl:px-0">{children}</main>
-      <footer className="py-5 mt-5 bg-white shadow dark:bg-indigo-900">
-        <div className="container">
+      <main className="container px-5">{children}</main>
+      <footer className="py-5 mt-5 bg-white shadow dark:bg-gray-800">
+        <div className="container px-5">
           <p className="text-sm">
             Daniel Esteves © <span id="year" /> - Todos los derechos reservados
           </p>
