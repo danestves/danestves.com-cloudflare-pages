@@ -52,14 +52,14 @@ export default ({ data }) => {
   const blog = data.strapiBlogs
 
   const modalTransition = useTransition(modal, null, {
-    from: { opacity: 0, transform: `scale(${0})` },
-    enter: { opacity: 1, transform: `scale(${1})` },
-    leave: { opacity: 0, transform: `scale(${0})` },
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
     config: config.wobbly,
   })
   const modalOverlayTransition = useTransition(modal, null, {
     from: { opacity: 0 },
-    enter: { opacity: 1 },
+    enter: { opacity: 0.5 },
     leave: { opacity: 0 },
     config: config.wobbly,
   })
@@ -297,8 +297,13 @@ export default ({ data }) => {
           item && (
             <animated.div
               key={key}
-              style={props}
-              className="fixed z-10 w-full top-1/2 left-1/2 translate-center"
+              style={{
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                ...props,
+              }}
+              className="fixed z-10 w-full"
             >
               <div className="w-full p-4 mx-auto text-left bg-white rounded-lg dark:bg-indigo-900 md:w-1/2">
                 <p className="mb-4 text-lg">Compártelo en:</p>
