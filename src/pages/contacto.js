@@ -45,7 +45,7 @@ export default () => {
   }, [state.succeeded])
 
   // Functions
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     if (token !== "") {
@@ -89,7 +89,7 @@ export default () => {
                       name="email"
                       required
                       placeholder="Correo"
-                      className="w-full px-3 py-2 placeholder-gray-700 bg-white rounded dark:bg-gray-400 dark:text-black focus:outline-none focus:bg-white"
+                      className="w-full px-3 py-2 placeholder-gray-700 transition-all duration-150 bg-white rounded dark:bg-gray-400 dark:text-black focus:outline-none focus:bg-white focus:shadow-outline"
                     />
                     <ValidationError
                       prefix="Email"
@@ -109,7 +109,7 @@ export default () => {
                       name="subject"
                       required
                       placeholder="Asunto"
-                      className="w-full px-3 py-2 placeholder-gray-700 bg-white rounded dark:bg-gray-400 dark:text-black focus:outline-none focus:bg-white"
+                      className="w-full px-3 py-2 placeholder-gray-700 transition-all duration-150 bg-white rounded dark:bg-gray-400 dark:text-black focus:outline-none focus:bg-white focus:shadow-outline"
                     />
                     <ValidationError
                       prefix="Subject"
@@ -130,7 +130,7 @@ export default () => {
                   rows={4}
                   required
                   placeholder="Mensaje"
-                  className="w-full px-3 py-2 mt-2 placeholder-gray-700 bg-white rounded dark:bg-gray-400 dark:text-black focus:outline-none focus:bg-white"
+                  className="w-full px-3 py-2 mt-2 placeholder-gray-700 transition-all duration-150 bg-white rounded focus:outline-none focus:shadow-outline dark:bg-gray-400 dark:text-black focus:bg-white"
                 />
 
                 {state.succeeded ? (
@@ -150,7 +150,7 @@ export default () => {
                   )
                 ) : (
                   <>
-                    <GoogleReCaptcha onVerify={token => setToken(token)} />
+                    <GoogleReCaptcha onVerify={(token) => setToken(token)} />
                     <div className="flex flex-wrap mt-4">
                       <div className="w-full md:w-1/2 md:pr-2">
                         <button
@@ -163,8 +163,9 @@ export default () => {
                       <div className="w-full mt-3 md:w-1/2 md:pl-2 md:mt-0">
                         <button
                           type="submit"
-                          className={`block w-full py-3 font-bold text-white capitalize bg-indigo-700 border border-indigo-700 rounded ${state.submitting &&
-                            "opacity-50 cursor-not-allowed"} transition-all duration-200`}
+                          className={`block w-full py-3 font-bold text-white capitalize bg-indigo-700 border border-indigo-700 rounded ${
+                            state.submitting && "opacity-50 cursor-not-allowed"
+                          } transition-all duration-200`}
                           disabled={state.submitting}
                         >
                           {state.submitting ? "Enviando..." : "Enviar"}
