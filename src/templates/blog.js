@@ -208,7 +208,7 @@ export default ({ data }) => {
       <div className="relative overflow-hidden rounded shadow-lg dark:shadow-white-lg">
         <Img fluid={blog.cover.childImageSharp.fluid} />
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
-        <h1 className="absolute w-full px-5 text-xl font-bold leading-none text-center text-white sm:text-2xl md:text-4xl lg:text-5xl top-1/2 translate-y-n-1/2">
+        <h1 className="absolute w-full px-5 text-xl font-bold leading-none text-center text-white transform -translate-y-1/2 sm:text-2xl md:text-4xl lg:text-5xl top-1/2">
           {blog.title}
         </h1>
       </div>
