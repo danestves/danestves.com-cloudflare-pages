@@ -18,3 +18,6 @@ export { default as MarkdownImage } from "./MarkdownImage"
 export { default as MarkdownLink } from "./MarkdownLink"
 export { default as Heading } from "./Heading"
 export { default as Blockquote } from "./Blockquote"
+
+// Forms
+export { default as ConvertkitForm } from "./ConvertkitForm"

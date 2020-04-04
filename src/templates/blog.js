@@ -21,6 +21,7 @@ import {
   Heading,
   SEO,
   Layout,
+  ConvertkitForm,
 } from "../components"
 
 // Icons
@@ -65,7 +66,7 @@ export default ({ data }) => {
   })
 
   // Functions
-  const readingTime = text => {
+  const readingTime = (text) => {
     const wordsPerMinute = 200
     const noOfWords = text.split(/\s/g).length
     const minutes = noOfWords / wordsPerMinute
@@ -83,7 +84,7 @@ export default ({ data }) => {
           url: window.location.href,
         })
         .then(() => console.log("Thanks for sharing!"))
-        .catch(error => console.log("Error sharing: ", error))
+        .catch((error) => console.log("Error sharing: ", error))
     } else {
       setModal(true)
     }
@@ -115,7 +116,7 @@ export default ({ data }) => {
       sameAs: ["https://danestves.com", "https://twitter.com/danestves"],
     },
     keywords: blog.tags.length
-      ? blog.tags.map(tag => `${tag.name}`)
+      ? blog.tags.map((tag) => `${tag.name}`)
       : undefined,
     headline: `${
       blog.title.length > 50 ? `${blog.title.substr(0, 53)}...` : blog.title
@@ -156,7 +157,7 @@ export default ({ data }) => {
         meta={[
           {
             name: "keywords",
-            content: `${blog.tags.map(tag => `${tag.name}`)}`,
+            content: `${blog.tags.map((tag) => `${tag.name}`)}`,
           },
           {
             name: "language",
@@ -226,7 +227,7 @@ export default ({ data }) => {
 
           <h2 className="mr-3 text-xl">Tags:</h2>
 
-          {blog.tags.map(item => (
+          {blog.tags.map((item) => (
             <div
               key={item.id}
               className="px-3 py-1 mx-1 text-lg leading-none transition-all duration-200 border-2 border-gray-700 rounded-full hover:border-indigo-700"
@@ -267,6 +268,10 @@ export default ({ data }) => {
         renderers={markdownRenderers}
         escapeHtml={false}
       />
+
+      <div className="mt-8">
+        <ConvertkitForm />
+      </div>
 
       <div className="pt-4 mt-8 border-t border-gray-500">
         <Disqus config={disqusConfig} />
