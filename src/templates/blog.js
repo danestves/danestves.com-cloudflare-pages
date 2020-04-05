@@ -21,7 +21,7 @@ import {
   Heading,
   SEO,
   Layout,
-  ConvertkitForm,
+  MailchimpScript,
 } from "../components"
 
 // Icons
@@ -269,9 +269,7 @@ export default ({ data }) => {
         escapeHtml={false}
       />
 
-      <div className="mt-8">
-        <ConvertkitForm />
-      </div>
+      <MailchimpScript />
 
       <div className="pt-4 mt-8 border-t border-gray-500">
         <Disqus config={disqusConfig} />

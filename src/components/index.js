@@ -20,4 +20,4 @@ export { default as Heading } from "./Heading"
 export { default as Blockquote } from "./Blockquote"
 
 // Forms
-export { default as ConvertkitForm } from "./ConvertkitForm"
+export { default as MailchimpScript } from "./MailchimpScript"
