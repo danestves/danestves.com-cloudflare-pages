@@ -13,6 +13,7 @@ export default ({
 }) => (
   <Layout>
     <SEO
+      isTemplate
       title="Tags"
       meta={[
         {

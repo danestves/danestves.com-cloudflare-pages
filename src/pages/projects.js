@@ -34,6 +34,12 @@ export default ({
       language="es"
     >
       <Layout>
+        <SEO
+          isTemplate
+          title="Proyectos"
+          description="Página de proyectos hechos por Daniel Esteves para demostrar sus conocimientos y ganas de aportar al mundo del Open Source. 🚀😎"
+        />
+
         <div className="flex flex-wrap mt-12">
           <div className="w-full md:w-2/3">
             {projects &&
