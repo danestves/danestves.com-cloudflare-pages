@@ -1,6 +1,7 @@
 // Dependencies
 import React from 'react';
 import { graphql, Link } from 'gatsby';
+import { window } from 'browser-monads';
 
 // Components
 import { Layout, SEO } from '../components';
