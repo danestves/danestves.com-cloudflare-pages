@@ -15,6 +15,7 @@ export default () => (
             href="https://github.com/danestves"
             target="_blank"
             rel="noopener noreferrer"
+            title="GitHub de Daniel Esteves"
           >
             <FaGithubAlt size="20" />
           </a>
@@ -25,6 +26,7 @@ export default () => (
             href="https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw"
             target="_blank"
             rel="noopener noreferrer"
+            title="YouTube de Daniel Esteves"
           >
             <FaYoutube size="20" />
           </a>
@@ -35,6 +37,7 @@ export default () => (
             href="https://twitter.com/danestves"
             target="_blank"
             rel="noopener noreferrer"
+            title="Twitter de Daniel Esteves"
           >
             <FaTwitter size="20" />
           </a>
