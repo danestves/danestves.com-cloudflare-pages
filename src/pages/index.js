@@ -27,10 +27,10 @@ const IndexPage = ({
           <h1 className="mt-5 text-6xl font-bold leading-none text-center text-indigo-800 capitalize md:text-left md:mt-0 dark:text-gray-400">
             {home.name}
           </h1>
-          <h2 className="text-3xl font-normal text-center text-gray-700 md:text-left dark:text-gray-500">
+          <h2 className="text-3xl font-normal text-center text-gray-900 md:text-left dark:text-gray-500">
             {home.title}
           </h2>
-          <p className="mt-3 text-xl text-center text-gray-600 md:text-left">
+          <p className="mt-3 text-xl text-center text-gray-700 md:text-left dark:text-gray-500">
             {home.text}
           </p>
 
@@ -150,7 +150,7 @@ const IndexPage = ({
                         <h2 className="my-2 text-2xl leading-none text-center lg:text-xl">
                           {item.title}
                         </h2>
-                        <h3 className="mb-2 text-xl font-light leading-none text-center text-gray-500 lg:text-lg">
+                        <h3 className="mb-2 text-xl font-light leading-none text-center text-gray-600 lg:text-lg">
                           {item.category.name}
                         </h3>
                       </div>
@@ -231,7 +231,7 @@ export const query = graphql`
           name
         }
         title
-        createdAt(formatString: "ddd MM YYYY", locale: "es")
+        createdAt(formatString: "MMM DD YYYY", locale: "es")
         body
       }
     }

@@ -58,7 +58,7 @@ const BlogCard = ({ blog, home }) => {
               {blog.title}
             </h3>
             <p
-              className="mt-3 leading-6 text-gray-500"
+              className="mt-3 leading-6 text-gray-900 text-opacity-75 dark:text-gray-500"
               title={`${removeMarkdown(blog.body.substr(0, 154))}...`}
             >
               {removeMarkdown(blog.body.substr(0, 154))}
@@ -87,12 +87,12 @@ const BlogCard = ({ blog, home }) => {
                 href="https://twitter.com/@danestves"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline dark:text-gray-300"
+                className="font-sans font-semibold hover:underline dark:text-gray-300"
               >
                 Daniel Esteves
               </a>
             </p>
-            <div className="flex text-sm leading-5 text-gray-500">
+            <div className="flex text-sm leading-5 text-gray-600 dark:text-gray-500">
               <time dateTime={blog.createdAt}>{blog.createdAt}</time>
               <span className="mx-1">&middot;</span>
               <span>{readingTime(blog.body)}</span>

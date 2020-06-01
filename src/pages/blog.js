@@ -43,7 +43,7 @@ export const query = graphql`
           name
         }
         title
-        createdAt(formatString: "ddd MM YYYY", locale: "es")
+        createdAt(formatString: "MMM DD YYYY", locale: "es")
         body
       }
     }
