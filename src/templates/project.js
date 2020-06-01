@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import Markdown from 'react-markdown';
 import { FaGithubAlt } from 'react-icons/fa';
 import { Helmet } from 'react-helmet';
+import { window } from 'browser-monads';
 
 // Components
 import { Layout, SEO, Blockquote, MarkdownLink } from '../components';
