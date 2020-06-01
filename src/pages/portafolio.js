@@ -93,7 +93,7 @@ export default ({
                 >
                   <Fade>
                     <Img
-                      fluid={item.ogCover.childImageSharp.fluid}
+                      fluid={item.cover.childImageSharp.fluid}
                       className="w-full transition-all duration-200 border rounded-lg shadow-xl portfolio-image hover:shadow-2xl"
                       imgStyle={{ objectPosition: 'top center' }}
                     />
@@ -125,7 +125,7 @@ export const query = graphql`
         id
         slug
         title
-        ogCover {
+        cover {
           childImageSharp {
             fluid(maxWidth: 600, quality: 100) {
               ...GatsbyImageSharpFluid
