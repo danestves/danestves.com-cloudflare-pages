@@ -1,57 +1,57 @@
 // Dependencies
-import React, { useEffect, useState } from "react"
-import { useForm, ValidationError } from "@statickit/react"
-import { animated, useTransition, config } from "react-spring"
+import React, { useEffect, useState } from 'react';
+import { useForm, ValidationError } from '@statickit/react';
+import { animated, useTransition, config } from 'react-spring';
 import {
   GoogleReCaptchaProvider,
-  GoogleReCaptcha,
-} from "react-google-recaptcha-v3"
-import { window } from "browser-monads"
+  GoogleReCaptcha
+} from 'react-google-recaptcha-v3';
+import { window } from 'browser-monads';
 
 // Components
-import { Layout, SEO } from "../components"
+import { Layout, SEO } from '../components';
 
 // Icons
-import { ContactIcon } from "../icons"
+import { ContactIcon } from '../icons';
 
 export default () => {
   // States
-  const [state, submit] = useForm(process.env.GATSBY_CONTACT)
-  const [token, setToken] = useState("")
+  const [state, submit] = useForm(process.env.GATSBY_CONTACT);
+  const [token, setToken] = useState('');
   const succeededTrantisiton = useTransition(state.succeeded, null, {
     from: {
       opacity: 0,
       transform: `scale(${0.9})`,
-      transformOrigin: "top",
+      transformOrigin: 'top'
     },
     enter: {
       opacity: 1,
-      transform: `scale(${1})`,
+      transform: `scale(${1})`
     },
     leave: {
       opacity: 0,
-      transform: `scale(${0.9})`,
+      transform: `scale(${0.9})`
     },
-    config: config.wobbly,
-  })
+    config: config.wobbly
+  });
 
   // Effects
   useEffect(() => {
     if (state.succeeded) {
       setTimeout(() => {
-        window.location.reload()
-      }, 6000)
+        window.location.reload();
+      }, 6000);
     }
-  }, [state.succeeded])
+  }, [state.succeeded]);
 
-  // Functions
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  // Methods
+  const handleSubmit = e => {
+    e.preventDefault();
 
-    if (token !== "") {
-      submit(e)
+    if (token !== '') {
+      submit(e);
     }
-  }
+  };
 
   // Renders
   return (
@@ -150,7 +150,7 @@ export default () => {
                   )
                 ) : (
                   <>
-                    <GoogleReCaptcha onVerify={(token) => setToken(token)} />
+                    <GoogleReCaptcha onVerify={token => setToken(token)} />
                     <div className="flex flex-wrap mt-4">
                       <div className="w-full md:w-1/2 md:pr-2">
                         <button
@@ -164,11 +164,11 @@ export default () => {
                         <button
                           type="submit"
                           className={`block w-full py-3 font-bold text-white capitalize bg-indigo-700 border border-indigo-700 rounded ${
-                            state.submitting && "opacity-50 cursor-not-allowed"
+                            state.submitting && 'opacity-50 cursor-not-allowed'
                           } transition-all duration-200`}
                           disabled={state.submitting}
                         >
-                          {state.submitting ? "Enviando..." : "Enviar"}
+                          {state.submitting ? 'Enviando...' : 'Enviar'}
                         </button>
                       </div>
                     </div>
@@ -184,5 +184,5 @@ export default () => {
         </div>
       </Layout>
     </GoogleReCaptchaProvider>
-  )
-}
+  );
+};

@@ -1,22 +1,40 @@
 // Dependencies
 import React from 'react';
 import { graphql } from 'gatsby';
+import { window } from 'browser-monads';
 
 // Components
-import { SEO, Layout, BlogCard } from '../components';
+import { Layout, BlogCard, SEO } from '../components';
 
 export default ({
   data: {
     allStrapiBlogs: { nodes: blogs },
     strapiHome: home
-  }
+  },
+  pageContext: { name }
 }) => (
   <Layout>
     <SEO
-      isTemplate
-      title="Blog"
-      description="Blog de Daniel Esteves para dar a conocer a la comunidad información sobre frameworks, snippets de código y enseñanzas que ha aprendido con el tiempo."
+      title={`Blogs: #${name}`}
+      meta={[
+        {
+          name: 'keywords',
+          content: name
+        },
+        {
+          name: 'language',
+          content: 'ES'
+        },
+        {
+          name: 'url',
+          content: window.location.href
+        }
+      ]}
     />
+
+    <h1 className="w-full px-5 mt-12 text-xl font-bold leading-none text-center text-white sm:text-2xl md:text-4xl lg:text-5xl">
+      #{name}
+    </h1>
 
     <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
       {blogs &&
@@ -26,8 +44,11 @@ export default ({
 );
 
 export const query = graphql`
-  query Blogs {
-    allStrapiBlogs(sort: { fields: [createdAt], order: [DESC] }) {
+  query BlogsByTag($name: String!) {
+    allStrapiBlogs(
+      sort: { fields: createdAt, order: DESC }
+      filter: { tags: { elemMatch: { name: { eq: $name } } } }
+    ) {
       nodes {
         id
         slug

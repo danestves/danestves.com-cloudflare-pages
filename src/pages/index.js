@@ -1,22 +1,22 @@
 // Dependencies
-import React from "react"
-import { graphql } from "gatsby"
-import { TransitionLink as Link } from "gatsby-plugin-transition-link/components/TransitionLink"
-import Img from "gatsby-image"
-
-// Helpers
-import removeMarkdown from "../helpers/removeMarkdown"
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
 
 // Components
-import { Fade, Layout, SEO, Services } from "../components"
+import { Fade, Layout, SEO, BlogCard, Services } from '../components';
 
 // Icons
-import { InterfaceIcon, DesignSystemIcon, ClockIcon } from "../icons"
+import { InterfaceIcon, DesignSystemIcon } from '../icons';
 
 const IndexPage = ({
-  data: { strapiHome, allStrapiBlogs, allStrapiPortfolios },
+  data: {
+    strapiHome: home,
+    allStrapiBlogs: blogs,
+    allStrapiPortfolios: portfolios
+  }
 }) => {
-  if (!strapiHome) return null
+  if (!home) return null;
 
   return (
     <Layout>
@@ -25,13 +25,13 @@ const IndexPage = ({
       <div className="flex flex-wrap items-center py-12">
         <div className="order-2 w-full md:w-3/5 md:order-1">
           <h1 className="mt-5 text-6xl font-bold leading-none text-center text-indigo-800 capitalize md:text-left md:mt-0 dark:text-gray-400">
-            {strapiHome.name}
+            {home.name}
           </h1>
           <h2 className="text-3xl font-normal text-center text-gray-700 md:text-left dark:text-gray-500">
-            {strapiHome.title}
+            {home.title}
           </h2>
           <p className="mt-3 text-xl text-center text-gray-600 md:text-left">
-            {strapiHome.text}
+            {home.text}
           </p>
 
           <div className="flex flex-wrap mt-5">
@@ -56,7 +56,7 @@ const IndexPage = ({
 
         <div className="order-1 w-full md:w-2/5 md:order-2">
           <Img
-            fluid={strapiHome.image.childImageSharp.fluid}
+            fluid={home.image.childImageSharp.fluid}
             alt="Daniel Esteves"
             className="block object-cover object-center max-w-sm mx-auto transition-all duration-200 rounded-full shadow-2xl profile-photo"
           />
@@ -104,20 +104,20 @@ const IndexPage = ({
       </h2>
 
       <Services
-        services={strapiHome.skills}
+        services={home.skills}
         options={{
-          type: "carousel",
+          type: 'carousel',
           controls: true,
           perView: 3,
-          focusAt: "center",
+          focusAt: 'center',
           breakpoints: {
             768: {
-              perView: 2,
+              perView: 2
             },
             640: {
-              perView: 1,
-            },
-          },
+              perView: 1
+            }
+          }
         }}
       />
 
@@ -126,8 +126,8 @@ const IndexPage = ({
       </h2>
 
       <div className="flex flex-wrap justify-center py-5">
-        {allStrapiPortfolios &&
-          allStrapiPortfolios.nodes.map(item => (
+        {portfolios &&
+          portfolios.nodes.map(item => (
             <div
               key={item.id}
               className="w-full px-3 my-3 transition-all duration-200 sm:w-1/2 md:w-1/3"
@@ -142,7 +142,7 @@ const IndexPage = ({
                     <Img
                       fluid={item.cover.childImageSharp.fluid}
                       className="w-full transition-all duration-200 border rounded-lg shadow-xl portfolio-image hover:shadow-2xl"
-                      imgStyle={{ objectPosition: "top center" }}
+                      imgStyle={{ objectPosition: 'top center' }}
                     />
 
                     <div className="relative px-4 -mt-10">
@@ -163,43 +163,18 @@ const IndexPage = ({
       </div>
 
       <h2 className="mt-5 text-4xl font-bold leading-none text-center text-indigo-800 capitalize dark:text-gray-400">
-        Último Blog
+        Últimos Blogs
       </h2>
 
-      {allStrapiBlogs &&
-        allStrapiBlogs.nodes.map(blog => (
-          <Fade key={blog.id}>
-            <Link
-              to={`/blog/${blog.slug}`}
-              className="flex flex-wrap items-stretch my-5 overflow-hidden transition-all duration-200 bg-white border border-transparent rounded-lg shadow hover:border-indigo-900 dark:hover:border-white dark:bg-gray-700 hover:shadow-lg dark:shadow-white dark:hover:shadow-white-lg"
-            >
-              <Img
-                fluid={blog.cover.childImageSharp.fluid}
-                className="w-full transition-all duration-200 sm:w-2/5 lg:w-1/3 xl:w-1/5"
-              />
-
-              <div className="w-full px-4 py-5 transition-all duration-200 sm:w-3/5 lg:w-2/3 xl:w-4/5">
-                <div className="flex flex-col justify-around h-full">
-                  <h2 className="my-2 text-2xl leading-none text-center lg:text-3xl xl:text-left">
-                    {blog.title}
-                  </h2>
-
-                  <span className="flex justify-center mt-2 text-gray-600 xl:justify-start">
-                    <ClockIcon className="w-6 h-6 mr-2 fill-current" />{" "}
-                    {blog.createdAt}
-                  </span>
-
-                  <p className="mt-4 font-light text-gray-500 lg:text-2xl xl:text-xl">
-                    {removeMarkdown(blog.body.substr(0, 154))}...
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </Fade>
-        ))}
+      <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
+        {blogs &&
+          blogs.nodes.map(blog => (
+            <BlogCard key={blog.id} blog={blog} home={home} />
+          ))}
+      </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query HomePage {
@@ -240,23 +215,27 @@ export const query = graphql`
       }
     }
 
-    allStrapiBlogs(limit: 1, sort: { fields: createdAt, order: DESC }) {
+    allStrapiBlogs(limit: 3, sort: { fields: createdAt, order: DESC }) {
       nodes {
         id
         slug
-        cover {
+        ogCover {
           childImageSharp {
-            fluid(maxWidth: 300, maxHeight: 200, quality: 100) {
+            fluid(maxWidth: 600, maxHeight: 314, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
         }
+        tags {
+          id
+          name
+        }
         title
-        createdAt(fromNow: true, locale: "es")
+        createdAt(formatString: "ddd MM YYYY", locale: "es")
         body
       }
     }
   }
-`
+`;
 
-export default IndexPage
+export default IndexPage;

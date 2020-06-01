@@ -1,34 +1,34 @@
 // Dependencies
-import React, { useState } from "react"
-import Helmet from "react-helmet"
-import { graphql } from "gatsby"
-import Img from "gatsby-image"
-import Markdown from "react-markdown"
-import { window } from "browser-monads"
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import Markdown from 'react-markdown';
+import { window } from 'browser-monads';
 
 // Helpers
-import removeMarkdown from "../helpers/removeMarkdown"
+import removeMarkdown from '../helpers/removeMarkdown';
 
 // Components
-import { Layout, SEO, Blockquote, MarkdownLink } from "../components"
+import { Layout, SEO, Blockquote, MarkdownLink } from '../components';
 
 // Icons
-import { CategoryIcon, TechnologyIcon, LinkIcon } from "../icons"
+import { CategoryIcon, TechnologyIcon, LinkIcon } from '../icons';
 
 const markdownRenderers = {
   blockquote: Blockquote,
-  link: MarkdownLink,
-}
+  link: MarkdownLink
+};
 
 export default ({ data }) => {
   // States
-  const [collapsed, setCollapsed] = useState(false)
-  const portfolio = data.strapiPortfolios
+  const [collapsed, setCollapsed] = useState(false);
+  const portfolio = data.strapiPortfolios;
 
   // Functions
   const disableAnchorHref = e => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   // Render
   return (
@@ -39,37 +39,38 @@ export default ({ data }) => {
         description={`${removeMarkdown(portfolio.body).substr(0, 157)}...`}
         meta={[
           {
-            name: "language",
-            content: "ES",
+            name: 'language',
+            content: 'ES'
           },
           {
-            name: "url",
-            content: window.location.href,
+            name: 'url',
+            content: window.location.href
           },
           {
-            name: "date",
+            name: 'date',
             content: portfolio.createdAt,
-            schema: "YYYY-MM-DD",
+            schema: 'YYYY-MM-DD'
           },
           {
-            name: "identifier",
-            content: "0-2345-6634-6",
-            scheme: "ISBN",
+            name: 'identifier',
+            content: '0-2345-6634-6',
+            scheme: 'ISBN'
           },
           {
-            property: "og:url",
-            content: window.location.href,
+            property: 'og:url',
+            content: window.location.href
           },
           {
-            name: "twitter:image",
-            content: `https://danestves.com${portfolio.ogCover.publicURL}`,
+            name: 'twitter:image',
+            content: `https://danestves.com${portfolio.ogCover.publicURL}`
           },
           {
-            name: "twitter:image:alt",
-            content: portfolio.title,
-          },
+            name: 'twitter:image:alt',
+            content: portfolio.title
+          }
         ]}
       />
+
       <Helmet>
         <meta property="og:image" content={portfolio.ogCover.publicURL} />
       </Helmet>
@@ -89,7 +90,7 @@ export default ({ data }) => {
             />
           </div>
           <small className="block text-center">
-            Click en la imagen para ver más. Puedes ver la imagen original{" "}
+            Click en la imagen para ver más. Puedes ver la imagen original{' '}
             <a
               href={portfolio.cover.publicURL}
               target="_blank"
@@ -104,12 +105,12 @@ export default ({ data }) => {
             {portfolio.title}
           </h1>
           <h2 className="flex flex-wrap items-center justify-center mb-6 text-2xl font-light leading-none text-gray-700">
-            <CategoryIcon className="w-6 h-6 mr-3 fill-current" /> Categoría:{" "}
+            <CategoryIcon className="w-6 h-6 mr-3 fill-current" /> Categoría:{' '}
             {portfolio.category.name}
           </h2>
           <h3 className="flex flex-wrap items-center justify-center mb-8 text-2xl font-light leading-none text-gray-700">
-            <TechnologyIcon className="w-6 h-6 mr-3 fill-current" />{" "}
-            Tecnologías:{" "}
+            <TechnologyIcon className="w-6 h-6 mr-3 fill-current" />{' '}
+            Tecnologías:{' '}
             {portfolio.technologies.map(item => (
               <div
                 key={item.id}
@@ -127,7 +128,7 @@ export default ({ data }) => {
               target="_blank"
               type="button"
               className={`flex items-center px-5 py-2 text-xl leading-none text-white bg-indigo-700 rounded hover:bg-indigo-600 ${
-                portfolio.isActive ? "" : "opacity-50 cursor-not-allowed"
+                portfolio.isActive ? '' : 'opacity-50 cursor-not-allowed'
               } transition-all duration-200 transition-ease-in-out`}
               disabled={!portfolio.isActive}
               onClick={portfolio.isActive ? null : disableAnchorHref}
@@ -136,7 +137,7 @@ export default ({ data }) => {
             </a>
 
             {portfolio.isActive ? (
-              ""
+              ''
             ) : (
               <p className="max-w-xs mx-auto mt-4 text-sm text-center text-red-700">
                 Este proyecto ha dejado de ser accesible debido a que su
@@ -168,8 +169,8 @@ export default ({ data }) => {
         servicio solicitado originalmente.
       </p>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query($slug: String!) {
@@ -199,4 +200,4 @@ export const query = graphql`
       isActive
     }
   }
-`
+`;

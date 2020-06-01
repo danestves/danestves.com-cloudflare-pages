@@ -1,42 +1,41 @@
 // Dependencies
-import React, { useState } from "react"
-import { graphql } from "gatsby"
-import Img from "gatsby-image"
-import { default as Link } from "gatsby-plugin-transition-link/AniLink"
-import { useTransition, animated, config } from "react-spring"
+import React, { useState } from 'react';
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
+import { useTransition, animated, config } from 'react-spring';
 
 // Components
-import { Fade, SEO, Layout } from "../components"
+import { Fade, SEO, Layout } from '../components';
 
 export default ({
   data: {
-    allStrapiPortfolios: { nodes: portfoliosData },
-  },
+    allStrapiPortfolios: { nodes: portfoliosData }
+  }
 }) => {
   // States
-  const [portfolios] = useState(portfoliosData)
-  const [filteredPortfolios, setFilteredPortfolios] = useState(portfoliosData)
+  const [portfolios] = useState(portfoliosData);
+  const [filteredPortfolios, setFilteredPortfolios] = useState(portfoliosData);
   const portfoliosTransition = useTransition(
     filteredPortfolios,
     item => item.id,
     {
-      from: { opacity: 0, transform: `scale(${0})`, transformOrigin: "bottom" },
+      from: { opacity: 0, transform: `scale(${0})`, transformOrigin: 'bottom' },
       enter: { opacity: 1, transform: `scale(${1})` },
       leave: { opacity: 0, transform: `scale(${0})` },
-      config: { ...config.wobbly, clamp: true },
+      config: { ...config.wobbly, clamp: true }
     }
-  )
+  );
 
   // Functions
   const filter = name => {
-    if (name === "") {
-      setFilteredPortfolios(portfolios)
+    if (name === '') {
+      setFilteredPortfolios(portfolios);
     } else {
-      const filterType = portfolios.filter(e => e.category.name === name)
+      const filterType = portfolios.filter(e => e.category.name === name);
 
-      setFilteredPortfolios(filterType)
+      setFilteredPortfolios(filterType);
     }
-  }
+  };
 
   // Render
   return (
@@ -91,13 +90,12 @@ export default ({
                 <Link
                   to={`/portafolio/${item.slug}`}
                   className="block portfolio-link"
-                  direction="down"
                 >
                   <Fade>
                     <Img
-                      fluid={item.cover.childImageSharp.fluid}
+                      fluid={item.ogCover.childImageSharp.fluid}
                       className="w-full transition-all duration-200 border rounded-lg shadow-xl portfolio-image hover:shadow-2xl"
-                      imgStyle={{ objectPosition: "top center" }}
+                      imgStyle={{ objectPosition: 'top center' }}
                     />
 
                     <div className="relative px-4 -mt-10">
@@ -117,8 +115,8 @@ export default ({
         )}
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query Portafolios {
@@ -127,9 +125,9 @@ export const query = graphql`
         id
         slug
         title
-        cover {
+        ogCover {
           childImageSharp {
-            fluid(maxWidth: 300, quality: 50) {
+            fluid(maxWidth: 600, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -140,4 +138,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

@@ -1,12 +1,12 @@
 // Dependencies
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-import { window } from "browser-monads"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
+import { window } from 'browser-monads';
 
 // Images
-import Logo from "../images/logo.png"
+import Logo from '../images/logo.png';
 
 function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {
   const { site } = useStaticQuery(
@@ -21,40 +21,40 @@ function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
   const jsonLd = {
-    "@context": `https://schema.org/`,
-    "@type": `WebSite`,
+    '@context': `https://schema.org/`,
+    '@type': `WebSite`,
     url: window.location.href,
     image: {
-      "@type": `ImageObject`,
+      '@type': `ImageObject`,
       url: `https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg`,
       width: 1200,
-      height: 628,
+      height: 628
     },
     publisher: {
-      "@type": `Organization`,
+      '@type': `Organization`,
       name: `Daniel Esteves`,
       logo: {
-        "@type": `ImageObject`,
+        '@type': `ImageObject`,
         url: `https://danestves.com${Logo}`,
         width: 60,
-        height: 60,
-      },
+        height: 60
+      }
     },
     mainEntityOfPage: {
-      "@type": `WebPage`,
-      "@id": `https://danestves.com`,
+      '@type': `WebPage`,
+      '@id': `https://danestves.com`
     },
-    description,
-  }
+    description
+  };
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang
       }}
       title={title}
       titleTemplate={
@@ -67,11 +67,11 @@ function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: metaDescription
         },
         {
           name: `keywords`,
-          content: `Daniel Esteves, Daniel, Esteves`,
+          content: `Daniel Esteves, Daniel, Esteves`
         },
         {
           property: `og:title`,
@@ -79,49 +79,49 @@ function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {
             ? `${title} | ${site.siteMetadata.title}`
             : `${
                 title.length > 50 ? `${title.substr(0, 53)}...` : title
-              } | @danestves`,
+              } | @danestves`
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: metaDescription
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: `website`
         },
         {
           property: `og:email`,
-          content: `estevesd8@gmail.com`,
+          content: `estevesd8@gmail.com`
         },
         {
           property: `og:country-name`,
-          content: `VE`,
+          content: `VE`
         },
         {
           property: `og:image`,
           content:
-            "https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg",
-          key: `og:image`,
+            'https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg',
+          key: `og:image`
         },
         {
           property: `og:image:width`,
-          content: 1200,
+          content: 1200
         },
         {
           property: `og:image:height`,
-          content: 628,
+          content: 628
         },
         {
           property: `og:url`,
-          content: window.location.href,
+          content: window.location.href
         },
         {
           name: `twitter:card`,
-          content: `summary_large_image`,
+          content: `summary_large_image`
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: site.siteMetadata.author
         },
         {
           name: `twitter:title`,
@@ -129,16 +129,16 @@ function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {
             ? `${title} | ${site.siteMetadata.title}`
             : `${
                 title.length > 50 ? `${title.substr(0, 53)}...` : title
-              } | @danestves`,
+              } | @danestves`
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: metaDescription
         },
         {
           name: `twitter:image`,
           content:
-            "https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg",
+            'https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg'
         },
         {
           name: `twitter:image:alt`,
@@ -146,8 +146,8 @@ function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {
             ? `${title} | ${site.siteMetadata.title}`
             : `${
                 title.length > 50 ? `${title.substr(0, 53)}...` : title
-              } | @danestves`,
-        },
+              } | @danestves`
+        }
       ].concat(meta)}
     >
       <link rel="canonical" href={window.location.href} />
@@ -155,20 +155,20 @@ function SEO({ description, lang, meta, title, isTemplate, jsonLdProps }) {
         {JSON.stringify(jsonLdProps ? jsonLdProps : jsonLd, undefined, 4)}
       </script>
     </Helmet>
-  )
+  );
 }
 
 SEO.defaultProps = {
   lang: `es`,
   meta: [],
-  description: ``,
-}
+  description: ``
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
+  title: PropTypes.string.isRequired
+};
 
-export default SEO
+export default SEO;

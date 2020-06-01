@@ -1,16 +1,9 @@
 // Dependencies
-import React, { useEffect } from "react"
-import { document } from "browser-monads"
+import React from 'react';
+import LazyLoad from 'react-lazyload';
 
-export default ({ alt, src }) => {
-  // Effects
-  useEffect(() => {
-    const script = document.createElement("script")
-    script.src =
-      "https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js"
-    document.body.appendChild(script)
-  }, [])
-
-  // Render
-  return <img data-src={src} alt={`${alt} | Daniel Esteves`} className="lazy" />
-}
+export default ({ alt, src }) => (
+  <LazyLoad height={200}>
+    <img src={src} alt={`${alt} | Daniel Esteves`} />
+  </LazyLoad>
+);

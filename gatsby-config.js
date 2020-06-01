@@ -1,21 +1,21 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
 
 module.exports = {
   siteMetadata: {
     title: `Daniel Esteves - Desarrollador Web`,
     description: `Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.`,
     author: `@danestves`,
-    siteUrl: `https://danestves.com`,
+    siteUrl: `https://danestves.com`
   },
   plugins: [
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
         color: `#4c51bf`,
-        showSpinner: false,
-      },
+        showSpinner: false
+      }
     },
     `gatsby-plugin-use-dark-mode`,
     `gatsby-plugin-postcss`,
@@ -24,48 +24,49 @@ module.exports = {
     {
       resolve: `gatsby-plugin-statickit`,
       options: {
-        siteId: process.env.GATSBY_SITE,
-      },
+        siteId: process.env.GATSBY_SITE
+      }
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-138339985-1",
+        trackingId: 'UA-138339985-1',
         head: false,
         anonymize: true,
         respectDNT: true,
         pageTransitionDelay: 0,
         sampleRate: 5,
         siteSpeedSampleRate: 10,
-        cookieDomain: "danestves.com",
-      },
+        cookieDomain: 'danestves.com'
+      }
     },
     {
-      resolve: "gatsby-plugin-robots-txt",
+      resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: "https://danestves.com",
-        sitemap: "https://danestves.com/sitemap.xml",
-        policy: [{ userAgent: "*", allow: "/", disallow: "/dayairis" }],
-      },
+        host: 'https://danestves.com',
+        sitemap: 'https://danestves.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/', disallow: '/dayairis' }]
+      }
     },
     {
-      resolve: "gatsby-plugin-transition-link",
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        injectPageProps: false,
-      },
+        fonts: [`Poppins\:400,700`, `Lato\:400,700`],
+        display: 'swap'
+      }
     },
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `danestves`,
-      },
+        shortname: `danestves`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -78,18 +79,25 @@ module.exports = {
         background_color: `#4c51bf`,
         theme_color: `#4c51bf`,
         display: `standalone`,
-        icon: `src/images/logo.png`,
-      },
+        icon: `src/images/logo.png`
+      }
     },
     {
-      resolve: `gatsby-source-strapi-v2`,
+      resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `${process.env.GATSBY_API}`,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`educations`, `experiences`, `portfolios`, `blogs`],
-        singleTypes: [`home`],
-      },
+        contentTypes: [
+          `educations`,
+          `experiences`,
+          `portfolios`,
+          `blogs`,
+          `tags`,
+          `projects`
+        ],
+        singleTypes: [`home`]
+      }
     },
-    `gatsby-plugin-offline`,
-  ],
-}
+    `gatsby-plugin-offline`
+  ]
+};

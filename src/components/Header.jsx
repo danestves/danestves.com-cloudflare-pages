@@ -1,39 +1,39 @@
 // Dependencies
-import React, { useState } from "react"
-import { useTransition, animated, config } from "react-spring"
-import { TransitionLink as Link } from "gatsby-plugin-transition-link/components/TransitionLink"
-import useDarkMode from "use-dark-mode"
+import React, { useState } from 'react';
+import { useTransition, animated, config } from 'react-spring';
+import { Link } from 'gatsby';
+import useDarkMode from 'use-dark-mode';
 
 // Components
-import { Navbar, Logo } from "./"
+import { Navbar, Logo } from './';
 
 export default () => {
   // States
-  const [isOpen, setIsOpen] = useState(false)
-  const [isOpenDropdown, setIsOpenDropdown] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
   const openTransition = useTransition(isOpen, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { ...config.wobbly, clamp: true },
-  })
+    config: { ...config.wobbly, clamp: true }
+  });
   const drawerTransition = useTransition(isOpen, null, {
     from: { right: `-${100}%` },
     enter: { right: `${0}` },
     leave: { right: `-${100}%` },
-    config: { mass: 1, tension: 200, friction: 30, clamp: true },
-  })
+    config: { mass: 1, tension: 200, friction: 30, clamp: true }
+  });
   const dropdownTransition = useTransition(isOpenDropdown, null, {
     from: {
       opacity: 0,
       transform: `scale(${0.9})`,
-      transformOrigin: "top right",
+      transformOrigin: 'top right'
     },
     enter: { opacity: 1, transform: `scale(${1})` },
     leave: { opacity: 0, transform: `scale(${0.9})` },
-    config: config.wobbly,
-  })
-  const darkMode = useDarkMode(false)
+    config: config.wobbly
+  });
+  const darkMode = useDarkMode(false);
 
   // Render
   return (
@@ -106,6 +106,13 @@ export default () => {
                 )}
               </button>
               <Link
+                to="/projects"
+                title="Proyectos"
+                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+              >
+                Proyectos
+              </Link>
+              <Link
                 to="/portafolio"
                 title="Portafolio"
                 className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
@@ -163,7 +170,7 @@ export default () => {
           role="button"
         />
       ) : (
-        ""
+        ''
       )}
 
       <div className="md:hidden">
@@ -197,7 +204,7 @@ export default () => {
                 <div className="relative z-10">
                   <div
                     className={`${
-                      isOpen ? "block" : "hidden"
+                      isOpen ? 'block' : 'hidden'
                     } absolute top-0 p-4`}
                   >
                     <button
@@ -238,6 +245,13 @@ export default () => {
                       Certificaciones
                     </Link>
                     <Link
+                      to="/projects"
+                      title="Proyectos"
+                      className="block mt-8 font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                    >
+                      Proyectos
+                    </Link>
+                    <Link
                       to="/portafolio"
                       title="Portafolio"
                       className="block mt-8 font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
@@ -269,5 +283,5 @@ export default () => {
         )}
       </div>
     </header>
-  )
-}
+  );
+};
