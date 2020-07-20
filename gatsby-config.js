@@ -119,11 +119,11 @@ module.exports = {
             serialize: ({ query: { site, allStrapiBlogs } }) => {
               return allStrapiBlogs.nodes.map(edge => {
                 return Object.assign({}, edge, {
-                  description: edge.body.body.substr(0, 154),
-                  date: edge.createdAt,
-                  url: `${site.siteMetadata.siteUrl}/blog/${edge.slug}`,
+                  title: edge.title,
+                  link: `${site.siteMetadata.siteUrl}/blog/${edge.slug}`,
+                  pubDate: edge.createdAt,
                   guid: `${site.siteMetadata.siteUrl}/blog/${edge.slug}`,
-                  custom_elements: [{ "content:encoded": edge.body }],
+                  description: `${edge.body.substr(0, 300)}...`,
                 })
               })
             },
