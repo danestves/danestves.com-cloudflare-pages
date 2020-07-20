@@ -98,6 +98,58 @@ module.exports = {
         singleTypes: [`home`]
       }
     },
-    `gatsby-plugin-offline`
+    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allStrapiBlogs } }) => {
+              return allStrapiBlogs.nodes.map(edge => {
+                return Object.assign({}, edge, {
+                  description: edge.body.body.substr(0, 154),
+                  date: edge.createdAt,
+                  url: `${site.siteMetadata.siteUrl}/blog/${edge.slug}`,
+                  guid: `${site.siteMetadata.siteUrl}/blog/${edge.slug}`,
+                  custom_elements: [{ "content:encoded": edge.body }],
+                })
+              })
+            },
+            query: `
+              {
+                allStrapiBlogs(sort: { fields: [createdAt], order: [DESC] }) {
+                  nodes {
+                    id
+                    slug
+                    title
+                    createdAt(formatString: "MMM DD YYYY", locale: "es")
+                    body
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Daniel Esteves | RSS Feed",
+            // optional configuration to insert feed reference in pages:
+            // if `string` is used, it will be used to create RegExp and then test if pathname of
+            // current page satisfied this regular expression;
+            // if not provided or `undefined`, all pages will have feed reference inserted
+            match: "^/blog/",
+          },
+        ],
+      },
+    },
   ]
 };
