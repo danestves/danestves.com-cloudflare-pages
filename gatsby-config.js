@@ -18,6 +18,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-use-dark-mode`,
+    `gatsby-plugin-simple-analytics`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,

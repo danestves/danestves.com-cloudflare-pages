@@ -24,6 +24,7 @@
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-robots-txt": "^1.5.1",
     "gatsby-plugin-sharp": "^2.6.20",
+    "gatsby-plugin-simple-analytics": "^1.0.3",
     "gatsby-plugin-sitemap": "^2.4.11",
     "gatsby-plugin-statickit": "^1.1.1",
     "gatsby-plugin-use-dark-mode": "^1.1.2",
