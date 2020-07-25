@@ -86,7 +86,7 @@ module.exports = {
         singleTypes: [`home`]
       }
     },
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-feed`,
       options: {
