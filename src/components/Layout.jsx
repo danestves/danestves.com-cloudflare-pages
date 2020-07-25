@@ -37,6 +37,20 @@ const Layout = ({ children }) => {
       <main className="container px-5">{children}</main>
 
       <Footer />
+
+      <link rel="alternate" hreflang="es" href="https://danestves.com" />
+      <link rel="alternate" hreflang="en" href="https://en.danestves.com" />
+      <script
+        type="text/javascript"
+        src="https://cdn.weglot.com/weglot.min.js"
+      ></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `Weglot.initialize({
+              api_key: 'wg_ac63135ada309b6942ca2d05e34275383'
+          });`
+        }}
+      />
     </>
   );
 };
