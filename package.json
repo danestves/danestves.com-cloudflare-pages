@@ -8,6 +8,8 @@
     "@danestves/tailwindcss-darkmode": "^1.1.5",
     "@glidejs/glide": "^3.4.1",
     "@statickit/react": "^2.1.1",
+    "@tailwindcss/typography": "^0.2.0",
+    "@tailwindcss/ui": "^0.4.0",
     "axios": "^0.19.2",
     "browser-monads": "^1.0.0",
     "eslint-config-airbnb": "^18.2.0",

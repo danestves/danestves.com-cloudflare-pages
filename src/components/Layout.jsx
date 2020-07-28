@@ -28,29 +28,11 @@ const Layout = ({ children }) => {
         htmlAttributes={{
           class: darkmode.value ? 'dark-mode' : 'light-mode'
         }}
-        bodyAttributes={{
-          class:
-            'bg-gray-200 dark:bg-gray-900 dark:text-white transition-all duration-200'
-        }}
       />
 
-      <main className="container px-5">{children}</main>
+      <main>{children}</main>
 
       <Footer />
-
-      <link rel="alternate" hreflang="es" href="https://danestves.com" />
-      <link rel="alternate" hreflang="en" href="https://en.danestves.com" />
-      <script
-        type="text/javascript"
-        src="https://cdn.weglot.com/weglot.min.js"
-      ></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `Weglot.initialize({
-              api_key: 'wg_ac63135ada309b6942ca2d05e34275383'
-          });`
-        }}
-      />
     </>
   );
 };

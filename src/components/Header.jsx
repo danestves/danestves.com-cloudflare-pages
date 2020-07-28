@@ -37,14 +37,14 @@ export default () => {
 
   // Render
   return (
-    <header className="bg-white shadow dark:bg-gray-800 dark:shadow-white-md">
+    <header className="fixed top-0 w-full bg-transparent shadow z-100 dark:bg-gray-800 dark:shadow-white-md">
       <div className="md:px-8">
         <Navbar>
-          <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
+          {/* <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
             <Link to="/" title="Inicio">
               <Logo />
             </Link>
-          </div>
+          </div> */}
 
           <div className="flex-shrink-0 pr-4 md:hidden">
             <button
@@ -61,18 +61,18 @@ export default () => {
             </button>
           </div>
 
-          <div className="hidden md:block md:ml-10 md:flex md:items-baseline md:bg-transparent">
+          <div className="hidden md:ml-10 md:flex md:items-baseline md:bg-transparent">
             <div className="flex items-center justify-center">
               <Link
                 to="/"
                 title="Inicio"
-                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
               >
                 Inicio
               </Link>
               <button
                 onClick={() => setIsOpenDropdown(!isOpenDropdown)}
-                className="relative ml-10 text-sm font-medium text-gray-900 transition-all duration-200 focus:outline-none hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                className="relative px-3 text-sm font-medium transition-all duration-200 text-primary hover:text-white py-7 focus:outline-none"
               >
                 Sobre Mí
                 {dropdownTransition.map(
@@ -81,21 +81,21 @@ export default () => {
                       <animated.div
                         key={key}
                         style={props}
-                        className="absolute right-0 z-10 mt-6 origin-top-right rounded shadow dark:shadow-white"
+                        className="absolute right-0 z-10 mt-6 origin-top-right rounded shadow"
                       >
-                        <div className="w-40 text-left bg-white rounded-lg shadow-lg dark:bg-gray-800">
+                        <div className="w-40 text-left rounded-lg shadow-lg bg-secondary">
                           <div className="py-1">
                             <Link
                               to="/curriculum"
                               title="Curriculum"
-                              className="block px-6 py-3 leading-tight text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                              className="block px-6 py-3 leading-tight transition-all duration-200 text-primary hover:text-white"
                             >
                               Curriculum
                             </Link>
                             <Link
                               to="/certificaciones"
                               title="Certificaciones"
-                              className="block px-6 py-3 leading-tight text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                              className="block px-6 py-3 leading-tight transition-all duration-200 text-primary hover:text-white"
                             >
                               Certificaciones
                             </Link>
@@ -108,35 +108,34 @@ export default () => {
               <Link
                 to="/projects"
                 title="Proyectos"
-                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
               >
                 Proyectos
               </Link>
               <Link
                 to="/portafolio"
                 title="Portafolio"
-                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
               >
                 Portafolio
               </Link>
               <Link
                 to="/blog"
                 title="Blog"
-                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
               >
                 Blog
               </Link>
               <Link
                 to="/contacto"
                 title="Contacto"
-                className="ml-10 text-sm font-medium text-gray-900 transition-all duration-200 hover:text-gray-700 dark:text-white dark:hover:text-gray-400"
+                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
               >
                 Contacto
               </Link>
             </div>
           </div>
-
-          <div className="flex items-center px-3 ml-4 toggleWrapper">
+          {/* <div className="flex items-center px-3 ml-4 toggleWrapper">
             <input
               type="checkbox"
               className="absolute dn"
@@ -157,7 +156,7 @@ export default () => {
               <span className="star star--5" />
               <span className="star star--6" />
             </label>
-          </div>
+          </div> */}
         </Navbar>
       </div>
 
