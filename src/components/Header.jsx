@@ -37,7 +37,7 @@ export default () => {
 
   // Render
   return (
-    <header className="fixed top-0 w-full bg-transparent shadow z-100 dark:bg-gray-800 dark:shadow-white-md">
+    <header className="fixed top-0 w-full bg-transparent shadow z-100">
       <div className="md:px-8">
         <Navbar>
           {/* <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
