@@ -6,12 +6,20 @@
 
 #hero {
   background: url('/hero.jpeg') center no-repeat;
-  background-size: 180% 200%;
+  background-size: 100%;
+  background-position: top;
 }
 
-#hero::after {
+#hero::after,
+#dreams::after {
   content: '';
   @apply absolute top-0 left-0 z-10 w-full h-full opacity-75 bg-secondary;
+}
+
+#dreams {
+  background: url('/dreams.jpeg') center no-repeat;
+  background-size: 150% auto;
+  background-position: 50% 65%;
 }
 
 /*

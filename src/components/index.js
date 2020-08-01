@@ -12,6 +12,7 @@ export { default as Logo } from './Logo';
 export { default as Fade } from './Fade';
 
 // Markdown
+export { default as Emoji } from './Emoji';
 export { default as CodeBlock } from './CodeBlock';
 export { default as Paragraph } from './Paragraph';
 export { default as InlineCode } from './InlineCode';
