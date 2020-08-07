@@ -1,26 +1,19 @@
 // Dependencies
-import React from 'react';
-import { graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
+import * as React from 'react';
+import { graphql, PageProps } from 'gatsby';
 
 // Components
-import {
-  Fade,
-  Layout,
-  SEO,
-  Logo,
-  Emoji,
-  BlogCard,
-  Services
-} from '../components';
+import { Layout, SEO, Logo, Emoji } from '../components';
 
-const IndexPage = ({
+interface HomeProps extends PageProps {
   data: {
-    strapiHome: home,
-    allStrapiBlogs: blogs,
-    allStrapiPortfolios: portfolios
-  }
-}) => {
+    strapiHome: JSON;
+    allStrapiBlogs: Array<unknown>;
+    allStrapiPortfolios: Array<unknown>;
+  };
+}
+
+const IndexPage: React.FC<HomeProps> = ({ data: { strapiHome: home } }) => {
   if (!home) return null;
 
   return (
@@ -33,12 +26,8 @@ const IndexPage = ({
             <Logo className="w-64 h-64 mx-auto text-primary" />
           </div>
           <div className="col-span-12 md:col-span-7">
-            <h1 className="mb-2 text-6xl font-bold leading-none text-primary">
-              Daniel Esteves
-            </h1>
-            <h2 className="font-mono text-xl text-primary">
-              Programador web fullstack en JavaScript
-            </h2>
+            <h1 className="mb-2 text-6xl font-bold leading-none text-primary">Daniel Esteves</h1>
+            <h2 className="font-mono text-xl text-primary">Programador web fullstack en JavaScript</h2>
           </div>
         </div>
       </div>
@@ -50,34 +39,26 @@ const IndexPage = ({
           className="z-30 w-48 h-48 mx-auto border-white rounded-full border-10"
         />
 
-        <h2 className="mt-4 font-mono text-4xl text-center">
-          {'<Hola Mundo />'}
-        </h2>
+        <h2 className="mt-4 font-mono text-4xl text-center">{`<Hola Mundo />`}</h2>
 
         <p className="max-w-4xl px-5 mx-auto mt-4 font-mono text-xl">
-          Desde muy niño he estado interesado en las computadoras comenzando
-          desde los videojuegos, cada vez que jugaba sentía una necesidad de
-          saber cómo eso está funcionando y cómo mi personaje hace cualquier
-          movimiento; probando cada día más y más juegos me empezó a interesar
-          cómo se pueden hacer las gráficas del juego y la interactividad contra
-          el usuario.
+          Desde muy niño he estado interesado en las computadoras comenzando desde los videojuegos, cada vez que jugaba
+          sentía una necesidad de saber cómo eso está funcionando y cómo mi personaje hace cualquier movimiento;
+          probando cada día más y más juegos me empezó a interesar cómo se pueden hacer las gráficas del juego y la
+          interactividad contra el usuario.
         </p>
 
         <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl">
-          Al llegar a la secundaria empecé a investigar sobre las computadoras y
-          me empezó a interesar cómo las webs son construidas sobre todos las
-          redes sociales, me gustaba la idea de que cuando un usuario le
-          seleccionaba un menú se mostraban más opciones y animaciones, y eso
-          fue lo que me enamoró del desarrollo web.
+          Al llegar a la secundaria empecé a investigar sobre las computadoras y me empezó a interesar cómo las webs son
+          construidas sobre todos las redes sociales, me gustaba la idea de que cuando un usuario le seleccionaba un
+          menú se mostraban más opciones y animaciones, y eso fue lo que me enamoró del desarrollo web.
         </p>
 
         <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl">
-          Comencé hace cinco años a trabajar y aprender desde el frontend, la
-          parte visual de la web; hoy en día me considero un fullstack ya que
-          gracias a el conocimiento que he obtenido puedo construir aplicaciones
-          desde las vistas hasta las bases de datos y rutas. Me gusta aprender
-          cada día más, integrar nuevas tecnologías y contribuir a nuevos
-          proyectos para mejorar la productividad.
+          Comencé hace cinco años a trabajar y aprender desde el frontend, la parte visual de la web; hoy en día me
+          considero un fullstack ya que gracias a el conocimiento que he obtenido puedo construir aplicaciones desde las
+          vistas hasta las bases de datos y rutas. Me gusta aprender cada día más, integrar nuevas tecnologías y
+          contribuir a nuevos proyectos para mejorar la productividad.
         </p>
 
         <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl text-right">
@@ -104,8 +85,8 @@ const IndexPage = ({
           />
 
           <p className="w-full max-w-4xl px-5 mx-auto mt-12 font-mono text-xl text-center text-primary">
-            Diseños modernos y adaptables a cualquier dispositivo, que logran
-            una experiencia única, mucho más limpia y rápida.
+            Diseños modernos y adaptables a cualquier dispositivo, que logran una experiencia única, mucho más limpia y
+            rápida.
           </p>
         </div>
       </div>

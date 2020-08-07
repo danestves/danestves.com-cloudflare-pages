@@ -1,11 +1,16 @@
 // Dependencies
-import React from "react"
-import Highlight, { defaultProps } from "prism-react-renderer"
+import * as React from 'react';
+import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 
 // Theme
-import theme from "../helpers/okaidia"
+import theme from '../helpers/okaidia';
 
-export default ({ language, value }) => (
+type CodeBlockTypes = {
+  language: Language;
+  value: string;
+};
+
+const CodeBlock: React.FC<CodeBlockTypes> = ({ language, value }) => (
   <Highlight {...defaultProps} code={value} language={language} theme={theme}>
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
       <pre
@@ -22,4 +27,6 @@ export default ({ language, value }) => (
       </pre>
     )}
   </Highlight>
-)
+);
+
+export default CodeBlock;

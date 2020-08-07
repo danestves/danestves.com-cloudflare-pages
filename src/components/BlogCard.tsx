@@ -1,38 +1,54 @@
 // Dependencies
-import React from 'react';
-import propTypes from 'prop-types';
+import * as React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
+import removeMarkdown from '@qwilapp/remove-markdown';
 
-// Helpers
-import removeMarkdown from '../helpers/removeMarkdown';
+type Tags = {
+  id: string;
+  name: string;
+};
 
-const BlogCard = ({ blog, home }) => {
+type BlogCardProps = {
+  blog: {
+    id: string;
+    slug: string;
+    title: string;
+    ogCover: {
+      childImageSharp: {
+        fluid: FluidObject;
+      };
+    };
+    tags: [Tags];
+    body: string;
+    createdAt: string;
+  };
+  home: {
+    image: {
+      childImageSharp: {
+        fluid: FluidObject;
+      };
+    };
+  };
+};
+
+const BlogCard: React.FC<BlogCardProps> = ({ blog, home }) => {
   // Methods
-  const readingTime = text => {
+  const readingTime = (text: string) => {
     const wordsPerMinute = 200;
     const noOfWords = text.split(/\s/g).length;
     const minutes = noOfWords / wordsPerMinute;
     const readTime = Math.ceil(minutes);
 
-    return readTime === 1
-      ? `${readTime} minuto de lectura`
-      : `${readTime} minutos de lectura`;
+    return readTime === 1 ? `${readTime} minuto de lectura` : `${readTime} minutos de lectura`;
   };
 
   // Render
   return (
-    <div
-      key={blog.id}
-      className="flex flex-col overflow-hidden rounded-lg shadow-lg"
-    >
+    <div key={blog.id} className="flex flex-col overflow-hidden rounded-lg shadow-lg">
       <div className="flex-shrink-0">
         <Link to={`/blog/${blog.slug}`} className="block" title={blog.title}>
-          <Img
-            fluid={blog.ogCover.childImageSharp.fluid}
-            className="object-cover w-full"
-            alt={blog.title}
-          />
+          <Img fluid={blog.ogCover.childImageSharp.fluid} className="object-cover w-full" alt={blog.title} />
         </Link>
       </div>
       <div className="flex flex-col justify-between flex-1 p-6 transition-all duration-200 bg-white dark:bg-gray-700">
@@ -74,11 +90,7 @@ const BlogCard = ({ blog, home }) => {
               rel="noopener noreferrer"
               className="hover:underline"
             >
-              <Img
-                alt="Daniel Esteves"
-                className="w-10 h-10 rounded-full"
-                fluid={home.image.childImageSharp.fluid}
-              />
+              <Img alt="Daniel Esteves" className="w-10 h-10 rounded-full" fluid={home.image.childImageSharp.fluid} />
             </a>
           </div>
           <div className="ml-3">
@@ -102,11 +114,6 @@ const BlogCard = ({ blog, home }) => {
       </div>
     </div>
   );
-};
-
-BlogCard.propTypes = {
-  blog: propTypes.oneOfType([propTypes.object]).isRequired,
-  home: propTypes.oneOfType([propTypes.object]).isRequired
 };
 
 export default BlogCard;

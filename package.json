@@ -7,6 +7,7 @@
   "dependencies": {
     "@danestves/tailwindcss-darkmode": "^1.1.5",
     "@glidejs/glide": "^3.4.1",
+    "@qwilapp/remove-markdown": "^0.3.0-redos-fix-2",
     "@statickit/react": "^2.1.1",
     "@tailwindcss/typography": "^0.2.0",
     "@tailwindcss/ui": "^0.4.0",
@@ -51,14 +52,21 @@
     "yarn": "^1.22.4"
   },
   "devDependencies": {
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.44",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-helmet": "^6.1.0",
+    "@types/react-lazyload": "^2.6.0",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
     "autoprefixer": "^9.8.5",
-    "eslint": "^7.5.0",
+    "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.5",
     "postcss-easy-import": "^3.0.0",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.7"
   },
   "keywords": [
     "danestves",
@@ -70,9 +78,10 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js"
   },
   "repository": {
     "type": "git",

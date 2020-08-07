@@ -1,39 +1,37 @@
 // Dependencies
-import React, { useState } from 'react';
+import * as React from 'react';
 import { useTransition, animated, config } from 'react-spring';
 import { Link } from 'gatsby';
-import useDarkMode from 'use-dark-mode';
 
 // Components
-import { Navbar, Logo } from './';
+import { Navbar } from '.';
 
-export default () => {
+const Header: React.FC = () => {
   // States
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
   const openTransition = useTransition(isOpen, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { ...config.wobbly, clamp: true }
+    config: { ...config.wobbly, clamp: true },
   });
   const drawerTransition = useTransition(isOpen, null, {
     from: { right: `-${100}%` },
     enter: { right: `${0}` },
     leave: { right: `-${100}%` },
-    config: { mass: 1, tension: 200, friction: 30, clamp: true }
+    config: { mass: 1, tension: 200, friction: 30, clamp: true },
   });
   const dropdownTransition = useTransition(isOpenDropdown, null, {
     from: {
       opacity: 0,
       transform: `scale(${0.9})`,
-      transformOrigin: 'top right'
+      transformOrigin: `top right`,
     },
     enter: { opacity: 1, transform: `scale(${1})` },
     leave: { opacity: 0, transform: `scale(${0.9})` },
-    config: config.wobbly
+    config: config.wobbly,
   });
-  const darkMode = useDarkMode(false);
 
   // Render
   return (
@@ -102,7 +100,7 @@ export default () => {
                           </div>
                         </div>
                       </animated.div>
-                    )
+                    ),
                 )}
               </button>
               <Link
@@ -135,28 +133,6 @@ export default () => {
               </Link>
             </div>
           </div>
-          {/* <div className="flex items-center px-3 ml-4 toggleWrapper">
-            <input
-              type="checkbox"
-              className="absolute dn"
-              id="dn"
-              checked={darkMode.value}
-              onChange={darkMode.toggle}
-            />
-            <label htmlFor="dn" className="toggle">
-              <span className="toggle__handler">
-                <span className="crater crater--1" />
-                <span className="crater crater--2" />
-                <span className="crater crater--3" />
-              </span>
-              <span className="star star--1" />
-              <span className="star star--2" />
-              <span className="star star--3" />
-              <span className="star star--4" />
-              <span className="star star--5" />
-              <span className="star star--6" />
-            </label>
-          </div> */}
         </Navbar>
       </div>
 
@@ -165,31 +141,27 @@ export default () => {
           onClick={() => setIsOpenDropdown(false)}
           onKeyDown={() => setIsOpenDropdown(false)}
           className="fixed inset-0"
-          tabIndex="-1"
+          tabIndex={-1}
           role="button"
         />
       ) : (
-        ''
+        ``
       )}
 
       <div className="md:hidden">
         {openTransition.map(
           ({ item, key, props }) =>
             item && (
-              <animated.div
-                key={key}
-                style={props}
-                className="fixed inset-0 z-10"
-              >
+              <animated.div key={key} style={props} className="fixed inset-0 z-10">
                 <div
                   onClick={() => setIsOpen(!isOpen)}
                   onKeyDown={() => setIsOpen(!isOpen)}
                   className="absolute inset-0 bg-black opacity-50"
-                  tabIndex="-1"
+                  tabIndex={-1}
                   role="button"
                 />
               </animated.div>
-            )
+            ),
         )}
 
         {drawerTransition.map(
@@ -201,22 +173,14 @@ export default () => {
                 className="fixed inset-y-0 z-10 w-full max-w-xs overflow-y-auto transition-transform bg-white dark:bg-gray-800"
               >
                 <div className="relative z-10">
-                  <div
-                    className={`${
-                      isOpen ? 'block' : 'hidden'
-                    } absolute top-0 p-4`}
-                  >
+                  <div className={`${isOpen ? `block` : `hidden`} absolute top-0 p-4`}>
                     <button
                       onClick={() => setIsOpen(!isOpen)}
                       type="button"
                       className="text-gray-600 focus:outline-none focus:text-gray-900"
                       aria-label="Close"
                     >
-                      <svg
-                        className="w-6 h-6 text-indigo-700 dark:text-white"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
+                      <svg className="w-6 h-6 text-indigo-700 dark:text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M18.2929 19.7071C18.6834 20.0976 19.3166 20.0976 19.7071 19.7071C20.0976 19.3166 20.0976 18.6834 19.7071 18.2929L13.4142 12L19.7071 5.70711C20.0976 5.31658 20.0976 4.68342 19.7071 4.29289C19.3166 3.90237 18.6834 3.90237 18.2929 4.29289L12 10.5858L5.70711 4.29289C5.31658 3.90237 4.68342 3.90237 4.29289 4.29289C3.90237 4.68342 3.90237 5.31658 4.29289 5.70711L10.5858 12L4.29289 18.2929C3.90237 18.6834 3.90237 19.3166 4.29289 19.7071C4.68342 20.0976 5.31658 20.0976 5.70711 19.7071L12 13.4142L18.2929 19.7071Z" />
                       </svg>
                     </button>
@@ -278,9 +242,11 @@ export default () => {
                   </div>
                 </div>
               </animated.div>
-            )
+            ),
         )}
       </div>
     </header>
   );
 };
+
+export default Header;

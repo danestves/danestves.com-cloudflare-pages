@@ -1,7 +1,11 @@
 // Dependencies
-import React from "react"
+import * as React from 'react';
 
-export default ({ href, children }) => (
+type LinkProps = {
+  href: string;
+};
+
+const Link: React.FC<LinkProps> = ({ href, children }) => (
   <a
     href={href}
     target="_blank"
@@ -10,4 +14,6 @@ export default ({ href, children }) => (
   >
     {children}
   </a>
-)
+);
+
+export default Link;

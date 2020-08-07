@@ -8,9 +8,6 @@ export { default as Footer } from './Footer';
 // Icons
 export { default as Logo } from './Logo';
 
-// Animations
-export { default as Fade } from './Fade';
-
 // Markdown
 export { default as Emoji } from './Emoji';
 export { default as CodeBlock } from './CodeBlock';

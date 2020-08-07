@@ -1,8 +1,8 @@
 // Dependencies
-import React from 'react';
+import * as React from 'react';
 import * as emojiTrie from 'emoji-trie';
 
-export default ({ children }) => {
+const Emoji: React.FC = ({ children }) => {
   const emoji = emojiTrie.atStart(children);
 
   return (
@@ -11,3 +11,5 @@ export default ({ children }) => {
     </span>
   );
 };
+
+export default Emoji;

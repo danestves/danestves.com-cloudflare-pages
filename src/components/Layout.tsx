@@ -1,6 +1,5 @@
 // Dependencies
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import useDarkMode from 'use-dark-mode';
 import { document } from 'browser-monads';
@@ -11,13 +10,13 @@ import { Header, Footer } from '.';
 // Styles
 import '../styles/main.css';
 
-const Layout = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   // States
   const darkmode = useDarkMode();
 
   // Effects
-  useEffect(() => {
-    document.getElementById('year').innerHTML = new Date().getFullYear();
+  React.useEffect(() => {
+    document.getElementById(`year`).innerHTML = new Date().getFullYear();
   }, []);
 
   // Render
@@ -26,7 +25,7 @@ const Layout = ({ children }) => {
       <Header />
       <Helmet
         htmlAttributes={{
-          class: darkmode.value ? 'dark-mode' : 'light-mode'
+          class: darkmode.value ? `dark-mode` : `light-mode`,
         }}
       />
 
@@ -35,10 +34,6 @@ const Layout = ({ children }) => {
       <Footer />
     </>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired
 };
 
 export default Layout;

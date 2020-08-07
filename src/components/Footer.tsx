@@ -1,8 +1,8 @@
 // Dependencies
-import React from 'react';
+import * as React from 'react';
 import { FaGithubAlt, FaYoutube, FaTwitter } from 'react-icons/fa';
 
-export default () => (
+const Footer: React.FC = () => (
   <footer className="py-5 mt-12 bg-white shadow dark:bg-gray-800">
     <div className="container flex flex-wrap items-center justify-between px-5">
       <p className="text-sm">
@@ -46,3 +46,5 @@ export default () => (
     </div>
   </footer>
 );
+
+export default Footer;

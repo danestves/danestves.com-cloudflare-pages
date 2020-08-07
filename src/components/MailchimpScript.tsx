@@ -1,7 +1,7 @@
 // Dependencies
-import React from "react"
+import * as React from 'react';
 
-export default () => {
+const Script: React.FC = () => {
   return (
     <>
       <script
@@ -24,5 +24,7 @@ export default () => {
         }}
       />
     </>
-  )
-}
+  );
+};
+
+export default Script;
