@@ -1,11 +1,8 @@
 // Dependencies
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import { useForm, ValidationError } from '@statickit/react';
 import { animated, useTransition, config } from 'react-spring';
-import {
-  GoogleReCaptchaProvider,
-  GoogleReCaptcha
-} from 'react-google-recaptcha-v3';
+import { GoogleReCaptchaProvider, GoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { window } from 'browser-monads';
 
 // Components
@@ -14,29 +11,31 @@ import { Layout, SEO } from '../components';
 // Icons
 import { ContactIcon } from '../icons';
 
-export default () => {
+const contactId: string = process.env.GATSBY_CONTACT || ``;
+
+const Contact: React.FC = () => {
   // States
-  const [state, submit] = useForm(process.env.GATSBY_CONTACT);
-  const [token, setToken] = useState('');
+  const [state, submit] = useForm(contactId);
+  const [token, setToken] = React.useState(``);
   const succeededTrantisiton = useTransition(state.succeeded, null, {
     from: {
       opacity: 0,
       transform: `scale(${0.9})`,
-      transformOrigin: 'top'
+      transformOrigin: `top`,
     },
     enter: {
       opacity: 1,
-      transform: `scale(${1})`
+      transform: `scale(${1})`,
     },
     leave: {
       opacity: 0,
-      transform: `scale(${0.9})`
+      transform: `scale(${0.9})`,
     },
-    config: config.wobbly
+    config: config.wobbly,
   });
 
   // Effects
-  useEffect(() => {
+  React.useEffect(() => {
     if (state.succeeded) {
       setTimeout(() => {
         window.location.reload();
@@ -45,20 +44,17 @@ export default () => {
   }, [state.succeeded]);
 
   // Methods
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (token !== '') {
+    if (token !== ``) {
       submit(e);
     }
   };
 
   // Renders
   return (
-    <GoogleReCaptchaProvider
-      reCaptchaKey={process.env.GATSBY_RECAPTCHA}
-      language="es"
-    >
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.GATSBY_RECAPTCHA} language="es">
       <Layout>
         <SEO
           isTemplate
@@ -125,7 +121,6 @@ export default () => {
                 </label>
                 <textarea
                   id="message"
-                  type="text"
                   name="message"
                   rows={4}
                   required
@@ -142,11 +137,9 @@ export default () => {
                           style={props}
                           className="px-2 py-4 mt-4 bg-green-400 border-2 border-green-700 rounded-lg"
                         >
-                          <p className="font-bold text-green-800">
-                            Su mensaje ha sido enviado correctamente
-                          </p>
+                          <p className="font-bold text-green-800">Su mensaje ha sido enviado correctamente</p>
                         </animated.div>
-                      )
+                      ),
                   )
                 ) : (
                   <>
@@ -164,11 +157,11 @@ export default () => {
                         <button
                           type="submit"
                           className={`block w-full py-3 font-bold text-white capitalize bg-indigo-700 border border-indigo-700 rounded ${
-                            state.submitting && 'opacity-50 cursor-not-allowed'
+                            state.submitting && `opacity-50 cursor-not-allowed`
                           } transition-all duration-200`}
                           disabled={state.submitting}
                         >
-                          {state.submitting ? 'Enviando...' : 'Enviar'}
+                          {state.submitting ? `Enviando...` : `Enviar`}
                         </button>
                       </div>
                     </div>
@@ -178,7 +171,7 @@ export default () => {
             </div>
 
             <div className="order-1 w-full md:pl-2 md:w-1/2 md:order-2">
-              <ContactIcon className="w-full h-64 h-full max-w-md max-h-full pb-8 mx-auto" />
+              <ContactIcon className="w-full h-64 max-w-md max-h-full pb-8 mx-auto" />
             </div>
           </div>
         </div>
@@ -186,3 +179,5 @@ export default () => {
     </GoogleReCaptchaProvider>
   );
 };
+
+export default Contact;

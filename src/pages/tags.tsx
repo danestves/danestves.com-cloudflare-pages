@@ -1,15 +1,26 @@
 // Dependencies
-import React from 'react';
+import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import { window } from 'browser-monads';
 
 // Components
 import { Layout, SEO } from '../components';
 
-export default ({
+// Types
+import { TagType } from '../types';
+
+type Props = {
   data: {
-    allStrapiTags: { nodes: tags }
-  }
+    allStrapiTags: {
+      nodes: [TagType];
+    };
+  };
+};
+
+const Tags: React.FC<Props> = ({
+  data: {
+    allStrapiTags: { nodes: tags },
+  },
 }) => (
   <Layout>
     <SEO
@@ -17,17 +28,17 @@ export default ({
       title="Tags"
       meta={[
         {
-          name: 'keywords',
-          content: `${tags.map(tag => `${tag.name}`)}`
+          name: `keywords`,
+          content: `${tags.map(tag => `${tag.name}`)}`,
         },
         {
-          name: 'language',
-          content: 'ES'
+          name: `language`,
+          content: `ES`,
         },
         {
-          name: 'url',
-          content: window.location.href
-        }
+          name: `url`,
+          content: window.location.href,
+        },
       ]}
     />
 
@@ -58,3 +69,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Tags;

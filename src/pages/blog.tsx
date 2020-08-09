@@ -1,15 +1,27 @@
 // Dependencies
-import React from 'react';
+import * as React from 'react';
 import { graphql } from 'gatsby';
 
 // Components
 import { SEO, Layout, BlogCard } from '../components';
 
-export default ({
+// Types
+import { BlogCardType, HomeType } from '../types';
+
+type Props = {
+  data: {
+    allStrapiBlogs: {
+      nodes: [BlogCardType];
+    };
+    strapiHome: HomeType;
+  };
+};
+
+const Blog: React.FC<Props> = ({
   data: {
     allStrapiBlogs: { nodes: blogs },
-    strapiHome: home
-  }
+    strapiHome: home,
+  },
 }) => (
   <Layout>
     <SEO
@@ -19,8 +31,7 @@ export default ({
     />
 
     <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
-      {blogs &&
-        blogs.map(blog => <BlogCard key={blog.id} blog={blog} home={home} />)}
+      {blogs && blogs.map(blog => <BlogCard key={blog.id} blog={blog} home={home} />)}
     </div>
   </Layout>
 );
@@ -59,3 +70,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Blog;

@@ -1,38 +1,60 @@
 // Dependencies
-import React, { useState } from 'react';
+import * as React from 'react';
 import { graphql } from 'gatsby';
 import { useForm, ValidationError } from '@statickit/react';
-import {
-  GoogleReCaptchaProvider,
-  GoogleReCaptcha
-} from 'react-google-recaptcha-v3';
+import { GoogleReCaptchaProvider, GoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { animated, useTransition, config } from 'react-spring';
 
 // Components
 import { Layout, SEO, ProjectList } from '../components';
 
-export default ({
+// Types
+import { ProjectCardType } from '../types';
+
+type Props = {
   data: {
-    allStrapiProjects: { nodes: projects }
-  }
+    allStrapiProjects: {
+      nodes: [ProjectCardType];
+    };
+  };
+};
+
+const Projects: React.FC<Props> = ({
+  data: {
+    allStrapiProjects: { nodes: projects },
+  },
 }) => {
   // States
-  const [state, submit] = useForm(process.env.GATSBY_CONTACT);
-  const [token, setToken] = useState('');
+  const [state, submit] = useForm(process.env.GATSBY_CONTACT || ``);
+  const [token, setToken] = React.useState(``);
+  const succeededTrantisiton = useTransition(state.succeeded, null, {
+    from: {
+      opacity: 0,
+      transform: `scale(${0.9})`,
+      transformOrigin: `top`,
+    },
+    enter: {
+      opacity: 1,
+      transform: `scale(${1})`,
+    },
+    leave: {
+      opacity: 0,
+      transform: `scale(${0.9})`,
+    },
+    config: config.wobbly,
+  });
 
   // Methods
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (token !== '') {
+    if (token !== ``) {
       submit(e);
     }
   };
 
   return (
-    <GoogleReCaptchaProvider
-      reCaptchaKey={process.env.GATSBY_RECAPTCHA}
-      language="es"
-    >
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.GATSBY_RECAPTCHA} language="es">
       <Layout>
         <SEO
           isTemplate
@@ -42,13 +64,7 @@ export default ({
 
         <div className="flex flex-wrap mt-12">
           <div className="w-full md:w-2/3">
-            {projects &&
-              projects.map(project => (
-                <ProjectList
-                  key={project.id + project.title}
-                  project={project}
-                />
-              ))}
+            {projects && projects.map(project => <ProjectList key={project.id + project.title} project={project} />)}
           </div>
 
           <div className="w-full md:w-1/3">
@@ -104,7 +120,6 @@ export default ({
               </label>
               <textarea
                 id="message"
-                type="text"
                 name="message"
                 rows={4}
                 required
@@ -121,11 +136,9 @@ export default ({
                         style={props}
                         className="px-2 py-4 mt-4 bg-green-400 border-2 border-green-700 rounded-lg"
                       >
-                        <p className="font-bold text-green-800">
-                          Su mensaje ha sido enviado correctamente
-                        </p>
+                        <p className="font-bold text-green-800">Su mensaje ha sido enviado correctamente</p>
                       </animated.div>
-                    )
+                    ),
                 )
               ) : (
                 <>
@@ -143,11 +156,11 @@ export default ({
                       <button
                         type="submit"
                         className={`block w-full py-3 font-bold text-white capitalize bg-indigo-700 border border-indigo-700 rounded ${
-                          state.submitting && 'opacity-50 cursor-not-allowed'
+                          state.submitting && `opacity-50 cursor-not-allowed`
                         } transition-all duration-200`}
                         disabled={state.submitting}
                       >
-                        {state.submitting ? 'Enviando...' : 'Enviar'}
+                        {state.submitting ? `Enviando...` : `Enviar`}
                       </button>
                     </div>
                   </div>
@@ -184,3 +197,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Projects;

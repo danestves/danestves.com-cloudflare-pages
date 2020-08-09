@@ -11,15 +11,22 @@ type Meta = {
 };
 
 type SEOTypes = {
-  description: string;
-  lang: string;
-  meta: Array<Meta>;
+  description?: string;
+  lang?: string;
+  meta?: Array<Meta>;
   title: string;
-  isTemplate: boolean;
+  isTemplate?: boolean;
   jsonLdProps?: JSON;
 };
 
-const SEO: React.FC<SEOTypes> = ({ description = ``, lang = `es`, meta = [], title, isTemplate, jsonLdProps }) => {
+const SEO: React.FC<SEOTypes> = ({
+  description = ``,
+  lang = `es`,
+  meta = [],
+  title,
+  isTemplate = false,
+  jsonLdProps,
+}) => {
   const { site } = useStaticQuery(
     graphql`
       query {

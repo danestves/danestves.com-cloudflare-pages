@@ -5,10 +5,13 @@ import { graphql, PageProps } from 'gatsby';
 // Components
 import { Layout, SEO, Logo, Emoji } from '../components';
 
+// Types
+import { BlogCardType } from '../types';
+
 interface HomeProps extends PageProps {
   data: {
     strapiHome: JSON;
-    allStrapiBlogs: Array<unknown>;
+    allStrapiBlogs: [BlogCardType];
     allStrapiPortfolios: Array<unknown>;
   };
 }

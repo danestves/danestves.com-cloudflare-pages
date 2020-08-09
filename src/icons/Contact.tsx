@@ -1,7 +1,11 @@
 // Dependencies
 import * as React from 'react';
 
-const Contact: React.FC = props => (
+type Props = {
+  className?: string;
+};
+
+const Contact: React.FC<Props> = props => (
   <svg viewBox="0 0 438.52 375.59" {...props}>
     <defs>
       <style>

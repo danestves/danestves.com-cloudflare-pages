@@ -1,35 +1,15 @@
 // Dependencies
 import * as React from 'react';
 import { Link } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
+import Img from 'gatsby-image';
 import removeMarkdown from '@qwilapp/remove-markdown';
 
-type Tags = {
-  id: string;
-  name: string;
-};
+// Types
+import { BlogCardType, HomeType } from '../types';
 
 type BlogCardProps = {
-  blog: {
-    id: string;
-    slug: string;
-    title: string;
-    ogCover: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
-    };
-    tags: [Tags];
-    body: string;
-    createdAt: string;
-  };
-  home: {
-    image: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
-    };
-  };
+  blog: BlogCardType;
+  home: HomeType;
 };
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog, home }) => {
@@ -54,17 +34,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog, home }) => {
       <div className="flex flex-col justify-between flex-1 p-6 transition-all duration-200 bg-white dark:bg-gray-700">
         <div className="flex-1">
           <p className="text-sm font-medium leading-5 text-indigo-600 transition-all duration-200 dark:text-indigo-400">
-            {blog.tags &&
-              blog.tags.map(tag => (
-                <Link
-                  key={tag.id}
-                  to={`/tags/${tag.name}`}
-                  className="mx-2 first:ml-0 last:mr-0"
-                  title={`#${tag.name}`}
-                >
-                  #{tag.name}
-                </Link>
-              ))}
+            {blog.tags?.map(tag => (
+              <Link key={tag.id} to={`/tags/${tag.name}`} className="mx-2 first:ml-0 last:mr-0" title={`#${tag.name}`}>
+                #{tag.name}
+              </Link>
+            ))}
           </p>
           <Link to={`/blog/${blog.slug}`} className="block">
             <h3

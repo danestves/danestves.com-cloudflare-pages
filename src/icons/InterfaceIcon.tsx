@@ -1,6 +1,11 @@
-import React from "react"
+// Dependencies
+import * as React from 'react';
 
-export default props => (
+type Props = {
+  className?: string;
+};
+
+const InterfaceIcon: React.FC<Props> = props => (
   <svg height="512pt" viewBox="0 0 512 512" width="512pt" {...props}>
     <path d="M184.176 412.348h143.058v72.558H184.176zm0 0" fill="#5a5a5a" />
     <path
@@ -82,4 +87,6 @@ export default props => (
       fill="#00a8b0"
     />
   </svg>
-)
+);
+
+export default InterfaceIcon;
