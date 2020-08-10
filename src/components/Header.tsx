@@ -49,7 +49,7 @@ const Header: React.FC = () => {
   const shadowStyle = shouldShowShadow ? `shadow-md` : `shadow-none`;
   const hiddenStyle = shouldHideHeader
     ? ` -translate-y-full bg-transparent`
-    : ` ${y > 80 ? `backdrop-blur bg-opacity-50 bg-white` : ``}`;
+    : `${y > 80 ? ` backdrop-blur bg-opacity-50 bg-white` : ``}`;
 
   // Methods
   useDocumentScrollThrottled((cb: ArgsUseDocumentType) => {
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
 
   // Render
   return (
-    <header className={`fixed top-0 w-full transition-all duration-200 transform ${shadowStyle} z-100${hiddenStyle}`}>
+    <header className={`fixed top-0 w-full transition-all duration-200 transform ${shadowStyle} z-50${hiddenStyle}`}>
       <div className="md:px-8">
         <Navbar>
           {/* <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
