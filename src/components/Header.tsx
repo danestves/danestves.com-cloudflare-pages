@@ -2,14 +2,25 @@
 import * as React from 'react';
 import { useTransition, animated, config } from 'react-spring';
 import { Link } from 'gatsby';
+import { GoChevronDown } from 'react-icons/go';
+
+// Hooks
+import { useDocumentScrollThrottled, useScrollPosition } from '../hooks';
 
 // Components
 import { Navbar } from '.';
+
+// Types
+import { ArgsUseDocumentType } from '../types';
 
 const Header: React.FC = () => {
   // States
   const [isOpen, setIsOpen] = React.useState(false);
   const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
+  const [shouldHideHeader, setShouldHideHeader] = React.useState(false);
+  const [shouldShowShadow, setShouldShowShadow] = React.useState(false);
+  const { y } = useScrollPosition();
+
   const openTransition = useTransition(isOpen, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -33,9 +44,29 @@ const Header: React.FC = () => {
     config: config.wobbly,
   });
 
+  const MINIMUM_SCROLL = 0;
+  const TIMEOUT_DELAY = 0;
+  const shadowStyle = shouldShowShadow ? `shadow-md` : `shadow-none`;
+  const hiddenStyle = shouldHideHeader
+    ? ` -translate-y-full bg-transparent`
+    : ` ${y > 80 ? `backdrop-blur bg-opacity-50 bg-white` : ``}`;
+
+  // Methods
+  useDocumentScrollThrottled((cb: ArgsUseDocumentType) => {
+    const { previousScrollTop, currentScrollTop } = cb;
+    const isScrolledDown = previousScrollTop < currentScrollTop;
+    const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL;
+
+    setShouldShowShadow(currentScrollTop > 2);
+
+    setTimeout(() => {
+      setShouldHideHeader(isScrolledDown && isMinimumScrolled);
+    }, TIMEOUT_DELAY);
+  });
+
   // Render
   return (
-    <header className="fixed top-0 w-full bg-transparent shadow z-100">
+    <header className={`fixed top-0 w-full transition-all duration-200 transform ${shadowStyle} z-100${hiddenStyle}`}>
       <div className="md:px-8">
         <Navbar>
           {/* <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
@@ -64,15 +95,25 @@ const Header: React.FC = () => {
               <Link
                 to="/"
                 title="Inicio"
-                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
+                className={`px-3 text-sm font-medium transition-all duration-200 ${
+                  y > 80 ? `text-secondary` : `text-primary`
+                } py-7 hover:text-white`}
               >
                 Inicio
               </Link>
               <button
                 onClick={() => setIsOpenDropdown(!isOpenDropdown)}
-                className="relative px-3 text-sm font-medium transition-all duration-200 text-primary hover:text-white py-7 focus:outline-none"
+                className={`relative px-3 text-sm font-medium transition-all duration-200 ${
+                  y > 80 ? `text-secondary` : `text-primary`
+                } hover:text-white py-7 focus:outline-none`}
               >
-                Sobre Mí
+                Sobre Mí{` `}
+                <GoChevronDown
+                  size="16"
+                  className={`inline-block ml-1 transition-all duration-150 transform${
+                    isOpenDropdown ? ` rotate-180` : ``
+                  }`}
+                />
                 {dropdownTransition.map(
                   ({ item, key, props }) =>
                     item && (
@@ -106,28 +147,36 @@ const Header: React.FC = () => {
               <Link
                 to="/projects"
                 title="Proyectos"
-                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
+                className={`px-3 text-sm font-medium transition-all duration-200 ${
+                  y > 80 ? `text-secondary` : `text-primary`
+                } py-7 hover:text-white`}
               >
                 Proyectos
               </Link>
               <Link
                 to="/portafolio"
                 title="Portafolio"
-                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
+                className={`px-3 text-sm font-medium transition-all duration-200 ${
+                  y > 80 ? `text-secondary` : `text-primary`
+                } py-7 hover:text-white`}
               >
                 Portafolio
               </Link>
               <Link
                 to="/blog"
                 title="Blog"
-                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
+                className={`px-3 text-sm font-medium transition-all duration-200 ${
+                  y > 80 ? `text-secondary` : `text-primary`
+                } py-7 hover:text-white`}
               >
                 Blog
               </Link>
               <Link
                 to="/contacto"
                 title="Contacto"
-                className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
+                className={`px-3 text-sm font-medium transition-all duration-200 ${
+                  y > 80 ? `text-secondary` : `text-primary`
+                } py-7 hover:text-white`}
               >
                 Contacto
               </Link>

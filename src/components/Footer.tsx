@@ -3,9 +3,9 @@ import * as React from 'react';
 import { FaGithubAlt, FaYoutube, FaTwitter } from 'react-icons/fa';
 
 const Footer: React.FC = () => (
-  <footer className="py-5 mt-12 bg-white shadow dark:bg-gray-800">
-    <div className="container flex flex-wrap items-center justify-between px-5">
-      <p className="text-sm">
+  <footer className="py-5 shadow bg-secondary">
+    <div className="flex flex-wrap items-center justify-between max-w-4xl px-5 mx-auto">
+      <p className="font-mono text-sm text-primary">
         Daniel Esteves © <span id="year" /> - Todos los derechos reservados
       </p>
 
@@ -16,6 +16,7 @@ const Footer: React.FC = () => (
             target="_blank"
             rel="noopener noreferrer"
             title="GitHub de Daniel Esteves"
+            className="text-primary"
           >
             <FaGithubAlt size="20" />
           </a>
@@ -27,6 +28,7 @@ const Footer: React.FC = () => (
             target="_blank"
             rel="noopener noreferrer"
             title="YouTube de Daniel Esteves"
+            className="text-primary"
           >
             <FaYoutube size="20" />
           </a>
@@ -38,6 +40,7 @@ const Footer: React.FC = () => (
             target="_blank"
             rel="noopener noreferrer"
             title="Twitter de Daniel Esteves"
+            className="text-primary"
           >
             <FaTwitter size="20" />
           </a>

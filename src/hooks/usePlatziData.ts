@@ -2,28 +2,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-type Career = {
-  id: number;
-  title: string;
-  logo: string;
-  golden_achievement: string;
-  diploma_link: string;
-  active: boolean;
-};
-
-type Course = {
-  id: number;
-  title: string;
-  badge: string;
-  url: string;
-  career: string;
-  diploma_link: string;
-};
+// Types
+import { CareerType, CourseType } from '../types';
 
 type ReturnType = {
   loading: boolean;
-  careers: Array<Career>;
-  courses: Array<Course>;
+  careers: Array<CareerType>;
+  courses: Array<CourseType>;
 };
 
 export default (): ReturnType => {

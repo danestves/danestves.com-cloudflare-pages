@@ -1,22 +1,45 @@
 // Dependencies
 import * as React from 'react';
-import { graphql, PageProps } from 'gatsby';
+import { graphql, PageProps, Link } from 'gatsby';
+import { IoLogoNodejs, IoLogoWordpress } from 'react-icons/io';
+import { GrReactjs, GrGraphQl } from 'react-icons/gr';
+import Img from 'gatsby-image';
 
 // Components
 import { Layout, SEO, Logo, Emoji } from '../components';
 
 // Types
-import { BlogCardType } from '../types';
+import { PortfolioCardType, ProjectCardType, BlogCardType } from '../types';
 
 interface HomeProps extends PageProps {
   data: {
     strapiHome: JSON;
-    allStrapiBlogs: [BlogCardType];
-    allStrapiPortfolios: Array<unknown>;
+    allStrapiPortfolios: {
+      nodes: [PortfolioCardType];
+    };
+    allStrapiProjects: {
+      nodes: [ProjectCardType];
+    };
+    allStrapiBlogs: {
+      nodes: [BlogCardType];
+    };
   };
 }
 
-const IndexPage: React.FC<HomeProps> = ({ data: { strapiHome: home } }) => {
+const IndexPage: React.FC<HomeProps> = ({
+  data: {
+    strapiHome: home,
+    allStrapiPortfolios: { nodes: portfolios },
+    allStrapiProjects: { nodes: projects },
+    allStrapiBlogs: { nodes: blogs },
+  },
+}) => {
+  // Methods
+  const portfoliosArray = (data: [PortfolioCardType]): Array<PortfolioCardType> => {
+    return data.slice(1);
+  };
+
+  // Render
   if (!home) return null;
 
   return (
@@ -70,7 +93,7 @@ const IndexPage: React.FC<HomeProps> = ({ data: { strapiHome: home } }) => {
       </div>
 
       <div className="relative w-full py-24" id="dreams">
-        <div className="container relative z-20">
+        <div className="container relative z-20 px-5">
           <h2 className="absolute bottom-0 w-full max-w-4xl py-4 mb-16 font-sans text-xl font-bold text-center transform -translate-x-1/2 rounded-full sm:px-16 sm:text-3xl sm:mb-12 md:text-5xl md:mb-8 bg-primary left-1/2 sm:py-7 text-secondary">
             ¡Haré tus ideas realidad!
           </h2>
@@ -91,6 +114,120 @@ const IndexPage: React.FC<HomeProps> = ({ data: { strapiHome: home } }) => {
             Diseños modernos y adaptables a cualquier dispositivo, que logran una experiencia única, mucho más limpia y
             rápida.
           </p>
+        </div>
+      </div>
+
+      <div className="w-full py-12 bg-primary">
+        <div className="max-w-4xl px-5 mx-auto">
+          <h2 className="text-3xl font-bold text-center text-secondary">Manejo de tecnologías como:</h2>
+
+          <div className="grid grid-cols-2 gap-8 mt-8 md:grid-cols-4">
+            <div className="text-center">
+              <GrReactjs size="128" className="mx-auto text-secondary" />
+              <h2 className="font-mono text-xl font-bold text-secondary">React / NextJS / Gatsby</h2>
+            </div>
+            <div className="text-center">
+              <IoLogoNodejs size="128" className="mx-auto text-secondary" />
+              <h2 className="font-mono text-xl font-bold text-secondary">NodeJS</h2>
+            </div>
+            <div className="text-center">
+              <GrGraphQl size="128" className="mx-auto text-secondary" />
+              <h2 className="font-mono text-xl font-bold text-secondary">GraphQL</h2>
+            </div>
+            <div className="text-center">
+              <IoLogoWordpress size="128" className="mx-auto text-secondary" />
+              <h2 className="font-mono text-xl font-bold text-secondary">WordPress</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full py-16 bg-secondary">
+        <div className="max-w-4xl px-5 mx-auto">
+          <h2 className="font-mono text-xl text-white">Trabajos recientes</h2>
+
+          <div className="mt-6">
+            {portfolios && (
+              <Link to={`/portafolio/${portfolios[0].slug}/`} className="w-full rounded-lg">
+                <div className="overflow-hidden rounded-lg h-88">
+                  <Img
+                    fluid={portfolios[0].cover.childImageSharp.fluid}
+                    alt={`Portafolio: ${portfolios[0].title} | Daniel Esteves`}
+                    className="block"
+                    imgStyle={{ objectPosition: `top center` }}
+                  />
+                </div>
+              </Link>
+            )}
+
+            <div className="grid grid-cols-2 gap-6 mt-6">
+              {portfolios &&
+                portfoliosArray(portfolios).map(portfolio => (
+                  <Link to={`/portafolio/${portfolio.slug}/`} key={portfolio.id} className="w-full rounded-lg">
+                    <div className="h-64 overflow-hidden rounded-lg">
+                      <Img
+                        fluid={portfolio.cover.childImageSharp.fluid}
+                        alt={`Portafolio: ${portfolio.title} | Daniel Esteves`}
+                        className="block"
+                        imgStyle={{ objectPosition: `top center` }}
+                      />
+                    </div>
+                  </Link>
+                ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full py-16 bg-white">
+        <div className="max-w-4xl px-5 mx-auto">
+          <div className="grid items-center grid-cols-1 gap-6 md:grid-cols-2">
+            <div>
+              <h2 className="text-5xl md:text-6xl text-secondary">
+                Prueba mis Apps <span className="text-6xl uppercase md:text-7xl">gratis</span>
+              </h2>
+            </div>
+            <div>
+              <ul className="grid grid-cols-1 gap-8">
+                {projects &&
+                  projects.map(project => (
+                    <li key={project.id}>
+                      <Link
+                        to={`/project/${project.slug}/`}
+                        className="block p-4 transition-all duration-150 border rounded-md hover:shadow"
+                      >
+                        <h3 className="mb-2 text-xl font-bold text-secondary">{project.title}</h3>
+                        <p className="text-sm text-gray-500">{project.sort}</p>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full py-12 bg-secondary">
+        <div className="max-w-4xl px-5 mx-auto">
+          <h2 className="font-mono text-xl text-center text-white">Chequea mi blog</h2>
+
+          <div className="grid grid-cols-1 gap-6 my-8 md:grid-cols-3">
+            {blogs &&
+              blogs.map(blog => (
+                <Link to={`/blog/${blog.slug}/`} key={blog.id} className="w-full h-full rounded-lg">
+                  <article className="h-full">
+                    <div className="overflow-hidden rounded-lg">
+                      <Img
+                        fluid={blog.ogCover.childImageSharp.fluid}
+                        alt={`${blog.title} | Daniel Esteves`}
+                        className="block"
+                        imgStyle={{ objectPosition: `top center` }}
+                      />
+                    </div>
+                  </article>
+                </Link>
+              ))}
+          </div>
         </div>
       </div>
     </Layout>
@@ -118,7 +255,7 @@ export const query = graphql`
       }
     }
 
-    allStrapiPortfolios(limit: 3, sort: { fields: createdAt, order: [DESC] }) {
+    allStrapiPortfolios(limit: 5, sort: { fields: createdAt, order: [DESC] }) {
       nodes {
         id
         slug
@@ -130,9 +267,15 @@ export const query = graphql`
             }
           }
         }
-        category {
-          name
-        }
+      }
+    }
+
+    allStrapiProjects(limit: 2, sort: { fields: createdAt, order: [DESC] }) {
+      nodes {
+        id
+        title
+        slug
+        sort
       }
     }
 
@@ -147,13 +290,7 @@ export const query = graphql`
             }
           }
         }
-        tags {
-          id
-          name
-        }
         title
-        createdAt(formatString: "MMM DD YYYY", locale: "es")
-        body
       }
     }
   }
