@@ -66,7 +66,7 @@ const Header: React.FC = () => {
 
   // Render
   return (
-    <header className={`fixed z-50 top-0 w-full transition-all duration-200 transform ${shadowStyle}${hiddenStyle}`}>
+    <header className={`fixed z-100 top-0 w-full transition-all duration-200 transform ${shadowStyle}${hiddenStyle}`}>
       <div className="md:px-8">
         <Navbar>
           {/* <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
