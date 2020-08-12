@@ -1,52 +1,52 @@
 // Dependencies
 import { FluidObject } from 'gatsby-image';
 
-export type ArgsUseDocumentType = {
+export interface ArgsUseDocumentType {
   previousScrollTop: number;
   currentScrollTop: number;
-};
+}
 
-export type HomeType = {
+export interface HomeType {
   image: {
     childImageSharp: {
       fluid: FluidObject;
     };
   };
-};
+}
 
-export type CurriculumItemType = {
+export interface CurriculumItemType {
   id: string;
   title: string;
   subtitle: string;
   content: string;
   date: string;
   finished: boolean;
-};
+}
 
-export type CareerType = {
+export interface CareerType {
   id: number;
   title: string;
   logo: string;
   golden_achievement: string;
   diploma_link: string;
   active: boolean;
-};
+}
 
-export type CourseType = {
+export interface CourseType {
   id: number;
   title: string;
   badge: string;
   url: string;
   career: string;
   diploma_link: string;
-};
+}
 
-type Technologies = {
+interface Technologies {
   id: string;
   name: string;
-};
+}
 
-export type ProjectCardType = {
+export interface ProjectCardType {
   id: string;
   title: string;
   slug: string;
@@ -57,9 +57,9 @@ export type ProjectCardType = {
     };
   };
   technologies?: [Technologies];
-};
+}
 
-export type PortfolioCardType = {
+export interface PortfolioCardType {
   id: string;
   slug: string;
   title: string;
@@ -71,14 +71,14 @@ export type PortfolioCardType = {
   category: {
     name: string;
   };
-};
+}
 
-export type TagType = {
+export interface TagType {
   id: string;
   name: string;
-};
+}
 
-export type BlogCardType = {
+export interface BlogCardType {
   id: string;
   title: string;
   slug: string;
@@ -90,4 +90,4 @@ export type BlogCardType = {
   tags?: [TagType];
   createdAt: string;
   body: string;
-};
+}
