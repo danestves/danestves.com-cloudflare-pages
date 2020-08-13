@@ -46,14 +46,18 @@ const IndexPage: React.FC<HomeProps> = ({
     <Layout>
       <SEO title="Inicio" isTemplate />
 
-      <div className="relative flex items-center py-20" id="hero">
+      <div className="relative flex items-center py-32 lg:py-20" id="hero">
         <div className="container z-20 grid items-center grid-cols-12 px-5">
           <div className="col-span-12 md:col-span-5">
-            <Logo className="w-64 h-64 mx-auto text-primary" />
+            <Logo className="w-48 h-48 mx-auto mb-4 md:mb-0 md:w-56 lg:w-64 md:h-56 lg:h-64 text-primary" />
           </div>
           <div className="col-span-12 md:col-span-7">
-            <h1 className="mb-2 text-6xl font-bold leading-none text-primary">Daniel Esteves</h1>
-            <h2 className="font-mono text-xl text-primary">Programador web fullstack en JavaScript</h2>
+            <h1 className="mb-2 text-6xl font-bold leading-none text-center md:text-left text-primary">
+              Daniel Esteves
+            </h1>
+            <h2 className="font-mono text-xl text-center md:text-left text-primary">
+              Programador web fullstack en JavaScript
+            </h2>
           </div>
         </div>
       </div>
