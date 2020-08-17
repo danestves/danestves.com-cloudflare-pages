@@ -41,7 +41,7 @@ const AboutMe: React.FC<Props> = ({
       {/* Hero */}
       <div className="bg-primary">
         <div className="max-w-4xl px-5 py-32 mx-auto">
-          <h1 className="font-bold text-7xl text-secondary">
+          <h1 className="text-4xl font-bold md:text-7xl text-secondary">
             <span className="font-mono">{`<`}</span> Hola, soy <br /> Daniel <br /> Esteves{` `}
             <span className="font-mono">{`/>`}</span>
           </h1>
