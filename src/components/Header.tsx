@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { useTransition, animated, config } from 'react-spring';
 import { Link } from 'gatsby';
-import { GoChevronDown } from 'react-icons/go';
 
 // Hooks
 import { useDocumentScrollThrottled, useScrollPosition } from '../hooks';
@@ -32,16 +31,6 @@ const Header: React.FC = () => {
     enter: { right: `${0}` },
     leave: { right: `-${100}%` },
     config: { mass: 1, tension: 200, friction: 30, clamp: true },
-  });
-  const dropdownTransition = useTransition(isOpenDropdown, null, {
-    from: {
-      opacity: 0,
-      transform: `scale(${0.9})`,
-      transformOrigin: `top right`,
-    },
-    enter: { opacity: 1, transform: `scale(${1})` },
-    leave: { opacity: 0, transform: `scale(${0.9})` },
-    config: config.wobbly,
   });
 
   const MINIMUM_SCROLL = 0;
@@ -102,49 +91,15 @@ const Header: React.FC = () => {
                 >
                   Inicio
                 </Link>
-                <button
-                  onClick={() => setIsOpenDropdown(!isOpenDropdown)}
+                <Link
+                  to="/sobre-mi"
+                  title="Sobre Mí"
                   className={`relative px-3 text-sm font-medium transition-all duration-200 ${
                     y > 80 ? `text-secondary` : `text-primary`
                   } hover:text-white py-7 focus:outline-none`}
                 >
-                  Sobre Mí{` `}
-                  <GoChevronDown
-                    size="16"
-                    className={`inline-block ml-1 transition-all duration-150 transform${
-                      isOpenDropdown ? ` rotate-180` : ``
-                    }`}
-                  />
-                  {dropdownTransition.map(
-                    ({ item, key, props }) =>
-                      item && (
-                        <animated.div
-                          key={key}
-                          style={props}
-                          className="absolute right-0 z-10 mt-6 origin-top-right rounded shadow"
-                        >
-                          <div className="w-40 text-left rounded-lg shadow-lg bg-secondary">
-                            <div className="py-1">
-                              <Link
-                                to="/curriculum"
-                                title="Curriculum"
-                                className="block px-6 py-3 leading-tight transition-all duration-200 text-primary hover:text-white"
-                              >
-                                Curriculum
-                              </Link>
-                              <Link
-                                to="/certificaciones"
-                                title="Certificaciones"
-                                className="block px-6 py-3 leading-tight transition-all duration-200 text-primary hover:text-white"
-                              >
-                                Certificaciones
-                              </Link>
-                            </div>
-                          </div>
-                        </animated.div>
-                      ),
-                  )}
-                </button>
+                  Sobre Mí
+                </Link>
                 <Link
                   to="/projects"
                   title="Proyectos"

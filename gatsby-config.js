@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -39,7 +40,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Poppins\:400,700`, `Source Code Pro\:400,700`],
+        fonts: [`Poppins\:400,700`, `Source Code Pro\:400,600,700`],
         display: `swap`,
       },
     },

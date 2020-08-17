@@ -1,4 +1,4 @@
-// Dependencies
+// eslint-disable-next-line
 const defaultTheme = require(`tailwindcss/defaultTheme`);
 
 module.exports = {
@@ -32,6 +32,7 @@ module.exports = {
       },
       fontSize: {
         '7xl': `5rem`,
+        '8xl': `6rem`,
       },
       fontFamily: {
         sans: [`Poppins`, ...defaultTheme.fontFamily.sans],
@@ -43,27 +44,29 @@ module.exports = {
       inset: {
         '1/2': `50%`,
       },
+      minHeight: {
+        20: `5rem`,
+      },
+      textOpacity: {
+        '90': `0.90`,
+      },
       zIndex: {
         '100': 100,
       },
     },
   },
   variants: {
-    backgroundColor: [`responsive`, `hover`, `group-hover`, `dark`, `dark:hover`],
+    backgroundColor: [`responsive`, `hover`, `group-hover`],
     backdropFilter: [`responsive`],
-    borderColor: [`responsive`, `hover`, `focus`, `dark`, `dark:hover`],
-    boxShadow: [`responsive`, `hover`, `focus`, `dark`, `dark:hover`],
+    borderColor: [`responsive`, `hover`, `focus`, `first`, `last`],
+    borderWidth: [`responsive`, `hover`, `focus`, `first`, `last`],
+    boxShadow: [`responsive`, `hover`, `focus`],
     filter: [`responsive`],
     margin: [`responsive`, `first`, `last`],
     padding: [`responsive`],
-    placeholderColor: [`responsive`, `focus`, `dark`],
-    textColor: [`responsive`, `hover`, `group-hover`, `dark`, `dark:hover`],
+    placeholderColor: [`responsive`, `focus`],
+    textColor: [`responsive`, `hover`, `group-hover`],
   },
   corePlugins: {},
-  plugins: [
-    require(`@danestves/tailwindcss-darkmode`)(),
-    require(`@tailwindcss/ui`),
-    require(`@tailwindcss/typography`),
-    require(`tailwindcss-filters`),
-  ],
+  plugins: [require(`@tailwindcss/ui`), require(`@tailwindcss/typography`), require(`tailwindcss-filters`)],
 };
