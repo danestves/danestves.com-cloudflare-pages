@@ -101,13 +101,13 @@ const Header: React.FC = () => {
                   Sobre Mí
                 </Link>
                 <Link
-                  to="/projects"
-                  title="Proyectos"
+                  to="/apps"
+                  title="Apps"
                   className={`px-3 text-sm font-medium transition-all duration-200 ${
                     y > 80 ? `text-secondary` : `text-primary`
                   } py-7 hover:text-white`}
                 >
-                  Proyectos
+                  Apps
                 </Link>
                 <Link
                   to="/portafolio"
@@ -199,25 +199,18 @@ const Header: React.FC = () => {
                       Inicio
                     </Link>
                     <Link
-                      to="/curriculum"
-                      title="Curriculum"
+                      to="/sobre-mi"
+                      title="Sobre Mí"
                       className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
                     >
-                      Curriculum
+                      Sobre Mí
                     </Link>
                     <Link
-                      to="/certificaciones"
-                      title="Certificaciones"
+                      to="/apps"
+                      title="Apps"
                       className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
                     >
-                      Certificaciones
-                    </Link>
-                    <Link
-                      to="/projects"
-                      title="Proyectos"
-                      className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
-                    >
-                      Proyectos
+                      Apps
                     </Link>
                     <Link
                       to="/portafolio"

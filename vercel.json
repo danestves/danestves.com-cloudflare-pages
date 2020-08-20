@@ -1,7 +1,4 @@
 {
-  "name": "danestves",
-  "version": 2,
-  "alias": "danestves.com",
   "build": {
     "env": {
       "NODE_ENV": "production",

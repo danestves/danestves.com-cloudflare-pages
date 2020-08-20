@@ -4,8 +4,7 @@ export { default as Services } from './Services';
 export { default as SEO } from './SEO';
 export { default as Layout } from './Layout';
 export { default as Footer } from './Footer';
-
-// Icons
+export { default as CallToAction } from './CallToAction';
 export { default as Logo } from './Logo';
 
 // Markdown

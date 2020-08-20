@@ -2,6 +2,9 @@
 const defaultTheme = require(`tailwindcss/defaultTheme`);
 
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
   purge: {
     content: [`./src/**/*.{js,jsx,ts,tsx}`],
     options: {
@@ -13,6 +16,9 @@ module.exports = {
       backdropFilter: {
         none: `none`,
         blur: `blur(20px)`,
+      },
+      borderRadius: {
+        '2xl': `2rem`,
       },
       borderWidth: {
         10: `10px`,
