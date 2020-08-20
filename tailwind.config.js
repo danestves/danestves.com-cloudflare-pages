@@ -69,6 +69,7 @@ module.exports = {
     boxShadow: [`responsive`, `hover`, `focus`],
     filter: [`responsive`],
     margin: [`responsive`, `first`, `last`],
+    opacity: [`responsive`, `hover`, `focus`, `group-hover`],
     padding: [`responsive`],
     placeholderColor: [`responsive`, `focus`],
     textColor: [`responsive`, `hover`, `group-hover`],

@@ -55,24 +55,9 @@ header {
   @apply mb-0;
 }
 
-.portfolio-link .portfolio-image,
-.portfolio-link .portfolio-meta {
-  @apply border-transparent;
-}
-
 .portfolio-link .portfolio-image {
-  max-height: 200px;
-  height: 200px;
-}
-
-.portfolio-link:hover .portfolio-image,
-.portfolio-link:hover .portfolio-meta {
-  @apply border-indigo-700;
-}
-
-.dark-mode .portfolio-link:hover .portfolio-image,
-.dark-mode .portfolio-link:hover .portfolio-meta {
-  @apply border-white;
+  max-height: 216px;
+  height: 216px;
 }
 
 .markdown-content {
