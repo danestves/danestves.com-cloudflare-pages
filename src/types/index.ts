@@ -91,3 +91,24 @@ export interface BlogCardType {
   createdAt: string;
   body: string;
 }
+
+export interface SinglePortfolio {
+  title: string;
+  body: string;
+  cover: {
+    childImageSharp: {
+      fluid: FluidObject;
+    };
+    publicURL: string;
+  };
+  ogCover: {
+    publicURL: string;
+  };
+  category: {
+    name: string;
+  };
+  technologies: [Technologies];
+  url: string;
+  createdAt: string;
+  isActive: boolean;
+}

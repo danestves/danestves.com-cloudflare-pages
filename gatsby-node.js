@@ -1,5 +1,5 @@
-const path = require('path');
-const GithubSlugger = require('github-slugger');
+const path = require(`path`);
+const GithubSlugger = require(`github-slugger`);
 const slugger = new GithubSlugger();
 
 exports.createPages = async ({ actions, graphql }) => {
@@ -52,8 +52,8 @@ exports.createPages = async ({ actions, graphql }) => {
   portfolios.data.allStrapiPortfolios.edges.forEach(({ node }) => {
     createPage({
       path: `portafolio/${node.slug}`,
-      component: path.resolve(`./src/templates/portafolio.js`),
-      context: node
+      component: path.resolve(`./src/templates/portafolio.tsx`),
+      context: node,
     });
   });
 
@@ -61,7 +61,7 @@ exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: `blog/${node.slug}`,
       component: path.resolve(`./src/templates/blog.js`),
-      context: node
+      context: node,
     });
   });
 
@@ -69,7 +69,7 @@ exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: `project/${node.slug}`,
       component: path.resolve(`./src/templates/project.js`),
-      context: node
+      context: node,
     });
   });
 
@@ -77,7 +77,7 @@ exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: `tags/${slugger.slug(node.name)}`,
       component: path.resolve(`./src/templates/tags.js`),
-      context: node
+      context: node,
     });
   });
 };

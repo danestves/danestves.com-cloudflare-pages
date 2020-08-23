@@ -14,11 +14,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
-        color: `#4c51bf`,
+        color: `#ffffff`,
         showSpinner: false,
       },
     },
-    `gatsby-plugin-use-dark-mode`,
     `gatsby-plugin-simple-analytics`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,

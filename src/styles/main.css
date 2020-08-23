@@ -26,10 +26,18 @@ header {
   background-position: 50% 65%;
 }
 
+.container-image {
+  max-height: 480px;
+}
+
 @media screen and (max-width: 768px) {
   #hero,
   #dreams {
     background-size: cover;
+  }
+
+  .container-image {
+    max-height: 320px;
   }
 }
 

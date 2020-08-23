@@ -87,7 +87,7 @@ const AboutMe: React.FC<Props> = ({
               key={item.id}
               className="max-w-4xl mx-auto first:border-t-2 first:border-primary last:border-b-2 last:border-primary"
             >
-              <div className="max-w-3xl py-4 mx-auto">
+              <div className="max-w-3xl py-6 mx-auto">
                 <h3 className="mb-3 font-mono text-2xl font-bold text-secondary">{item.title}</h3>
                 <h4 className="mb-3 font-mono text-lg font-semibold text-secondary">
                   {item.subtitle} | {item.date}

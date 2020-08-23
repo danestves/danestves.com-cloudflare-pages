@@ -3,24 +3,22 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 
 // Components
-import { SEO, Layout, BlogCard } from '../components';
+import { SEO, Layout, BlogCard, CallToAction } from '../components';
 
 // Types
-import { BlogCardType, HomeType } from '../types';
+import { BlogCardType } from '../types';
 
 type Props = {
   data: {
     allStrapiBlogs: {
       nodes: [BlogCardType];
     };
-    strapiHome: HomeType;
   };
 };
 
 const Blog: React.FC<Props> = ({
   data: {
     allStrapiBlogs: { nodes: blogs },
-    strapiHome: home,
   },
 }) => (
   <Layout>
@@ -30,9 +28,16 @@ const Blog: React.FC<Props> = ({
       description="Blog de Daniel Esteves para dar a conocer a la comunidad información sobre frameworks, snippets de código y enseñanzas que ha aprendido con el tiempo."
     />
 
-    <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
-      {blogs && blogs.map(blog => <BlogCard key={blog.id} blog={blog} home={home} />)}
+    {/* Space for Header */}
+    <div className="w-full min-h-20 bg-secondary"></div>
+
+    <div className="w-full px-5 py-12 bg-secondary">
+      <ul className="max-w-4xl mx-auto space-y-12">
+        {blogs && blogs.map(blog => <BlogCard key={blog.id} blog={blog} />)}
+      </ul>
     </div>
+
+    <CallToAction />
   </Layout>
 );
 
@@ -56,16 +61,6 @@ export const query = graphql`
         title
         createdAt(formatString: "MMM DD YYYY", locale: "es")
         body
-      }
-    }
-
-    strapiHome {
-      image {
-        childImageSharp {
-          fluid(maxWidth: 100, maxHeight: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
       }
     }
   }

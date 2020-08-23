@@ -83,15 +83,6 @@ const Header: React.FC = () => {
             <div className="hidden md:ml-10 md:flex md:items-baseline md:bg-transparent">
               <div className="flex items-center justify-center">
                 <Link
-                  to="/"
-                  title="Inicio"
-                  className={`px-3 text-sm font-medium transition-all duration-200 ${
-                    y > 80 ? `text-secondary` : `text-primary`
-                  } py-7 hover:text-white`}
-                >
-                  Inicio
-                </Link>
-                <Link
                   to="/sobre-mi"
                   title="Sobre Mí"
                   className={`relative px-3 text-sm font-medium transition-all duration-200 ${
@@ -191,13 +182,6 @@ const Header: React.FC = () => {
                     </button>
                   </div>
                   <div className="px-4 pb-6">
-                    <Link
-                      to="/"
-                      title="Inicio"
-                      className="block w-full font-medium transition-all duration-200 text-secondary hover:text-primary"
-                    >
-                      Inicio
-                    </Link>
                     <Link
                       to="/sobre-mi"
                       title="Sobre Mí"
