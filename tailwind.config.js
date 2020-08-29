@@ -57,6 +57,50 @@ module.exports = {
       textOpacity: {
         90: `0.90`,
       },
+      typography: theme => ({
+        default: {
+          css: {
+            '& h1, & h2, & h3, & h4': {
+              color: theme(`colors.white`),
+            },
+            a: {
+              color: theme(`colors.primary`),
+              transition: theme(`transitionProperty.all`),
+              transitionDuration: theme(`transitionDuration.200`),
+
+              '&:hover': {
+                color: theme(`colors.primary`),
+                opacity: theme(`opacity.75`),
+              },
+            },
+            strong: {
+              color: theme(`colors.white`),
+            },
+            blockquote: {
+              color: theme(`colors.gray.400`),
+            },
+            code: {
+              padding: `${theme(`padding.1`)} ${theme(`padding.2`)}`,
+              fontSize: theme(`fontSize.sm`),
+              fontWeight: 400,
+              color: theme(`colors.gray.100`),
+              whiteSpace: theme(`whitespace.normal`),
+              borderRadius: theme(`borderRadius.default`),
+              fontFamily: `"Source Code Pro", ${[...defaultTheme.fontFamily.mono]}`,
+              backgroundColor: `rgb(39, 40, 34)`,
+
+              '&:after, &:before': {
+                content: `"" !important`,
+              },
+            },
+            ol: {
+              '&>li:before': {
+                color: `${theme(`colors.white`)} !important`,
+              },
+            },
+          },
+        },
+      }),
       zIndex: {
         100: 100,
       },

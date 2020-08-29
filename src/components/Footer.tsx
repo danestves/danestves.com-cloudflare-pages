@@ -4,7 +4,7 @@ import { FaGithubAlt, FaYoutube, FaTwitter } from 'react-icons/fa';
 
 const Footer: React.FC = () => (
   <footer className="py-5 shadow bg-secondary">
-    <div className="flex flex-wrap items-center justify-between max-w-4xl px-5 mx-auto">
+    <div className="container flex flex-wrap items-center justify-between px-5">
       <p className="font-mono text-sm text-primary">
         Daniel Esteves © <span id="year" /> - Todos los derechos reservados
       </p>

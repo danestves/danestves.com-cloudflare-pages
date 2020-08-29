@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 const CallToAction: React.FC = () => {
   return (
     <div className="w-full px-5 pt-12 bg-secondary">
-      <div className="max-w-4xl pb-12 mx-auto border-b-2 border-primary">
+      <div className="container pb-12 border-b-2 border-primary">
         <h3 className="font-mono text-xl text-center md:text-3xl text-primary">¿Tienes una idea?</h3>
         <h2 className="mb-8 text-3xl font-bold text-center text-white md:text-5xl">¡Hagámosla realidad!</h2>
 

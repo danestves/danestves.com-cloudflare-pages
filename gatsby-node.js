@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require(`path`);
 const GithubSlugger = require(`github-slugger`);
 const slugger = new GithubSlugger();
@@ -60,7 +61,7 @@ exports.createPages = async ({ actions, graphql }) => {
   blogs.data.allStrapiBlogs.edges.forEach(({ node }) => {
     createPage({
       path: `blog/${node.slug}`,
-      component: path.resolve(`./src/templates/blog.js`),
+      component: path.resolve(`./src/templates/blog.tsx`),
       context: node,
     });
   });

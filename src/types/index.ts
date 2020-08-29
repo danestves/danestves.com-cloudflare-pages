@@ -6,7 +6,7 @@ export interface ArgsUseDocumentType {
   currentScrollTop: number;
 }
 
-export interface HomeType {
+export interface IHome {
   image: {
     childImageSharp: {
       fluid: FluidObject;
@@ -90,6 +90,24 @@ export interface BlogCardType {
   tags?: [TagType];
   createdAt: string;
   body: string;
+}
+
+export interface ISingleBlog {
+  id: string;
+  slug: string;
+  cover: {
+    childImageSharp: {
+      fluid: FluidObject;
+    };
+  };
+  ogCover: {
+    publicURL: string;
+  };
+  title: string;
+  tags: [TagType];
+  body: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface SinglePortfolio {

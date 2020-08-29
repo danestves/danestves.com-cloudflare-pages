@@ -1,25 +1,17 @@
 // Dependencies
 import * as React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProps } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { window } from 'browser-monads';
 
-type Meta = {
-  name: string;
-  content: string;
-  schema?: string;
-};
-
-type SEOTypes = {
+interface ISEOType extends HelmetProps {
   description?: string;
   lang?: string;
-  meta?: Array<Meta>;
-  title: string;
   isTemplate?: boolean;
-  jsonLdProps?: JSON;
-};
+  jsonLdProps?: Record<string, unknown>;
+}
 
-const SEO: React.FC<SEOTypes> = ({
+const SEO: React.FC<ISEOType> = ({
   description = ``,
   lang = `es`,
   meta = [],
@@ -78,7 +70,7 @@ const SEO: React.FC<SEOTypes> = ({
       titleTemplate={
         isTemplate
           ? `${title} | ${site.siteMetadata.title}`
-          : `${title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`
+          : `${title && title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`
       }
       meta={[
         {
@@ -93,7 +85,7 @@ const SEO: React.FC<SEOTypes> = ({
           property: `og:title`,
           content: isTemplate
             ? `${title} | ${site.siteMetadata.title}`
-            : `${title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`,
+            : `${title && title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`,
         },
         {
           property: `og:description`,
@@ -140,7 +132,7 @@ const SEO: React.FC<SEOTypes> = ({
           name: `twitter:title`,
           content: isTemplate
             ? `${title} | ${site.siteMetadata.title}`
-            : `${title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`,
+            : `${title && title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`,
         },
         {
           name: `twitter:description`,
@@ -154,8 +146,9 @@ const SEO: React.FC<SEOTypes> = ({
           name: `twitter:image:alt`,
           content: isTemplate
             ? `${title} | ${site.siteMetadata.title}`
-            : `${title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`,
+            : `${title && title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`,
         },
+        ...meta,
       ].concat(meta)}
     >
       <link rel="canonical" href={window.location.href} />

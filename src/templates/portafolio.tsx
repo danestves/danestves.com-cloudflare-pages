@@ -10,15 +10,10 @@ import { AiFillTags, AiOutlineLink } from 'react-icons/ai';
 import { BiCodeAlt } from 'react-icons/bi';
 
 // Components
-import { SEO, Blockquote, MarkdownLink, CallToAction } from '../components';
+import { SEO, CallToAction } from '../components';
 
 // Types
 import { SinglePortfolio } from '../types';
-
-const markdownRenderers = {
-  blockquote: Blockquote,
-  link: MarkdownLink,
-};
 
 type Props = {
   data: {
@@ -46,12 +41,10 @@ const Portfolio: React.FC<Props> = ({ data: { strapiPortfolios: portfolio } }) =
           {
             name: `date`,
             content: portfolio.createdAt,
-            schema: `YYYY-MM-DD`,
           },
           {
             name: `identifier`,
             content: `0-2345-6634-6`,
-            schema: `ISBN`,
           },
           {
             name: `twitter:image`,
@@ -110,9 +103,8 @@ const Portfolio: React.FC<Props> = ({ data: { strapiPortfolios: portfolio } }) =
             </div>
 
             <Markdown
-              className="py-5 text-lg text-justify text-primary markdown markdown-content"
+              className="py-5 text-lg prose text-justify text-primary"
               source={portfolio.body}
-              renderers={markdownRenderers}
               escapeHtml={false}
             />
 

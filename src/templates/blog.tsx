@@ -1,5 +1,5 @@
 // Dependencies
-import React, { useState } from 'react';
+import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -7,75 +7,51 @@ import Markdown from 'react-markdown';
 import { useTransition, animated, config } from 'react-spring';
 import { window } from 'browser-monads';
 import { Disqus } from 'gatsby-plugin-disqus';
-import { FaTags } from 'react-icons/fa';
-import { FcClock } from 'react-icons/fc';
-
-// Helpers
-import removeMarkdown from '../helpers/removeMarkdown';
+import removeMarkdown from 'remove-markdown';
 
 // Components
-import {
-  CodeBlock,
-  Paragraph,
-  InlineCode,
-  MarkdownImage,
-  MarkdownLink,
-  Heading,
-  SEO,
-  Layout,
-  MailchimpScript
-} from '../components';
+import { SEO, NewsletterForm, Emoji, CallToAction, CodeBlock } from '../components';
 
 // Icons
-import {
-  ShareIcon,
-  FacebookIcon,
-  TwitterIcon,
-  WhatsAppIcon,
-  LinkedInIcon,
-  LinkIcon
-} from '../icons';
+import { ShareIcon, FacebookIcon, TwitterIcon, WhatsAppIcon, LinkedInIcon, LinkIcon } from '../icons';
 
-// Images
-import Logo from '../images/logo.png';
-import Profile from '../images/profile.jpg';
+// Interfaces
+import { ISingleBlog } from '../types';
+
+type Props = {
+  data: {
+    strapiBlogs: ISingleBlog;
+  };
+};
 
 const markdownRenderers = {
   code: CodeBlock,
-  paragraph: Paragraph,
-  inlineCode: InlineCode,
-  image: MarkdownImage,
-  link: MarkdownLink,
-  heading: Heading
 };
 
-export default ({ data }) => {
+const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
   // States
-  const [modal, setModal] = useState(false);
-  const blog = data.strapiBlogs;
+  const [modal, setModal] = React.useState(false);
 
   const modalTransition = useTransition(modal, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: config.wobbly
+    config: config.wobbly,
   });
   const modalOverlayTransition = useTransition(modal, null, {
     from: { opacity: 0 },
     enter: { opacity: 0.5 },
     leave: { opacity: 0 },
-    config: config.wobbly
+    config: config.wobbly,
   });
 
   // Methods
-  const readingTime = text => {
+  const readingTime = (text: string) => {
     const wordsPerMinute = 200;
     const noOfWords = text.split(/\s/g).length;
     const minutes = noOfWords / wordsPerMinute;
     const readTime = Math.ceil(minutes);
-    return readTime === 1
-      ? `${readTime} minuto de lectura`
-      : `${readTime} minutos de lectura`;
+    return readTime === 1 ? `${readTime} minuto de lectura` : `${readTime} minutos de lectura`;
   };
 
   const webShareAPI = () => {
@@ -83,29 +59,29 @@ export default ({ data }) => {
       window.navigator
         .share({
           title: document.title,
-          url: window.location.href
+          url: window.location.href,
         })
-        .then(() => console.log('Thanks for sharing!'))
-        .catch(error => console.log('Error sharing: ', error));
+        .then(() => console.log(`Thanks for sharing!`))
+        .catch((error: string) => console.log(`Error sharing: `, error));
     } else {
       setModal(true);
     }
   };
 
   const copyLink = async () => {
-    const copyText = document.getElementById('url');
+    const copyText = document.getElementById(`url`) as HTMLInputElement;
 
     try {
       await navigator.clipboard.writeText(copyText.value);
     } catch (err) {
-      console.error('Failed to copy: ', err);
+      console.error(`Failed to copy: `, err);
     }
   };
 
   const disqusConfig = {
     url: `https://danestves.com/blog/${blog.slug}`,
     identifier: blog.id,
-    title: blog.title
+    title: blog.title,
   };
 
   const jsonLd = {
@@ -114,15 +90,11 @@ export default ({ data }) => {
     author: {
       '@type': `Person`,
       name: `Daniel Esteves`,
-      image: Profile,
-      sameAs: ['https://danestves.com', 'https://twitter.com/danestves']
+      image: `Profile`,
+      sameAs: [`https://danestves.com`, `https://twitter.com/danestves`],
     },
-    keywords: blog.tags.length
-      ? blog.tags.map(tag => `${tag.name}`)
-      : undefined,
-    headline: `${
-      blog.title.length > 50 ? `${blog.title.substr(0, 53)}...` : blog.title
-    } | @danestves`,
+    keywords: blog.tags.length ? blog.tags.map(tag => `${tag.name}`) : undefined,
+    headline: `${blog.title.length > 50 ? `${blog.title.substr(0, 53)}...` : blog.title} | @danestves`,
     url: window.location.href,
     datePublished: blog.createdAt,
     dateModified: blog.updatedAt,
@@ -130,131 +102,140 @@ export default ({ data }) => {
       '@type': `ImageObject`,
       url: blog.ogCover.publicURL,
       width: 1200,
-      height: 628
+      height: 628,
     },
     publisher: {
       '@type': `Organization`,
       name: `Daniel Esteves`,
       logo: {
         '@type': `ImageObject`,
-        url: Logo,
+        url: `Logo`,
         width: 60,
-        height: 60
-      }
+        height: 60,
+      },
     },
     description: `${removeMarkdown(blog.body).substr(0, 157)}...`,
     mainEntityOfPage: {
       '@type': `WebPage`,
-      '@id': `https://danestves.com`
-    }
+      '@id': `https://danestves.com`,
+    },
   };
 
   // Render
   return (
-    <Layout>
+    <>
       <SEO
         title={blog.title}
         description={`${removeMarkdown(blog.body).substr(0, 157)}...`}
         jsonLdProps={jsonLd}
         meta={[
           {
-            name: 'keywords',
-            content: `${blog.tags.map(tag => `${tag.name}`)}`
+            name: `keywords`,
+            content: `${blog.tags.map(tag => `${tag.name}`)}`,
           },
           {
-            name: 'language',
-            content: 'ES'
+            name: `language`,
+            content: `ES`,
           },
           {
-            name: 'url',
-            content: window.location.href
+            name: `url`,
+            content: window.location.href,
           },
           {
-            name: 'date',
+            name: `date`,
             content: blog.createdAt,
-            schema: 'YYYY-MM-DD'
           },
           {
-            property: 'og:type',
-            content: 'article'
+            property: `og:type`,
+            content: `article`,
           },
           {
-            name: 'twitter:image',
+            name: `twitter:image`,
             content: `https://danestves.com${blog.ogCover.publicURL}`,
-            key: 'twitter:image'
+            key: `twitter:image`,
           },
           {
-            name: 'twitter:image:alt',
-            content: blog.title
-          }
+            name: `twitter:image:alt`,
+            content: blog.title,
+          },
         ]}
       />
 
       <Helmet>
         <meta property="og:image" content={blog.ogCover.publicURL} />
-        {blog.tags &&
-          blog.tags.map((keyword, i) => (
-            <meta property="article:tag" content={keyword.name} key={i} />
-          ))}
+        {blog.tags && blog.tags.map((keyword, i) => <meta property="article:tag" content={keyword.name} key={i} />)}
         <meta property="article:published_time" content={blog.createdAt} />
         <meta property="article:modified_time" content={blog.updatedAt} />
-        <meta
-          property="article:author"
-          content="https://facebook.com/danestves"
-        />
+        <meta property="article:author" content="https://facebook.com/danestves" />
         <meta name="twitter:label1" content="Written by" />
         <meta name="twitter:data1" content="Daniel Esteves" />
         {blog.tags && <meta name="twitter:label2" content="Filed under" />}
         {blog.tags && <meta name="twitter:data2" content={blog.tags[0].name} />}
       </Helmet>
 
-      <div className="relative overflow-hidden rounded shadow-lg dark:shadow-white-lg">
+      <div className="relative overflow-hidden rounded shadow-lg">
         <Img fluid={blog.cover.childImageSharp.fluid} />
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
-        <h1 className="absolute w-full px-5 text-xl font-bold leading-none text-center text-white transform -translate-y-1/2 sm:text-2xl md:text-4xl lg:text-5xl top-1/2">
-          {blog.title}
-        </h1>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center py-5 sm:justify-between">
-        <div className="flex flex-wrap items-center">
-          <FaTags
-            size="32"
-            className="mr-1 text-red-700 transition-all duration-200 dark:text-white"
-          />
+      <div className="container px-5 mt-5 mb-6">
+        <h1 className="text-3xl font-bold text-center text-white md:text-5xl">{blog.title}</h1>
 
-          <h2 className="mr-3 text-xl">Tags:</h2>
+        <div className="flex flex-wrap items-center justify-center space-x-8">
+          <div>
+            <p className="font-mono text-blue">
+              <Emoji className="mr-2 text-2xl">⏱</Emoji>
+              {readingTime(blog.body)}
+            </p>
+          </div>
 
-          {blog.tags.map(tag => (
-            <Link
-              key={tag.id}
-              to={`/tags/${tag.name}`}
-              className="px-3 py-1 mx-1 text-lg leading-none transition-all duration-200 border-2 border-gray-700 rounded-full hover:border-indigo-700"
-            >
-              {tag.name}
-            </Link>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap items-center">
-          <FcClock size="32" className="mr-1 text-black" />
-
-          <h2 className="text-xl">{readingTime(blog.body)}</h2>
+          <div className="flex items-center space-x-2">
+            {blog.tags.map(tag => (
+              <Link key={tag.id} to={`/tags/${tag.name}`} className="font-mono text-blue">
+                #{tag.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 
-      <Markdown
-        className="markdown-content"
-        source={blog.body}
-        renderers={markdownRenderers}
-        escapeHtml={false}
-      />
+      <div className="container px-5 mb-10">
+        <div className="relative w-full">
+          <div className="relative z-20 w-64 mx-auto bg-secondary">
+            <img
+              src="/me.jpeg"
+              alt="Daniel Esteves"
+              className="z-30 w-48 h-48 mx-auto border-white rounded-full border-10"
+            />
+          </div>
+          <hr className="absolute top-0 z-10 w-full transform -translate-y-1/2 top-1/2 border-primary" />
+        </div>
 
-      <MailchimpScript />
+        <h2 className="mt-4 font-mono text-center text-primary">Daniel Esteves - Progamador Web Fullstack</h2>
+      </div>
 
-      <div className="pt-4 mt-8 border-t border-gray-500">
+      <div className="container px-5">
+        <div className="flex flex-wrap">
+          <div className="w-full lg:w-1/2 xl:w-3/4">
+            <Markdown
+              className="prose prose-lg text-white"
+              source={blog.body}
+              renderers={markdownRenderers}
+              escapeHtml={false}
+            />
+          </div>
+
+          <div className="w-full mt-10 lg:mt-0 lg:w-1/2 xl:w-1/4">
+            <NewsletterForm />
+          </div>
+        </div>
+      </div>
+
+      <div className="container px-5 py-16 my-10 border-t-2 border-b-2 border-primary">
         <Disqus config={disqusConfig} />
       </div>
+
+      <CallToAction />
 
       <button
         onClick={webShareAPI}
@@ -271,9 +252,9 @@ export default ({ data }) => {
               style={props}
               onClick={() => setModal(false)}
               className="fixed top-0 right-0 w-screen h-screen bg-black opacity-50"
-              tabIndex="-1"
+              tabIndex={-1}
             />
-          )
+          ),
       )}
 
       {modalTransition.map(
@@ -282,10 +263,10 @@ export default ({ data }) => {
             <animated.div
               key={key}
               style={{
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                ...props
+                top: `50%`,
+                left: `50%`,
+                transform: `translate(-50%, -50%)`,
+                ...props,
               }}
               className="fixed z-10 w-full"
             >
@@ -347,19 +328,18 @@ export default ({ data }) => {
                     />
 
                     <button
-                      className="flex items-center justify-center block w-full py-1 mt-3 uppercase border border-gray-500 rounded"
+                      className="flex items-center justify-center w-full py-1 mt-3 uppercase border border-gray-500 rounded"
                       onClick={copyLink}
                     >
-                      copiar enlace{' '}
-                      <LinkIcon className="w-6 h-6 ml-3 fill-current" />
+                      copiar enlace <LinkIcon className="w-6 h-6 ml-3 fill-current" />
                     </button>
                   </div>
                 </div>
               </div>
             </animated.div>
-          )
+          ),
       )}
-    </Layout>
+    </>
   );
 };
 
@@ -389,3 +369,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Blog;
