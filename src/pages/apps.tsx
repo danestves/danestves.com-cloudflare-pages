@@ -6,12 +6,12 @@ import { graphql } from 'gatsby';
 import { SEO, ProjectList, CallToAction } from '../components';
 
 // Types
-import { ProjectCardType } from '../types';
+import { IProjectCard } from '../types';
 
 type Props = {
   data: {
     allStrapiProjects: {
-      nodes: [ProjectCardType];
+      nodes: [IProjectCard];
     };
   };
 };

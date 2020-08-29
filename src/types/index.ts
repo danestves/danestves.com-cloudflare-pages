@@ -14,7 +14,7 @@ export interface IHome {
   };
 }
 
-export interface CurriculumItemType {
+export interface ICurriculumItem {
   id: string;
   title: string;
   subtitle: string;
@@ -23,7 +23,7 @@ export interface CurriculumItemType {
   finished: boolean;
 }
 
-export interface CareerType {
+export interface ICareer {
   id: number;
   title: string;
   logo: string;
@@ -32,7 +32,7 @@ export interface CareerType {
   active: boolean;
 }
 
-export interface CourseType {
+export interface ICourse {
   id: number;
   title: string;
   badge: string;
@@ -46,7 +46,7 @@ interface Technologies {
   name: string;
 }
 
-export interface ProjectCardType {
+export interface IProjectCard {
   id: string;
   title: string;
   slug: string;
@@ -59,7 +59,7 @@ export interface ProjectCardType {
   technologies?: [Technologies];
 }
 
-export interface PortfolioCardType {
+export interface IPortfolioCard {
   id: string;
   slug: string;
   title: string;
@@ -78,7 +78,7 @@ export interface TagType {
   name: string;
 }
 
-export interface BlogCardType {
+export interface IBlogCard {
   id: string;
   title: string;
   slug: string;
@@ -90,6 +90,25 @@ export interface BlogCardType {
   tags?: [TagType];
   createdAt: string;
   body: string;
+}
+
+export interface ISingleApp {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  sort: string;
+  cover: {
+    childImageSharp: {
+      fluid: FluidObject;
+    };
+  };
+  ogCover: {
+    publicURL: string;
+  };
+  github: string;
+  url: string;
+  createdAt: string;
 }
 
 export interface ISingleBlog {
@@ -110,7 +129,7 @@ export interface ISingleBlog {
   updatedAt: string;
 }
 
-export interface SinglePortfolio {
+export interface ISinglePortfolio {
   title: string;
   body: string;
   cover: {

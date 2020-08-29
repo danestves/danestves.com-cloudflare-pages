@@ -10,14 +10,8 @@ export { default as Logo } from './Logo';
 // Markdown
 export { default as Emoji } from './Emoji';
 export { default as CodeBlock } from './CodeBlock';
-export { default as Paragraph } from './Paragraph';
-export { default as InlineCode } from './InlineCode';
-export { default as MarkdownLink } from './MarkdownLink';
-export { default as Heading } from './Heading';
-export { default as Blockquote } from './Blockquote';
 
 // Forms
-export { default as MailchimpScript } from './MailchimpScript';
 export { default as NewsletterForm } from './NewsletterForm';
 
 // Blog

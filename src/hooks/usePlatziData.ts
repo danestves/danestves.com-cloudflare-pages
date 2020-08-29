@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Types
-import { CareerType, CourseType } from '../types';
+import { ICareer, ICourse } from '../types';
 
 type ReturnType = {
   loading: boolean;
-  careers: Array<CareerType>;
-  courses: Array<CourseType>;
+  careers: Array<ICareer>;
+  courses: Array<ICourse>;
 };
 
 export default (): ReturnType => {

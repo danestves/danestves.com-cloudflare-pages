@@ -9,15 +9,15 @@ import { SEO, Emoji, CallToAction } from '../components';
 import { usePlatziData } from '../hooks';
 
 // Types
-import { CurriculumItemType } from '../types';
+import { ICurriculumItem } from '../types';
 
 type Props = {
   data: {
     allStrapiExperiences: {
-      nodes?: [CurriculumItemType];
+      nodes?: [ICurriculumItem];
     };
     allStrapiEducations: {
-      nodes?: [CurriculumItemType];
+      nodes?: [ICurriculumItem];
     };
   };
 };

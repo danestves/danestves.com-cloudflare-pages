@@ -69,7 +69,7 @@ exports.createPages = async ({ actions, graphql }) => {
   projects.data.allStrapiProjects.edges.forEach(({ node }) => {
     createPage({
       path: `project/${node.slug}`,
-      component: path.resolve(`./src/templates/project.js`),
+      component: path.resolve(`./src/templates/project.tsx`),
       context: node,
     });
   });
@@ -77,7 +77,7 @@ exports.createPages = async ({ actions, graphql }) => {
   tags.data.allStrapiTags.edges.forEach(({ node }) => {
     createPage({
       path: `tags/${slugger.slug(node.name)}`,
-      component: path.resolve(`./src/templates/tags.js`),
+      component: path.resolve(`./src/templates/tags.tsx`),
       context: node,
     });
   });

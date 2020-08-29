@@ -8,10 +8,10 @@ import removeMarkdown from 'remove-markdown';
 import { Emoji } from '../components';
 
 // Types
-import { BlogCardType } from '../types';
+import { IBlogCard } from '../types';
 
 type BlogCardProps = {
-  blog: BlogCardType;
+  blog: IBlogCard;
 };
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {

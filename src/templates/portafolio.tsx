@@ -13,11 +13,11 @@ import { BiCodeAlt } from 'react-icons/bi';
 import { SEO, CallToAction } from '../components';
 
 // Types
-import { SinglePortfolio } from '../types';
+import { ISinglePortfolio } from '../types';
 
 type Props = {
   data: {
-    strapiPortfolios: SinglePortfolio;
+    strapiPortfolios: ISinglePortfolio;
   };
 };
 

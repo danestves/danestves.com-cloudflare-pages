@@ -6,12 +6,12 @@ import { graphql } from 'gatsby';
 import { SEO, BlogCard, NewsletterForm, CallToAction } from '../components';
 
 // Types
-import { BlogCardType } from '../types';
+import { IBlogCard } from '../types';
 
 type Props = {
   data: {
     allStrapiBlogs: {
-      nodes: [BlogCardType];
+      nodes: [IBlogCard];
     };
   };
 };

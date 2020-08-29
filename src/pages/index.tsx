@@ -9,19 +9,19 @@ import Img from 'gatsby-image';
 import { SEO, Logo, Emoji } from '../components';
 
 // Types
-import { PortfolioCardType, ProjectCardType, BlogCardType } from '../types';
+import { IPortfolioCard, IProjectCard, IBlogCard } from '../types';
 
 interface HomeProps extends PageProps {
   data: {
     strapiHome: JSON;
     allStrapiPortfolios: {
-      nodes: [PortfolioCardType];
+      nodes: [IPortfolioCard];
     };
     allStrapiProjects: {
-      nodes: [ProjectCardType];
+      nodes: [IProjectCard];
     };
     allStrapiBlogs: {
-      nodes: [BlogCardType];
+      nodes: [IBlogCard];
     };
   };
 }
@@ -35,7 +35,7 @@ const IndexPage: React.FC<HomeProps> = ({
   },
 }) => {
   // Methods
-  const portfoliosArray = (data: [PortfolioCardType]): Array<PortfolioCardType> => {
+  const portfoliosArray = (data: [IPortfolioCard]): Array<IPortfolioCard> => {
     return data.slice(1);
   };
 

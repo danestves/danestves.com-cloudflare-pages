@@ -7,11 +7,11 @@ import Img from 'gatsby-image';
 import { SEO, CallToAction } from '../components';
 
 // Types
-import { PortfolioCardType } from '../types';
+import { IPortfolioCard } from '../types';
 
 type Props = {
   data: {
-    allStrapiPortfolios: { nodes: [PortfolioCardType] };
+    allStrapiPortfolios: { nodes: [IPortfolioCard] };
   };
 };
 
@@ -21,8 +21,8 @@ const Portfolio: React.FC<Props> = ({
   },
 }) => {
   // States
-  const [portfolios] = React.useState<Array<PortfolioCardType>>(portfoliosData);
-  const [filteredPortfolios, setFilteredPortfolios] = React.useState<Array<PortfolioCardType>>(portfoliosData);
+  const [portfolios] = React.useState<Array<IPortfolioCard>>(portfoliosData);
+  const [filteredPortfolios, setFilteredPortfolios] = React.useState<Array<IPortfolioCard>>(portfoliosData);
 
   // Functions
   const filter = (name: string) => {
