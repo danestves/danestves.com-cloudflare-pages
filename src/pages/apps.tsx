@@ -32,11 +32,13 @@ const Projects: React.FC<Props> = ({
       {/* Space for Header */}
       <div className="w-full min-h-20 bg-secondary"></div>
 
-      <div className="container px-5 py-24">
-        <div className="max-w-4xl mx-auto">
-          {projects.map(project => (
-            <ProjectList key={project.id} project={project} />
-          ))}
+      <div className="w-full bg-white">
+        <div className="container px-5 py-24">
+          <div className="max-w-4xl mx-auto">
+            {projects.map(project => (
+              <ProjectList key={project.id} project={project} />
+            ))}
+          </div>
         </div>
       </div>
 
