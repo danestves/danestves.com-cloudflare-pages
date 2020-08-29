@@ -10,7 +10,7 @@ import { AiFillTags, AiOutlineLink } from 'react-icons/ai';
 import { BiCodeAlt } from 'react-icons/bi';
 
 // Components
-import { Layout, SEO, Blockquote, MarkdownLink, CallToAction } from '../components';
+import { SEO, Blockquote, MarkdownLink, CallToAction } from '../components';
 
 // Types
 import { SinglePortfolio } from '../types';
@@ -29,7 +29,7 @@ type Props = {
 const Portfolio: React.FC<Props> = ({ data: { strapiPortfolios: portfolio } }) => {
   // Render
   return (
-    <Layout>
+    <>
       <SEO
         isTemplate
         title={portfolio.title}
@@ -136,7 +136,7 @@ const Portfolio: React.FC<Props> = ({ data: { strapiPortfolios: portfolio } }) =
       </div>
 
       <CallToAction />
-    </Layout>
+    </>
   );
 };
 

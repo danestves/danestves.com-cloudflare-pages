@@ -19,6 +19,7 @@ export { default as Blockquote } from './Blockquote';
 
 // Forms
 export { default as MailchimpScript } from './MailchimpScript';
+export { default as NewsletterForm } from './NewsletterForm';
 
 // Blog
 export { default as BlogCard } from './BlogCard';

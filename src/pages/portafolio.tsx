@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 // Components
-import { SEO, Layout, CallToAction } from '../components';
+import { SEO, CallToAction } from '../components';
 
 // Types
 import { PortfolioCardType } from '../types';
@@ -37,7 +37,7 @@ const Portfolio: React.FC<Props> = ({
 
   // Render
   return (
-    <Layout>
+    <>
       <SEO
         isTemplate
         title="Portafolio"
@@ -110,7 +110,7 @@ const Portfolio: React.FC<Props> = ({
       </div>
 
       <CallToAction />
-    </Layout>
+    </>
   );
 };
 

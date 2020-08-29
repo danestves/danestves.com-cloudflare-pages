@@ -3,7 +3,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 
 // Components
-import { SEO, Layout, BlogCard, CallToAction } from '../components';
+import { SEO, BlogCard, NewsletterForm, CallToAction } from '../components';
 
 // Types
 import { BlogCardType } from '../types';
@@ -21,7 +21,7 @@ const Blog: React.FC<Props> = ({
     allStrapiBlogs: { nodes: blogs },
   },
 }) => (
-  <Layout>
+  <>
     <SEO
       isTemplate
       title="Blog"
@@ -37,8 +37,10 @@ const Blog: React.FC<Props> = ({
       </ul>
     </div>
 
+    <NewsletterForm />
+
     <CallToAction />
-  </Layout>
+  </>
 );
 
 export const query = graphql`

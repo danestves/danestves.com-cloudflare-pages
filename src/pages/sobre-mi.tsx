@@ -3,7 +3,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 
 // Components
-import { Layout, SEO, Emoji, CallToAction } from '../components';
+import { SEO, Emoji, CallToAction } from '../components';
 
 // Hooks
 import { usePlatziData } from '../hooks';
@@ -32,7 +32,7 @@ const AboutMe: React.FC<Props> = ({
   const { careers } = usePlatziData();
 
   return (
-    <Layout>
+    <>
       <SEO title="Sobre Mí" />
 
       {/* Space for Header */}
@@ -150,7 +150,7 @@ const AboutMe: React.FC<Props> = ({
       </div>
 
       <CallToAction />
-    </Layout>
+    </>
   );
 };
 

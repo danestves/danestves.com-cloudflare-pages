@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby';
 import { window } from 'browser-monads';
 
 // Components
-import { Layout, SEO } from '../components';
+import { SEO } from '../components';
 
 // Types
 import { TagType } from '../types';
@@ -22,7 +22,7 @@ const Tags: React.FC<Props> = ({
     allStrapiTags: { nodes: tags },
   },
 }) => (
-  <Layout>
+  <>
     <SEO
       isTemplate
       title="Tags"
@@ -56,7 +56,7 @@ const Tags: React.FC<Props> = ({
           ))}
       </div>
     </div>
-  </Layout>
+  </>
 );
 
 export const query = graphql`

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 
 // Components
-import { Layout, SEO, ProjectList, CallToAction } from '../components';
+import { SEO, ProjectList, CallToAction } from '../components';
 
 // Types
 import { ProjectCardType } from '../types';
@@ -22,7 +22,7 @@ const Projects: React.FC<Props> = ({
   },
 }) => {
   return (
-    <Layout>
+    <>
       <SEO
         isTemplate
         title="Proyectos"
@@ -41,7 +41,7 @@ const Projects: React.FC<Props> = ({
       </div>
 
       <CallToAction />
-    </Layout>
+    </>
   );
 };
 

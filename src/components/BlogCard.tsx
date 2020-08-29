@@ -4,6 +4,9 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import removeMarkdown from 'remove-markdown';
 
+// Components
+import { Emoji } from '../components';
+
 // Types
 import { BlogCardType } from '../types';
 
@@ -60,14 +63,16 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         <div className="grid items-center grid-cols-2 mt-6">
           <div>
             <p className="text-center">
-              📅
+              <Emoji>📅</Emoji>
               <time className="ml-1 text-sm text-blue" dateTime={blog.createdAt}>
                 {blog.createdAt}
               </time>
             </p>
           </div>
           <div>
-            <p className="text-sm text-center text-blue">⏱ {readingTime(blog.body)}</p>
+            <p className="text-sm text-center text-blue">
+              <Emoji>⏱</Emoji> {readingTime(blog.body)}
+            </p>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { document } from 'browser-monads';
 
 // Components
-import { Layout, SEO } from '../components';
+import { SEO } from '../components';
 
 const Contact: React.FC = () => {
   // Effects
@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
 
   // Renders
   return (
-    <Layout>
+    <>
       <SEO
         isTemplate
         title="Contacto"
@@ -113,7 +113,7 @@ const Contact: React.FC = () => {
           </form>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
