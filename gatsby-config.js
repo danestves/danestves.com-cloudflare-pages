@@ -58,10 +58,10 @@ module.exports = {
         name: `Daniel Esteves`,
         short_name: `Daniel Esteves`,
         start_url: `/`,
-        background_color: `#4c51bf`,
-        theme_color: `#4c51bf`,
+        background_color: `#071D49`,
+        theme_color: `#071D49`,
         display: `standalone`,
-        icon: `src/images/logo.png`,
+        icon: `static/logo.png`,
       },
     },
     {

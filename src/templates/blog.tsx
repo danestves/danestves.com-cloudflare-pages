@@ -204,7 +204,7 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
               className="z-30 w-48 h-48 mx-auto border-white rounded-full border-10"
             />
           </div>
-          <hr className="absolute top-0 z-10 w-full transform -translate-y-1/2 top-1/2 border-primary" />
+          <hr className="absolute z-10 w-full transform -translate-y-1/2 top-1/2 border-primary" />
         </div>
 
         <h2 className="mt-4 font-mono text-center text-primary">Daniel Esteves - Progamador Web Fullstack</h2>
