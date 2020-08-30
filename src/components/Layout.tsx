@@ -45,7 +45,7 @@ const Layout: React.FC<PageProps> = ({ children, location }) => {
           class: `bg-secondary`,
         }}
       />
-      <Header />
+      <Header pathname={location ? location.pathname : ``} />
 
       <AnimatePresence>
         <motion.main

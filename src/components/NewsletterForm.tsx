@@ -1,6 +1,6 @@
 // Dependencies
 import * as React from 'react';
-import { motion } from 'framer-motion';
+import { Transition } from '@tailwindui/react';
 
 // Components
 import { Emoji } from '../components';
@@ -44,25 +44,27 @@ const NewsletterForm: React.FC = () => {
             onChange={e => isValidEmail(e.target.value)}
           />
 
-          <motion.div
+          <Transition
+            show={validEmail}
+            enter="transition-all duration-500"
+            enterFrom="max-h-0"
+            enterTo="max-h-64"
+            leave="transition-all duration-500"
+            leaveFrom="max-h-64"
+            leaveTo="max-h-0"
             className="overflow-hidden"
-            animate={{
-              height: validEmail ? `auto` : `0px`,
-              opacity: validEmail ? 1 : 0,
-              marginTop: validEmail ? `16px` : `0px`,
-            }}
           >
             <input
               type="text"
               name="member[first_name]"
               id="member[first_name]"
               placeholder="Nombre (opcional)"
-              className="block w-full max-w-sm px-4 py-2 mx-auto font-mono placeholder-opacity-50 bg-white rounded-lg placeholder-secondary focus:outline-none"
+              className="block w-full max-w-sm px-4 py-2 mx-auto mt-4 font-mono placeholder-opacity-50 bg-white rounded-lg placeholder-secondary focus:outline-none"
             />
             <small className="block text-center text-white">
               <b>Opcional:</b> Usamos tu nombre para entregarte un correo <br /> más personalizado <Emoji>🤘</Emoji>
             </small>
-          </motion.div>
+          </Transition>
 
           <button
             type="submit"

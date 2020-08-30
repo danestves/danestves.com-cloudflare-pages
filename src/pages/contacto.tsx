@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
                 rows={4}
                 required
                 placeholder="Mensaje"
-                className="w-full px-3 py-2 placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:shadow-outline focus:bg-white"
+                className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:shadow-outline focus:bg-white"
               />
             </div>
 

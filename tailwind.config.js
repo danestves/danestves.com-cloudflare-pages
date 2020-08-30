@@ -51,6 +51,10 @@ module.exports = {
       inset: {
         '1/2': `50%`,
       },
+      maxHeight: {
+        0: `0`,
+        64: `16rem`,
+      },
       minHeight: {
         20: `5rem`,
       },
