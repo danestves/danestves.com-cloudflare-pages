@@ -1,12 +1,14 @@
 // Dependencies
 import * as React from 'react';
-import { Helmet, HelmetProps } from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { window } from 'browser-monads';
 
-interface ISEOType extends HelmetProps {
+interface ISEOType {
   description?: string;
   lang?: string;
+  meta?: any[];
+  title?: string;
   isTemplate?: boolean;
   jsonLdProps?: Record<string, unknown>;
 }
@@ -70,7 +72,7 @@ const SEO: React.FC<ISEOType> = ({
       titleTemplate={
         isTemplate
           ? `${title} | ${site.siteMetadata.title}`
-          : `${title && title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`
+          : `${title && title.length > 53 ? `${title.substr(0, 53)}...` : title} | @danestves`
       }
       meta={[
         {
@@ -85,7 +87,7 @@ const SEO: React.FC<ISEOType> = ({
           property: `og:title`,
           content: isTemplate
             ? `${title} | ${site.siteMetadata.title}`
-            : `${title && title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`,
+            : `${title && title.length > 53 ? `${title.substr(0, 53)}...` : title} | @danestves`,
         },
         {
           property: `og:description`,
@@ -106,7 +108,6 @@ const SEO: React.FC<ISEOType> = ({
         {
           property: `og:image`,
           content: `https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg`,
-          key: `og:image`,
         },
         {
           property: `og:image:width`,
@@ -132,7 +133,7 @@ const SEO: React.FC<ISEOType> = ({
           name: `twitter:title`,
           content: isTemplate
             ? `${title} | ${site.siteMetadata.title}`
-            : `${title && title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`,
+            : `${title && title.length > 53 ? `${title.substr(0, 53)}...` : title} | @danestves`,
         },
         {
           name: `twitter:description`,
@@ -148,8 +149,7 @@ const SEO: React.FC<ISEOType> = ({
             ? `${title} | ${site.siteMetadata.title}`
             : `${title && title.length > 50 ? `${title.substr(0, 53)}...` : title} | @danestves`,
         },
-        ...meta,
-      ].concat(meta)}
+      ].concat(meta || [])}
     >
       <link rel="canonical" href={window.location.href} />
       <script type="application/ld+json">{JSON.stringify(jsonLdProps ? jsonLdProps : jsonLd, undefined, 4)}</script>

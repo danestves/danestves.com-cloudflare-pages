@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Markdown from 'react-markdown';
-import { window } from 'browser-monads';
+import { window, document } from 'browser-monads';
 import { Disqus } from 'gatsby-plugin-disqus';
 import removeMarkdown from 'remove-markdown';
 import { FaFacebookSquare, FaTwitter, FaWhatsapp, FaLinkedin, FaShareAlt } from 'react-icons/fa';
@@ -89,13 +89,19 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
       sameAs: [`https://danestves.com`, `https://twitter.com/danestves`],
     },
     keywords: blog.tags.length ? blog.tags.map(tag => `${tag.name}`) : undefined,
-    headline: `${blog.title.length > 50 ? `${blog.title.substr(0, 53)}...` : blog.title} | @danestves`,
+    headline: `${blog.title.length > 53 ? `${blog.title.substr(0, 53)}...` : blog.title} | @danestves`,
     url: window.location.href,
     datePublished: blog.createdAt,
     dateModified: blog.updatedAt,
     image: {
       '@type': `ImageObject`,
-      url: blog.ogCover.publicURL,
+      url: `https://opengraphimg.com/.netlify/functions/generate-opengraph?title=${decodeURIComponent(
+        decodeURIComponent(blog.title),
+      )}&tags=${blog.tags
+        ?.map(({ name }) => name)
+        .join(
+          `,`,
+        )}&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`,
       width: 1200,
       height: 628,
     },
@@ -145,9 +151,24 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
             content: `article`,
           },
           {
+            property: `og:image`,
+            content: `https://opengraphimg.com/.netlify/functions/generate-opengraph?title=${decodeURIComponent(
+              decodeURIComponent(blog.title),
+            )}&tags=${blog.tags
+              ?.map(({ name }) => name)
+              .join(
+                `,`,
+              )}&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`,
+          },
+          {
             name: `twitter:image`,
-            content: `https://danestves.com${blog.ogCover.publicURL}`,
-            key: `twitter:image`,
+            content: `https://opengraphimg.com/.netlify/functions/generate-opengraph?title=${decodeURIComponent(
+              decodeURIComponent(blog.title),
+            )}&tags=${blog.tags
+              ?.map(({ name }) => name)
+              .join(
+                `,`,
+              )}&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`,
           },
           {
             name: `twitter:image:alt`,
@@ -156,7 +177,6 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
         ]}
       />
       <Helmet>
-        <meta property="og:image" content={blog.ogCover.publicURL} />
         {blog.tags && blog.tags.map((keyword, i) => <meta property="article:tag" content={keyword.name} key={i} />)}
         <meta property="article:published_time" content={blog.createdAt} />
         <meta property="article:modified_time" content={blog.updatedAt} />
@@ -359,9 +379,6 @@ export const query = graphql`
             ...GatsbyImageSharpFluid
           }
         }
-      }
-      ogCover {
-        publicURL
       }
       title
       tags {

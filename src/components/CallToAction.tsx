@@ -20,9 +20,9 @@ const CallToAction: React.FC = () => {
         </div>
 
         <div className="flex justify-center mt-3">
-          <a href="#!" className="block font-mono text-primary">
+          <Link to="/portafolio" title="Revisa mis servicios" className="block font-mono text-primary">
             Revisa mis servicios
-          </a>
+          </Link>
         </div>
       </div>
     </div>

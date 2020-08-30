@@ -1,7 +1,6 @@
 // Dependencies
 import * as React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
 import removeMarkdown from 'remove-markdown';
 
 // Components
@@ -30,7 +29,18 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
     <div key={blog.id} className="flex flex-wrap w-full overflow-hidden rounded-lg shadow-lg">
       <div className="w-full lg:w-1/2">
         <Link to={`/blog/${blog.slug}`} className="block h-full" title={blog.title}>
-          <Img fluid={blog.ogCover.childImageSharp.fluid} className="object-cover w-full h-full" alt={blog.title} />
+          <img
+            src={`https://opengraphimg.com/.netlify/functions/generate-opengraph?title=${decodeURIComponent(
+              decodeURIComponent(blog.title),
+            )}&tags=${blog.tags
+              ?.map(({ name }) => name)
+              .join(
+                `,`,
+              )}&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`}
+            className="object-contain w-full h-full"
+            alt={blog.title}
+          />
+          {/* <Img fluid={blog.ogCover.childImageSharp.fluid} className="object-cover w-full h-full" alt={blog.title} /> */}
         </Link>
       </div>
 
@@ -52,15 +62,15 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             </h3>
             <p
               className="mt-3 leading-6 text-gray-500 text-opacity-75"
-              title={`${removeMarkdown(blog.body.substr(0, 154))}...`}
+              title={`${removeMarkdown(blog.body.substr(0, 77))}...`}
             >
-              {removeMarkdown(blog.body.substr(0, 154))}
+              {removeMarkdown(blog.body.substr(0, 77))}
               ...
             </p>
           </Link>
         </div>
 
-        <div className="grid items-center grid-cols-2 mt-6">
+        <div className="grid items-center grid-cols-2 mt-3">
           <div>
             <p className="text-center">
               <Emoji>📅</Emoji>
