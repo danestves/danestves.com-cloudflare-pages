@@ -49,13 +49,6 @@ export const query = graphql`
       nodes {
         id
         slug
-        ogCover {
-          childImageSharp {
-            fluid(maxWidth: 600, maxHeight: 314, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
         tags {
           id
           name

@@ -150,7 +150,7 @@ export const query = graphql`
       sort
       cover {
         childImageSharp {
-          fluid(maxWidth: 1280, quality: 100) {
+          fluid(maxWidth: 1280) {
             ...GatsbyImageSharpFluid
           }
         }

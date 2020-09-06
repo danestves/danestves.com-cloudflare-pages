@@ -1,6 +1,6 @@
 /* eslint-disable */
 // Dependencies
-import React from 'react';
+import React, { Fragment } from 'react';
 
 // Components
 import Layout from './src/components/Layout';
@@ -10,7 +10,7 @@ const transitionDelay = 100;
 export const wrapPageElement = ({ element, props }) => {
   return (
     <Layout {...props}>
-      <>{element}</>
+      <Fragment>{element}</Fragment>
     </Layout>
   );
 };

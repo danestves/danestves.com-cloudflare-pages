@@ -6,12 +6,27 @@ export interface ArgsUseDocumentType {
   currentScrollTop: number;
 }
 
+export type Features = {
+  id: string;
+  title: string;
+  icon: {
+    childImageSharp: {
+      fluid: FluidObject;
+    };
+  };
+  subtitle: string;
+};
+
 export interface IHome {
+  name: string;
+  title: string;
+  text: string;
   image: {
     childImageSharp: {
       fluid: FluidObject;
     };
   };
+  features?: Features[];
 }
 
 export interface ICurriculumItem {
@@ -56,7 +71,7 @@ export interface IProjectCard {
       fluid: FluidObject;
     };
   };
-  technologies?: [Technologies];
+  technologies?: Technologies[];
 }
 
 export interface IPortfolioCard {
@@ -82,12 +97,7 @@ export interface IBlogCard {
   id: string;
   title: string;
   slug: string;
-  ogCover: {
-    childImageSharp: {
-      fluid: FluidObject;
-    };
-  };
-  tags?: [TagType];
+  tags?: TagType[];
   createdAt: string;
   body: string;
 }
@@ -119,11 +129,8 @@ export interface ISingleBlog {
       fluid: FluidObject;
     };
   };
-  ogCover: {
-    publicURL: string;
-  };
   title: string;
-  tags: [TagType];
+  tags: TagType[];
   body: string;
   createdAt: string;
   updatedAt: string;
@@ -144,7 +151,7 @@ export interface ISinglePortfolio {
   category: {
     name: string;
   };
-  technologies: [Technologies];
+  technologies: Technologies[];
   url: string;
   createdAt: string;
   isActive: boolean;

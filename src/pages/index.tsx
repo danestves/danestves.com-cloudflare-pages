@@ -6,14 +6,14 @@ import { GrReactjs, GrGraphQl } from 'react-icons/gr';
 import Img from 'gatsby-image';
 
 // Components
-import { SEO, Logo, Emoji } from '../components';
+import { SEO, Logo, Features } from '../components';
 
 // Types
-import { IPortfolioCard, IProjectCard, IBlogCard } from '../types';
+import { IHome, IPortfolioCard, IProjectCard, IBlogCard } from '../types';
 
 interface HomeProps extends PageProps {
   data: {
-    strapiHome: JSON;
+    strapiHome: IHome;
     allStrapiPortfolios: {
       nodes: [IPortfolioCard];
     };
@@ -72,54 +72,42 @@ const IndexPage: React.FC<HomeProps> = ({
 
           <h2 className="mt-4 font-mono text-4xl text-center">{`<Hola Mundo />`}</h2>
 
-          <p className="max-w-4xl px-5 mx-auto mt-4 font-mono text-xl">
-            Desde muy niño he estado interesado en las computadoras comenzando desde los videojuegos, cada vez que
-            jugaba sentía una necesidad de saber cómo eso está funcionando y cómo mi personaje hace cualquier
-            movimiento; probando cada día más y más juegos me empezó a interesar cómo se pueden hacer las gráficas del
-            juego y la interactividad contra el usuario.
+          <p className="max-w-4xl px-5 mx-auto mt-4 font-mono text-xl text-center">
+            Siempre he estado interesado en cómo funciona la tecnología y todo lo que la conforma. Desde cómo los
+            personajes se mueven dentro de los videojuegos, hasta el funcionamiento de las redes sociales y los sitios
+            web.
           </p>
 
-          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl">
-            Al llegar a la secundaria empecé a investigar sobre las computadoras y me empezó a interesar cómo las webs
-            son construidas sobre todos las redes sociales, me gustaba la idea de que cuando un usuario le seleccionaba
-            un menú se mostraban más opciones y animaciones, y eso fue lo que me enamoró del desarrollo web.
+          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl text-center">
+            Es por eso que decidí convertirme en programador fullstack. Capaz de construir aplicaciones, desde la parte
+            visual hasta las bases de datos.
           </p>
 
-          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl">
-            Comencé hace cinco años a trabajar y aprender desde el frontend, la parte visual de la web; hoy en día me
-            considero un fullstack ya que gracias a el conocimiento que he obtenido puedo construir aplicaciones desde
-            las vistas hasta las bases de datos y rutas. Me gusta aprender cada día más, integrar nuevas tecnologías y
-            contribuir a nuevos proyectos para mejorar la productividad.
-          </p>
-
-          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl text-right">
-            - Los veo en el código <Emoji>👨‍💻</Emoji>
-          </p>
+          <div className="flex justify-center max-w-4xl mx-auto mt-5">
+            <Link to="/sobre-mi" className="block px-5 py-2 rounded-full bg-secondary text-primary">
+              ¡Conóceme más!
+            </Link>
+          </div>
         </div>
       </div>
 
       <div className="relative w-full py-24" id="dreams">
         <div className="container relative z-20 px-5">
           <h2 className="absolute bottom-0 w-full max-w-4xl py-4 mb-16 font-sans text-xl font-bold text-center transform -translate-x-1/2 rounded-full sm:px-16 sm:text-3xl sm:mb-12 md:text-5xl md:mb-8 bg-primary left-1/2 sm:py-7 text-secondary">
-            ¡Haré tus ideas realidad!
+            ¡Codifiquemos juntos!
           </h2>
         </div>
 
         <div className="container relative z-20 mt-6">
-          <h2 className="font-sans text-4xl font-bold text-center text-primary">
-            Interfaces limpias y <br /> adaptables en cualquier dispositivo
-          </h2>
-
-          <img
-            src="/interface.png"
-            alt="Interfaces limpias y adaptables en cualquier dispositivo"
-            className="mx-auto mt-8"
+          <Features
+            features={home.features}
+            options={{
+              type: `carousel`,
+              controls: true,
+              perView: 1,
+              focusAt: `center`,
+            }}
           />
-
-          <p className="w-full max-w-4xl px-5 mx-auto mt-12 font-mono text-xl text-center text-primary">
-            Diseños modernos y adaptables a cualquier dispositivo, que logran una experiencia única, mucho más limpia y
-            rápida.
-          </p>
         </div>
       </div>
 
@@ -217,17 +205,22 @@ const IndexPage: React.FC<HomeProps> = ({
         <div className="max-w-4xl px-5 mx-auto">
           <h2 className="font-mono text-xl text-center text-white">Chequea mi blog</h2>
 
-          <div className="grid grid-cols-1 gap-6 my-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 my-8 md:grid-cols-2">
             {blogs &&
               blogs.map(blog => (
                 <Link to={`/blog/${blog.slug}/`} key={blog.id} className="w-full h-full rounded-lg">
                   <article className="h-full">
                     <div className="overflow-hidden rounded-lg">
-                      <Img
-                        fluid={blog.ogCover.childImageSharp.fluid}
+                      <img
+                        src={`https://opengraphimg.com/opengraph?title=${decodeURIComponent(
+                          decodeURIComponent(blog.title),
+                        )}&tags=${blog.tags
+                          ?.map(({ name }) => name)
+                          .join(
+                            `,`,
+                          )}&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`}
                         alt={`${blog.title} | Daniel Esteves`}
-                        className="block"
-                        imgStyle={{ objectPosition: `top center` }}
+                        className="block w-full"
                       />
                     </div>
                   </article>
@@ -253,11 +246,17 @@ export const query = graphql`
           }
         }
       }
-      skills {
+      features {
         id
-        icon
         title
-        content
+        icon {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        subtitle
       }
     }
 
@@ -268,7 +267,7 @@ export const query = graphql`
         title
         cover {
           childImageSharp {
-            fluid(maxWidth: 300, quality: 50) {
+            fluid(maxWidth: 300) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -285,18 +284,14 @@ export const query = graphql`
       }
     }
 
-    allStrapiBlogs(limit: 3, sort: { fields: createdAt, order: DESC }) {
+    allStrapiBlogs(limit: 2, sort: { fields: createdAt, order: DESC }) {
       nodes {
         id
         slug
-        ogCover {
-          childImageSharp {
-            fluid(maxWidth: 600, maxHeight: 314, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
         title
+        tags {
+          name
+        }
       }
     }
   }

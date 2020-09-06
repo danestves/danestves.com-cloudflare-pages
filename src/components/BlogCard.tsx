@@ -30,7 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       <div className="w-full lg:w-1/2">
         <Link to={`/blog/${blog.slug}`} className="block h-full" title={blog.title}>
           <img
-            src={`https://opengraphimg.com/.netlify/functions/generate-opengraph?title=${decodeURIComponent(
+            src={`https://opengraphimg.com/opengraph?title=${decodeURIComponent(
               decodeURIComponent(blog.title),
             )}&tags=${blog.tags
               ?.map(({ name }) => name)
@@ -40,7 +40,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             className="object-contain w-full h-full"
             alt={blog.title}
           />
-          {/* <Img fluid={blog.ogCover.childImageSharp.fluid} className="object-cover w-full h-full" alt={blog.title} /> */}
         </Link>
       </div>
 

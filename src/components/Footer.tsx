@@ -47,6 +47,21 @@ const Footer: React.FC = () => (
         </li>
       </ul>
     </div>
+
+    <div className="container mt-8">
+      <p className="font-mono text-sm text-center text-primary">
+        Designed by{` `}
+        <a href="https://twitter.com/vibrawifi" target="_blank" rel="noopener noreferrer">
+          <b>Vibra Wifi</b>
+        </a>
+        {` `}
+        with
+        {` `}
+        <a href="https://twitter.com/vicman_ve" target="_blank" rel="noopener noreferrer">
+          <b>Victor Velasquez</b>
+        </a>
+      </p>
+    </div>
   </footer>
 );
 
