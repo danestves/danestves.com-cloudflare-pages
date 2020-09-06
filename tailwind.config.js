@@ -125,5 +125,5 @@ module.exports = {
     textColor: [`responsive`, `hover`, `group-hover`],
   },
   corePlugins: {},
-  plugins: [require(`@tailwindcss/ui`), require(`@tailwindcss/typography`), require(`tailwindcss-filters`)],
+  plugins: [require(`@tailwindcss/ui`), require(`tailwindcss-filters`)],
 };
