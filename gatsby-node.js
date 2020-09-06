@@ -1,5 +1,6 @@
-const path = require('path');
-const GithubSlugger = require('github-slugger');
+/* eslint-disable */
+const path = require(`path`);
+const GithubSlugger = require(`github-slugger`);
 const slugger = new GithubSlugger();
 
 exports.createPages = async ({ actions, graphql }) => {
@@ -52,32 +53,32 @@ exports.createPages = async ({ actions, graphql }) => {
   portfolios.data.allStrapiPortfolios.edges.forEach(({ node }) => {
     createPage({
       path: `portafolio/${node.slug}`,
-      component: path.resolve(`./src/templates/portafolio.js`),
-      context: node
+      component: path.resolve(`./src/templates/portafolio.tsx`),
+      context: node,
     });
   });
 
   blogs.data.allStrapiBlogs.edges.forEach(({ node }) => {
     createPage({
       path: `blog/${node.slug}`,
-      component: path.resolve(`./src/templates/blog.js`),
-      context: node
+      component: path.resolve(`./src/templates/blog.tsx`),
+      context: node,
     });
   });
 
   projects.data.allStrapiProjects.edges.forEach(({ node }) => {
     createPage({
       path: `project/${node.slug}`,
-      component: path.resolve(`./src/templates/project.js`),
-      context: node
+      component: path.resolve(`./src/templates/project.tsx`),
+      context: node,
     });
   });
 
   tags.data.allStrapiTags.edges.forEach(({ node }) => {
     createPage({
       path: `tags/${slugger.slug(node.name)}`,
-      component: path.resolve(`./src/templates/tags.js`),
-      context: node
+      component: path.resolve(`./src/templates/tags.tsx`),
+      context: node,
     });
   });
 };
