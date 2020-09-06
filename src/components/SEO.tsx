@@ -42,7 +42,7 @@ const SEO: React.FC<ISEOType> = ({
     url: window.location.href,
     image: {
       '@type': `ImageObject`,
-      url: `https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg`,
+      url: `https://res.cloudinary.com/daniel-esteves/image/upload/v1599420857/ogcover_zcvlsa.png`,
       width: 1200,
       height: 628,
     },
@@ -107,7 +107,7 @@ const SEO: React.FC<ISEOType> = ({
         },
         {
           property: `og:image`,
-          content: `https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg`,
+          content: `https://res.cloudinary.com/daniel-esteves/image/upload/v1599420857/ogcover_zcvlsa.png`,
         },
         {
           property: `og:image:width`,
@@ -141,7 +141,7 @@ const SEO: React.FC<ISEOType> = ({
         },
         {
           name: `twitter:image`,
-          content: `https://res.cloudinary.com/daniel-esteves/image/upload/v1578416972/og_tput81.jpg`,
+          content: `https://res.cloudinary.com/daniel-esteves/image/upload/v1599420857/ogcover_zcvlsa.png`,
         },
         {
           name: `twitter:image:alt`,
