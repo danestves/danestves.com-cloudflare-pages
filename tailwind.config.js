@@ -9,11 +9,18 @@ module.exports = {
   purge: {
     content: [`./src/**/*.{js,jsx,ts,tsx}`],
     options: {
-      whitelist: [`z-100`],
+      whitelist: [`z-100`, `embed-responsive`, `aspect-ratio-square`, `aspect-ratio-16/9`, `aspect-ratio-4/3`],
     },
   },
   theme: {
     extend: {
+      aspectRatio: {
+        none: 0,
+        square: [1, 1],
+        '16/9': [16, 9],
+        '4/3': [4, 3],
+        '21/9': [21, 9],
+      },
       backdropFilter: {
         none: `none`,
         blur: `blur(20px)`,
@@ -112,6 +119,7 @@ module.exports = {
     },
   },
   variants: {
+    aspectRatio: [`responsive`],
     backgroundColor: [`responsive`, `hover`, `group-hover`],
     backdropFilter: [`responsive`],
     borderColor: [`responsive`, `hover`, `focus`, `first`, `last`],
@@ -125,5 +133,10 @@ module.exports = {
     textColor: [`responsive`, `hover`, `group-hover`],
   },
   corePlugins: {},
-  plugins: [require(`@tailwindcss/ui`), require(`@tailwindcss/typography`), require(`tailwindcss-filters`)],
+  plugins: [
+    require(`@tailwindcss/ui`),
+    require(`tailwindcss-filters`),
+    require(`tailwindcss-responsive-embed`),
+    require(`tailwindcss-aspect-ratio`),
+  ],
 };
