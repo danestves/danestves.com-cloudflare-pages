@@ -42,7 +42,8 @@
     "react-markdown": "^4.3.1",
     "remove-markdown": "^0.3.0",
     "tailwindcss": "^1.8.3",
-    "tailwindcss-filters": "^3.0.0"
+    "tailwindcss-filters": "^3.0.0",
+    "tailwindcss-responsive-embed": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.6.4",

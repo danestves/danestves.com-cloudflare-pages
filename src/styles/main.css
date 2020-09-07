@@ -56,6 +56,10 @@ header {
   height: 216px;
 }
 
+.markdown-blog .embed-responsive {
+  @apply embed-responsive;
+}
+
 .markdown-content {
   @apply text-xl;
 }
