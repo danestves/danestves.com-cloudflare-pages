@@ -1,6 +1,5 @@
 // Dependencies
 import * as React from 'react';
-import { document } from 'browser-monads';
 
 // Components
 import { SEO } from '../components';
@@ -13,7 +12,7 @@ const Contact: React.FC = () => {
     kwesScript.setAttribute(`src`, `https://kwes.io/v2/kwes-script.js`);
     kwesScript.setAttribute(`charset`, `utf-8`);
 
-    document.head.appendChild(kwesScript);
+    document.body.appendChild(kwesScript);
   }, []);
 
   // Renders
