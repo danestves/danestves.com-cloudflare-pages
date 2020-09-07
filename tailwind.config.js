@@ -9,7 +9,7 @@ module.exports = {
   purge: {
     content: [`./src/**/*.{js,jsx,ts,tsx}`],
     options: {
-      whitelist: [`z-100`, `embed-responsive`, `aspect-ratio-16/9`],
+      whitelist: [`z-100`, `embed-responsive`, `aspect-ratio-square`, `aspect-ratio-16/9`],
     },
   },
   theme: {
