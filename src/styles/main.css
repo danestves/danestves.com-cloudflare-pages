@@ -57,7 +57,7 @@ header {
 }
 
 .markdown-blog .embed-responsive {
-  @apply embed-responsive;
+  @apply overflow-hidden embed-responsive;
 }
 
 .markdown-content {
