@@ -45,7 +45,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
 
       <div className="flex flex-col justify-between w-full p-6 transition-all duration-200 bg-white lg:w-1/2">
         <div className="flex-1">
-          <p className="text-sm font-medium leading-5 transition-all duration-200 text-blue">
+          <p className="text-sm font-medium leading-5 transition-all duration-200 text-tertiary">
             {blog.tags?.map(tag => (
               <Link key={tag.id} to={`/tags/${tag.name}`} className="mx-2 first:ml-0 last:mr-0" title={`#${tag.name}`}>
                 #{tag.name}
@@ -73,13 +73,13 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           <div>
             <p className="text-center">
               <Emoji>📅</Emoji>
-              <time className="ml-1 text-sm text-blue" dateTime={blog.createdAt}>
+              <time className="ml-1 text-sm text-tertiary" dateTime={blog.createdAt}>
                 {blog.createdAt}
               </time>
             </p>
           </div>
           <div>
-            <p className="text-sm text-center text-blue">
+            <p className="text-sm text-center text-tertiary">
               <Emoji>⏱</Emoji> {readingTime(blog.body)}
             </p>
           </div>

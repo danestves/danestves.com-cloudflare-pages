@@ -195,18 +195,18 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
 
         <div className="flex flex-wrap items-center justify-center space-x-8">
           <div>
-            <p className="font-mono text-blue">
+            <p className="font-mono text-blue-400">
               <Emoji className="mr-2 text-2xl">⏱</Emoji>
               {readingTime(blog.body)}
             </p>
           </div>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-wrap items-center space-x-2">
             {blog.tags.map(tag => (
               <Link
                 key={tag.id}
                 to={`/tags/${tag.name}`}
-                className="font-mono transition-all duration-100 text-blue hover:text-white"
+                className="font-mono text-blue-400 transition-all duration-100 hover:text-white"
               >
                 #{tag.name}
               </Link>
