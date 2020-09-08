@@ -208,7 +208,7 @@ const IndexPage: React.FC<HomeProps> = ({
           <div className="grid grid-cols-1 gap-6 my-8 md:grid-cols-2">
             {blogs &&
               blogs.map(blog => (
-                <Link to={`/blog/${blog.slug}/`} key={blog.id} className="w-full h-full rounded-lg">
+                <Link to={`/blog/${blog.slug}/`} key={blog.id} title={blog.title} className="w-full h-full rounded-lg">
                   <article className="h-full">
                     <div className="overflow-hidden rounded-lg">
                       <img
