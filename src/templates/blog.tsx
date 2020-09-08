@@ -201,7 +201,7 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center space-x-2">
+          <div className="flex flex-wrap items-center justify-center space-x-2 md:justify-start">
             {blog.tags.map(tag => (
               <Link
                 key={tag.id}
