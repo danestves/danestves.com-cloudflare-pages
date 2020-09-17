@@ -187,7 +187,7 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
         {blog.tags && <meta name="twitter:data2" content={blog.tags[0].name} />}
       </Helmet>
       <div className="relative overflow-hidden rounded shadow-lg">
-        <Img fluid={blog.cover.childImageSharp.fluid} />
+        <Img fluid={blog.cover.childImageSharp.fluid} alt={blog.title} />
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
       </div>
       <div className="container px-5 mt-5 mb-6">

@@ -14,16 +14,24 @@ header {
   background-position: top;
 }
 
-#hero::after,
-#dreams::after {
-  content: '';
-  @apply absolute top-0 left-0 z-10 w-full h-full opacity-75 bg-secondary;
-}
-
 #dreams {
   background: url('/dreams.jpeg') center no-repeat;
   background-size: 150% auto;
   background-position: 50% 65%;
+}
+
+#hero::after,
+#dreams::after {
+  content: '';
+
+  @apply absolute;
+  @apply top-0;
+  @apply left-0;
+  @apply z-10;
+  @apply w-full;
+  @apply h-full;
+  @apply opacity-75;
+  @apply bg-secondary;
 }
 
 .container-image {
@@ -33,7 +41,7 @@ header {
 @media screen and (max-width: 768px) {
   #hero,
   #dreams {
-    background-size: cover;
+    @apply bg-cover;
   }
 
   .container-image {
@@ -57,7 +65,7 @@ header {
 }
 
 .markdown-blog .embed-responsive {
-  @apply overflow-hidden embed-responsive;
+  @apply overflow-hidden;
 }
 
 .markdown-content {
@@ -69,19 +77,21 @@ header {
 }
 
 .loading {
-  position: relative;
   background-color: #e2e2e2;
-}
 
-.loading::after {
-  display: block;
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: loading 1.5s infinite;
+  @apply relative;
+
+  &::after {
+    content: '';
+
+    @apply block;
+    @apply absolute;
+    @apply w-full;
+    @apply h-full;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: loading 1.5s infinite;
+  }
 }
 
 .title.loading {

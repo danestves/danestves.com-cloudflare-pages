@@ -89,6 +89,7 @@ const Portfolio: React.FC<Props> = ({
                       fluid={item.cover.childImageSharp.fluid}
                       className="w-full transition-all duration-200 rounded-lg shadow-xl portfolio-image hover:shadow-2xl"
                       imgStyle={{ objectPosition: `top center` }}
+                      alt={item.title}
                     />
 
                     <div className="absolute inset-0 flex items-center justify-center transition-all duration-200 bg-opacity-50 rounded-lg opacity-0 group-hover:opacity-100 backdrop-blur bg-secondary">
