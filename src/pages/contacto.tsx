@@ -7,14 +7,12 @@ import { SEO } from '../components';
 const Contact: React.FC = () => {
   // Effects
   React.useEffect(() => {
-    setTimeout(() => {
-      const kwesScript = document.createElement(`script`);
+    const kwesScript = document.createElement(`script`);
 
-      kwesScript.setAttribute(`src`, `https://kwes.io/v2/kwes-script.js`);
-      kwesScript.setAttribute(`charset`, `utf-8`);
+    kwesScript.setAttribute(`src`, `https://kwes.io/v2/kwes-script.js`);
+    kwesScript.setAttribute(`charset`, `utf-8`);
 
-      document.head.appendChild(kwesScript);
-    }, 2000);
+    document.head.appendChild(kwesScript);
   }, []);
 
   // Renders

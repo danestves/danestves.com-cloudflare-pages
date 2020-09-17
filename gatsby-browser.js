@@ -5,6 +5,9 @@ import React, { Fragment } from 'react';
 // Components
 import Layout from './src/components/Layout';
 
+// Styles
+import './src/styles/main.css';
+
 const transitionDelay = 100;
 
 export const wrapPageElement = ({ element, props }) => {

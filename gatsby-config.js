@@ -11,17 +11,7 @@ module.exports = {
     siteUrl: `https://danestves.com`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        postCssPlugins: [
-          require(`postcss-import`),
-          require(`autoprefixer`),
-          require(`tailwindcss`),
-          require(`./tailwind.config.js`), // Optional: Load custom Tailwind CSS configuration
-        ],
-      },
-    },
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {

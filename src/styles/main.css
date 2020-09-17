@@ -80,18 +80,18 @@ header {
   background-color: #e2e2e2;
 
   @apply relative;
+}
 
-  &::after {
-    content: '';
+.loading::after {
+  content: '';
 
-    @apply block;
-    @apply absolute;
-    @apply w-full;
-    @apply h-full;
-    transform: translateX(-100%);
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    animation: loading 1.5s infinite;
-  }
+  @apply block;
+  @apply absolute;
+  @apply w-full;
+  @apply h-full;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: loading 1.5s infinite;
 }
 
 .title.loading {

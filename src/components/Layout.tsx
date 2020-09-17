@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { Header, Footer } from '.';
 
 // Styles
-import '../styles/main.scss';
+//import '../styles/main.scss';
 
 const duration = 0.5;
 
