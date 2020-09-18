@@ -33,7 +33,7 @@ const AboutMe: React.FC<Props> = ({
 
   return (
     <>
-      <SEO title="Sobre Mí" />
+      <SEO title="Conoce más sobre mí" />
 
       {/* Space for Header */}
       <div className="w-full min-h-20 bg-secondary"></div>

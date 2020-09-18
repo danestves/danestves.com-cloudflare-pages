@@ -7,5 +7,11 @@
       "GATSBY_RECAPTCHA": "@danestves-grc",
       "GATSBY_API": "@danestves-api"
     }
-  }
+  },
+  "builds": [{ "src": "package.json", "use": "@now/static-build" }],
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" },
+    { "handle": "filesystem" },
+    { "src": "/.*", "status": 404, "dest": "/404" }
+  ]
 }

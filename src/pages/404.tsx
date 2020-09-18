@@ -1,14 +1,26 @@
 // Dependencies
-import React, { FunctionComponent } from 'react';
+import * as React from 'react';
+import { window } from 'browser-monads';
 
-import { Layout, SEO } from '../components';
+import { SEO, Emoji } from '../components';
 
-const NotFoundPage: FunctionComponent = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-);
+const NotFoundPage: React.FunctionComponent = () => {
+  // Effects
+  React.useEffect(() => {
+    window.location.href = `/404`;
+  }, []);
+
+  return (
+    <>
+      <SEO title="404: Not found" />
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <h1 className="text-4xl font-semibold text-white">
+          NOT FOUND <Emoji>⚠️</Emoji>
+        </h1>
+        <p className="text-white">You just hit a route that doesn&#39;t exist... the sadness.</p>
+      </div>
+    </>
+  );
+};
 
 export default NotFoundPage;

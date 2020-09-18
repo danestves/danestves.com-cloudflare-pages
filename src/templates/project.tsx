@@ -70,7 +70,7 @@ const Project: React.FC<Props> = ({ data: { strapiProjects: project, strapiHome:
 
       <div className="mt-4">
         <section className="body-font">
-          <h2 className="px-5 mb-6 text-3xl font-bold text-center text-white">{project.title}</h2>
+          <h1 className="px-5 mb-6 text-3xl font-bold text-center text-white">{project.title}</h1>
 
           <div className="container flex flex-col px-5 mx-auto">
             <div className="mx-auto lg:w-4/6">

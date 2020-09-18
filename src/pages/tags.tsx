@@ -28,10 +28,6 @@ const Tags: React.FC<Props> = ({
       title="Tags"
       meta={[
         {
-          name: `keywords`,
-          content: `${tags.map(tag => `${tag.name}`)}`,
-        },
-        {
           name: `language`,
           content: `ES`,
         },
@@ -48,7 +44,7 @@ const Tags: React.FC<Props> = ({
           tags.map(tag => (
             <Link
               key={tag.id}
-              to={`/tags/${tag.name}`}
+              to={`/tags/${tag.name}/`}
               className="px-3 py-1 mx-1 text-lg leading-none transition-all duration-200 border-2 border-gray-700 rounded-full hover:border-indigo-700"
             >
               {tag.name}

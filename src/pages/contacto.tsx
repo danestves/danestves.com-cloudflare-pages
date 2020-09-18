@@ -29,6 +29,8 @@ const Contact: React.FC = () => {
 
       <div className="flex items-center justify-center w-full min-h-screen bg-secondary">
         <div className="w-full max-w-2xl px-5 py-12 mx-auto">
+          <h1 className="sr-only">Contacto</h1>
+
           <form
             className="kwes-form"
             method="POST"

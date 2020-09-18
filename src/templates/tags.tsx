@@ -28,12 +28,8 @@ const Tags: React.FC<Props> = ({
 }) => (
   <>
     <SEO
-      title={`Blogs: #${name}`}
+      title={`Artículos sobre #${name}`}
       meta={[
-        {
-          name: `keywords`,
-          content: name,
-        },
         {
           name: `language`,
           content: `ES`,

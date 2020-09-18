@@ -131,10 +131,6 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
         jsonLdProps={jsonLd}
         meta={[
           {
-            name: `keywords`,
-            content: `${blog.tags.map(tag => `${tag.name}`)}`,
-          },
-          {
             name: `language`,
             content: `ES`,
           },

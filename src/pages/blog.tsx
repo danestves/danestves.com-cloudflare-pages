@@ -32,6 +32,8 @@ const Blog: React.FC<Props> = ({
     <div className="w-full min-h-20 bg-secondary"></div>
 
     <div className="w-full px-5 py-12 bg-secondary">
+      <h1 className="sr-only">Blog</h1>
+
       <ul className="max-w-4xl mx-auto space-y-12">
         {blogs && blogs.map(blog => <BlogCard key={blog.id} blog={blog} />)}
       </ul>

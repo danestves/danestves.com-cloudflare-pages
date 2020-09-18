@@ -80,10 +80,6 @@ const SEO: React.FC<ISEOType> = ({
           content: metaDescription,
         },
         {
-          name: `keywords`,
-          content: `Daniel Esteves, Daniel, Esteves`,
-        },
-        {
           property: `og:title`,
           content: isTemplate
             ? `${title} | ${site.siteMetadata.title}`

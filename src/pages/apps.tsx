@@ -35,6 +35,8 @@ const Projects: React.FC<Props> = ({
       <div className="w-full bg-white">
         <div className="container px-5 py-24">
           <div className="max-w-4xl mx-auto">
+            <h1 className="sr-only">Apps</h1>
+
             {projects.map(project => (
               <ProjectList key={project.id} project={project} />
             ))}

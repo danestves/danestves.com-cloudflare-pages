@@ -28,7 +28,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
   return (
     <div key={blog.id} className="flex flex-wrap w-full overflow-hidden rounded-lg shadow-lg">
       <div className="w-full lg:w-1/2">
-        <Link to={`/blog/${blog.slug}`} className="block h-full" title={blog.title}>
+        <Link to={`/blog/${blog.slug}/`} className="block h-full" title={blog.title}>
           <img
             src={`https://opengraphimg.com/opengraph?title=${decodeURIComponent(
               decodeURIComponent(blog.title),
@@ -47,7 +47,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         <div className="flex-1">
           <p className="text-sm font-medium leading-5 transition-all duration-200 text-tertiary">
             {blog.tags?.map(tag => (
-              <Link key={tag.id} to={`/tags/${tag.name}`} className="mx-2 first:ml-0 last:mr-0" title={`#${tag.name}`}>
+              <Link key={tag.id} to={`/tags/${tag.name}/`} className="mx-2 first:ml-0 last:mr-0" title={`#${tag.name}`}>
                 #{tag.name}
               </Link>
             ))}

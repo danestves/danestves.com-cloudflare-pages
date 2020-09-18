@@ -1,32 +1,19 @@
 // Dependencies
 import * as React from 'react';
 import { Link } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
+import Img from 'gatsby-image';
 
-type Technologies = {
-  id: string;
-  name: string;
+// Interfaces
+import { IProjectCard } from '../types';
+
+type Props = {
+  project: IProjectCard;
 };
 
-type ProjectListProps = {
-  project: {
-    id: string;
-    slug: string;
-    cover: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
-    };
-    title: string;
-    technologies?: [Technologies];
-    sort: string;
-  };
-};
-
-const ProjectList: React.FC<ProjectListProps> = ({ project }) => (
+const ProjectList: React.FC<Props> = ({ project }) => (
   <li key={project.id} className="grid items-center grid-cols-1 gap-16 py-8 md:grid-cols-2">
     <div>
-      <Link to={`/project/${project.slug}`} className="block h-full overflow-hidden rounded-2xl">
+      <Link to={`/project/${project.slug}/`} className="block h-full overflow-hidden rounded-2xl">
         <Img fluid={project.cover.childImageSharp.fluid} className="object-cover w-full h-full" alt={project.title} />
       </Link>
     </div>
