@@ -5,11 +5,6 @@ import { window } from 'browser-monads';
 import { SEO, Emoji } from '../components';
 
 const NotFoundPage: React.FunctionComponent = () => {
-  // Effects
-  React.useEffect(() => {
-    window.location.href = `/404`;
-  }, []);
-
   return (
     <>
       <SEO title="404: Not found" />
