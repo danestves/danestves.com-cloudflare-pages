@@ -75,7 +75,7 @@ const Header: React.FC<Props> = ({ pathname }) => {
             <div className="hidden md:ml-10 md:flex md:items-baseline md:bg-transparent">
               <div className="flex items-center justify-center">
                 <Link
-                  to="/sobre-mi"
+                  to="/sobre-mi/"
                   title="Sobre Mí"
                   className={`relative px-3 text-sm font-medium transition-all duration-200 ${
                     y > 80 ? `text-secondary` : `text-primary`
@@ -84,7 +84,7 @@ const Header: React.FC<Props> = ({ pathname }) => {
                   Sobre Mí
                 </Link>
                 <Link
-                  to="/apps"
+                  to="/apps/"
                   title="Apps"
                   className={`px-3 text-sm font-medium transition-all duration-200 ${
                     y > 80 ? `text-secondary` : `text-primary`
@@ -93,7 +93,7 @@ const Header: React.FC<Props> = ({ pathname }) => {
                   Apps
                 </Link>
                 <Link
-                  to="/portafolio"
+                  to="/portafolio/"
                   title="Portafolio"
                   className={`px-3 text-sm font-medium transition-all duration-200 ${
                     y > 80 ? `text-secondary` : `text-primary`
@@ -102,7 +102,7 @@ const Header: React.FC<Props> = ({ pathname }) => {
                   Portafolio
                 </Link>
                 <Link
-                  to="/blog"
+                  to="/blog/"
                   title="Blog"
                   className={`px-3 text-sm font-medium transition-all duration-200 ${
                     y > 80 ? `text-secondary` : `text-primary`
@@ -111,7 +111,7 @@ const Header: React.FC<Props> = ({ pathname }) => {
                   Blog
                 </Link>
                 <Link
-                  to="/contacto"
+                  to="/contacto/"
                   title="Contacto"
                   className={`px-3 text-sm font-medium transition-all duration-200 ${
                     y > 80 ? `text-secondary` : `text-primary`
@@ -179,28 +179,28 @@ const Header: React.FC<Props> = ({ pathname }) => {
                 </Link>
               )}
               <Link
-                to="/sobre-mi"
+                to="/sobre-mi/"
                 title="Sobre Mí"
                 className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
               >
                 Sobre Mí
               </Link>
               <Link
-                to="/apps"
+                to="/apps/"
                 title="Apps"
                 className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
               >
                 Apps
               </Link>
               <Link
-                to="/portafolio"
+                to="/portafolio/"
                 title="Portafolio"
                 className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
               >
                 Portafolio
               </Link>
               <Link
-                to="/blog"
+                to="/blog/"
                 title="Blog"
                 className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
               >
@@ -211,7 +211,7 @@ const Header: React.FC<Props> = ({ pathname }) => {
           <div className="relative">
             <div className="p-4">
               <Link
-                to="/contacto"
+                to="/contacto/"
                 title="Contacto"
                 className="block px-3 py-3 font-medium text-center text-gray-900 bg-gray-300 rounded-lg hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
                 onClick={() => setIsOpen(false)}
