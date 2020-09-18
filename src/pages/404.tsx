@@ -1,10 +1,17 @@
 // Dependencies
 import * as React from 'react';
-import { window } from 'browser-monads';
+import { PageProps } from 'gatsby';
+import { navigate } from '@reach/router';
 
 import { SEO, Emoji } from '../components';
 
-const NotFoundPage: React.FunctionComponent = () => {
+const NotFoundPage: React.FunctionComponent<PageProps> = ({ uri }) => {
+  // Effects
+  React.useEffect(() => {
+    if (uri !== `/404`) navigate(`/404/`);
+  }, [uri]);
+
+  // Render
   return (
     <>
       <SEO title="404: Not found" />
