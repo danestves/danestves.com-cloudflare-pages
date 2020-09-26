@@ -126,6 +126,10 @@ const SEO: React.FC<ISEOType> = ({
           content: site.siteMetadata.author,
         },
         {
+          name: `twitter:site`,
+          content: `@danestves`,
+        },
+        {
           name: `twitter:title`,
           content: isTemplate
             ? `${title} | ${site.siteMetadata.title}`
