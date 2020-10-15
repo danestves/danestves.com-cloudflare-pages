@@ -37,22 +37,6 @@ Feel free to create Issues or a PR if you think the code can be better.
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
     Open the `danestves` directory in your code editor of choice and edit. Save your changes and the browser will update in real time!
-    
-## Enviroment variables
-
-This website uses some variables for the contact section and recaptcha, i use StaticKit to send emails and Recaptcha v3 to avoid the spam.
-
-`GATSBY_SITE`: The key of the site that StaticKit gives you.
-`GATSBY_CONTACT`: The name of the form that StaticKit gives you.
-`GATSBY_RECAPTCHA`: Key that you can generate [here](https://www.google.com/recaptcha/intro/v3.html).
-
-```env
-// .env
-
-GATSBY_SITE=
-GATSBY_CONTACT=
-GATSBY_RECAPTCHA=
-```
 
 ## 🧐 What's inside?
 

@@ -95,7 +95,7 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
     dateModified: blog.updatedAt,
     image: {
       '@type': `ImageObject`,
-      url: `https://opengraphimg.com/opengraph?title=${decodeURIComponent(
+      url: `https://generator.opengraphimg.com/?title=${decodeURIComponent(
         decodeURIComponent(blog.title),
       )}&tags=${blog.tags
         ?.map(({ name }) => name)
@@ -148,7 +148,7 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
           },
           {
             property: `og:image`,
-            content: `https://opengraphimg.com/opengraph?title=${decodeURIComponent(
+            content: `https://generator.opengraphimg.com/?title=${decodeURIComponent(
               decodeURIComponent(blog.title),
             )}&tags=${blog.tags
               ?.map(({ name }) => name)
@@ -158,7 +158,7 @@ const Blog: React.FC<Props> = ({ data: { strapiBlogs: blog } }) => {
           },
           {
             name: `twitter:image`,
-            content: `https://opengraphimg.com/opengraph?title=${decodeURIComponent(
+            content: `https://generator.opengraphimg.com/?title=${decodeURIComponent(
               decodeURIComponent(blog.title),
             )}&tags=${blog.tags
               ?.map(({ name }) => name)

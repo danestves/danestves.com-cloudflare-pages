@@ -212,7 +212,7 @@ const IndexPage: React.FC<HomeProps> = ({
                   <article className="h-full">
                     <div className="overflow-hidden rounded-lg">
                       <img
-                        src={`https://opengraphimg.com/opengraph?title=${decodeURIComponent(
+                        src={`https://generator.opengraphimg.com/?title=${decodeURIComponent(
                           decodeURIComponent(blog.title),
                         )}&tags=${blog.tags
                           ?.map(({ name }) => name)

@@ -30,7 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       <div className="w-full lg:w-1/2">
         <Link to={`/blog/${blog.slug}/`} className="block h-full" title={blog.title}>
           <img
-            src={`https://opengraphimg.com/opengraph?title=${decodeURIComponent(
+            src={`https://generator.opengraphimg.com/?title=${decodeURIComponent(
               decodeURIComponent(blog.title),
             )}&tags=${blog.tags
               ?.map(({ name }) => name)
