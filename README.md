@@ -27,7 +27,7 @@ Feel free to create Issues or a PR if you think the code can be better.
     Start it up.
 
     ```shell
-    yarn dev
+    yarn develop
     ```
 
 3.  **Open the source code and start editing!**
