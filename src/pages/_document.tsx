@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
           <GoogleFonts href="https://fonts.googleapis.com/css?family=Poppins:400,700|Source+Code+Pro:400,600,700&display=swap" />
         </Head>
 
-        <body>
+        <body className="bg-secondary">
           <Main />
           <NextScript />
         </body>

@@ -1,1 +1,6 @@
 export { default as SEO } from './SEO'
+export { default as Media } from './Media'
+export { default as Emoji } from './Emoji'
+export { default as Newsletter } from './Newsletter'
+export { default as Link } from './Link'
+export { default as CallToAction } from './CallToAction'

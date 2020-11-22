@@ -14,7 +14,10 @@
     "lint": "eslint --ext ts --ext tsx --fix"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.3.1",
+    "@tailwindui/react": "^0.1.1",
     "autoprefixer": "^10.0.2",
+    "emoji-trie": "https://github.com/codex-src/emoji-trie.js",
     "next": "^10.0.2",
     "next-google-fonts": "^1.2.1",
     "next-seo": "^4.17.0",
@@ -22,8 +25,13 @@
     "postcss": "^8.1.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^3.11.0",
+    "react-markdown": "^5.0.3",
+    "remove-markdown": "^0.3.0",
     "sass": "^1.29.0",
-    "tailwindcss": "^2.0.1"
+    "tailwindcss": "^2.0.1",
+    "tailwindcss-filters": "^3.0.0",
+    "tailwindcss-responsive-embed": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.9",
