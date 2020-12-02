@@ -26,8 +26,8 @@ const useEntries = (slug: string): UseEntriesReturn => {
   const hasPages = !(start + limit >= count)
   const fetchParams: Params = {
     _sort: 'createdAt:DESC',
-    _limit: router.query?.limit || limit,
-    _start: router.query?.start,
+    _limit: router.query?._limit || limit,
+    _start: router.query?._start,
     ...router.query,
   }
 
