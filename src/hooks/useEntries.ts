@@ -10,24 +10,24 @@ import { getEntries } from '@/utils/api'
 import { Params } from 'next/dist/next-server/server/router'
 
 const useEntries = (slug: string): UseEntriesReturn => {
+  // Hooks
+  const router = useRouter()
+
   // States
   const [fetching, setFetching] = useState(true)
-  const [start, setStart] = useState(0)
-  const [limit] = useState(9)
+  const [start, setStart] = useState(Number(router.query?._start) || 0)
+  const [limit] = useState(Number(router.query?._limit) || 0)
   const [items, setItems] = useState<Portfolio[] | Blog[] | []>([])
   const [count, setCount] = useState(0)
   const [itemsFetched, setItemsFetched] = useState(0)
-
-  // Hooks
-  const router = useRouter()
 
   // Constants
   const isFirstPage = start === 0
   const hasPages = !(start + limit >= count)
   const fetchParams: Params = {
     _sort: 'createdAt:DESC',
-    _limit: router.query?._limit || limit,
-    _start: router.query?._start,
+    _limit: limit,
+    _start: start,
     ...router.query,
   }
 

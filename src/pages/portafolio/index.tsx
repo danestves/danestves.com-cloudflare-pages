@@ -36,11 +36,11 @@ const PortfolioPage: NextPage = () => {
               {[...Array(9).keys()].map((key) => (
                 <div
                   key={key}
-                  className="relative w-full max-w-sm mx-auto overflow-hidden bg-black border rounded-md shadow bg-opacity-40"
+                  className="relative w-full mx-auto overflow-hidden bg-black border rounded-md shadow bg-opacity-40"
                 >
                   <div className="flex flex-col animate-pulse">
                     <div>
-                      <div className="w-full h-48" />
+                      <div className="w-full h-64" />
                     </div>
 
                     <div className="absolute inset-0 flex flex-col justify-center px-5 space-y-4 transition duration-150 bg-opacity-50 bg-secondary backdrop-blur">
