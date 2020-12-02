@@ -37,7 +37,7 @@ const DynamicBlog: React.FC<DynamicBlogProps> = ({ blog }) => {
   /**
    * Load content of the blog when data exist
    */
-  return <>{console.log(blog)}</>
+  return <>Hello World</>
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

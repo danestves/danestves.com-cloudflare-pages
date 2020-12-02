@@ -22,8 +22,6 @@ const PortfolioPage: NextPage = () => {
     return null
   }
 
-  console.info(items)
-
   return (
     <>
       <SEO
