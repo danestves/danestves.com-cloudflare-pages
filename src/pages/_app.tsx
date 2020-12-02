@@ -6,6 +6,9 @@ import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
 
+// Components
+import { Layout } from '@/components'
+
 // Interfaces
 import { Global } from '@/interfaces'
 
@@ -67,7 +70,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
         }}
       />
 
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   )
 }

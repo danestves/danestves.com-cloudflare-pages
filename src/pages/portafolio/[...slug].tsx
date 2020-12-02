@@ -52,7 +52,31 @@ const DynamicPortfolio: React.FC<DynamicPortfolioProps> = ({ portfolio }) => {
         shareImage={portfolio.ogCover}
       />
 
-      <div className="flex items-center w-full min-h-screen">
+      <div className="relative flex flex-col items-center w-full min-h-screen xl:justify-center">
+        <div className="absolute top-0 w-full max-w-4xl mx-auto">
+          <button
+            type="button"
+            className="flex items-center pr-2 font-semibold rounded text-primary focus:outline-none ring-2 ring-primary ring-offset-2 ring-offset-secondary"
+            onClick={() => router.back()}
+          >
+            <svg
+              className="w-5 h-5 mr-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            Volver
+          </button>
+        </div>
+
         <div className="container px-5 pt-16">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-2xl font-semibold text-center text-white">{portfolio.title}</h1>
@@ -109,10 +133,8 @@ const DynamicPortfolio: React.FC<DynamicPortfolioProps> = ({ portfolio }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Get all pages from Strapi
   const portfolios = await (await fetch(getStrapiURL('/portfolios'))).json()
   const paths = portfolios.map((portfolio: Portfolio) => {
-    // Decompose the slug that was saved in Strapi
     const slugArray = portfolio.slug.split('__')
 
     return {
@@ -124,28 +146,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // Find the page data for the current slug
   let chainedSlugs
 
   if (params == {} || !params?.slug) {
-    // To get the homepage, find the only page where slug is an empty string
     chainedSlugs = ``
   } else {
-    // Otherwise find a page with a matching slug
-    // Recompose the slug that was saved in Strapi
-    // eslint-disable-next-line
-    // @ts-ignore
-    chainedSlugs = params.slug.join('__')
+    const slugs = params.slug as string[]
+
+    chainedSlugs = slugs.join('__')
   }
-  // Fetch pages. Include drafts if preview mode is on
+
   const portfolioData = await getPortfolioData(chainedSlugs)
 
   if (portfolioData == null) {
-    // Giving the page no props will trigger a 404 page
     return { props: {} }
   }
 
-  // We have the required page data, pass it to the page component
   const data = portfolioData
 
   return {

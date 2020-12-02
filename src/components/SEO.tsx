@@ -7,19 +7,19 @@ import { Media } from '@/interfaces'
 
 type SEOProps = {
   title: string
-  description: string
+  description?: string
   shareImage?: Media
   twitterCardType?: string
   twitterUsername?: string
 }
 
-const SEO: React.FC<SEOProps> = ({
+const SEO = ({
   title,
   description,
   shareImage,
   twitterCardType,
   twitterUsername,
-}) => {
+}: SEOProps): JSX.Element | null => {
   // Prevent errors if no metadata was set
   if (!title || !description) return null
 
@@ -34,13 +34,15 @@ const SEO: React.FC<SEOProps> = ({
         // Only include OG image if we have it
         // Careful: if you disable image optimization in Strapi, this will break
         ...(shareImage && {
-          images: Object.values(shareImage.formats).map((image) => {
-            return {
-              url: image.url,
-              width: image.width,
-              height: image.height,
-            }
-          }),
+          images: shareImage.formats
+            ? Object.values(shareImage.formats).map((image) => {
+                return {
+                  url: image.url,
+                  width: image.width,
+                  height: image.height,
+                }
+              })
+            : [{ url: shareImage.url || '', width: 1000, height: 523 }],
         }),
       }}
       // Only included Twitter data if we have it

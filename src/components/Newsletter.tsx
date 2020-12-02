@@ -5,7 +5,7 @@ import { Transition } from '@tailwindui/react'
 // Components
 import { Emoji } from '@/components'
 
-const NewsletterForm: React.FC = () => {
+const NewsletterForm = (): JSX.Element => {
   // States
   const [validEmail, setValidEmail] = React.useState(false)
 
@@ -63,9 +63,10 @@ const NewsletterForm: React.FC = () => {
               placeholder="Nombre (opcional)"
               className="block w-full max-w-sm px-4 py-2 mx-auto mt-4 font-mono placeholder-opacity-50 bg-white rounded-lg placeholder-secondary focus:outline-none"
             />
+
             <small className="block text-center text-white">
-              <b>Opcional:</b> Usamos tu nombre para entregarte un correo <br /> más personalizado{' '}
-              <Emoji>🤘</Emoji>
+              <b>Opcional:</b> Usamos tu nombre para entregarte un correo <br /> más personalizado
+              <Emoji emoji="🤘" />
             </small>
           </Transition>
 

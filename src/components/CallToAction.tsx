@@ -4,7 +4,7 @@ import * as React from 'react'
 // Components
 import { Link } from '@/components'
 
-const CallToAction: React.FC = () => {
+const CallToAction = (): JSX.Element => {
   return (
     <div className="w-full px-5 pt-12 bg-secondary">
       <div className="container pb-12 border-b-2 border-primary">

@@ -31,6 +31,7 @@ module.exports = {
       backdropFilter: {
         none: `none`,
         blur: `blur(20px)`,
+        'blur-hover': 'blur(10px)',
       },
       borderRadius: {
         '2xl': `2rem`,
@@ -129,15 +130,18 @@ module.exports = {
     extend: {
       aspectRatio: [`responsive`],
       backgroundColor: [`responsive`, `hover`, `group-hover`],
-      backdropFilter: [`responsive`],
+      backdropFilter: [`responsive`, `hover`],
       borderColor: [`responsive`, `hover`, `focus`, `first`, `last`],
       borderWidth: [`responsive`, `hover`, `focus`, `first`, `last`],
       boxShadow: [`responsive`, `hover`, `focus`],
       filter: [`responsive`],
-      margin: [`responsive`, `first`, `last`],
+      fontSize: [`group-hover`],
+      margin: [`responsive`, `first`, `last`, `group-hover`],
       opacity: [`responsive`, `hover`, `focus`, `group-hover`],
       padding: [`responsive`],
       placeholderColor: [`responsive`, `focus`],
+      scale: [`group-hover`],
+      space: [`hover`, `group-hover`],
       textColor: [`responsive`, `hover`, `group-hover`],
     },
   },

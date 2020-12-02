@@ -94,6 +94,7 @@ export interface Page {
 }
 
 export interface Link {
+  /** Title of the link */
   label: string
   url?: string
 }
@@ -117,4 +118,40 @@ export interface Metadata {
 
 export interface Global {
   metadata: Metadata
+}
+
+export interface ArgsUseDocumentType {
+  previousScrollTop: number
+  currentScrollTop: number
+}
+
+export interface UseEntriesReturn {
+  /**
+   * @returns Retreive if hook is fetching data
+   */
+  loading: boolean
+  /**
+   * @returns Array of entries, otherwise undefined.
+   */
+  items: Portfolio[] | Blog[] | []
+  /**
+   * @returns True if _start is equal to 0, otherwise false.
+   */
+  isFirstPage: boolean
+  /**
+   * @returns True if start + limit are equal less to the count of all entries, otherwise false.
+   */
+  hasPages: boolean
+  /**
+   * Handle functionality for previous page
+   *
+   * @returns Change the current URL for the previous page.
+   */
+  handlePrevPage(): Promise<boolean>
+  /**
+   * Handle functionality for next page
+   *
+   * @returns Change the current URL for the next page.
+   */
+  handleNextPage(): Promise<boolean>
 }
