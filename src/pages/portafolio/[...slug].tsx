@@ -56,11 +56,11 @@ const DynamicPortfolio: React.FC<DynamicPortfolioProps> = ({ portfolio }) => {
         <div className="absolute top-0 w-full max-w-4xl mx-auto">
           <button
             type="button"
-            className="flex items-center pr-2 font-semibold rounded text-primary focus:outline-none ring-2 ring-primary ring-offset-2 ring-offset-secondary"
+            className="flex items-center pl-1 pr-2 font-semibold rounded text-primary focus:outline-none ring-2 ring-primary ring-offset-2 ring-offset-secondary"
             onClick={() => router.back()}
           >
             <svg
-              className="w-5 h-5 mr-1"
+              className="w-4 h-4 mr-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
