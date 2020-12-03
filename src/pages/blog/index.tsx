@@ -35,7 +35,7 @@ const BlogPage: NextPage = () => {
         <div className="container px-5">
           <div className="card-list">
             {(items as Blog[]).map((blog) => (
-              <BlogCard key={blog.id} isSelected={router?.query.blogId === blog.slug} {...blog} />
+              <BlogCard key={blog.id} isSelected={router.query.slug === blog.slug} {...blog} />
             ))}
           </div>
 
