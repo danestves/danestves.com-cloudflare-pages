@@ -9,6 +9,8 @@ import { SEO, Link, Media, Pagination } from '@/components'
 
 // Hooks
 import { useEntries } from '@/hooks'
+
+// Interfaces
 import { Portfolio } from '@/interfaces'
 
 const PortfolioPage: NextPage = () => {

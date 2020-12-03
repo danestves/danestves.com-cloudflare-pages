@@ -9,14 +9,14 @@ import { Blog, Portfolio, UseEntriesReturn } from '@/interfaces'
 import { getEntries } from '@/utils/api'
 import { Params } from 'next/dist/next-server/server/router'
 
-const useEntries = (slug: string): UseEntriesReturn => {
+const useEntries = (slug: string, limitEntries?: number): UseEntriesReturn => {
   // Hooks
   const router = useRouter()
 
   // States
   const [fetching, setFetching] = useState(true)
   const [start, setStart] = useState(Number(router.query?._start) || 0)
-  const [limit] = useState(Number(router.query?._limit) || 0)
+  const [limit] = useState(Number(router.query?._limit) || limitEntries || 9)
   const [items, setItems] = useState<Portfolio[] | Blog[] | []>([])
   const [count, setCount] = useState(0)
   const [itemsFetched, setItemsFetched] = useState(0)
@@ -28,7 +28,6 @@ const useEntries = (slug: string): UseEntriesReturn => {
     _sort: 'createdAt:DESC',
     _limit: limit,
     _start: start,
-    ...router.query,
   }
 
   // Methods
@@ -97,7 +96,7 @@ const useEntries = (slug: string): UseEntriesReturn => {
   useEffect(() => {
     getData()
     // eslint-disable-next-line
-  }, [router.query])
+  }, [router.query._limit, router.query._start])
 
   return {
     loading: fetching,
