@@ -89,7 +89,7 @@ const Card = React.memo(
         </div>
 
         {!isSelected && (
-          <Link href={`/blog?blogId=${id}`} as={`/blog/${slug}`} className="card-open-link" />
+          <Link href={`/blog?blogId=${slug}`} as={`/blog/${slug}`} className="card-open-link" />
         )}
       </li>
     )
