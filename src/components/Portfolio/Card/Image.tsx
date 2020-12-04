@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { motion, useInvertedScale } from 'framer-motion'
 import clsx from 'clsx'
+import NextImage from 'next/image'
 
 // Animations
 import { closeSpring } from './animations'
@@ -28,17 +29,32 @@ export const Image = ({
         originY: 0,
       }}
     >
-      <motion.img
-        className={clsx(
-          'object-cover transition-all duration-100 relative card-image',
-          isSelected ? 'object-top' : 'object-center'
-        )}
-        src={image}
-        alt={title}
+      <motion.div
+        className={clsx('object-cover transition-all duration-100 relative card-image')}
         initial={false}
         animate={isSelected ? { x: 0, y: 0 } : { x: -pointOfInterest, y: 0 }}
         transition={closeSpring}
-      />
+      >
+        <NextImage
+          src={
+            image.url ||
+            image.formats?.large?.url ||
+            image.formats?.medium?.url ||
+            image.formats?.small?.url ||
+            image.formats?.thumbnail.url ||
+            ''
+          }
+          alt={title}
+          // We disable this warnings because the prop
+          // `fill` it's not in TS yet
+          //
+          // eslint-disable-next-line
+          // @ts-ignore
+          layout="fill"
+          objectFit="cover"
+          objectPosition="top"
+        />
+      </motion.div>
 
       <div
         className="card-image-overlay"

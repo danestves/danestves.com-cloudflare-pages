@@ -123,6 +123,35 @@ export async function getEntries(
 }
 
 /**
+ * Gets a list of posts
+ *
+ * @param limit - The limit of posts to show
+ * @param start - The number of items to paginate
+ * @returns The array of posts paginateddocker-com
+ */
+export async function getPortfolios(
+  limit = 10,
+  start = 0,
+  preview: boolean | null = null
+): Promise<{ portfolios: Portfolio[]; count: string } | null> {
+  const portfolios = (await fetchAPI(
+    `/portfolios?_limit=${limit}&_start=${start}&_sort=createdAt:DESC${
+      preview ? '' : '&_publicationState=live'
+    }`
+  )) as Portfolio[]
+  const portfoliosCount = (await fetchAPI('/portfolios/count')) as string
+
+  if (portfolios === null || portfolios.length === 0) {
+    return null
+  }
+
+  return {
+    portfolios,
+    count: portfoliosCount,
+  }
+}
+
+/**
  * Gets a portfolio by an slug.
  *
  * @param slug - The unique identifier slug of a portfolio

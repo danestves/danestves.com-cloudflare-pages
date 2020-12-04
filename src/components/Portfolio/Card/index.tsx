@@ -96,7 +96,7 @@ const Card = React.memo(
             onDrag={checkSwipeToDismiss}
             onUpdate={checkZIndex}
           >
-            <Image image={cover.url || ''} title={title} isSelected={isSelected} />
+            <Image image={cover} title={title} isSelected={isSelected} />
 
             <Title title={title} category={category.name} isSelected={isSelected} />
 

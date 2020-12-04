@@ -1,10 +1,9 @@
 // Dependencies
 import * as React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
-import { useRouter } from 'next/dist/client/router'
 
 // Components
-import { SEO } from '@/components'
+import { SEO, Pagination } from '@/components'
 
 // Interfaces
 import { Blog } from '@/interfaces'
@@ -19,11 +18,7 @@ interface BlogPageProps {
 }
 
 const BlogPage: NextPage<BlogPageProps> = ({ posts, count, page }) => {
-  const router = useRouter()
-
   // Render
-  const lastPage = Math.ceil(count / 4)
-
   return (
     <>
       <SEO
@@ -31,18 +26,11 @@ const BlogPage: NextPage<BlogPageProps> = ({ posts, count, page }) => {
         description="Blog sobre noticias, tutoriales, paso a paso para crear funciones que nos ayudarán en nuestro desarrollo y mucho más de la mano de @danestves usando JavaScript."
       />
 
-      {/* {loading && <p>Loading...</p>} */}
-
       {posts && (
         <div className="container px-5">
           <div className="card-list">{(posts as Blog[]).map((post) => post.title).join(', ')}</div>
 
-          <button onClick={() => router.push(`/blog?page=${page - 1}`)} disabled={page <= 1}>
-            Previous
-          </button>
-          <button onClick={() => router.push(`/blog?page=${page + 1}`)} disabled={page >= lastPage}>
-            Next
-          </button>
+          <Pagination model="blog" count={count} page={page} />
         </div>
       )}
     </>

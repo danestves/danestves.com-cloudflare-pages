@@ -1,5 +1,5 @@
 // Interfaces
-import { Portfolio } from '@/interfaces'
+import { Portfolio, Media } from '@/interfaces'
 
 export type scale = {
   x: string | number
@@ -15,7 +15,7 @@ export type TitleT = {
 }
 
 export type ImageProps = {
-  image: string
+  image: Media
   title: string
   isSelected: boolean
   pointOfInterest?: number
