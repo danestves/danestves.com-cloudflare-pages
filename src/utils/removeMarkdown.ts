@@ -1,11 +1,26 @@
 // Dependencies
-import removeMarkdown from 'remove-markdown'
+import remove from 'remove-markdown'
 
-const strip = (markdown: string): string => {
-  return removeMarkdown(markdown)
-    .replace(/(\r\n|\n|\r)/gm, ' ')
-    .replace(' > ', ' ')
-    .trim()
+/**
+ * @function removeMarkdown
+ *
+ * @param markdown - The markdown text to parse
+ * @returns Parsed plain text
+ */
+const removeMarkdown = (markdown: string): string => {
+  return (
+    remove(markdown)
+      // Delete all jump lines
+      .replace(/(\r\n|\n|\r)/gm, ' ')
+      // Delete double space
+      .replace('  ', ' ')
+      // Delete triple space
+      .replace('   ', ' ')
+      // Delete markdown quotes
+      .replace(' > ', ' ')
+      // Delete initial and ending spaces
+      .trim()
+  )
 }
 
-export default strip
+export default removeMarkdown

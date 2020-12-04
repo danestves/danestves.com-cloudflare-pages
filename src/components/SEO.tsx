@@ -1,11 +1,12 @@
 // Dependencies
 import * as React from 'react'
-import { NextSeo } from 'next-seo'
+import { NextSeo, NextSeoProps } from 'next-seo'
+import { window } from 'browser-monads'
 
 // Interfaces
 import { Media } from '@/interfaces'
 
-type SEOProps = {
+interface SEOProps extends NextSeoProps {
   title: string
   description?: string
   shareImage?: Media
@@ -19,6 +20,7 @@ const SEO = ({
   shareImage,
   twitterCardType,
   twitterUsername,
+  ...props
 }: SEOProps): JSX.Element | null => {
   // Prevent errors if no metadata was set
   if (!title || !description) return null
@@ -50,6 +52,8 @@ const SEO = ({
         ...(twitterCardType && { cardType: twitterCardType }),
         ...(twitterUsername && { cardType: twitterUsername }),
       }}
+      canonical={window.location.href}
+      {...props}
     />
   )
 }
