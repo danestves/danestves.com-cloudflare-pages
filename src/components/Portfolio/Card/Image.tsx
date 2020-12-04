@@ -38,7 +38,6 @@ export const Image = ({
         <NextImage
           src={
             image.formats?.thumbnail.url ||
-            image.formats.small?.url ||
             image.formats?.medium?.url ||
             image.formats?.large?.url ||
             image.url ||
