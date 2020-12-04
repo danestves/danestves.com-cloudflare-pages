@@ -36,7 +36,14 @@ export const Image = ({
         transition={closeSpring}
       >
         <NextImage
-          src={image.formats?.small?.url || image.formats?.thumbnail.url || image.url || ''}
+          src={
+            image.formats?.thumbnail.url ||
+            image.formats.small?.url ||
+            image.formats?.medium?.url ||
+            image.formats?.large?.url ||
+            image.url ||
+            '/'
+          }
           alt={title}
           // We disable this warnings because the prop
           // `fill` it's not in TS yet
