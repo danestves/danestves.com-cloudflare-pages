@@ -1,5 +1,5 @@
-// Dependencies
-import axios from 'axios'
+// Lib
+import axios from '@/lib/axios'
 
 // Interfaces
 import { Page, Blog, Portfolio, Global } from '@/interfaces'
@@ -23,8 +23,8 @@ export function getStrapiURL(path: string): string {
  */
 export async function fetchAPI(path: string): Promise<unknown> {
   const requestUrl = getStrapiURL(path)
-  const response = await fetch(requestUrl)
-  const data = await response.json()
+  const response = await axios.get(requestUrl)
+  const data = await response.data
 
   return data
 }
@@ -53,15 +53,15 @@ export async function getPageData(slug: string): Promise<Page | null> {
  *
  * @param limit - The limit of posts to show
  * @param start - The number of items to paginate
- * @returns The array of posts paginated
+ * @returns The array of posts paginateddocker-com
  */
 export async function getPosts(
   limit = 10,
   start = 0,
-  preview: boolean
+  preview: boolean | null = null
 ): Promise<{ posts: Blog[]; count: string } | null> {
   const posts = (await fetchAPI(
-    `/blogs?_limit=${limit}&_start=${start}&_sort=created_at:DESC${
+    `/blogs?_limit=${limit}&_start=${start}&_sort=createdAt:DESC${
       preview ? '' : '&_publicationState=live'
     }`
   )) as Blog[]

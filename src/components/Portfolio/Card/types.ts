@@ -1,5 +1,5 @@
 // Interfaces
-import { Blog } from '@/interfaces'
+import { Portfolio } from '@/interfaces'
 
 export type scale = {
   x: string | number
@@ -10,14 +10,16 @@ export type scale = {
 
 export type TitleT = {
   title: string
+  category: string
   isSelected: boolean
 }
 
 export type ImageProps = {
-  id: string
+  image: string
+  title: string
   isSelected: boolean
-  pointOfInterest: number
-  backgroundColor: string
+  pointOfInterest?: number
+  backgroundColor?: string
 }
 
-export type CardData = Blog
+export type CardData = Portfolio

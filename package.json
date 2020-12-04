@@ -19,6 +19,7 @@
     "@tailwindui/react": "^0.1.1",
     "autoprefixer": "^10.0.4",
     "axios": "^0.21.0",
+    "axios-cache-adapter": "^2.5.0",
     "browser-monads": "^1.0.0",
     "clsx": "^1.1.1",
     "emoji-trie": "https://github.com/codex-src/emoji-trie.js",

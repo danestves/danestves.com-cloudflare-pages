@@ -5,12 +5,6 @@ import { Transition } from '@tailwindui/react'
 // Components
 import { Link } from '@/components'
 
-// Hooks
-import { useDocumentScrollThrottled, useScrollPosition } from '@/hooks'
-
-// Interfaces
-import { ArgsUseDocumentType } from '@/interfaces'
-
 type Props = {
   pathname: string
 }
@@ -18,36 +12,11 @@ type Props = {
 const Header = ({ pathname }: Props): JSX.Element => {
   // States
   const [isOpen, setIsOpen] = React.useState(false)
-  const [shouldHideHeader, setShouldHideHeader] = React.useState(false)
-  const [shouldShowShadow, setShouldShowShadow] = React.useState(false)
-  const { y } = useScrollPosition()
-
-  const MINIMUM_SCROLL = 0
-  const TIMEOUT_DELAY = 0
-  const shadowStyle = shouldShowShadow ? `shadow-md` : `shadow-none`
-  const hiddenStyle = shouldHideHeader
-    ? ` -translate-y-full bg-transparent`
-    : `${y > 80 ? ` backdrop-blur bg-opacity-50 bg-white` : ``}`
-
-  // Methods
-  useDocumentScrollThrottled((cb: ArgsUseDocumentType) => {
-    const { previousScrollTop, currentScrollTop } = cb
-    const isScrolledDown = previousScrollTop < currentScrollTop
-    const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
-
-    setShouldShowShadow(currentScrollTop > 2)
-
-    setTimeout(() => {
-      setShouldHideHeader(isScrolledDown && isMinimumScrolled)
-    }, TIMEOUT_DELAY)
-  })
 
   // Render
   return (
     <>
-      <header
-        className={`fixed z-100 top-0 w-full transition-all duration-200 transform ${shadowStyle}${hiddenStyle}`}
-      >
+      <header className="w-full">
         <div className="md:px-8">
           <nav className="container relative flex flex-wrap items-center justify-end">
             {pathname !== `/` && (
@@ -97,45 +66,35 @@ const Header = ({ pathname }: Props): JSX.Element => {
                 <Link
                   href="/sobre-mi/"
                   title="Sobre Mí"
-                  className={`relative px-3 text-sm font-medium transition-all duration-200 ${
-                    y > 80 ? `text-secondary` : `text-primary`
-                  } hover:text-white py-7 focus:outline-none`}
+                  className="relative px-3 text-sm font-medium transition-all duration-200 text-primary hover:text-white py-7 focus:outline-none"
                 >
                   Sobre Mí
                 </Link>
                 <Link
                   href="/apps/"
                   title="Apps"
-                  className={`px-3 text-sm font-medium transition-all duration-200 ${
-                    y > 80 ? `text-secondary` : `text-primary`
-                  } py-7 hover:text-white`}
+                  className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
                 >
                   Apps
                 </Link>
                 <Link
                   href="/portafolio/"
                   title="Portafolio"
-                  className={`px-3 text-sm font-medium transition-all duration-200 ${
-                    y > 80 ? `text-secondary` : `text-primary`
-                  } py-7 hover:text-white`}
+                  className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
                 >
                   Portafolio
                 </Link>
                 <Link
                   href="/blog/"
                   title="Blog"
-                  className={`px-3 text-sm font-medium transition-all duration-200 ${
-                    y > 80 ? `text-secondary` : `text-primary`
-                  } py-7 hover:text-white`}
+                  className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
                 >
                   Blog
                 </Link>
                 <Link
                   href="/contacto/"
                   title="Contacto"
-                  className={`px-3 text-sm font-medium transition-all duration-200 ${
-                    y > 80 ? `text-secondary` : `text-primary`
-                  } py-7 hover:text-white`}
+                  className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
                 >
                   Contacto
                 </Link>
@@ -248,9 +207,6 @@ const Header = ({ pathname }: Props): JSX.Element => {
           </div>
         </Transition>
       </div>
-
-      {/* Space for Header */}
-      <div className="w-full min-h-20 bg-secondary"></div>
     </>
   )
 }

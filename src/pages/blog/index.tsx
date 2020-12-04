@@ -1,27 +1,29 @@
 // Dependencies
 import * as React from 'react'
-import { NextPage } from 'next'
+import { NextPage, GetServerSideProps } from 'next'
 import { useRouter } from 'next/dist/client/router'
 
 // Components
-import { SEO, Pagination } from '@/components'
-import BlogCard from '@/components/Blog/Card'
-
-// Hooks
-import { useEntries } from '@/hooks'
+import { SEO } from '@/components'
 
 // Interfaces
 import { Blog } from '@/interfaces'
 
-const BlogPage: NextPage = () => {
-  // Hooks
-  const { items, loading, isFirstPage, hasPages, handlePrevPage, handleNextPage } = useEntries(
-    '/blogs',
-    2
-  )
+// Utils
+import { getPosts } from '@/utils/api'
+
+interface BlogPageProps {
+  posts: Blog[]
+  page: number
+  count: number
+}
+
+const BlogPage: NextPage<BlogPageProps> = ({ posts, count, page }) => {
   const router = useRouter()
 
   // Render
+  const lastPage = Math.ceil(count / 4)
+
   return (
     <>
       <SEO
@@ -29,28 +31,36 @@ const BlogPage: NextPage = () => {
         description="Blog sobre noticias, tutoriales, paso a paso para crear funciones que nos ayudarán en nuestro desarrollo y mucho más de la mano de @danestves usando JavaScript."
       />
 
-      {loading && <p>Loading...</p>}
+      {/* {loading && <p>Loading...</p>} */}
 
-      {!loading && items && (
+      {posts && (
         <div className="container px-5">
-          <div className="card-list">
-            {(items as Blog[]).map((blog) => (
-              <BlogCard key={blog.id} isSelected={router.query.slug === blog.slug} {...blog} />
-            ))}
-          </div>
+          <div className="card-list">{(posts as Blog[]).map((post) => post.title).join(', ')}</div>
 
-          <div className="py-12">
-            <Pagination
-              isFirstPage={isFirstPage}
-              hasPages={hasPages}
-              handlePrevPage={handlePrevPage}
-              handleNextPage={handleNextPage}
-            />
-          </div>
+          <button onClick={() => router.push(`/blog?page=${page - 1}`)} disabled={page <= 1}>
+            Previous
+          </button>
+          <button onClick={() => router.push(`/blog?page=${page + 1}`)} disabled={page >= lastPage}>
+            Next
+          </button>
         </div>
       )}
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ query: { page = 1 } }) => {
+  const start = +page === 1 ? 0 : (+page - 1) * 4
+
+  const res = await getPosts(4, start)
+
+  return {
+    props: {
+      posts: res?.posts || [],
+      page: +page,
+      count: res?.count || 0,
+    },
+  }
 }
 
 export default BlogPage

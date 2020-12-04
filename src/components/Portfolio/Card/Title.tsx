@@ -24,7 +24,7 @@ const scaleTranslate = ({ x, y, scaleX, scaleY }: scale): string => {
   return `scaleX(${scaleX}) scaleY(${scaleY}) translate(${x}, ${y}) translateZ(0)`
 }
 
-export const Title = ({ title, isSelected }: TitleT): JSX.Element => {
+export const Title = ({ title, category, isSelected }: TitleT): JSX.Element => {
   const inverted = useInvertedScale()
   const x = isSelected ? 30 : 15
   const y = x
@@ -38,8 +38,8 @@ export const Title = ({ title, isSelected }: TitleT): JSX.Element => {
       transformTemplate={scaleTranslate}
       style={{ ...inverted, originX: 0, originY: 0 }}
     >
-      {/* <span className="category">{category}</span> */}
-      <h2 className="mx-0 my-2">{title}</h2>
+      <span className="text-sm text-white uppercase">{category}</span>
+      <h2 className="text-2xl font-semibold text-white">{title}</h2>
     </motion.div>
   )
 }

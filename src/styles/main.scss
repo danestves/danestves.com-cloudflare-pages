@@ -4,33 +4,13 @@
 @import 'tailwindcss/utilities';
 
 .card-list {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-
   & .card {
-    position: relative;
-    padding: 25px;
-    height: 460px;
-    flex: 0 0 40%;
-    max-width: 40%;
+    @apply transition-all duration-300 relative;
 
-    &:nth-child(4n + 1),
-    &:nth-child(4n + 4) {
-      flex: 0 0 60%;
-      max-width: 60%;
-    }
-
-    &:nth-child(odd) {
-      padding-left: 0;
-    }
-
-    &:nth-child(even) {
-      padding-right: 0;
-    }
+    height: 230px;
 
     .overlay {
-      z-index: 1;
+      z-index: 100;
       position: fixed;
       background: rgba(0, 0, 0, 0.8);
       will-change: opacity;
@@ -40,7 +20,7 @@
       transform: translateX(-50%);
       width: 100%;
 
-      & a {
+      & button {
         display: block;
         position: fixed;
         top: 0;
@@ -62,7 +42,7 @@
       &.open {
         @apply top-0 left-0 right-0 fixed overflow-hidden;
 
-        z-index: 1;
+        z-index: 100;
         padding: 40px 0;
 
         & .card-content {
@@ -80,18 +60,23 @@
         & .card-image-container {
           @apply absolute top-0 left-0 overflow-hidden w-screen;
 
-          height: 420px;
+          &,
+          & .card-image {
+            @apply transition-all duration-200;
+
+            width: 100%;
+            height: 230px;
+          }
+
+          & .card-image-overlay {
+            @apply absolute top-0 left-0 w-full h-full bg-opacity-50 bg-secondary;
+          }
         }
 
         & .title-container {
           @apply absolute top-0 left-0;
 
-          max-width: 300px;
-
-          & h2 {
-            color: #fff;
-            margin: 8px 0;
-          }
+          max-width: 400px;
         }
       }
     }
@@ -103,49 +88,24 @@
       right: 0;
       bottom: 0;
     }
+
+    &:hover {
+      & .card-content-container {
+        &:not(.open) .card-content {
+          & .card-image-container {
+            &,
+            & .card-image {
+              width: 120%;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 .content-container {
-  padding: 460px 35px 35px 35px;
+  padding: 230px 35px 35px 35px;
   max-width: 700px;
   width: 90vw;
-}
-
-p {
-  color: #9d9ca1;
-  font-size: 20px;
-  line-height: 28px;
-}
-
-@media only screen and (max-width: 800px) {
-  .card {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-  .card:nth-child(4n + 1),
-  .card:nth-child(4n + 4) {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .card {
-    flex: 1 0 100%;
-    max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .card:nth-child(4n + 1),
-  .card:nth-child(4n + 4) {
-    flex: 1 0 100%;
-    max-width: 100%;
-  }
-
-  .card-content-container.open {
-    padding: 0;
-  }
 }

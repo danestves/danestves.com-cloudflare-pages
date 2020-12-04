@@ -22,24 +22,30 @@ interface Props extends CardData {
   isSelected: boolean
 }
 
-const Overlay = ({ isSelected }: { isSelected: boolean }): JSX.Element => (
-  <motion.div
-    initial={false}
-    animate={{ opacity: isSelected ? 1 : 0 }}
-    transition={{ duration: 0.2 }}
-    style={{ pointerEvents: isSelected ? 'auto' : 'none' }}
-    className="overlay"
-  >
-    <Link href="/blog" />
-  </motion.div>
-)
+const Overlay = ({ isSelected }: { isSelected: boolean }): JSX.Element => {
+  // Hooks
+  const router = useRouter()
+
+  // Render
+  return (
+    <motion.div
+      initial={false}
+      animate={{ opacity: isSelected ? 1 : 0 }}
+      transition={{ duration: 0.2 }}
+      style={{ pointerEvents: isSelected ? 'auto' : 'none' }}
+      className="overlay"
+    >
+      <button type="button" className="focus:outline-none" onClick={() => router.back()} />
+    </motion.div>
+  )
+}
 
 // Distance in pixels a user has to scroll a card down before we recognise
 // a swipe-to dismiss action.
 const dismissDistance = 150
 
 const Card = React.memo(
-  ({ isSelected, id, title, slug }: Props) => {
+  ({ isSelected, title, category, slug, cover, body }: Props) => {
     const y = useMotionValue(0)
     const zIndex = useMotionValue(isSelected ? 2 : 0)
     const router = useRouter()
@@ -67,11 +73,19 @@ const Card = React.memo(
     const containerRef = React.useRef(null)
     useWheelScroll(containerRef, y, constraints, checkSwipeToDismiss, isSelected)
 
+    // Catch all router queries to put in in the link below
+    // and avoid change of page when params change
+    const routerQueries = Object.keys(router.query)
+      .map(function (key) {
+        return key + '=' + router.query[key]
+      })
+      .join('&')
+
     return (
-      <li ref={containerRef} className="card">
+      <article ref={containerRef} className="card">
         <Overlay isSelected={isSelected} />
 
-        <div className={`card-content-container ${isSelected && 'open'}`}>
+        <div className={`card-content-container${isSelected ? ' open' : ''}`}>
           <motion.div
             ref={cardRef}
             className="card-content"
@@ -82,16 +96,23 @@ const Card = React.memo(
             onDrag={checkSwipeToDismiss}
             onUpdate={checkZIndex}
           >
-            <Image id={id} isSelected={isSelected} pointOfInterest={0} backgroundColor="red" />
-            <Title title={title} isSelected={isSelected} />
-            <ContentPlaceholder />
+            <Image image={cover.url || ''} title={title} isSelected={isSelected} />
+
+            <Title title={title} category={category.name} isSelected={isSelected} />
+
+            <ContentPlaceholder body={body} />
           </motion.div>
         </div>
 
         {!isSelected && (
-          <Link href={`/blog?slug=${slug}`} as={`/blog/${slug}`} className="card-open-link" />
+          <Link
+            href={`/portafolio?slug=${slug}&${routerQueries}`}
+            as={`/portafolio/${slug}`}
+            scroll={false}
+            className="card-open-link"
+          ></Link>
         )}
-      </li>
+      </article>
     )
   },
   (prev, next) => prev.isSelected === next.isSelected
