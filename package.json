@@ -22,6 +22,7 @@
     "axios-cache-adapter": "^2.5.0",
     "browser-monads": "^1.0.0",
     "clsx": "^1.1.1",
+    "date-fns": "^2.16.1",
     "emoji-trie": "https://github.com/codex-src/emoji-trie.js",
     "framer-motion": "1.6.0",
     "lodash": "^4.17.20",

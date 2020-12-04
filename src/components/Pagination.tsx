@@ -6,17 +6,18 @@ type PaginationProps = {
   model: string
   count: number
   page: number
+  limit: number
 }
 
-const Pagination = ({ model, count, page }: PaginationProps): JSX.Element => {
+const Pagination = ({ model, count, page, limit }: PaginationProps): JSX.Element => {
   // Hooks
   const router = useRouter()
 
   // Render
-  const lastPage = Math.ceil(count / 8)
+  const lastPage = Math.ceil(count / limit)
 
   return (
-    <div className="flex items-center justify-between mt-6">
+    <div className="flex items-center justify-between my-6">
       <div>
         {!(page <= 1) && (
           <button
