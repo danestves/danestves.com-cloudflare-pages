@@ -57,13 +57,10 @@ export async function getPageData(slug: string): Promise<Page | null> {
  */
 export async function getPosts(
   limit = 10,
-  start = 0,
-  preview: boolean | null = null
+  start = 0
 ): Promise<{ posts: Blog[]; count: string } | null> {
   const posts = (await fetchAPI(
-    `/blogs?_limit=${limit}&_start=${start}&_sort=createdAt:DESC${
-      preview ? '' : '&_publicationState=live'
-    }`
+    `/blogs?_limit=${limit}&_start=${start}&_sort=createdAt:DESC`
   )) as Blog[]
   const postsCount = (await fetchAPI('/blogs/count')) as string
 
@@ -131,13 +128,10 @@ export async function getEntries(
  */
 export async function getPortfolios(
   limit = 10,
-  start = 0,
-  preview: boolean | null = null
+  start = 0
 ): Promise<{ portfolios: Portfolio[]; count: string } | null> {
   const portfolios = (await fetchAPI(
-    `/portfolios?_limit=${limit}&_start=${start}&_sort=createdAt:DESC${
-      preview ? '' : '&_publicationState=live'
-    }`
+    `/portfolios?_limit=${limit}&_start=${start}&_sort=createdAt:DESC`
   )) as Portfolio[]
   const portfoliosCount = (await fetchAPI('/portfolios/count')) as string
 
