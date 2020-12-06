@@ -99,6 +99,22 @@ module.exports = {
             blockquote: {
               color: theme(`colors.gray.400`),
             },
+            pre: {
+              '&.prism-code': {
+                padding: `${theme(`padding.4`)} ${theme(`padding.6`)}`,
+                fontSize: theme(`fontSize.sm`),
+                fontWeight: 400,
+                color: theme(`colors.gray.100`),
+                whiteSpace: theme(`whitespace.normal`),
+                borderRadius: theme(`borderRadius.default`),
+                fontFamily: `"Source Code Pro", ${[...defaultTheme.fontFamily.mono]}`,
+                backgroundColor: `rgb(39, 40, 34)`,
+
+                '&:after, &:before': {
+                  content: `"" !important`,
+                },
+              },
+            },
             code: {
               padding: `${theme(`padding.1`)} ${theme(`padding.2`)}`,
               fontSize: theme(`fontSize.sm`),

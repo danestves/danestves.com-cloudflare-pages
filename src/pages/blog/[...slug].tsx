@@ -3,7 +3,6 @@ import * as React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/dist/client/router'
 import ErrorPage from 'next/error'
-import Markdown from 'react-markdown'
 import Image from 'next/image'
 import { DiscussionEmbed } from 'disqus-react'
 import { FaFacebookSquare, FaTwitter, FaWhatsapp, FaLinkedin, FaShareAlt } from 'react-icons/fa'
@@ -13,7 +12,8 @@ import { window } from 'browser-monads'
 import cogoToast from 'cogo-toast'
 
 // Components
-import { CodeBlock, SEO, Emoji, Link, Newsletter, CallToAction } from '@/components'
+import { SEO, Emoji, Link, Newsletter, CallToAction } from '@/components'
+import Markdown from '@/components/Markdown'
 
 // Interfaces
 import { Blog, Media } from '@/interfaces'
@@ -25,10 +25,6 @@ import readingTime from '@/utils/readingTime'
 
 type DynamicBlogProps = {
   blog: Blog | null
-}
-
-const markdownRenderers = {
-  code: CodeBlock,
 }
 
 const DynamicBlog: React.FC<DynamicBlogProps> = ({ blog }) => {
@@ -106,13 +102,13 @@ const DynamicBlog: React.FC<DynamicBlogProps> = ({ blog }) => {
     <>
       <SEO
         title={blog.title}
-        description={`${removeMarkdown(blog.body).substr(0, 155)}...`}
+        description={`${removeMarkdown(blog.body).substr(0, 155).trimEnd()}...`}
         shareImage={shareMedia as Media}
       />
 
       <div className="relative -mt-20 h-80" style={{ zIndex: -1 }}>
         <Image
-          src={cover.formats.large?.url || cover.url || '/'}
+          src={cover.url || cover.formats.large?.url || '/'}
           alt={blog.title}
           objectFit="cover"
           layout="fill"
@@ -164,16 +160,11 @@ const DynamicBlog: React.FC<DynamicBlogProps> = ({ blog }) => {
 
       <div className="container px-5">
         <div className="flex flex-wrap lg:space-x-12">
-          <div className="w-full lg:w-1/2 xl:w-2/3">
-            <Markdown
-              className="max-w-full prose prose-lg text-white"
-              source={blog.body}
-              renderers={markdownRenderers}
-              escapeHtml={false}
-            />
+          <div className="w-full xl:w-2/3">
+            <Markdown markdown={blog.body} />
           </div>
 
-          <div className="w-full mt-10 lg:mt-0 lg:flex-1">
+          <div className="w-full mt-10 lg:mt-0 xl:flex-1">
             <Newsletter />
           </div>
         </div>
