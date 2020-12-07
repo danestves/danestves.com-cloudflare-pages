@@ -3,6 +3,7 @@ import * as React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
+import Image from 'next/image'
 
 // Components
 import { SEO, Link, Emoji, Pagination } from '@/components'
@@ -14,6 +15,7 @@ import { Blog } from '@/interfaces'
 import { getPosts } from '@/utils/api'
 import removeMarkdown from '@/utils/removeMarkdown'
 import readingTime from '@/utils/readingTime'
+import imageGenerator from '@/utils/generator'
 
 interface BlogPageProps {
   posts: Blog[]
@@ -39,24 +41,19 @@ const BlogPage: NextPage<BlogPageProps> = ({ posts, count, page }) => {
                 className="flex flex-wrap w-full overflow-hidden rounded-lg shadow-lg"
               >
                 <div className="w-full md:w-1/2">
-                  <Link href={`/blog/${post.slug}/`} className="block h-full" title={post.title}>
-                    <img
-                      src={`https://generator.opengraphimg.com/?title=${decodeURIComponent(
-                        decodeURIComponent(post.title)
-                      )}&tags=${post.tags
-                        ?.map(({ name }) => name)
-                        .join(
-                          `,`
-                        )}&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`}
-                      className="object-contain w-full h-full"
+                  <Link href={`/blog/${post.slug}/`} className="flex h-full" title={post.title}>
+                    <Image
+                      src={imageGenerator(post.title, post.tags)}
                       alt={post.title}
+                      width={1200}
+                      height={630}
                     />
                   </Link>
                 </div>
 
                 <div
                   className={`flex flex-col justify-between w-full p-6 transition-all duration-200 bg-white md:w-1/2 ${
-                    !(index % 2) ? 'order-first' : ''
+                    !(index % 2) ? 'md:order-first' : ''
                   }`}
                 >
                   <div className="flex-1">
