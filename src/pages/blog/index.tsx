@@ -3,7 +3,7 @@ import * as React from 'react'
 import { NextPage, GetServerSideProps } from 'next'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
-import Image from 'next/image'
+import LazyLoad from 'react-lazyload'
 
 // Components
 import { SEO, Link, Emoji, Pagination } from '@/components'
@@ -42,12 +42,9 @@ const BlogPage: NextPage<BlogPageProps> = ({ posts, count, page }) => {
               >
                 <div className="w-full md:w-1/2">
                   <Link href={`/blog/${post.slug}/`} className="flex h-full" title={post.title}>
-                    <Image
-                      src={imageGenerator(post.title, post.tags)}
-                      alt={post.title}
-                      width={1200}
-                      height={630}
-                    />
+                    <LazyLoad height={260}>
+                      <img src={imageGenerator(post.title, post.tags)} alt={post.title} />
+                    </LazyLoad>
                   </Link>
                 </div>
 
