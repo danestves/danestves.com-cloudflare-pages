@@ -1,111 +1,113 @@
-// Dependencies
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/dist/client/router'
+export default {}
 
-// Interfaces
-import { Blog, Portfolio, UseEntriesReturn } from '@/interfaces'
+// // Dependencies
+// import { useState, useEffect } from 'react'
+// import { useRouter } from 'next/dist/client/router'
 
-// Utils
-import { getEntries } from '@/utils/api'
-import { Params } from 'next/dist/next-server/server/router'
+// // Interfaces
+// import { Blog, Portfolio, UseEntriesReturn } from '@/interfaces'
 
-const useEntries = (slug: string, limitEntries?: number): UseEntriesReturn => {
-  // Hooks
-  const router = useRouter()
+// // Utils
+// import { getEntries } from '@/utils/api'
+// import { Params } from 'next/dist/next-server/server/router'
 
-  // States
-  const [fetching, setFetching] = useState(true)
-  const [start, setStart] = useState(Number(router.query?._start) || 0)
-  const [limit] = useState(Number(router.query?._limit) || limitEntries || 9)
-  const [items, setItems] = useState<Portfolio[] | Blog[] | []>([])
-  const [count, setCount] = useState(0)
-  const [itemsFetched, setItemsFetched] = useState(0)
+// const useEntries = (slug: string, limitEntries?: number): UseEntriesReturn => {
+//   // Hooks
+//   const router = useRouter()
 
-  // Constants
-  const isFirstPage = start === 0
-  const hasPages = !(start + limit >= count)
-  const fetchParams: Params = {
-    _sort: 'createdAt:DESC',
-    _limit: limit,
-    _start: start,
-  }
+//   // States
+//   const [fetching, setFetching] = useState(true)
+//   const [start, setStart] = useState(Number(router.query?._start) || 0)
+//   const [limit] = useState(Number(router.query?._limit) || limitEntries || 9)
+//   const [items, setItems] = useState<Portfolio[] | Blog[] | []>([])
+//   const [count, setCount] = useState(0)
+//   const [itemsFetched, setItemsFetched] = useState(0)
 
-  // Methods
-  const getData = async (): Promise<unknown> => {
-    setFetching(true)
+//   // Constants
+//   const isFirstPage = start === 0
+//   const hasPages = !(start + limit >= count)
+//   const fetchParams: Params = {
+//     _sort: 'createdAt:DESC',
+//     _limit: limit,
+//     _start: start,
+//   }
 
-    Object.entries(router.query).forEach(([key, value]) => {
-      fetchParams[key] = value
-    })
+//   // Methods
+//   const getData = async (): Promise<unknown> => {
+//     setFetching(true)
 
-    const items = await getEntries(slug, fetchParams)
+//     Object.entries(router.query).forEach(([key, value]) => {
+//       fetchParams[key] = value
+//     })
 
-    if (!items) return null
+//     const items = await getEntries(slug, fetchParams)
 
-    setItems(items.entries)
-    setCount(Number(items.count))
-    setItemsFetched(itemsFetched + items.entries.length)
-    setFetching(false)
-  }
+//     if (!items) return null
 
-  /**
-   * Handle functionality for previous page
-   *
-   * @returns Change the current URL for the previous page.
-   */
-  const handlePrevPage = (): Promise<boolean> => {
-    let limitItems
+//     setItems(items.entries)
+//     setCount(Number(items.count))
+//     setItemsFetched(itemsFetched + items.entries.length)
+//     setFetching(false)
+//   }
 
-    limitItems = start - limit
+//   /**
+//    * Handle functionality for previous page
+//    *
+//    * @returns Change the current URL for the previous page.
+//    */
+//   const handlePrevPage = (): Promise<boolean> => {
+//     let limitItems
 
-    if (limitItems < 0) {
-      limitItems = 0
-    }
+//     limitItems = start - limit
 
-    setStart(limitItems)
+//     if (limitItems < 0) {
+//       limitItems = 0
+//     }
 
-    return router.push({
-      query: {
-        ...router.query,
-        _start: limitItems,
-        _limit: limit,
-      },
-    })
-  }
+//     setStart(limitItems)
 
-  /**
-   * Handle functionality for next page
-   *
-   * @returns Change the current URL for the next page.
-   */
-  const handleNextPage = (): Promise<boolean> => {
-    const limitItems = start + limit
+//     return router.push({
+//       query: {
+//         ...router.query,
+//         _start: limitItems,
+//         _limit: limit,
+//       },
+//     })
+//   }
 
-    setStart(limitItems)
+//   /**
+//    * Handle functionality for next page
+//    *
+//    * @returns Change the current URL for the next page.
+//    */
+//   const handleNextPage = (): Promise<boolean> => {
+//     const limitItems = start + limit
 
-    return router.push({
-      query: {
-        ...router.query,
-        _start: limitItems,
-        _limit: limit,
-      },
-    })
-  }
+//     setStart(limitItems)
 
-  // Effects
-  useEffect(() => {
-    getData()
-    // eslint-disable-next-line
-  }, [router.query._limit, router.query._start])
+//     return router.push({
+//       query: {
+//         ...router.query,
+//         _start: limitItems,
+//         _limit: limit,
+//       },
+//     })
+//   }
 
-  return {
-    loading: fetching,
-    items,
-    isFirstPage,
-    hasPages,
-    handlePrevPage,
-    handleNextPage,
-  }
-}
+//   // Effects
+//   useEffect(() => {
+//     getData()
+//     // eslint-disable-next-line
+//   }, [router.query._limit, router.query._start])
 
-export default useEntries
+//   return {
+//     loading: fetching,
+//     items,
+//     isFirstPage,
+//     hasPages,
+//     handlePrevPage,
+//     handleNextPage,
+//   }
+// }
+
+// export default useEntries

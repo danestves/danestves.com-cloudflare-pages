@@ -4,12 +4,12 @@ import { NextSeo, NextSeoProps } from 'next-seo'
 import { window } from 'browser-monads'
 
 // Interfaces
-import { Media } from '@/interfaces'
+import { Asset } from '@/interfaces'
 
 interface SEOProps extends NextSeoProps {
   title: string
-  description?: string
-  shareImage?: Media
+  description: string
+  shareImage?: Asset
   twitterCardType?: string
   twitterUsername?: string
 }
@@ -34,17 +34,15 @@ const SEO = ({
         title: title,
         description: description,
         // Only include OG image if we have it
-        // Careful: if you disable image optimization in Strapi, this will break
         ...(shareImage && {
-          images: shareImage.formats
-            ? Object.values(shareImage.formats).map((image) => {
-                return {
-                  url: image.url,
-                  width: image.width,
-                  height: image.height,
-                }
-              })
-            : [{ url: shareImage.url || '', width: 1000, height: 523 }],
+          images: [
+            {
+              url: shareImage.url,
+              width: shareImage.width,
+              height: shareImage.height,
+              alt: title,
+            },
+          ],
         }),
       }}
       // Only included Twitter data if we have it
