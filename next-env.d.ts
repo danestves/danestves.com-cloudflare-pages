@@ -4,3 +4,4 @@
 declare module 'remove-markdown'
 declare module 'emoji-trie'
 declare module 'browser-monads'
+declare module 'graphcms-image'

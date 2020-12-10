@@ -19,8 +19,6 @@ type BlogPageProps = {
 
 const BlogPage: NextPage<BlogPageProps> = ({ featuredPost }) => {
   // Render
-  console.log(featuredPost)
-
   return (
     <>
       <SEO
@@ -48,7 +46,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ featuredPost }) => {
                 <h2 className="text-4xl leading-tight text-white group-hover:underline group-focus:underline">
                   {featuredPost.title}
                 </h2>
-                <p className="text-xs text-white tmy-2">Publicado {featuredPost.createdAt}</p>
+                <p className="text-xs text-white tmy-2">Publicado {featuredPost.date}</p>
                 <p className="my-2 text-xs text-white">{featuredPost.excerpt}</p>
               </div>
             </div>

@@ -3,7 +3,7 @@ import * as React from 'react'
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Image from 'next/image'
+import Image from 'graphcms-image'
 
 // Components
 import { SEO } from '@/components'
@@ -47,7 +47,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
       />
 
       <div className="relative flex -mt-20 transition-all duration-150" style={{ zIndex: -1 }}>
-        <Image src={post.coverImage.url} width={1920} height={320} />
+        <Image image={post.coverImage} maxWidth={1920} outerWrapperClassName="w-full" />
 
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60" />
       </div>

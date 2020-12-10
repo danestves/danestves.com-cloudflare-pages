@@ -28,6 +28,7 @@
     "disqus-react": "^1.0.10",
     "emoji-trie": "https://github.com/codex-src/emoji-trie.js",
     "framer-motion": "1.6.0",
+    "graphcms-image": "^1.1.0-beta4",
     "lodash": "^4.17.20",
     "markdown-render-a11y-emojis": "^0.1.1",
     "next": "^10.0.3",

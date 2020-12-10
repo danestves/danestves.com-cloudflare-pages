@@ -118,7 +118,7 @@ export async function getPostBySlug(slug: string, preview = false): Promise<Post
         excerpt
         content
         coverImage {
-          url
+          handle
           width
           height
         }
@@ -162,7 +162,7 @@ export async function getBlogPageData(): Promise<{ featuredPost: Post; posts: [P
         coverImage {
           url(transformation: {image: {resize: {width: 700, height: 470, fit: crop}}})
         }
-        createdAt
+        date
       }
       posts(orderBy: createdAt_DESC, skip: 1) {
         id

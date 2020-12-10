@@ -55,7 +55,7 @@ export interface Post {
   publishedAt: string
   title: string
   slug: string
-  date: Date
+  date: string
   excerpt?: string
   coverImage: Asset
   content: string
