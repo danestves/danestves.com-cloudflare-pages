@@ -47,7 +47,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
       />
 
       <div className="relative flex -mt-20 transition-all duration-150" style={{ zIndex: -1 }}>
-        <Image image={post.coverImage} maxWidth={1920} outerWrapperClassName="w-full" />
+        <Image image={post.coverImage} maxWidth={400} outerWrapperClassName="w-full" />
 
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60" />
       </div>

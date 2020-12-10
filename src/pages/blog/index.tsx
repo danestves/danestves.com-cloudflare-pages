@@ -1,7 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { NextPage, GetStaticProps } from 'next'
-import Image from 'next/image'
+import Image from 'graphcms-image'
 
 // Components
 import { SEO, Link } from '@/components'
@@ -11,13 +11,14 @@ import { Post } from '@/interfaces'
 
 // Utils
 import { getBlogPageData } from '@/lib/graphcms'
+import formatDate from '@/utils/formatDate'
 
 type BlogPageProps = {
   featuredPost: Post
   posts: [Post]
 }
 
-const BlogPage: NextPage<BlogPageProps> = ({ featuredPost }) => {
+const BlogPage: NextPage<BlogPageProps> = ({ featuredPost, posts }) => {
   // Render
   return (
     <>
@@ -33,25 +34,52 @@ const BlogPage: NextPage<BlogPageProps> = ({ featuredPost }) => {
               <div className="lg:col-span-7">
                 <div className="w-full overflow-hidden duration-200 transform rounded group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
                   <Image
-                    src={featuredPost.coverImage.url}
-                    alt={featuredPost.title}
-                    width={700}
-                    height={470}
-                    layout="responsive"
+                    image={featuredPost.coverImage}
+                    maxWidth={700}
+                    outerWrapperClassName="w-full"
                   />
                 </div>
               </div>
 
               <div className="mt-6 lg:col-span-5">
-                <h2 className="text-4xl leading-tight text-white group-hover:underline group-focus:underline">
+                <h2 className="text-4xl font-semibold leading-tight text-white lg:text-5xl group-hover:underline group-focus:underline">
                   {featuredPost.title}
                 </h2>
-                <p className="text-xs text-white tmy-2">Publicado {featuredPost.date}</p>
-                <p className="my-2 text-xs text-white">{featuredPost.excerpt}</p>
+                <p className="mb-2 text-base text-white lg:text-lg">
+                  Publicado en {formatDate(featuredPost.date, 'MMM. d yyy')}
+                </p>
+                <p className="my-4 text-lg text-white lg:text-xl">{featuredPost.excerpt}</p>
               </div>
             </div>
           </Link>
         )}
+
+        <div className="gap-6 my-24 md:grid md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <article key={post.id} className="mb-12">
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group hover:no-underline focus:no-underline"
+              >
+                <div className="w-full overflow-hidden duration-200 transform rounded group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
+                  <Image image={post.coverImage} maxWidth={700} outerWrapperClassName="w-full" />
+                </div>
+
+                <div className="mt-6">
+                  <p className="my-2 text-xs text-white">
+                    Publicado en {formatDate(post.date, 'MMM. d yyy')}
+                  </p>
+
+                  <h2 className="mb-2 text-2xl font-medium leading-tight text-white group-hover:underline group-focus:underline">
+                    {post.title}
+                  </h2>
+
+                  <p className="text-sm text-white">{post.excerpt}</p>
+                </div>
+              </Link>
+            </article>
+          ))}
+        </div>
       </div>
     </>
   )

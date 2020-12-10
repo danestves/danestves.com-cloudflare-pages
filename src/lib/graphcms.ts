@@ -160,7 +160,9 @@ export async function getBlogPageData(): Promise<{ featuredPost: Post; posts: [P
         slug
         excerpt
         coverImage {
-          url(transformation: {image: {resize: {width: 700, height: 470, fit: crop}}})
+          handle
+          width
+          height
         }
         date
       }
@@ -170,9 +172,11 @@ export async function getBlogPageData(): Promise<{ featuredPost: Post; posts: [P
         slug
         excerpt
         coverImage {
-          url
+          handle
+          width
+          height
         }
-        createdAt
+        date
       }
     }
   `)
