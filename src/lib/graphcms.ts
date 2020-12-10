@@ -140,7 +140,47 @@ export async function getPostBySlug(slug: string, preview = false): Promise<Post
     }
   )
 
-  console.log(post)
-
   return post.post as Post
+}
+
+/**
+ * @function getBlogPageData
+ *
+ * @description
+ * Retreive the featured post (latest) and the rest of the posts
+ *
+ * @returns And object with the featured posts and an array of posts
+ */
+export async function getBlogPageData(): Promise<{ featuredPost: Post; posts: [Post] }> {
+  const data = await fetchAPI(`
+    query blogPage {
+      featuredPost: posts(orderBy: createdAt_DESC, first: 1) {
+        id
+        title
+        slug
+        excerpt
+        coverImage {
+          url(transformation: {image: {resize: {width: 700, height: 470, fit: crop}}})
+        }
+        createdAt
+      }
+      posts(orderBy: createdAt_DESC, skip: 1) {
+        id
+        title
+        slug
+        excerpt
+        coverImage {
+          url
+        }
+        createdAt
+      }
+    }
+  `)
+
+  const featuredPost = data.featuredPost as [Post]
+
+  return {
+    featuredPost: featuredPost[0],
+    posts: data.posts as [Post],
+  }
 }
