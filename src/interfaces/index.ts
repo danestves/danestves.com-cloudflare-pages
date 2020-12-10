@@ -58,11 +58,6 @@ export interface Post {
   date: Date
   excerpt?: string
   coverImage: Asset
-  lazyCoverImage: {
-    src: string
-    aspectRatio: number
-    lqip: string
-  }
   content: string
   tags: [string]
   seo: Seo
