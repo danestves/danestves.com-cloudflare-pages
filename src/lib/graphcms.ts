@@ -128,6 +128,8 @@ export async function getPostBySlug(slug: string, preview = false): Promise<Post
           description
           keywords
         }
+        publishedAt
+        updatedAt
       }
     }
   `,

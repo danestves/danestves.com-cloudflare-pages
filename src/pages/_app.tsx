@@ -1,6 +1,9 @@
 // Dependencies
 import * as React from 'react'
 import { AppProps } from 'next/app'
+import { DefaultSeo, LogoJsonLd } from 'next-seo'
+import Head from 'next/head'
+import { motion } from 'framer-motion'
 
 // Components
 import { Layout } from '@/components'
@@ -8,37 +11,51 @@ import { Layout } from '@/components'
 // Styles
 import '@/styles/main.scss'
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
+function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
   return (
     <>
-      {/* Favicon
       <Head>
-        <link rel="shortcut icon" href={metadata.favicon.url} />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
 
       <DefaultSeo
-        titleTemplate={`%s | ${metadata.suffix}`}
-        title={metadata.title}
-        description={metadata.description}
+        titleTemplate="%s | @danestves"
+        title="Desarrollador web frontend"
+        description="Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad."
         openGraph={{
-          images:
-            metadata.shareImage.formats &&
-            Object.values(metadata.shareImage.formats).map((image) => {
-              return {
-                url: image.url,
-                width: image.width,
-                height: image.height,
-              }
-            }),
+          images: [
+            {
+              url: 'https://danestves.com/og.png',
+              width: 1200,
+              height: 630,
+              alt: 'Desarrollador web fullstack en javascript | @danestves',
+            },
+          ],
         }}
         twitter={{
-          cardType: metadata.twitterCardType,
-          handle: metadata.twitterUsername,
+          cardType: 'summary_large_image',
+          handle: '@danestves',
         }}
-      /> */}
+      />
+
+      <LogoJsonLd logo="https://danestves.com/logo.png" url="https://danestves.com" />
 
       <Layout>
-        <Component {...pageProps} />
+        <motion.div
+          key={router.route}
+          initial="pageInitial"
+          animate="pageAnimate"
+          variants={{
+            pageInitial: {
+              opacity: 0,
+            },
+            pageAnimate: {
+              opacity: 1,
+            },
+          }}
+        >
+          <Component {...pageProps} />
+        </motion.div>
       </Layout>
     </>
   )

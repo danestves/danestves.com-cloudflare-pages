@@ -9,7 +9,14 @@ import { Asset } from '@/interfaces'
 interface SEOProps extends NextSeoProps {
   title: string
   description: string
-  shareImage?: Asset
+  shareImage?:
+    | {
+        url: string
+        width: number
+        height: number
+        alt: string
+      }
+    | Asset
   twitterCardType?: string
   twitterUsername?: string
 }
@@ -33,6 +40,7 @@ const SEO = ({
         // Title and description are mandatory
         title: title,
         description: description,
+        url: window.location.href,
         // Only include OG image if we have it
         ...(shareImage && {
           images: [

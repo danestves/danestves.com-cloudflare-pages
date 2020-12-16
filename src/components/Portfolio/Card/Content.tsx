@@ -3,9 +3,6 @@ import * as React from 'react'
 import { motion, useInvertedScale } from 'framer-motion'
 import Markdown from 'react-markdown'
 
-// Utils
-//import removeMarkdown from '@/utils/removeMarkdown'
-
 function ContentPlaceholder({ body }: { body: string }): JSX.Element {
   const inverted = useInvertedScale()
 

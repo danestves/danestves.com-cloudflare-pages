@@ -4,7 +4,6 @@ enum Stage {
 }
 
 enum Locale {
-  en,
   es_VE,
 }
 
@@ -40,8 +39,8 @@ export interface Asset {
   publishedAt: string
   handle: string
   fileName: string
-  height?: number
-  width?: number
+  height: number
+  width: number
   size?: number
   mimeType: string
   url: string

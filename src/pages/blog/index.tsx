@@ -9,9 +9,11 @@ import { SEO, Link } from '@/components'
 // Interfaces
 import { Post } from '@/interfaces'
 
-// Utils
+// Lib
 import { getBlogPageData } from '@/lib/graphcms'
-import formatDate from '@/utils/formatDate'
+
+// Utils
+import { formatDate } from '@/utils'
 
 type BlogPageProps = {
   featuredPost: Post
