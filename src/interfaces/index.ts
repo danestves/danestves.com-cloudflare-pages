@@ -7,11 +7,6 @@ enum Locale {
   es_VE,
 }
 
-export interface ArgsUseDocumentType {
-  previousScrollTop: number
-  currentScrollTop: number
-}
-
 export interface Seo {
   stage: Stage
   id: string | number

@@ -4,6 +4,7 @@ import { AppProps } from 'next/app'
 import { DefaultSeo, LogoJsonLd } from 'next-seo'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
+import { window } from 'browser-monads'
 
 // Components
 import { Layout } from '@/components'
@@ -14,9 +15,16 @@ import '@/styles/main.scss'
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
   return (
     <>
-      <Head>
-        <link rel="shortcut icon" href="/favicon.ico" />
-      </Head>
+      <>
+        <Head>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+            media="all"
+          />
+          <link rel="shortcut icon" href={`//${window.location.host}/favicon.ico`} />
+        </Head>
+      </>
 
       <DefaultSeo
         titleTemplate="%s | @danestves"

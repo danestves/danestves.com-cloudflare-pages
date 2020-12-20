@@ -92,7 +92,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
         <div className="relative max-w-3xl mx-auto">
           {/* Share */}
           <div className="mb-8 md:mb-0 md:absolute md:top-0 md:bottom-0 md:left-0 md:transform md:-translate-x-full md:-mt-12">
-            <div className="flex flex-wrap -mx-2 border border-white rounded-md md:sticky md:top-0 md:flex-col md:mx-8">
+            <div className="flex flex-wrap -mx-2 overflow-hidden border border-white rounded-md md:sticky md:top-0 md:flex-col md:mx-8">
               <h2 className="flex-1 w-full text-xs font-bold text-center uppercase bg-white md:flex-auto text-secondary">
                 share
               </h2>

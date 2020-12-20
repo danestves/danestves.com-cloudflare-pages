@@ -9,7 +9,7 @@ module.exports = {
       './src/pages/**/*.ts',
     ],
     options: {
-      whitelist: [
+      safelist: [
         `z-100`,
         `embed-responsive`,
         `aspect-ratio-square`,
