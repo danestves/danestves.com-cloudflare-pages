@@ -5,16 +5,20 @@ import { DefaultSeo, LogoJsonLd } from 'next-seo'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { window } from 'browser-monads'
+import { ApolloProvider } from '@apollo/client'
 
 // Components
 import { Layout } from '@/components'
+
+// Lib
+import apollo from '@/lib/apollo'
 
 // Styles
 import '@/styles/main.scss'
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
   return (
-    <>
+    <ApolloProvider client={apollo}>
       <>
         <Head>
           <link
@@ -65,7 +69,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
           <Component {...pageProps} />
         </motion.div>
       </Layout>
-    </>
+    </ApolloProvider>
   )
 }
 

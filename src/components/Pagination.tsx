@@ -1,30 +1,107 @@
 // Dependencies
 import * as React from 'react'
-import { useRouter } from 'next/dist/client/router'
+import { DocumentNode } from 'graphql'
+
+// Generated
+import { PageInfo } from '@/generated/graphql'
 
 type PaginationProps = {
-  model: string
+  state: {
+    currentPage: number
+    pageSize: number
+    totalPages: number
+  }
+  query: DocumentNode
+  variables: { first: number; skip: number }
+  setState: React.Dispatch<
+    React.SetStateAction<{
+      currentPage: number
+      pageSize: number
+      totalPages: number
+    }>
+  >
+  fetchMore: (arg0: any) => void
   count: number
-  page: number
-  limit: number
+  pageInfo: PageInfo
 }
 
-const Pagination = ({ model, count, page, limit }: PaginationProps): JSX.Element => {
-  // Hooks
-  const router = useRouter()
+const Pagination = ({
+  state,
+  query,
+  variables,
+  setState,
+  fetchMore,
+  count,
+  pageInfo,
+}: PaginationProps): JSX.Element => {
+  /**
+   * Returns the total pages from `count / limit`
+   *
+   * @param count - The number of items
+   * @param pageSize - The limit of items
+   */
+  const totalPages = (count: number, pageSize: number): number => {
+    return Math.ceil(count / pageSize)
+  }
 
-  // Render
-  const lastPage = Math.ceil(count / limit)
+  /**
+   * Returns if haves next page
+   *
+   * @param count - The number of items
+   * @param currentPage - The current page number
+   * @param pageSize- The limit of items
+   */
+  const hasNextPage = (count: number, currentPage: number, pageSize: number): boolean => {
+    return currentPage < totalPages(count, pageSize)
+  }
+
+  /**
+   * Returns if haves previous page
+   *
+   * @param currentPage - The current page number
+   */
+  const hasPrevPage = (currentPage: number): boolean => {
+    return currentPage > 1
+  }
+
+  /**
+   * Handle navigate to previous page
+   */
+  const handlePreviousPage = (): void => {
+    setState((old) => ({ ...old, currentPage: old.currentPage - 1 }))
+
+    fetchMore({
+      query,
+      variables,
+    })
+  }
+
+  /**
+   * Handle navigate to next page
+   *
+   * @param cursor - The parameter to navigate to next page
+   */
+  const handleNextPage = (cursor: string): void => {
+    setState((old) => ({ ...old, currentPage: old.currentPage + 1 }))
+
+    fetchMore({
+      query,
+      variables: {
+        first: state.pageSize,
+        after: cursor,
+      },
+    })
+  }
 
   return (
     <div className="flex items-center justify-between my-6">
       <div>
-        {!(page <= 1) && (
+        {hasPrevPage(state.currentPage) && (
           <button
             type="button"
             aria-label="Anterior"
             className="flex items-center px-6 py-2 font-semibold rounded focus:outline-none bg-primary text-secondary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
-            onClick={() => router.push(`/${model}?page=${page - 1}`)}
+            onClick={handlePreviousPage}
           >
             <svg
               className="w-5 h-5 mr-1"
@@ -46,12 +123,12 @@ const Pagination = ({ model, count, page, limit }: PaginationProps): JSX.Element
       </div>
 
       <div>
-        {!(page >= lastPage) && (
+        {hasNextPage(count, state.currentPage, state.pageSize) && pageInfo?.endCursor && (
           <button
             type="button"
             aria-label="Siguiente"
             className="flex items-center px-6 py-2 font-semibold rounded focus:outline-none bg-primary text-secondary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
-            onClick={() => router.push(`/${model}?page=${page + 1}`)}
+            onClick={() => handleNextPage(pageInfo.endCursor || '')}
           >
             Siguiente
             <svg
