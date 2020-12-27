@@ -21,10 +21,10 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
     <ApolloProvider client={apollo}>
       <>
         <Head>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Code+Pro:wght@400;700&display=swap"
-            media="all"
+            rel="stylesheet"
           />
           <link rel="shortcut icon" href={`//${window.location.host}/favicon.ico`} />
         </Head>
