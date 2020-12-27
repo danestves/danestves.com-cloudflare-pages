@@ -5249,6 +5249,11 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
+kwesforms@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/kwesforms/-/kwesforms-2.0.3.tgz#590fc824b241f03ade6e164a4314da91d12a7bf4"
+  integrity sha512-DG7iqgyFFD625lyGS7weEm5UPE/zn4+bhVxqVcPzHhrWh5Eq5X8acW2JvtE7JKCajU5iqZkpQroSIxpxq4gtxA==
+
 language-subtag-registry@~0.3.2:
   version "0.3.21"
   resolved "https://registry.yarnpkg.com/language-subtag-registry/-/language-subtag-registry-0.3.21.tgz#04ac218bea46f04cb039084602c6da9e788dd45a"

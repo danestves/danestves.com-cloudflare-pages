@@ -4,19 +4,14 @@ import { NextPage } from 'next'
 import { IoBusinessOutline, IoColorPaletteOutline } from 'react-icons/io5'
 import { GiCheckboxTree } from 'react-icons/gi'
 import { FaLaptopCode } from 'react-icons/fa'
-import { document } from 'browser-monads'
+import kwesforms from 'kwesforms'
 
 // Components
 import { SEO, Emoji } from '@/components'
 
 const Contacto: NextPage = () => {
   React.useEffect(() => {
-    const kwesScript = document.createElement(`script`)
-
-    kwesScript.setAttribute(`src`, `https://kwes.io/v2/kwes-script.js`)
-    kwesScript.setAttribute(`charset`, `utf-8`)
-
-    document.head.appendChild(kwesScript)
+    kwesforms.init()
   }, [])
 
   return (
