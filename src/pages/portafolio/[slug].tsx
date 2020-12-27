@@ -1,6 +1,8 @@
 // Dependencies
 import * as React from 'react'
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
+import ErrorPage from 'next/error'
+import { useRouter } from 'next/dist/client/router'
 import Image from 'graphcms-image'
 import { BiLinkExternal } from 'react-icons/bi'
 
@@ -9,7 +11,7 @@ import { SEO } from '@/components'
 import Markdown from '@/components/Markdown'
 
 // Generated
-import { Portfolio, PortfolioSlugsQueryHookResult } from '@/generated/graphql'
+import { Portfolio } from '@/generated/graphql'
 
 // Interfaces
 import { Asset } from '@/interfaces'
@@ -23,10 +25,22 @@ import GET_PORTFOLIO from '@/graphql/portfolio.query'
 
 interface Props {
   portfolio: Portfolio
-  hola: PortfolioSlugsQueryHookResult
 }
 
 const DynamicPortfolio: NextPage<Props> = ({ portfolio }) => {
+  // Hooks
+  const router = useRouter()
+
+  // Render
+  if ((!router.isFallback && !portfolio) || !portfolio) {
+    return <ErrorPage statusCode={404} />
+  }
+
+  // Loading screen (only possible in preview mode)
+  if (router.isFallback) {
+    return <div className="container">Loading...</div>
+  }
+
   return (
     <>
       <SEO
