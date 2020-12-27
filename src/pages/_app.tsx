@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
         <Head>
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Code+Pro:wght@400;700&display=swap"
             media="all"
           />
           <link rel="shortcut icon" href={`//${window.location.host}/favicon.ico`} />
