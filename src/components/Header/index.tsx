@@ -64,35 +64,35 @@ const Header = ({ pathname }: Props): JSX.Element => {
             <div className="hidden md:ml-10 md:flex md:items-baseline md:bg-transparent">
               <div className="flex items-center justify-center">
                 <Link
-                  href="/sobre-mi/"
+                  href="/sobre-mi"
                   title="Sobre Mí"
                   className="relative px-3 text-sm font-medium transition-all duration-200 text-primary hover:text-white py-7 focus:outline-none"
                 >
                   Sobre Mí
                 </Link>
                 <Link
-                  href="/apps/"
-                  title="Apps"
+                  href="/open-source"
+                  title="Open Source"
                   className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
                 >
-                  Apps
+                  Open Source
                 </Link>
                 <Link
-                  href="/portafolio/"
+                  href="/portafolio"
                   title="Portafolio"
                   className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
                 >
                   Portafolio
                 </Link>
                 <Link
-                  href="/blog/"
+                  href="/blog"
                   title="Blog"
                   className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
                 >
                   Blog
                 </Link>
                 <Link
-                  href="/contacto/"
+                  href="/contacto"
                   title="Contacto"
                   className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
                 >
@@ -164,28 +164,28 @@ const Header = ({ pathname }: Props): JSX.Element => {
                 </Link>
               )}
               <Link
-                href="/sobre-mi/"
+                href="/sobre-mi"
                 title="Sobre Mí"
                 className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
               >
                 Sobre Mí
               </Link>
               <Link
-                href="/apps/"
-                title="Apps"
+                href="/open-source"
+                title="Open Source"
                 className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
               >
-                Apps
+                Open Source
               </Link>
               <Link
-                href="/portafolio/"
+                href="/portafolio"
                 title="Portafolio"
                 className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
               >
                 Portafolio
               </Link>
               <Link
-                href="/blog/"
+                href="/blog"
                 title="Blog"
                 className="block w-full mt-8 font-medium transition-all duration-200 text-secondary hover:text-primary"
               >
@@ -196,7 +196,7 @@ const Header = ({ pathname }: Props): JSX.Element => {
           <div className="relative">
             <div className="p-4">
               <Link
-                href="/contacto/"
+                href="/contacto"
                 title="Contacto"
                 className="block px-3 py-3 font-medium text-center text-gray-900 bg-gray-300 rounded-lg hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
                 onClick={() => setIsOpen(false)}

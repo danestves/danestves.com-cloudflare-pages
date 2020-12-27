@@ -69,4 +69,30 @@ export const openGraphImgGenerator = (title: string, tags?: [string]): string =>
   }&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`
 }
 
-export default openGraphImgGenerator
+/**
+ * @function getGitHubLanguageColor
+ *
+ * @description
+ * Get language color based on name
+ * see: https://github.com/doda/github-language-colors/blob/master/colors.json to reference
+ *
+ * @param language - The language name
+ *
+ * @returns The language color
+ */
+export const getGitHubLanguageColor = (language: string): string => {
+  switch (language) {
+    case 'JavaScript':
+      return '#f1e05a'
+    case 'TypeScript':
+      return '#2b7489'
+    case 'CSS':
+      return '#563d7c'
+    case 'HTML':
+      return '#e44b23'
+    case 'Vue':
+      return '#2c3e50'
+    default:
+      return '#000000'
+  }
+}
