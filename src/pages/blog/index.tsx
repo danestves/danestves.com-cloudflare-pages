@@ -41,6 +41,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ featuredPost, posts }) => {
                     image={featuredPost.coverImage}
                     maxWidth={700}
                     outerWrapperClassName="w-full"
+                    alt={featuredPost.title}
                   />
                 </div>
               </div>
@@ -72,6 +73,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ featuredPost, posts }) => {
                     image={post.coverImage}
                     maxWidth={700}
                     outerWrapperClassName="w-full"
+                    alt={post.title}
                   />
                 </div>
 

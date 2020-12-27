@@ -72,13 +72,20 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
             image={post.coverImage}
             maxWidth={400}
             outerWrapperClassName="rounded-2xl shadow-xl overflow-hidden"
+            alt={post.title}
           />
         </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-center my-8">
             <div className="flex items-center space-x-4 divide-x-2 divide-white">
-              <NextImage src="/me.jpg" width={75} height={75} className="rounded-full" />
+              <NextImage
+                src="/me.jpg"
+                width={75}
+                height={75}
+                className="rounded-full"
+                alt="Daniel Esteves"
+              />
 
               <div className="pl-4">
                 <h2 className="text-lg font-semibold text-white">Daniel Esteves</h2>
