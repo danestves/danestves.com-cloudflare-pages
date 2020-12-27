@@ -1,18 +1,20 @@
 // Dependencies
 import * as React from 'react'
+import { useRouter } from 'next/dist/client/router'
 
 // Components
 import { Header, Footer, CallToAction } from '@/components'
 
 const Layout: React.FC = ({ children }) => {
-  // Render
+  const router = useRouter()
+
   return (
     <>
       <Header pathname="/" />
 
       {children}
 
-      <CallToAction />
+      {router.pathname !== '/contacto' && <CallToAction />}
 
       <Footer />
     </>

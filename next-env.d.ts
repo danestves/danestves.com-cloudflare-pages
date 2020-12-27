@@ -2,6 +2,7 @@
 /// <reference types="next/types/global" />
 
 declare module 'react-markdown/plugins/html-parser'
+declare module 'kwesforms'
 
 declare module 'browser-monads' {
   export const window: Window

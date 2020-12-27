@@ -54,7 +54,7 @@ const Footer = (): JSX.Element => (
           </div>
         </div>
 
-        <div className="col-span-12 md:col-span-3">
+        <div className="col-span-12 md:col-span-2">
           <p className="mb-6 font-semibold text-white">Links</p>
 
           <ul className="grid gap-2">
@@ -91,7 +91,7 @@ const Footer = (): JSX.Element => (
           </ul>
         </div>
 
-        <div className="col-span-12 md:col-span-4">
+        <div className="col-span-12 md:col-span-5">
           <p className="mb-6 font-semibold text-white">Unete al Newsletter!</p>
 
           <p className="mb-4 text-white">
