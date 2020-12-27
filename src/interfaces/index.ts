@@ -3,8 +3,10 @@ enum Stage {
   DRAFT,
 }
 
-enum Locale {
-  es_VE,
+export interface Asset {
+  url: string
+  width: number
+  height: number
 }
 
 export interface Seo {
@@ -23,22 +25,6 @@ export interface RichText {
   html: string
   narkdown: string
   text: string
-}
-
-export interface Asset {
-  stage: Stage
-  locale: Locale
-  id: string | number
-  createdAt: string
-  updatedAt: string
-  publishedAt: string
-  handle: string
-  fileName: string
-  height: number
-  width: number
-  size?: number
-  mimeType: string
-  url: string
 }
 
 export interface Post {

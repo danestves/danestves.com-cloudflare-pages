@@ -67,6 +67,8 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
 
         <div className="max-w-5xl mx-auto">
           <Image
+            // eslint-disable-next-line
+            // @ts-ignore
             image={post.coverImage}
             maxWidth={400}
             outerWrapperClassName="rounded-2xl shadow-xl overflow-hidden"

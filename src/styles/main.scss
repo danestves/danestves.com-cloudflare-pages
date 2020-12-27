@@ -3,6 +3,16 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+$primary-color: #ffffff;
+@import 'loaders.css/src/animations/pacman.scss';
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+}
+
 .card-list {
   & .card {
     @apply transition-all duration-300 relative;

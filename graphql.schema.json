@@ -106,7 +106,7 @@
                     }
                   }
                 },
-                "defaultValue": "[es_VE, en]"
+                "defaultValue": "[es_VE]"
               },
               {
                 "name": "includeCurrent",
@@ -4855,12 +4855,6 @@
             "description": "System locale",
             "isDeprecated": false,
             "deprecationReason": null
-          },
-          {
-            "name": "en",
-            "description": "",
-            "isDeprecated": false,
-            "deprecationReason": null
           }
         ],
         "possibleTypes": null
@@ -9455,7 +9449,7 @@
                     }
                   }
                 },
-                "defaultValue": "[es_VE, en]"
+                "defaultValue": "[es_VE]"
               },
               {
                 "name": "includeCurrent",

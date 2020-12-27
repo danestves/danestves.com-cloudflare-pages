@@ -159,6 +159,7 @@ module.exports = {
       scale: [`group-hover`],
       space: [`hover`, `group-hover`],
       textColor: [`responsive`, `hover`, `group-hover`],
+      translate: [`group-hover`]
     },
   },
   plugins: [

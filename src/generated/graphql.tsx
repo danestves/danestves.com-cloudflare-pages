@@ -790,7 +790,6 @@ export type ImageTransformationInput = {
 export enum Locale {
   /** System locale */
   EsVe = 'es_VE',
-  En = 'en',
 }
 
 /** Representing a geolocation point with latitude and longitude */
@@ -4147,6 +4146,34 @@ export enum _SystemDateTimeFieldVariation {
   Combined = 'combined',
 }
 
+export type PortfolioQueryVariables = Exact<{
+  slug: Scalars['String']
+}>
+
+export type PortfolioQuery = { __typename?: 'Query' } & {
+  portfolio?: Maybe<
+    { __typename?: 'Portfolio' } & Pick<
+      Portfolio,
+      'id' | 'title' | 'industry' | 'technologies' | 'external_url' | 'content'
+    > & {
+        seo?: Maybe<
+          { __typename?: 'Seo' } & Pick<Seo, 'title' | 'description'> & {
+              image?: Maybe<{ __typename?: 'Asset' } & Pick<Asset, 'url' | 'width' | 'height'>>
+            }
+        >
+        cover: { __typename?: 'Asset' } & Pick<Asset, 'handle' | 'width' | 'height'>
+      }
+  >
+}
+
+export type PortfolioSlugsQueryVariables = Exact<{
+  first?: Maybe<Scalars['Int']>
+}>
+
+export type PortfolioSlugsQuery = { __typename?: 'Query' } & {
+  portfolios: Array<{ __typename?: 'Portfolio' } & Pick<Portfolio, 'slug'>>
+}
+
 export type PortfoliosQueryVariables = Exact<{
   first?: Maybe<Scalars['Int']>
   skip?: Maybe<Scalars['Int']>
@@ -4173,6 +4200,111 @@ export type PortfoliosQuery = { __typename?: 'Query' } & {
   }
 }
 
+export const PortfolioDocument = gql`
+  query portfolio($slug: String!) {
+    portfolio(where: { slug: $slug }) {
+      seo {
+        title
+        description
+        image {
+          url
+          width
+          height
+        }
+      }
+      id
+      title
+      cover {
+        handle
+        width
+        height
+      }
+      industry
+      technologies
+      external_url
+      content
+    }
+  }
+`
+
+/**
+ * __usePortfolioQuery__
+ *
+ * To run a query within a React component, call `usePortfolioQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePortfolioQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePortfolioQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function usePortfolioQuery(
+  baseOptions: Apollo.QueryHookOptions<PortfolioQuery, PortfolioQueryVariables>
+) {
+  return Apollo.useQuery<PortfolioQuery, PortfolioQueryVariables>(PortfolioDocument, baseOptions)
+}
+export function usePortfolioLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PortfolioQuery, PortfolioQueryVariables>
+) {
+  return Apollo.useLazyQuery<PortfolioQuery, PortfolioQueryVariables>(
+    PortfolioDocument,
+    baseOptions
+  )
+}
+export type PortfolioQueryHookResult = ReturnType<typeof usePortfolioQuery>
+export type PortfolioLazyQueryHookResult = ReturnType<typeof usePortfolioLazyQuery>
+export type PortfolioQueryResult = Apollo.QueryResult<PortfolioQuery, PortfolioQueryVariables>
+export const PortfolioSlugsDocument = gql`
+  query portfolioSlugs($first: Int) {
+    portfolios(first: $first) {
+      slug
+    }
+  }
+`
+
+/**
+ * __usePortfolioSlugsQuery__
+ *
+ * To run a query within a React component, call `usePortfolioSlugsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePortfolioSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePortfolioSlugsQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function usePortfolioSlugsQuery(
+  baseOptions?: Apollo.QueryHookOptions<PortfolioSlugsQuery, PortfolioSlugsQueryVariables>
+) {
+  return Apollo.useQuery<PortfolioSlugsQuery, PortfolioSlugsQueryVariables>(
+    PortfolioSlugsDocument,
+    baseOptions
+  )
+}
+export function usePortfolioSlugsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PortfolioSlugsQuery, PortfolioSlugsQueryVariables>
+) {
+  return Apollo.useLazyQuery<PortfolioSlugsQuery, PortfolioSlugsQueryVariables>(
+    PortfolioSlugsDocument,
+    baseOptions
+  )
+}
+export type PortfolioSlugsQueryHookResult = ReturnType<typeof usePortfolioSlugsQuery>
+export type PortfolioSlugsLazyQueryHookResult = ReturnType<typeof usePortfolioSlugsLazyQuery>
+export type PortfolioSlugsQueryResult = Apollo.QueryResult<
+  PortfolioSlugsQuery,
+  PortfolioSlugsQueryVariables
+>
 export const PortfoliosDocument = gql`
   query portfolios($first: Int, $skip: Int, $after: String) {
     portfolios: portfoliosConnection(

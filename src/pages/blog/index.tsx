@@ -36,6 +36,8 @@ const BlogPage: NextPage<BlogPageProps> = ({ featuredPost, posts }) => {
               <div className="lg:col-span-7">
                 <div className="w-full overflow-hidden duration-200 transform rounded group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
                   <Image
+                    // eslint-disable-next-line
+                    // @ts-ignore
                     image={featuredPost.coverImage}
                     maxWidth={700}
                     outerWrapperClassName="w-full"
@@ -64,7 +66,13 @@ const BlogPage: NextPage<BlogPageProps> = ({ featuredPost, posts }) => {
                 className="group hover:no-underline focus:no-underline"
               >
                 <div className="w-full overflow-hidden duration-200 transform rounded group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
-                  <Image image={post.coverImage} maxWidth={700} outerWrapperClassName="w-full" />
+                  <Image
+                    // eslint-disable-next-line
+                    // @ts-ignore
+                    image={post.coverImage}
+                    maxWidth={700}
+                    outerWrapperClassName="w-full"
+                  />
                 </div>
 
                 <div className="mt-6">

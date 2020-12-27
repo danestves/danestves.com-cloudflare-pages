@@ -14,7 +14,6 @@ interface SEOProps extends NextSeoProps {
         url: string
         width: number
         height: number
-        alt: string
       }
     | Asset
   twitterCardType?: string
