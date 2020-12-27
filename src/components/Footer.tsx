@@ -2,50 +2,128 @@
 import * as React from 'react'
 import { FaGithubAlt, FaYoutube, FaTwitter } from 'react-icons/fa'
 
+// Components
+import { Link, Emoji } from '@/components'
+
 const Footer = (): JSX.Element => (
   <footer className="py-5 bg-secondary">
-    <div className="container flex flex-wrap items-center justify-between px-5">
+    <div className="container px-5">
+      <div className="grid grid-cols-12 gap-8">
+        <div className="grid col-span-12 gap-4 mb-auto md:col-span-5">
+          <p className="text-2xl font-semibold text-white">Daniel Esteves</p>
+
+          <div>
+            <p className="mb-4 text-white">
+              Plasmo tus ideas y las hago realidad. Trabajaré contigo lado a lado para que tu
+              producto final sea mucho mejor de lo que esperas.
+            </p>
+          </div>
+
+          <div className="-mx-4">
+            <div className="flex mx-4 space-x-2">
+              <a
+                href="https://github.com/danestves"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="GitHub"
+                className="text-primary"
+              >
+                <FaGithubAlt size="20" />
+              </a>
+
+              <a
+                href="https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="YouTube"
+                className="text-primary"
+              >
+                <FaYoutube size="20" />
+              </a>
+
+              <a
+                href="https://twitter.com/danestves"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Twitter"
+                className="text-primary"
+              >
+                <FaTwitter size="20" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-span-12 md:col-span-3">
+          <p className="mb-6 font-semibold text-white">Links</p>
+
+          <ul className="grid gap-2">
+            <li>
+              <Link href="/" className="text-white hover:underline focus:outline-none">
+                Inicio
+              </Link>
+            </li>
+            <li>
+              <Link href="/sobre-mi" className="text-white hover:underline focus:outline-none">
+                Sobre Mí
+              </Link>
+            </li>
+            <li>
+              <Link href="/apps" className="text-white hover:underline focus:outline-none">
+                Apps
+              </Link>
+            </li>
+            <li>
+              <Link href="/portafolio" className="text-white hover:underline focus:outline-none">
+                Portafolio
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog" className="text-white hover:underline focus:outline-none">
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link href="/conacto" className="text-white hover:underline focus:outline-none">
+                Contacto
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div className="col-span-12 md:col-span-4">
+          <p className="mb-6 font-semibold text-white">Unete al Newsletter!</p>
+
+          <p className="mb-4 text-white">
+            Prometo no enviarte spam <Emoji emoji="🤘" />. Envío un correo cada vez que hago un
+            nuevo blogpost o subo un nuevo video.
+          </p>
+
+          <form
+            action="https://www.getrevue.co/profile/danestves/add_subscriber"
+            method="post"
+            className="flex flex-col items-start my-4 space-y-4 md:items-center md:flex-row md:space-y-0 md:space-x-4"
+          >
+            <input
+              type="email"
+              name="member[email]"
+              id="member[email]"
+              placeholder="Correo"
+              className="block w-full px-4 py-2 mx-auto font-mono leading-5 text-white placeholder-opacity-50 bg-transparent border border-white rounded-lg md:flex-1 focus:outline-none"
+            />
+
+            <button type="submit" className="px-4 py-2 rounded-lg text-secondary bg-primary">
+              Unete <Emoji emoji="👉" />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div className="container px-5 mt-8">
       <p className="font-mono text-sm text-primary">
-        Daniel Esteves © <span id="year" /> - Todos los derechos reservados
+        Daniel Esteves © <span>{new Date().getFullYear()}</span> - Todos los derechos reservados
       </p>
-
-      <ul className="flex">
-        <li className="mx-2">
-          <a
-            href="https://github.com/danestves"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="GitHub de Daniel Esteves"
-            className="text-primary"
-          >
-            <FaGithubAlt size="20" />
-          </a>
-        </li>
-
-        <li className="mx-2">
-          <a
-            href="https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="YouTube de Daniel Esteves"
-            className="text-primary"
-          >
-            <FaYoutube size="20" />
-          </a>
-        </li>
-
-        <li className="mx-2">
-          <a
-            href="https://twitter.com/danestves"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Twitter de Daniel Esteves"
-            className="text-primary"
-          >
-            <FaTwitter size="20" />
-          </a>
-        </li>
-      </ul>
     </div>
 
     <div className="container mt-8">

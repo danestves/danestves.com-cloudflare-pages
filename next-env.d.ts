@@ -1,6 +1,8 @@
 /// <reference types="next" />
 /// <reference types="next/types/global" />
 
+declare module 'react-markdown/plugins/html-parser'
+
 declare module 'browser-monads' {
   export const window: Window
   export const document: Document

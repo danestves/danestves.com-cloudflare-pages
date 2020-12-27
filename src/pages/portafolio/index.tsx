@@ -52,7 +52,15 @@ const PortfolioPage: NextPage = () => {
         description="Portafolio de Daniel Esteves para mostrar sus proyectos realizados en todo su trayecto como desarrollador web frontend. React, NextJS, Gatsby y WordPress."
       />
 
-      <div className="container px-5 py-16 space-y-16">
+      <section className="container">
+        <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
+          <h1 className="mb-10 text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+            Portafolio
+          </h1>
+        </div>
+      </section>
+
+      <div className="container px-5 space-y-16">
         {portfolios?.map(({ node: portfolio }) => (
           <Link
             key={portfolio.id}

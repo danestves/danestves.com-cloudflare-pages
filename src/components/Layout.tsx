@@ -2,7 +2,7 @@
 import * as React from 'react'
 
 // Components
-import { Header, Footer } from '@/components'
+import { Header, Footer, CallToAction } from '@/components'
 
 const Layout: React.FC = ({ children }) => {
   // Render
@@ -11,6 +11,8 @@ const Layout: React.FC = ({ children }) => {
       <Header pathname="/" />
 
       {children}
+
+      <CallToAction />
 
       <Footer />
     </>

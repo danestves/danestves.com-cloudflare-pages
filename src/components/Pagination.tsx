@@ -100,7 +100,7 @@ const Pagination = ({
           <button
             type="button"
             aria-label="Anterior"
-            className="flex items-center px-6 py-2 font-semibold rounded focus:outline-none bg-primary text-secondary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
+            className="flex items-center px-6 py-2 font-semibold transition-all duration-150 rounded focus:outline-none bg-primary text-secondary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
             onClick={handlePreviousPage}
           >
             <svg
@@ -127,7 +127,7 @@ const Pagination = ({
           <button
             type="button"
             aria-label="Siguiente"
-            className="flex items-center px-6 py-2 font-semibold rounded focus:outline-none bg-primary text-secondary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
+            className="flex items-center px-6 py-2 font-semibold transition-all duration-150 rounded focus:outline-none bg-primary text-secondary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
             onClick={() => handleNextPage(pageInfo.endCursor || '')}
           >
             Siguiente
