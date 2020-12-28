@@ -60,6 +60,9 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
         title={post.seo?.title as string}
         description={post.seo?.description as string}
         shareImage={shareImage}
+        openGraph={{
+          type: 'article',
+        }}
       />
       <ArticleJsonLd
         url={window.location.href}
