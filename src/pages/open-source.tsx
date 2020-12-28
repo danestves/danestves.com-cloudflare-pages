@@ -1,8 +1,8 @@
 // Dependencies
 import * as React from 'react'
 import { NextPage, GetStaticProps } from 'next'
-import { RiGitRepositoryLine, RiStarFill } from 'react-icons/ri'
-import { AiOutlineFork } from 'react-icons/ai'
+import LazyLoad from 'react-lazyload'
+import { motion } from 'framer-motion'
 
 // Components
 import { SEO } from '@/components'
@@ -11,14 +11,34 @@ import { SEO } from '@/components'
 import { Repository } from '@/interfaces'
 
 // Lib
-import axios from '@/lib/axios'
-import { getGitHubLanguageColor } from '@/utils'
+import { getRepositories } from '@/lib/github'
 
 interface Props {
   repositories: Repository[]
 }
 
 const OpenSource: NextPage<Props> = ({ repositories }) => {
+  const list = {
+    hidden: {
+      opacity: 0,
+      transition: {
+        when: 'afterChildren',
+      },
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.3,
+      },
+    },
+  }
+
+  const item = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  }
+
   return (
     <>
       <SEO
@@ -35,108 +55,45 @@ const OpenSource: NextPage<Props> = ({ repositories }) => {
       </section>
 
       <section className="container px-5">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={list}
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+        >
           {repositories.map((repository) => (
-            <article
+            <motion.a
               key={repository.id}
-              className="flex flex-col justify-between p-4 bg-gray-900 border border-gray-500 rounded shadow"
+              href={repository.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={item}
             >
-              <div>
-                <div className="flex items-center mb-2 space-x-2">
-                  <RiGitRepositoryLine className="w-5 h-5 text-white" />
-
-                  <a
-                    href={repository.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-blue-500 focus:outline-none"
-                  >
-                    {repository.name}
-                  </a>
-                </div>
-
-                <a
-                  href={repository.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 text-sm text-gray-500 focus:outline-none"
-                >
-                  {repository.description}
-                </a>
-              </div>
-
-              <div className="flex flex-wrap mt-4 space-x-4">
-                <p className="flex items-center space-x-1">
-                  <span
-                    className="inline-block w-4 h-4 rounded-full"
-                    style={{ background: getGitHubLanguageColor(repository.language) }}
-                  />
-                  <span className="text-sm text-gray-400">{repository.language}</span>
-                </p>
-
-                <a
-                  href={`${repository.html_url}/stargazers`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-1"
-                >
-                  <RiStarFill className="inline-block w-4 h-4 text-white" />
-                  <span className="text-sm text-gray-400">{repository.stargazers_count}</span>
-                </a>
-
-                <a
-                  href={`${repository.html_url}/network/members`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-1"
-                >
-                  <AiOutlineFork className="inline-block w-4 h-4 text-white" />
-                  <span className="text-sm text-gray-400">{repository.forks_count}</span>
-                </a>
-              </div>
-            </article>
+              <LazyLoad height={120}>
+                <img
+                  src={`https://github-readme-stats.danestves.com/api/pin/?username=${
+                    repository.owner.login
+                  }&repo=${
+                    repository.name
+                  }&title_color=fff&icon_color=00C389&text_color=9f9f9f&bg_color=0c1014${
+                    repository.owner.login === 'opengraphimg' ? '&show_owner=true' : ''
+                  }`}
+                  alt={repository.full_name}
+                  width={400}
+                  height={120}
+                  className="w-full"
+                />
+              </LazyLoad>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </section>
     </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const repositories: Repository[] = await axios
-    .get('https://api.github.com/users/danestves/repos?per_page=50')
-    .then(({ data: repositories }: { data: Repository[] }): Repository[] => {
-      return repositories
-        .sort((a, b) => {
-          // eslint-disable-next-line
-          // @ts-ignore
-          return new Date(b.created_at) - new Date(a.created_at)
-        })
-        .filter((repository: Repository) => {
-          switch (repository.id) {
-            case 250953618:
-              return repository
-            case 252873798:
-              return repository
-            case 315161253:
-              return repository
-            case 321155009:
-              return repository
-            case 245557075:
-              return repository
-            case 324420971:
-              return repository
-            case 324068819:
-              return repository
-            case 323531066:
-              return repository
-            case 228873079:
-              return repository
-            default:
-              return null
-          }
-        })
-    })
+  const repositories = await getRepositories()
 
   return {
     props: {

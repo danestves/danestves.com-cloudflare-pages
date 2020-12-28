@@ -30,8 +30,18 @@ module.exports = {
       },
       backdropFilter: {
         none: `none`,
-        blur: `blur(20px)`,
-        'blur-hover': 'blur(10px)',
+        'blur-0': 'blur(0px)',
+        'blur-px': 'blur(1px)',
+        'blur-0.5': 'blur(0.125rem)',
+        'blur-1': 'blur(0.25rem)',
+        'blur-1.5': 'blur(0.375rem)',
+        'blur-2': 'blur(0.5rem)',
+        'blur-2.5': 'blur(0.625rem)',
+        'blur-3': 'blur(0.75rem)',
+        'blur-3.5': 'blur(0.875rem)',
+        'blur-4': 'blur(1rem)',
+        'blur-5': 'blur(1.25rem)',
+        'blur-6': 'blur(1.5rem)',
       },
       borderRadius: {
         '2xl': `2rem`,
@@ -159,7 +169,7 @@ module.exports = {
       scale: [`group-hover`],
       space: [`hover`, `group-hover`],
       textColor: [`responsive`, `hover`, `group-hover`],
-      translate: [`group-hover`]
+      translate: [`group-hover`],
     },
   },
   plugins: [

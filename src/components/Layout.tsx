@@ -10,7 +10,7 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <>
-      <Header pathname="/" />
+      <Header />
 
       {children}
 

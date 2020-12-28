@@ -8,6 +8,7 @@ import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
 import NextImage from 'next/image'
 import { FaTwitter, FaFacebookF, FaLinkedinIn, FaPinterestP } from 'react-icons/fa'
+import { DiscussionEmbed } from 'disqus-react'
 
 // Components
 import { SEO } from '@/components'
@@ -41,6 +42,12 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
     width: 1200,
     height: 630,
     alt: post.seo.title,
+  }
+
+  const disqusConfig = {
+    url: `https://danestves.com/blog/${post.slug}`,
+    identifier: String(post.id),
+    title: post.title,
   }
 
   return (
@@ -152,6 +159,10 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
           </div>
 
           <Markdown markdown={post.content} />
+        </div>
+
+        <div className="container px-5 pt-16 mt-10">
+          <DiscussionEmbed shortname="danestves" config={disqusConfig} />
         </div>
       </article>
     </>
