@@ -48,10 +48,10 @@ const items = [
   },
 ]
 
-const Navigation = ({ toggle }: { toggle: () => void }): JSX.Element => (
+const Navigation = ({ toggle }: { toggle: (arg0: boolean) => void }): JSX.Element => (
   <motion.ul variants={variants} className="absolute w-full p-6 top-24">
     {items.map((item, i) => (
-      <MenuItem key={item.slug} i={i} toggle={toggle} {...item} />
+      <MenuItem key={item.slug} i={i} toggle={() => toggle(false)} {...item} />
     ))}
   </motion.ul>
 )

@@ -12,11 +12,17 @@ const Path = (props: { d?: string } & MotionProps): JSX.Element => (
   />
 )
 
-const MenuToggle = ({ toggle }: { toggle: () => void }): JSX.Element => (
+const MenuToggle = ({
+  isOpen,
+  toggle,
+}: {
+  isOpen: boolean
+  toggle: (arg0: boolean) => void
+}): JSX.Element => (
   <button
     type="button"
     className="absolute flex items-center justify-center w-10 h-10 rounded-full z-100 top-5 right-4 focus:outline-none"
-    onClick={toggle}
+    onClick={() => toggle(!isOpen)}
   >
     <svg className="w-5 h-5" width="23" height="23" viewBox="0 0 23 23">
       <Path

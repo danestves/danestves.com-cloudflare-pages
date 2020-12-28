@@ -1,6 +1,6 @@
 // Dependencies
 import * as React from 'react'
-import { motion, useCycle } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 // Components
 import Navigation from './Navigation'
@@ -49,11 +49,11 @@ const sidebar = {
 }
 
 const MobileHeader = (): JSX.Element => {
-  const [isOpen, toggleOpen] = useCycle(false, true)
+  const [isOpen, toggleOpen] = React.useState(false)
   const containerRef = React.useRef(null)
   const { height } = useDimensions(containerRef)
 
-  useClickOutside(containerRef, toggleOpen)
+  useClickOutside(containerRef, () => toggleOpen(false))
 
   return (
     <motion.nav
@@ -68,7 +68,7 @@ const MobileHeader = (): JSX.Element => {
 
       <Navigation toggle={toggleOpen} />
 
-      <MenuToggle toggle={toggleOpen} />
+      <MenuToggle isOpen={isOpen} toggle={toggleOpen} />
     </motion.nav>
   )
 }
