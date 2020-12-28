@@ -1,9 +1,11 @@
 // Dependencies
 import * as React from 'react'
 import { NextPage } from 'next'
-import { IoBusinessOutline, IoColorPaletteOutline } from 'react-icons/io5'
+import { IoBusinessOutline } from 'react-icons/io5'
 import { GiCheckboxTree } from 'react-icons/gi'
 import { FaLaptopCode } from 'react-icons/fa'
+import { BsPencil } from 'react-icons/bs'
+import { BiPalette, BiCalendarAlt } from 'react-icons/bi'
 import kwesforms from 'kwesforms'
 
 // Components
@@ -43,26 +45,37 @@ const Contacto: NextPage = () => {
 
             <ul className="my-8">
               <li className="flex items-center my-4 space-x-4">
-                <span className="p-3 rounded-full bg-primary">
-                  <IoBusinessOutline className="w-8 h-8 text-secondary" />
+                <span className="p-3 rounded-full" style={{ background: '#C3009B' }}>
+                  <IoBusinessOutline className="w-8 h-8 text-white" />
                 </span>
                 <span className="text-white">¿De qué se trata tu negocio?</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
-                <span className="p-3 rounded-full bg-primary">
-                  <GiCheckboxTree className="w-8 h-8 text-secondary" />
+                <span className="p-3 rounded-full" style={{ background: '#8900C3' }}>
+                  <GiCheckboxTree className="w-8 h-8 text-white" />
                 </span>
                 <span className="text-white">¿A qué nicho va dirigido?</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
-                <span className="p-3 rounded-full bg-primary">
-                  <IoColorPaletteOutline className="w-8 h-8 text-secondary" />
+                <span className="p-3 rounded-full" style={{ background: '#2700C3' }}>
+                  <BsPencil className="w-8 h-8 text-white" />
                 </span>
-                <span className="text-white">Tomemos inspiración</span>
+                <span className="text-white">¿Es una reestructuración o creación desde cero?</span>
               </li>
-
               <li className="flex items-center my-4 space-x-4">
-                <span className="p-3 rounded-full bg-primary">
+                <span className="p-3 rounded-full" style={{ background: '#003AC3' }}>
+                  <BiPalette className="w-8 h-8 text-white" />
+                </span>
+                <span className="text-white">¿Qué tal si tomamos un poco de inspiración?</span>
+              </li>
+              <li className="flex items-center my-4 space-x-4">
+                <span className="p-3 rounded-full" style={{ background: '#009BC3' }}>
+                  <BiCalendarAlt className="w-8 h-8 text-secondary" />
+                </span>
+                <span className="text-white">Fijemos fechas de entrega</span>
+              </li>
+              <li className="flex items-center my-4 space-x-4">
+                <span className="p-3 rounded-full" style={{ background: '#00C389' }}>
                   <FaLaptopCode className="w-8 h-8 text-secondary" />
                 </span>
                 <span className="text-white">Transformemos tu idea en un producto</span>
