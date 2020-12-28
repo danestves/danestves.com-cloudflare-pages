@@ -3,12 +3,10 @@ import * as React from 'react'
 import { NextPage } from 'next'
 
 const createRobots = (host: string): string => {
-  return `
-User-agent: *
+  return `User-agent: *
 Disallow: /
     
-Sitemap: https://${host}/sitemap.xml
-`
+Sitemap: https://${host}/sitemap.xml`
 }
 
 const RobotsPage: NextPage = () => {
