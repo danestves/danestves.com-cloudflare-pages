@@ -1,7 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { AppProps } from 'next/app'
-import { DefaultSeo, LogoJsonLd } from 'next-seo'
+import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { window } from 'browser-monads'
@@ -51,6 +51,17 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
       />
 
       <LogoJsonLd logo="https://danestves.com/logo.png" url="https://danestves.com" />
+      <SocialProfileJsonLd
+        type="Person"
+        name="Daniel Esteves"
+        url="https://danestves.com"
+        sameAs={[
+          'https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw',
+          'https://instagram.com/danestves',
+          'https://www.linkedin.com/in/danestves',
+          'https://twitter.com/danestves',
+        ]}
+      />
 
       <Layout>
         <motion.div
