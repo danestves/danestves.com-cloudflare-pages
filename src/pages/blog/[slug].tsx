@@ -14,11 +14,15 @@ import { DiscussionEmbed } from 'disqus-react'
 import { SEO } from '@/components'
 import Markdown from '@/components/Markdown'
 
-// Interfaces
-import { Post } from '@/interfaces'
+// Generated
+import { Post } from '@/generated/graphql'
 
 // Lib
-import { getAllPostsWithSlug, getPostBySlug } from '@/lib/graphcms'
+import { getApolloClient } from '@/lib/apollo'
+
+// Queries
+import GET_POST_SLUGS from '@/graphql/postSlugs.query'
+import GET_POST from '@/graphql/post.query'
 
 // Utils
 import { openGraphImgGenerator, formatDate, readingTime } from '@/utils'
@@ -41,7 +45,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
     url: openGraphImgGenerator(post.title, post.tags),
     width: 1200,
     height: 630,
-    alt: post.seo.title,
+    alt: post.seo?.title,
   }
 
   const disqusConfig = {
@@ -52,7 +56,11 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
 
   return (
     <>
-      <SEO title={post.seo.title} description={post.seo.description} shareImage={shareImage} />
+      <SEO
+        title={post.seo?.title as string}
+        description={post.seo?.description as string}
+        shareImage={shareImage}
+      />
       <ArticleJsonLd
         url={window.location.href}
         title={post.title}
@@ -62,7 +70,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
         authorName={['Daniel Esteves']}
         publisherName="Daniel Esteves"
         publisherLogo="https://danestves.com/logo.png"
-        description={post.seo.description}
+        description={post.seo?.description as string}
       />
 
       <article className="container px-5 py-16">
@@ -170,23 +178,39 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPostsWithSlug()
+  const apollo = getApolloClient()
+  const { data } = await apollo.query({
+    query: GET_POST_SLUGS,
+    variables: {
+      first: 100,
+    },
+  })
+
+  const paths = data?.posts.map((post: Post) => {
+    return {
+      params: { slug: post.slug },
+    }
+  })
 
   return {
-    paths: posts.map(({ slug }) => ({
-      params: { slug },
-    })),
+    paths: paths || [],
     fallback: true,
   }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  const post = await getPostBySlug(params?.slug as string, preview)
+  const apollo = getApolloClient()
+  const { data } = await apollo.query({
+    query: GET_POST,
+    variables: {
+      slug: params?.slug,
+    },
+  })
 
   return {
     props: {
       preview,
-      post,
+      post: data.post,
     },
   }
 }

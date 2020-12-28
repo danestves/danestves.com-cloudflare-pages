@@ -7,21 +7,24 @@ import renderA11yEmojis from 'markdown-render-a11y-emojis'
 // Components
 import { SEO, Link } from '@/components'
 
-// Interfaces
-import { Post } from '@/interfaces'
+// Generated
+import { Post } from '@/generated/graphql'
 
 // Lib
-import { getBlogPageData } from '@/lib/graphcms'
+import { getApolloClient } from '@/lib/apollo'
+
+// Queries
+import GET_POSTS from '@/graphql/posts.query'
 
 // Utils
 import { formatDate } from '@/utils'
 
-type BlogPageProps = {
+interface Props {
   featuredPost: Post
-  posts: [Post]
+  posts: Post[]
 }
 
-const BlogPage: NextPage<BlogPageProps> = ({ featuredPost, posts }) => {
+const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
   // Render
   return (
     <>
@@ -43,9 +46,11 @@ const BlogPage: NextPage<BlogPageProps> = ({ featuredPost, posts }) => {
               <div className="lg:col-span-7">
                 <div className="w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
                   <Image
-                    // eslint-disable-next-line
-                    // @ts-ignore
-                    image={featuredPost.coverImage}
+                    image={{
+                      handle: featuredPost.coverImage.handle,
+                      width: featuredPost.coverImage.width || 0,
+                      height: featuredPost.coverImage.height || 0,
+                    }}
                     maxWidth={700}
                     outerWrapperClassName="w-full"
                     alt={featuredPost.title}
@@ -81,9 +86,11 @@ const BlogPage: NextPage<BlogPageProps> = ({ featuredPost, posts }) => {
               >
                 <div className="w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
                   <Image
-                    // eslint-disable-next-line
-                    // @ts-ignore
-                    image={post.coverImage}
+                    image={{
+                      handle: post.coverImage.handle,
+                      width: post.coverImage.width || 0,
+                      height: post.coverImage.height || 0,
+                    }}
                     maxWidth={700}
                     outerWrapperClassName="w-full"
                     alt={post.title}
@@ -115,11 +122,15 @@ const BlogPage: NextPage<BlogPageProps> = ({ featuredPost, posts }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await getBlogPageData()
+  const apollo = getApolloClient()
+  const { data } = await apollo.query({
+    query: GET_POSTS,
+  })
 
   return {
     props: {
-      ...res,
+      featuredPost: data.featuredPost[0],
+      posts: data.posts,
     },
     revalidate: 1200,
   }

@@ -61,7 +61,7 @@ export const readingTime = (
  *
  * @returns The string with the generated URL to show the image
  */
-export const openGraphImgGenerator = (title: string, tags?: [string]): string => {
+export const openGraphImgGenerator = (title: string, tags?: string[]): string => {
   return `https://generator.opengraphimg.com/?title=${decodeURIComponent(
     decodeURIComponent(title)
   )}${

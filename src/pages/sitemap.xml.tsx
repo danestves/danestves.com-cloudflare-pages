@@ -3,13 +3,14 @@ import * as React from 'react'
 import { NextPage } from 'next'
 
 // Generated
-import { Portfolio } from '@/generated/graphql'
+import { Portfolio, Post } from '@/generated/graphql'
 
 // Lib
 import { getApolloClient } from '@/lib/apollo'
 
 // Queries
 import GET_PORTFOLIO_SLUGS from '@/graphql/portfolioSlugs.query'
+import GET_POST_SLUGS from '@/graphql/postSlugs.query'
 
 // Utils
 import { formatDate } from '@/utils'
@@ -23,7 +24,7 @@ const toUrl = (host: string, route: string): string => {
   </url>`
 }
 
-const createSitemap = (host: string, portfolios: string[]): string => {
+const createSitemap = (host: string, portfolios: string[], posts: string[]): string => {
   return `<?xml version="1.0" encoding="UTF-8" ?>
     <urlset
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
@@ -68,6 +69,7 @@ const createSitemap = (host: string, portfolios: string[]): string => {
         <priority>0.5</priority>
       </url>
       ${portfolios.map((route) => toUrl(host, route)).join('')}
+      ${posts.map((route) => toUrl(host, route)).join('')}
     </urlset>
   `
 }
@@ -82,16 +84,23 @@ const SitemapPage: NextPage = () => {
 // https://github.com/vercel/next.js/discussions/10949
 SitemapPage.getInitialProps = async ({ req, res }) => {
   const apollo = getApolloClient()
-  const { data } = await apollo.query({
+  const { data: data1 } = await apollo.query({
     query: GET_PORTFOLIO_SLUGS,
     variables: {
       first: 100,
     },
   })
+  const { data: data2 } = await apollo.query({
+    query: GET_POST_SLUGS,
+    variables: {
+      first: 100,
+    },
+  })
 
-  const portfolios = data.portfolios.map((portfolio: Portfolio) => `/portafolio/${portfolio.slug}`)
+  const portfolios = data1.portfolios.map((portfolio: Portfolio) => `/portafolio/${portfolio.slug}`)
+  const posts = data2.posts.map((post: Post) => `/blog/${post.slug}`)
 
-  const sitemap = createSitemap((req && req.headers.host) || '', portfolios)
+  const sitemap = createSitemap((req && req.headers.host) || '', portfolios, posts)
 
   res && res.setHeader('Content-Type', 'text/xml')
   res && res.write(sitemap)

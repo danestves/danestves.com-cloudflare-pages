@@ -2679,7 +2679,7 @@ export type Post = Node & {
   /** Write your blog post! */
   content: Scalars['String']
   /** Upload or select a cover image to set as your Featured Image */
-  coverImage?: Maybe<Asset>
+  coverImage: Asset
   /** Add any relevant tags to this blog post */
   tags: Array<Scalars['String']>
   /** Attach an SEO model to this post */
@@ -2733,7 +2733,7 @@ export type PostCreateInput = {
   date: Scalars['Date']
   excerpt?: Maybe<Scalars['String']>
   content: Scalars['String']
-  coverImage?: Maybe<AssetCreateOneInlineInput>
+  coverImage: AssetCreateOneInlineInput
   tags?: Maybe<Array<Scalars['String']>>
   seo?: Maybe<SeoCreateOneInlineInput>
 }
@@ -4200,6 +4200,45 @@ export type PortfoliosQuery = { __typename?: 'Query' } & {
   }
 }
 
+export type PostQueryVariables = Exact<{
+  slug: Scalars['String']
+}>
+
+export type PostQuery = { __typename?: 'Query' } & {
+  post?: Maybe<
+    { __typename?: 'Post' } & Pick<
+      Post,
+      'id' | 'title' | 'tags' | 'publishedAt' | 'updatedAt' | 'content'
+    > & {
+        seo?: Maybe<{ __typename?: 'Seo' } & Pick<Seo, 'title' | 'description'>>
+        coverImage: { __typename?: 'Asset' } & Pick<Asset, 'handle' | 'width' | 'height'>
+      }
+  >
+}
+
+export type PostSlugsQueryVariables = Exact<{
+  first?: Maybe<Scalars['Int']>
+}>
+
+export type PostSlugsQuery = { __typename?: 'Query' } & {
+  posts: Array<{ __typename?: 'Post' } & Pick<Post, 'slug'>>
+}
+
+export type PostsQueryVariables = Exact<{ [key: string]: never }>
+
+export type PostsQuery = { __typename?: 'Query' } & {
+  featuredPost: Array<
+    { __typename?: 'Post' } & Pick<Post, 'id' | 'title' | 'slug' | 'excerpt' | 'date'> & {
+        coverImage: { __typename?: 'Asset' } & Pick<Asset, 'handle' | 'width' | 'height'>
+      }
+  >
+  posts: Array<
+    { __typename?: 'Post' } & Pick<Post, 'id' | 'title' | 'slug' | 'excerpt' | 'date'> & {
+        coverImage: { __typename?: 'Asset' } & Pick<Asset, 'handle' | 'width' | 'height'>
+      }
+  >
+}
+
 export const PortfolioDocument = gql`
   query portfolio($slug: String!) {
     portfolio(where: { slug: $slug }) {
@@ -4261,7 +4300,7 @@ export type PortfolioLazyQueryHookResult = ReturnType<typeof usePortfolioLazyQue
 export type PortfolioQueryResult = Apollo.QueryResult<PortfolioQuery, PortfolioQueryVariables>
 export const PortfolioSlugsDocument = gql`
   query portfolioSlugs($first: Int) {
-    portfolios(first: $first) {
+    portfolios(first: $first, orderBy: createdAt_ASC) {
       slug
     }
   }
@@ -4375,3 +4414,149 @@ export function usePortfoliosLazyQuery(
 export type PortfoliosQueryHookResult = ReturnType<typeof usePortfoliosQuery>
 export type PortfoliosLazyQueryHookResult = ReturnType<typeof usePortfoliosLazyQuery>
 export type PortfoliosQueryResult = Apollo.QueryResult<PortfoliosQuery, PortfoliosQueryVariables>
+export const PostDocument = gql`
+  query post($slug: String!) {
+    post(where: { slug: $slug }, stage: PUBLISHED) {
+      seo {
+        title
+        description
+      }
+      id
+      title
+      tags
+      publishedAt
+      updatedAt
+      coverImage {
+        handle
+        width
+        height
+      }
+      content
+    }
+  }
+`
+
+/**
+ * __usePostQuery__
+ *
+ * To run a query within a React component, call `usePostQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function usePostQuery(baseOptions: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>) {
+  return Apollo.useQuery<PostQuery, PostQueryVariables>(PostDocument, baseOptions)
+}
+export function usePostLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PostQuery, PostQueryVariables>
+) {
+  return Apollo.useLazyQuery<PostQuery, PostQueryVariables>(PostDocument, baseOptions)
+}
+export type PostQueryHookResult = ReturnType<typeof usePostQuery>
+export type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>
+export type PostQueryResult = Apollo.QueryResult<PostQuery, PostQueryVariables>
+export const PostSlugsDocument = gql`
+  query postSlugs($first: Int) {
+    posts(first: $first, orderBy: createdAt_ASC) {
+      slug
+    }
+  }
+`
+
+/**
+ * __usePostSlugsQuery__
+ *
+ * To run a query within a React component, call `usePostSlugsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostSlugsQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function usePostSlugsQuery(
+  baseOptions?: Apollo.QueryHookOptions<PostSlugsQuery, PostSlugsQueryVariables>
+) {
+  return Apollo.useQuery<PostSlugsQuery, PostSlugsQueryVariables>(PostSlugsDocument, baseOptions)
+}
+export function usePostSlugsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PostSlugsQuery, PostSlugsQueryVariables>
+) {
+  return Apollo.useLazyQuery<PostSlugsQuery, PostSlugsQueryVariables>(
+    PostSlugsDocument,
+    baseOptions
+  )
+}
+export type PostSlugsQueryHookResult = ReturnType<typeof usePostSlugsQuery>
+export type PostSlugsLazyQueryHookResult = ReturnType<typeof usePostSlugsLazyQuery>
+export type PostSlugsQueryResult = Apollo.QueryResult<PostSlugsQuery, PostSlugsQueryVariables>
+export const PostsDocument = gql`
+  query posts {
+    featuredPost: posts(orderBy: createdAt_DESC, first: 1) {
+      id
+      title
+      slug
+      excerpt
+      coverImage {
+        handle
+        width
+        height
+      }
+      date
+    }
+    posts(orderBy: createdAt_DESC, skip: 1) {
+      id
+      title
+      slug
+      excerpt
+      coverImage {
+        handle
+        width
+        height
+      }
+      date
+    }
+  }
+`
+
+/**
+ * __usePostsQuery__
+ *
+ * To run a query within a React component, call `usePostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePostsQuery(
+  baseOptions?: Apollo.QueryHookOptions<PostsQuery, PostsQueryVariables>
+) {
+  return Apollo.useQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions)
+}
+export function usePostsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PostsQuery, PostsQueryVariables>
+) {
+  return Apollo.useLazyQuery<PostsQuery, PostsQueryVariables>(PostsDocument, baseOptions)
+}
+export type PostsQueryHookResult = ReturnType<typeof usePostsQuery>
+export type PostsLazyQueryHookResult = ReturnType<typeof usePostsLazyQuery>
+export type PostsQueryResult = Apollo.QueryResult<PostsQuery, PostsQueryVariables>
