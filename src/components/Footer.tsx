@@ -104,6 +104,9 @@ const Footer = (): JSX.Element => (
             method="post"
             className="flex flex-col items-start my-4 space-y-4 md:items-center md:flex-row md:space-y-0 md:space-x-4"
           >
+            <label htmlFor="member[email]" className="sr-only">
+              Email
+            </label>
             <input
               type="email"
               name="member[email]"
