@@ -3481,7 +3481,11 @@ export type PostsRssQueryVariables = Exact<{
 }>
 
 export type PostsRssQuery = { __typename?: 'Query' } & {
-  posts: Array<{ __typename?: 'Post' } & Pick<Post, 'title' | 'slug' | 'createdAt'>>
+  posts: Array<
+    { __typename?: 'Post' } & Pick<Post, 'title' | 'slug' | 'createdAt'> & {
+        seo?: Maybe<{ __typename?: 'Seo' } & Pick<Seo, 'description'>>
+      }
+  >
 }
 
 export const PortfolioDocument = gql`
@@ -3810,6 +3814,9 @@ export const PostsRssDocument = gql`
     posts(first: $first, orderBy: createdAt_DESC) {
       title
       slug
+      seo {
+        description
+      }
       createdAt
     }
   }

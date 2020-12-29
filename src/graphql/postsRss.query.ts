@@ -6,6 +6,9 @@ export default gql`
     posts(first: $first, orderBy: createdAt_DESC) {
       title
       slug
+      seo {
+        description
+      }
       createdAt
     }
   }
