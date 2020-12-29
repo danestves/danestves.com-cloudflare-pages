@@ -69,8 +69,8 @@ const Footer = (): JSX.Element => (
               </Link>
             </li>
             <li>
-              <Link href="/apps" className="text-white hover:underline focus:outline-none">
-                Apps
+              <Link href="/open-source" className="text-white hover:underline focus:outline-none">
+                Open Source
               </Link>
             </li>
             <li>
