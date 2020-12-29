@@ -6,116 +6,50 @@
 $primary-color: #ffffff;
 @import 'loaders.css/src/animations/pacman.scss';
 
+#hero {
+  background: url('/hero.jpeg') center no-repeat;
+  background-size: 100%;
+  background-position: top;
+}
+
+#dreams {
+  background: url('/dreams.jpeg') center no-repeat;
+  background-size: 150% auto;
+  background-position: 50% 65%;
+}
+
+#hero::after,
+#dreams::after {
+  content: '';
+
+  @apply absolute;
+  @apply top-0;
+  @apply left-0;
+  @apply z-10;
+  @apply w-full;
+  @apply h-full;
+  @apply opacity-75;
+  @apply bg-secondary;
+}
+
+.container-image {
+  max-height: 480px;
+}
+
+@media screen and (max-width: 768px) {
+  #hero,
+  #dreams {
+    @apply bg-cover;
+  }
+
+  .container-image {
+    max-height: 320px;
+  }
+}
+
 .loader-hidden {
   display: none;
 }
 .loader-active {
   display: block;
-}
-
-.card-list {
-  & .card {
-    @apply transition-all duration-300 relative;
-
-    height: 230px;
-
-    .overlay {
-      z-index: 100;
-      position: fixed;
-      background: rgba(0, 0, 0, 0.8);
-      will-change: opacity;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-
-      & button {
-        display: block;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        width: 100vw;
-        left: 50%;
-
-        transform: translateX(-50%);
-      }
-    }
-
-    & .card-content-container {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      display: block;
-      pointer-events: none;
-
-      &.open {
-        @apply top-0 left-0 right-0 fixed overflow-hidden;
-
-        z-index: 100;
-        padding: 40px 0;
-
-        & .card-content {
-          @apply h-auto overflow-hidden bg-secondary;
-
-          max-width: 700px;
-        }
-      }
-
-      .card-content {
-        @apply pointer-events-auto relative overflow-hidden w-full h-full mx-auto;
-
-        border-radius: 20px;
-
-        & .card-image-container {
-          @apply absolute top-0 left-0 overflow-hidden w-screen;
-
-          &,
-          & .card-image {
-            @apply transition-all duration-200;
-
-            width: 100%;
-            height: 230px;
-          }
-
-          & .card-image-overlay {
-            @apply absolute top-0 left-0 w-full h-full bg-opacity-50 bg-secondary;
-          }
-        }
-
-        & .title-container {
-          @apply absolute top-0 left-0;
-
-          max-width: 400px;
-        }
-      }
-    }
-
-    & .card-open-link {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-
-    &:hover {
-      & .card-content-container {
-        &:not(.open) .card-content {
-          & .card-image-container {
-            &,
-            & .card-image {
-              width: 120%;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-.content-container {
-  padding: 230px 35px 35px 35px;
-  max-width: 700px;
-  width: 90vw;
 }

@@ -109,10 +109,13 @@ const Footer = (): JSX.Element => (
               name="member[email]"
               id="member[email]"
               placeholder="Correo"
-              className="block w-full px-4 py-2 mx-auto font-mono leading-5 text-white placeholder-opacity-50 bg-transparent border border-white rounded-lg md:flex-1 focus:outline-none"
+              className="block w-full px-4 py-2 mx-auto font-mono leading-5 text-white placeholder-opacity-50 bg-transparent border border-white rounded-lg md:flex-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
             />
 
-            <button type="submit" className="px-4 py-2 rounded-lg text-secondary bg-primary">
+            <button
+              type="submit"
+              className="px-4 py-2 rounded-lg text-secondary bg-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
+            >
               Unete <Emoji emoji="👉" />
             </button>
           </form>
