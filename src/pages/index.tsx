@@ -16,7 +16,13 @@ const Index: NextPage = () => {
     <>
       <div className="relative flex items-center py-32 lg:py-20">
         <div className="absolute top-0 left-0 w-full h-full">
-          <NextImage src="/hero.jpeg" layout="fill" objectFit="cover" objectPosition="top" />
+          <NextImage
+            src="/hero.jpeg"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="top"
+            alt="Hero background"
+          />
 
           <div className="absolute inset-0 bg-opacity-75 bg-secondary"></div>
         </div>
@@ -95,7 +101,13 @@ const Index: NextPage = () => {
 
       <div className="relative w-full py-24">
         <div className="absolute top-0 w-full h-full">
-          <NextImage src="/dreams.jpeg" layout="fill" objectFit="cover" objectPosition="50% 65%" />
+          <NextImage
+            src="/dreams.jpeg"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="50% 65%"
+            alt="Features background"
+          />
 
           <div className="absolute inset-0 bg-opacity-75 bg-secondary"></div>
         </div>

@@ -27,25 +27,16 @@ import GET_POST from '@/graphql/post.query'
 // Utils
 import { openGraphImgGenerator, formatDate, readingTime } from '@/utils'
 
-type BlogPageProps = {
+interface Props {
   preview: boolean
   post: Post
 }
 
-const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
-  // Hooks
+const BlogPage: NextPage<Props> = ({ post }) => {
   const router = useRouter()
 
-  // Render
   if (router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
-  }
-
-  const shareImage = {
-    url: openGraphImgGenerator(post.title, post.tags),
-    width: 1200,
-    height: 630,
-    alt: post.seo?.title,
   }
 
   const disqusConfig = {
@@ -59,8 +50,15 @@ const BlogPage: NextPage<BlogPageProps> = ({ post }) => {
       <SEO
         title={post.seo?.title as string}
         description={post.seo?.description as string}
-        shareImage={shareImage}
         openGraph={{
+          images: [
+            {
+              url: openGraphImgGenerator(post.title, post.tags),
+              width: 1200,
+              height: 630,
+              alt: post.seo?.title,
+            },
+          ],
           type: 'article',
         }}
       />
