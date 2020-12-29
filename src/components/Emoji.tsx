@@ -1,17 +1,28 @@
 // Dependencies
-import * as React from 'react';
-import * as emojiTrie from 'emoji-trie';
+import * as React from 'react'
+import * as emojiTrie from 'emoji-trie'
 
-type IProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
+type EmojiProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLSpanElement>,
+  HTMLSpanElement
+> & {
+  emoji: string
+}
 
-const Emoji: React.FC<IProps> = ({ children, ...props }) => {
-  const emoji = emojiTrie.atStart(children);
+/**
+ * Render accessible emoji following a11y
+ *
+ * @param {string} emoji - An example emoji like 🙂
+ */
+const Emoji = ({ emoji, ...props }: EmojiProps): JSX.Element => {
+  // Methods
+  const emojiFound = emojiTrie.atStart(emoji)
 
   return (
-    <span aria-label={emoji.description} role="img" {...props}>
-      {emoji.emoji}
+    <span aria-label={emojiFound.description} role="img" {...props}>
+      {emojiFound.emoji}
     </span>
-  );
-};
+  )
+}
 
-export default Emoji;
+export default Emoji

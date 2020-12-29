@@ -1,0 +1,12 @@
+overwrite: true
+schema: ${NEXT_PUBLIC_GRAPHCMS_PROJECT_API}
+documents: "./src/graphql/**/*.ts"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

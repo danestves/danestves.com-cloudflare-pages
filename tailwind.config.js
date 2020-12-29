@@ -1,17 +1,24 @@
-// eslint-disable-next-line
-const defaultTheme = require(`tailwindcss/defaultTheme`);
+const defaultTheme = require(`tailwindcss/defaultTheme`)
 
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
   purge: {
-    content: [`./src/**/*.{js,jsx,ts,tsx}`],
+    content: [
+      './src/components/**/*.tsx',
+      './src/components/**/*.ts',
+      './src/pages/**/*.tsx',
+      './src/pages/**/*.ts',
+    ],
     options: {
-      whitelist: [`z-100`, `embed-responsive`, `aspect-ratio-square`, `aspect-ratio-16/9`, `aspect-ratio-4/3`],
+      safelist: [
+        `z-100`,
+        `embed-responsive`,
+        `aspect-ratio-square`,
+        `aspect-ratio-16/9`,
+        `aspect-ratio-4/3`,
+      ],
     },
   },
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       aspectRatio: {
@@ -23,7 +30,18 @@ module.exports = {
       },
       backdropFilter: {
         none: `none`,
-        blur: `blur(20px)`,
+        'blur-0': 'blur(0px)',
+        'blur-px': 'blur(1px)',
+        'blur-0.5': 'blur(0.125rem)',
+        'blur-1': 'blur(0.25rem)',
+        'blur-1.5': 'blur(0.375rem)',
+        'blur-2': 'blur(0.5rem)',
+        'blur-2.5': 'blur(0.625rem)',
+        'blur-3': 'blur(0.75rem)',
+        'blur-3.5': 'blur(0.875rem)',
+        'blur-4': 'blur(1rem)',
+        'blur-5': 'blur(1.25rem)',
+        'blur-6': 'blur(1.5rem)',
       },
       borderRadius: {
         '2xl': `2rem`,
@@ -69,8 +87,8 @@ module.exports = {
       textOpacity: {
         90: `0.90`,
       },
-      typography: theme => ({
-        default: {
+      typography: (theme) => ({
+        DEFAULT: {
           css: {
             '& h1, & h2, & h3, & h4': {
               color: theme(`colors.white`),
@@ -90,6 +108,22 @@ module.exports = {
             },
             blockquote: {
               color: theme(`colors.gray.400`),
+            },
+            pre: {
+              '&.prism-code': {
+                padding: `${theme(`padding.4`)} ${theme(`padding.6`)}`,
+                fontSize: theme(`fontSize.sm`),
+                fontWeight: 400,
+                color: theme(`colors.gray.100`),
+                whiteSpace: theme(`whitespace.normal`),
+                borderRadius: theme(`borderRadius.default`),
+                fontFamily: `"Source Code Pro", ${[...defaultTheme.fontFamily.mono]}`,
+                backgroundColor: `rgb(39, 40, 34)`,
+
+                '&:after, &:before': {
+                  content: `"" !important`,
+                },
+              },
             },
             code: {
               padding: `${theme(`padding.1`)} ${theme(`padding.2`)}`,
@@ -119,24 +153,29 @@ module.exports = {
     },
   },
   variants: {
-    aspectRatio: [`responsive`],
-    backgroundColor: [`responsive`, `hover`, `group-hover`],
-    backdropFilter: [`responsive`],
-    borderColor: [`responsive`, `hover`, `focus`, `first`, `last`],
-    borderWidth: [`responsive`, `hover`, `focus`, `first`, `last`],
-    boxShadow: [`responsive`, `hover`, `focus`],
-    filter: [`responsive`],
-    margin: [`responsive`, `first`, `last`],
-    opacity: [`responsive`, `hover`, `focus`, `group-hover`],
-    padding: [`responsive`],
-    placeholderColor: [`responsive`, `focus`],
-    textColor: [`responsive`, `hover`, `group-hover`],
+    extend: {
+      aspectRatio: [`responsive`],
+      backgroundColor: [`responsive`, `hover`, `group-hover`],
+      backdropFilter: [`responsive`, `hover`],
+      borderColor: [`responsive`, `hover`, `focus`, `first`, `last`],
+      borderWidth: [`responsive`, `hover`, `focus`, `first`, `last`],
+      boxShadow: [`responsive`, `hover`, `focus`],
+      filter: [`responsive`],
+      fontSize: [`group-hover`],
+      margin: [`responsive`, `first`, `last`, `group-hover`],
+      opacity: [`responsive`, `hover`, `focus`, `group-hover`],
+      padding: [`responsive`],
+      placeholderColor: [`responsive`, `focus`],
+      scale: [`group-hover`],
+      space: [`hover`, `group-hover`],
+      textColor: [`responsive`, `hover`, `group-hover`],
+      translate: [`group-hover`],
+    },
   },
-  corePlugins: {},
   plugins: [
-    require(`@tailwindcss/ui`),
+    require(`@tailwindcss/typography`),
     require(`tailwindcss-filters`),
     require(`tailwindcss-responsive-embed`),
     require(`tailwindcss-aspect-ratio`),
   ],
-};
+}

@@ -1,77 +1,63 @@
 // Dependencies
-import * as React from 'react';
-import Glide from '@glidejs/glide';
-import Img from 'gatsby-image';
-import Markdown from 'react-markdown';
+import * as React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import NextImage from 'next/image'
+import { BsChevronLeft } from 'react-icons/bs'
 
-// Icons
-import { ArrowIcon } from '../icons';
+interface Props {
+  element?: string
+  features: {
+    id: number
+    title: string
+    icon: string
+    subtitle: string
+  }[]
+}
 
-// Types
-import { Features as TFeatures } from '../types';
-
-type ServicesProps = {
-  element?: string;
-  features?: TFeatures[];
-  options?: {
-    type: string;
-    controls: boolean;
-    perView?: number;
-    focusAt?: string;
-    breakpoints?: Record<string, unknown>;
-  };
-};
-
-const Features: React.FC<ServicesProps> = ({ element = `glide`, features, options }) => {
-  // States
-  const [slider] = React.useState(new Glide(`.${element}`, options));
-
-  // Effects
-  React.useEffect(() => {
-    slider.mount();
-
-    return () => slider.destroy();
-  }, []);
-
-  // Render
+const Features: React.FC<Props> = ({ features }) => {
   return (
-    <div className={element}>
-      <div className="glide__track" data-glide-el="track">
-        <ul className="justify-center py-6 glide__slides">
-          {features?.map(item => (
-            <li key={item.id} className="glide__slide">
-              <div className="font-sans text-4xl font-bold text-center text-primary">
-                <Markdown source={item.title} />
-              </div>
+    <div className="relative">
+      <button
+        className="absolute left-0 z-10 transition-all duration-200 transform -translate-y-1/2 bg-transparent border-none rounded-full focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary top-1/2 focus:outline-none text-primary hover:opacity-75 swiper-button-prev-custom"
+        aria-label="Prev"
+      >
+        <BsChevronLeft className="w-8 h-8 fill-current" />
+      </button>
 
-              <Img fluid={item.icon.childImageSharp.fluid} alt={item.title} className="block w-32 h-32 mx-auto mt-8" />
+      <Swiper
+        slidesPerView={1}
+        autoplay
+        loop
+        speed={500}
+        a11y={{ enabled: true }}
+        navigation={{
+          nextEl: '.swiper-button-next-custom',
+          prevEl: '.swiper-button-prev-custom',
+        }}
+      >
+        {features.map((item) => (
+          <SwiperSlide key={item.id}>
+            <h2 className="font-sans text-4xl font-bold text-center text-primary">{item.title}</h2>
 
-              <p className="w-full max-w-4xl px-5 mx-auto mt-12 font-mono text-xl text-center text-primary">
-                {item.subtitle}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
+            <div className="block w-32 h-32 mx-auto mt-8">
+              <NextImage src={item.icon} alt={item.title} width={128} height={128} />
+            </div>
 
-      <div className="glide__arrows" data-glide-el="controls">
-        <button
-          className="left-0 transition-all duration-200 bg-transparent border-none rounded-full text-primary glide__arrow glide__arrow--left hover:opacity-75"
-          data-glide-dir="<"
-          aria-label="Prev"
-        >
-          <ArrowIcon className="w-5 h-5 transform rotate-180 fill-current" />
-        </button>
-        <button
-          className="right-0 transition-all duration-200 bg-transparent border-none rounded-full text-primary glide__arrow glide__arrow--right hover:opacity-75"
-          data-glide-dir=">"
-          aria-label="Next"
-        >
-          <ArrowIcon className="w-5 h-5 fill-current" />
-        </button>
-      </div>
+            <p className="w-full max-w-4xl px-5 mx-auto mt-12 font-mono text-xl text-center text-primary">
+              {item.subtitle}
+            </p>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <button
+        className="absolute right-0 z-10 transition-all duration-200 transform -translate-y-1/2 bg-transparent border-none rounded-full focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary top-1/2 text-primary hover:opacity-75 focus:outline-none swiper-button-next-custom"
+        aria-label="Next"
+      >
+        <BsChevronLeft className="w-8 h-8 transform rotate-180 fill-current" />
+      </button>
     </div>
-  );
-};
+  )
+}
 
-export default Features;
+export default Features

@@ -1,3 +1,2 @@
-export { default as usePlatziData } from './usePlatziData';
-export { default as useDocumentScrollThrottled } from './useDocumentScrollThrottled';
-export { default as useScrollPosition } from './useScrollPosition';
+export { default as useDimensions } from './useDimensions'
+export { default as useClickOutside } from './useClickOutside'

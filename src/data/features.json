@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Interfaces limpias y adaptables en cualquier dispositivo",
+    "icon": "/interfaces.png",
+    "subtitle": "Diseños modernos y adaptables a cualquier dispositivo, que logran una experiencia única, mucho más limpia y rápida"
+  },
+  {
+    "id": 2,
+    "title": "Código organizado, formateado y comentado",
+    "icon": "/code.png",
+    "subtitle": "Código comentado para un mejor entendimiento de cualquier desarrollador, técnicas de formateado y uso de ramas apropiadas con Git"
+  },
+  {
+    "id": 3,
+    "title": "Aplicaciones y sitios web rápidos para posicionamiento en buscadores",
+    "icon": "/faster.png",
+    "subtitle": "Al construir una aplicación o un sitio web me encargo de optimizarlo al máximo para que el cliente tenga un producto rápido, bonito y verloz para los buscadores"
+  }
+]
