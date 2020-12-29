@@ -6,47 +6,6 @@
 $primary-color: #ffffff;
 @import 'loaders.css/src/animations/pacman.scss';
 
-#hero {
-  background: url('/hero.jpeg') center no-repeat;
-  background-size: 100%;
-  background-position: top;
-}
-
-#dreams {
-  background: url('/dreams.jpeg') center no-repeat;
-  background-size: 150% auto;
-  background-position: 50% 65%;
-}
-
-#hero::after,
-#dreams::after {
-  content: '';
-
-  @apply absolute;
-  @apply top-0;
-  @apply left-0;
-  @apply z-10;
-  @apply w-full;
-  @apply h-full;
-  @apply opacity-75;
-  @apply bg-secondary;
-}
-
-.container-image {
-  max-height: 480px;
-}
-
-@media screen and (max-width: 768px) {
-  #hero,
-  #dreams {
-    @apply bg-cover;
-  }
-
-  .container-image {
-    max-height: 320px;
-  }
-}
-
 .loader-hidden {
   display: none;
 }
