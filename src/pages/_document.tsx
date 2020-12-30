@@ -24,6 +24,15 @@ export default class MyDocument extends Document {
         <body className="bg-secondary">
           <Main />
           <NextScript />
+
+          <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+          <noscript>
+            <img
+              src="https://queue.simpleanalyticscdn.com/noscript.gif"
+              alt=""
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </noscript>
         </body>
       </Html>
     )
