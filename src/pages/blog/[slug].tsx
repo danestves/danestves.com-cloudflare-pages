@@ -8,7 +8,6 @@ import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
 import NextImage from 'next/image'
 import { FaTwitter, FaFacebookF, FaLinkedinIn, FaPinterestP } from 'react-icons/fa'
-import { DiscussionEmbed } from 'disqus-react'
 
 // Components
 import { SEO } from '@/components'
@@ -162,18 +161,6 @@ const BlogPage: NextPage<Props> = ({ post }) => {
           </div>
 
           <Markdown markdown={post.content} />
-        </div>
-
-        <div className="container px-5 pt-16 mt-10">
-          <DiscussionEmbed
-            shortname="danestves"
-            config={{
-              url: `https://danestves.com/blog/${post.slug}`,
-              identifier: post.id,
-              title: post.title,
-            }}
-            key={post.id}
-          />
         </div>
       </article>
     </>
