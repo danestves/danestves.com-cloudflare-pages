@@ -39,12 +39,6 @@ const BlogPage: NextPage<Props> = ({ post }) => {
     return <ErrorPage statusCode={404} />
   }
 
-  const disqusConfig = {
-    url: `https://danestves.com/blog/${post.slug}`,
-    identifier: String(post.id),
-    title: post.title,
-  }
-
   return (
     <>
       <SEO
@@ -171,7 +165,15 @@ const BlogPage: NextPage<Props> = ({ post }) => {
         </div>
 
         <div className="container px-5 pt-16 mt-10">
-          <DiscussionEmbed shortname="danestves" config={disqusConfig} />
+          <DiscussionEmbed
+            shortname="danestves"
+            config={{
+              url: `https://danestves.com/blog/${post.slug}`,
+              identifier: post.id,
+              title: post.title,
+            }}
+            key={post.id}
+          />
         </div>
       </article>
     </>
