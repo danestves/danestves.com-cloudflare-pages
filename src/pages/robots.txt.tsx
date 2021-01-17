@@ -5,6 +5,7 @@ import { NextPage } from 'next'
 const createRobots = (host: string): string => {
   return `User-agent: *
 Allow: /
+Disallow: /dayairis
     
 Sitemap: https://${host}/sitemap.xml`
 }
