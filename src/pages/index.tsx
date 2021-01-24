@@ -17,7 +17,7 @@ const Index: NextPage = () => {
     <>
       <div className="relative flex items-center py-32 lg:py-20">
         <BackgroundImage
-          src="/hero.jpeg"
+          src="/hero.webp"
           wrapperClassName="absolute top-0 left-0 w-full h-full"
           className="bg-center bg-cover"
           width="100%"
