@@ -6,7 +6,6 @@ import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { motion } from 'framer-motion'
 import { ApolloProvider } from '@apollo/client'
 import SwiperCore, { Autoplay, A11y, Navigation } from 'swiper'
-import { document } from 'browser-monads'
 
 // Components
 import { Layout } from '@/components'
@@ -53,7 +52,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
         additionalMetaTags={[
           {
             name: 'twitter:title',
-            content: document.title,
+            content: 'Desarrollador Web Frontend | @danestves',
           },
           {
             name: 'twitter:description',
@@ -66,7 +65,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
           },
           {
             name: 'twitter:image:alt',
-            content: document.title,
+            content: 'Desarrollador Web Frontend | @danestves',
           },
         ]}
       />

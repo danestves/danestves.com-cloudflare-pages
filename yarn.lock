@@ -4091,10 +4091,6 @@ emoji-regex@^9.0.0, emoji-regex@^9.2.0:
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-9.2.0.tgz#a26da8e832b16a9753309f25e35e3c0efb9a066a"
   integrity sha512-DNc3KFPK18bPdElMJnf/Pkv5TXhxFU3YFDEuGLDRtPmV4rkmCjBkCSEp22u6rBHdSN9Vlp/GK7k98prmE1Jgug==
 
-"emoji-trie@https://github.com/codex-src/emoji-trie.js":
-  version "0.1.0"
-  resolved "https://github.com/codex-src/emoji-trie.js#9a4f921673402f84200df23ac11b5c2df5d1605e"
-
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
@@ -6489,10 +6485,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-markdown-render-a11y-emojis@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/markdown-render-a11y-emojis/-/markdown-render-a11y-emojis-0.1.1.tgz#a246c6d18ac9ca88fa7e5c2ca2055c5b8b4b9a67"
-  integrity sha512-BnT2xFv6rxmBJ2oxmiaeTf8X2SdVbD8i7ke57Y+lOUxKOf7xr7h03GNd+2cglm1bjUrclvhl7h1qU+i2br8Yxg==
+markdown-render-a11y-emojis@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/markdown-render-a11y-emojis/-/markdown-render-a11y-emojis-1.0.0.tgz#9e080810c6ea5a5df8708252bc3c72cafe31148b"
+  integrity sha512-fT6wajBkjXp3sASvghX8w66Yxwvz0N7zl+7Bm5ND78DZoFrzCdJDxUonvmITROBh0oTBONTdaZRiY96vs7FRGg==
   dependencies:
     emoji-regex "^9.2.0"
     gemoji "^6.1.0"
@@ -6812,6 +6808,11 @@ neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+next-compose-plugins@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.1.tgz#020fc53f275a7e719d62521bef4300fbb6fde5ab"
+  integrity sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==
 
 next-pwa@^5.0.4:
   version "5.0.4"

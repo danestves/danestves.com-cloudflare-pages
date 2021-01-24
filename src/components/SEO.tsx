@@ -1,7 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { NextSeo, NextSeoProps } from 'next-seo'
-import { document, window } from 'browser-monads'
+import { window } from 'browser-monads'
 
 // Interfaces
 import { Asset } from '@/interfaces'
@@ -63,7 +63,7 @@ const SEO = ({
       additionalMetaTags={[
         {
           name: 'twitter:title',
-          content: document.title,
+          content: title,
         },
         {
           name: 'twitter:description',
@@ -75,7 +75,7 @@ const SEO = ({
         },
         {
           name: 'twitter:image:alt',
-          content: document.title,
+          content: title,
         },
       ]}
       canonical={window.location.href}
