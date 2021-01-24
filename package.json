@@ -34,7 +34,7 @@
     "markdown-render-a11y-emojis": "^0.1.1",
     "markdown-to-text": "^0.1.1",
     "next": "^10.0.5",
-    "next-google-fonts": "^1.2.1",
+    "next-pwa": "^5.0.4",
     "next-seo": "^4.17.0",
     "postcss": "^8.2.4",
     "prism-react-renderer": "^1.1.1",

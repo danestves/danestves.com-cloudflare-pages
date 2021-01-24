@@ -1,7 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { NextSeo, NextSeoProps } from 'next-seo'
-import { window } from 'browser-monads'
+import { document, window } from 'browser-monads'
 
 // Interfaces
 import { Asset } from '@/interfaces'
@@ -54,9 +54,30 @@ const SEO = ({
       }}
       // Only included Twitter data if we have it
       twitter={{
+        site: '@danestves',
+        cardType: 'summary_large_image',
+        handle: '@danestves',
         ...(twitterCardType && { cardType: twitterCardType }),
         ...(twitterUsername && { cardType: twitterUsername }),
       }}
+      additionalMetaTags={[
+        {
+          name: 'twitter:title',
+          content: document.title,
+        },
+        {
+          name: 'twitter:description',
+          content: description,
+        },
+        {
+          name: 'twitter:image',
+          content: shareImage?.url || 'https://danestves.com/og.png',
+        },
+        {
+          name: 'twitter:image:alt',
+          content: document.title,
+        },
+      ]}
       canonical={window.location.href}
       {...props}
     />
