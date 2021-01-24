@@ -4,6 +4,7 @@ import { NextPage } from 'next'
 import NextImage from 'next/image'
 import { GrReactjs, GrGraphQl } from 'react-icons/gr'
 import { IoLogoNodejs, IoLogoWordpress } from 'react-icons/io'
+import { BackgroundImage } from 'react-image-and-background-image-fade'
 
 // Components
 import { Link, Features } from '@/components'
@@ -15,17 +16,16 @@ const Index: NextPage = () => {
   return (
     <>
       <div className="relative flex items-center py-32 lg:py-20">
-        <div className="absolute top-0 left-0 w-full h-full">
-          <NextImage
-            src="/hero.jpeg"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="top"
-            alt="Hero background"
-          />
-
+        <BackgroundImage
+          src="/hero.jpeg"
+          wrapperClassName="absolute top-0 left-0 w-full h-full"
+          className="bg-center bg-cover"
+          width="100%"
+          height="100%"
+          lazyLoad
+        >
           <div className="absolute inset-0 bg-opacity-75 bg-secondary"></div>
-        </div>
+        </BackgroundImage>
         <div className="container z-20 grid items-center grid-cols-12 px-5">
           <div className="col-span-12 md:col-span-5">
             <svg
@@ -100,17 +100,16 @@ const Index: NextPage = () => {
       </div>
 
       <div className="relative w-full py-24">
-        <div className="absolute top-0 w-full h-full">
-          <NextImage
-            src="/dreams.jpeg"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="50% 65%"
-            alt="Features background"
-          />
-
+        <BackgroundImage
+          src="/dreams.jpeg"
+          wrapperClassName="absolute top-0 w-full h-full"
+          className="bg-center bg-cover"
+          width="100%"
+          height="100%"
+          lazyLoad
+        >
           <div className="absolute inset-0 bg-opacity-75 bg-secondary"></div>
-        </div>
+        </BackgroundImage>
 
         <div className="container relative z-20 px-5">
           <h2 className="absolute bottom-0 w-full max-w-4xl py-4 mb-16 font-sans text-xl font-bold text-center transform -translate-x-1/2 rounded-full sm:px-16 sm:text-3xl sm:mb-12 md:text-5xl md:mb-8 bg-primary left-1/2 sm:py-7 text-secondary">

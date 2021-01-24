@@ -104,16 +104,18 @@ const Footer = (): JSX.Element => (
             method="post"
             className="flex flex-col items-start my-4 space-y-4 md:items-center md:flex-row md:space-y-0 md:space-x-4"
           >
-            <label htmlFor="member[email]" className="sr-only">
-              Email
-            </label>
-            <input
-              type="email"
-              name="member[email]"
-              id="member[email]"
-              placeholder="Correo"
-              className="block w-full px-4 py-2 mx-auto font-mono leading-5 text-white placeholder-opacity-50 bg-transparent border border-white rounded-lg md:flex-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
-            />
+            <div className="flex-1 w-full">
+              <label htmlFor="member[email]" className="sr-only">
+                Email
+              </label>
+              <input
+                type="email"
+                name="member[email]"
+                id="member[email]"
+                placeholder="Correo"
+                className="block w-full px-4 py-2 mx-auto font-mono leading-5 text-white placeholder-opacity-50 bg-transparent border border-white rounded-lg md:flex-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
+              />
+            </div>
 
             <button
               type="submit"

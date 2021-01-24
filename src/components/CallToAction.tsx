@@ -1,26 +1,20 @@
 // Dependencies
-import * as React from 'react'
 import Lottie from 'lottie-react'
+
+// Animations
+import ProgrammingAnimation from '@/animations/31675-programming.json'
 
 // Components
 import { Link } from '@/components'
 
 const CallToAction = (): JSX.Element => {
-  const [programmingAnimation, setProgrammingAnimation] = React.useState({})
-
-  React.useEffect(() => {
-    import('@/animations/31675-programming.json').then(setProgrammingAnimation)
-  }, [])
-
   return (
     <section className="container px-5">
       <div className="max-w-5xl mx-auto my-16 lg:my-32">
         <div className="flex flex-wrap items-center flex-1 w-full overflow-hidden rounded-lg bg-primary md:flex-no-wrap">
           <div className="w-full md:w-1/3 md:order-last">
             <div className="-mx-12 -mt-12 -mb-12 md:ml-0 md:-mr-24">
-              {programmingAnimation && (
-                <Lottie animationData={programmingAnimation} className="transform" />
-              )}
+              <Lottie animationData={ProgrammingAnimation} className="transform" />
             </div>
           </div>
           <div className="w-full px-4 pt-24 pb-8 md:p-12 md:w-2/3">

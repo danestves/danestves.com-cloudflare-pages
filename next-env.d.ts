@@ -95,3 +95,4 @@ declare module 'graphcms-image' {
 }
 
 declare module 'emoji-trie'
+declare module 'react-image-and-background-image-fade'
