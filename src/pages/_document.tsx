@@ -46,6 +46,9 @@ export default class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#071d49" />
           <meta name="msapplication-config" content="/static/icons/browserconfig.xml" />
           <meta name="theme-color" content="#071d49" />
+
+          <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+          <link rel="preconnect" href="https://queue.simpleanalyticscdn.com" />
         </Head>
 
         <body className="bg-secondary">
