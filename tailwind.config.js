@@ -69,8 +69,8 @@ module.exports = {
         '8xl': `6rem`,
       },
       fontFamily: {
-        sans: [`Poppins`, ...defaultTheme.fontFamily.sans],
-        mono: [`Source Code Pro`, ...defaultTheme.fontFamily.mono],
+        sans: [`Inter var`, ...defaultTheme.fontFamily.sans],
+        mono: [`Fira Code var`, ...defaultTheme.fontFamily.mono],
       },
       height: {
         88: `22rem`,
@@ -113,12 +113,12 @@ module.exports = {
             pre: {
               '&.prism-code': {
                 padding: `${theme(`padding.4`)} ${theme(`padding.6`)}`,
-                fontSize: theme(`fontSize.sm`),
+                fontSize: theme(`fontSize.sm`)[0],
                 fontWeight: 400,
                 color: theme(`colors.gray.100`),
                 whiteSpace: theme(`whitespace.normal`),
                 borderRadius: theme(`borderRadius.default`),
-                fontFamily: `"Source Code Pro", ${[...defaultTheme.fontFamily.mono]}`,
+                fontFamily: `"Fira Code var", ${[...defaultTheme.fontFamily.mono]}`,
                 backgroundColor: `rgb(39, 40, 34)`,
 
                 '&:after, &:before': {
@@ -128,12 +128,12 @@ module.exports = {
             },
             code: {
               padding: `${theme(`padding.1`)} ${theme(`padding.2`)}`,
-              fontSize: theme(`fontSize.sm`),
+              fontSize: theme(`fontSize.sm`)[0],
               fontWeight: 400,
               color: theme(`colors.gray.100`),
               whiteSpace: theme(`whitespace.normal`),
               borderRadius: theme(`borderRadius.default`),
-              fontFamily: `"Source Code Pro", ${[...defaultTheme.fontFamily.mono]}`,
+              fontFamily: `"Fira Code var", ${[...defaultTheme.fontFamily.mono]}`,
               backgroundColor: `rgb(39, 40, 34)`,
 
               '&:after, &:before': {

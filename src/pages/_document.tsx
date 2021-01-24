@@ -20,6 +20,20 @@ export default class MyDocument extends Document {
     return (
       <Html lang="es">
         <Head>
+          <link
+            rel="preload"
+            href="/static/fonts/inter-var-latin.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/FiraCode-VF.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png" />
           <link
@@ -49,67 +63,6 @@ export default class MyDocument extends Document {
 
           <link rel="preconnect" href="https://vitals.vercel-insights.com" />
           <link rel="preconnect" href="https://queue.simpleanalyticscdn.com" />
-
-          <link
-            rel="preload"
-            href="/static/fonts/poppins/poppins-v15-latin-regular.woff"
-            as="font"
-            type="font/woff"
-          />
-          <link
-            rel="preload"
-            href="/static/fonts/poppins/poppins-v15-latin-regular.woff2"
-            as="font"
-            type="font/woff2"
-          />
-          <link
-            rel="preload"
-            href="/static/fonts/poppins/poppins-v15-latin-600.woff"
-            as="font"
-            type="font/woff"
-          />
-          <link
-            rel="preload"
-            href="/static/fonts/poppins/poppins-v15-latin-600.woff2"
-            as="font"
-            type="font/woff2"
-          />
-          <link
-            rel="preload"
-            href="/static/fonts/poppins/poppins-v15-latin-700.woff"
-            as="font"
-            type="font/woff"
-          />
-          <link
-            rel="preload"
-            href="/static/fonts/poppins/poppins-v15-latin-700.woff2"
-            as="font"
-            type="font/woff2"
-          />
-          <link
-            rel="preload"
-            href="/static/fonts/source-code-pro/source-code-pro-v13-latin-regular.woff"
-            as="font"
-            type="font/woff"
-          />
-          <link
-            rel="preload"
-            href="/static/fonts/source-code-pro/source-code-pro-v13-latin-regular.woff2"
-            as="font"
-            type="font/woff2"
-          />
-          <link
-            rel="preload"
-            href="/static/fonts/source-code-pro/source-code-pro-v13-latin-700.woff"
-            as="font"
-            type="font/woff"
-          />
-          <link
-            rel="preload"
-            href="/static/fonts/source-code-pro/source-code-pro-v13-latin-700.woff2"
-            as="font"
-            type="font/woff2"
-          />
         </Head>
 
         <body className="bg-secondary">
