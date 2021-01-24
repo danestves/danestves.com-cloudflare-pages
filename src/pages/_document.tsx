@@ -49,6 +49,67 @@ export default class MyDocument extends Document {
 
           <link rel="preconnect" href="https://vitals.vercel-insights.com" />
           <link rel="preconnect" href="https://queue.simpleanalyticscdn.com" />
+
+          <link
+            rel="preload"
+            href="/static/fonts/poppins/poppins-v15-latin-regular.woff"
+            as="font"
+            type="font/woff"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/poppins/poppins-v15-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/poppins/poppins-v15-latin-600.woff"
+            as="font"
+            type="font/woff"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/poppins/poppins-v15-latin-600.woff2"
+            as="font"
+            type="font/woff2"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/poppins/poppins-v15-latin-700.woff"
+            as="font"
+            type="font/woff"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/poppins/poppins-v15-latin-700.woff2"
+            as="font"
+            type="font/woff2"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/source-code-pro/source-code-pro-v13-latin-regular.woff"
+            as="font"
+            type="font/woff"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/source-code-pro/source-code-pro-v13-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/source-code-pro/source-code-pro-v13-latin-700.woff"
+            as="font"
+            type="font/woff"
+          />
+          <link
+            rel="preload"
+            href="/static/fonts/source-code-pro/source-code-pro-v13-latin-700.woff2"
+            as="font"
+            type="font/woff2"
+          />
         </Head>
 
         <body className="bg-secondary">
