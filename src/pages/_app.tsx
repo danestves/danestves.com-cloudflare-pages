@@ -1,6 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { motion } from 'framer-motion'
 import { ApolloProvider } from '@apollo/client'
@@ -24,6 +25,13 @@ SwiperCore.use([Autoplay, A11y, Navigation])
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
   return (
     <ApolloProvider client={apollo}>
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+        />
+      </Head>
+
       <DefaultSeo
         titleTemplate="%s | @danestves"
         title="Desarrollador Web Frontend"
