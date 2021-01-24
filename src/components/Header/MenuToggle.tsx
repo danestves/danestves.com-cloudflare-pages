@@ -23,6 +23,7 @@ const MenuToggle = ({
     type="button"
     className="absolute flex items-center justify-center w-10 h-10 rounded-full z-100 top-5 right-4 focus:outline-none"
     onClick={() => toggle(!isOpen)}
+    aria-label="Open/Close Menu"
   >
     <svg className="w-5 h-5" width="23" height="23" viewBox="0 0 23 23">
       <Path
