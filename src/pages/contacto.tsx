@@ -1,10 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { NextPage } from 'next'
-import { IoBusinessOutline } from 'react-icons/io5'
-import { GiPalette, GiPencilRuler, GiFamilyTree } from 'react-icons/gi'
-import { FaLaptopCode } from 'react-icons/fa'
-import { SiGooglecalendar } from 'react-icons/si'
+import * as Icons from 'react-icons/all'
 import kwesforms from 'kwesforms'
 
 // Components
@@ -45,37 +42,37 @@ const Contacto: NextPage = () => {
             <ul className="my-8">
               <li className="flex items-center my-4 space-x-4">
                 <span className="p-4 rounded-full" style={{ background: '#C3009B' }}>
-                  <IoBusinessOutline className="w-8 h-8 text-white" />
+                  <Icons.IoBusinessOutline className="w-8 h-8 text-white" />
                 </span>
                 <span className="text-white">¿De qué se trata tu negocio?</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="p-4 rounded-full" style={{ background: '#8900C3' }}>
-                  <GiFamilyTree className="w-8 h-8 text-white" />
+                  <Icons.GiFamilyTree className="w-8 h-8 text-white" />
                 </span>
                 <span className="text-white">¿A qué nicho va dirigido?</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="p-4 rounded-full" style={{ background: '#2700C3' }}>
-                  <GiPencilRuler className="w-8 h-8 text-white" />
+                  <Icons.GiPencilRuler className="w-8 h-8 text-white" />
                 </span>
                 <span className="text-white">¿Es una reestructuración o creación desde cero?</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="p-4 rounded-full" style={{ background: '#003AC3' }}>
-                  <GiPalette className="w-8 h-8 text-white" />
+                  <Icons.GiPalette className="w-8 h-8 text-white" />
                 </span>
                 <span className="text-white">¿Qué tal si tomamos un poco de inspiración?</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="p-4 rounded-full" style={{ background: '#009BC3' }}>
-                  <SiGooglecalendar className="w-8 h-8 text-secondary" />
+                  <Icons.SiGooglecalendar className="w-8 h-8 text-secondary" />
                 </span>
                 <span className="text-white">Fijemos fechas de entrega</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="p-4 rounded-full" style={{ background: '#00C389' }}>
-                  <FaLaptopCode className="w-8 h-8 text-secondary" />
+                  <Icons.FaLaptopCode className="w-8 h-8 text-secondary" />
                 </span>
                 <span className="text-white">Transformemos tu idea en un producto</span>
               </li>
