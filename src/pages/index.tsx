@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import NextImage from 'next/image'
-import Icons from 'react-icons/all'
+import { GrReactjs, IoLogoNodejs, GrGraphQl, IoLogoWordpress } from 'react-icons/all'
 import { BackgroundImage } from 'react-image-and-background-image-fade'
 
 // Components
@@ -129,21 +129,21 @@ const Index: NextPage = () => {
 
           <div className="grid grid-cols-2 gap-8 mt-8 md:grid-cols-4">
             <div className="text-center">
-              <Icons.GrReactjs size="128" className="mx-auto text-secondary" />
+              <GrReactjs size="128" className="mx-auto text-secondary" />
               <h2 className="font-mono text-xl font-bold text-secondary">
                 React / NextJS / Gatsby
               </h2>
             </div>
             <div className="text-center">
-              <Icons.IoLogoNodejs size="128" className="mx-auto text-secondary" />
+              <IoLogoNodejs size="128" className="mx-auto text-secondary" />
               <h2 className="font-mono text-xl font-bold text-secondary">NodeJS</h2>
             </div>
             <div className="text-center">
-              <Icons.GrGraphQl size="128" className="mx-auto text-secondary" />
+              <GrGraphQl size="128" className="mx-auto text-secondary" />
               <h2 className="font-mono text-xl font-bold text-secondary">GraphQL</h2>
             </div>
             <div className="text-center">
-              <Icons.IoLogoWordpress size="128" className="mx-auto text-secondary" />
+              <IoLogoWordpress size="128" className="mx-auto text-secondary" />
               <h2 className="font-mono text-xl font-bold text-secondary">WordPress</h2>
             </div>
           </div>

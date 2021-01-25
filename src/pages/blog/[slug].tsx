@@ -7,7 +7,7 @@ import Image from 'graphcms-image'
 import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
 import NextImage from 'next/image'
-import Icons from 'react-icons/all'
+import { FaTwitter, FaLinkedinIn, FaPinterestP, FaFacebookF } from 'react-icons/all'
 
 // Components
 import { SEO } from '@/components'
@@ -123,7 +123,7 @@ const BlogPage: NextPage<Props> = ({ post }) => {
                 >
                   <p className="sr-only">Share on Twitter</p>
                   <span className="grid w-12 h-12 p-1 m-2 transition-all duration-200 transform rounded cursor-pointer place-items-center">
-                    <Icons.FaTwitter className="text-3xl text-white" />
+                    <FaTwitter className="text-3xl text-white" />
                   </span>
                 </a>
                 <a
@@ -133,7 +133,7 @@ const BlogPage: NextPage<Props> = ({ post }) => {
                 >
                   <p className="sr-only">Share on Linkedin</p>
                   <span className="grid w-12 h-12 p-1 m-2 transition-all duration-200 transform rounded cursor-pointer place-items-center">
-                    <Icons.FaLinkedinIn className="text-3xl text-white" />
+                    <FaLinkedinIn className="text-3xl text-white" />
                   </span>
                 </a>
                 <a
@@ -143,7 +143,7 @@ const BlogPage: NextPage<Props> = ({ post }) => {
                 >
                   <p className="sr-only">Share on Pinterest</p>
                   <span className="grid w-12 h-12 p-1 m-2 transition-all duration-200 transform rounded cursor-pointer place-items-center">
-                    <Icons.FaPinterestP className="text-3xl text-white" />
+                    <FaPinterestP className="text-3xl text-white" />
                   </span>
                 </a>
                 <a
@@ -153,7 +153,7 @@ const BlogPage: NextPage<Props> = ({ post }) => {
                 >
                   <p className="sr-only">Share on Facebook</p>
                   <span className="grid w-12 h-12 p-1 m-2 transition-all duration-200 transform rounded cursor-pointer place-items-center">
-                    <Icons.FaFacebookF className="text-3xl text-white" />
+                    <FaFacebookF className="text-3xl text-white" />
                   </span>
                 </a>
               </div>

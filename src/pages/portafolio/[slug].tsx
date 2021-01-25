@@ -4,7 +4,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/dist/client/router'
 import Image from 'graphcms-image'
-import Icons from 'react-icons/all'
+import { BiLinkExternal } from 'react-icons/all'
 
 // Components
 import { SEO } from '@/components'
@@ -86,7 +86,7 @@ const DynamicPortfolio: NextPage<Props> = ({ portfolio }) => {
                 className="flex items-center space-x-1 text-lg underline focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none text-primary"
               >
                 <span>Ver</span>
-                <Icons.BiLinkExternal className="w-4 h-4" />
+                <BiLinkExternal className="w-4 h-4" />
               </a>
             </div>
           </div>
