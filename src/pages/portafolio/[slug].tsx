@@ -41,6 +41,12 @@ const DynamicPortfolio: NextPage<Props> = ({ portfolio }) => {
         title={portfolio.seo?.title as string}
         description={portfolio.seo?.description as string}
         shareImage={portfolio.seo?.image as Asset}
+        additionalMetaTags={[
+          {
+            name: 'twitter:image',
+            content: portfolio.seo?.image?.url as string,
+          },
+        ]}
       />
 
       <div className="container px-5 py-16 space-y-16">

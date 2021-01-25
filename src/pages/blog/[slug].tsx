@@ -50,6 +50,12 @@ const BlogPage: NextPage<Props> = ({ post }) => {
           ],
           type: 'article',
         }}
+        additionalMetaTags={[
+          {
+            name: 'twitter:image',
+            content: openGraphImgGenerator(post.title, post.tags),
+          },
+        ]}
       />
       <ArticleJsonLd
         url={window.location.href}
