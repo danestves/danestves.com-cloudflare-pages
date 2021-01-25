@@ -1,7 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { motion } from 'framer-motion'
-import { FiHome, FiFileText, FiGitPullRequest, FiBriefcase, FiEdit3, FiMail } from 'react-icons/all'
+import { FiHome, FiFileText, FiGitPullRequest, FiBriefcase, FiEdit3, FiMail } from 'react-icons/fi'
 
 // Components
 import MenuItem from './MenuItem'

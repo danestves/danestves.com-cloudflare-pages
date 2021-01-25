@@ -1,6 +1,6 @@
 // Dependencies
 import * as React from 'react'
-import { FaGithubAlt, FaYoutube, FaTwitter } from 'react-icons/all'
+import { FaGithubAlt, FaYoutube, FaTwitter } from 'react-icons/fa'
 
 // Components
 import { Link, Emoji } from '@/components'

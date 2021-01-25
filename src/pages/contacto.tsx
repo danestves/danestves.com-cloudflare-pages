@@ -1,14 +1,10 @@
 // Dependencies
 import * as React from 'react'
 import { NextPage } from 'next'
-import {
-  IoBusinessOutline,
-  GiFamilyTree,
-  GiPencilRuler,
-  GiPalette,
-  SiGooglecalendar,
-  FaLaptopCode,
-} from 'react-icons/all'
+import { FaLaptopCode } from 'react-icons/fa'
+import { IoBusinessOutline } from 'react-icons/io5'
+import { SiGooglecalendar } from 'react-icons/si'
+import { GiFamilyTree, GiPencilRuler, GiPalette } from 'react-icons/gi'
 import kwesforms from 'kwesforms'
 
 // Components

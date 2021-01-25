@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import NextImage from 'next/image'
-import { BsChevronLeft } from 'react-icons/all'
+import { BsChevronLeft } from 'react-icons/bs'
 
 interface Props {
   element?: string

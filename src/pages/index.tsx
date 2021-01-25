@@ -2,7 +2,8 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import NextImage from 'next/image'
-import { GrReactjs, IoLogoNodejs, GrGraphQl, IoLogoWordpress } from 'react-icons/all'
+import { IoLogoNodejs, IoLogoWordpress } from 'react-icons/io5'
+import { GrReactjs, GrGraphQl } from 'react-icons/gr'
 import { BackgroundImage } from 'react-image-and-background-image-fade'
 
 // Components

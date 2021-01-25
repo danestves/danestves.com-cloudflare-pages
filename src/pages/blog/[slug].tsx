@@ -7,7 +7,7 @@ import Image from 'graphcms-image'
 import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
 import NextImage from 'next/image'
-import { FaTwitter, FaLinkedinIn, FaPinterestP, FaFacebookF } from 'react-icons/all'
+import { FaTwitter, FaLinkedinIn, FaPinterestP, FaFacebookF } from 'react-icons/fa'
 
 // Components
 import { SEO } from '@/components'
