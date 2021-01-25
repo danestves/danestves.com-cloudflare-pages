@@ -7,7 +7,7 @@ import Image from 'graphcms-image'
 import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
 import NextImage from 'next/image'
-import * as Icons from 'react-icons/all'
+import Icons from 'react-icons/all'
 
 // Components
 import { SEO } from '@/components'

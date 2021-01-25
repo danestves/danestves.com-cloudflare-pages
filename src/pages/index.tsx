@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import NextImage from 'next/image'
-import * as Icons from 'react-icons/all'
+import Icons from 'react-icons/all'
 import { BackgroundImage } from 'react-image-and-background-image-fade'
 
 // Components

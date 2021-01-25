@@ -4,7 +4,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/dist/client/router'
 import Image from 'graphcms-image'
-import * as Icons from 'react-icons/all'
+import Icons from 'react-icons/all'
 
 // Components
 import { SEO } from '@/components'

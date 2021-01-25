@@ -1,7 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { NextPage } from 'next'
-import * as Icons from 'react-icons/all'
+import Icons from 'react-icons/all'
 import kwesforms from 'kwesforms'
 
 // Components
