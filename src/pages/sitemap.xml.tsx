@@ -2,29 +2,31 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-// Generated
-import { Portfolio, Post } from '@/generated/graphql'
-
 // Lib
-import { getApolloClient } from '@/lib/apollo'
-
-// Queries
-import GET_PORTFOLIO_SLUGS from '@/graphql/portfolioSlugs.query'
-import GET_POST_SLUGS from '@/graphql/postSlugs.query'
+import { getAllPortfoliosWithSlug, getAllPostsWithSlug } from '@/lib/graphcms'
 
 // Utils
 import { formatDate } from '@/utils'
 
-const toUrl = (host: string, route: string): string => {
+const toUrl = (
+  host: string,
+  item: { slug: string; createdAt: string; updatedAt: string }
+): string => {
+  const date = new Date(item.updatedAt)
+
   return `<url>
-    <loc>https://${host}${route}</loc>
-    <lastmod>${formatDate(new Date(), 'yyyy-MM-dd')}</lastmod>
+    <loc>https://${host}${item.slug}</loc>
+    <lastmod>${date.getFullYear()}-${date.getMonth()}-${date.getDate()}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>`
 }
 
-const createSitemap = (host: string, portfolios: string[], posts: string[]): string => {
+const createSitemap = (
+  host: string,
+  portfolios: { slug: string; createdAt: string; updatedAt: string }[],
+  posts: { slug: string; createdAt: string; updatedAt: string }[]
+): string => {
   return `<?xml version="1.0" encoding="UTF-8" ?>
     <urlset
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
@@ -68,8 +70,8 @@ const createSitemap = (host: string, portfolios: string[], posts: string[]): str
         <changefreq>daily</changefreq>
         <priority>0.5</priority>
       </url>
-      ${portfolios.map((route) => toUrl(host, route)).join('')}
-      ${posts.map((route) => toUrl(host, route)).join('')}
+      ${portfolios.map((portfolio) => toUrl(host, portfolio)).join('')}
+      ${posts.map((post) => toUrl(host, post)).join('')}
     </urlset>
   `
 }
@@ -83,22 +85,21 @@ const SitemapPage: NextPage = () => {
 // Hopefully we can replace this with getStaticProps once this issue is fixed:
 // https://github.com/vercel/next.js/discussions/10949
 SitemapPage.getInitialProps = async ({ req, res }) => {
-  const apollo = getApolloClient()
-  const { data: data1 } = await apollo.query({
-    query: GET_PORTFOLIO_SLUGS,
-    variables: {
-      first: 100,
-    },
-  })
-  const { data: data2 } = await apollo.query({
-    query: GET_POST_SLUGS,
-    variables: {
-      first: 100,
-    },
-  })
+  const portfoliosQuery = await getAllPortfoliosWithSlug()
+  const postsQuery = await getAllPostsWithSlug()
 
-  const portfolios = data1.portfolios.map((portfolio: Portfolio) => `/portafolio/${portfolio.slug}`)
-  const posts = data2.posts.map((post: Post) => `/blog/${post.slug}`)
+  const portfolios = portfoliosQuery.map((portfolio) => {
+    return {
+      ...portfolio,
+      slug: `/portafolio/${portfolio.slug}`,
+    }
+  })
+  const posts = postsQuery.map((post) => {
+    return {
+      ...post,
+      slug: `/blog/${post.slug}`,
+    }
+  })
 
   const sitemap = createSitemap((req && req.headers.host) || '', portfolios, posts)
 

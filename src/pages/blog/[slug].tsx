@@ -17,11 +17,7 @@ import Markdown from '@/components/Markdown'
 import { Post } from '@/generated/graphql'
 
 // Lib
-import { getApolloClient } from '@/lib/apollo'
-
-// Queries
-import GET_POST_SLUGS from '@/graphql/postSlugs.query'
-import GET_POST from '@/graphql/post.query'
+import { getAllPostsWithSlug, getPost } from '@/lib/graphcms'
 
 // Utils
 import { openGraphImgGenerator, formatDate, readingTime } from '@/utils'
@@ -168,17 +164,11 @@ const BlogPage: NextPage<Props> = ({ post }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const apollo = getApolloClient()
-  const { data } = await apollo.query({
-    query: GET_POST_SLUGS,
-    variables: {
-      first: 100,
-    },
-  })
+  const slugs = await getAllPostsWithSlug()
 
-  const paths = data?.posts.map((post: Post) => {
+  const paths = slugs?.map(({ slug }) => {
     return {
-      params: { slug: post.slug },
+      params: { slug },
     }
   })
 
@@ -189,18 +179,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  const apollo = getApolloClient()
-  const { data } = await apollo.query({
-    query: GET_POST,
-    variables: {
-      slug: params?.slug,
-    },
-  })
+  const post = await getPost(params?.slug as string, preview)
 
   return {
     props: {
       preview,
-      post: data.post,
+      post,
     },
   }
 }

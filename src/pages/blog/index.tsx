@@ -11,10 +11,7 @@ import { SEO, Link } from '@/components'
 import { Post } from '@/generated/graphql'
 
 // Lib
-import { getApolloClient } from '@/lib/apollo'
-
-// Queries
-import GET_POSTS from '@/graphql/posts.query'
+import { getPosts } from '@/lib/graphcms'
 
 // Utils
 import { formatDate } from '@/utils'
@@ -25,7 +22,6 @@ interface Props {
 }
 
 const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
-  // Render
   return (
     <>
       <SEO
@@ -122,15 +118,12 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const apollo = getApolloClient()
-  const { data } = await apollo.query({
-    query: GET_POSTS,
-  })
+  const data = await getPosts()
 
   return {
     props: {
+      ...data,
       featuredPost: data.featuredPost[0],
-      posts: data.posts,
     },
     revalidate: 1200,
   }

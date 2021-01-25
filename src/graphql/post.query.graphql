@@ -1,0 +1,19 @@
+query post($slug: String!) {
+  post(where: { slug: $slug }, stage: PUBLISHED) {
+    seo {
+      title
+      description
+    }
+    id
+    title
+    tags
+    publishedAt
+    updatedAt
+    coverImage {
+      handle
+      width
+      height
+    }
+    content
+  }
+}

@@ -1,0 +1,7 @@
+query postSlugs($first: Int) {
+  posts(first: $first, orderBy: createdAt_ASC) {
+    slug
+    updatedAt
+    createdAt
+  }
+}

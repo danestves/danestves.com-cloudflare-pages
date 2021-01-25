@@ -1,7 +1,6 @@
 // Dependencies
 import * as React from 'react'
 import { NextPage, GetStaticProps } from 'next'
-import LazyLoad from 'react-lazyload'
 import { motion } from 'framer-motion'
 
 // Components
@@ -69,21 +68,20 @@ const OpenSource: NextPage<Props> = ({ repositories }) => {
               rel="noopener noreferrer"
               variants={item}
             >
-              <LazyLoad height={120}>
-                <img
-                  src={`https://github-readme-stats.danestves.com/api/pin/?username=${
-                    repository.owner.login
-                  }&repo=${
-                    repository.name
-                  }&title_color=fff&icon_color=00C389&text_color=9f9f9f&bg_color=0c1014${
-                    repository.owner.login === 'opengraphimg' ? '&show_owner=true' : ''
-                  }`}
-                  alt={repository.full_name}
-                  width={400}
-                  height={120}
-                  className="w-full"
-                />
-              </LazyLoad>
+              <img
+                src={`https://github-readme-stats.danestves.com/api/pin/?username=${
+                  repository.owner.login
+                }&repo=${
+                  repository.name
+                }&title_color=fff&icon_color=00C389&text_color=9f9f9f&bg_color=0c1014${
+                  repository.owner.login === 'opengraphimg' ? '&show_owner=true' : ''
+                }`}
+                alt={repository.full_name}
+                width={400}
+                height={120}
+                loading="lazy"
+                className="w-full"
+              />
             </motion.a>
           ))}
         </motion.div>

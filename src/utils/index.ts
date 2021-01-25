@@ -1,11 +1,9 @@
 // Dependencies
+import axios from '@/lib/axios'
 import { format } from 'date-fns'
 import es from 'date-fns/locale/es'
 
 /**
- * @function formatDate
- *
- * @description
  * Format the received date using [date-fns](https://date-fns.org/)
  * that is a lightweight library to format dates
  *
@@ -21,9 +19,6 @@ export const formatDate = (date: string | Date, formatter = 'mm/dd/yyyy'): strin
 }
 
 /**
- * @function readingTime
- *
- * @description
  * According to [this post](https://irisreading.com/what-is-the-average-reading-speed/#:~:text=Many%20resources%20indicate%20that%20the,around%20300%20words%20per%20minute.)
  * the human can read between 200-250 words per minute (wpm)
  * to get a metric we going to put in the minimum words (200)
@@ -51,9 +46,6 @@ export const readingTime = (
 }
 
 /**
- * @function openGraphImgGenerator
- *
- * @description
  * Generator of URL for open graph images
  *
  * @param title - The title to show in the image
@@ -68,3 +60,5 @@ export const openGraphImgGenerator = (title: string, tags?: string[]): string =>
     tags ? `&tags=${tags?.map((name: string) => name).join(`,`)}` : ''
   }&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`
 }
+
+export const fetcher = (url: string): Promise<Response> => axios.get(url).then((r) => r.data)

@@ -4,14 +4,10 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { motion } from 'framer-motion'
-import { ApolloProvider } from '@apollo/client'
 import SwiperCore, { Autoplay, A11y, Navigation } from 'swiper'
 
 // Components
 import { Layout } from '@/components'
-
-// Lib
-import apollo from '@/lib/apollo'
 
 // Styles
 import 'swiper/swiper.scss'
@@ -23,7 +19,7 @@ SwiperCore.use([Autoplay, A11y, Navigation])
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
   return (
-    <ApolloProvider client={apollo}>
+    <>
       <Head>
         <meta
           name="viewport"
@@ -100,7 +96,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
           <Component {...pageProps} />
         </motion.div>
       </Layout>
-    </ApolloProvider>
+    </>
   )
 }
 

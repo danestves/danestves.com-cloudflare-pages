@@ -17,21 +17,15 @@ import { Portfolio } from '@/generated/graphql'
 import { Asset } from '@/interfaces'
 
 // Lib
-import { getApolloClient } from '@/lib/apollo'
-
-// Queries
-import GET_PORTFOLIO_SLUGS from '@/graphql/portfolioSlugs.query'
-import GET_PORTFOLIO from '@/graphql/portfolio.query'
+import { getAllPortfoliosWithSlug, getPortfolio } from '@/lib/graphcms'
 
 interface Props {
   portfolio: Portfolio
 }
 
 const DynamicPortfolio: NextPage<Props> = ({ portfolio }) => {
-  // Hooks
   const router = useRouter()
 
-  // Render
   if ((!router.isFallback && !portfolio) || !portfolio) {
     return <ErrorPage statusCode={404} />
   }
@@ -101,17 +95,11 @@ const DynamicPortfolio: NextPage<Props> = ({ portfolio }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const apollo = getApolloClient()
-  const { data } = await apollo.query({
-    query: GET_PORTFOLIO_SLUGS,
-    variables: {
-      first: 100,
-    },
-  })
+  const slugs = await getAllPortfoliosWithSlug()
 
-  const paths = data?.portfolios.map((portfolio: Portfolio) => {
+  const paths = slugs?.map(({ slug }) => {
     return {
-      params: { slug: portfolio.slug },
+      params: { slug },
     }
   })
 
@@ -121,26 +109,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const apollo = getApolloClient()
-  const { data } = await apollo.query({
-    query: GET_PORTFOLIO,
-    variables: {
-      slug: params?.slug as string,
-    },
-  })
-
-  if (!data?.portfolio) {
-    return {
-      props: {},
-    }
-  }
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
+  const portfolio = await getPortfolio(params?.slug as string, preview)
 
   return {
     props: {
-      portfolio: data.portfolio,
+      preview,
+      portfolio,
     },
-    revalidate: 1200,
   }
 }
 

@@ -1,26 +1,20 @@
 // Dependencies
 import * as React from 'react'
-import { NextPage } from 'next'
+import { NextPage, GetServerSideProps } from 'next'
 import Image from 'graphcms-image'
 import removeMarkdown from 'markdown-to-text'
-import Loader from 'react-loaders'
 import { motion } from 'framer-motion'
 
 // Components
-import { SEO, Pagination, Link } from '@/components'
+import { SEO, Link, Pagination } from '@/components'
 
 // Generated
-import { usePortfoliosQuery, PageInfo } from '@/generated/graphql'
+import { PortfoliosQuery } from '@/generated/graphql'
 
-// Queries
-import GET_PORTFOLIOS from '@/graphql/portfolios.query'
+// Lib
+import { getPortfolios } from '@/lib/graphcms'
 
-const PortfolioPage: NextPage = () => {
-  const [state, setState] = React.useState({
-    currentPage: 1,
-    pageSize: 4,
-    totalPages: 0,
-  })
+const PortfolioPage: NextPage<PortfoliosQuery> = ({ portfolios, count }) => {
   const list = {
     hidden: {
       opacity: 0,
@@ -41,30 +35,6 @@ const PortfolioPage: NextPage = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   }
-
-  /**
-   * Get initial query variables
-   */
-  const getPageQueryVariables = (): { first: number; skip: number } => {
-    return { first: state.pageSize, skip: (state.currentPage - 1) * state.pageSize }
-  }
-
-  const { data, loading, error, fetchMore } = usePortfoliosQuery({
-    variables: getPageQueryVariables(),
-  })
-
-  if (loading) {
-    return (
-      <div className="container flex items-center justify-center px-5 py-48">
-        <Loader type="pacman" active />
-      </div>
-    )
-  }
-  if (error) return <p>Error: ${error.message}</p>
-
-  const count = data?.count.aggregate.count
-  const pageInfo = data?.portfolios.pageInfo
-  const portfolios = data?.portfolios.edges
 
   return (
     <>
@@ -87,7 +57,7 @@ const PortfolioPage: NextPage = () => {
         variants={list}
         className="container px-5 space-y-16"
       >
-        {portfolios?.map(({ node: portfolio }) => (
+        {portfolios.edges.map(({ node: portfolio }) => (
           <motion.div key={portfolio.id} variants={item}>
             <Link
               href={`/portafolio/${portfolio.slug}`}
@@ -121,18 +91,20 @@ const PortfolioPage: NextPage = () => {
           </motion.div>
         ))}
 
-        <Pagination
-          state={state}
-          query={GET_PORTFOLIOS}
-          variables={getPageQueryVariables()}
-          setState={setState}
-          fetchMore={fetchMore}
-          count={count || 0}
-          pageInfo={pageInfo as PageInfo}
-        />
+        <Pagination count={count.aggregate.count} limit={4} pageInfo={portfolios.pageInfo} />
       </motion.div>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({
+  query: { first = '4', skip = '0' },
+}) => {
+  const data = await getPortfolios(Number(first), Number(skip))
+
+  return {
+    props: data,
+  }
 }
 
 export default PortfolioPage

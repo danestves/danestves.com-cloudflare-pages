@@ -3,15 +3,16 @@ import * as React from 'react'
 import { NextPage } from 'next'
 
 // Generated
-import { Post } from '@/generated/graphql'
+import { Post, Seo } from '@/generated/graphql'
 
 // Lib
-import { getApolloClient } from '@/lib/apollo'
+import { getRssPosts } from '@/lib/graphcms'
 
-// Queries
-import GET_RSS_POSTS from '@/graphql/postsRss.query'
-
-const toUrl = (host: string, post: Post, route: string): string => {
+const toUrl = (
+  host: string,
+  post: Pick<Post, 'title' | 'slug' | 'createdAt'> & { seo?: Pick<Seo, 'description'> },
+  route: string
+): string => {
   return `<item>
     <title>${post.title}</title>
     <guid>https://${host}/blog/${route}</guid>
@@ -21,7 +22,10 @@ const toUrl = (host: string, post: Post, route: string): string => {
   </item>`
 }
 
-const createSitemap = (host: string, posts: string[]): string => {
+const createSitemap = (
+  host: string,
+  posts: Pick<Post, 'title' | 'slug' | 'createdAt'>[]
+): string => {
   return `<rss
       xmlns:atom="http://www.w3.org/2005/Atom"
       version="2.0"
@@ -32,7 +36,7 @@ const createSitemap = (host: string, posts: string[]): string => {
         <language>es-ES</language>
         <lastBuildDate>${new Date()}</lastBuildDate>
         <atom:link href="https://${host}/rss.xml" rel="self" type="application/rss+xml" />
-        ${posts.map((post: any) => toUrl(host, post, post.slug)).join('')}
+        ${posts.map((post) => toUrl(host, post, post.slug)).join('')}
       </channel>
     </rss>
   `
@@ -47,15 +51,9 @@ const SitemapPage: NextPage = () => {
 // Hopefully we can replace this with getStaticProps once this issue is fixed:
 // https://github.com/vercel/next.js/discussions/10949
 SitemapPage.getInitialProps = async ({ req, res }) => {
-  const apollo = getApolloClient()
-  const { data } = await apollo.query({
-    query: GET_RSS_POSTS,
-    variables: {
-      first: 100,
-    },
-  })
+  const data = await getRssPosts()
 
-  const posts = data.posts.map((post: Post) => post)
+  const posts = data.posts.map((post) => post)
 
   const sitemap = createSitemap((req && req.headers.host) || '', posts)
 
