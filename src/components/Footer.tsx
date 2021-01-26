@@ -84,7 +84,7 @@ const Footer = (): JSX.Element => (
               </Link>
             </li>
             <li>
-              <Link href="/conacto" className="text-white hover:underline focus:outline-none">
+              <Link href="/contacto" className="text-white hover:underline focus:outline-none">
                 Contacto
               </Link>
             </li>
