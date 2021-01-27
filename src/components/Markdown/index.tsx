@@ -6,6 +6,7 @@ import htmlParser from 'react-markdown/plugins/html-parser'
 
 // Components
 import CodeBlock from '@/components/Markdown/CodeBlock'
+import Image from '@/components/Markdown/Image'
 import Link from '@/components/Markdown/Link'
 
 type MarkdownRenderProps = {
