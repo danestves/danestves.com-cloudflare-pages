@@ -32,13 +32,19 @@ export const formatDate = (date: string | Date, formatter = 'mm/dd/yyyy'): strin
  *
  * @returns The estimated reading time
  */
-export const readingTime = (
-  text: string,
+export const readingTime = ({
+  text,
+  wordCount = 0,
   singular = 'minuto de lectura',
-  plural = 'minutos de lectura'
-): string => {
+  plural = 'minutos de lectura',
+}: {
+  text?: string
+  wordCount?: number
+  singular?: string
+  plural?: string
+}): string => {
   const wordsPerMinute = 200
-  const noOfWords = text.split(/\s/g).length
+  const noOfWords = text ? text.split(/\s/g).length : wordCount
   const minutes = noOfWords / wordsPerMinute
   const readTime = Math.ceil(minutes)
 

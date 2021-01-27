@@ -1,4 +1,4 @@
-const defaultTheme = require(`tailwindcss/defaultTheme`)
+const { fontFamily, spacing } = require(`tailwindcss/defaultTheme`)
 
 module.exports = {
   purge: {
@@ -52,7 +52,19 @@ module.exports = {
       },
       colors: {
         primary: `#00C389`,
-        secondary: `#071D49`,
+        secondary: {
+          DEFAULT: '#071d49',
+          50: '#f3f4f6',
+          100: '#e6e8ed',
+          200: '#c1c7d2',
+          300: '#9ca5b6',
+          400: '#516180',
+          500: '#071d49',
+          600: '#061a42',
+          700: '#051637',
+          800: '#04112c',
+          900: '#030e24',
+        },
         tertiary: `#2F80ED`,
       },
       container: {
@@ -69,8 +81,8 @@ module.exports = {
         '8xl': `6rem`,
       },
       fontFamily: {
-        sans: [`Inter var`, ...defaultTheme.fontFamily.sans],
-        mono: [`Fira Code var`, ...defaultTheme.fontFamily.mono],
+        sans: [`Inter var`, ...fontFamily.sans],
+        mono: [`Fira Code var`, ...fontFamily.mono],
       },
       height: {
         88: `22rem`,
@@ -91,58 +103,50 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            '& h1, & h2, & h3, & h4': {
-              color: theme(`colors.white`),
-            },
+            color: theme('colors.gray.200'),
             a: {
-              color: theme(`colors.primary`),
-              transition: theme(`transitionProperty.all`),
-              transitionDuration: theme(`transitionDuration.200`),
-
+              color: theme('colors.primary'),
+              transition: theme('transitionProperty.all'),
+              transitionDuration: theme('transitionDuration.200'),
               '&:hover': {
-                color: theme(`colors.primary`),
-                opacity: theme(`opacity.75`),
+                color: theme('colors.primary'),
+                opacity: theme('opacity.75'),
               },
+              code: { color: theme('colors.blue.400') },
             },
-            strong: {
-              color: theme(`colors.white`),
+            'h2,h3,h4': {
+              color: theme('colors.gray.100'),
+              'scroll-margin-top': spacing[32],
             },
             blockquote: {
-              color: theme(`colors.gray.400`),
+              borderLeftColor: theme('colors.gray.700'),
+              color: theme('colors.gray.300'),
+              'p:first-of-type::before': false,
+              'p:last-of-type::after': false,
             },
-            pre: {
-              '&.prism-code': {
-                padding: `${theme(`padding.4`)} ${theme(`padding.6`)}`,
-                fontSize: theme(`fontSize.sm`)[0],
-                fontWeight: 400,
-                color: theme(`colors.gray.100`),
-                whiteSpace: theme(`whitespace.normal`),
-                borderRadius: theme(`borderRadius.default`),
-                fontFamily: `"Fira Code var", ${[...defaultTheme.fontFamily.mono]}`,
-                backgroundColor: `rgb(39, 40, 34)`,
-
-                '&:after, &:before': {
-                  content: `"" !important`,
+            hr: { borderColor: theme('colors.gray.500') },
+            code: {
+              color: theme('colors.gray.100'),
+            },
+            ol: {
+              li: {
+                '&:before': {
+                  color: theme('colors.gray.200'),
                 },
               },
             },
-            code: {
-              padding: `${theme(`padding.1`)} ${theme(`padding.2`)}`,
-              fontSize: theme(`fontSize.sm`)[0],
-              fontWeight: 400,
-              color: theme(`colors.gray.100`),
-              whiteSpace: theme(`whitespace.normal`),
-              borderRadius: theme(`borderRadius.default`),
-              fontFamily: `"Fira Code var", ${[...defaultTheme.fontFamily.mono]}`,
-              backgroundColor: `rgb(39, 40, 34)`,
-
-              '&:after, &:before': {
-                content: `"" !important`,
+            ul: {
+              li: {
+                '&:before': { backgroundColor: theme('colors.gray.200') },
               },
             },
-            ol: {
-              '&>li:before': {
-                color: `${theme(`colors.white`)} !important`,
+            strong: { color: theme('colors.gray.300') },
+            thead: {
+              color: theme('colors.gray.100'),
+            },
+            tbody: {
+              tr: {
+                borderBottomColor: theme('colors.gray.700'),
               },
             },
           },
@@ -156,20 +160,20 @@ module.exports = {
   variants: {
     extend: {
       aspectRatio: [`responsive`],
-      backgroundColor: [`responsive`, `hover`, `group-hover`],
+      backgroundColor: [`group-hover`],
       backdropFilter: [`responsive`, `hover`],
-      borderColor: [`responsive`, `hover`, `focus`, `first`, `last`],
-      borderWidth: [`responsive`, `hover`, `focus`, `first`, `last`],
+      borderColor: [`first`, `last`],
+      borderWidth: [`first`, `last`],
       boxShadow: [`responsive`, `hover`, `focus`],
       filter: [`responsive`],
       fontSize: [`group-hover`],
-      margin: [`responsive`, `first`, `last`, `group-hover`],
-      opacity: [`responsive`, `hover`, `focus`, `group-hover`],
+      margin: [`first`, `last`, `group-hover`],
+      opacity: [`group-hover`],
       padding: [`responsive`],
-      placeholderColor: [`responsive`, `focus`],
+      placeholderColor: [`focus`],
       scale: [`group-hover`],
-      space: [`hover`, `group-hover`],
-      textColor: [`responsive`, `hover`, `group-hover`],
+      space: [`group-hover`],
+      textColor: [`group-hover`],
       translate: [`group-hover`],
     },
   },

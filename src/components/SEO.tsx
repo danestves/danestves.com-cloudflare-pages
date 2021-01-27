@@ -3,9 +3,6 @@ import * as React from 'react'
 import { NextSeo, NextSeoProps } from 'next-seo'
 import { window } from 'browser-monads'
 
-// Interfaces
-import { Asset } from '@/interfaces'
-
 interface SEOProps extends NextSeoProps {
   title: string
   description: string
@@ -15,7 +12,7 @@ interface SEOProps extends NextSeoProps {
         width: number
         height: number
       }
-    | Asset
+    | any
   twitterCardType?: string
   twitterUsername?: string
 }
@@ -33,6 +30,7 @@ const SEO = ({
 
   return (
     <NextSeo
+      {...props}
       title={title}
       description={description}
       openGraph={{
@@ -79,7 +77,6 @@ const SEO = ({
         },
       ]}
       canonical={window.location.href}
-      {...props}
     />
   )
 }

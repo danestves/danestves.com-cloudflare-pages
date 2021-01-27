@@ -1,8 +1,9 @@
-const withPWA = require('next-pwa')
+const withPlugins = require('next-compose-plugins')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.NODE_ENV !== 'development',
 })
-const withPlugins = require('next-compose-plugins')
+const withPWA = require('next-pwa')
+const withMDX = require('@next/mdx')()
 
 module.exports = withPlugins(
   [
@@ -16,6 +17,7 @@ module.exports = withPlugins(
         },
       },
     ],
+    withMDX
   ],
   {
     productionBrowserSourceMaps: true,

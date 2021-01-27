@@ -13,9 +13,6 @@ import Markdown from '@/components/Markdown'
 // Generated
 import { Portfolio } from '@/generated/graphql'
 
-// Interfaces
-import { Asset } from '@/interfaces'
-
 // Lib
 import { getAllPortfoliosWithSlug, getPortfolio } from '@/lib/graphcms'
 
@@ -40,7 +37,7 @@ const DynamicPortfolio: NextPage<Props> = ({ portfolio }) => {
       <SEO
         title={portfolio.seo?.title as string}
         description={portfolio.seo?.description as string}
-        shareImage={portfolio.seo?.image as Asset}
+        shareImage={portfolio.seo?.image as any}
         additionalMetaTags={[
           {
             name: 'twitter:image',

@@ -6,7 +6,6 @@ import htmlParser from 'react-markdown/plugins/html-parser'
 
 // Components
 import CodeBlock from '@/components/Markdown/CodeBlock'
-import Image from '@/components/Markdown/Image'
 import Link from '@/components/Markdown/Link'
 
 type MarkdownRenderProps = {
@@ -22,6 +21,8 @@ const renderers = {
 const MarkdownRender = ({ markdown }: MarkdownRenderProps): JSX.Element => {
   return (
     <ReactMarkdown
+      // eslint-disable-next-line
+      // @ts-ignore
       renderers={renderers}
       source={renderA11yEmojis(markdown)}
       escapeHtml={false}

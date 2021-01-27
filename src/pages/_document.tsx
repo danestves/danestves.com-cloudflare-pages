@@ -9,6 +9,9 @@ import Document, {
   DocumentInitialProps,
 } from 'next/document'
 
+// Lib
+import { GA_TRACKING_ID } from '@/lib/analytics'
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx)
@@ -62,21 +65,27 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#071d49" />
 
           <link rel="preconnect" href="https://vitals.vercel-insights.com" />
-          <link rel="preconnect" href="https://queue.simpleanalyticscdn.com" />
+
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', '${GA_TRACKING_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+            }}
+          />
         </Head>
 
-        <body className="bg-secondary">
+        <body className="bg-secondary-700">
           <Main />
           <NextScript />
-
-          <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-          <noscript>
-            <img
-              src="https://queue.simpleanalyticscdn.com/noscript.gif"
-              alt=""
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </noscript>
         </body>
       </Html>
     )
