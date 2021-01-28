@@ -4,7 +4,7 @@ module.exports = {
   purge: {
     content: [
       './src/components/**/*.{ts,tsx}',
-      './src/layout/**/*.{ts,tsx}',
+      './src/layouts/**/*.{ts,tsx}',
       './src/pages/**/*.{ts,tsx}',
     ],
     options: {
