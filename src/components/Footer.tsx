@@ -6,7 +6,7 @@ import { FaGithubAlt, FaYoutube, FaTwitter } from 'react-icons/fa'
 import { Link, Emoji } from '@/components'
 
 const Footer = (): JSX.Element => (
-  <footer className="py-5 bg-secondary">
+  <footer className="pt-5 bg-secondary">
     <div className="container px-5">
       <div className="grid grid-cols-12 gap-8">
         <div className="grid col-span-12 gap-4 mb-auto md:col-span-5">
@@ -128,25 +128,24 @@ const Footer = (): JSX.Element => (
       </div>
     </div>
 
-    <div className="container px-5 mt-8">
-      <p className="font-mono text-sm text-primary">
-        Daniel Esteves © <span>{new Date().getFullYear()}</span> - Todos los derechos reservados
-      </p>
-    </div>
-
-    <div className="container mt-8">
-      <p className="font-mono text-sm text-center text-primary">
-        Designed by{` `}
-        <a href="https://twitter.com/vibrawifi" target="_blank" rel="noopener noreferrer">
-          <b>Vibra Wifi</b>
-        </a>
-        {` `}
-        with
-        {` `}
-        <a href="https://twitter.com/vicman_ve" target="_blank" rel="noopener noreferrer">
-          <b>Victor Velasquez</b>
-        </a>
-      </p>
+    <div className="w-full py-5 mt-8 bg-secondary-800">
+      <div className="container px-5">
+        <p className="font-mono text-sm text-center text-primary">
+          Daniel Esteves © <span>{new Date().getFullYear()}</span> - Todos los derechos reservados
+          <p className="mt-2 font-mono text-sm text-center text-primary">
+            Designed by{` `}
+            <a href="https://twitter.com/vibrawifi" target="_blank" rel="noopener noreferrer">
+              <b>Vibra Wifi</b>
+            </a>
+            {` `}
+            with
+            {` `}
+            <a href="https://twitter.com/vicman_ve" target="_blank" rel="noopener noreferrer">
+              <b>Victor Velasquez</b>
+            </a>
+          </p>
+        </p>
+      </div>
     </div>
   </footer>
 )

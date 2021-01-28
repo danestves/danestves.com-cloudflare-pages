@@ -33,6 +33,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
       <SEO
         title={frontMatter.seotitle}
         description={frontMatter.summary}
+        shareImage={`https://danestves.com${frontMatter.image}`}
         openGraph={{
           images: [
             {

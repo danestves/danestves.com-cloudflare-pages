@@ -7,6 +7,8 @@ import { motion } from 'framer-motion'
 import SwiperCore, { Autoplay, A11y, Navigation } from 'swiper'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXEmbedProvider } from 'mdx-embed'
+import { window } from 'browser-monads'
+import {} from 'next'
 
 // Components
 import { Layout } from '@/components'
@@ -117,6 +119,25 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
       </MDXEmbedProvider>
     </MDXProvider>
   )
+}
+
+export function reportWebVitals({
+  id,
+  name,
+  label,
+  value,
+}: {
+  id: string
+  name: string
+  label: string
+  value: number
+}): void {
+  window.gtag('event', name, {
+    event_category: label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric',
+    value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
+    event_label: id, // id unique to current page load
+    non_interaction: true, // avoids affecting bounce rate.
+  })
 }
 
 export default MyApp

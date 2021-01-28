@@ -119,7 +119,7 @@ module.exports = {
               'scroll-margin-top': spacing[32],
             },
             blockquote: {
-              borderLeftColor: theme('colors.gray.700'),
+              borderLeftColor: theme('colors.gray.500'),
               color: theme('colors.gray.300'),
               'p:first-of-type::before': false,
               'p:last-of-type::after': false,

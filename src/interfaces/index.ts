@@ -97,3 +97,23 @@ export interface FrontMatterPost {
   summary: string
   image: string
 }
+
+export interface FrontMatterPortfolio {
+  wordCount: number
+  readingTime: {
+    text: string
+    minutes: number
+    time: number
+    words: number
+  }
+  slug: string
+  title: string
+  seotitle: string
+  publishedAt: string
+  summary: string
+  image: string
+  og: string
+  url: string
+  industry: string
+  technologies: string[]
+}

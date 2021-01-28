@@ -6,13 +6,7 @@ import { window } from 'browser-monads'
 interface SEOProps extends NextSeoProps {
   title: string
   description: string
-  shareImage?:
-    | {
-        url: string
-        width: number
-        height: number
-      }
-    | any
+  shareImage?: string
   twitterCardType?: string
   twitterUsername?: string
 }
@@ -39,16 +33,14 @@ const SEO = ({
         description: description,
         url: window.location.href,
         // Only include OG image if we have it
-        ...(shareImage && {
-          images: [
-            {
-              url: shareImage.url,
-              width: shareImage.width,
-              height: shareImage.height,
-              alt: title,
-            },
-          ],
-        }),
+        images: [
+          {
+            url: shareImage || 'https://danestves.com/og.png',
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
       }}
       // Only included Twitter data if we have it
       twitter={{
@@ -69,7 +61,7 @@ const SEO = ({
         },
         {
           name: 'twitter:image',
-          content: shareImage?.url || 'https://danestves.com/og.png',
+          content: shareImage || 'https://danestves.com/og.png',
         },
         {
           name: 'twitter:image:alt',
