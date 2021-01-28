@@ -3,10 +3,9 @@ const { fontFamily, spacing } = require(`tailwindcss/defaultTheme`)
 module.exports = {
   purge: {
     content: [
-      './src/components/**/*.tsx',
-      './src/components/**/*.ts',
-      './src/pages/**/*.tsx',
-      './src/pages/**/*.ts',
+      './src/components/**/*.{ts,tsx}',
+      './src/layout/**/*.{ts,tsx}',
+      './src/pages/**/*.{ts,tsx}',
     ],
     options: {
       safelist: [
