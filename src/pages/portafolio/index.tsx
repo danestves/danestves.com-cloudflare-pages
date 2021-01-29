@@ -67,7 +67,7 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
               className="grid items-center grid-cols-1 gap-6 overflow-hidden rounded-lg md:grid-cols-2 group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
             >
               <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg">
-                <Image src={portfolio.image} width={1280} height={720} alt={portfolio.title} />
+                <Image src={portfolio.image} width={736} height={414} alt={portfolio.title} />
               </div>
               <div>
                 <h2 className="mb-4 text-4xl leading-tight text-white group-hover:underline">
