@@ -2,8 +2,7 @@
 import * as React from 'react'
 import NextLink, { LinkProps as LinkNextProps } from 'next/link'
 import Image from 'next/image'
-import Tweet from 'react-tweet-embed'
-import { CodePen, YouTube, CodeSandbox } from 'mdx-embed'
+import { CodePen, YouTube, CodeSandbox, Tweet } from 'mdx-embed'
 
 // Components
 import Cloudinary from './Cloudinary'

@@ -3,7 +3,6 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism'
 import path from 'path'
-import readingTime from 'reading-time'
 import renderToString from 'next-mdx-remote/render-to-string'
 
 // Components
@@ -26,12 +25,6 @@ export async function getFileBySlug(
   }
   frontMatter: {
     wordCount: number
-    readingTime: {
-      text: string
-      time: number
-      words: number
-      minutes: number
-    }
     slug: string | null
   }
 }> {
@@ -52,7 +45,6 @@ export async function getFileBySlug(
     mdxSource,
     frontMatter: {
       wordCount: content.split(/\s+/gu).length,
-      readingTime: readingTime(content),
       slug: slug || null,
       ...data,
     },

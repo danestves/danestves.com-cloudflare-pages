@@ -2,30 +2,23 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-// Generated
-import { Post, Seo } from '@/generated/graphql'
+// Interfaces
+import { FrontMatterPost } from '@/interfaces'
 
 // Libraries
-import { getRssPosts } from '@/lib/graphcms'
+import { getFiles } from '@/lib/mdx'
 
-const toUrl = (
-  host: string,
-  post: Pick<Post, 'title' | 'slug' | 'createdAt'> & { seo?: Pick<Seo, 'description'> },
-  route: string
-): string => {
+const toUrl = (host: string, post: FrontMatterPost, route: string): string => {
   return `<item>
-    <title>${post.title}</title>
+    <title>${post.seotitle}</title>
     <guid>https://${host}/blog/${route}</guid>
     <pubDate>${new Date()}</pubDate>
     <link>https://${host}/blog/${route}</link>
-    <description>${post.seo?.description}</description>
+    <description>${post.summary}</description>
   </item>`
 }
 
-const createSitemap = (
-  host: string,
-  posts: Pick<Post, 'title' | 'slug' | 'createdAt'>[]
-): string => {
+const createSitemap = (host: string, posts: FrontMatterPost[]): string => {
   return `<rss
       xmlns:atom="http://www.w3.org/2005/Atom"
       version="2.0"
@@ -51,11 +44,9 @@ const SitemapPage: NextPage = () => {
 // Hopefully we can replace this with getStaticProps once this issue is fixed:
 // https://github.com/vercel/next.js/discussions/10949
 SitemapPage.getInitialProps = async ({ req, res }) => {
-  const data = await getRssPosts()
+  const posts: unknown = await getFiles('blog')
 
-  const posts = data.posts.map((post) => post)
-
-  const sitemap = createSitemap((req && req.headers.host) || '', posts)
+  const sitemap = createSitemap((req && req.headers.host) || '', posts as FrontMatterPost[])
 
   res && res.setHeader('Content-Type', 'text/xml')
   res && res.write(sitemap)

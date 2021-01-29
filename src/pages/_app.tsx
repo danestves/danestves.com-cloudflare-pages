@@ -8,7 +8,6 @@ import SwiperCore, { Autoplay, A11y, Navigation } from 'swiper'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXEmbedProvider } from 'mdx-embed'
 import { window } from 'browser-monads'
-import {} from 'next'
 
 // Components
 import { Layout } from '@/components'

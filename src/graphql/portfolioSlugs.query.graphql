@@ -1,7 +1,0 @@
-query portfolioSlugs($first: Int) {
-  portfolios(first: $first, orderBy: createdAt_ASC) {
-    slug
-    updatedAt
-    createdAt
-  }
-}

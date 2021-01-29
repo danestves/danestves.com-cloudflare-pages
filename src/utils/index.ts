@@ -1,5 +1,4 @@
 // Dependencies
-import axios from '@/lib/axios'
 import { format } from 'date-fns'
 import es from 'date-fns/locale/es'
 
@@ -66,5 +65,3 @@ export const openGraphImgGenerator = (title: string, tags?: string[]): string =>
     tags ? `&tags=${tags?.map((name: string) => name).join(`,`)}` : ''
   }&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`
 }
-
-export const fetcher = (url: string): Promise<Response> => axios.get(url).then((r) => r.data)

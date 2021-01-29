@@ -1,6 +1,6 @@
 const withPlugins = require('next-compose-plugins')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.NODE_ENV !== 'development',
+  enabled: process.env.ANALYZE,
 })
 const withPWA = require('next-pwa')
 const withMDX = require('@next/mdx')()
@@ -22,7 +22,7 @@ module.exports = withPlugins(
   {
     productionBrowserSourceMaps: true,
     images: {
-      domains: ['media.graphcms.com', 'github-readme-stats.danestves.com'],
+      domains: ['github-readme-stats.danestves.com'],
     },
     webpack: (config, { dev, isServer }) => {
       // Replace React with Preact only in client production build

@@ -2,17 +2,17 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
+// Interfaces
+import { FrontMatterPortfolio, FrontMatterPost } from '@/interfaces'
+
 // Libraries
-import { getAllPortfoliosWithSlug, getAllPostsWithSlug } from '@/lib/graphcms'
+import { getFiles } from '@/lib/mdx'
 
 // Utils
 import { formatDate } from '@/utils'
 
-const toUrl = (
-  host: string,
-  item: { slug: string; createdAt: string; updatedAt: string }
-): string => {
-  const date = new Date(item.updatedAt)
+const toUrl = (host: string, item: FrontMatterPortfolio | FrontMatterPost): string => {
+  const date = new Date(item.publishedAt)
 
   return `<url>
     <loc>https://${host}${item.slug}</loc>
@@ -24,8 +24,8 @@ const toUrl = (
 
 const createSitemap = (
   host: string,
-  portfolios: { slug: string; createdAt: string; updatedAt: string }[],
-  posts: { slug: string; createdAt: string; updatedAt: string }[]
+  portfolios: FrontMatterPortfolio[],
+  posts: FrontMatterPost[]
 ): string => {
   return `<?xml version="1.0" encoding="UTF-8" ?>
     <urlset
@@ -85,16 +85,16 @@ const SitemapPage: NextPage = () => {
 // Hopefully we can replace this with getStaticProps once this issue is fixed:
 // https://github.com/vercel/next.js/discussions/10949
 SitemapPage.getInitialProps = async ({ req, res }) => {
-  const portfoliosQuery = await getAllPortfoliosWithSlug()
-  const postsQuery = await getAllPostsWithSlug()
+  const postsData: unknown = await getFiles('blog')
+  const portfoliosData: unknown = await getFiles('portfolio')
 
-  const portfolios = portfoliosQuery.map((portfolio) => {
+  const portfolios = (portfoliosData as FrontMatterPortfolio[]).map((portfolio) => {
     return {
       ...portfolio,
       slug: `/portafolio/${portfolio.slug}`,
     }
   })
-  const posts = postsQuery.map((post) => {
+  const posts = (postsData as FrontMatterPost[]).map((post) => {
     return {
       ...post,
       slug: `/blog/${post.slug}`,

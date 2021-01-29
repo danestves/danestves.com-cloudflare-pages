@@ -84,12 +84,6 @@ export interface Repository {
 
 export interface FrontMatterPost {
   wordCount: number
-  readingTime: {
-    text: string
-    minutes: number
-    time: number
-    words: number
-  }
   slug: string
   title: string
   seotitle: string
@@ -100,12 +94,6 @@ export interface FrontMatterPost {
 
 export interface FrontMatterPortfolio {
   wordCount: number
-  readingTime: {
-    text: string
-    minutes: number
-    time: number
-    words: number
-  }
   slug: string
   title: string
   seotitle: string
