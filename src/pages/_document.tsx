@@ -9,7 +9,7 @@ import Document, {
   DocumentInitialProps,
 } from 'next/document'
 
-// Lib
+// Libraries
 import { GA_TRACKING_ID } from '@/lib/analytics'
 
 export default class MyDocument extends Document {

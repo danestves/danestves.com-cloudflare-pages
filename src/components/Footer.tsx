@@ -132,7 +132,7 @@ const Footer = (): JSX.Element => (
       <div className="container px-5">
         <p className="font-mono text-sm text-center text-primary">
           Daniel Esteves © <span>{new Date().getFullYear()}</span> - Todos los derechos reservados
-          <p className="mt-2 font-mono text-sm text-center text-primary">
+          <span className="block mt-2 font-mono text-sm text-center text-primary">
             Designed by{` `}
             <a href="https://twitter.com/vibrawifi" target="_blank" rel="noopener noreferrer">
               <b>Vibra Wifi</b>
@@ -143,7 +143,7 @@ const Footer = (): JSX.Element => (
             <a href="https://twitter.com/vicman_ve" target="_blank" rel="noopener noreferrer">
               <b>Victor Velasquez</b>
             </a>
-          </p>
+          </span>
         </p>
       </div>
     </div>

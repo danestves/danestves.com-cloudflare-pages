@@ -1,7 +1,7 @@
 // Dependencies
 import { NextApiRequest, NextApiResponse } from 'next'
 
-// Lib
+// Libraries
 import { getPortfolios } from '@/lib/graphcms'
 
 export default async function handler(

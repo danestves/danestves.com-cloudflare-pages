@@ -5,7 +5,7 @@ import { NextPage } from 'next'
 // Generated
 import { Post, Seo } from '@/generated/graphql'
 
-// Lib
+// Libraries
 import { getRssPosts } from '@/lib/graphcms'
 
 const toUrl = (

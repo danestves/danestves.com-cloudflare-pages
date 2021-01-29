@@ -11,7 +11,7 @@ import { FrontMatterPortfolio } from '@/interfaces'
 // Layouts
 import PortfolioLayout from '@/layouts/portfolio'
 
-// Lib
+// Libraries
 import { getFiles, getFileBySlug } from '@/lib/mdx'
 
 interface Props {

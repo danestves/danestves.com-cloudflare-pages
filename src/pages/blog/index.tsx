@@ -10,7 +10,7 @@ import { SEO, Link } from '@/components'
 // Generated
 import { Post } from '@/generated/graphql'
 
-// Lib
+// Libraries
 import { getPosts } from '@/lib/graphcms'
 
 // Utils

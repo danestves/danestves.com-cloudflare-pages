@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-// Lib
+// Libraries
 import { getAllPortfoliosWithSlug, getAllPostsWithSlug } from '@/lib/graphcms'
 
 // Utils

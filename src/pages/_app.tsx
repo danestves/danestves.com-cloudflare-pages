@@ -14,7 +14,7 @@ import {} from 'next'
 import { Layout } from '@/components'
 import MDXComponents from '@/components/MDXComponents'
 
-// Lib
+// Libraries
 import * as gtag from '@/lib/analytics'
 
 // Styles

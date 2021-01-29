@@ -9,7 +9,7 @@ import { SEO } from '@/components'
 // Interfaces
 import { Repository } from '@/interfaces'
 
-// Lib
+// Libraries
 import { getRepositories } from '@/lib/github'
 
 interface Props {

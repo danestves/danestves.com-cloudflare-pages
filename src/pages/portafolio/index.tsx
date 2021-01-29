@@ -1,20 +1,23 @@
 // Dependencies
 import * as React from 'react'
-import { NextPage, GetServerSideProps } from 'next'
-import Image from 'graphcms-image'
-import removeMarkdown from 'markdown-to-text'
+import { NextPage, GetStaticProps } from 'next'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 // Components
-import { SEO, Link, Pagination } from '@/components'
+import { SEO, Link } from '@/components'
 
-// Generated
-import { PortfoliosQuery } from '@/generated/graphql'
+// Interfaces
+import { FrontMatterPortfolio } from '@/interfaces'
 
-// Lib
-import { getPortfolios } from '@/lib/graphcms'
+// Libraries
+import { getAllFilesFrontMatter } from '@/lib/mdx'
 
-const PortfolioPage: NextPage<PortfoliosQuery> = ({ portfolios, count }) => {
+interface Props {
+  portfolios: FrontMatterPortfolio[]
+}
+
+const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
   const list = {
     hidden: {
       opacity: 0,
@@ -57,27 +60,20 @@ const PortfolioPage: NextPage<PortfoliosQuery> = ({ portfolios, count }) => {
         variants={list}
         className="container px-5 space-y-16"
       >
-        {portfolios.edges.map(({ node: portfolio }) => (
-          <motion.div key={portfolio.id} variants={item}>
+        {portfolios.map((portfolio) => (
+          <motion.div key={portfolio.slug} variants={item}>
             <Link
               href={`/portafolio/${portfolio.slug}`}
               className="grid items-center grid-cols-1 gap-6 overflow-hidden rounded-lg md:grid-cols-2 group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
             >
-              <div className="w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg">
-                <Image
-                  // eslint-disable-next-line
-                  // @ts-ignore
-                  image={portfolio.cover}
-                  maxWidth={700}
-                  outerWrapperClassName="w-full"
-                  alt={portfolio.title}
-                />
+              <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg">
+                <Image src={portfolio.image} width={1920} height={1080} alt={portfolio.title} />
               </div>
               <div>
                 <h2 className="mb-4 text-4xl leading-tight text-white group-hover:underline">
                   {portfolio.title}
                 </h2>
-                <p className="text-white">{removeMarkdown(portfolio.content.slice(0, 250))}...</p>
+                <p className="text-white">{portfolio.summary}</p>
                 <div className="flex mt-4">
                   <button
                     type="button"
@@ -90,20 +86,20 @@ const PortfolioPage: NextPage<PortfoliosQuery> = ({ portfolios, count }) => {
             </Link>
           </motion.div>
         ))}
-
-        <Pagination count={count.aggregate.count} limit={4} pageInfo={portfolios.pageInfo} />
       </motion.div>
     </>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query: { first = '4', skip = '0' },
-}) => {
-  const data = await getPortfolios(Number(first), Number(skip))
+export const getStaticProps: GetStaticProps = async () => {
+  const portfolios = await getAllFilesFrontMatter('portfolio')
 
   return {
-    props: data,
+    props: {
+      portfolios: portfolios.sort((a: FrontMatterPortfolio, b: FrontMatterPortfolio) => {
+        return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      }),
+    },
   }
 }
 

@@ -11,7 +11,7 @@ import { FrontMatterPost } from '@/interfaces'
 // Layouts
 import BlogLayout from '@/layouts/blog'
 
-// Lib
+// Libraries
 import { getFiles, getFileBySlug } from '@/lib/mdx'
 
 interface Props {
@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 // // Generated
 // import { Post } from '@/generated/graphql'
 
-// // Lib
+// // Libraries
 // import { getAllPostsWithSlug, getPost } from '@/lib/graphcms'
 
 // // Utils

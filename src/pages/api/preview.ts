@@ -1,7 +1,7 @@
 // Dependencies
 import { NextApiRequest, NextApiResponse } from 'next'
 
-// Lib
+// Libraries
 import { getPreviewPostBySlug } from '@/lib/graphcms'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
