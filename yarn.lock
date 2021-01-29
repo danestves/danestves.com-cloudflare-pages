@@ -4916,10 +4916,10 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
-kwesforms@2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/kwesforms/-/kwesforms-2.0.7.tgz#1f9380d63bb24d7e894f78f4e8c964ada3d5e0ae"
-  integrity sha512-4Iag/dSIOjyJiFBrEgcuDATEoPWvz9Y89u6bbUXhtpEgkvei0JFSfJd3ZVeUYAn6TBGSI4qgumcgQh72jj/brg==
+kwesforms@2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/kwesforms/-/kwesforms-2.0.8.tgz#15bd239121607c852d06aff8a360d3cb2ae80549"
+  integrity sha512-G7A/ibVfFUjBj/leM3q5HlvdNsPQ/qUQotddItdb5ck+cSSKt3yoIQjAc7HqFyqlkwCcdVskfTG9F0e5DQyKHA==
 
 language-subtag-registry@~0.3.2:
   version "0.3.21"
@@ -6273,10 +6273,10 @@ postcss@^8.2.4:
     nanoid "^3.1.20"
     source-map "^0.6.1"
 
-preact@^10.5.11:
-  version "10.5.11"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.11.tgz#2c8a431f16613e442901068175771806cf1cc0f6"
-  integrity sha512-BdtFePVilR1430kDuzh3VkkZktCmp8RTqHOjG8qesyGZXHNYJjdrjEBuc2f7O/vthhVENxJd0/aTjWtYeH46aw==
+preact@^10.5.12:
+  version "10.5.12"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.12.tgz#6a8ee8bf40a695c505df9abebacd924e4dd37704"
+  integrity sha512-r6siDkuD36oszwlCkcqDJCAKBQxGoeEGytw2DGMD5A/GGdu5Tymw+N2OBXwvOLxg6d1FeY8MgMV3cc5aVQo4Cg==
 
 prebuild-install@^6.0.0:
   version "6.0.0"
@@ -7600,14 +7600,13 @@ supports-color@^7.0.0, supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-swiper@^6.4.8:
-  version "6.4.8"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-6.4.8.tgz#2033b69809ca67cb0851a8542089e43366f653e9"
-  integrity sha512-BvpbFiWTeHq+WniJNIeyVGsGeUozQ7q4EpqkyKocopYMzWgRDAmjCy+pr5QSrmtMQFgIG0+ta+3YBvjSHT+cgQ==
+swiper@^6.4.9:
+  version "6.4.9"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-6.4.9.tgz#a20896df24cc3669845fcf145fb50edca3a6a5c5"
+  integrity sha512-0+omdc7oiU1guakr6PIrQokre1dW5HKLn8YQB88/hcjn7XSD+3YGlTukcYuTAjL6Pc4MELiusGHk+an8CRmLJQ==
   dependencies:
     dom7 "^3.0.0"
     ssr-window "^3.0.0"
-    tslib "^2.0.0"
 
 table@^6.0.4:
   version "6.0.4"
@@ -7887,11 +7886,6 @@ tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
-tslib@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
-  integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
 
 tsutils@^3.17.1:
   version "3.17.1"

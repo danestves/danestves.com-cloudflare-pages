@@ -25,6 +25,13 @@ module.exports = withPlugins(
       domains: ['github-readme-stats.danestves.com'],
     },
     webpack: (config, { dev, isServer }) => {
+      // Fixes npm packages that depend on `fs` module
+      if (!isServer) {
+        config.node = {
+          fs: 'empty',
+        }
+      }
+      
       // Replace React with Preact only in client production build
       if (!dev && !isServer) {
         Object.assign(config.resolve.alias, {
@@ -32,13 +39,6 @@ module.exports = withPlugins(
           'react-dom/test-utils': 'preact/test-utils',
           'react-dom': 'preact/compat',
         })
-      }
-
-      // Fixes npm packages that depend on `fs` module
-      if (!isServer) {
-        config.node = {
-          fs: 'empty',
-        }
       }
 
       return config
