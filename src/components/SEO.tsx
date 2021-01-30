@@ -28,7 +28,7 @@ const SEO = ({
     <Head>
       <title>{parsedTitle}</title>
       <meta name="robots" content="follow, index" />
-      <meta content={description} name="description" />
+      <meta key="description" content={description} name="description" />
       <meta key="og:url" property="og:url" content={`https://danestves.com${router.asPath}`} />
       <meta key="og:type" property="og:type" content={type} />
       <meta key="og:site_name" property="og:site_name" content="Daniel Esteves" />
@@ -47,7 +47,7 @@ const SEO = ({
       {date && (
         <meta key="article:published_time" property="article:published_time" content={date} />
       )}
-      <link rel="canonical" href={`https://danestves.com${router.asPath}`} />
+      <link key="canonical_link" rel="canonical" href={`https://danestves.com${router.asPath}`} />
       {children}
     </Head>
   )
