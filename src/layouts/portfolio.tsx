@@ -34,7 +34,7 @@ export default function PortfolioLayout({ frontMatter, children }: Props): JSX.E
           {frontMatter.title}
         </h1>
 
-        <div className="w-full max-w-screen-lg mx-auto overflow-hidden rounded-lg">
+        <div className="flex w-full max-w-screen-lg mx-auto overflow-hidden rounded-lg">
           <Image
             src={frontMatter.image}
             alt={frontMatter.title}
