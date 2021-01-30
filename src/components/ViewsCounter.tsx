@@ -1,18 +1,14 @@
+// Dependencies
 import { useEffect } from 'react'
 import useSWR from 'swr'
 import format from 'comma-number'
 
-async function fetcher(...args: any): Promise<any> {
-  // eslint-disable-next-line
-  // @ts-ignore
-  const res = await fetch(...args)
-
-  return res.json()
-}
+// Libraries
+import fetcher from '@/lib/fetcher'
 
 export default function ViewCounter({ slug }: { slug: string }): JSX.Element {
   const { data } = useSWR(`/api/views/${slug}`, fetcher)
-  const views = data?.total
+  const views = ((data as unknown) as Record<string, unknown>)?.total
 
   useEffect(() => {
     const registerView = (): Promise<Response> =>
@@ -21,7 +17,7 @@ export default function ViewCounter({ slug }: { slug: string }): JSX.Element {
       })
 
     registerView()
-  }, [slug, views])
+  }, [slug])
 
   return <>{views ? format(views) : '–––'} visitas</>
 }
