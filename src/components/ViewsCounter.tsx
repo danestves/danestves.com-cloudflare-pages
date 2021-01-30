@@ -21,7 +21,7 @@ export default function ViewCounter({ slug }: { slug: string }): JSX.Element {
       })
 
     registerView()
-  }, [slug])
+  }, [slug, views])
 
   return <>{views ? format(views) : '–––'} vistas</>
 }
