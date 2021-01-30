@@ -98,3 +98,4 @@ declare module 'graphcms-image' {
 
 declare module 'react-image-and-background-image-fade'
 declare module 'mdx-prism'
+declare module 'comma-number'

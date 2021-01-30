@@ -5,7 +5,7 @@ import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
 
 // Components
-import { SEO } from '@/components'
+import { SEO, ViewsCounter } from '@/components'
 
 // Interfaces
 import { FrontMatterPost } from '@/interfaces'
@@ -102,6 +102,9 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
                   {formatDate(frontMatter.publishedAt, 'MMMM d, yyyy')}
                 </p>
                 <p className="text-white">{readingTime({ wordCount: frontMatter.wordCount })}</p>
+                <p className="text-white">
+                  <ViewsCounter slug={frontMatter.slug} />
+                </p>
               </div>
             </div>
           </div>

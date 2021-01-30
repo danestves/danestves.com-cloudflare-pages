@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Daniel Esteves]]></title>
+        <description><![CDATA[Daniel Esteves]]></description>
+        <link>https://danestves.com</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Sat, 30 Jan 2021 03:24:52 GMT</lastBuildDate>
+        <atom:link href="https://danestves.com/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[AlpineJS: El TailwindCSS para JavaScript]]></title>
+            <description><![CDATA[Cuando necesitamos hacer una aplicación interactiva y React o Vue es mucho para nosotros, AlpineJS llega para hacernos el trabajo más rápido.]]></description>
+            <link>https://danestves.com/blog/alpinejs-el-tailwindcss-para-javascript</link>
+            <guid isPermaLink="true">https://danestves.com/blog/alpinejs-el-tailwindcss-para-javascript</guid>
+            <pubDate>Sat, 04 Apr 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[2020: mi viaje de aprendizaje]]></title>
+            <description><![CDATA[Un resumen de lo que viví en este año 2020 y todo lo que aprendí; todo lo que quiero hacer en el año 2021 y lo que lograré.]]></description>
+            <link>https://danestves.com/blog/mi-viaje-por-el-2020</link>
+            <guid isPermaLink="true">https://danestves.com/blog/mi-viaje-por-el-2020</guid>
+            <pubDate>Wed, 30 Dec 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[¿Cómo configurar TailwindCSS con create-react-app?]]></title>
+            <description><![CDATA[En este blogpost encontrarás la mejor manera de configurar TailwindCSS con un boilerplate creado con create-react-app para hacer build de los estilos.]]></description>
+            <link>https://danestves.com/blog/configurar-tailwindcss-con-create-react-app</link>
+            <guid isPermaLink="true">https://danestves.com/blog/configurar-tailwindcss-con-create-react-app</guid>
+            <pubDate>Mon, 07 Sep 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[TailwindCSS, el framework que debes aprender este 2020]]></title>
+            <description><![CDATA[TailwindCSS es CSS de bajo nivel y altamente personalizable, con el cual crear diseños a medida sin ningún estilo contradictorio que tengamos que anular.]]></description>
+            <link>https://danestves.com/blog/aprender-tailwindcss-2020</link>
+            <guid isPermaLink="true">https://danestves.com/blog/aprender-tailwindcss-2020</guid>
+            <pubDate>Mon, 13 Jan 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[¿Cómo tomar capturas de pantalla con Chrome DevTools?]]></title>
+            <description><![CDATA[Cuando tomamos capturas de sitios web normalmente recurrimos a otras herramientas, pero el navegador nos puede ayudar a hacerlo mejor.]]></description>
+            <link>https://danestves.com/blog/tomar-capturas-en-chrome-devtools</link>
+            <guid isPermaLink="true">https://danestves.com/blog/tomar-capturas-en-chrome-devtools</guid>
+            <pubDate>Sat, 02 May 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[¿Extrañas jQuery? 🤔  Ya no lo necesitas más]]></title>
+            <description><![CDATA[React hooks ha llegado para quedarse, y en este post te explicaré como usarlos y cuáles son sus ventajas.]]></description>
+            <link>https://danestves.com/blog/ya-no-necesitas-jquery</link>
+            <guid isPermaLink="true">https://danestves.com/blog/ya-no-necesitas-jquery</guid>
+            <pubDate>Mon, 23 Sep 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[useEffect y useState: ¿Es buena idea actualizar todo a Hooks?]]></title>
+            <description><![CDATA[React hooks ha llegado para quedarse, y en este post te explicaré como usarlos y cuáles son sus ventajas.]]></description>
+            <link>https://danestves.com/blog/useeffect-usestate-actualizar-hooks</link>
+            <guid isPermaLink="true">https://danestves.com/blog/useeffect-usestate-actualizar-hooks</guid>
+            <pubDate>Fri, 09 Aug 2019 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

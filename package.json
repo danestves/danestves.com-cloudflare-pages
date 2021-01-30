@@ -22,7 +22,9 @@
     "axios": "^0.21.1",
     "axios-cache-adapter": "^2.5.0",
     "browser-monads": "^1.0.0",
+    "comma-number": "^2.0.1",
     "date-fns": "^2.16.1",
+    "firebase-admin": "^9.4.2",
     "framer-motion": "3.2.1",
     "gray-matter": "^4.0.2",
     "kwesforms": "2.0.8",
@@ -44,6 +46,7 @@
     "remark-code-titles": "^0.1.1",
     "sass": "^1.32.5",
     "swiper": "^6.4.9",
+    "swr": "^0.4.1",
     "tailwindcss": "^2.0.2",
     "tailwindcss-filters": "^3.0.0",
     "tailwindcss-responsive-embed": "^1.0.0"
