@@ -43,9 +43,12 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
               alt: frontMatter.seotitle,
             },
           ],
-          type: 'article',
         }}
         additionalMetaTags={[
+          {
+            name: 'og:type',
+            content: 'article',
+          },
           {
             name: 'twitter:image',
             content: `https://danestves.com${frontMatter.image}`,

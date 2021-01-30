@@ -52,6 +52,10 @@ const SEO = ({
       }}
       additionalMetaTags={[
         {
+          name: 'og:type',
+          content: 'website',
+        },
+        {
           name: 'twitter:title',
           content: title,
         },
