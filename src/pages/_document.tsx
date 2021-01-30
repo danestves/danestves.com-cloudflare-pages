@@ -64,6 +64,7 @@ export default class MyDocument extends Document {
           <meta name="msapplication-config" content="/static/icons/browserconfig.xml" />
           <meta name="theme-color" content="#071d49" />
 
+          <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="preconnect" href="https://vitals.vercel-insights.com" />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
