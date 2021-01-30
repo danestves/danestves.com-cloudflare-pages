@@ -5,7 +5,7 @@ import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
 
 // Components
-import { SEO, ViewsCounter } from '@/components'
+import { SEO, ViewsCounter, Subscribe } from '@/components'
 
 // Interfaces
 import { FrontMatterPost } from '@/interfaces'
@@ -112,6 +112,8 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
 
         <div className="relative max-w-3xl mx-auto">
           <div className="max-w-full prose prose-lg">{children}</div>
+
+          <Subscribe />
 
           <div className="flex items-center justify-start mt-6 space-x-3">
             <a

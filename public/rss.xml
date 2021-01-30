@@ -4,22 +4,8 @@
         <description><![CDATA[Daniel Esteves]]></description>
         <link>https://danestves.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 30 Jan 2021 04:31:38 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 30 Jan 2021 06:47:01 GMT</lastBuildDate>
         <atom:link href="https://danestves.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <item>
-            <title><![CDATA[AlpineJS: El TailwindCSS para JavaScript]]></title>
-            <description><![CDATA[Cuando necesitamos hacer una aplicación interactiva y React o Vue es mucho para nosotros, AlpineJS llega para hacernos el trabajo más rápido.]]></description>
-            <link>https://danestves.com/blog/alpinejs-el-tailwindcss-para-javascript</link>
-            <guid isPermaLink="true">https://danestves.com/blog/alpinejs-el-tailwindcss-para-javascript</guid>
-            <pubDate>Sat, 04 Apr 2020 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[2020: mi viaje de aprendizaje]]></title>
-            <description><![CDATA[Un resumen de lo que viví en este año 2020 y todo lo que aprendí; todo lo que quiero hacer en el año 2021 y lo que lograré.]]></description>
-            <link>https://danestves.com/blog/mi-viaje-por-el-2020</link>
-            <guid isPermaLink="true">https://danestves.com/blog/mi-viaje-por-el-2020</guid>
-            <pubDate>Wed, 30 Dec 2020 00:00:00 GMT</pubDate>
-        </item>
         <item>
             <title><![CDATA[¿Cómo configurar TailwindCSS con create-react-app?]]></title>
             <description><![CDATA[En este blogpost encontrarás la mejor manera de configurar TailwindCSS con un boilerplate creado con create-react-app para hacer build de los estilos.]]></description>
@@ -33,6 +19,20 @@
             <link>https://danestves.com/blog/aprender-tailwindcss-2020</link>
             <guid isPermaLink="true">https://danestves.com/blog/aprender-tailwindcss-2020</guid>
             <pubDate>Mon, 13 Jan 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[AlpineJS: El TailwindCSS para JavaScript]]></title>
+            <description><![CDATA[Cuando necesitamos hacer una aplicación interactiva y React o Vue es mucho para nosotros, AlpineJS llega para hacernos el trabajo más rápido.]]></description>
+            <link>https://danestves.com/blog/alpinejs-el-tailwindcss-para-javascript</link>
+            <guid isPermaLink="true">https://danestves.com/blog/alpinejs-el-tailwindcss-para-javascript</guid>
+            <pubDate>Sat, 04 Apr 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[2020: mi viaje de aprendizaje]]></title>
+            <description><![CDATA[Un resumen de lo que viví en este año 2020 y todo lo que aprendí; todo lo que quiero hacer en el año 2021 y lo que lograré.]]></description>
+            <link>https://danestves.com/blog/mi-viaje-por-el-2020</link>
+            <guid isPermaLink="true">https://danestves.com/blog/mi-viaje-por-el-2020</guid>
+            <pubDate>Wed, 30 Dec 2020 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[useEffect y useState: ¿Es buena idea actualizar todo a Hooks?]]></title>

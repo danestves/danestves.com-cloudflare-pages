@@ -167,7 +167,7 @@ module.exports = {
       filter: [`responsive`],
       fontSize: [`group-hover`],
       margin: [`first`, `last`, `group-hover`],
-      opacity: [`group-hover`],
+      opacity: [`group-hover`, `disabled`],
       padding: [`responsive`],
       placeholderColor: [`focus`],
       scale: [`group-hover`],
