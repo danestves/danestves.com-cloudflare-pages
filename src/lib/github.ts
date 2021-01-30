@@ -1,7 +1,7 @@
 // Interfaces
 import { Repository } from '@/interfaces'
 
-// Lib
+// Libraries
 import axios from '@/lib/axios'
 
 /**

@@ -3,19 +3,10 @@ import * as React from 'react'
 import { NextSeo, NextSeoProps } from 'next-seo'
 import { window } from 'browser-monads'
 
-// Interfaces
-import { Asset } from '@/interfaces'
-
 interface SEOProps extends NextSeoProps {
   title: string
   description: string
-  shareImage?:
-    | {
-        url: string
-        width: number
-        height: number
-      }
-    | Asset
+  shareImage?: string
   twitterCardType?: string
   twitterUsername?: string
 }
@@ -33,6 +24,7 @@ const SEO = ({
 
   return (
     <NextSeo
+      {...props}
       title={title}
       description={description}
       openGraph={{
@@ -41,16 +33,14 @@ const SEO = ({
         description: description,
         url: window.location.href,
         // Only include OG image if we have it
-        ...(shareImage && {
-          images: [
-            {
-              url: shareImage.url,
-              width: shareImage.width,
-              height: shareImage.height,
-              alt: title,
-            },
-          ],
-        }),
+        images: [
+          {
+            url: shareImage || 'https://danestves.com/og.png',
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
       }}
       // Only included Twitter data if we have it
       twitter={{
@@ -71,7 +61,7 @@ const SEO = ({
         },
         {
           name: 'twitter:image',
-          content: shareImage?.url || 'https://danestves.com/og.png',
+          content: shareImage || 'https://danestves.com/og.png',
         },
         {
           name: 'twitter:image:alt',
@@ -79,7 +69,6 @@ const SEO = ({
         },
       ]}
       canonical={window.location.href}
-      {...props}
     />
   )
 }

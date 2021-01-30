@@ -1,0 +1,97 @@
+---
+title: '¿Extrañas jQuery? 🤔  Ya no lo necesitas más'
+seotitle: 'Ya no necesitas jQuery - Hola ES6'
+publishedAt: '2019-09-23'
+summary: 'React hooks ha llegado para quedarse, y en este post te explicaré como usarlos y cuáles son sus ventajas.'
+image: '/static/images/ya-no-necesitas-jquery/banner.png'
+---
+
+¿Recuerdas aquella época donde jQuery era el chico popular de la escuela? 🤩 Pues déjame decirte que esos tiempos ya han pasado 👴.
+
+## ¿Qué es jQuery?
+
+jQuery es una biblioteca multiplataforma de JavaScript inicialmente creada para que el código que escribimos en Google Chrome pudiera funcionar también en Mozilla, Internet Explorer y todos los navegadores disponibles. Pero eso era antes, actualmente jQuery no es necesario para nuevos proyectos, solo para proyectos legacy.
+
+Ya se que me vas a comentar que aún hay proyectos que utilizan jQuery como lo es Bootstrap y WordPress 🤨, pero hay noticias, hace poco tiempo [Bootstrap anunció que su versión cinco vendrá completamente en Vanilla JavaScript](https://github.com/twbs/bootstrap/pull/23586), esto quiere decir que ya no necesitarán jQuery en sus dependencias. Y en cuanto a WordPress 🤔 aún no se sabe, pero lo que si es cierto es que están optando por nuevas tecnologías como lo es React en su editor de bloques [Gutenberg](https://github.com/WordPress/gutenberg).
+
+## Tal vez no necesitas jQuery
+
+[You might not need jQuery](http://youmightnotneedjquery.com/) es una web que me gusta visitar cuando hay cosas que anteriormente hice con jQuery y quiero saber cómo se harían con Vanilla JavaScript, recuerden que jQuery es solo JavaScript interpretado para la compatibilidad entre navegadores.
+
+Las animaciones que hacemos con `.fadeIn()` cómodamente ahora las podríamos hacer con una clase en CSS y hacer algo así:
+
+```js
+const photo = document.getElementById('myPhoto')
+
+photo.classList.add('show')
+photo.classList.remove('hide')
+```
+
+```css
+.show {  
+    transition: opacity 400ms;
+}
+
+.hide {
+    opacity: 0;
+}
+```
+
+Con esto ya tenemos animaciones agregandole interactividad usando JavaScript y CSS juntos.
+
+## ¿Extrañas el selector de jQuery?
+
+Muchas personas usaban jQuery más que todo por su selector que llamaba mucho la atención, podías seleccionar cualquier elemento del documento solo usando `$('.myClass #myId h1')`, y es cierto, es muy chévere de esta manera y yo te voy a enseñar como 🥳.
+
+1. Vamos a crear nuestro JavaScript con el selector que queremos realizar:
+
+```js
+const $ = document.querySelector.bind(document) // Creamos un selector que haga referencia a todo el documento actual
+```
+
+2. Creamos un HTML con atributos que podamos manejar:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Selector like jQuery</title>
+  </head>
+  <body>
+    <h1>h1 Title</h1>
+    <p class="class-p">with class</p>
+  </body>
+</html>
+```
+
+3. Ahora podemos cambiar propiedades de los elementos de la siguiente manera:
+
+```js
+const $ = document.querySelector.bind(document)
+
+$('body').style.background = 'red'
+$('body').style.color = '#fff'
+$('h1').style.fontSize = '200%'
+$('.class-p').style.fontSize = '48px'
+
+// Y todo lo que necesites hacer cuando llames al elemento o los elementos
+```
+
+4. ¡Eso es todo, felicidades! Acabas de hacer tu propio selector al estilo de jQuery con Vanilla JavaScript 🎉🥳.
+
+## Resultado final
+
+<CodePen codePenId="LYPXyeo" />
+
+## ¿Cómo seguir aprendiendo?
+
+Hice un curso en [Platzi](https://platzi.com) de como pasar [jQuery a JavaScript](https://platzi.com/clases/jquery-js/) que me ayudó a actualizarme en que de verdad ya no necesito usar esta librería más, a menos claro que trabaje en proyectos legacy. Te dejaré esta lista de recursos que te ayudarán a comprender mejor como pasar de jQuery a JavaScript:
+
+- [Por qué debes dejar de usar jQuery](https://platzi.com/blog/debes-dejar-de-usar-jquery/)
+- [Fundamentos de JavaScript](https://platzi.com/clases/fundamentos-javascript/)
+- [You Might Not Need jQuery](http://youmightnotneedjquery.com/)
+- [JavaScript Tutorial](https://www.w3schools.com/js/default.asp)
+
+## Conclusiones
+
+Finalmente te recomiendo que vayas aprendiendo poco a poco las nuevas tendencias que van saliendo al mercado e irte adaptando a su uso. **No** te digo que debas seguir la popularidad de hoy en día sobre los frameworks y librerias que se usan actualmente, experimenta, investiga, práctica muchísimo y por sobretodo nunca pares de aprender 😎.

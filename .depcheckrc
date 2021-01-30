@@ -1,0 +1,2 @@
+ignores: ["eslint-*", "prettier-*", "@typescript-eslint/*", "@types/*"]
+skip-missing: true

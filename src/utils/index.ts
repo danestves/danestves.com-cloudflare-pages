@@ -1,5 +1,4 @@
 // Dependencies
-import axios from '@/lib/axios'
 import { format } from 'date-fns'
 import es from 'date-fns/locale/es'
 
@@ -32,13 +31,19 @@ export const formatDate = (date: string | Date, formatter = 'mm/dd/yyyy'): strin
  *
  * @returns The estimated reading time
  */
-export const readingTime = (
-  text: string,
+export const readingTime = ({
+  text,
+  wordCount = 0,
   singular = 'minuto de lectura',
-  plural = 'minutos de lectura'
-): string => {
+  plural = 'minutos de lectura',
+}: {
+  text?: string
+  wordCount?: number
+  singular?: string
+  plural?: string
+}): string => {
   const wordsPerMinute = 200
-  const noOfWords = text.split(/\s/g).length
+  const noOfWords = text ? text.split(/\s/g).length : wordCount
   const minutes = noOfWords / wordsPerMinute
   const readTime = Math.ceil(minutes)
 
@@ -60,5 +65,3 @@ export const openGraphImgGenerator = (title: string, tags?: string[]): string =>
     tags ? `&tags=${tags?.map((name: string) => name).join(`,`)}` : ''
   }&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`
 }
-
-export const fetcher = (url: string): Promise<Response> => axios.get(url).then((r) => r.data)

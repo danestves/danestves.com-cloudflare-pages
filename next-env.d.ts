@@ -5,7 +5,9 @@ declare module 'react-markdown/plugins/html-parser'
 declare module 'kwesforms'
 
 declare module 'browser-monads' {
-  export const window: Window
+  export const window: Window & {
+    gtag: any
+  }
   export const document: Document
   export function exists(variable: any): boolean
 }
@@ -94,5 +96,6 @@ declare module 'graphcms-image' {
   export default class GraphImage extends React.Component<GraphImageProps> {}
 }
 
-declare module 'emoji-trie'
 declare module 'react-image-and-background-image-fade'
+declare module 'mdx-prism'
+declare module 'comma-number'
