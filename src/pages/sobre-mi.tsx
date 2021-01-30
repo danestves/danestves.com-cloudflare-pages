@@ -14,7 +14,7 @@ const AboutMe: NextPage = () => {
     <>
       <SEO
         title="Conoce más sobre mi"
-        description="Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad."
+        description="Desde muy niño he estado interesado en las computadoras comenzando desde los videojuegos, cada vez que jugaba sentía una necesidad de saber cómo funciona todo."
       />
 
       {/* Hero */}
