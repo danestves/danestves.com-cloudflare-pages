@@ -21,12 +21,7 @@ export default function PortfolioLayout({ frontMatter, children }: Props): JSX.E
         title={frontMatter.seotitle}
         description={frontMatter.summary}
         shareImage={`https://danestves.com${frontMatter.og}`}
-        additionalMetaTags={[
-          {
-            name: 'twitter:image',
-            content: `https://danestves.com${frontMatter.og}`,
-          },
-        ]}
+        date={frontMatter.publishedAt}
       />
 
       <div className="container px-5 py-16 space-y-16">

@@ -34,33 +34,19 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
         title={frontMatter.seotitle}
         description={frontMatter.summary}
         shareImage={`https://danestves.com${frontMatter.image}`}
-        openGraph={{
-          images: [
-            {
-              url: `https://danestves.com${frontMatter.image}`,
-              width: 1200,
-              height: 630,
-              alt: frontMatter.seotitle,
-            },
-          ],
-        }}
-        additionalMetaTags={[
-          {
-            name: 'og:type',
-            content: 'article',
-          },
-          {
-            name: 'twitter:image',
-            content: `https://danestves.com${frontMatter.image}`,
-          },
-        ]}
-      />
+        type="article"
+        date={new Date(frontMatter.publishedAt).toISOString().slice(0, 19)}
+      >
+        <meta property="profile:first_name" content="Daniel" />
+        <meta property="profile:last_name" content="Esteves" />
+      </SEO>
+
       <ArticleJsonLd
         url={window.location.href}
         title={frontMatter.seotitle}
         images={[`https://danestves.com${frontMatter.image}`]}
-        datePublished={frontMatter.publishedAt}
-        dateModified={frontMatter.publishedAt}
+        datePublished={new Date(frontMatter.publishedAt).toISOString().slice(0, 19)}
+        dateModified={new Date(frontMatter.publishedAt).toISOString().slice(0, 19)}
         authorName={['Daniel Esteves']}
         publisherName="Daniel Esteves"
         publisherLogo="https://danestves.com/logo.png"
@@ -102,7 +88,10 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
               <div className="pl-4">
                 <h2 className="text-lg font-semibold text-white">Daniel Esteves</h2>
                 <p className="text-white capitalize">
-                  {formatDate(frontMatter.publishedAt, 'MMMM d, yyyy')}
+                  {formatDate(
+                    new Date(frontMatter.publishedAt).toISOString().slice(0, 19),
+                    'MMMM d, yyyy'
+                  )}
                 </p>
                 <p className="text-white">{readingTime({ wordCount: frontMatter.wordCount })}</p>
                 <p className="text-white">

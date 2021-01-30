@@ -1,79 +1,55 @@
 // Dependencies
 import * as React from 'react'
-import { NextSeo, NextSeoProps } from 'next-seo'
-import { window } from 'browser-monads'
+import Head from 'next/head'
+import { useRouter } from 'next/dist/client/router'
 
-interface SEOProps extends NextSeoProps {
-  title: string
-  description: string
+interface Props {
+  title?: string
+  description?: string
   shareImage?: string
-  twitterCardType?: string
-  twitterUsername?: string
+  type?: string
+  date?: string
+  children?: React.ReactNode
 }
 
 const SEO = ({
-  title,
-  description,
-  shareImage,
-  twitterCardType,
-  twitterUsername,
-  ...props
-}: SEOProps): JSX.Element | null => {
-  // Prevent errors if no metadata was set
-  if (!title || !description) return null
+  title = 'Desarrollador Web Frontend',
+  description = 'Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.',
+  shareImage = 'https://danestves.com/og.png',
+  type = 'website',
+  date,
+  children,
+}: Props): JSX.Element | null => {
+  const router = useRouter()
+
+  const parsedTitle = '%s | @danestves'.replace('%s', title)
 
   return (
-    <NextSeo
-      {...props}
-      title={title}
-      description={description}
-      openGraph={{
-        // Title and description are mandatory
-        title: title,
-        description: description,
-        url: window.location.href,
-        // Only include OG image if we have it
-        images: [
-          {
-            url: shareImage || 'https://danestves.com/og.png',
-            width: 1200,
-            height: 630,
-            alt: title,
-          },
-        ],
-      }}
-      // Only included Twitter data if we have it
-      twitter={{
-        site: '@danestves',
-        cardType: 'summary_large_image',
-        handle: '@danestves',
-        ...(twitterCardType && { cardType: twitterCardType }),
-        ...(twitterUsername && { cardType: twitterUsername }),
-      }}
-      additionalMetaTags={[
-        {
-          name: 'og:type',
-          content: 'website',
-        },
-        {
-          name: 'twitter:title',
-          content: title,
-        },
-        {
-          name: 'twitter:description',
-          content: description,
-        },
-        {
-          name: 'twitter:image',
-          content: shareImage || 'https://danestves.com/og.png',
-        },
-        {
-          name: 'twitter:image:alt',
-          content: title,
-        },
-      ]}
-      canonical={window.location.href}
-    />
+    <Head>
+      <title>{parsedTitle}</title>
+      <meta name="robots" content="follow, index" />
+      <meta content={description} name="description" />
+      <meta key="og:url" property="og:url" content={`https://danestves.com${router.asPath}`} />
+      <meta key="og:type" property="og:type" content={type} />
+      <meta key="og:site_name" property="og:site_name" content="Daniel Esteves" />
+      <meta key="og:description" property="og:description" content={description} />
+      <meta key="og:title" property="og:title" content={parsedTitle} />
+      <meta key="og:image" property="og:image" content={description} />
+      <meta key="og:image:type" property="og:image:type" content="image/jpeg" />
+      <meta key="og:image:alt" property="og:image:alt" content={parsedTitle} />
+      <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+      <meta key="twitter:site" name="twitter:site" content="@danestves" />
+      <meta key="twitter:creator" name="twitter:creator" content="@danestves" />
+      <meta key="twitter:title" name="twitter:title" content={parsedTitle} />
+      <meta key="twitter:description" name="twitter:description" content={description} />
+      <meta key="twitter:image" name="twitter:image" content={shareImage} />
+      <meta key="twitter:image:alt" name="twitter:image:alt" content={parsedTitle} />
+      {date && (
+        <meta key="article:published_time" property="article:published_time" content={date} />
+      )}
+      <link rel="canonical" href={`https://danestves.com${router.asPath}`} />
+      {children}
+    </Head>
   )
 }
 

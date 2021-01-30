@@ -1,8 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { AppProps } from 'next/app'
-import Head from 'next/head'
-import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
+import { LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { motion } from 'framer-motion'
 import SwiperCore, { Autoplay, A11y, Navigation } from 'swiper'
 import { MDXProvider } from '@mdx-js/react'
@@ -10,7 +9,7 @@ import { MDXEmbedProvider } from 'mdx-embed'
 import { window } from 'browser-monads'
 
 // Components
-import { Layout } from '@/components'
+import { Layout, SEO } from '@/components'
 import MDXComponents from '@/components/MDXComponents'
 
 // Libraries
@@ -39,51 +38,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
   return (
     <MDXProvider components={MDXComponents}>
       <MDXEmbedProvider>
-        <Head>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-          />
-        </Head>
-
-        <DefaultSeo
-          titleTemplate="%s | @danestves"
-          title="Desarrollador Web Frontend"
-          description="Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad."
-          openGraph={{
-            images: [
-              {
-                url: 'https://danestves.com/og.png',
-                width: 1200,
-                height: 630,
-                alt: 'Desarrollador web fullstack en javascript | @danestves',
-              },
-            ],
-          }}
-          twitter={{
-            cardType: 'summary_large_image',
-            handle: '@danestves',
-          }}
-          additionalMetaTags={[
-            {
-              name: 'twitter:title',
-              content: 'Desarrollador Web Frontend | @danestves',
-            },
-            {
-              name: 'twitter:description',
-              content:
-                'Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.',
-            },
-            {
-              name: 'twitter:image',
-              content: 'https://danestves.com/og.png',
-            },
-            {
-              name: 'twitter:image:alt',
-              content: 'Desarrollador Web Frontend | @danestves',
-            },
-          ]}
-        />
+        <SEO />
 
         <LogoJsonLd logo="https://danestves.com/logo.png" url="https://danestves.com" />
         <SocialProfileJsonLd
