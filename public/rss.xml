@@ -4,7 +4,7 @@
         <description><![CDATA[Daniel Esteves]]></description>
         <link>https://danestves.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 30 Jan 2021 03:24:52 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 30 Jan 2021 04:31:38 GMT</lastBuildDate>
         <atom:link href="https://danestves.com/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[AlpineJS: El TailwindCSS para JavaScript]]></title>
@@ -35,6 +35,13 @@
             <pubDate>Mon, 13 Jan 2020 00:00:00 GMT</pubDate>
         </item>
         <item>
+            <title><![CDATA[useEffect y useState: ¿Es buena idea actualizar todo a Hooks?]]></title>
+            <description><![CDATA[React hooks ha llegado para quedarse, y en este post te explicaré como usarlos y cuáles son sus ventajas.]]></description>
+            <link>https://danestves.com/blog/useeffect-usestate-actualizar-hooks</link>
+            <guid isPermaLink="true">https://danestves.com/blog/useeffect-usestate-actualizar-hooks</guid>
+            <pubDate>Fri, 09 Aug 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
             <title><![CDATA[¿Cómo tomar capturas de pantalla con Chrome DevTools?]]></title>
             <description><![CDATA[Cuando tomamos capturas de sitios web normalmente recurrimos a otras herramientas, pero el navegador nos puede ayudar a hacerlo mejor.]]></description>
             <link>https://danestves.com/blog/tomar-capturas-en-chrome-devtools</link>
@@ -47,13 +54,6 @@
             <link>https://danestves.com/blog/ya-no-necesitas-jquery</link>
             <guid isPermaLink="true">https://danestves.com/blog/ya-no-necesitas-jquery</guid>
             <pubDate>Mon, 23 Sep 2019 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[useEffect y useState: ¿Es buena idea actualizar todo a Hooks?]]></title>
-            <description><![CDATA[React hooks ha llegado para quedarse, y en este post te explicaré como usarlos y cuáles son sus ventajas.]]></description>
-            <link>https://danestves.com/blog/useeffect-usestate-actualizar-hooks</link>
-            <guid isPermaLink="true">https://danestves.com/blog/useeffect-usestate-actualizar-hooks</guid>
-            <pubDate>Fri, 09 Aug 2019 00:00:00 GMT</pubDate>
         </item>
     </channel>
 </rss>
