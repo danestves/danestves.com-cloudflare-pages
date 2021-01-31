@@ -1,7 +1,6 @@
-// Tailwind
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
   font-family: 'Inter';
@@ -124,7 +123,7 @@ pre {
 }
 
 .remark-code-title {
-  @apply text-gray-200 px-5 py-3 border border-b-0 border-gray-700 rounded-t bg-gray-800 text-sm font-mono font-bold;
+  @apply px-5 py-3 font-mono text-sm font-bold text-gray-200 bg-gray-800 border border-b-0 border-gray-700 rounded-t;
 }
 
 .remark-code-title + pre {
@@ -132,5 +131,5 @@ pre {
 }
 
 .mdx-marker {
-  @apply block -mx-4 px-4 bg-gray-800 border-l-4 border-blue-500;
+  @apply block px-4 -mx-4 bg-gray-800 border-l-4 border-blue-500;
 }

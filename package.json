@@ -44,8 +44,6 @@
     "rehype-autolink-headings": "^5.0.1",
     "rehype-slug": "^4.0.1",
     "remark-code-titles": "^0.1.1",
-    "sass": "^1.32.5",
-    "swiper": "^6.4.10",
     "swr": "^0.4.1",
     "tailwindcss": "^2.0.2",
     "tailwindcss-filters": "^3.0.0",

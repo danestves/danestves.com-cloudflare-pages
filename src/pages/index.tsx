@@ -7,10 +7,7 @@ import { GrReactjs, GrGraphQl } from 'react-icons/gr'
 import { BackgroundImage } from 'react-image-and-background-image-fade'
 
 // Components
-import { Link, Features } from '@/components'
-
-// Data
-import features from '@/data/features.json'
+import { Link } from '@/components'
 
 const Index: NextPage = () => {
   return (
@@ -118,7 +115,7 @@ const Index: NextPage = () => {
         </div>
 
         <div className="container relative z-20 mt-6">
-          <Features features={features} />
+          {/* // TODO: Add a features place here */}
         </div>
       </div>
 
