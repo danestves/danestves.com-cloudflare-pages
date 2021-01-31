@@ -88,7 +88,7 @@ const Index: NextPage = () => {
         </div>
       </div>
 
-      <div className="relative w-full py-24">
+      {/* <div className="relative w-full py-24">
         <div className="container relative z-20 px-5">
           <h2 className="absolute bottom-0 w-full max-w-4xl py-4 mb-16 font-sans text-xl font-bold text-center transform -translate-x-1/2 rounded-full sm:px-16 sm:text-3xl sm:mb-12 md:text-5xl md:mb-8 bg-primary left-1/2 sm:py-7 text-secondary">
             ¡Codifiquemos juntos!
@@ -96,9 +96,9 @@ const Index: NextPage = () => {
         </div>
 
         <div className="container relative z-20 mt-6">
-          {/* // TODO: Add a features place here */}
+           // TODO: Add a features place here 
         </div>
-      </div>
+      </div> */}
 
       <div className="w-full py-12 bg-primary">
         <div className="max-w-4xl px-5 mx-auto">
