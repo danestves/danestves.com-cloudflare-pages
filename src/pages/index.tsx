@@ -1,13 +1,23 @@
 // Dependencies
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import NextImage from 'next/image'
 import { IoLogoNodejs, IoLogoWordpress } from 'react-icons/io5'
 import { GrReactjs, GrGraphQl } from 'react-icons/gr'
 
 // Components
-import { Link } from '@/components'
+import { Link, BlogCard } from '@/components'
 
-const Index: NextPage = () => {
+// Interfaces
+import { FrontMatterPost } from '@/interfaces'
+
+// Libraries
+import { getAllFilesFrontMatter } from '@/lib/mdx'
+
+interface Props {
+  posts: FrontMatterPost[]
+}
+
+const Index: NextPage<Props> = ({ posts }) => {
   return (
     <>
       <div className="relative flex items-center py-32 lg:py-20">
@@ -88,17 +98,17 @@ const Index: NextPage = () => {
         </div>
       </div>
 
-      {/* <div className="relative w-full py-24">
-        <div className="container relative z-20 px-5">
-          <h2 className="absolute bottom-0 w-full max-w-4xl py-4 mb-16 font-sans text-xl font-bold text-center transform -translate-x-1/2 rounded-full sm:px-16 sm:text-3xl sm:mb-12 md:text-5xl md:mb-8 bg-primary left-1/2 sm:py-7 text-secondary">
-            ¡Codifiquemos juntos!
-          </h2>
-        </div>
+      <div className="w-full py-12">
+        <div className="container max-w-screen-xl px-5">
+          <h2 className="text-3xl font-bold text-center text-primary">Últimos posts:</h2>
 
-        <div className="container relative z-20 mt-6">
-           // TODO: Add a features place here 
+          <div className="gap-6 mt-24 md:grid md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+              <BlogCard key={post.slug} {...post} />
+            ))}
+          </div>
         </div>
-      </div> */}
+      </div>
 
       <div className="w-full py-12 bg-primary">
         <div className="max-w-4xl px-5 mx-auto">
@@ -130,6 +140,19 @@ const Index: NextPage = () => {
       </div>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getAllFilesFrontMatter('blog')
+  const sortedPosts = posts.sort((a: FrontMatterPost, b: FrontMatterPost) => {
+    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  })
+
+  return {
+    props: {
+      posts: sortedPosts.slice(0, 3),
+    },
+  }
 }
 
 export default Index
