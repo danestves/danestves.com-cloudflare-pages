@@ -1,14 +1,13 @@
 // Dependencies
-import * as React from 'react'
+import { useState } from 'react'
 
 // Components
 import { Link } from '@/components'
 import MobileHeader from './MobileHeader'
 
 const Header = (): JSX.Element => {
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
-  // Render
   return (
     <>
       <header className="hidden w-full md:block">

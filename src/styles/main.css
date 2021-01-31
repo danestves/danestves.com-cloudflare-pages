@@ -1,7 +1,26 @@
-// Tailwind
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url('/static/fonts/inter-var-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+    U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url('/static/fonts/FiraCode-VF.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+    U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 /* Markdown styles */
 .prose pre {
@@ -21,7 +40,7 @@
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #5C6370;
+  color: #5c6370;
 }
 
 .token.punctuation {
@@ -102,7 +121,7 @@ pre {
 }
 
 .remark-code-title {
-  @apply text-gray-200 px-5 py-3 border border-b-0 border-gray-700 rounded-t bg-gray-800 text-sm font-mono font-bold;
+  @apply px-5 py-3 font-mono text-sm font-bold text-gray-200 bg-gray-800 border border-b-0 border-gray-700 rounded-t;
 }
 
 .remark-code-title + pre {
@@ -110,5 +129,5 @@ pre {
 }
 
 .mdx-marker {
-  @apply block -mx-4 px-4 bg-gray-800 border-l-4 border-blue-500;
+  @apply block px-4 -mx-4 bg-gray-800 border-l-4 border-blue-500;
 }

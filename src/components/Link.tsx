@@ -1,22 +1,20 @@
 // Dependencies
-import * as React from 'react'
-import NextLink, { LinkProps as LinkNextProps } from 'next/link'
+import Link, { LinkProps as LinkNextProps } from 'next/link'
 
 type LinkProps = React.ComponentProps<'a'> & LinkNextProps
 
-const Link: React.FC<LinkProps> = ({ href, as, passHref, replace, scroll, shallow, ...rest }) => (
-  <NextLink
-    href={href}
-    as={as}
-    replace={replace}
-    scroll={scroll}
-    shallow={shallow}
-    passHref={passHref}
-  >
-    {/* href is passed by NextLink */}
-    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/anchor-has-content */}
+const CustomLink: React.FC<LinkProps> = ({
+  href,
+  as,
+  passHref,
+  replace,
+  scroll,
+  shallow,
+  ...rest
+}) => (
+  <Link href={href} as={as} replace={replace} scroll={scroll} shallow={shallow} passHref={passHref}>
     <a {...rest} />
-  </NextLink>
+  </Link>
 )
 
-export default Link
+export default CustomLink

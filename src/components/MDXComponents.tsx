@@ -1,5 +1,4 @@
 // Dependencies
-import * as React from 'react'
 import NextLink, { LinkProps as LinkNextProps } from 'next/link'
 import Image from 'next/image'
 import { CodePen, YouTube, CodeSandbox, Tweet } from 'mdx-embed'
@@ -29,13 +28,11 @@ const CustomLink = ({
         shallow={shallow}
         passHref={passHref}
       >
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/anchor-has-content */}
         <a {...rest} />
       </NextLink>
     )
   }
 
-  // eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/anchor-has-content
   return <a href={href} target="_blank" rel="noopener noreferrer" {...rest} />
 }
 

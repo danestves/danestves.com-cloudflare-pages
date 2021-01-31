@@ -1,5 +1,5 @@
 // Dependencies
-import * as React from 'react'
+import { ReactNode } from 'react'
 import Image from 'next/image'
 import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
@@ -24,7 +24,7 @@ const discussUrl = (slug: string): string => {
 
 interface Props {
   frontMatter: FrontMatterPost
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export default function BlogLayout({ frontMatter, children }: Props): JSX.Element {

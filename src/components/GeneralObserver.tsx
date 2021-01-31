@@ -1,5 +1,5 @@
 // Dependencies
-import React, { FunctionComponent, useRef, useEffect, useState, RefObject } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 interface IGeneralObserverProps {
   /** Fires when IntersectionObserver enters viewport */
@@ -8,19 +8,23 @@ interface IGeneralObserverProps {
   height?: number
 }
 
-const GeneralObserver: FunctionComponent<IGeneralObserverProps> = ({
+const GeneralObserver: React.FunctionComponent<IGeneralObserverProps> = ({
   children,
   onEnter,
   height = 0,
 }) => {
   const ref = useRef<HTMLElement>(null)
   const [isChildVisible, setIsChildVisible] = useState(false)
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.intersectionRatio > 0) {
           setIsChildVisible(true)
-          onEnter && onEnter()
+
+          if (onEnter) {
+            onEnter()
+          }
         }
       },
       {
@@ -36,7 +40,7 @@ const GeneralObserver: FunctionComponent<IGeneralObserverProps> = ({
 
   return (
     <div
-      ref={ref as RefObject<HTMLDivElement>}
+      ref={ref as React.RefObject<HTMLDivElement>}
       data-testid="general-observer"
       className="mdx-embed"
     >

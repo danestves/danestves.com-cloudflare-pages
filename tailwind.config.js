@@ -80,8 +80,8 @@ module.exports = {
         '8xl': `6rem`,
       },
       fontFamily: {
-        sans: [`Inter var`, ...fontFamily.sans],
-        mono: [`Fira Code var`, ...fontFamily.mono],
+        sans: [`Inter`, ...fontFamily.sans],
+        mono: [`Fira Code`, ...fontFamily.mono],
       },
       height: {
         88: `22rem`,

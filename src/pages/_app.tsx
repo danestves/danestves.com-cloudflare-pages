@@ -1,8 +1,7 @@
 // Dependencies
-import * as React from 'react'
+import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
-import SwiperCore, { Autoplay, A11y, Navigation } from 'swiper'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXEmbedProvider } from 'mdx-embed'
 import { window } from 'browser-monads'
@@ -15,15 +14,10 @@ import MDXComponents from '@/components/MDXComponents'
 import * as gtag from '@/lib/analytics'
 
 // Styles
-import 'swiper/swiper.scss'
-import 'swiper/components/a11y/a11y.scss'
-import 'swiper/components/navigation/navigation.scss'
-import '@/styles/main.scss'
-
-SwiperCore.use([Autoplay, A11y, Navigation])
+import '@/styles/main.css'
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
-  React.useEffect(() => {
+  useEffect(() => {
     const handleRouteChange = (url: string): void => {
       gtag.pageview(url)
     }

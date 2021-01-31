@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       await docRef.set({ value: 1 })
     } else {
       await db.runTransaction(async (transaction) => {
-        return transaction.get(docRef).then(function (doc) {
+        return transaction.get(docRef).then((doc) => {
           transaction.update(docRef, { value: Number(doc.data()?.value || 0) + 1 })
         })
       })
@@ -29,8 +29,10 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       .collection('views')
       .doc(req.query.slug as string)
       .get()
-    const views = snapshot.data()?.['value']
+    const views = snapshot.data()?.value
 
     return res.status(200).json({ total: views })
   }
+
+  return res.status(400).send('Method not allowed')
 }

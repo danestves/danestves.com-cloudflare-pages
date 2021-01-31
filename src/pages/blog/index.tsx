@@ -1,8 +1,6 @@
 // Dependencies
-import * as React from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import Image from 'next/image'
-import renderA11yEmojis from 'markdown-render-a11y-emojis'
 
 // Components
 import { SEO, Link } from '@/components'
@@ -49,10 +47,9 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
               </div>
 
               <div className="mt-6 lg:col-span-5">
-                <h2
-                  className="text-4xl font-semibold leading-tight text-white lg:text-5xl group-hover:underline group-focus:underline"
-                  dangerouslySetInnerHTML={{ __html: renderA11yEmojis(featuredPost.title) }}
-                />
+                <h2 className="text-4xl font-semibold leading-tight text-white lg:text-5xl group-hover:underline group-focus:underline">
+                  {featuredPost.title}
+                </h2>
                 <p className="mb-2 text-base text-white lg:text-lg">
                   Publicado en {formatDate(featuredPost.publishedAt, 'MMM. d yyy')}
                 </p>
@@ -78,10 +75,9 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
                     Publicado en {formatDate(post.publishedAt, 'MMM. d yyy')}
                   </p>
 
-                  <h2
-                    className="mb-2 text-2xl font-medium leading-tight text-white group-hover:underline group-focus:underline"
-                    dangerouslySetInnerHTML={{ __html: renderA11yEmojis(post.title) }}
-                  />
+                  <h2 className="mb-2 text-2xl font-medium leading-tight text-white group-hover:underline group-focus:underline">
+                    {post.title}
+                  </h2>
                   <p className="text-sm text-white">{post.summary}</p>
                 </div>
               </Link>

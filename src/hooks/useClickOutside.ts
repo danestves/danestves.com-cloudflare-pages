@@ -1,5 +1,5 @@
 // Dependencies
-import * as React from 'react'
+import { RefObject, useEffect } from 'react'
 import { document } from 'browser-monads'
 
 /**
@@ -8,8 +8,8 @@ import { document } from 'browser-monads'
  * @param ref - The element to reference
  * @param callback - The function to execute when click outside
  */
-const useClickOutside = (ref: React.RefObject<HTMLElement>, callback: () => void): void => {
-  React.useEffect(() => {
+const useClickOutside = (ref: RefObject<HTMLElement>, callback: () => void): void => {
+  useEffect(() => {
     /**
      * @function handleClickOutside
      *

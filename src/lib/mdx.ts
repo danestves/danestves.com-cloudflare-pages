@@ -4,6 +4,10 @@ import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism'
 import path from 'path'
 import renderToString from 'next-mdx-remote/render-to-string'
+import remarkCodeTitles from 'remark-code-titles'
+import remarkA11yEmoji from '@fec/remark-a11y-emoji'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 // Components
 import MDXComponents from '@/components/MDXComponents'
@@ -36,8 +40,8 @@ export async function getFileBySlug(
   const mdxSource = await renderToString(content, {
     components: MDXComponents,
     mdxOptions: {
-      remarkPlugins: [require('remark-code-titles'), require('@fec/remark-a11y-emoji')],
-      rehypePlugins: [require('rehype-slug'), require('rehype-autolink-headings'), mdxPrism],
+      remarkPlugins: [remarkCodeTitles, remarkA11yEmoji],
+      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, mdxPrism],
     },
   })
 

@@ -1,9 +1,8 @@
 // Dependencies
-import * as React from 'react'
 import { FaGithubAlt, FaYoutube, FaTwitter } from 'react-icons/fa'
 
 // Components
-import { Link, Emoji } from '@/components'
+import { Link } from '@/components'
 
 const Footer = (): JSX.Element => (
   <footer className="pt-5 bg-secondary">
@@ -95,8 +94,8 @@ const Footer = (): JSX.Element => (
           <p className="mb-6 font-semibold text-white">Unete al Newsletter!</p>
 
           <p className="mb-4 text-white">
-            Prometo no enviarte spam <Emoji emoji="🤘" />. Envío un correo cada vez que hago un
-            nuevo blogpost o subo un nuevo video.
+            Prometo no enviarte spam 🤘. Envío un correo cada vez que hago un nuevo blogpost o subo
+            un nuevo video.
           </p>
 
           <form
@@ -121,7 +120,7 @@ const Footer = (): JSX.Element => (
               type="submit"
               className="px-4 py-2 rounded-lg text-secondary bg-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
             >
-              Unete <Emoji emoji="👉" />
+              Unete 👉
             </button>
           </form>
         </div>

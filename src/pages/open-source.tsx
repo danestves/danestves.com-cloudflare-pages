@@ -1,5 +1,4 @@
 // Dependencies
-import * as React from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import { motion } from 'framer-motion'
 
@@ -10,7 +9,7 @@ import { SEO } from '@/components'
 import { Repository } from '@/interfaces'
 
 // Libraries
-import { getRepositories } from '@/lib/github'
+import getRepositories from '@/lib/github'
 
 interface Props {
   repositories: Repository[]
