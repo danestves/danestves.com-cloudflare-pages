@@ -1,5 +1,5 @@
 // Dependencies
-import * as React from 'react'
+import { RefObject, useRef, useEffect } from 'react'
 
 /**
  * Naive implementation - in reality would want to attach
@@ -9,10 +9,10 @@ import * as React from 'react'
  *
  * @param ref - The element to reference
  */
-const useDimensions = (ref: React.RefObject<HTMLElement>): { width: number; height: number } => {
-  const dimensions = React.useRef({ width: 0, height: 0 })
+const useDimensions = (ref: RefObject<HTMLElement>): { width: number; height: number } => {
+  const dimensions = useRef({ width: 0, height: 0 })
 
-  React.useEffect(() => {
+  useEffect(() => {
     dimensions.current.width = ref?.current?.offsetWidth || 0
     dimensions.current.height = ref?.current?.offsetHeight || 0
   }, [ref])

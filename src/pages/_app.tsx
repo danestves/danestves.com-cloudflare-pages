@@ -1,5 +1,5 @@
 // Dependencies
-import * as React from 'react'
+import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { MDXProvider } from '@mdx-js/react'
@@ -17,7 +17,7 @@ import * as gtag from '@/lib/analytics'
 import '@/styles/main.css'
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
-  React.useEffect(() => {
+  useEffect(() => {
     const handleRouteChange = (url: string): void => {
       gtag.pageview(url)
     }

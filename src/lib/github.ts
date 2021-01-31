@@ -7,7 +7,7 @@ import axios from '@/lib/axios'
 /**
  * Get GitHub repositories with all the information needed
  */
-export const getRepositories = async (): Promise<Repository[]> => {
+const getRepositories = async (): Promise<Repository[]> => {
   const personalRepositories: Repository[] = await axios
     .get('https://api.github.com/users/danestves/repos?per_page=50', {
       headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
@@ -53,7 +53,7 @@ export const getRepositories = async (): Promise<Repository[]> => {
       return repositories
         .sort((a, b) => {
           // eslint-disable-next-line
-        // @ts-ignore
+          // @ts-ignore
           return new Date(b.created_at) - new Date(a.created_at)
         })
         .filter((repository: Repository) => {
@@ -70,3 +70,5 @@ export const getRepositories = async (): Promise<Repository[]> => {
 
   return [...organizationRepositories, ...personalRepositories]
 }
+
+export default getRepositories

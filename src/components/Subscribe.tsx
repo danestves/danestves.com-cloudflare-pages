@@ -1,5 +1,5 @@
 // Dependencies
-import * as React from 'react'
+import { useState } from 'react'
 import useSWR from 'swr'
 import format from 'comma-number'
 
@@ -10,13 +10,13 @@ import { Emoji } from '@/components'
 import fetcher from '@/lib/fetcher'
 
 const Subscribe = (): JSX.Element => {
-  const [form, setForm] = React.useState<{
+  const [form, setForm] = useState<{
     status: string
     message?: string
   }>({
     status: '',
   })
-  const [email, setEmail] = React.useState('')
+  const [email, setEmail] = useState('')
   const { data } = useSWR('/api/subscribers', fetcher)
   const subscriberCount = format(((data as unknown) as Record<string, unknown>)?.count || 0)
 

@@ -1,5 +1,5 @@
 // Dependencies
-import * as React from 'react'
+import { ReactNode } from 'react'
 import Image from 'next/image'
 import { BiLinkExternal } from 'react-icons/bi'
 
@@ -11,7 +11,7 @@ import { FrontMatterPortfolio } from '@/interfaces'
 
 interface Props {
   frontMatter: FrontMatterPortfolio
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export default function PortfolioLayout({ frontMatter, children }: Props): JSX.Element {

@@ -1,5 +1,4 @@
 // Dependencies
-import * as React from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import Image from 'next/image'
 import renderA11yEmojis from 'markdown-render-a11y-emojis'

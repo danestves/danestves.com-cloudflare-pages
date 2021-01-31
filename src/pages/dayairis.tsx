@@ -1,5 +1,4 @@
 // Dependencies
-import * as React from 'react'
 import { NextPage } from 'next'
 import Image from 'next/image'
 

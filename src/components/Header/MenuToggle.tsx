@@ -1,5 +1,4 @@
 // Dependencies
-import * as React from 'react'
 import { motion, MotionProps } from 'framer-motion'
 
 const Path = (props: { d?: string } & MotionProps): JSX.Element => (

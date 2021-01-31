@@ -1,5 +1,5 @@
 // Dependencies
-import * as React from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 // Components
@@ -49,8 +49,8 @@ const sidebar = {
 }
 
 const MobileHeader = (): JSX.Element => {
-  const [isOpen, toggleOpen] = React.useState(false)
-  const containerRef = React.useRef(null)
+  const [isOpen, toggleOpen] = useState(false)
+  const containerRef = useRef(null)
   const { height } = useDimensions(containerRef)
 
   useClickOutside(containerRef, () => toggleOpen(false))

@@ -1,11 +1,7 @@
 // Dependencies
-import * as React from 'react'
 import { findByEmoji } from 'markdown-render-a11y-emojis'
 
-type EmojiProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLSpanElement>,
-  HTMLSpanElement
-> & {
+type Props = React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> & {
   emoji: string
 }
 
@@ -14,7 +10,7 @@ type EmojiProps = React.DetailedHTMLProps<
  *
  * @param {string} emoji - An example emoji like 🙂
  */
-const Emoji = ({ emoji, ...props }: EmojiProps): JSX.Element => {
+const Emoji = ({ emoji, ...props }: Props): JSX.Element => {
   const emojiFound = findByEmoji(emoji)
 
   return (

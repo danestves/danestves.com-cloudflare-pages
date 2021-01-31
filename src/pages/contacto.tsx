@@ -1,5 +1,5 @@
 // Dependencies
-import * as React from 'react'
+import { useEffect } from 'react'
 import { NextPage } from 'next'
 import { FaLaptopCode } from 'react-icons/fa'
 import { IoBusinessOutline } from 'react-icons/io5'
@@ -11,7 +11,7 @@ import kwesforms from 'kwesforms'
 import { SEO, Emoji } from '@/components'
 
 const Contacto: NextPage = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     kwesforms.init()
   }, [])
 
@@ -90,7 +90,7 @@ const Contacto: NextPage = () => {
               lang="es"
             >
               <div className="py-2">
-                <label htmlFor="name" className="hidden">
+                <label htmlFor="name" className="sr-only">
                   Nombre
                 </label>
                 <input
@@ -104,7 +104,7 @@ const Contacto: NextPage = () => {
               </div>
 
               <div className="py-2">
-                <label htmlFor="email" className="hidden">
+                <label htmlFor="email" className="sr-only">
                   Correo
                 </label>
                 <input
@@ -118,7 +118,7 @@ const Contacto: NextPage = () => {
               </div>
 
               <div className="py-2">
-                <label htmlFor="subject" className="hidden">
+                <label htmlFor="subject" className="sr-only">
                   Asunto
                 </label>
                 <input
@@ -132,7 +132,7 @@ const Contacto: NextPage = () => {
               </div>
 
               <div className="py-2">
-                <label htmlFor="message" className="hidden">
+                <label htmlFor="message" className="sr=only">
                   Mensaje
                 </label>
                 <textarea
@@ -145,15 +145,7 @@ const Contacto: NextPage = () => {
                 />
               </div>
 
-              <div className="flex flex-wrap mt-4">
-                <div className="w-full md:w-1/2 md:pr-2">
-                  <button
-                    type="reset"
-                    className="block w-full py-3 font-bold capitalize border rounded text-primary border-primary"
-                  >
-                    limpiar
-                  </button>
-                </div>
+              <div className="flex flex-wrap justify-end mt-4">
                 <div className="w-full mt-3 md:w-1/2 md:pl-2 md:mt-0">
                   <button
                     type="submit"
