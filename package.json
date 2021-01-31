@@ -30,7 +30,6 @@
     "gray-matter": "^4.0.2",
     "kwesforms": "2.0.8",
     "lottie-react": "^2.1.0",
-    "markdown-render-a11y-emojis": "^1.0.0",
     "mdx-embed": "^0.0.17",
     "mdx-prism": "^0.3.1",
     "next": "^10.0.6",

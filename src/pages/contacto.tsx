@@ -8,7 +8,7 @@ import { GiFamilyTree, GiPencilRuler, GiPalette } from 'react-icons/gi'
 import kwesforms from 'kwesforms'
 
 // Components
-import { SEO, Emoji } from '@/components'
+import { SEO } from '@/components'
 
 const Contacto: NextPage = () => {
   useEffect(() => {
@@ -34,12 +34,12 @@ const Contacto: NextPage = () => {
         <div className="grid items-center max-w-lg gap-16 mx-auto my-16 lg:max-w-none lg:grid-cols-2 xl:my-32">
           <div>
             <h2 className="mb-4 text-3xl font-semibold text-white sm:text-4xl md:text-5xl">
-              Da el primer paso <Emoji emoji="🚀" />
+              Da el primer paso 🚀
             </h2>
 
             <p className="mb-4 text-white">
-              Todo inicia con un mensaje. Una sola idea para dominarlos a todos <Emoji emoji="😎" />
-              haz crecer tu mercado o emerge con tu nuevo negocio.
+              Todo inicia con un mensaje. Una sola idea para dominarlos a todos 😎 haz crecer tu
+              mercado o emerge con tu nuevo negocio.
             </p>
 
             <ul className="my-8">

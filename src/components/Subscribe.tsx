@@ -3,9 +3,6 @@ import { useState } from 'react'
 import useSWR from 'swr'
 import format from 'comma-number'
 
-// Components
-import { Emoji } from '@/components'
-
 // Libraries
 import fetcher from '@/lib/fetcher'
 
@@ -103,7 +100,7 @@ const Subscribe = (): JSX.Element => {
               {form.status === 'loading' ? (
                 <>
                   Enviando
-                  <Emoji emoji="📩" className="ml-2 animate-pulse" />
+                  <span className="ml-2 animate-pulse">📩</span>
                 </>
               ) : (
                 'Suscribirse'

@@ -2,7 +2,7 @@
 import { NextPage } from 'next'
 
 // Components
-import { SEO, Emoji } from '@/components'
+import { SEO } from '@/components'
 
 // Data
 import experience from '@/data/experience.json'
@@ -52,7 +52,7 @@ const AboutMe: NextPage = () => (
         </p>
 
         <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl text-right">
-          - Los veo en el código <Emoji emoji="👨‍💻" />
+          - Los veo en el código 👨‍💻
         </p>
       </div>
     </div>
