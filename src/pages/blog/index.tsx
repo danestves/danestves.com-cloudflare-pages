@@ -3,7 +3,7 @@ import { NextPage, GetStaticProps } from 'next'
 import Image from 'next/image'
 
 // Components
-import { SEO, Link } from '@/components'
+import { SEO, Link, BlogCard } from '@/components'
 
 // Libraries
 import { FrontMatterPost } from '@/interfaces'
@@ -61,27 +61,7 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
 
         <div className="gap-6 my-24 md:grid md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
-            <article key={post.slug} className="mb-12">
-              <Link
-                href={`/blog/${post.slug}`}
-                className="group hover:no-underline focus:no-underline"
-              >
-                <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
-                  <Image src={post.image} width={400} height={270} alt={post.title} />
-                </div>
-
-                <div className="mt-6">
-                  <p className="my-2 text-xs text-white">
-                    Publicado en {formatDate(post.publishedAt, 'MMM. d yyy')}
-                  </p>
-
-                  <h2 className="mb-2 text-2xl font-medium leading-tight text-white group-hover:underline group-focus:underline">
-                    {post.title}
-                  </h2>
-                  <p className="text-sm text-white">{post.summary}</p>
-                </div>
-              </Link>
-            </article>
+            <BlogCard key={post.slug} {...post} />
           ))}
         </div>
       </div>
