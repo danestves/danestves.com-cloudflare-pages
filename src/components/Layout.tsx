@@ -3,14 +3,14 @@ import * as React from 'react'
 import { useRouter } from 'next/dist/client/router'
 
 // Components
-import { Footer, CallToAction } from '@/components'
+import { Header, Footer, CallToAction } from '@/components'
 
 const Layout: React.FC = ({ children }) => {
   const router = useRouter()
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
 
       {children}
 
