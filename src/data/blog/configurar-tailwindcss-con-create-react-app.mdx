@@ -81,20 +81,20 @@ Ahora vamos a editar nuestro `App.js` y pondremos el siguiente código:
 
 ```jsx
 // Dependencies
-import  React  from  "react";
+import React from 'react'
 
 // Styles
-import "./tailwind.output.css";
+import './tailwind.output.css'
 
 const App = () => {
   return (
     <div className="min-h-screen bg-gray-500">
       <h2 className="text-center text-4xl font-bold text-blue-900">TailwindCSS + React</h2>
     </div>
-  );
-};
+  )
+}
 
-export  default  App;
+export default App
 ```
 
 Ahora que ya tenemos todo listo solo debemos iniciar nuestra aplicación con:
@@ -117,7 +117,7 @@ Este script se encargará de generar nuestro archivo de `tailwind.output.css` de
 
 No hacer cambios en `tailwind.output.css` ya que cada vez que se corra el script tus cambios serán sobre escritos corriendo o `start` o `build`. En lugar de eso debemos poner nuestros cambios en `src/tailwind.css` y reiniciar el script cada vez que hagamos un cambio. (Recomiendo hacer un archivo aparte para manejar estilos y no utilizar `tailwind.css`)
 
-❕ _**Importante:**_ debemos agregar `tailwind.output.css` a nuestro `.gitignore` para evitar que le hagamos commit a GitHub, GitLab o BitBucket ya que este archivo será generado antes de correr o `start` o 	`build`.
+❕ _**Importante:**_ debemos agregar `tailwind.output.css` a nuestro `.gitignore` para evitar que le hagamos commit a GitHub, GitLab o BitBucket ya que este archivo será generado antes de correr o `start` o `build`.
 
 ## Preparándonos para producción 🚀 y una sorpresa 🤩
 
@@ -160,13 +160,7 @@ En la raíz de nuestro proyecto vamos a crear un archivo `tailwind.config.js` co
 
 ```js
 module.exports = {
-  purge: [
-    'src/**/*.js',
-    'src/**/*.jsx',
-    'src/**/*.ts',
-    'src/**/*.tsx',
-    'public/**/*.html',
-  ],
+  purge: ['src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx', 'public/**/*.html'],
   theme: {
     extend: {},
   },

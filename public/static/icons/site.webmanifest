@@ -1,26 +1,26 @@
 {
-    "name": "Desarrollador Web Frontend | @danestves",
-    "short_name": "Daniel Esteves",
-    "icons": [
-        {
-            "src": "/static/icons/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/static/icons/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        },
-        {
-          "src": "/static/icons/maskable-icon.png",
-          "sizes": "512x512",
-          "type": "image/png",
-          "purpose": "any maskable"
-        }
-    ],
-    "theme_color": "#071d49",
-    "background_color": "#071d49",
-    "start_url": "https://danestves.com/",
-    "display": "standalone"
+  "name": "Desarrollador Web Frontend | @danestves",
+  "short_name": "Daniel Esteves",
+  "icons": [
+    {
+      "src": "/static/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icons/maskable-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#071d49",
+  "background_color": "#071d49",
+  "start_url": "https://danestves.com/",
+  "display": "standalone"
 }

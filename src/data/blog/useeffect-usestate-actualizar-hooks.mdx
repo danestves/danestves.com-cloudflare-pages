@@ -15,21 +15,19 @@ import React, { Component } from 'react'
 
 class Counter extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      count: 0
-    };
+      count: 0,
+    }
   }
 
   render() {
     return (
       <div>
         <p>You clicked {this.state.count} times</p>
-        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
-          Click me
-        </button>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>Click me</button>
       </div>
-    );
+    )
   }
 }
 
@@ -39,19 +37,17 @@ export default Counter
 El código aparte de que se ve largo 😒 hace que Babel transpile más cosas innecesarias, que el código se haga más largo y que pese mucho más nuestro JavaScript final. Para hacer que todos estos puntos mejoren llegaron los Hooks, haremos el mismo código pero usando el Hook de `useState()`:
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-export default function Counter () {
-  const [count, setCount] = useState(0);
+export default function Counter() {
+  const [count, setCount] = useState(0)
 
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
-  );
+  )
 }
 ```
 
@@ -62,25 +58,25 @@ Podemos hacerlo de la siguiente manera:
 ```jsx
 import React, { useState } from 'react'
 
-export default function ContactForm () {
-    // Declaramos primero inputs el estado y setInputs la función, y lo igualamos a un objeto
-    const [inputs, setInputs] = useState({})
+export default function ContactForm() {
+  // Declaramos primero inputs el estado y setInputs la función, y lo igualamos a un objeto
+  const [inputs, setInputs] = useState({})
 
-    const handleChange = e => {
-        // Con esto accederemos a las propiedades del evento de forma asíncrona
-        e.persist()
-        // Ahora llamamos a la función, le pasamos el estado actual y le pasamos también el nombre del campo y su valor. Lo guardará justamente como un objeto
-        setInputs(inputs => ({ ...inputs, [e.target.name]: e.target.value }))
-    }
+  const handleChange = (e) => {
+    // Con esto accederemos a las propiedades del evento de forma asíncrona
+    e.persist()
+    // Ahora llamamos a la función, le pasamos el estado actual y le pasamos también el nombre del campo y su valor. Lo guardará justamente como un objeto
+    setInputs((inputs) => ({ ...inputs, [e.target.name]: e.target.value }))
+  }
 
-    return (
-        <form>
-            {/*...*/}
-            <label htmlFor='name'>Name</label>
-            <input type='text' name='name' onChange={handleChange} />
-            {/*...*/}
-        </form>
-    )
+  return (
+    <form>
+      {/*...*/}
+      <label htmlFor="name">Name</label>
+      <input type="text" name="name" onChange={handleChange} />
+      {/*...*/}
+    </form>
+  )
 }
 ```
 
@@ -89,11 +85,11 @@ Gracias a esto podemos hacer que nuestras aplicaciones estén más actualizadas,
 ```jsx
 import React, { useEffect } from 'react'
 
-export default function Home () {
-    // Simplemente llamaremos a la función useEffect() y dentro podremos lo que necesitamos hacer cuando el componente cargue
-    useEffect(() => {
-        miFuncionQueHaceFecthDeData()
-    }, [])
+export default function Home() {
+  // Simplemente llamaremos a la función useEffect() y dentro podremos lo que necesitamos hacer cuando el componente cargue
+  useEffect(() => {
+    miFuncionQueHaceFecthDeData()
+  }, [])
 }
 ```
 
