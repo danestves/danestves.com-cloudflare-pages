@@ -1,5 +1,3 @@
-const webpack = require('webpack')
-
 module.exports = {
   images: {
     domains: ['github-readme-stats.danestves.com'],
@@ -9,12 +7,6 @@ module.exports = {
       require('./src/scripts/generate-sitemap')
       require('./src/scripts/generate-rss')
     }
-
-    config.plugins.push(
-      new webpack.optimize.LimitChunkCountPlugin({
-        maxChunks: 1,
-      })
-    )
 
     // Replace React with Preact only in client production build
     if (!dev && !isServer) {
