@@ -2,7 +2,6 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
 import { LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
-import { motion } from 'framer-motion'
 import SwiperCore, { Autoplay, A11y, Navigation } from 'swiper'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXEmbedProvider } from 'mdx-embed'
@@ -54,21 +53,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
         />
 
         <Layout>
-          <motion.div
-            key={router.route}
-            initial="pageInitial"
-            animate="pageAnimate"
-            variants={{
-              pageInitial: {
-                opacity: 0,
-              },
-              pageAnimate: {
-                opacity: 1,
-              },
-            }}
-          >
-            <Component {...pageProps} />
-          </motion.div>
+          <Component {...pageProps} />
         </Layout>
       </MDXEmbedProvider>
     </MDXProvider>
