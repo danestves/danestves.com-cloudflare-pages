@@ -33,7 +33,7 @@ const SEO = ({
       <meta key="og:site_name" property="og:site_name" content="Daniel Esteves" />
       <meta key="og:description" property="og:description" content={description} />
       <meta key="og:title" property="og:title" content={parsedTitle} />
-      <meta key="og:image" property="og:image" content={description} />
+      <meta key="og:image" property="og:image" content={shareImage} />
       <meta key="og:image:type" property="og:image:type" content="image/jpeg" />
       <meta key="og:image:alt" property="og:image:alt" content={parsedTitle} />
       <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
