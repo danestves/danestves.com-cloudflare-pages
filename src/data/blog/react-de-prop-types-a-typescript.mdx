@@ -14,7 +14,7 @@ La característica central de React son los componentes. Nos ayuda a tener una [
 
 La forma sencilla de mover datos de una componente a otro es a través de props:
 
-```jsx
+```jsx:single-post.jsx
 import React from 'react'
 
 import Post from './Post'
@@ -36,7 +36,7 @@ Para hablar con algunos amigos, utilizo Telegram. Puedo enviar y recibir mensaje
 
 Los types pueden fortalecer la DX (Developer Experience), ya que cuando algo está mal, puede alertarnos. El uso de [prop-types](https://www.npmjs.com/package/prop-types) es la forma normal de añadir **type check** a nuestros props.
 
-```jsx
+```jsx:post.jsx
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -76,13 +76,13 @@ La librería prop-types estaba incluida en React antes de React v15.5. El equipo
 
 Uno de los obstáculos de entrada de TypeScript es que la herramienta tiene que ser construida y configurada antes de que puedas usarla. No es tan fácil como `yarn add prop-types`, sin duda. En mi opinión, la mejor manera de aprender TypeScript es saltarse completamente este paso. Simplemente construye con CRA una nueva aplicación React, ¡y empecemos a aprender!
 
-```bash
+```bash:create-react-app.sh
 yarn create react-app my-project --template typescript
 ```
 
 Creado. Ahora, en nuestro componente de `<Post />`, vamos a cambiar de PropTypes a TypeScript.
 
-```tsx
+```tsx:post.tsx
 import * as React from "react";
 
 interface Props {
@@ -119,7 +119,7 @@ Esto es lo que muestra mi VSCode con una función que tengo para verificar el ti
 
 Ahora que estamos en esto, cambiemos también nuestro `<SinglePost />` component:
 
-```tsx
+```tsx:single-post.tsx
 import * as React from 'react'
 
 import Post from './Post'
