@@ -10,14 +10,12 @@ const CallToAction = (): JSX.Element => {
       <div className="max-w-5xl mx-auto my-16 lg:my-32">
         <div className="flex flex-wrap items-center flex-1 w-full overflow-hidden rounded-lg bg-primary md:flex-no-wrap">
           <div className="w-full md:w-1/3 md:order-last">
-            <div className="-mx-12 -mt-12 -mb-12 md:ml-0 md:-mr-24">
-              <Image
-                src="/programming-animation.gif"
-                alt="Persona programando animadas a través de un GIF"
-                width={300}
-                height={300}
-              />
-            </div>
+            <Image
+              src="/programming-animation.gif"
+              alt="Persona programando animadas a través de un GIF"
+              width={300}
+              height={300}
+            />
           </div>
           <div className="w-full px-4 pt-24 pb-8 md:p-12 md:w-2/3">
             <h2 className="mb-4 text-3xl font-bold text-black lg:mb-4 sm:text-4xl md:text-5xl">
