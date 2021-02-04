@@ -1,8 +1,5 @@
 // Dependencies
-import Lottie from 'lottie-react'
-
-// Animations
-import ProgrammingAnimation from '@/animations/31675-programming.json'
+import Image from 'next/image'
 
 // Components
 import { Link } from '@/components'
@@ -14,7 +11,7 @@ const CallToAction = (): JSX.Element => {
         <div className="flex flex-wrap items-center flex-1 w-full overflow-hidden rounded-lg bg-primary md:flex-no-wrap">
           <div className="w-full md:w-1/3 md:order-last">
             <div className="-mx-12 -mt-12 -mb-12 md:ml-0 md:-mr-24">
-              <Lottie animationData={ProgrammingAnimation} className="transform" />
+              <Image src="/programming-animation.gif" width={300} height={300} />
             </div>
           </div>
           <div className="w-full px-4 pt-24 pb-8 md:p-12 md:w-2/3">

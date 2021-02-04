@@ -32,7 +32,6 @@
     "gray-matter": "^4.0.2",
     "isomorphic-fetch": "^3.0.0",
     "kwesforms": "2.0.8",
-    "lottie-react": "^2.1.0",
     "mdx-embed": "^0.0.17",
     "mdx-prism": "^0.3.1",
     "next": "^10.0.6",
