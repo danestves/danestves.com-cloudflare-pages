@@ -20,35 +20,17 @@ const Footer = (): JSX.Element => (
 
           <div className="-mx-4">
             <div className="flex mx-4 space-x-2">
-              <a
-                href="https://github.com/danestves"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="GitHub"
-                className="text-primary"
-              >
+              <Link href="/github" title="GitHub" className="text-primary">
                 <FaGithubAlt size="20" />
-              </a>
+              </Link>
 
-              <a
-                href="https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="YouTube"
-                className="text-primary"
-              >
-                <FaYoutube size="20" />
-              </a>
-
-              <a
-                href="https://twitter.com/danestves"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Twitter"
-                className="text-primary"
-              >
+              <Link href="/twitter" title="Twitter" className="text-primary">
                 <FaTwitter size="20" />
-              </a>
+              </Link>
+
+              <Link href="/youtube" title="YouTube" className="text-primary">
+                <FaYoutube size="20" />
+              </Link>
             </div>
           </div>
         </div>
