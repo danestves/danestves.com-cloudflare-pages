@@ -5,6 +5,7 @@ import { CodePen, YouTube, CodeSandbox, Tweet } from 'mdx-embed'
 
 // Components
 import Cloudinary from './Cloudinary'
+import Giphy from './Giphy'
 
 const CustomLink = ({
   href,
@@ -44,6 +45,7 @@ const MDXComponents = {
   YouTube,
   CodeSandbox,
   Cloudinary,
+  Giphy,
 }
 
 export default MDXComponents
