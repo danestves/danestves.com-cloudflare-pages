@@ -1,5 +1,4 @@
 // Dependencies
-import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { MDXProvider } from '@mdx-js/react'
@@ -10,24 +9,10 @@ import { window } from 'browser-monads'
 import { Layout, SEO } from '@/components'
 import MDXComponents from '@/components/MDXComponents'
 
-// Libraries
-import * as gtag from '@/lib/analytics'
-
 // Styles
 import '@/styles/main.css'
 
-function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
-  useEffect(() => {
-    const handleRouteChange = (url: string): void => {
-      gtag.pageview(url)
-    }
-
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
-
+function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
   return (
     <MDXProvider components={MDXComponents}>
       <MDXEmbedProvider>

@@ -1,9 +1,5 @@
 // Dependencies
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-
-// Libraries
-import { GA_TRACKING_ID } from '@/lib/analytics'
-
 export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
@@ -50,24 +46,14 @@ export default class MyDocument extends Document {
           <meta name="msapplication-config" content="/static/icons/browserconfig.xml" />
           <meta name="theme-color" content="#071d49" />
 
-          <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="preconnect" href="https://vitals.vercel-insights.com" />
 
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
           <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
+            async
+            defer
+            data-domain="danestves.com"
+            src="https://plausible.io/js/plausible.js"
+          ></script>
         </Head>
 
         <body className="bg-secondary-700">
