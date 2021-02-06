@@ -63,8 +63,6 @@ const Subscribe = (): JSX.Element => {
     }, 10000)
   }
 
-  // console.log(subscriberCount.count)
-
   return (
     <div className="mt-12">
       <div className="px-6 py-6 border rounded-lg bg-secondary md:py-12 md:px-12 lg:py-16 lg:px-16">

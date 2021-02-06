@@ -1,41 +1,24 @@
 // Dependencies
 import { NextPage, GetStaticProps } from 'next'
-import { motion } from 'framer-motion'
+import useSWR from 'swr'
 
 // Components
-import { SEO } from '@/components'
+import { GeneralObserver, SEO } from '@/components'
 
 // Interfaces
 import { Repository } from '@/interfaces'
 
 // Libraries
-import getRepositories from '@/lib/github'
+import fetcher, { server } from '@/lib/fetcher'
 
 interface Props {
-  repositories: Repository[]
+  github: Response
 }
 
-const OpenSource: NextPage<Props> = ({ repositories }) => {
-  const list = {
-    hidden: {
-      opacity: 0,
-      transition: {
-        when: 'afterChildren',
-      },
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        when: 'beforeChildren',
-        staggerChildren: 0.3,
-      },
-    },
-  }
+const OpenSource: NextPage<Props> = ({ github }) => {
+  const { data } = useSWR('/api/github', fetcher, { initialData: github })
 
-  const item = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  }
+  const repositories = (data as any)?.repositories as Repository[]
 
   return (
     <>
@@ -53,50 +36,71 @@ const OpenSource: NextPage<Props> = ({ repositories }) => {
       </section>
 
       <section className="container px-5">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={list}
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
-        >
-          {repositories.map((repository) => (
-            <motion.a
-              key={repository.id}
-              href={repository.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              variants={item}
-            >
-              <img
-                src={`https://github-readme-stats.danestves.com/api/pin/?username=${
-                  repository.owner.login
-                }&repo=${
-                  repository.name
-                }&title_color=fff&icon_color=00C389&text_color=9f9f9f&bg_color=0c1014${
-                  repository.owner.login === 'opengraphimg' ? '&show_owner=true' : ''
-                }`}
-                alt={repository.full_name}
-                width={400}
-                height={120}
-                loading="lazy"
+        <h2 className="mb-10 text-3xl font-bold text-white">Proyectos destacados</h2>
+
+        <div className="grid grid-cols-1 gap-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
+          <GeneralObserver>
+            <div className="relative">
+              <object
+                data="https://github-readme-stats.danestves.com/api/pin/?username=opengraphimg&repo=generator&title_color=fff&icon_color=00C389&text_color=9f9f9f&bg_color=0c1014&show_owner=true"
                 className="w-full"
-              />
-            </motion.a>
+              ></object>
+
+              {/* Fix object cannot be inside anchor tag (link not working) */}
+              <a
+                href="https://github.com/opengraphimg/generator"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0"
+              ></a>
+            </div>
+          </GeneralObserver>
+        </div>
+      </section>
+
+      <section className="container px-5 mt-16">
+        <h2 className="mb-10 text-3xl font-bold text-white">Repositorios en GitHub</h2>
+
+        <div className="grid grid-cols-1 gap-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
+          {repositories?.map((repository) => (
+            <GeneralObserver key={repository.id}>
+              <div className="relative">
+                <object
+                  data={`https://github-readme-stats.danestves.com/api/pin/?username=${
+                    repository.owner.login
+                  }&repo=${
+                    repository.name
+                  }&title_color=fff&icon_color=00C389&text_color=9f9f9f&bg_color=0c1014${
+                    repository.owner.login === 'opengraphimg' ? '&show_owner=true' : ''
+                  }`}
+                  className="w-full"
+                ></object>
+
+                {/* Fix object cannot be inside anchor tag (link not working) */}
+                <a
+                  href={repository.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0"
+                ></a>
+              </div>
+            </GeneralObserver>
           ))}
-        </motion.div>
+        </div>
       </section>
     </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const repositories = await getRepositories()
+  const data = await fetcher(`${server}/api/github`)
 
   return {
     props: {
-      repositories: repositories || [],
+      repositories: data,
     },
-    revalidate: 1200,
+    // View every 24 hours if there is a new repository
+    revalidate: 86400,
   }
 }
 

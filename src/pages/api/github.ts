@@ -6,15 +6,14 @@ import { contains } from '@/utils'
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method === 'GET') {
-    const userResponse = await fetch('https://api.github.com/users/danestves')
-    const userReposResponse = await fetch(
-      'https://api.github.com/users/danestves/repos?per_page=100'
-    )
+    const user = await fetch('https://api.github.com/users/danestves', {
+      headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
+    }).then((res) => res.json())
+    const repositories = await fetch('https://api.github.com/users/danestves/repos?per_page=100', {
+      headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
+    }).then((res) => res.json())
 
-    const user = await userResponse.json()
-    const repositories = await userReposResponse.json()
-
-    const includes = ['notes', 'designcodeweb', 'danestves']
+    const includes = ['notes', 'designcodeweb', 'danestves', 'github-readme-stats']
     const mine = repositories.filter((repo: any) => !repo.fork && !contains(repo.name, includes))
     const stars = mine.reduce((accumulator: any, repository: any) => {
       return accumulator + repository['stargazers_count']

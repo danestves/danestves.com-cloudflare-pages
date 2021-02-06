@@ -22,8 +22,6 @@
     "@mdx-js/react": "^1.6.22",
     "@tailwindcss/typography": "^0.4.0",
     "autoprefixer": "^10.2.4",
-    "axios": "^0.21.1",
-    "axios-cache-adapter": "^2.7.0",
     "browser-monads": "^1.0.0",
     "comma-number": "^2.0.1",
     "date-fns": "^2.17.0",
