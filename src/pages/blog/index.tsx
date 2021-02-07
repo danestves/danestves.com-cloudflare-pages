@@ -21,7 +21,7 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
   return (
     <>
       <SEO
-        title="Blog"
+        title="Blog - React, JavaScript, Recursos y más"
         description="Blog sobre noticias, tutoriales, paso a paso para crear funciones que nos ayudarán en nuestro desarrollo y mucho más de la mano de @danestves usando JavaScript."
       />
 
