@@ -1,7 +1,6 @@
 // Dependencies
 import { NextPage, GetStaticProps } from 'next'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 
 // Components
 import { SEO, Link } from '@/components'
@@ -17,27 +16,6 @@ interface Props {
 }
 
 const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
-  const list = {
-    hidden: {
-      opacity: 0,
-      transition: {
-        when: 'afterChildren',
-      },
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        when: 'beforeChildren',
-        staggerChildren: 0.3,
-      },
-    },
-  }
-
-  const item = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  }
-
   return (
     <>
       <SEO
@@ -53,14 +31,9 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
         </div>
       </section>
 
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={list}
-        className="container px-5 space-y-16"
-      >
+      <div className="container px-5 space-y-16">
         {portfolios.map((portfolio) => (
-          <motion.div key={portfolio.slug} variants={item}>
+          <div key={portfolio.slug}>
             <Link
               href={`/portafolio/${portfolio.slug}`}
               className="grid items-center grid-cols-1 gap-6 overflow-hidden rounded-lg md:grid-cols-2 group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
@@ -83,9 +56,9 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
                 </div>
               </div>
             </Link>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </>
   )
 }
