@@ -28,7 +28,7 @@
     },
     {
       "source": "/twitter",
-      "destination": "httpS://twitter.com/danestves"
+      "destination": "https://twitter.com/danestves"
     },
     {
       "source": "/youtube",
