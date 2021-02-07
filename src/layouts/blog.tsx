@@ -31,6 +31,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
   return (
     <>
       <SEO
+        isTemplate={false}
         title={frontMatter.seotitle}
         description={frontMatter.summary}
         shareImage={`https://danestves.com${frontMatter.image}`}

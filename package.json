@@ -46,7 +46,8 @@
     "swr": "^0.4.1",
     "tailwindcss": "^2.0.2",
     "tailwindcss-filters": "^3.0.0",
-    "tailwindcss-responsive-embed": "^1.0.0"
+    "tailwindcss-responsive-embed": "^1.0.0",
+    "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
     "@types/mdx-js__react": "^1.5.3",

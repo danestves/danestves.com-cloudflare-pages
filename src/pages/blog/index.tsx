@@ -51,7 +51,11 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
                   {featuredPost.title}
                 </h2>
                 <p className="mb-2 text-base text-white lg:text-lg">
-                  Publicado en {formatDate(featuredPost.publishedAt, 'MMM. d yyy')}
+                  Publicado en{' '}
+                  {formatDate(
+                    new Date(featuredPost.publishedAt).toISOString().slice(0, 19),
+                    'MMM. d yyy'
+                  )}
                 </p>
                 <p className="my-4 text-lg text-white lg:text-xl">{featuredPost.summary}</p>
               </div>

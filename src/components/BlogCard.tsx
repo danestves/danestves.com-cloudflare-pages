@@ -21,7 +21,8 @@ const BlogCard = ({ slug, image, title, publishedAt, summary }: FrontMatterPost)
 
         <div className="mt-6">
           <p className="my-2 text-xs text-white">
-            Publicado en {formatDate(publishedAt, 'MMM. d yyy')}
+            Publicado en{' '}
+            {formatDate(new Date(publishedAt).toISOString().slice(0, 19), 'MMM. d yyy')}
           </p>
 
           <h2 className="mb-2 text-2xl font-medium leading-tight text-white group-hover:underline group-focus:underline">

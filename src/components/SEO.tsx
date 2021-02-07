@@ -4,6 +4,7 @@ import { useRouter } from 'next/dist/client/router'
 
 interface Props {
   title?: string
+  isTemplate?: boolean
   description?: string
   shareImage?: string
   type?: string
@@ -13,6 +14,7 @@ interface Props {
 
 const SEO = ({
   title = 'Desarrollador Web Frontend',
+  isTemplate = true,
   description = 'Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.',
   shareImage = 'https://danestves.com/og.png',
   type = 'website',
@@ -21,7 +23,7 @@ const SEO = ({
 }: Props): JSX.Element | null => {
   const router = useRouter()
 
-  const parsedTitle = '%s | @danestves'.replace('%s', title)
+  const parsedTitle = isTemplate ? '%s | @danestves'.replace('%s', title) : title
 
   return (
     <Head>
