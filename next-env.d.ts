@@ -5,7 +5,7 @@ declare module 'kwesforms'
 
 declare module 'browser-monads' {
   export const window: Window & {
-    gtag: any
+    workbox: any
   }
   export const document: Document
   export function exists(variable: any): boolean
