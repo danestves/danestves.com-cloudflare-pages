@@ -1,13 +1,10 @@
-const withOffline = require('next-offline')
-const path = require('path')
+const withPWA = require('next-pwa')
 
-module.exports = withOffline({
-  generateInDevMode: false,
-  dontAutoRegisterSw: true,
-  generateSw: false,
-  workboxOpts: {
-    swDest: path.join(__dirname, 'public', 'service-worker.js'),
-    swSrc: path.join(__dirname, 'public', 'sw.js'),
+module.exports = withPWA({
+  pwa: {
+    disable: process.env.NODE_ENV === 'development',
+    dest: 'public',
+    register: true,
   },
   images: {
     domains: ['github-readme-stats.danestves.com'],

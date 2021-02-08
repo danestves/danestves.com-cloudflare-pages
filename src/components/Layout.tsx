@@ -1,7 +1,6 @@
 // Dependencies
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
-import { register, unregister } from 'next-offline/runtime'
 
 // Components
 import { Header, Footer, CallToAction, Notification } from '@/components'
@@ -10,14 +9,6 @@ const Layout: React.FC = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const router = useRouter()
-
-  useEffect(() => {
-    register('/service-worker.js', { scope: '/' })
-
-    return () => {
-      unregister()
-    }
-  }, [])
 
   return (
     <>
