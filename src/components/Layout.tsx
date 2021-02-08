@@ -54,7 +54,7 @@ const Layout: React.FC = ({ children }) => {
       // never forget to call register as auto register is turned off in next.config.js
       wb.register()
     }
-  }, [confirm])
+  }, [])
 
   return (
     <>
