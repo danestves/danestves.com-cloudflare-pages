@@ -67,7 +67,8 @@
     "rehype": "^11.0.0",
     "rss": "^1.2.2",
     "typed-react-markdown": "^0.1.0",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "webpack": "^5.21.2"
   },
   "husky": {
     "hooks": {

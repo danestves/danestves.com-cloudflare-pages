@@ -7,6 +7,7 @@ module.exports = withPWA({
   images: {
     domains: ['github-readme-stats.danestves.com'],
   },
+  future: { webpack5: true },
   webpack: (config, { dev, isServer }) => {
     if (isServer) {
       require('./src/scripts/generate-sitemap')
