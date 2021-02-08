@@ -17,20 +17,19 @@ const Layout: React.FC = ({ children }) => {
     // A common UX pattern for progressive web apps is to show a banner when a service worker has updated and waiting to install.
     // NOTE: MUST set skipWaiting to false in next.config.js pwa object
     // https://developers.google.com/web/tools/workbox/guides/advanced-recipes#offer_a_page_reload_for_users
-    const promptNewVersionAvailable = () => {
-      // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
-      // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
-      // You may want to customize the UI prompt accordingly.
-      wb.addEventListener('controlling', () => {
-        window.location.reload()
-      })
 
-      // Send a message to the waiting service worker, instructing it to activate.
-      wb.messageSW({ type: 'SKIP_WAITING' })
-    }
+    // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
+    // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
+    // You may want to customize the UI prompt accordingly.
+    wb.addEventListener('controlling', () => {
+      // eslint-disable-next-line
+      console.info('Updating PWA 🚀')
 
-    wb.addEventListener('waiting', promptNewVersionAvailable)
-    wb.addEventListener('externalwaiting', promptNewVersionAvailable)
+      window.location.reload()
+    })
+
+    // Send a message to the waiting service worker, instructing it to activate.
+    wb.messageSW({ type: 'SKIP_WAITING' })
   }
 
   useEffect(() => {
