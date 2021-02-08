@@ -24,7 +24,7 @@ const Notification = ({ isOpen, setIsOpen, children }: Props): JSX.Element => {
         leave="transition ease-in duration-100"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
-        className="w-full max-w-md overflow-hidden bg-white rounded-lg shadow-lg pointer-events-auto ring-1 ring-black ring-opacity-5"
+        className="absolute w-full max-w-md overflow-hidden bg-white rounded-lg shadow-lg pointer-events-auto right-6 ring-1 ring-black ring-opacity-5"
       >
         <div className="p-4">
           <div className="flex items-center">
