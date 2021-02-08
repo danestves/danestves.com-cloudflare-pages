@@ -13,17 +13,21 @@ async function generate() {
   const posts = await fs.readdir(path.join(__dirname, '..', 'data', 'blog'))
 
   await Promise.all(
-    posts.map(async (name) => {
-      const content = await fs.readFile(path.join(__dirname, '..', 'data', 'blog', name))
-      const frontmatter = matter(content)
+    posts
+      .map(async (name) => {
+        const content = await fs.readFile(path.join(__dirname, '..', 'data', 'blog', name))
+        const frontmatter = matter(content)
 
-      feed.item({
-        title: frontmatter.data.title,
-        url: 'https://danestves.com/blog/' + name.replace(/\.mdx?/, ''),
-        date: frontmatter.data.publishedAt,
-        description: frontmatter.data.summary,
+        feed.item({
+          title: frontmatter.data.title,
+          url: 'https://danestves.com/blog/' + name.replace(/\.mdx?/, ''),
+          date: frontmatter.data.publishedAt,
+          description: frontmatter.data.summary,
+        })
       })
-    })
+      .sort((a, b) => {
+        return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      })
   )
 
   await fs.writeFile('./public/rss.xml', feed.xml({ indent: true }))
