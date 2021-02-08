@@ -9,6 +9,7 @@ module.exports = {
     ],
     options: {
       safelist: [
+        `right-6`,
         `z-100`,
         `embed-responsive`,
         `aspect-ratio-square`,
