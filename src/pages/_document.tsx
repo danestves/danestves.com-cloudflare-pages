@@ -79,28 +79,24 @@ export default class MyDocument extends Document {
 
                   // Assumes your app has some sort of prompt UI element
                   // that a user can either accept or reject.
-                  const prompt = createUIPrompt({
-                    onAccept: async () => {
-                      // Assuming the user accepted the update, set up a listener
-                      // that will reload the page as soon as the previously waiting
-                      // service worker has taken control.
-                      wb.addEventListener('controlling', (event) => {
-                        window.location.reload();
-                      });
+                  if (confirm("Hay una nueva versión del sitio web 🎉, ¿quieres actualizar?")) {
+                    // Assuming the user accepted the update, set up a listener
+                    // that will reload the page as soon as the previously waiting
+                    // service worker has taken control.
+                    wb.addEventListener('controlling', (event) => {
+                      window.location.reload();
+                    });
 
-                      if (registration && registration.waiting) {
-                        // Send a message to the waiting service worker,
-                        // instructing it to activate.  
-                        // Note: for this to work, you have to add a message
-                        // listener in your service worker. See below.
-                        messageSW(registration.waiting, {type: 'SKIP_WAITING'});
-                      }
-                    },
-
-                    onReject: () => {
-                      prompt.dismiss();
+                    if (registration && registration.waiting) {
+                      // Send a message to the waiting service worker,
+                      // instructing it to activate.  
+                      // Note: for this to work, you have to add a message
+                      // listener in your service worker. See below.
+                      messageSW(registration.waiting, {type: 'SKIP_WAITING'});
                     }
-                  });
+                  } else {
+                    console.log("User rejected to reload the web app, keep using old version. New version will be automatically load when user open the app next time.")
+                  }
                 };
 
                 // Add an event listener to detect when the registered
