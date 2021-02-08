@@ -5,10 +5,11 @@ import { Transition } from '@headlessui/react'
 interface Props {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  onClose: () => void
   children: React.ReactNode
 }
 
-const Notification = ({ isOpen, setIsOpen, children }: Props): JSX.Element => {
+const Notification = ({ isOpen, setIsOpen, onClose, children }: Props): JSX.Element => {
   return (
     <div
       className={clsx(
@@ -33,7 +34,10 @@ const Notification = ({ isOpen, setIsOpen, children }: Props): JSX.Element => {
               <button
                 type="button"
                 className="inline-flex text-gray-400 bg-white rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false)
+                  onClose()
+                }}
               >
                 <span className="sr-only">Close</span>
                 {/* Heroicon name: solid/x */}
