@@ -11,26 +11,26 @@ const Layout: React.FC = ({ children }) => {
 
   const router = useRouter()
 
-  const updateWorkbox = () => {
-    const wb = window.workbox
+  // const updateWorkbox = () => {
+  //   const wb = window.workbox
 
-    // A common UX pattern for progressive web apps is to show a banner when a service worker has updated and waiting to install.
-    // NOTE: MUST set skipWaiting to false in next.config.js pwa object
-    // https://developers.google.com/web/tools/workbox/guides/advanced-recipes#offer_a_page_reload_for_users
+  //   // A common UX pattern for progressive web apps is to show a banner when a service worker has updated and waiting to install.
+  //   // NOTE: MUST set skipWaiting to false in next.config.js pwa object
+  //   // https://developers.google.com/web/tools/workbox/guides/advanced-recipes#offer_a_page_reload_for_users
 
-    // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
-    // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
-    // You may want to customize the UI prompt accordingly.
-    wb.addEventListener('controlling', () => {
-      // eslint-disable-next-line
-      console.info('Updating PWA 🚀')
+  //   // `event.wasWaitingBeforeRegister` will be false if this is the first time the updated service worker is waiting.
+  //   // When `event.wasWaitingBeforeRegister` is true, a previously updated service worker is still waiting.
+  //   // You may want to customize the UI prompt accordingly.
+  //   wb.addEventListener('controlling', () => {
+  //     // eslint-disable-next-line
+  //     console.info('Updating PWA 🚀')
 
-      window.location.reload()
-    })
+  //     window.location.reload()
+  //   })
 
-    // Send a message to the waiting service worker, instructing it to activate.
-    wb.messageSW({ type: 'SKIP_WAITING' })
-  }
+  //   // Send a message to the waiting service worker, instructing it to activate.
+  //   wb.messageSW({ type: 'SKIP_WAITING' })
+  // }
 
   useEffect(() => {
     if (
@@ -136,7 +136,7 @@ const Layout: React.FC = ({ children }) => {
         <button
           type="button"
           className="px-4 py-2 text-sm text-white rounded-lg bg-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-white focus:outline-none"
-          onClick={updateWorkbox}
+          // onClick={updateWorkbox}
         >
           Actualizar
         </button>
