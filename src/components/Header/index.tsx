@@ -58,35 +58,35 @@ const Header = (): JSX.Element => {
                 <Link
                   href="/sobre-mi"
                   title="Sobre Mí"
-                  className="relative px-3 text-sm font-medium transition-all duration-200 text-primary hover:text-white py-7 focus:outline-none"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
                   Sobre Mí
                 </Link>
                 <Link
                   href="/open-source"
                   title="Open Source"
-                  className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
                   Open Source
                 </Link>
                 <Link
                   href="/portafolio"
                   title="Portafolio"
-                  className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
                   Portafolio
                 </Link>
                 <Link
                   href="/blog"
                   title="Blog"
-                  className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
                   Blog
                 </Link>
                 <Link
                   href="/contacto"
                   title="Contacto"
-                  className="px-3 text-sm font-medium transition-all duration-200 text-primary py-7 hover:text-white"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
                   Contacto
                 </Link>

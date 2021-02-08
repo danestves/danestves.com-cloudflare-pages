@@ -24,7 +24,7 @@ const MenuItem = ({
       className="mb-5 transition-transform duration-150 transform hover:scale-105"
       onClick={toggle}
     >
-      <Link href={slug} className="flex items-center space-x-5">
+      <Link href={slug} className="flex items-center space-x-5 focus:outline-none">
         <div className="flex items-center justify-center w-10 h-10 rounded-full" style={style}>
           <Icon className="w-6 h-6" style={{ color: colors[i] }} />
         </div>
