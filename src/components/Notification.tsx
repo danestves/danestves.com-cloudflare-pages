@@ -27,7 +27,7 @@ const Notification = ({ isOpen, setIsOpen, children }: Props): JSX.Element => {
         className="absolute w-full max-w-md overflow-hidden bg-white rounded-lg shadow-lg pointer-events-auto right-6 ring-1 ring-black ring-opacity-5"
       >
         <div className="p-4">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
             <div className="flex items-center justify-between flex-1 w-0">{children}</div>
             <div className="flex flex-shrink-0 ml-4">
               <button
