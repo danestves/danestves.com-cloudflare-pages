@@ -20,7 +20,13 @@ const Index: NextPage<Props> = ({ posts }) => {
     <>
       <div className="relative flex items-center py-32 lg:py-20">
         <div className="absolute top-0 left-0 w-full h-full bg-secondary">
-          <Image src="/hero.webp" layout="fill" objectFit="cover" objectPosition="center" />
+          <Image
+            src="/hero.webp"
+            alt="Daniel Esteves - Programador web fullstack en JavaScript"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
           <div className="absolute inset-0 bg-opacity-75 bg-secondary" />
         </div>
         <div className="container z-20 grid items-center grid-cols-12 px-5">
