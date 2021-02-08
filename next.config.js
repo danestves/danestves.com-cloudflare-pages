@@ -3,9 +3,6 @@ const withPWA = require('next-pwa')
 module.exports = withPWA({
   pwa: {
     disable: process.env.NODE_ENV === 'development',
-    register: true,
-    scope: '/',
-    sw: 'service-worker.js',
   },
   images: {
     domains: ['github-readme-stats.danestves.com'],
