@@ -1,7 +1,6 @@
 // Dependencies
 import { ReactNode } from 'react'
 import Image from 'next/image'
-import { BiLinkExternal } from 'react-icons/bi'
 
 // Components
 import { SEO } from '@/components'
@@ -58,7 +57,19 @@ export default function PortfolioLayout({ frontMatter, children }: Props): JSX.E
                 className="flex items-center space-x-1 text-sm underline focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none text-primary"
               >
                 <span>Ver</span>
-                <BiLinkExternal className="w-4 h-4" />
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth={0}
+                  viewBox="0 0 24 24"
+                  className="w-4 h-4"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M13 3L16.293 6.293 9.293 13.293 10.707 14.707 17.707 7.707 21 11 21 3z" />
+                  <path d="M19,19H5V5h7l-2-2H5C3.897,3,3,3.897,3,5v14c0,1.103,0.897,2,2,2h14c1.103,0,2-0.897,2-2v-5l-2-2V19z" />
+                </svg>
               </a>
             </div>
           </div>

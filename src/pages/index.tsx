@@ -1,8 +1,6 @@
 // Dependencies
 import { GetStaticProps, NextPage } from 'next'
-import NextImage from 'next/image'
-import { IoLogoNodejs, IoLogoWordpress } from 'react-icons/io5'
-import { GrReactjs, GrGraphQl } from 'react-icons/gr'
+import Image from 'next/image'
 
 // Components
 import { Link, BlogCard } from '@/components'
@@ -22,7 +20,7 @@ const Index: NextPage<Props> = ({ posts }) => {
     <>
       <div className="relative flex items-center py-32 lg:py-20">
         <div className="absolute top-0 left-0 w-full h-full bg-secondary">
-          <NextImage src="/hero.webp" layout="fill" objectFit="cover" objectPosition="center" />
+          <Image src="/hero.webp" layout="fill" objectFit="cover" objectPosition="center" />
           <div className="absolute inset-0 bg-opacity-75 bg-secondary" />
         </div>
         <div className="container z-20 grid items-center grid-cols-12 px-5">
@@ -65,7 +63,7 @@ const Index: NextPage<Props> = ({ posts }) => {
       <div className="w-full bg-white">
         <div className="container relative z-10 px-5 pb-32 -mt-24">
           <div className="z-30 w-48 h-48 mx-auto border-white rounded-full border-10">
-            <NextImage
+            <Image
               src="/me.jpg"
               alt="Daniel Esteves"
               width={192}
@@ -118,21 +116,29 @@ const Index: NextPage<Props> = ({ posts }) => {
 
           <div className="grid grid-cols-2 gap-8 mt-8 md:grid-cols-4">
             <div className="text-center">
-              <GrReactjs size="128" className="mx-auto text-secondary" />
+              <div className="mx-auto">
+                <Image src="/static/react.svg" width={128} height={128} alt="React logo" />
+              </div>
               <h2 className="font-mono text-xl font-bold text-secondary">
                 React / NextJS / Gatsby
               </h2>
             </div>
             <div className="text-center">
-              <IoLogoNodejs size="128" className="mx-auto text-secondary" />
+              <div className="mx-auto">
+                <Image src="/static/nodejs.svg" width={128} height={128} alt="NodeJS logo" />
+              </div>
               <h2 className="font-mono text-xl font-bold text-secondary">NodeJS</h2>
             </div>
             <div className="text-center">
-              <GrGraphQl size="128" className="mx-auto text-secondary" />
+              <div className="mx-auto">
+                <Image src="/static/graphql.svg" width={128} height={128} alt="GraphQL logo" />
+              </div>
               <h2 className="font-mono text-xl font-bold text-secondary">GraphQL</h2>
             </div>
             <div className="text-center">
-              <IoLogoWordpress size="128" className="mx-auto text-secondary" />
+              <div className="mx-auto">
+                <Image src="/static/wordpress.svg" width={128} height={128} alt="WordPress logo" />
+              </div>
               <h2 className="font-mono text-xl font-bold text-secondary">WordPress</h2>
             </div>
           </div>

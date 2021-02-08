@@ -1,6 +1,3 @@
-// Dependencies
-import { IconType } from 'react-icons'
-
 // Components
 import { Link } from '@/components'
 
@@ -14,7 +11,7 @@ const MenuItem = ({
   i,
   toggle,
 }: {
-  icon: IconType
+  icon: (props: React.ComponentProps<'svg'>) => JSX.Element
   label: string
   slug: string
   i: number

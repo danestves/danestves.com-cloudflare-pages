@@ -26,9 +26,7 @@ const MobileHeader = (): JSX.Element => {
       <div
         className="absolute top-0 bottom-0 right-0 transition-all duration-300 bg-white w-72"
         style={{
-          clipPath: isOpen
-            ? `circle(${1000 * 1.5 + 200}px at 252px 38px)`
-            : 'circle(24px at 248px 44px)',
+          clipPath: `circle(${isOpen ? 1000 * 1.5 + 200 : 24}px at 248px 44px)`,
         }}
       />
 
