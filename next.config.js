@@ -8,6 +8,7 @@ runtimeCaching[0].handler = 'StaleWhileRevalidate'
 module.exports = withPWA({
   pwa: {
     disable: process.env.NODE_ENV === 'development',
+    dest: 'public',
     register: false,
     skipWaiting: false,
     runtimeCaching,
