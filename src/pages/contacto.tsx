@@ -15,7 +15,7 @@ const Contacto: NextPage = () => {
   return (
     <>
       <SEO
-        title="Contacto"
+        title="Contacto - Hagamos un proyecto juntos"
         description="Hagamos esa idea realidad. Da el primer paso para tener tu producto o servicio en línea."
       />
 

@@ -60,7 +60,7 @@ const Index: NextPage<Props> = ({ posts }) => {
               Daniel Esteves
             </h1>
             <h2 className="font-mono text-xl text-center md:text-left text-primary">
-              Programador web fullstack en JavaScript
+              Desarrollador Web Frontend
             </h2>
           </div>
         </div>

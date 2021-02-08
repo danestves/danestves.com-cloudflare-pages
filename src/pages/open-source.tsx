@@ -23,7 +23,7 @@ const OpenSource: NextPage<Props> = ({ github }) => {
   return (
     <>
       <SEO
-        title="Open Source"
+        title="Open Source - Proyectos para la comunidad"
         description="Proyectos libres para aportar nuevas herramientas a la comunidad. "
       />
 
