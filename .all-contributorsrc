@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "ielijose",
+      "name": "Eli José Carrasquero",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2319641?v=4",
+      "profile": "https://github.com/ielijose",
+      "contributions": [
+        "blog"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "website",
+  "projectOwner": "danestves",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
