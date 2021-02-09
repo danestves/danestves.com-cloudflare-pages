@@ -197,12 +197,17 @@ module.exports = {
 }
 ```
 
-El paso final es importar Tailwind en nuestro CSS:
+El paso final es importar Tailwind en nuestro CSS y añadir dentro de nuestro `_app.tsx` el `import` a los estilos:
 
 ```css:./styles/main.css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
+
+```tsx:./pages/_app.tsx
+// Añadir esta línea
+import "../styles/main.css";
 ```
 
 ## Eso es todo 🤯
