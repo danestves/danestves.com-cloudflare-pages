@@ -19,7 +19,7 @@ import { getFiles, getFileBySlug } from '@/lib/mdx'
 import { MyLocale } from 'i18n'
 
 interface Props {
-  post: {
+  portfolio: {
     mdxSource: {
       compiledSource: string
       renderedOutput: string
@@ -29,7 +29,7 @@ interface Props {
   }
 }
 
-export default function Portfolio({ post: { mdxSource, frontMatter } }: Props): JSX.Element {
+export default function Portfolio({ portfolio: { mdxSource, frontMatter } }: Props): JSX.Element {
   const content = hydrate(mdxSource, {
     components: MDXComponents,
   })
@@ -38,10 +38,10 @@ export default function Portfolio({ post: { mdxSource, frontMatter } }: Props): 
 }
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const posts = await getFiles('portfolio', 'en')
+  const portfolios = await getFiles('portfolios', 'en')
 
   const paths = locales?.map((locale) => {
-    return posts.map((p) => ({
+    return portfolios.map((p) => ({
       params: {
         slug: p.replace(/\.mdx/, ''),
       },
@@ -59,12 +59,16 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
 
-  const post = await getFileBySlug('portfolio', context.params?.slug as string, locale as string)
+  const postfolio = await getFileBySlug(
+    'portfolios',
+    context.params?.slug as string,
+    locale as string
+  )
 
   return {
     props: {
       table,
-      post,
+      postfolio,
     },
   }
 }

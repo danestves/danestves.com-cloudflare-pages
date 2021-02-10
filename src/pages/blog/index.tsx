@@ -1,6 +1,8 @@
 // Dependencies
 import { NextPage, GetStaticProps } from 'next'
 import Image from 'next/image'
+import { I18nProps } from 'next-rosetta'
+import { useRouter } from 'next/dist/client/router'
 
 // Components
 import { SEO, Link, BlogCard } from '@/components'
@@ -8,6 +10,9 @@ import { SEO, Link, BlogCard } from '@/components'
 // Libraries
 import { FrontMatterPost } from '@/interfaces'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
+
+// Locales
+import { MyLocale } from 'i18n'
 
 // Utils
 import { formatDate } from '@/utils'
@@ -18,6 +23,8 @@ interface Props {
 }
 
 const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
+  const { locale } = useRouter()
+
   return (
     <>
       <SEO
@@ -33,7 +40,7 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
 
       <div className="container max-w-screen-xl px-5">
         {featuredPost && (
-          <Link href={`/blog/${featuredPost.slug}`} className="group">
+          <Link href={`/blog/${featuredPost.slug}`} locale={locale} className="group">
             <div className="items-center max-w-lg gap-12 mx-auto lg:grid lg:grid-cols-12 lg:max-w-none">
               <div className="lg:col-span-7">
                 <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
@@ -73,14 +80,17 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllFilesFrontMatter('blog')
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+  const locale = context.locale || context.defaultLocale
+  const { table = {} } = await import(`i18n/${locale}`)
+  const posts = await getAllFilesFrontMatter('posts', locale as string)
   const sortedPosts = posts.sort((a: FrontMatterPost, b: FrontMatterPost) => {
     return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   })
 
   return {
     props: {
+      table,
       featuredPost: sortedPosts.shift(),
       posts: sortedPosts,
     },

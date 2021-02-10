@@ -72,7 +72,7 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
 export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const portfolios = await getAllFilesFrontMatter('portfolio', locale as string)
+  const portfolios = await getAllFilesFrontMatter('portfolios', locale as string)
 
   return {
     props: {

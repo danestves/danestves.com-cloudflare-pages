@@ -1,6 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/dist/client/router'
 
 // Components
 import { Link } from '@/components'
@@ -12,9 +13,15 @@ import { FrontMatterPost } from '@/interfaces'
 import { formatDate } from '@/utils'
 
 const BlogCard = ({ slug, image, title, publishedAt, summary }: FrontMatterPost): JSX.Element => {
+  const { locale } = useRouter()
+
   return (
     <article className="mb-12">
-      <Link href={`/blog/${slug}`} className="group hover:no-underline focus:no-underline">
+      <Link
+        href={`/blog/${slug}`}
+        locale={locale}
+        className="group hover:no-underline focus:no-underline"
+      >
         <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
           <Image src={image} width={800} height={540} alt={title} />
         </div>

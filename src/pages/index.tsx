@@ -159,7 +159,7 @@ const Index: NextPage<Props> = ({ posts }) => {
 
 export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
   const locale = context.locale || context.defaultLocale
-  const posts = await getAllFilesFrontMatter('blog')
+  const posts = await getAllFilesFrontMatter('posts', locale as string)
   const { table = {} } = await import(`i18n/${locale}`)
   const sortedPosts = posts.sort((a: FrontMatterPost, b: FrontMatterPost) => {
     return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
