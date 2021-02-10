@@ -1,6 +1,10 @@
 // Dependencies
 import Head from 'next/head'
 import { useRouter } from 'next/dist/client/router'
+import { useI18n } from 'next-rosetta'
+
+// Locales
+import type { MyLocale } from 'i18n'
 
 interface Props {
   title?: string
@@ -13,17 +17,19 @@ interface Props {
 }
 
 const SEO = ({
-  title = 'Desarrollador Web Frontend',
   isTemplate = true,
-  description = 'Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.',
-  shareImage = 'https://danestves.com/og.png',
   type = 'website',
   date,
   children,
+  ...props
 }: Props): JSX.Element | null => {
   const router = useRouter()
+  const { t } = useI18n<MyLocale>()
 
+  const title = props.title ? props.title : t('defaultSeo.title')
   const parsedTitle = isTemplate ? '%s | @danestves'.replace('%s', title) : title
+  const description = props.description ? props.description : t('defaultSeo.description')
+  const shareImage = props.shareImage ? props.shareImage : t('defaultSeo.shareImage')
 
   return (
     <Head>
