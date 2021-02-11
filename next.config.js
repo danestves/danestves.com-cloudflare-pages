@@ -5,6 +5,10 @@ module.exports = withPWA({
     disable: process.env.NODE_ENV === 'development',
     dest: 'public',
   },
+  i18n: {
+    locales: ['es', 'en'],
+    defaultLocale: 'es',
+  },
   images: {
     domains: ['github-readme-stats.danestves.com'],
   },

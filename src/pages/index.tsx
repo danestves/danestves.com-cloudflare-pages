@@ -1,6 +1,7 @@
 // Dependencies
 import { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
+import { useI18n, I18nProps } from 'next-rosetta'
 
 // Components
 import { Link, BlogCard } from '@/components'
@@ -11,18 +12,23 @@ import { FrontMatterPost } from '@/interfaces'
 // Libraries
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 
+// Locales
+import type { MyLocale } from 'i18n'
+
 interface Props {
   posts: FrontMatterPost[]
 }
 
 const Index: NextPage<Props> = ({ posts }) => {
+  const { t } = useI18n<MyLocale>()
+
   return (
     <>
       <div className="relative flex items-center py-32 lg:py-20">
         <div className="absolute top-0 left-0 w-full h-full bg-secondary">
           <Image
             src="/hero.webp"
-            alt="Daniel Esteves - Programador web fullstack en JavaScript"
+            alt={t('home.hero.alt') as string}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
@@ -60,7 +66,7 @@ const Index: NextPage<Props> = ({ posts }) => {
               Daniel Esteves
             </h1>
             <h2 className="font-mono text-xl text-center md:text-left text-primary">
-              Desarrollador Web Frontend
+              {t('home.person.title')}
             </h2>
           </div>
         </div>
@@ -78,17 +84,14 @@ const Index: NextPage<Props> = ({ posts }) => {
             />
           </div>
 
-          <h2 className="mt-4 font-mono text-4xl text-center">{`<Hola Mundo />`}</h2>
+          <h2 className="mt-4 font-mono text-4xl text-center">{t('home.resume.title')}</h2>
 
           <p className="max-w-4xl px-5 mx-auto mt-4 font-mono text-xl text-center">
-            Siempre he estado interesado en cómo funciona la tecnología y todo lo que la conforma.
-            Desde cómo los personajes se mueven dentro de los videojuegos, hasta el funcionamiento
-            de las redes sociales y los sitios web.
+            {t('home.resume.p1')}
           </p>
 
           <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl text-center">
-            Es por eso que decidí convertirme en programador fullstack. Capaz de construir
-            aplicaciones, desde la parte visual hasta las bases de datos.
+            {t('home.resume.p2')}
           </p>
 
           <div className="flex justify-center max-w-4xl mx-auto mt-5">
@@ -96,7 +99,7 @@ const Index: NextPage<Props> = ({ posts }) => {
               href="/sobre-mi"
               className="block px-5 py-2 rounded-full bg-secondary text-primary"
             >
-              ¡Conóceme más!
+              {t('home.resume.button.label')}
             </Link>
           </div>
         </div>
@@ -104,7 +107,7 @@ const Index: NextPage<Props> = ({ posts }) => {
 
       <div className="w-full py-12">
         <div className="container max-w-screen-xl px-5">
-          <h2 className="text-3xl font-bold text-center text-primary">Últimos posts:</h2>
+          <h2 className="text-3xl font-bold text-center text-primary">{t('home.posts.title')}</h2>
 
           <div className="gap-6 mt-24 md:grid md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
@@ -117,7 +120,7 @@ const Index: NextPage<Props> = ({ posts }) => {
       <div className="w-full py-12 bg-primary">
         <div className="max-w-4xl px-5 mx-auto">
           <h2 className="text-3xl font-bold text-center text-secondary">
-            Manejo de tecnologías como:
+            {t('home.technologies.title')}
           </h2>
 
           <div className="grid grid-cols-2 gap-8 mt-8 md:grid-cols-4">
@@ -154,8 +157,10 @@ const Index: NextPage<Props> = ({ posts }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllFilesFrontMatter('blog')
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+  const locale = context.locale || context.defaultLocale
+  const posts = await getAllFilesFrontMatter('posts', locale as string)
+  const { table = {} } = await import(`i18n/${locale}`)
   const sortedPosts = posts.sort((a: FrontMatterPost, b: FrontMatterPost) => {
     return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   })
@@ -163,6 +168,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts: sortedPosts.slice(0, 3),
+      table,
     },
   }
 }

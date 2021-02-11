@@ -14,13 +14,14 @@ import MDXComponents from '@/components/MDXComponents'
 
 const root = process.cwd()
 
-export async function getFiles(type: string): Promise<string[]> {
-  return fs.readdirSync(path.join(root, 'src', 'data', type))
+export async function getFiles(type: string, lang: string): Promise<string[]> {
+  return fs.readdirSync(path.join(root, 'src', 'data', type, lang))
 }
 
 export async function getFileBySlug(
   type: string,
-  slug: string
+  slug: string,
+  lang: string
 ): Promise<{
   mdxSource: {
     compiledSource: string
@@ -33,7 +34,7 @@ export async function getFileBySlug(
   }
 }> {
   const source = slug
-    ? fs.readFileSync(path.join(root, 'src', 'data', type, `${slug}.mdx`), 'utf8')
+    ? fs.readFileSync(path.join(root, 'src', 'data', type, lang, `${slug}.mdx`), 'utf8')
     : fs.readFileSync(path.join(root, 'src', 'data', `${type}.mdx`), 'utf8')
 
   const { data, content } = matter(source)
@@ -55,11 +56,11 @@ export async function getFileBySlug(
   }
 }
 
-export async function getAllFilesFrontMatter(type: string): Promise<any> {
-  const files = fs.readdirSync(path.join(root, 'src', 'data', type))
+export async function getAllFilesFrontMatter(type: string, lang: string): Promise<any> {
+  const files = fs.readdirSync(path.join(root, 'src', 'data', type, lang))
 
   return files.reduce((allPosts: any, postSlug: string) => {
-    const source = fs.readFileSync(path.join(root, 'src', 'data', type, postSlug), 'utf8')
+    const source = fs.readFileSync(path.join(root, 'src', 'data', type, lang, postSlug), 'utf8')
     const { data } = matter(source)
 
     return [

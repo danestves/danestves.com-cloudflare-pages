@@ -1,12 +1,18 @@
 // Dependencies
 import { useState } from 'react'
+import { useI18n } from 'next-rosetta'
 
 // Components
-import { Link } from '@/components'
+import { Link, LanguageSwitcher } from '@/components'
 import MobileHeader from './MobileHeader'
+
+// Locales
+import type { MyLocale } from 'i18n'
 
 const Header = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const { t } = useI18n<MyLocale>()
 
   return (
     <>
@@ -14,7 +20,7 @@ const Header = (): JSX.Element => {
         <div className="md:px-8">
           <nav className="container relative flex flex-wrap items-center justify-end">
             <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
-              <Link href="/" title="Inicio">
+              <Link href="/" title={t('header.menu.home')}>
                 <svg viewBox="0 0 1080 1080" className="w-8 h-8 text-primary">
                   <path
                     d="M1061.237 540.246c-.105 288.558-237.61 520.991-526.204 520.991H207.654A188.891 188.891 0 0118.763 872.346V705.883a23.728 23.728 0 0123.71-23.727h24.166a46.911 46.911 0 0146.894 46.929V872.24a94.209 94.209 0 0094.226 94.226h327.608c235.697 0 430.275-189.278 431.1-424.975C967.292 305.25 776.013 113.533 540 113.533H207.76a94.226 94.226 0 00-94.227 94.191v143.227a46.911 46.911 0 01-46.894 46.893H42.473a23.71 23.71 0 01-23.71-23.692V207.654A188.927 188.927 0 01207.654 18.763H540c287.944 0 521.36 233.416 521.237 521.483z"
@@ -53,48 +59,54 @@ const Header = (): JSX.Element => {
               </button>
             </div>
 
-            <div className="hidden md:ml-10 md:flex md:items-baseline md:bg-transparent">
+            <div className="hidden md:ml-10 md:flex md:bg-transparent md:items-center">
               <div className="flex items-center justify-center">
                 <Link
                   href="/sobre-mi"
                   title="Sobre Mí"
                   className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
-                  Sobre Mí
+                  {t('header.menu.aboutMe')}
                 </Link>
                 <Link
                   href="/open-source"
                   title="Open Source"
                   className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
-                  Open Source
+                  {t('header.menu.openSource')}
                 </Link>
                 <Link
                   href="/portafolio"
                   title="Portafolio"
                   className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
-                  Portafolio
+                  {t('header.menu.portfolio')}
                 </Link>
                 <Link
                   href="/blog"
                   title="Blog"
                   className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
-                  Blog
+                  {t('header.menu.blog')}
                 </Link>
                 <Link
                   href="/contacto"
                   title="Contacto"
                   className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
                 >
-                  Contacto
+                  {t('header.menu.contact')}
                 </Link>
               </div>
+
+              <LanguageSwitcher />
             </div>
           </nav>
         </div>
       </header>
+
+      <div className="fixed z-20 top-4 left-4 md:hidden">
+        <LanguageSwitcher />
+      </div>
 
       <MobileHeader />
     </>

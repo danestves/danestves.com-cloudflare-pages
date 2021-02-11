@@ -1,23 +1,11 @@
 const { fontFamily, spacing } = require(`tailwindcss/defaultTheme`)
 
 module.exports = {
-  purge: {
-    content: [
-      './src/components/**/*.{ts,tsx}',
-      './src/layouts/**/*.{ts,tsx}',
-      './src/pages/**/*.{ts,tsx}',
-    ],
-    options: {
-      safelist: [
-        `right-6`,
-        `z-100`,
-        `embed-responsive`,
-        `aspect-ratio-square`,
-        `aspect-ratio-16/9`,
-        `aspect-ratio-4/3`,
-      ],
-    },
-  },
+  purge: [
+    './src/components/**/*.{ts,tsx}',
+    './src/layouts/**/*.{ts,tsx}',
+    './src/pages/**/*.{ts,tsx}',
+  ],
   darkMode: false, // or 'media' or 'class'
   important: true,
   theme: {

@@ -22,7 +22,10 @@ const prettier = require('prettier')
                   .replace('data', '')
                   .replace('.tsx', '')
                   .replace('.mdx', '')
-                  .replace('portfolio', 'portafolio')
+                  .replace('/portfolios/en/', '/en/portafolio/')
+                  .replace('/portfolios/es/', '/portafolio/')
+                  .replace('/posts/en/', '/en/blog/')
+                  .replace('/posts/es/', '/blog/')
                   .replace('src//', '/')
                 const route = path === '/index' ? '' : path
                 return `

@@ -1,6 +1,8 @@
 // Dependencies
 import { NextPage, GetStaticProps } from 'next'
 import Image from 'next/image'
+import { useI18n, I18nProps } from 'next-rosetta'
+import { useRouter } from 'next/dist/client/router'
 
 // Components
 import { SEO, Link, BlogCard } from '@/components'
@@ -8,6 +10,9 @@ import { SEO, Link, BlogCard } from '@/components'
 // Libraries
 import { FrontMatterPost } from '@/interfaces'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
+
+// Locales
+import type { MyLocale } from 'i18n'
 
 // Utils
 import { formatDate } from '@/utils'
@@ -18,12 +23,12 @@ interface Props {
 }
 
 const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
+  const { t } = useI18n<MyLocale>()
+  const { locale } = useRouter()
+
   return (
     <>
-      <SEO
-        title="Blog - React, JavaScript, Recursos y más"
-        description="Blog sobre noticias, tutoriales, paso a paso para crear funciones que nos ayudarán en nuestro desarrollo y mucho más de la mano de @danestves usando JavaScript."
-      />
+      <SEO title={t('blog.seo.title')} description={t('blog.seo.description')} />
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
@@ -33,7 +38,7 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
 
       <div className="container max-w-screen-xl px-5">
         {featuredPost && (
-          <Link href={`/blog/${featuredPost.slug}`} className="group">
+          <Link href={`/blog/${featuredPost.slug}`} locale={locale} className="group">
             <div className="items-center max-w-lg gap-12 mx-auto lg:grid lg:grid-cols-12 lg:max-w-none">
               <div className="lg:col-span-7">
                 <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
@@ -51,10 +56,11 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
                   {featuredPost.title}
                 </h2>
                 <p className="mb-2 text-base text-white lg:text-lg">
-                  Publicado en{' '}
+                  {t('blog.publishedAt')}{' '}
                   {formatDate(
                     new Date(featuredPost.publishedAt).toISOString().slice(0, 19),
-                    'MMM. d yyy'
+                    'MMM. d yyy',
+                    locale
                   )}
                 </p>
                 <p className="my-4 text-lg text-white lg:text-xl">{featuredPost.summary}</p>
@@ -73,14 +79,17 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllFilesFrontMatter('blog')
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+  const locale = context.locale || context.defaultLocale
+  const { table = {} } = await import(`i18n/${locale}`)
+  const posts = await getAllFilesFrontMatter('posts', locale as string)
   const sortedPosts = posts.sort((a: FrontMatterPost, b: FrontMatterPost) => {
     return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   })
 
   return {
     props: {
+      table,
       featuredPost: sortedPosts.shift(),
       posts: sortedPosts,
     },

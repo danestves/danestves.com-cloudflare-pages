@@ -1,6 +1,7 @@
 // Dependencies
 import hydrate from 'next-mdx-remote/hydrate'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { I18nProps } from 'next-rosetta'
 
 // Components
 import MDXComponents from '@/components/MDXComponents'
@@ -14,16 +15,21 @@ import BlogLayout from '@/layouts/blog'
 // Libraries
 import { getFiles, getFileBySlug } from '@/lib/mdx'
 
+// Locales
+import type { MyLocale } from 'i18n'
+
 interface Props {
-  mdxSource: {
-    compiledSource: string
-    renderedOutput: string
-    scope?: Record<string, unknown>
+  post: {
+    mdxSource: {
+      compiledSource: string
+      renderedOutput: string
+      scope?: Record<string, unknown>
+    }
+    frontMatter: FrontMatterPost
   }
-  frontMatter: FrontMatterPost
 }
 
-export default function Blog({ mdxSource, frontMatter }: Props): JSX.Element {
+export default function Blog({ post: { mdxSource, frontMatter } }: Props): JSX.Element {
   const content = hydrate(mdxSource, {
     components: MDXComponents,
   })
@@ -32,20 +38,38 @@ export default function Blog({ mdxSource, frontMatter }: Props): JSX.Element {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getFiles('blog')
+  const postsSpanish = await getFiles('posts', 'es')
+  const postsEnglish = await getFiles('posts', 'en')
+
+  const pathsSpanish = postsSpanish.map((p) => ({
+    params: {
+      slug: p.replace(/\.mdx/, ''),
+    },
+    locale: 'es',
+  }))
+  const pathsEnglish = postsEnglish.map((p) => ({
+    params: {
+      slug: p.replace(/\.mdx/, ''),
+    },
+    locale: 'en',
+  }))
 
   return {
-    paths: posts.map((p) => ({
-      params: {
-        slug: p.replace(/\.mdx/, ''),
-      },
-    })),
+    paths: [...pathsSpanish, ...pathsEnglish],
     fallback: false,
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = await getFileBySlug('blog', params?.slug as string)
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+  const locale = context.locale || context.defaultLocale
+  const { table = {} } = await import(`i18n/${locale}`)
 
-  return { props: post }
+  const post = await getFileBySlug('posts', context.params?.slug as string, locale as string)
+
+  return {
+    props: {
+      table,
+      post,
+    },
+  }
 }

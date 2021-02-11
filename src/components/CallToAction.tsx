@@ -1,10 +1,16 @@
 // Dependencies
 import Image from 'next/image'
+import { useI18n } from 'next-rosetta'
 
 // Components
 import { Link } from '@/components'
 
+// Locales
+import type { MyLocale } from 'i18n'
+
 const CallToAction = (): JSX.Element => {
+  const { t } = useI18n<MyLocale>()
+
   return (
     <section className="container px-5">
       <div className="max-w-5xl mx-auto my-16 lg:my-32">
@@ -12,26 +18,23 @@ const CallToAction = (): JSX.Element => {
           <div className="w-full md:w-1/3 md:order-last">
             <Image
               src="/programming-animation.gif"
-              alt="Persona programando animadas a través de un GIF"
+              alt={t('cta.gif.alt') as string}
               width={300}
               height={300}
             />
           </div>
           <div className="w-full px-4 pt-24 pb-8 md:p-12 md:w-2/3">
             <h2 className="mb-4 text-3xl font-bold text-black lg:mb-4 sm:text-4xl md:text-5xl">
-              ¿Tienes una idea?
+              {t('cta.title')}
             </h2>
             <div className="mb-4 lg:mb-4">
-              <p className="mb-4">
-                Ponte en contacto a través de este botón para que pueda saber más de tu producto o
-                servicio y podamos discutir la mejor manera de llevarlo a cabo.
-              </p>
+              <p className="mb-4">{t('cta.summary')}</p>
             </div>
             <Link
               href="/contacto"
               className="inline-block px-6 py-3 text-gray-300 transition-all duration-150 transform bg-black rounded-lg hover:shadow-lg hover:-translate-y-1 focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-primary focus:outline-none"
             >
-              Quiero plasmar mi idea
+              {t('cta.button.label')}
             </Link>
           </div>
         </div>

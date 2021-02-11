@@ -2,9 +2,13 @@
 import { useState } from 'react'
 import useSWR from 'swr'
 import format from 'comma-number'
+import { useI18n } from 'next-rosetta'
 
 // Libraries
 import fetcher from '@/lib/fetcher'
+
+// Locales
+import type { MyLocale } from 'i18n'
 
 const Subscribe = (): JSX.Element => {
   const [form, setForm] = useState<{
@@ -14,6 +18,7 @@ const Subscribe = (): JSX.Element => {
     status: '',
   })
   const [email, setEmail] = useState('')
+  const { t } = useI18n<MyLocale>()
   const { data } = useSWR('/api/subscribers', fetcher)
   const subscriberCount = format(((data as unknown) as Record<string, unknown>)?.count || 0)
 
@@ -24,7 +29,7 @@ const Subscribe = (): JSX.Element => {
     if (!email) {
       setForm({
         status: 'error',
-        message: 'Tu correo es requerido para poder suscribirte',
+        message: t('newsletter.response.email.required'),
       })
       return
     }
@@ -53,7 +58,7 @@ const Subscribe = (): JSX.Element => {
 
     setForm({
       status: 'success',
-      message: `Muchas gracias por suscribirte, nuevo contenido cada semana`,
+      message: t('newsletter.response.success'),
     })
 
     setTimeout(() => {
@@ -68,16 +73,16 @@ const Subscribe = (): JSX.Element => {
       <div className="px-6 py-6 border rounded-lg bg-secondary md:py-12 md:px-12 lg:py-16 lg:px-16">
         <div>
           <h2 className="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-            ¿Quieres ser el primero en leer mis posts?
+            {t('newsletter.title')}
           </h2>
           <p className="max-w-3xl mt-3 text-lg leading-6 text-indigo-200">
-            Suscríbete al newsletter y tendrás tutoriales, noticias y posts de primera mano.
+            {t('newsletter.summary')}
           </p>
         </div>
         <div className="mt-8 sm:w-full sm:max-w-md">
           <form className="sm:flex" onSubmit={subscribe}>
             <label htmlFor="email" className="sr-only">
-              Email address
+              {t('newsletter.form.label')}
             </label>
             <input
               id="email"
@@ -86,7 +91,7 @@ const Subscribe = (): JSX.Element => {
               autoComplete="email"
               required
               className="w-full px-5 py-3 placeholder-gray-500 border-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-secondary focus:ring-white"
-              placeholder="Ingresa tu correo"
+              placeholder={t('newsletter.form.placeholder')}
               value={email}
               onChange={({ target }) => setEmail(target.value)}
             />
@@ -97,11 +102,11 @@ const Subscribe = (): JSX.Element => {
             >
               {form.status === 'loading' ? (
                 <>
-                  Enviando
+                  {t('newsletter.form.button.sending')}
                   <span className="ml-2 animate-pulse">📩</span>
                 </>
               ) : (
-                'Suscribirse'
+                t('newsletter.form.button.label')
               )}
             </button>
           </form>
@@ -150,7 +155,7 @@ const Subscribe = (): JSX.Element => {
           )}
           {!form.status && (
             <p className="mt-2 text-sm text-white">
-              {subscriberCount || '-'} personas se han suscrito al newsletter
+              {subscriberCount || '-'} {t('newsletter.subscribed')}
             </p>
           )}
         </div>

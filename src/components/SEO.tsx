@@ -1,6 +1,10 @@
 // Dependencies
 import Head from 'next/head'
 import { useRouter } from 'next/dist/client/router'
+import { useI18n } from 'next-rosetta'
+
+// Locales
+import type { MyLocale } from 'i18n'
 
 interface Props {
   title?: string
@@ -13,24 +17,39 @@ interface Props {
 }
 
 const SEO = ({
-  title = 'Desarrollador Web Frontend',
   isTemplate = true,
-  description = 'Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.',
-  shareImage = 'https://danestves.com/og.png',
   type = 'website',
   date,
   children,
+  ...props
 }: Props): JSX.Element | null => {
   const router = useRouter()
+  const { t } = useI18n<MyLocale>()
 
+  const title = props.title ? props.title : t('defaultSeo.title')
   const parsedTitle = isTemplate ? '%s | @danestves'.replace('%s', title) : title
+  const description = props.description ? props.description : t('defaultSeo.description')
+  const shareImage = props.shareImage ? props.shareImage : t('defaultSeo.shareImage')
+
+  let lang = ''
+  switch (router.locale) {
+    case 'en':
+      lang = '/en'
+      break
+    default:
+      break
+  }
 
   return (
     <Head>
       <title>{parsedTitle}</title>
       <meta name="robots" content="follow, index" />
       <meta key="description" content={description} name="description" />
-      <meta key="og:url" property="og:url" content={`https://danestves.com${router.asPath}`} />
+      <meta
+        key="og:url"
+        property="og:url"
+        content={`https://danestves.com${lang}${router.asPath}`}
+      />
       <meta key="og:type" property="og:type" content={type} />
       <meta key="og:site_name" property="og:site_name" content="Daniel Esteves" />
       <meta key="og:description" property="og:description" content={description} />
@@ -48,7 +67,11 @@ const SEO = ({
       {date && (
         <meta key="article:published_time" property="article:published_time" content={date} />
       )}
-      <link key="canonical_link" rel="canonical" href={`https://danestves.com${router.asPath}`} />
+      <link
+        key="canonical_link"
+        rel="canonical"
+        href={`https://danestves.com${lang}${router.asPath}`}
+      />
       {children}
     </Head>
   )
