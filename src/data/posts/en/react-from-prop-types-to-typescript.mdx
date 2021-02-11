@@ -8,7 +8,7 @@ image: '/static/images/react-de-prop-types-a-typescript/banner.jpg'
 
 If you're a React.js developer and you don't use TypeScript, this article is for you!
 
-## 🔌 Props are a means of contact.
+## 🔌 Props are a means of contact
 
 The core feature of React is components. It helps us to have a [true separation of concepts](https://dottedsquirrel.com/react/rethinking-soc-with-react/). We need a lot of them to build a complete UI, so we need to make them interact.
 
@@ -70,7 +70,7 @@ Great, we can communicate more efficiently, since we can decide if a prop is req
 
 Perfect! Nice catch PropTypes, thanks! Imagine now that we can take this definition of additional test types and testing all of our code even further 🚀
 
-## 😎 TypeScript gets in on the action.
+## 😎 TypeScript gets in on the action
 
 The prop-types library was included in React before React v15.5. The React team took the option to extract it from the core, true to their ideology of providing an unpopular library, to allow developers to use other typing systems, such as Flow or TypeScript. The latter, let's give it a try.
 
@@ -198,7 +198,7 @@ Now if we hover the mouse over our code where the `<Post />` component is in `si
 By adding the new prop and opening the quotes we will notice that TypeScript is now autocompleting the possible sizes that can be passed to it and additionally telling us that we must pass it the correct prop because otherwise it does not match the types that were declared:
 
 <Image
-  src="/static/images/react-of-prop-types-a-typescript/image-size-prop-error.png"
+  src="/static/images/react-de-prop-types-a-typescript/image-size-prop-error.png"
   alt="TypeScript error of the prop imageSize"
   width={771}
   height={129}
@@ -214,7 +214,7 @@ Now, in our code, we can be sure.
 
 TypeScript will be there to yell at us if there is a discrepancy somewhere, pointing out the bug that was right under our noses, but that we somehow overlooked.
 
-## 🧐 Conclusions.
+## 🧐 Conclusions
 
 I'm not going to lie, the road is not easy with TypeScript and sometimes the learning curve can be tough. But it's certainly worth it, I guess (?) 😂
 

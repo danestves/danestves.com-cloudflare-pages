@@ -27,12 +27,6 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       if (response.status >= 400) {
         const text = await response.text()
 
-        if (text.includes('already been subscribed')) {
-          return res.status(400).json({
-            error: `Ya estás suscrito a mi newsletter.`,
-          })
-        }
-
         return res.status(400).json({
           error: text,
         })

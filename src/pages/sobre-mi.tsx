@@ -6,7 +6,7 @@ import { useI18n, I18nProps } from 'next-rosetta'
 import { SEO } from '@/components'
 
 // Locales
-import { MyLocale } from 'i18n'
+import type { MyLocale } from 'i18n'
 
 interface Props {
   experience: {

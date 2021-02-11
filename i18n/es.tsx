@@ -7,6 +7,16 @@ export const table: MyLocale = {
       'Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.',
     shareImage: 'https://danestves.com/og.png',
   },
+  header: {
+    menu: {
+      home: 'Inicio',
+      aboutMe: 'Sobre Mí',
+      openSource: 'Open Source',
+      portfolio: 'Portafolio',
+      blog: 'Blog',
+      contact: 'Contacto',
+    },
+  },
   home: {
     hero: {
       alt: 'Daniel Esteves - Desarrollador web fullstack en JavaScript',
@@ -115,6 +125,36 @@ export const table: MyLocale = {
       },
     },
   },
+  blog: {
+    seo: {
+      title: 'Blog - React, JavaScript, Recursos y más',
+      description:
+        'Blog sobre noticias, tutoriales, paso a paso para crear funciones que nos ayudarán en nuestro desarrollo y mucho más de la mano de @danestves usando JavaScript.',
+    },
+    publishedAt: 'Publicado en',
+    visits: 'visitas',
+    editOnGitHub: 'Editar en GitHub',
+    commentOnTwitter: 'Comentar en Twitter',
+  },
+  newsletter: {
+    title: '¿Quieres ser el primero en leer mis posts?',
+    summary: 'Suscríbete al newsletter y tendrás tutoriales, noticias y posts de primera mano.',
+    form: {
+      label: 'Correo',
+      placeholder: 'Ingresa tu correo',
+      button: {
+        sending: 'Enviando',
+        label: 'Suscribirse',
+      },
+    },
+    response: {
+      email: {
+        required: 'Tu correo es requerido para poder suscribirte',
+      },
+      success: 'Muchas gracias por suscribirte, nuevo contenido cada semana',
+    },
+    subscribed: 'personas se han suscrito al newsletter',
+  },
   cta: {
     gif: {
       alt: 'Persona programando animadas a través de un GIF',
@@ -125,5 +165,30 @@ export const table: MyLocale = {
     button: {
       label: 'Quiero plasmar mi idea',
     },
+  },
+  footer: {
+    summary:
+      'Plasmo tus ideas y las hago realidad. Trabajaré contigo lado a lado para que tu producto final sea mucho mejor de lo que esperas.',
+    menu: {
+      home: 'Inicio',
+      aboutMe: 'Sobre Mí',
+      openSource: 'Open Source',
+      portfolio: 'Portafolio',
+      blog: 'Blog',
+      contact: 'Contacto',
+    },
+    newsletter: {
+      title: 'Unete al Newsletter!',
+      summary:
+        'Prometo no enviarte spam 🤘. Envío un correo cada vez que hago un nuevo blogpost o subo un nuevo video.',
+      form: {
+        label: 'Correo',
+        placeholder: 'Correo',
+        button: {
+          label: 'Unete',
+        },
+      },
+    },
+    copyright: 'Todos los derechos reservados',
   },
 }

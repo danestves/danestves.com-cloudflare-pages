@@ -4,6 +4,16 @@ export interface MyLocale {
     description: string
     shareImage: string
   }
+  header: {
+    menu: {
+      home: string
+      aboutMe: string
+      openSource: string
+      portfolio: string
+      blog: string
+      contact: string
+    }
+  }
   home: {
     hero: {
       alt: string
@@ -69,6 +79,16 @@ export interface MyLocale {
       web: string
     }
   }
+  blog: {
+    seo: {
+      title: string
+      description: string
+    }
+    publishedAt: string
+    visits: string
+    editOnGitHub: string
+    commentOnTwitter: string
+  }
   contact: {
     seo: {
       title: string
@@ -103,6 +123,25 @@ export interface MyLocale {
       }
     }
   }
+  newsletter: {
+    title: string
+    summary: string
+    form: {
+      label: string
+      placeholder: string
+      button: {
+        sending: string
+        label: string
+      }
+    }
+    response: {
+      email: {
+        required: string
+      }
+      success: string
+    }
+    subscribed: string
+  }
   cta: {
     gif: {
       alt: string
@@ -112,5 +151,28 @@ export interface MyLocale {
     button: {
       label: string
     }
+  }
+  footer: {
+    summary: string
+    menu: {
+      home: string
+      aboutMe: string
+      openSource: string
+      portfolio: string
+      blog: string
+      contact: string
+    }
+    newsletter: {
+      title: string
+      summary: string
+      form: {
+        label: string
+        placeholder: string
+        button: {
+          label: string
+        }
+      }
+    }
+    copyright: string
   }
 }

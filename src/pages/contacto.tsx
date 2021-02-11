@@ -10,7 +10,7 @@ import { useRouter } from 'next/dist/client/router'
 import { SEO } from '@/components'
 
 // Locales
-import { MyLocale } from 'i18n'
+import type { MyLocale } from 'i18n'
 
 const Contacto: NextPage = () => {
   const { t } = useI18n<MyLocale>()

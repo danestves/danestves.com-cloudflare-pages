@@ -24,7 +24,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     return res.status(200).json({ total: getCurrentViews?.value })
   }
 
-  if (req.method === 'GET') {
+  if (req.method === 'GET' && process.env.NODE_ENV === 'production') {
     const snapshot = await db
       .collection('views')
       .doc(req.query.slug as string)

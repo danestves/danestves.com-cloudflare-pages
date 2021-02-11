@@ -1,7 +1,7 @@
 // Dependencies
 import { NextPage, GetStaticProps } from 'next'
 import Image from 'next/image'
-import { I18nProps } from 'next-rosetta'
+import { useI18n, I18nProps } from 'next-rosetta'
 import { useRouter } from 'next/dist/client/router'
 
 // Components
@@ -12,7 +12,7 @@ import { FrontMatterPost } from '@/interfaces'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 
 // Locales
-import { MyLocale } from 'i18n'
+import type { MyLocale } from 'i18n'
 
 // Utils
 import { formatDate } from '@/utils'
@@ -23,14 +23,12 @@ interface Props {
 }
 
 const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
+  const { t } = useI18n<MyLocale>()
   const { locale } = useRouter()
 
   return (
     <>
-      <SEO
-        title="Blog - React, JavaScript, Recursos y más"
-        description="Blog sobre noticias, tutoriales, paso a paso para crear funciones que nos ayudarán en nuestro desarrollo y mucho más de la mano de @danestves usando JavaScript."
-      />
+      <SEO title={t('blog.seo.title')} description={t('blog.seo.description')} />
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
@@ -58,10 +56,11 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
                   {featuredPost.title}
                 </h2>
                 <p className="mb-2 text-base text-white lg:text-lg">
-                  Publicado en{' '}
+                  {t('blog.publishedAt')}{' '}
                   {formatDate(
                     new Date(featuredPost.publishedAt).toISOString().slice(0, 19),
-                    'MMM. d yyy'
+                    'MMM. d yyy',
+                    locale
                   )}
                 </p>
                 <p className="my-4 text-lg text-white lg:text-xl">{featuredPost.summary}</p>

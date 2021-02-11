@@ -14,7 +14,7 @@ import { FrontMatterPortfolio } from '@/interfaces'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 
 // Locales
-import { MyLocale } from 'i18n'
+import type { MyLocale } from 'i18n'
 
 interface Props {
   portfolios: FrontMatterPortfolio[]

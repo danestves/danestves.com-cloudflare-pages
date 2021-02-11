@@ -3,6 +3,8 @@ import { ReactNode } from 'react'
 import Image from 'next/image'
 import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
+import { useRouter } from 'next/dist/client/router'
+import { useI18n } from 'next-rosetta'
 
 // Components
 import { SEO, ViewsCounter, Subscribe } from '@/components'
@@ -10,11 +12,14 @@ import { SEO, ViewsCounter, Subscribe } from '@/components'
 // Interfaces
 import { FrontMatterPost } from '@/interfaces'
 
+// Locales
+import type { MyLocale } from 'i18n'
+
 // Utils
 import { formatDate, readingTime } from '@/utils'
 
-const editUrl = (slug: string): string => {
-  return `https://github.com/danestves/website/edit/master/src/data/blog/${slug}.mdx`
+const editUrl = (slug: string, lang: string): string => {
+  return `https://github.com/danestves/website/edit/master/src/data/posts/${lang}/${slug}.mdx`
 }
 const discussUrl = (slug: string): string => {
   return `https://mobile.twitter.com/search?q=${encodeURIComponent(
@@ -28,6 +33,9 @@ interface Props {
 }
 
 export default function BlogLayout({ frontMatter, children }: Props): JSX.Element {
+  const { locale } = useRouter()
+  const { t } = useI18n<MyLocale>()
+
   return (
     <>
       <SEO
@@ -91,10 +99,13 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
                 <p className="text-white capitalize">
                   {formatDate(
                     new Date(frontMatter.publishedAt).toISOString().slice(0, 19),
-                    'MMMM d, yyyy'
+                    'MMMM d, yyyy',
+                    locale
                   )}
                 </p>
-                <p className="text-white">{readingTime({ wordCount: frontMatter.wordCount })}</p>
+                <p className="text-white">
+                  {readingTime({ wordCount: frontMatter.wordCount, lang: locale })}
+                </p>
                 <p className="text-white">
                   <ViewsCounter slug={frontMatter.slug} />
                 </p>
@@ -110,12 +121,12 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
 
           <div className="flex items-center justify-start mt-6 space-x-3">
             <a
-              href={editUrl(frontMatter.slug)}
+              href={editUrl(frontMatter.slug, locale as string)}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white underline"
             >
-              Editar en GitHub
+              {t('blog.editOnGitHub')}
             </a>
             <a
               href={discussUrl(frontMatter.slug)}
@@ -123,7 +134,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
               rel="noopener noreferrer"
               className="text-white underline"
             >
-              Comentar en Twitter
+              {t('blog.commentOnTwitter')}
             </a>
           </div>
         </div>

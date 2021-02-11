@@ -10,7 +10,7 @@ import { SEO } from '@/components'
 import { FrontMatterPortfolio } from '@/interfaces'
 
 // Locales
-import { MyLocale } from 'i18n'
+import type { MyLocale } from 'i18n'
 
 interface Props {
   frontMatter: FrontMatterPortfolio

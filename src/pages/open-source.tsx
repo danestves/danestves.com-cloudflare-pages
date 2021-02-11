@@ -13,7 +13,7 @@ import { Repository } from '@/interfaces'
 import fetcher, { server } from '@/lib/fetcher'
 
 // Locales
-import { MyLocale } from 'i18n'
+import type { MyLocale } from 'i18n'
 
 interface Props {
   github: Response

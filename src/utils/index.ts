@@ -11,9 +11,20 @@ import es from 'date-fns/locale/es'
  *
  * @returns The string with the formatted date
  */
-export const formatDate = (date: string | Date, formatter = 'mm/dd/yyyy'): string => {
+export const formatDate = (date: string | Date, formatter = 'mm/dd/yyyy', lang = 'en'): string => {
+  let locale
+
+  switch (lang) {
+    case 'es':
+      locale = es
+      break
+    default:
+      locale = undefined
+      break
+  }
+
   return format(new Date(date), formatter, {
-    locale: es,
+    locale,
   })
 }
 
@@ -34,18 +45,31 @@ export const formatDate = (date: string | Date, formatter = 'mm/dd/yyyy'): strin
 export const readingTime = ({
   text,
   wordCount = 0,
-  singular = 'minuto de lectura',
-  plural = 'minutos de lectura',
+  lang = 'en',
 }: {
   text?: string
   wordCount?: number
-  singular?: string
-  plural?: string
+  lang?: string
 }): string => {
   const wordsPerMinute = 200
   const noOfWords = text ? text.split(/\s/g).length : wordCount
   const minutes = noOfWords / wordsPerMinute
   const readTime = Math.ceil(minutes)
+  let singular
+  let plural
+
+  switch (lang) {
+    case 'es':
+      singular = 'minuto de lectura'
+      plural = 'minutos de lectura'
+
+      break
+    default:
+      singular = 'min read'
+      plural = 'min read'
+
+      break
+  }
 
   return readTime === 1 ? `${readTime} ${singular}` : `${readTime} ${plural}`
 }
