@@ -31,12 +31,25 @@ const SEO = ({
   const description = props.description ? props.description : t('defaultSeo.description')
   const shareImage = props.shareImage ? props.shareImage : t('defaultSeo.shareImage')
 
+  let lang = ''
+  switch (router.locale) {
+    case 'en':
+      lang = '/en'
+      break
+    default:
+      break
+  }
+
   return (
     <Head>
       <title>{parsedTitle}</title>
       <meta name="robots" content="follow, index" />
       <meta key="description" content={description} name="description" />
-      <meta key="og:url" property="og:url" content={`https://danestves.com${router.asPath}`} />
+      <meta
+        key="og:url"
+        property="og:url"
+        content={`https://danestves.com${lang}${router.asPath}`}
+      />
       <meta key="og:type" property="og:type" content={type} />
       <meta key="og:site_name" property="og:site_name" content="Daniel Esteves" />
       <meta key="og:description" property="og:description" content={description} />
@@ -54,7 +67,11 @@ const SEO = ({
       {date && (
         <meta key="article:published_time" property="article:published_time" content={date} />
       )}
-      <link key="canonical_link" rel="canonical" href={`https://danestves.com${router.asPath}`} />
+      <link
+        key="canonical_link"
+        rel="canonical"
+        href={`https://danestves.com${lang}${router.asPath}`}
+      />
       {children}
     </Head>
   )

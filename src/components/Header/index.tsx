@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useI18n } from 'next-rosetta'
 
 // Components
-import { Link } from '@/components'
+import { Link, LanguageSwitcher } from '@/components'
 import MobileHeader from './MobileHeader'
 
 // Locales
@@ -59,7 +59,7 @@ const Header = (): JSX.Element => {
               </button>
             </div>
 
-            <div className="hidden md:ml-10 md:flex md:items-baseline md:bg-transparent">
+            <div className="hidden md:ml-10 md:flex md:bg-transparent md:items-center">
               <div className="flex items-center justify-center">
                 <Link
                   href="/sobre-mi"
@@ -97,10 +97,16 @@ const Header = (): JSX.Element => {
                   {t('header.menu.contact')}
                 </Link>
               </div>
+
+              <LanguageSwitcher />
             </div>
           </nav>
         </div>
       </header>
+
+      <div className="fixed z-20 top-4 left-4">
+        <LanguageSwitcher />
+      </div>
 
       <MobileHeader />
     </>
