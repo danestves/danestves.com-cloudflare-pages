@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
 
-  const postfolio = await getFileBySlug(
+  const portfolio = await getFileBySlug(
     'portfolios',
     context.params?.slug as string,
     locale as string
@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
   return {
     props: {
       table,
-      postfolio,
+      portfolio,
     },
   }
 }

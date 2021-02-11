@@ -10,11 +10,26 @@ async function generate() {
     feed_url: 'https://danestves.com/rss.xml',
   })
 
-  const posts = await fs.readdir(path.join(__dirname, '..', 'data', 'blog'))
+  const postsEnglish = await fs.readdir(path.join(__dirname, '..', 'data', 'posts', 'en'))
+  const postsSpanish = await fs.readdir(path.join(__dirname, '..', 'data', 'posts', 'es'))
 
   await Promise.all(
-    posts.map(async (name) => {
-      const content = await fs.readFile(path.join(__dirname, '..', 'data', 'blog', name))
+    postsEnglish.map(async (name) => {
+      const content = await fs.readFile(path.join(__dirname, '..', 'data', 'posts', 'en', name))
+      const frontmatter = matter(content)
+
+      feed.item({
+        title: frontmatter.data.title,
+        url: 'https://danestves.com/en/blog/' + name.replace(/\.mdx?/, ''),
+        date: frontmatter.data.publishedAt,
+        description: frontmatter.data.summary,
+      })
+    })
+  )
+
+  await Promise.all(
+    postsSpanish.map(async (name) => {
+      const content = await fs.readFile(path.join(__dirname, '..', 'data', 'posts', 'es', name))
       const frontmatter = matter(content)
 
       feed.item({
