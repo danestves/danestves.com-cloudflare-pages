@@ -104,7 +104,7 @@ const Header = (): JSX.Element => {
         </div>
       </header>
 
-      <div className="fixed z-20 top-4 left-4">
+      <div className="fixed z-20 top-4 left-4 md:hidden">
         <LanguageSwitcher />
       </div>
 
