@@ -2,7 +2,7 @@ import type { MyLocale } from '.'
 
 export const table: MyLocale = {
   defaultSeo: {
-    title: 'Desarrollador Web Frontend',
+    title: 'Daniel Esteves - Desarrollador Web Frontend',
     description:
       'Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.',
     shareImage: 'https://danestves.com/og.png',
