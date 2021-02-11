@@ -1,5 +1,6 @@
 // Dependencies
 import { useI18n } from 'next-rosetta'
+import { useRouter } from 'next/dist/client/router'
 
 // Components
 import { Link } from '@/components'
@@ -9,6 +10,7 @@ import type { MyLocale } from 'i18n'
 
 const Footer = (): JSX.Element => {
   const { t } = useI18n<MyLocale>()
+  const { locale } = useRouter()
 
   return (
     <footer className="pt-5 bg-secondary">
@@ -23,7 +25,7 @@ const Footer = (): JSX.Element => {
 
             <div className="-mx-4">
               <div className="flex mx-4 space-x-6">
-                <Link href="/github" title="GitHub" className="text-primary">
+                <Link href="/github" locale={locale} title="GitHub" className="text-primary">
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
@@ -37,7 +39,7 @@ const Footer = (): JSX.Element => {
                   </svg>
                 </Link>
 
-                <Link href="/twitter" title="Twitter" className="text-primary">
+                <Link href="/twitter" locale={locale} title="Twitter" className="text-primary">
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
@@ -51,7 +53,7 @@ const Footer = (): JSX.Element => {
                   </svg>
                 </Link>
 
-                <Link href="/youtube" title="YouTube" className="text-primary">
+                <Link href="/youtube" locale={locale} title="YouTube" className="text-primary">
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
