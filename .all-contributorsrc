@@ -13,6 +13,15 @@
       "contributions": [
         "blog"
       ]
+    },
+    {
+      "login": "andresdamelio",
+      "name": "Andrés D' Amelio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36086897?v=4",
+      "profile": "https://github.com/Andresdamelio",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

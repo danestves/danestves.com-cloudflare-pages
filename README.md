@@ -1,9 +1,7 @@
 # Starting something cool
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributors ✨
@@ -16,6 +14,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/ielijose"><img src="https://avatars.githubusercontent.com/u/2319641?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eli José Carrasquero</b></sub></a><br /><a href="#blog-ielijose" title="Blogposts">📝</a></td>
+    <td align="center"><a href="https://github.com/Andresdamelio"><img src="https://avatars.githubusercontent.com/u/36086897?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrés D' Amelio</b></sub></a><br /><a href="https://github.com/danestves/website/issues?q=author%3Aandresdamelio" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
