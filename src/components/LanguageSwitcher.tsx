@@ -8,11 +8,7 @@ const LanguageSwitcher = (): JSX.Element => {
   const { locale, locales, route, push, asPath } = useRouter()
 
   const handleChangeLanguage = (lang: string) => {
-    if (route === '/portafolio/[slug]') {
-      return push(route, asPath, { locale: lang })
-    } else {
-      return push(route, route, { locale: lang })
-    }
+    return push(route, asPath, { locale: lang })
   }
 
   return (
