@@ -5,10 +5,14 @@ import Image from 'next/image'
 import clsx from 'clsx'
 
 const LanguageSwitcher = (): JSX.Element => {
-  const { locale, locales, route, push } = useRouter()
+  const { locale, locales, route, push, asPath } = useRouter()
 
   const handleChangeLanguage = (lang: string) => {
-    return push(route, route, { locale: lang })
+    if (route === '/portafolio/[slug]') {
+      return push(route, asPath, { locale: lang })
+    } else {
+      return push(route, route, { locale: lang })
+    }
   }
 
   return (
