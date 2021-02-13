@@ -23,6 +23,14 @@
   ],
   "redirects": [
     {
+      "source": "/DanielEsteves.pdf",
+      "destination": "/danestves-resume.pdf"
+    },
+    {
+      "source": "/danestves.pdf",
+      "destination": "/danestves-resume.pdf"
+    },
+    {
       "source": "/github",
       "destination": "https://github.com/danestves"
     },

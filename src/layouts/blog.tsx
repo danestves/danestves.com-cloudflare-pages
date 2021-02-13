@@ -5,6 +5,7 @@ import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
 import { useRouter } from 'next/dist/client/router'
 import { useI18n } from 'next-rosetta'
+import { Flayyer } from '@flayyer/flayyer'
 
 // Components
 import { SEO, ViewsCounter, Subscribe } from '@/components'
@@ -36,13 +37,24 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
   const { locale } = useRouter()
   const { t } = useI18n<MyLocale>()
 
+  const flayyer = new Flayyer({
+    tenant: 'danestves',
+    deck: 'danestves',
+    template: 'blog',
+    variables: {
+      img: `https://danestves.com${frontMatter.image}`,
+      title: frontMatter.seotitle,
+      description: frontMatter.summary,
+    },
+  })
+
   return (
     <>
       <SEO
         isTemplate={false}
         title={frontMatter.seotitle}
         description={frontMatter.summary}
-        shareImage={`https://danestves.com${frontMatter.image}`}
+        shareImage={flayyer.href()}
         type="article"
         date={new Date(frontMatter.publishedAt).toISOString().slice(0, 19)}
       >
@@ -53,7 +65,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
       <ArticleJsonLd
         url={window.location.href}
         title={frontMatter.seotitle}
-        images={[`https://danestves.com${frontMatter.image}`]}
+        images={[flayyer.href()]}
         datePublished={new Date(frontMatter.publishedAt).toISOString().slice(0, 19)}
         dateModified={new Date(frontMatter.publishedAt).toISOString().slice(0, 19)}
         authorName={['Daniel Esteves']}
