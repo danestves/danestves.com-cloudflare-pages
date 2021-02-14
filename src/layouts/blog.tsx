@@ -46,6 +46,9 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
       title: frontMatter.seotitle,
       description: frontMatter.summary,
     },
+    meta: {
+      id: frontMatter.slug,
+    },
   })
 
   return (
