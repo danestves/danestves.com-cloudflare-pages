@@ -22,6 +22,10 @@
     U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Markdown styles */
 .prose pre {
   @apply bg-gray-900 border border-gray-700;

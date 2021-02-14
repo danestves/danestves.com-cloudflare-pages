@@ -10,7 +10,7 @@ module.exports = withPWA({
     defaultLocale: 'es',
   },
   images: {
-    domains: ['github-readme-stats.danestves.com'],
+    domains: ['github-readme-stats.danestves.com', 'raw.githubusercontent.com'],
   },
   future: { webpack5: true },
   webpack: (config, { dev, isServer }) => {
