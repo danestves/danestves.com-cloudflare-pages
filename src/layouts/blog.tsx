@@ -36,13 +36,14 @@ interface Props {
 export default function BlogLayout({ frontMatter, children }: Props): JSX.Element {
   const { locale } = useRouter()
   const { t } = useI18n<MyLocale>()
+  const { host, protocol } = window.location
 
   const flayyer = new Flayyer({
     tenant: 'danestves',
     deck: 'danestves',
     template: 'blog',
     variables: {
-      img: `https://danestves.com${frontMatter.image}`,
+      img: `${protocol}://${host}${frontMatter.image}`,
       title: frontMatter.seotitle,
       description: frontMatter.summary,
     },
