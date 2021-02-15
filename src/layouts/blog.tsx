@@ -43,7 +43,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
     deck: 'danestves',
     template: 'blog',
     variables: {
-      img: `${protocol}://${host}${frontMatter.image}`,
+      img: `${protocol}//${host}${frontMatter.image}`,
       title: frontMatter.seotitle,
       description: frontMatter.summary,
     },
