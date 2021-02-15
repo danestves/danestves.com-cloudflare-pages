@@ -90,8 +90,8 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
           <Image
             src={frontMatter.image}
             alt={frontMatter.title}
-            width={1024}
-            height={683}
+            width={800}
+            height={514}
             className="overflow-hidden shadow-xl rounded-2xl"
             layout="responsive"
             quality={100}

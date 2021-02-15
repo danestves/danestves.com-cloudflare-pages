@@ -27,6 +27,32 @@ html {
 }
 
 /* Markdown styles */
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply relative pl-6 -ml-6;
+}
+
+.prose h2 .icon::after,
+.prose h3 .icon::after,
+.prose h4 .icon::after,
+.prose h5 .icon::after,
+.prose h6 .icon::after {
+  @apply absolute top-0 left-0 hidden w-6 h-6 mr-2 font-bold text-white;
+
+  content: url('/static/link.svg');
+}
+
+.prose h2:hover > a > .icon::after,
+.prose h3:hover > a > .icon::after,
+.prose h4:hover > a > .icon::after,
+.prose h5:hover > a > .icon::after,
+.prose h6:hover > a > .icon::after {
+  @apply inline;
+}
+
 .prose pre {
   @apply bg-gray-900 border border-gray-700;
 }

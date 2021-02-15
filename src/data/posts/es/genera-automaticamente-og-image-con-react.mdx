@@ -1,0 +1,294 @@
+---
+title: 'Genera automáticamente tus og:image con React'
+seotitle: 'Genera automáticamente tus og:image con React'
+publishedAt: '2021-02-15'
+summary: ''
+image: '/static/images/genera-automaticamente-og-image-con-react/banner.jpg'
+---
+
+Una de las cosas más tediosas al escribir posts no es escribirlo en si, es encontrar una imagen correcta para que cuando la compartamos en redes sociales llame la atención y las personas quieran entrar a verla; inclusive usamos herramientas como Canva o PhotoShop para hacerlas, o llamamos a nuestro equipo de diseño y marketing para que creen esta imagen. **✋ Ya no más**
+
+## ¿Y si te digo que puedes crear imágenes con componentes de React?
+
+Tengo ya un tiempo probando [Flayyer](https://flayyer.com/io) el cual es un _`og:image` as a service_, lo que nos promete este servicio es crear `templates` con React o Vue y usarlos para crear imágenes en base a ellos, en estos `templates` podemos pasarle variables con los que podamos construir nuestras imágenes, por ejemplo el `title` y el `backgroundImg` de un post y podemos obtener los siguientes resultados:
+
+<a aria-label="Flayyer.io | Flayyer.com platform for better links" href="https://flayyer.com/io">
+  <Image
+    src="/static/images/genera-automaticamente-og-image-con-react/flayyer-twitter-card-preview.png"
+    alt="Preview de image con diseño de Twitter"
+    className="rounded-xl border border-white"
+    width={466}
+    height={346}
+  />
+</a>
+
+Inclusive podemos detectar si el `userAgent` es WhatsApp y generar una imagen específica para el:
+
+<a aria-label="Flayyer.io | Flayyer.com platform for better links" href="https://flayyer.com/io">
+  <Image
+    src="/static/images/genera-automaticamente-og-image-con-react/flayyer-whatsapp-card-preview.png"
+    alt="Preview de image con diseño de WhatsApp"
+    className="rounded"
+    width={480}
+    height={152}
+  />
+</a>
+
+En este caso como ejemplo es solo un cuadrado gris, pero podemos meter lo que sea allí; gracias a la manera en cómo funciona [Flayyer](https://flayyer.com/io) podemos generar un view distinto dependiendo del `userAgent`, que actualmente son muchísimos los que soporta:
+
+```ts
+declare enum FlayyerAgentName {
+  FACEBOOK = 'facebook',
+  MESSENGER = 'messenger',
+  WHATSAPP = 'whatsapp',
+  INSTAGRAM = 'instagram',
+  LINKEDIN = 'linkedin',
+  PINTEREST = 'pinterest',
+  TELEGRAM = 'telegram',
+  TWITTER = 'twitter',
+  BING = 'bing',
+  REDDIT = 'reddit',
+  GOOGLE = 'google',
+  GOOGLE_ADS = 'google ads',
+  AMAZON_ALEXA = 'amazon alexa',
+  AMAZON = 'amazon',
+  YANDEX = 'yandex',
+  YAHOO = 'yahoo',
+  HUBSPOT = 'hubspot',
+  MSN = 'msn',
+  ZOOM = 'zoom',
+  SLACK = 'slack',
+  DISCORD = 'discord',
+  SAFARI = 'safari',
+  FLIPBOARD = 'flipboard',
+  APPLE = 'apple',
+  DUCKDUCKGO = 'duckduckgo',
+  DISQUS = 'disqus',
+}
+```
+
+Esto son los actuales pero poco a poco van agregando más agents para que podamos personalizar aún más nuestras imágenes
+
+## ¿Cómo empezar con Flayyer?
+
+Primero que todo quiero comentarte que este tutorial será para React, pero si quieres saber cómo hacerlo con Vue déjamelo saber en mi [Twitter](https://twitter.com/danestves) con un DM.
+
+Ahora iniciemos creando una app de Flayyer:
+
+```bash
+yarn create flayyer-app flayyer-tutorial
+```
+
+Se te presentarán algunas opciones para crear la aplicación, para este tutorial seguiremos con la opción de `react-typescript-tailwind` (si aún no sabes de TypeScript te recomiendo [este post](/blog/react-de-prop-types-a-typescript) donde enseño TS con React), luego de elegir esa opción le damos enter y esperamos a que se cree la carpeta con la aplicación.
+
+<AlertInfo title="Nota">
+  Antes de que se termine necesitaremos una <b>FLAYYER_KEY</b> para poder hacer deploy de nuestra
+  aplicación dentro de Flayyer, para eso nos crearemos una cuenta en Flayyer y tomaremos la key de
+  nuestra cuenta, puedes{' '}
+  <a
+    aria-label="Settings | Flayyer.com platform for better links"
+    href="https://flayyer.com/dashboard/settings"
+    className="text-blue-700 font-bold"
+  >
+    ingresar aquí
+  </a>{' '}
+  . Guarda esta llave ya que la utilizaremos más adelante.
+</AlertInfo>
+
+Cuando ya se haya terminado, entramos a la carpeta e instalamos las dependencias
+
+```bash
+cd flayyer-tutorial && yarn
+```
+
+Después de instalar las dependencias nos encontraremos con esta estructura de carpetas y archivos
+
+```
+flayyer-tutorial/
+├── static/
+│   ├── background.jpg
+│   └── logo.svg
+├── templates/
+│   └── hello.tsx
+├── .eslintrc.js
+├── .gitignore
+├── flayyer.config.js
+├── package.json
+├── tsconfig.json
+├── types.d.ts
+└── README.md
+```
+
+Lo más importante es lo que está dentro de la carpeta `templates`, ahí tendremos nuestro primer archivo llamado `main.tsx`
+
+```tsx:main.tsx
+import React from "react"
+import { TemplateProps } from "@flayyer/flayyer-types";
+import classNames from "classnames";
+
+import "../styles/tailwind.css";
+
+import background from "../static/background.jpg";
+import logo from "../static/logo.svg";
+
+function Layer({ className, ...props}: React.ComponentPropsWithoutRef<"div">) {
+  return <div {...props} className={classNames("absolute inset-0", className)} />;
+}
+
+// Make sure to 'export default' a React component
+export default function MainTemplate({ variables }: TemplateProps) {
+  const {
+    title = "Hello world!",
+    img = background,
+    description,
+  } = variables;
+
+  return (
+    <>
+      <Layer>
+        <img className="w-full h-full object-cover" src={img} />
+      </Layer>
+      <Layer className="bg-gradient-to-t from-gray-500 mt-64" />
+      <Layer className="flex flex-col justify-end items-start px-12 py-12 text-white">
+        <img src={logo} className={classNames("filter-white" /* custom */, "w-36 h-36")} />
+        <h1 className="text-6xl mt-4">{title}</h1>
+        {description && (
+          <h2 className="text-4xl font-mono tracking-wider mt-2">{description}</h2>
+        )}
+      </Layer>
+    </>
+  );
+}
+```
+
+Como puedes notar es un componente como cualquier otro de React, pero la diferencia es que podemos personalizarlo como nosotros queramos para crear una `og:image` única.
+
+Recibe como parámetros las `variables` que en este caso es lo que se manda a través de la URL y que usaremos para mandar cualquier tipo de dato y renderizarlo en el componente para que al final nos entregue una imagen.
+
+En este caso la URL de una imagen se vería así:
+
+```
+?title=Hello&20Word&img=my_image.jpg&description=here%20is%20my%20description
+```
+
+Puedes notar que se mandar en formato de URL Params, no tenemos que preocuparnos porque los caracteres se vean de una manera distinta, por ejemplo los espacios son transpilados a `%20` ya Flayyer se encarga de parsear estos datos y entregarnoslo de una manera limpia en el componente de React.
+
+Ahora para ver nuestro componente iniciamos el servidor de desarrollo con
+
+```bash
+yarn start
+```
+
+<Image
+  src="/static/images/genera-automaticamente-og-image-con-react/yarn-start.png"
+  alt="Inicio de servidor de desarrollo con la terminal"
+  width={607}
+  height={342}
+/>
+
+Para ver nuestro componente ingresamos a <a aria-label="Flayyer Studio" href="https://flayyer.github.io/flayyer-studio/">Flayyer Studio</a> y tendremos la siguiente pantalla
+
+<Image
+  src="/static/images/genera-automaticamente-og-image-con-react/flayyer-studio.png"
+  alt="Flayyer Studio"
+  width={1156}
+  height={1001}
+/>
+
+Ahora esta grandiosa pantalla es donde tendremos refrescado automático cada vez que cambiamos algo en el componente y en donde le podemos pasar variables para ver cómo actúa nuestro componente:
+
+| Campo      | Descripción                                                                                                                                                         |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Base URL   | La URL de nuestro servidor local, por default `http://localhost:7777`                                                                                               |
+| Templates  | El nombre del template que queremos ver, estos nombres será el nombre del archivo dentro de la carpeta `templates`                                                  |
+| User agent | Podemos emular el agente desde donde queremos ver la imagen, por ahora tiene `default` que es el navegador y WhatsApp, pero poco a poco irán agregando más          |
+| Variables  | Y aquí se puede decir que es donde sucede la magia, es donde pasaremos todas las variables en formato JSON y jugaremos con ellas para ver cómo actúa nuestra imagen |
+
+<Image
+  src="/static/images/genera-automaticamente-og-image-con-react/flayyer-studio-play.png"
+  alt="Flayyer Studio"
+  width={1156}
+  height={1001}
+/>
+
+Ahora vamos a crear un custom component para cuando sea la vista de WhatsApp
+
+```tsx:main.tsx
+import React from "react"
+// Añade FlayyerAgentName para traer el enum que usaremos más abajo
+import { TemplateProps, FlayyerAgentName } from "@flayyer/flayyer-types";
+import classNames from "classnames";
+
+import "../styles/tailwind.css";
+
+import background from "../static/background.jpg";
+import logo from "../static/logo.svg";
+
+function Layer({ className, ...props}: React.ComponentPropsWithoutRef<"div">) {
+  return <div {...props} className={classNames("absolute inset-0", className)} />;
+}
+
+// Añade agent para poder usar esta prop también
+export default function MainTemplate({ agent, variables }: TemplateProps) {
+  const {
+    title = "Hello world!",
+    img = background,
+    description,
+  } = variables;
+
+  // Y ahora añadimos este condicional para detectar su el userAgent es WhatsApp
+  if (agent.name === FlayyerAgentName.WHATSAPP) {
+    return (
+      <Layer className="p-20 bg-white">
+        <img
+          src={logo}
+          alt={title}
+          className="w-full h-full"
+        />
+      </Layer>
+    );
+  }
+
+  return (
+    <>
+      <Layer>
+        <img className="w-full h-full object-cover" src={img} />
+      </Layer>
+      <Layer className="bg-gradient-to-t from-gray-500 mt-64" />
+      <Layer className="flex flex-col justify-end items-start px-12 py-12 text-white">
+        <img src={logo} className={classNames("filter-white" /* custom */, "w-36 h-36")} />
+        <h1 className="text-6xl mt-4">{title}</h1>
+        {description && (
+          <h2 className="text-4xl font-mono tracking-wider mt-2">{description}</h2>
+        )}
+      </Layer>
+    </>
+  );
+}
+```
+
+Con eso, ahora nos vamos a nuestro navegador y cambiamos el `User agent` a WhatsApp
+
+<Image
+  src="/static/images/genera-automaticamente-og-image-con-react/flayyer-studio-whatsapp-agent.png"
+  alt="Flayyer Studio con Whatsapp como agent"
+  width={1156}
+  height={1001}
+/>
+
+Veremos que ahora tenemos nuestra vista de cómo se vería la imagen en WhatsApp, y así podemos personalizar como nosotros queramos la vista en WhatsApp y la vista normal. Recuerda que no únicamente tenemos solo WhatsApp, tenemos toda una lista de agents que podemos utilizar para personalizar las imágenes.
+
+Ahora, de aquí en adelante te toca darle tu toque personal, cambiar colores, crear nuevo código y personalizarlo a tu manera. Por motivos del post de mi parte yo lo dejaré así de simple para que podamos continuar con la explicación.
+
+## Deploy de nuestro componente
+
+Bien, después de que ya hayamos personalizado nuestro componente ha llegado la hora de hacer deploy de nuestra app, y esto es muy sencillo. ¿Recuerdas `FLAYYER_KEY` que te comenté más arriba usaríamos más adelante? Bueno, ahora mismo la vamos a utilizar; lo primero que haremos es pausar la ejecución del servidor de desarrollo de Flayyer y ejecutamos los siguientes comandos en la terminal:
+
+```bash
+# Recuerda reemplazar el texto después del = con tu llave
+export FLAYYER_KEY=wdswermdcl8346egcsre
+```
+
+```bash
+yarn build && yarn deploy
+```
