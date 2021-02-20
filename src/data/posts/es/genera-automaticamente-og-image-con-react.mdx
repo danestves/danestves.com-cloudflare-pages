@@ -292,3 +292,50 @@ export FLAYYER_KEY=wdswermdcl8346egcsre
 ```bash
 yarn build && yarn deploy
 ```
+
+Después de que se haya terminado, nuestro template estará arriba en Flayyer para que pueda ser usado, podrás ver las propiedades de tu deploy dentro de tu cuenta en Flayyer que previamente creamos.
+
+## ¿Cómo podemos usar nuestro componente?
+
+Quiero darle mucha más visibilidad a la documentación así que te dejaré enlaces directos a cómo usar Flayyer con tu tecnología favorita, la documentación está muy bien escrita y además, ya pasaste la parte más _complicada_ que es la creación de tu componente de `og:image`:
+
+- [Next.js](https://docs.flayyer.com/guides/javascript/nextjs)
+- [Gatsby.js](https://docs.flayyer.com/guides/javascript/gatsbyjs)
+- [Express](https://docs.flayyer.com/guides/javascript/expressjs)
+- [Docusaurus.io](https://docs.flayyer.com/guides/javascript/docusaurus)
+- [Python](https://docs.flayyer.com/guides/python/flayyer)
+- [Django](https://docs.flayyer.com/guides/python/django)
+- [Ruby](https://docs.flayyer.com/guides/ruby/flayyer)
+- [Ruby on Rails](https://docs.flayyer.com/guides/ruby/rails)
+- [PHP](https://docs.flayyer.com/guides/php/flayyer)
+- [WordPress](https://docs.flayyer.com/guides/php/wordpress)
+
+## ¿Quieres ver un ejemplo corriendo?
+
+Inspecciona esta página con la consola del navegador y luego te vas al `<head>`, busca un tag llamado `og:image` y te darás cuenta cómo funciona ya arriba en producción, incluso puedes entrar a la URL de la imagen para que puedas verla tu mismo.
+
+En todo mi sitio web yo utilizo NextJS, si quieres ver cómo yo lo implemento te dejo un estracto de código y el enlace directo al archivo:
+
+```tsx:src/layouts/blog.tsx
+const flayyer = new Flayyer({
+  tenant: 'danestves',
+  deck: 'danestves',
+  template: 'blog',
+  variables: {
+    img: `https://danestves.com${frontMatter.image}`,
+    title: frontMatter.seotitle,
+    description: frontMatter.summary,
+  },
+  meta: {
+    id: frontMatter.slug,
+  },
+})
+```
+
+[Ver archivo](https://github.com/danestves/website/blob/master/src/layouts/blog.tsx#L40)
+
+## Conclusiones
+
+Como puedes ver cada vez salen más y más herramientas que nos hacen el desarrollo muchísimo más fácil cada día, ahora solo llamamos a una librería y ya hace todo el trabajo por nosotros. **Tercerizar** los servicios es para mi una de las mejores cosas de la programación, espero que este post haya sido de mucha ayuda y si quieres que haga un post sobre cómo realizar las `og:image` con Vue déjamelo saber en un comentario en Twitter y así sabré cuantas personas están interesadas por el siguiente post 🚀
+
+**- Los veo en el código 👨‍💻**
