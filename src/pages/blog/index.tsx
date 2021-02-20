@@ -45,7 +45,7 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
                   <Image
                     src={featuredPost.image}
                     width={714}
-                    height={414}
+                    height={454}
                     alt={featuredPost.title}
                   />
                 </div>
