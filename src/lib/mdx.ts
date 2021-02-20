@@ -42,7 +42,7 @@ export async function getFileBySlug(
     components: MDXComponents,
     mdxOptions: {
       remarkPlugins: [remarkCodeTitles, remarkA11yEmoji],
-      rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, mdxPrism],
+      rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }], mdxPrism],
     },
   })
 

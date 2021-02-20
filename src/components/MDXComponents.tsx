@@ -7,10 +7,16 @@ import { CodePen, YouTube, CodeSandbox, Tweet } from 'mdx-embed'
 import NextLink from './Link'
 import Cloudinary from './Cloudinary'
 import Giphy from './Giphy'
+import { Alert } from './Alert'
 
 const CustomLink = ({ href, ...rest }: React.ComponentProps<'a'> & LinkNextProps): JSX.Element => {
   const newHref = href
-  const isInternalLink = newHref && (newHref.startsWith('/') || newHref.startsWith('#'))
+  const isInternalLink = newHref && newHref.startsWith('/')
+  const isHeaderLink = newHref && newHref.startsWith('#')
+
+  if (isHeaderLink) {
+    return <a {...rest} href={newHref} />
+  }
 
   if (isInternalLink) {
     return <NextLink {...rest} href={newHref} />
@@ -28,6 +34,7 @@ const MDXComponents = {
   CodeSandbox,
   Cloudinary,
   Giphy,
+  AlertInfo: Alert.Info,
 }
 
 export default MDXComponents
