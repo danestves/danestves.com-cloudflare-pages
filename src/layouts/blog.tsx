@@ -5,7 +5,7 @@ import { ArticleJsonLd } from 'next-seo'
 import { window } from 'browser-monads'
 import { useRouter } from 'next/dist/client/router'
 import { useI18n } from 'next-rosetta'
-import { Flayyer } from '@flayyer/flayyer'
+import { FlayyerIO } from '@flayyer/flayyer'
 
 // Components
 import { SEO, ViewsCounter, Subscribe } from '@/components'
@@ -37,7 +37,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
   const { locale } = useRouter()
   const { t } = useI18n<MyLocale>()
 
-  const flayyer = new Flayyer({
+  const flayyer = new FlayyerIO({
     tenant: 'danestves',
     deck: 'danestves',
     template: 'blog',

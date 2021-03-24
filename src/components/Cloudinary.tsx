@@ -58,7 +58,7 @@ const Cloudinary: React.FunctionComponent<Props> = ({
 
   return (
     <GeneralObserver>
-      <div className="embed-responsive aspect-ratio-16/9">
+      <div className="aspect-w-16 aspect-h-9">
         <iframe
           title={title || ''}
           src={`https://player.cloudinary.com/embed/?public_id=${publicID}&cloud_name=${cloudName}&player%5Bfluid%5D=${fluid}&player%5Bcontrols%5D=${controls}&player%5Bcontrol_bar%5D%5Bfullscreen_toggle%5D=${fullscreen}&player%5Bshow_jump_controls%5D=${jumpControls}&player%5Bmuted%5D=${muted}&player%5Bcolors%5D%5Bbase%5D=${base}&player%5Bcolors%5D%5Baccent%5D=${accent}&player%5Bcolors%5D%5Btext%5D=${color}${logoOnClick}&${logoImage}${autoPlayMode}&player%5Bautoplay%5D=${autoPlay}&player%5Bloop%5D=${loop}&source%5Binfo%5D%5Btitle%5D=${encodedTitle}&source%5Binfo%5D%5Bsubtitle%5D=${encodedSubtitle}${

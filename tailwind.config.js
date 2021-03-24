@@ -10,28 +10,6 @@ module.exports = {
   important: true,
   theme: {
     extend: {
-      aspectRatio: {
-        none: 0,
-        square: [1, 1],
-        '16/9': [16, 9],
-        '4/3': [4, 3],
-        '21/9': [21, 9],
-      },
-      backdropFilter: {
-        none: `none`,
-        'blur-0': 'blur(0px)',
-        'blur-px': 'blur(1px)',
-        'blur-0.5': 'blur(0.125rem)',
-        'blur-1': 'blur(0.25rem)',
-        'blur-1.5': 'blur(0.375rem)',
-        'blur-2': 'blur(0.5rem)',
-        'blur-2.5': 'blur(0.625rem)',
-        'blur-3': 'blur(0.75rem)',
-        'blur-3.5': 'blur(0.875rem)',
-        'blur-4': 'blur(1rem)',
-        'blur-5': 'blur(1.25rem)',
-        'blur-6': 'blur(1.5rem)',
-      },
       borderRadius: {
         '2xl': `2rem`,
       },
@@ -58,12 +36,6 @@ module.exports = {
       container: {
         center: true,
       },
-      filter: {
-        none: `none`,
-        grayscale: `grayscale(1)`,
-        invert: `invert(1)`,
-        sepia: `sepia(1)`,
-      },
       fontSize: {
         '7xl': `5rem`,
         '8xl': `6rem`,
@@ -78,13 +50,8 @@ module.exports = {
       inset: {
         '1/2': `50%`,
       },
-      maxHeight: {
-        0: `0`,
-        64: `16rem`,
-      },
-      minHeight: {
-        20: `5rem`,
-      },
+      maxHeight: (theme) => theme('spacing'),
+      minHeight: (theme) => theme('spacing'),
       textOpacity: {
         90: `0.90`,
       },
@@ -149,11 +116,9 @@ module.exports = {
     extend: {
       aspectRatio: [`responsive`],
       backgroundColor: [`group-hover`],
-      backdropFilter: [`responsive`, `hover`],
       borderColor: [`first`, `last`],
       borderWidth: [`first`, `last`],
       boxShadow: [`responsive`, `hover`, `focus`],
-      filter: [`responsive`],
       fontSize: [`group-hover`],
       margin: [`first`, `last`, `group-hover`],
       opacity: [`group-hover`, `disabled`],
@@ -165,10 +130,5 @@ module.exports = {
       translate: [`group-hover`],
     },
   },
-  plugins: [
-    require(`@tailwindcss/typography`),
-    require(`tailwindcss-filters`),
-    require(`tailwindcss-responsive-embed`),
-    require(`tailwindcss-aspect-ratio`),
-  ],
+  plugins: [require(`@tailwindcss/typography`), require('@tailwindcss/aspect-ratio')],
 }
