@@ -1,3 +1,6 @@
+import { MdxRemote } from 'next-mdx-remote/types'
+import { NodeRelationships } from 'next-mdx'
+
 export interface Repository {
   id: number
   node_id: string
@@ -83,25 +86,41 @@ export interface Repository {
 }
 
 export interface FrontMatterPost {
-  wordCount: number
-  slug: string
-  title: string
-  seotitle: string
-  publishedAt: string
-  summary: string
   image: string
+  publishedAt: string
+  seotitle: string
+  summary: string
+  title: string
+  wordCount: number
 }
 
 export interface FrontMatterPortfolio {
-  wordCount: number
-  slug: string
-  title: string
-  seotitle: string
-  publishedAt: string
-  summary: string
   image: string
-  og: string
-  url: string
   industry: string
+  og: string
+  publishedAt: string
+  seotitle: string
+  summary: string
   technologies: string[]
+  title: string
+  url: string
+  wordCount: number
+}
+
+export interface MDXResult {
+  content: string
+  filepath: string
+  hash: string
+  mdx: MdxRemote.Source
+  relationships?: NodeRelationships
+  slug: string
+  url: string
+}
+
+export interface Post extends MDXResult {
+  frontMatter: FrontMatterPost
+}
+
+export interface Portfolio extends MDXResult {
+  frontMatter: FrontMatterPortfolio
 }

@@ -3,21 +3,19 @@ import { NextPage, GetStaticProps } from 'next'
 import Image from 'next/image'
 import { useI18n, I18nProps } from 'next-rosetta'
 import { useRouter } from 'next/dist/client/router'
+import { getAllNodes } from 'next-mdx/server'
 
 // Components
 import { SEO, Link } from '@/components'
 
 // Interfaces
-import { FrontMatterPortfolio } from '@/interfaces'
-
-// Libraries
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { Portfolio } from '@/interfaces'
 
 // Locales
 import type { MyLocale } from 'i18n'
 
 interface Props {
-  portfolios: FrontMatterPortfolio[]
+  portfolios: Portfolio[]
 }
 
 const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
@@ -45,13 +43,18 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
               className="grid items-center grid-cols-1 gap-6 overflow-hidden rounded-lg md:grid-cols-2 group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
             >
               <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg">
-                <Image src={portfolio.image} width={736} height={414} alt={portfolio.title} />
+                <Image
+                  src={portfolio.frontMatter.image}
+                  width={736}
+                  height={414}
+                  alt={portfolio.frontMatter.title}
+                />
               </div>
               <div>
                 <h2 className="mb-4 text-4xl leading-tight text-white group-hover:underline">
-                  {portfolio.title}
+                  {portfolio.frontMatter.title}
                 </h2>
-                <p className="text-white">{portfolio.summary}</p>
+                <p className="text-white">{portfolio.frontMatter.summary}</p>
                 <div className="flex mt-4">
                   <button
                     type="button"
@@ -72,14 +75,18 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
 export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const portfolios = await getAllFilesFrontMatter('portfolios', locale as string)
+  // @ts-ignore: the type has the required values
+  const portfolios = await getAllNodes<Portfolio>(`portfolio/${locale}`)
+  const sortedPortfolios = portfolios.sort((a: Portfolio, b: Portfolio) => {
+    return (
+      new Date(b.frontMatter.publishedAt).getTime() - new Date(a.frontMatter.publishedAt).getTime()
+    )
+  })
 
   return {
     props: {
       table,
-      portfolios: portfolios.sort((a: FrontMatterPortfolio, b: FrontMatterPortfolio) => {
-        return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-      }),
+      portfolios: sortedPortfolios,
     },
   }
 }

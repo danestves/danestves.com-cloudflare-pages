@@ -8,7 +8,7 @@ import { useRouter } from 'next/dist/client/router'
 import { Link } from '@/components'
 
 // Interfaces
-import { FrontMatterPost } from '@/interfaces'
+import { Post } from '@/interfaces'
 
 // Locales
 import type { MyLocale } from 'i18n'
@@ -16,7 +16,10 @@ import type { MyLocale } from 'i18n'
 // Utils
 import { formatDate } from '@/utils'
 
-const BlogCard = ({ slug, image, title, publishedAt, summary }: FrontMatterPost): JSX.Element => {
+const BlogCard = ({
+  slug,
+  frontMatter: { image, title, publishedAt, summary },
+}: Post): JSX.Element => {
   const { t } = useI18n<MyLocale>()
   const { locale } = useRouter()
 

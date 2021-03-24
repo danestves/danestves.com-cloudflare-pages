@@ -30,10 +30,11 @@ const discussUrl = (slug: string): string => {
 
 interface Props {
   frontMatter: FrontMatterPost
+  slug: string
   children: ReactNode
 }
 
-export default function BlogLayout({ frontMatter, children }: Props): JSX.Element {
+export default function BlogLayout({ frontMatter, slug, children }: Props): JSX.Element {
   const { locale } = useRouter()
   const { t } = useI18n<MyLocale>()
 
@@ -47,7 +48,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
       description: frontMatter.summary,
     },
     meta: {
-      id: frontMatter.slug,
+      id: slug,
     },
   })
 
@@ -122,7 +123,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
                   {readingTime({ wordCount: frontMatter.wordCount, lang: locale })}
                 </p>
                 <p className="text-white">
-                  <ViewsCounter slug={frontMatter.slug} />
+                  <ViewsCounter slug={slug} />
                 </p>
               </div>
             </div>
@@ -136,7 +137,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
 
           <div className="flex items-center justify-start mt-6 space-x-3">
             <a
-              href={editUrl(frontMatter.slug, locale as string)}
+              href={editUrl(slug, locale as string)}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white underline"
@@ -144,7 +145,7 @@ export default function BlogLayout({ frontMatter, children }: Props): JSX.Elemen
               {t('blog.editOnGitHub')}
             </a>
             <a
-              href={discussUrl(frontMatter.slug)}
+              href={discussUrl(slug)}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white underline"

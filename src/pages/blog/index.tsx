@@ -4,12 +4,13 @@ import Image from 'next/image'
 import { useI18n, I18nProps } from 'next-rosetta'
 import { useRouter } from 'next/dist/client/router'
 
+import { getAllNodes } from 'next-mdx/server'
+
 // Components
 import { SEO, Link, BlogCard } from '@/components'
 
-// Libraries
-import { FrontMatterPost } from '@/interfaces'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+// Interface
+import { Post } from '@/interfaces'
 
 // Locales
 import type { MyLocale } from 'i18n'
@@ -18,8 +19,8 @@ import type { MyLocale } from 'i18n'
 import { formatDate } from '@/utils'
 
 interface Props {
-  featuredPost: FrontMatterPost
-  posts: FrontMatterPost[]
+  featuredPost: Post
+  posts: Post[]
 }
 
 const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
@@ -43,27 +44,29 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
               <div className="lg:col-span-7">
                 <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
                   <Image
-                    src={featuredPost.image}
+                    src={featuredPost.frontMatter.image}
                     width={714}
                     height={454}
-                    alt={featuredPost.title}
+                    alt={featuredPost.frontMatter.title}
                   />
                 </div>
               </div>
 
               <div className="mt-6 lg:col-span-5">
                 <h2 className="text-4xl font-semibold leading-tight text-white lg:text-5xl group-hover:underline group-focus:underline">
-                  {featuredPost.title}
+                  {featuredPost.frontMatter.title}
                 </h2>
                 <p className="mb-2 text-base text-white lg:text-lg">
                   {t('blog.publishedAt')}{' '}
                   {formatDate(
-                    new Date(featuredPost.publishedAt).toISOString().slice(0, 19),
+                    new Date(featuredPost.frontMatter.publishedAt).toISOString().slice(0, 19),
                     'MMM. d yyy',
                     locale
                   )}
                 </p>
-                <p className="my-4 text-lg text-white lg:text-xl">{featuredPost.summary}</p>
+                <p className="my-4 text-lg text-white lg:text-xl">
+                  {featuredPost.frontMatter.summary}
+                </p>
               </div>
             </div>
           </Link>
@@ -82,9 +85,12 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
 export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const posts = await getAllFilesFrontMatter('posts', locale as string)
-  const sortedPosts = posts.sort((a: FrontMatterPost, b: FrontMatterPost) => {
-    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  // @ts-ignore: the type has the required values
+  const posts = await getAllNodes<Post>(`blog/${locale}`)
+  const sortedPosts = posts.sort((a: Post, b: Post) => {
+    return (
+      new Date(b.frontMatter.publishedAt).getTime() - new Date(a.frontMatter.publishedAt).getTime()
+    )
   })
 
   return {
