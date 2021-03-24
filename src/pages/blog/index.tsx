@@ -3,7 +3,6 @@ import { NextPage, GetStaticProps } from 'next'
 import Image from 'next/image'
 import { useI18n, I18nProps } from 'next-rosetta'
 import { useRouter } from 'next/dist/client/router'
-
 import { getAllNodes } from 'next-mdx/server'
 
 // Components

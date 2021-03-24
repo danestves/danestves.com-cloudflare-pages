@@ -2,21 +2,19 @@
 import { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import { useI18n, I18nProps } from 'next-rosetta'
+import { getAllNodes } from 'next-mdx/server'
 
 // Components
 import { Link, BlogCard } from '@/components'
 
 // Interfaces
-import { FrontMatterPost } from '@/interfaces'
-
-// Libraries
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { Post } from '@/interfaces'
 
 // Locales
 import type { MyLocale } from 'i18n'
 
 interface Props {
-  posts: FrontMatterPost[]
+  posts: Post[]
 }
 
 const Index: NextPage<Props> = ({ posts }) => {
@@ -159,10 +157,13 @@ const Index: NextPage<Props> = ({ posts }) => {
 
 export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
   const locale = context.locale || context.defaultLocale
-  const posts = await getAllFilesFrontMatter('posts', locale as string)
   const { table = {} } = await import(`i18n/${locale}`)
-  const sortedPosts = posts.sort((a: FrontMatterPost, b: FrontMatterPost) => {
-    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  // @ts-ignore: the type has the required values
+  const posts = await getAllNodes<Post>(`blog/${locale}`)
+  const sortedPosts = posts.sort((a: Post, b: Post) => {
+    return (
+      new Date(b.frontMatter.publishedAt).getTime() - new Date(a.frontMatter.publishedAt).getTime()
+    )
   })
 
   return {
