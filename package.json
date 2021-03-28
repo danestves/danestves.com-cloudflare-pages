@@ -16,7 +16,6 @@
     "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config --config codegen.yml"
   },
   "dependencies": {
-    "@danestves/graphcms-react-image": "^1.0.1",
     "@fec/remark-a11y-emoji": "^3.1.0",
     "@flayyer/flayyer": "^2.0.0",
     "@giphy/js-fetch-api": "^2.4.0",
