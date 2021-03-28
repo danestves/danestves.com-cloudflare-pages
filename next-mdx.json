@@ -1,16 +1,4 @@
 {
-  "blog/en": {
-    "contentPath": "src/data/posts/en",
-    "basePath": "/blog",
-    "sortBy": "publishedAt",
-    "sortOrder": "desc"
-  },
-  "blog/es": {
-    "contentPath": "src/data/posts/es",
-    "basePath": "/blog",
-    "sortBy": "publishedAt",
-    "sortOrder": "desc"
-  },
   "portfolio/en": {
     "contentPath": "src/data/portfolios/en",
     "basePath": "/portafolio",

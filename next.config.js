@@ -12,13 +12,23 @@ module.exports = withProgressBar(
       defaultLocale: 'es',
     },
     images: {
-      domains: ['github-readme-stats.danestves.com', 'raw.githubusercontent.com'],
+      domains: [
+        'github-readme-stats.danestves.com',
+        'raw.githubusercontent.com',
+        'media.graphcms.com',
+      ],
     },
     webpack: (config, { dev, isServer }) => {
       if (isServer) {
         require('./src/scripts/generate-sitemap')
         require('./src/scripts/generate-rss')
       }
+
+      config.module.rules.push({
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      })
 
       // Replace React with Preact only in client production build
       if (!dev && !isServer) {

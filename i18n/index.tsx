@@ -86,6 +86,12 @@ export interface MyLocale {
     }
     publishedAt: string
     visits: string
+    alert: {
+      text: string
+      button: {
+        label: string
+      }
+    }
     editOnGitHub: string
     commentOnTwitter: string
   }

@@ -1,0 +1,6 @@
+query getAllPostsWithSlug($locale: Locale!) {
+  posts(orderBy: published_DESC, locales: [$locale]) {
+    id
+    slug
+  }
+}

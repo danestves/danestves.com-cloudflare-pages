@@ -133,6 +133,12 @@ export const table: MyLocale = {
     },
     publishedAt: 'Publicado en',
     visits: 'visitas',
+    alert: {
+      text: 'If you are searching for the english version',
+      button: {
+        label: 'Click here',
+      },
+    },
     editOnGitHub: 'Editar en GitHub',
     commentOnTwitter: 'Comentar en Twitter',
   },

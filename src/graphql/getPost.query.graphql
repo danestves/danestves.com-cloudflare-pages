@@ -1,0 +1,25 @@
+query getPost($id: ID!, $stage: Stage!, $locale: Locale!) {
+  post(where: { id: $id }, stage: $stage, locales: [$locale]) {
+    localizations {
+      locale
+      id
+      slug
+    }
+    id
+    updatedAt
+    title
+    slug
+    published
+    cover(locales: [$locale]) {
+      handle
+      height
+      width
+    }
+    body
+    seo(locales: [$locale]) {
+      locale
+      title
+      description
+    }
+  }
+}

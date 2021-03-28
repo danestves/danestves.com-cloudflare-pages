@@ -10,9 +10,18 @@ const CustomLink: React.FC<LinkProps> = ({
   replace,
   scroll,
   shallow,
+  locale,
   ...rest
 }) => (
-  <Link href={href} as={as} replace={replace} scroll={scroll} shallow={shallow} passHref={passHref}>
+  <Link
+    href={href}
+    as={as}
+    replace={replace}
+    scroll={scroll}
+    shallow={shallow}
+    passHref={passHref}
+    locale={locale}
+  >
     <a {...rest} />
   </Link>
 )

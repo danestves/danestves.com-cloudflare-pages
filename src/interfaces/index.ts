@@ -1,6 +1,9 @@
 import { MdxRemote } from 'next-mdx-remote/types'
 import { NodeRelationships } from 'next-mdx'
 
+// @types
+import { Asset as GraphCmsAsset } from '@/generated/graphql'
+
 export interface Repository {
   id: number
   node_id: string
@@ -83,6 +86,11 @@ export interface Repository {
   open_issues: number
   watchers: number
   default_branch: string
+}
+
+export interface Asset extends GraphCmsAsset {
+  height: number
+  width: number
 }
 
 export interface FrontMatterPost {
