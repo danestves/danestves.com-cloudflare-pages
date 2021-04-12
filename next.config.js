@@ -54,8 +54,8 @@ module.exports = withProgressBar(
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com;
-  child-src *.youtube.com *.google.com *.twitter.com *.codepen.io *.cloudinary.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com plausible.io;
+  child-src *.youtube.com *.google.com *.twitter.com *.codepen.io *.cloudinary.com *.codesandbox.io;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
   media-src 'none';
