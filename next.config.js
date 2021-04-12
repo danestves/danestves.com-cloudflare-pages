@@ -19,11 +19,6 @@ module.exports = withProgressBar(
       ],
     },
     webpack: (config, { dev, isServer }) => {
-      if (isServer) {
-        require('./src/scripts/generate-sitemap')
-        require('./src/scripts/generate-rss')
-      }
-
       config.module.rules.push({
         test: /\.(graphql|gql)$/,
         exclude: /node_modules/,

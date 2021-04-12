@@ -1,6 +1,7 @@
 const { fontFamily, spacing } = require(`tailwindcss/defaultTheme`)
 
 module.exports = {
+  mode: 'jit',
   purge: [
     './src/components/**/*.{ts,tsx}',
     './src/layouts/**/*.{ts,tsx}',
@@ -110,24 +111,6 @@ module.exports = {
       zIndex: {
         100: 100,
       },
-    },
-  },
-  variants: {
-    extend: {
-      aspectRatio: [`responsive`],
-      backgroundColor: [`group-hover`],
-      borderColor: [`first`, `last`],
-      borderWidth: [`first`, `last`],
-      boxShadow: [`responsive`, `hover`, `focus`],
-      fontSize: [`group-hover`],
-      margin: [`first`, `last`, `group-hover`],
-      opacity: [`group-hover`, `disabled`],
-      padding: [`responsive`],
-      placeholderColor: [`focus`],
-      scale: [`group-hover`],
-      space: [`group-hover`],
-      textColor: [`group-hover`],
-      translate: [`group-hover`],
     },
   },
   plugins: [require(`@tailwindcss/typography`), require('@tailwindcss/aspect-ratio')],
