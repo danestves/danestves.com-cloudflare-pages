@@ -61,6 +61,7 @@ const ContentSecurityPolicy = `
   media-src 'none';
   connect-src *;
   font-src 'self' *.amazonaws.com;
+  worker-src 'self';
 `
 
 const securityHeaders = [
