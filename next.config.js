@@ -60,7 +60,7 @@ const ContentSecurityPolicy = `
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
-  font-src 'self' data:;
+  font-src 'self' *.amazonaws.com;
 `
 
 const securityHeaders = [

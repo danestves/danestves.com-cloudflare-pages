@@ -50,6 +50,7 @@ const SEO = ({
         images: [{ url: shareImage }],
         site_name: parsedTitle,
         type,
+        locale: router.locale,
       }}
       twitter={{
         handle: '@danestves',
