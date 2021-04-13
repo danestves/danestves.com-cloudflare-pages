@@ -63,6 +63,7 @@ const ContentSecurityPolicy = `
   font-src 'self' *.amazonaws.com;
   worker-src 'self';
   object-src *.danestves.com;
+  frame-src *.danestves.com;
 `
 
 const securityHeaders = [
