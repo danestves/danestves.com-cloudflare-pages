@@ -68,6 +68,7 @@ export type Asset = Node & {
   mimeType?: Maybe<Scalars['String']>
   imageSeo: Array<Seo>
   coverPost: Array<Post>
+  coverPortfolio: Array<Portfolio>
   /** List of Asset versions */
   history: Array<Version>
   /** Get the url for the asset with provided transformations applied. */
@@ -142,6 +143,18 @@ export type AssetCoverPostArgs = {
 }
 
 /** Asset system model */
+export type AssetCoverPortfolioArgs = {
+  where?: Maybe<PortfolioWhereInput>
+  orderBy?: Maybe<PortfolioOrderByInput>
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  locales?: Maybe<Array<Locale>>
+}
+
+/** Asset system model */
 export type AssetHistoryArgs = {
   limit?: Scalars['Int']
   skip?: Scalars['Int']
@@ -181,6 +194,7 @@ export type AssetCreateInput = {
   mimeType?: Maybe<Scalars['String']>
   imageSeo?: Maybe<SeoCreateManyInlineInput>
   coverPost?: Maybe<PostCreateManyInlineInput>
+  coverPortfolio?: Maybe<PortfolioCreateManyInlineInput>
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: Maybe<AssetCreateLocalizationsInput>
 }
@@ -313,6 +327,9 @@ export type AssetManyWhereInput = {
   coverPost_every?: Maybe<PostWhereInput>
   coverPost_some?: Maybe<PostWhereInput>
   coverPost_none?: Maybe<PostWhereInput>
+  coverPortfolio_every?: Maybe<PortfolioWhereInput>
+  coverPortfolio_some?: Maybe<PortfolioWhereInput>
+  coverPortfolio_none?: Maybe<PortfolioWhereInput>
 }
 
 export enum AssetOrderByInput {
@@ -355,6 +372,7 @@ export type AssetUpdateInput = {
   mimeType?: Maybe<Scalars['String']>
   imageSeo?: Maybe<SeoUpdateManyInlineInput>
   coverPost?: Maybe<PostUpdateManyInlineInput>
+  coverPortfolio?: Maybe<PortfolioUpdateManyInlineInput>
   /** Manage document localizations */
   localizations?: Maybe<AssetUpdateLocalizationsInput>
 }
@@ -662,6 +680,9 @@ export type AssetWhereInput = {
   coverPost_every?: Maybe<PostWhereInput>
   coverPost_some?: Maybe<PostWhereInput>
   coverPost_none?: Maybe<PostWhereInput>
+  coverPortfolio_every?: Maybe<PortfolioWhereInput>
+  coverPortfolio_some?: Maybe<PortfolioWhereInput>
+  coverPortfolio_none?: Maybe<PortfolioWhereInput>
 }
 
 /** References Asset record uniquely */
@@ -861,6 +882,46 @@ export type Mutation = {
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
    */
   unpublishManyAssets: BatchPayload
+  /** Create one portfolio */
+  createPortfolio?: Maybe<Portfolio>
+  /** Update one portfolio */
+  updatePortfolio?: Maybe<Portfolio>
+  /** Delete one portfolio from _all_ existing stages. Returns deleted document. */
+  deletePortfolio?: Maybe<Portfolio>
+  /** Upsert one portfolio */
+  upsertPortfolio?: Maybe<Portfolio>
+  /** Publish one portfolio */
+  publishPortfolio?: Maybe<Portfolio>
+  /** Unpublish one portfolio from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishPortfolio?: Maybe<Portfolio>
+  /** Update many Portfolio documents */
+  updateManyPortfoliosConnection: PortfolioConnection
+  /** Delete many Portfolio documents, return deleted documents */
+  deleteManyPortfoliosConnection: PortfolioConnection
+  /** Publish many Portfolio documents */
+  publishManyPortfoliosConnection: PortfolioConnection
+  /** Find many Portfolio documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyPortfoliosConnection: PortfolioConnection
+  /**
+   * Update many portfolios
+   * @deprecated Please use the new paginated many mutation (updateManyPortfoliosConnection)
+   */
+  updateManyPortfolios: BatchPayload
+  /**
+   * Delete many Portfolio documents
+   * @deprecated Please use the new paginated many mutation (deleteManyPortfoliosConnection)
+   */
+  deleteManyPortfolios: BatchPayload
+  /**
+   * Publish many Portfolio documents
+   * @deprecated Please use the new paginated many mutation (publishManyPortfoliosConnection)
+   */
+  publishManyPortfolios: BatchPayload
+  /**
+   * Unpublish many Portfolio documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyPortfoliosConnection)
+   */
+  unpublishManyPortfolios: BatchPayload
   /** Create one post */
   createPost?: Maybe<Post>
   /** Update one post */
@@ -1041,6 +1102,109 @@ export type MutationPublishManyAssetsArgs = {
 
 export type MutationUnpublishManyAssetsArgs = {
   where?: Maybe<AssetManyWhereInput>
+  from?: Array<Stage>
+  locales?: Maybe<Array<Locale>>
+  unpublishBase?: Maybe<Scalars['Boolean']>
+}
+
+export type MutationCreatePortfolioArgs = {
+  data: PortfolioCreateInput
+}
+
+export type MutationUpdatePortfolioArgs = {
+  where: PortfolioWhereUniqueInput
+  data: PortfolioUpdateInput
+}
+
+export type MutationDeletePortfolioArgs = {
+  where: PortfolioWhereUniqueInput
+}
+
+export type MutationUpsertPortfolioArgs = {
+  where: PortfolioWhereUniqueInput
+  upsert: PortfolioUpsertInput
+}
+
+export type MutationPublishPortfolioArgs = {
+  where: PortfolioWhereUniqueInput
+  locales?: Maybe<Array<Locale>>
+  publishBase?: Maybe<Scalars['Boolean']>
+  withDefaultLocale?: Maybe<Scalars['Boolean']>
+  to?: Array<Stage>
+}
+
+export type MutationUnpublishPortfolioArgs = {
+  where: PortfolioWhereUniqueInput
+  from?: Array<Stage>
+  locales?: Maybe<Array<Locale>>
+  unpublishBase?: Maybe<Scalars['Boolean']>
+}
+
+export type MutationUpdateManyPortfoliosConnectionArgs = {
+  where?: Maybe<PortfolioManyWhereInput>
+  data: PortfolioUpdateManyInput
+  skip?: Maybe<Scalars['Int']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['ID']>
+  after?: Maybe<Scalars['ID']>
+}
+
+export type MutationDeleteManyPortfoliosConnectionArgs = {
+  where?: Maybe<PortfolioManyWhereInput>
+  skip?: Maybe<Scalars['Int']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['ID']>
+  after?: Maybe<Scalars['ID']>
+}
+
+export type MutationPublishManyPortfoliosConnectionArgs = {
+  where?: Maybe<PortfolioManyWhereInput>
+  from?: Maybe<Stage>
+  to?: Array<Stage>
+  skip?: Maybe<Scalars['Int']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['ID']>
+  after?: Maybe<Scalars['ID']>
+  locales?: Maybe<Array<Locale>>
+  publishBase?: Maybe<Scalars['Boolean']>
+  withDefaultLocale?: Maybe<Scalars['Boolean']>
+}
+
+export type MutationUnpublishManyPortfoliosConnectionArgs = {
+  where?: Maybe<PortfolioManyWhereInput>
+  stage?: Maybe<Stage>
+  from?: Array<Stage>
+  skip?: Maybe<Scalars['Int']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  before?: Maybe<Scalars['ID']>
+  after?: Maybe<Scalars['ID']>
+  locales?: Maybe<Array<Locale>>
+  unpublishBase?: Maybe<Scalars['Boolean']>
+}
+
+export type MutationUpdateManyPortfoliosArgs = {
+  where?: Maybe<PortfolioManyWhereInput>
+  data: PortfolioUpdateManyInput
+}
+
+export type MutationDeleteManyPortfoliosArgs = {
+  where?: Maybe<PortfolioManyWhereInput>
+}
+
+export type MutationPublishManyPortfoliosArgs = {
+  where?: Maybe<PortfolioManyWhereInput>
+  to?: Array<Stage>
+  locales?: Maybe<Array<Locale>>
+  publishBase?: Maybe<Scalars['Boolean']>
+  withDefaultLocale?: Maybe<Scalars['Boolean']>
+}
+
+export type MutationUnpublishManyPortfoliosArgs = {
+  where?: Maybe<PortfolioManyWhereInput>
   from?: Array<Stage>
   locales?: Maybe<Array<Locale>>
   unpublishBase?: Maybe<Scalars['Boolean']>
@@ -1273,6 +1437,628 @@ export type PageInfo = {
   endCursor?: Maybe<Scalars['String']>
   /** Number of items in the current page. */
   pageSize?: Maybe<Scalars['Int']>
+}
+
+export type Portfolio = Node & {
+  __typename?: 'Portfolio'
+  /** System stage field */
+  stage: Stage
+  /** System Locale field */
+  locale: Locale
+  /** Get the other localizations for this document */
+  localizations: Array<Portfolio>
+  /** Get the document in other stages */
+  documentInStages: Array<Portfolio>
+  /** The unique identifier */
+  id: Scalars['ID']
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']
+  /** User that created this document */
+  createdBy?: Maybe<User>
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>
+  /** User that last published this document */
+  publishedBy?: Maybe<User>
+  title: Scalars['String']
+  slug: Scalars['String']
+  cover: Asset
+  industry: Scalars['String']
+  technologies: Array<Scalars['String']>
+  project_url: Scalars['String']
+  body: Scalars['String']
+  seo?: Maybe<Seo>
+  /** List of Portfolio versions */
+  history: Array<Version>
+}
+
+export type PortfolioLocalizationsArgs = {
+  locales?: Array<Locale>
+  includeCurrent?: Scalars['Boolean']
+}
+
+export type PortfolioDocumentInStagesArgs = {
+  stages?: Array<Stage>
+  includeCurrent?: Scalars['Boolean']
+  inheritLocale?: Scalars['Boolean']
+}
+
+export type PortfolioCreatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation
+}
+
+export type PortfolioCreatedByArgs = {
+  locales?: Maybe<Array<Locale>>
+}
+
+export type PortfolioUpdatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation
+}
+
+export type PortfolioUpdatedByArgs = {
+  locales?: Maybe<Array<Locale>>
+}
+
+export type PortfolioPublishedAtArgs = {
+  variation?: SystemDateTimeFieldVariation
+}
+
+export type PortfolioPublishedByArgs = {
+  locales?: Maybe<Array<Locale>>
+}
+
+export type PortfolioCoverArgs = {
+  locales?: Maybe<Array<Locale>>
+}
+
+export type PortfolioSeoArgs = {
+  locales?: Maybe<Array<Locale>>
+}
+
+export type PortfolioHistoryArgs = {
+  limit?: Scalars['Int']
+  skip?: Scalars['Int']
+  stageOverride?: Maybe<Stage>
+}
+
+export type PortfolioConnectInput = {
+  /** Document to connect */
+  where: PortfolioWhereUniqueInput
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: Maybe<ConnectPositionInput>
+}
+
+/** A connection to a list of items. */
+export type PortfolioConnection = {
+  __typename?: 'PortfolioConnection'
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** A list of edges. */
+  edges: Array<PortfolioEdge>
+  aggregate: Aggregate
+}
+
+export type PortfolioCreateInput = {
+  createdAt?: Maybe<Scalars['DateTime']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+  /** title input for default locale (es) */
+  title: Scalars['String']
+  /** slug input for default locale (es) */
+  slug: Scalars['String']
+  cover: AssetCreateOneInlineInput
+  /** industry input for default locale (es) */
+  industry: Scalars['String']
+  technologies: Array<Scalars['String']>
+  project_url: Scalars['String']
+  /** body input for default locale (es) */
+  body: Scalars['String']
+  seo?: Maybe<SeoCreateOneInlineInput>
+  /** Inline mutations for managing document localizations excluding the default locale */
+  localizations?: Maybe<PortfolioCreateLocalizationsInput>
+}
+
+export type PortfolioCreateLocalizationDataInput = {
+  createdAt?: Maybe<Scalars['DateTime']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+  title: Scalars['String']
+  slug: Scalars['String']
+  industry: Scalars['String']
+  body: Scalars['String']
+}
+
+export type PortfolioCreateLocalizationInput = {
+  /** Localization input */
+  data: PortfolioCreateLocalizationDataInput
+  locale: Locale
+}
+
+export type PortfolioCreateLocalizationsInput = {
+  /** Create localizations for the newly-created document */
+  create?: Maybe<Array<PortfolioCreateLocalizationInput>>
+}
+
+export type PortfolioCreateManyInlineInput = {
+  /** Create and connect multiple existing Portfolio documents */
+  create?: Maybe<Array<PortfolioCreateInput>>
+  /** Connect multiple existing Portfolio documents */
+  connect?: Maybe<Array<PortfolioWhereUniqueInput>>
+}
+
+export type PortfolioCreateOneInlineInput = {
+  /** Create and connect one Portfolio document */
+  create?: Maybe<PortfolioCreateInput>
+  /** Connect one existing Portfolio document */
+  connect?: Maybe<PortfolioWhereUniqueInput>
+}
+
+/** An edge in a connection. */
+export type PortfolioEdge = {
+  __typename?: 'PortfolioEdge'
+  /** The item at the end of the edge. */
+  node: Portfolio
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']
+}
+
+/** Identifies documents */
+export type PortfolioManyWhereInput = {
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<PortfolioWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<PortfolioWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<PortfolioWhereInput>>
+  id?: Maybe<Scalars['ID']>
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>
+  createdAt?: Maybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>
+  createdBy?: Maybe<UserWhereInput>
+  updatedAt?: Maybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>
+  updatedBy?: Maybe<UserWhereInput>
+  publishedAt?: Maybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>
+  publishedBy?: Maybe<UserWhereInput>
+  cover?: Maybe<AssetWhereInput>
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  technologies?: Maybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  technologies_not?: Maybe<Array<Scalars['String']>>
+  /** Matches if the field array contains *all* items provided to the filter */
+  technologies_contains_all?: Maybe<Array<Scalars['String']>>
+  /** Matches if the field array contains at least one item provided to the filter */
+  technologies_contains_some?: Maybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  technologies_contains_none?: Maybe<Array<Scalars['String']>>
+  project_url?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  project_url_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  project_url_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  project_url_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  project_url_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  project_url_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  project_url_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  project_url_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  project_url_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  project_url_not_ends_with?: Maybe<Scalars['String']>
+  seo?: Maybe<SeoWhereInput>
+}
+
+export enum PortfolioOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  IndustryAsc = 'industry_ASC',
+  IndustryDesc = 'industry_DESC',
+  TechnologiesAsc = 'technologies_ASC',
+  TechnologiesDesc = 'technologies_DESC',
+  ProjectUrlAsc = 'project_url_ASC',
+  ProjectUrlDesc = 'project_url_DESC',
+  BodyAsc = 'body_ASC',
+  BodyDesc = 'body_DESC',
+}
+
+export type PortfolioUpdateInput = {
+  /** title input for default locale (es) */
+  title?: Maybe<Scalars['String']>
+  /** slug input for default locale (es) */
+  slug?: Maybe<Scalars['String']>
+  cover?: Maybe<AssetUpdateOneInlineInput>
+  /** industry input for default locale (es) */
+  industry?: Maybe<Scalars['String']>
+  technologies?: Maybe<Array<Scalars['String']>>
+  project_url?: Maybe<Scalars['String']>
+  /** body input for default locale (es) */
+  body?: Maybe<Scalars['String']>
+  seo?: Maybe<SeoUpdateOneInlineInput>
+  /** Manage document localizations */
+  localizations?: Maybe<PortfolioUpdateLocalizationsInput>
+}
+
+export type PortfolioUpdateLocalizationDataInput = {
+  title?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['String']>
+  industry?: Maybe<Scalars['String']>
+  body?: Maybe<Scalars['String']>
+}
+
+export type PortfolioUpdateLocalizationInput = {
+  data: PortfolioUpdateLocalizationDataInput
+  locale: Locale
+}
+
+export type PortfolioUpdateLocalizationsInput = {
+  /** Localizations to create */
+  create?: Maybe<Array<PortfolioCreateLocalizationInput>>
+  /** Localizations to update */
+  update?: Maybe<Array<PortfolioUpdateLocalizationInput>>
+  upsert?: Maybe<Array<PortfolioUpsertLocalizationInput>>
+  /** Localizations to delete */
+  delete?: Maybe<Array<Locale>>
+}
+
+export type PortfolioUpdateManyInlineInput = {
+  /** Create and connect multiple Portfolio documents */
+  create?: Maybe<Array<PortfolioCreateInput>>
+  /** Connect multiple existing Portfolio documents */
+  connect?: Maybe<Array<PortfolioConnectInput>>
+  /** Override currently-connected documents with multiple existing Portfolio documents */
+  set?: Maybe<Array<PortfolioWhereUniqueInput>>
+  /** Update multiple Portfolio documents */
+  update?: Maybe<Array<PortfolioUpdateWithNestedWhereUniqueInput>>
+  /** Upsert multiple Portfolio documents */
+  upsert?: Maybe<Array<PortfolioUpsertWithNestedWhereUniqueInput>>
+  /** Disconnect multiple Portfolio documents */
+  disconnect?: Maybe<Array<PortfolioWhereUniqueInput>>
+  /** Delete multiple Portfolio documents */
+  delete?: Maybe<Array<PortfolioWhereUniqueInput>>
+}
+
+export type PortfolioUpdateManyInput = {
+  /** title input for default locale (es) */
+  title?: Maybe<Scalars['String']>
+  /** industry input for default locale (es) */
+  industry?: Maybe<Scalars['String']>
+  technologies?: Maybe<Array<Scalars['String']>>
+  project_url?: Maybe<Scalars['String']>
+  /** body input for default locale (es) */
+  body?: Maybe<Scalars['String']>
+  /** Optional updates to localizations */
+  localizations?: Maybe<PortfolioUpdateManyLocalizationsInput>
+}
+
+export type PortfolioUpdateManyLocalizationDataInput = {
+  title?: Maybe<Scalars['String']>
+  industry?: Maybe<Scalars['String']>
+  body?: Maybe<Scalars['String']>
+}
+
+export type PortfolioUpdateManyLocalizationInput = {
+  data: PortfolioUpdateManyLocalizationDataInput
+  locale: Locale
+}
+
+export type PortfolioUpdateManyLocalizationsInput = {
+  /** Localizations to update */
+  update?: Maybe<Array<PortfolioUpdateManyLocalizationInput>>
+}
+
+export type PortfolioUpdateManyWithNestedWhereInput = {
+  /** Document search */
+  where: PortfolioWhereInput
+  /** Update many input */
+  data: PortfolioUpdateManyInput
+}
+
+export type PortfolioUpdateOneInlineInput = {
+  /** Create and connect one Portfolio document */
+  create?: Maybe<PortfolioCreateInput>
+  /** Update single Portfolio document */
+  update?: Maybe<PortfolioUpdateWithNestedWhereUniqueInput>
+  /** Upsert single Portfolio document */
+  upsert?: Maybe<PortfolioUpsertWithNestedWhereUniqueInput>
+  /** Connect existing Portfolio document */
+  connect?: Maybe<PortfolioWhereUniqueInput>
+  /** Disconnect currently connected Portfolio document */
+  disconnect?: Maybe<Scalars['Boolean']>
+  /** Delete currently connected Portfolio document */
+  delete?: Maybe<Scalars['Boolean']>
+}
+
+export type PortfolioUpdateWithNestedWhereUniqueInput = {
+  /** Unique document search */
+  where: PortfolioWhereUniqueInput
+  /** Document to update */
+  data: PortfolioUpdateInput
+}
+
+export type PortfolioUpsertInput = {
+  /** Create document if it didn't exist */
+  create: PortfolioCreateInput
+  /** Update document if it exists */
+  update: PortfolioUpdateInput
+}
+
+export type PortfolioUpsertLocalizationInput = {
+  update: PortfolioUpdateLocalizationDataInput
+  create: PortfolioCreateLocalizationDataInput
+  locale: Locale
+}
+
+export type PortfolioUpsertWithNestedWhereUniqueInput = {
+  /** Unique document search */
+  where: PortfolioWhereUniqueInput
+  /** Upsert data */
+  data: PortfolioUpsertInput
+}
+
+/** Identifies documents */
+export type PortfolioWhereInput = {
+  /** Contains search across all appropriate fields. */
+  _search?: Maybe<Scalars['String']>
+  /** Logical AND on all given filters. */
+  AND?: Maybe<Array<PortfolioWhereInput>>
+  /** Logical OR on all given filters. */
+  OR?: Maybe<Array<PortfolioWhereInput>>
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: Maybe<Array<PortfolioWhereInput>>
+  id?: Maybe<Scalars['ID']>
+  /** All values that are not equal to given value. */
+  id_not?: Maybe<Scalars['ID']>
+  /** All values that are contained in given list. */
+  id_in?: Maybe<Array<Scalars['ID']>>
+  /** All values that are not contained in given list. */
+  id_not_in?: Maybe<Array<Scalars['ID']>>
+  /** All values containing the given string. */
+  id_contains?: Maybe<Scalars['ID']>
+  /** All values not containing the given string. */
+  id_not_contains?: Maybe<Scalars['ID']>
+  /** All values starting with the given string. */
+  id_starts_with?: Maybe<Scalars['ID']>
+  /** All values not starting with the given string. */
+  id_not_starts_with?: Maybe<Scalars['ID']>
+  /** All values ending with the given string. */
+  id_ends_with?: Maybe<Scalars['ID']>
+  /** All values not ending with the given string */
+  id_not_ends_with?: Maybe<Scalars['ID']>
+  createdAt?: Maybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  createdAt_not?: Maybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values less than the given value. */
+  createdAt_lt?: Maybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  createdAt_lte?: Maybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  createdAt_gt?: Maybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: Maybe<Scalars['DateTime']>
+  createdBy?: Maybe<UserWhereInput>
+  updatedAt?: Maybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  updatedAt_not?: Maybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values less than the given value. */
+  updatedAt_lt?: Maybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: Maybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  updatedAt_gt?: Maybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: Maybe<Scalars['DateTime']>
+  updatedBy?: Maybe<UserWhereInput>
+  publishedAt?: Maybe<Scalars['DateTime']>
+  /** All values that are not equal to given value. */
+  publishedAt_not?: Maybe<Scalars['DateTime']>
+  /** All values that are contained in given list. */
+  publishedAt_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: Maybe<Array<Scalars['DateTime']>>
+  /** All values less than the given value. */
+  publishedAt_lt?: Maybe<Scalars['DateTime']>
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: Maybe<Scalars['DateTime']>
+  /** All values greater than the given value. */
+  publishedAt_gt?: Maybe<Scalars['DateTime']>
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: Maybe<Scalars['DateTime']>
+  publishedBy?: Maybe<UserWhereInput>
+  title?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  title_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  title_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  title_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  title_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  title_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  title_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  title_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  title_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  title_not_ends_with?: Maybe<Scalars['String']>
+  slug?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  slug_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  slug_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  slug_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  slug_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  slug_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  slug_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  slug_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  slug_not_ends_with?: Maybe<Scalars['String']>
+  cover?: Maybe<AssetWhereInput>
+  industry?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  industry_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  industry_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  industry_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  industry_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  industry_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  industry_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  industry_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  industry_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  industry_not_ends_with?: Maybe<Scalars['String']>
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  technologies?: Maybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  technologies_not?: Maybe<Array<Scalars['String']>>
+  /** Matches if the field array contains *all* items provided to the filter */
+  technologies_contains_all?: Maybe<Array<Scalars['String']>>
+  /** Matches if the field array contains at least one item provided to the filter */
+  technologies_contains_some?: Maybe<Array<Scalars['String']>>
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  technologies_contains_none?: Maybe<Array<Scalars['String']>>
+  project_url?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  project_url_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  project_url_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  project_url_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  project_url_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  project_url_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  project_url_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  project_url_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  project_url_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  project_url_not_ends_with?: Maybe<Scalars['String']>
+  body?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  body_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  body_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  body_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  body_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  body_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  body_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  body_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  body_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  body_not_ends_with?: Maybe<Scalars['String']>
+  seo?: Maybe<SeoWhereInput>
+}
+
+/** References Portfolio record uniquely */
+export type PortfolioWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>
 }
 
 export type Post = Node & {
@@ -1851,6 +2637,14 @@ export type Query = {
   assetsConnection: AssetConnection
   /** Retrieve document version */
   assetVersion?: Maybe<DocumentVersion>
+  /** Retrieve multiple portfolios */
+  portfolios: Array<Portfolio>
+  /** Retrieve a single portfolio */
+  portfolio?: Maybe<Portfolio>
+  /** Retrieve multiple portfolios using the Relay connection interface */
+  portfoliosConnection: PortfolioConnection
+  /** Retrieve document version */
+  portfolioVersion?: Maybe<DocumentVersion>
   /** Retrieve multiple posts */
   posts: Array<Post>
   /** Retrieve a single post */
@@ -1912,6 +2706,40 @@ export type QueryAssetsConnectionArgs = {
 }
 
 export type QueryAssetVersionArgs = {
+  where: VersionWhereInput
+}
+
+export type QueryPortfoliosArgs = {
+  where?: Maybe<PortfolioWhereInput>
+  orderBy?: Maybe<PortfolioOrderByInput>
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  stage?: Stage
+  locales?: Array<Locale>
+}
+
+export type QueryPortfolioArgs = {
+  where: PortfolioWhereUniqueInput
+  stage?: Stage
+  locales?: Array<Locale>
+}
+
+export type QueryPortfoliosConnectionArgs = {
+  where?: Maybe<PortfolioWhereInput>
+  orderBy?: Maybe<PortfolioOrderByInput>
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+  stage?: Stage
+  locales?: Array<Locale>
+}
+
+export type QueryPortfolioVersionArgs = {
   where: VersionWhereInput
 }
 
@@ -2071,6 +2899,7 @@ export type Seo = Node & {
   description: Scalars['String']
   image?: Maybe<Asset>
   post?: Maybe<Post>
+  portfolio?: Maybe<Portfolio>
   /** List of Seo versions */
   history: Array<Version>
 }
@@ -2118,6 +2947,10 @@ export type SeoPostArgs = {
   locales?: Maybe<Array<Locale>>
 }
 
+export type SeoPortfolioArgs = {
+  locales?: Maybe<Array<Locale>>
+}
+
 export type SeoHistoryArgs = {
   limit?: Scalars['Int']
   skip?: Scalars['Int']
@@ -2150,6 +2983,7 @@ export type SeoCreateInput = {
   description: Scalars['String']
   image?: Maybe<AssetCreateOneInlineInput>
   post?: Maybe<PostCreateOneInlineInput>
+  portfolio?: Maybe<PortfolioCreateOneInlineInput>
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: Maybe<SeoCreateLocalizationsInput>
 }
@@ -2274,6 +3108,7 @@ export type SeoManyWhereInput = {
   publishedBy?: Maybe<UserWhereInput>
   image?: Maybe<AssetWhereInput>
   post?: Maybe<PostWhereInput>
+  portfolio?: Maybe<PortfolioWhereInput>
 }
 
 export enum SeoOrderByInput {
@@ -2298,6 +3133,7 @@ export type SeoUpdateInput = {
   description?: Maybe<Scalars['String']>
   image?: Maybe<AssetUpdateOneInlineInput>
   post?: Maybe<PostUpdateOneInlineInput>
+  portfolio?: Maybe<PortfolioUpdateOneInlineInput>
   /** Manage document localizations */
   localizations?: Maybe<SeoUpdateLocalizationsInput>
 }
@@ -2529,6 +3365,7 @@ export type SeoWhereInput = {
   description_not_ends_with?: Maybe<Scalars['String']>
   image?: Maybe<AssetWhereInput>
   post?: Maybe<PostWhereInput>
+  portfolio?: Maybe<PortfolioWhereInput>
 }
 
 /** References Seo record uniquely */
@@ -2969,6 +3806,32 @@ export enum _SystemDateTimeFieldVariation {
   Combined = 'combined',
 }
 
+export type GetAllPortfoliosForPortfolioPageQueryVariables = Exact<{
+  locale: Locale
+}>
+
+export type GetAllPortfoliosForPortfolioPageQuery = { __typename?: 'Query' } & {
+  portfolios: Array<
+    { __typename?: 'Portfolio' } & Pick<Portfolio, 'id' | 'title' | 'slug'> & {
+        cover: { __typename?: 'Asset' } & Pick<Asset, 'handle' | 'height' | 'width'>
+        seo?: Maybe<{ __typename?: 'Seo' } & Pick<Seo, 'description'>>
+      }
+  >
+}
+
+export type GetAllPortfoliosWithSlugQueryVariables = Exact<{
+  locale: Locale
+}>
+
+export type GetAllPortfoliosWithSlugQuery = { __typename?: 'Query' } & {
+  portfolios: Array<
+    { __typename?: 'Portfolio' } & Pick<
+      Portfolio,
+      'locale' | 'id' | 'updatedAt' | 'slug' | 'publishedAt'
+    > & { seo?: Maybe<{ __typename?: 'Seo' } & Pick<Seo, 'title' | 'description'>> }
+  >
+}
+
 export type GetAllPostsForBlogPageQueryVariables = Exact<{
   locale: Locale
 }>
@@ -2990,6 +3853,35 @@ export type GetAllPostsWithSlugQuery = { __typename?: 'Query' } & {
   posts: Array<
     { __typename?: 'Post' } & Pick<Post, 'locale' | 'id' | 'updatedAt' | 'slug' | 'published'> & {
         seo?: Maybe<{ __typename?: 'Seo' } & Pick<Seo, 'title' | 'description'>>
+      }
+  >
+}
+
+export type GetPortfolioQueryVariables = Exact<{
+  id: Scalars['ID']
+  stage: Stage
+  locale: Locale
+}>
+
+export type GetPortfolioQuery = { __typename?: 'Query' } & {
+  portfolio?: Maybe<
+    { __typename?: 'Portfolio' } & Pick<
+      Portfolio,
+      | 'id'
+      | 'updatedAt'
+      | 'publishedAt'
+      | 'title'
+      | 'slug'
+      | 'industry'
+      | 'technologies'
+      | 'project_url'
+      | 'body'
+    > & {
+        localizations: Array<
+          { __typename?: 'Portfolio' } & Pick<Portfolio, 'locale' | 'id' | 'slug'>
+        >
+        cover: { __typename?: 'Asset' } & Pick<Asset, 'handle' | 'height' | 'width'>
+        seo?: Maybe<{ __typename?: 'Seo' } & Pick<Seo, 'locale' | 'title' | 'description'>>
       }
   >
 }

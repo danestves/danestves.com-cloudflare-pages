@@ -1,61 +1,65 @@
 // Dependencies
-import { ReactNode } from 'react'
-import Image from 'next/image'
+import Image from '@graphcms/react-image'
 import { useI18n } from 'next-rosetta'
+import { MdxRemote } from 'next-mdx-remote/types'
+import hydrate from 'next-mdx-remote/hydrate'
+
+// @types
+import { Portfolio } from '@/generated/graphql'
 
 // Components
 import { SEO } from '@/components'
+import MDXComponents from '@/components/MDXComponents'
 
 // Interfaces
-import { FrontMatterPortfolio } from '@/interfaces'
+import { Asset } from '@/interfaces'
 
 // Locales
 import type { MyLocale } from 'i18n'
 
 interface Props {
-  frontMatter: FrontMatterPortfolio
-  children: ReactNode
+  portfolio: Portfolio & {
+    mdx: MdxRemote.Source
+  }
 }
 
-export default function PortfolioLayout({ frontMatter, children }: Props): JSX.Element {
+export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
   const { t } = useI18n<MyLocale>()
 
   return (
     <>
       <SEO
-        title={frontMatter.seotitle}
-        description={frontMatter.summary}
-        shareImage={`https://danestves.com${frontMatter.og}`}
-        date={frontMatter.publishedAt}
+        title={portfolio.seo?.title}
+        description={portfolio.seo?.description}
+        shareImage={`https://danestves.com/og.jpg`}
+        date={portfolio.publishedAt}
       />
 
       <div className="container px-5 py-16 space-y-16">
         <h1 className="mb-10 text-4xl text-center text-white sm:text-5xl md:text-6xl">
-          {frontMatter.title}
+          {portfolio.title}
         </h1>
 
-        <div className="flex w-full max-w-screen-lg mx-auto overflow-hidden rounded-lg">
-          <Image
-            src={frontMatter.image}
-            alt={frontMatter.title}
-            width={1888}
-            height={1180}
-            className="h-full"
-          />
-        </div>
+        <Image
+          image={portfolio.cover as Asset}
+          alt={portfolio.seo?.title}
+          maxWidth={984}
+          withWebp
+          outerWrapperClassName="rounded-lg overflow-hidden mx-auto max-w-screen-lg"
+        />
 
         <div className="grid max-w-screen-md grid-cols-1 p-5 mx-auto bg-secondary-900 md:grid-cols-3 rounded-xl">
           <div>
             <h2 className="mb-2 font-semibold text-center text-white underline">
               {t('portfolio.portfolios.industry')}
             </h2>
-            <p className="text-sm text-center text-white">{frontMatter.industry}</p>
+            <p className="text-sm text-center text-white">{portfolio.industry}</p>
           </div>
           <div>
             <h2 className="mb-2 font-semibold text-center text-white underline">
               {t('portfolio.portfolios.technology')}
             </h2>
-            <p className="text-sm text-center text-white">{frontMatter.technologies.join(', ')}</p>
+            <p className="text-sm text-center text-white">{portfolio.technologies.join(', ')}</p>
           </div>
           <div>
             <h2 className="mb-2 font-semibold text-center text-white underline">
@@ -63,7 +67,7 @@ export default function PortfolioLayout({ frontMatter, children }: Props): JSX.E
             </h2>
             <div className="flex justify-center">
               <a
-                href={frontMatter.url}
+                href={portfolio.project_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1 text-sm underline focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none text-primary"
@@ -88,7 +92,11 @@ export default function PortfolioLayout({ frontMatter, children }: Props): JSX.E
         </div>
 
         <div className="max-w-screen-md mx-auto">
-          <div className="max-w-full prose prose-lg">{children}</div>
+          <div className="max-w-full prose prose-lg">
+            {hydrate(portfolio.mdx, {
+              components: MDXComponents,
+            })}
+          </div>
         </div>
       </div>
     </>
