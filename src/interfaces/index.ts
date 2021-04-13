@@ -1,6 +1,3 @@
-import { MdxRemote } from 'next-mdx-remote/types'
-import { NodeRelationships } from 'next-mdx'
-
 // @types
 import { Asset as GraphCmsAsset } from '@/generated/graphql'
 
@@ -91,44 +88,4 @@ export interface Repository {
 export interface Asset extends GraphCmsAsset {
   height: number
   width: number
-}
-
-export interface FrontMatterPost {
-  image: string
-  publishedAt: string
-  seotitle: string
-  summary: string
-  title: string
-  wordCount: number
-}
-
-export interface FrontMatterPortfolio {
-  image: string
-  industry: string
-  og: string
-  publishedAt: string
-  seotitle: string
-  summary: string
-  technologies: string[]
-  title: string
-  url: string
-  wordCount: number
-}
-
-export interface MDXResult {
-  content: string
-  filepath: string
-  hash: string
-  mdx: MdxRemote.Source
-  relationships?: NodeRelationships
-  slug: string
-  url: string
-}
-
-export interface Post extends MDXResult {
-  frontMatter: FrontMatterPost
-}
-
-export interface Portfolio extends MDXResult {
-  frontMatter: FrontMatterPortfolio
 }
