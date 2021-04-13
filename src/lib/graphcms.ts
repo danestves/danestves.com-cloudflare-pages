@@ -62,11 +62,15 @@ export async function getAllPortfoliosWithSlug(
  * Get an array of posts
  *
  * @param locale - The locale to query
+ * @param limit - The number of posts
  * @returns The array of posts by locale
  */
-export async function getAllPostsForBlogPage(locale: Locale): Promise<GetAllPostsForBlogPageQuery> {
+export async function getAllPostsForBlogPage(
+  locale: Locale,
+  limit = 100
+): Promise<GetAllPostsForBlogPageQuery> {
   return fetchAPI()
-    .request(GET_ALL_POSTS_FOR_BLOG_PAGE, { locale })
+    .request(GET_ALL_POSTS_FOR_BLOG_PAGE, { locale, limit })
     .then((res) => res)
 }
 

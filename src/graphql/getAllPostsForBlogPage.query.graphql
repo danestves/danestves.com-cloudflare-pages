@@ -1,5 +1,5 @@
-query getAllPostsForBlogPage($locale: Locale!) {
-  posts(orderBy: published_DESC, locales: [$locale]) {
+query getAllPostsForBlogPage($locale: Locale!, $limit: Int!) {
+  posts(orderBy: published_DESC, locales: [$locale], first: $limit) {
     id
     title
     slug

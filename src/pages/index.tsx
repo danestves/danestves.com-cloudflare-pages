@@ -1,23 +1,25 @@
 // Dependencies
-// import { GetStaticProps, NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
-import { useI18n /*I18nProps*/ } from 'next-rosetta'
-// import { getAllNodes } from 'next-mdx/server'
+import { useI18n, I18nProps } from 'next-rosetta'
+
+// @types
+import { Post, Locale } from '@/generated/graphql'
 
 // Components
-import { Link /*BlogCard*/ } from '@/components'
+import { Link, BlogCard } from '@/components'
 
-// Interfaces
-// import { Post } from '@/interfaces'
+// Libraries
+import { getAllPostsForBlogPage } from '@/lib/graphcms'
 
 // Locales
 import type { MyLocale } from 'i18n'
 
-// interface Props {
-//   posts: Post[]
-// }
+interface Props {
+  posts: Post[]
+}
 
-const Index = (): JSX.Element => {
+const Index: NextPage<Props> = ({ posts }): JSX.Element => {
   const { t } = useI18n<MyLocale>()
 
   return (
@@ -108,9 +110,9 @@ const Index = (): JSX.Element => {
           <h2 className="text-3xl font-bold text-center text-primary">{t('home.posts.title')}</h2>
 
           <div className="gap-6 mt-24 md:grid md:grid-cols-2 lg:grid-cols-3">
-            {/* {posts.map((post) => (
+            {posts.map((post) => (
               <BlogCard key={post.slug} {...post} />
-            ))} */}
+            ))}
           </div>
         </div>
       </div>
@@ -155,23 +157,17 @@ const Index = (): JSX.Element => {
   )
 }
 
-// export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
-//   const locale = context.locale || context.defaultLocale
-//   const { table = {} } = await import(`i18n/${locale}`)
-//   // @ts-ignore: the type has the required values
-//   const posts = await getAllNodes<Post>(`blog/${locale}`)
-//   const sortedPosts = posts.sort((a: Post, b: Post) => {
-//     return (
-//       new Date(b.frontMatter.publishedAt).getTime() - new Date(a.frontMatter.publishedAt).getTime()
-//     )
-//   })
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+  const locale = context.locale || context.defaultLocale
+  const { table = {} } = await import(`i18n/${locale}`)
+  const posts = await (await getAllPostsForBlogPage(locale as Locale, 3)).posts
 
-//   return {
-//     props: {
-//       posts: sortedPosts.slice(0, 3),
-//       table,
-//     },
-//   }
-// }
+  return {
+    props: {
+      table,
+      posts,
+    },
+  }
+}
 
 export default Index

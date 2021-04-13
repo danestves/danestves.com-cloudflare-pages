@@ -3834,6 +3834,7 @@ export type GetAllPortfoliosWithSlugQuery = { __typename?: 'Query' } & {
 
 export type GetAllPostsForBlogPageQueryVariables = Exact<{
   locale: Locale
+  limit: Scalars['Int']
 }>
 
 export type GetAllPostsForBlogPageQuery = { __typename?: 'Query' } & {
