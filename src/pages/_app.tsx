@@ -5,7 +5,7 @@ import { MDXEmbedProvider } from 'mdx-embed'
 import { I18nProvider } from 'next-rosetta'
 
 // Components
-import { Layout, SEO } from '@/components'
+import { Layout } from '@/components'
 
 // Styles
 import '@/styles/main.css'
@@ -14,8 +14,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
   return (
     <I18nProvider table={pageProps.table}>
       <MDXEmbedProvider>
-        <SEO />
-
         <LogoJsonLd logo="https://danestves.com/logo.png" url="https://danestves.com" />
         <SocialProfileJsonLd
           type="Person"
