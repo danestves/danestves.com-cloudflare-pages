@@ -97,6 +97,12 @@ export const table: MyLocale = {
     },
     publishedAt: 'Published at',
     visits: 'visits',
+    alert: {
+      text: 'Si estás buscando la versión en español',
+      button: {
+        label: 'Entra aquí',
+      },
+    },
     editOnGitHub: 'Edit on GitHub',
     commentOnTwitter: 'Comment on Twitter',
   },

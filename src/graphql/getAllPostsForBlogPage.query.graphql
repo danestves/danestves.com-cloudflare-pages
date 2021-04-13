@@ -1,0 +1,16 @@
+query getAllPostsForBlogPage($locale: Locale!, $limit: Int!) {
+  posts(orderBy: published_DESC, locales: [$locale], first: $limit) {
+    id
+    title
+    slug
+    published
+    cover(locales: [$locale]) {
+      handle
+      height
+      width
+    }
+    seo(locales: [$locale]) {
+      description
+    }
+  }
+}

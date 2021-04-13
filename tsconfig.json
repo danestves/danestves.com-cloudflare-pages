@@ -23,6 +23,6 @@
       "i18n": ["i18n"]
     }
   },
-  "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules", "src/generated/graphql.ts", "public"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.graphql"]
 }

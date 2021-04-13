@@ -1,15 +1,18 @@
 // Dependencies
 import { NextPage, GetStaticProps } from 'next'
-import Image from 'next/image'
+import Image from '@graphcms/react-image'
 import { useI18n, I18nProps } from 'next-rosetta'
 import { useRouter } from 'next/dist/client/router'
-import { getAllNodes } from 'next-mdx/server'
+
+// @types
+import { Portfolio } from '@/generated/graphql'
+import { Asset } from '@/interfaces'
 
 // Components
 import { SEO, Link } from '@/components'
 
-// Interfaces
-import { Portfolio } from '@/interfaces'
+// Libraries
+import { getAllPortfoliosForPortfolioPage } from '@/lib/graphcms'
 
 // Locales
 import type { MyLocale } from 'i18n'
@@ -38,23 +41,23 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
         {portfolios.map((portfolio) => (
           <div key={portfolio.slug}>
             <Link
-              href={`/portafolio/${portfolio.slug}`}
+              href={`/portafolio/${portfolio.slug}-${portfolio.id}`}
               locale={locale}
               className="grid items-center grid-cols-1 gap-6 overflow-hidden rounded-lg md:grid-cols-2 group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
             >
               <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg">
                 <Image
-                  src={portfolio.frontMatter.image}
-                  width={736}
-                  height={414}
-                  alt={portfolio.frontMatter.title}
+                  image={portfolio.cover as Asset}
+                  alt={portfolio.title}
+                  withWebp
+                  outerWrapperClassName="w-full"
                 />
               </div>
               <div>
                 <h2 className="mb-4 text-4xl leading-tight text-white group-hover:underline">
-                  {portfolio.frontMatter.title}
+                  {portfolio.title}
                 </h2>
-                <p className="text-white">{portfolio.frontMatter.summary}</p>
+                <p className="text-white">{portfolio.seo?.description}</p>
                 <div className="flex mt-4">
                   <button
                     type="button"
@@ -75,18 +78,12 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
 export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  // @ts-ignore: the type has the required values
-  const portfolios = await getAllNodes<Portfolio>(`portfolio/${locale}`)
-  const sortedPortfolios = portfolios.sort((a: Portfolio, b: Portfolio) => {
-    return (
-      new Date(b.frontMatter.publishedAt).getTime() - new Date(a.frontMatter.publishedAt).getTime()
-    )
-  })
+  const portfolios = await (await getAllPortfoliosForPortfolioPage(locale as any)).portfolios
 
   return {
     props: {
       table,
-      portfolios: sortedPortfolios,
+      portfolios,
     },
   }
 }

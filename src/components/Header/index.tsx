@@ -1,6 +1,7 @@
 // Dependencies
 import { useState } from 'react'
 import { useI18n } from 'next-rosetta'
+import { useRouter } from 'next/dist/client/router'
 
 // Components
 import { Link, LanguageSwitcher } from '@/components'
@@ -13,6 +14,7 @@ const Header = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
 
   const { t } = useI18n<MyLocale>()
+  const router = useRouter()
 
   return (
     <>
@@ -98,15 +100,17 @@ const Header = (): JSX.Element => {
                 </Link>
               </div>
 
-              <LanguageSwitcher />
+              {!router.pathname.includes('/blog/[slug]') && <LanguageSwitcher />}
             </div>
           </nav>
         </div>
       </header>
 
-      <div className="fixed z-20 top-4 left-4 md:hidden">
-        <LanguageSwitcher />
-      </div>
+      {!router.pathname.includes('/blog/[slug]') && (
+        <div className="fixed z-20 top-4 left-4 md:hidden">
+          <LanguageSwitcher />
+        </div>
+      )}
 
       <MobileHeader />
     </>

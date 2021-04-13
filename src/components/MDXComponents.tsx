@@ -2,6 +2,7 @@
 import { LinkProps as LinkNextProps } from 'next/link'
 import Image from 'next/image'
 import { CodePen, YouTube, CodeSandbox, Tweet } from 'mdx-embed'
+import GraphCmsImage from '@graphcms/react-image'
 
 // Components
 import NextLink from './Link'
@@ -35,6 +36,7 @@ const MDXComponents = {
   Cloudinary,
   Giphy,
   AlertInfo: Alert.Info,
+  GraphCmsImage,
 }
 
 export default MDXComponents
