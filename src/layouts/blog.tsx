@@ -49,7 +49,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
     deck: 'danestves',
     template: 'blog',
     variables: {
-      img: `https://danestves.com${post.cover.url}`,
+      img: post.cover.url,
       title: post.seo?.title,
       description: post.seo?.description,
     },
@@ -61,7 +61,6 @@ export default function PostLayout({ post }: Props): JSX.Element {
   return (
     <>
       <SEO
-        isTemplate
         title={post.seo?.title}
         description={post.seo?.description}
         shareImage={flayyer.href()}

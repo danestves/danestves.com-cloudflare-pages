@@ -8,6 +8,7 @@ query getAllPostsForBlogPage($locale: Locale!, $limit: Int!) {
       handle
       height
       width
+      url
     }
     seo(locales: [$locale]) {
       description
