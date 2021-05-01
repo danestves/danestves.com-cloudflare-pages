@@ -1,3 +1,13 @@
+#### 1.1.4 (2021-05-01)
+
+##### New Features
+
+* **search:**  integrating webhook to save the data ([ccd5cec7](https://github.com/danestves/website/commit/ccd5cec758981b0de609882a9d6e34ea46f31886))
+
+##### Bug Fixes
+
+* **auto:**  format for changelog ([252e0dd4](https://github.com/danestves/website/commit/252e0dd49edad413a621da9edbe5c08ca0edf7af))
+
 #### 1.1.3 (2021-05-01)
 
 ##### Bug Fixes
