@@ -1,6 +1,6 @@
 {
   "name": "danestves-frontend",
-  "version": "3.0.0",
+  "version": "1.0.0",
   "description": "Frontend website onf @danestves portfolio made with NextJS & GraphCMS",
   "repository": "git@github.com:danestves/website.git",
   "author": "Daniel Esteves <estevesd8@gmail.com>",
@@ -13,7 +13,10 @@
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js",
-    "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config --config codegen.yml"
+    "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config --config codegen.yml",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
+    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
   },
   "dependencies": {
     "@fec/remark-a11y-emoji": "^3.1.0",
@@ -69,6 +72,7 @@
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.23.2",
+    "generate-changelog": "^1.8.0",
     "globby": "^11.0.3",
     "lint-staged": "^10.5.4",
     "next-progressbar": "^1.0.0",
