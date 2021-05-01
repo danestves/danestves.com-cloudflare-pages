@@ -63,6 +63,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
   return (
     <>
       <SEO
+        isTemplate={false}
         title={post.seo?.title}
         description={post.seo?.description}
         shareImage={flayyer.href()}
