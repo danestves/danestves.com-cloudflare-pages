@@ -2,7 +2,10 @@
   "name": "danestves-frontend",
   "version": "1.1.2",
   "description": "Frontend website onf @danestves portfolio made with NextJS & GraphCMS",
-  "repository": "git@github.com:danestves/website.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danestves/website.git"
+  },
   "author": "Daniel Esteves <estevesd8@gmail.com>",
   "license": "MIT",
   "private": true,
