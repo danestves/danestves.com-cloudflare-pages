@@ -48,13 +48,6 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#071d49" />
 
           <link rel="preconnect" href="https://vitals.vercel-insights.com" />
-
-          <script
-            async
-            defer
-            data-domain="danestves.com"
-            src="https://plausible.io/js/plausible.js"
-          ></script>
         </Head>
 
         <body className="bg-secondary-700">

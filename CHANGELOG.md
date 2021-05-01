@@ -2,8 +2,8 @@
 
 ##### Bug Fixes
 
-* **auto:**  format for changelog ([d57ed35a](https://github.com/danestves/website/commit/d57ed35a06c82fa9023bd32f8c83b90eaa07b4b1))
-* **ts:**  adding declarations for environment ([0712f22e](https://github.com/danestves/website/commit/0712f22ef4d8b11e2f615e34a5a9f44a639a8f21))
+- **auto:** format for changelog ([d57ed35a](https://github.com/danestves/website/commit/d57ed35a06c82fa9023bd32f8c83b90eaa07b4b1))
+- **ts:** adding declarations for environment ([0712f22e](https://github.com/danestves/website/commit/0712f22ef4d8b11e2f615e34a5a9f44a639a8f21))
 
 #### 1.1.4 (2021-05-01)
 
