@@ -2,7 +2,7 @@ import type { MyLocale } from '.'
 
 export const table: MyLocale = {
   defaultSeo: {
-    title: 'Daniel Esteves - Desarrollador Web Frontend',
+    title: 'Daniel Esteves - Frontend Developer',
     description:
       'Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.',
     shareImage: 'https://danestves.com/og.png',
@@ -43,9 +43,9 @@ export const table: MyLocale = {
   },
   aboutMe: {
     seo: {
-      title: 'Conoce más sobre mi',
+      title: 'Hola Mundo. Soy Daniel Esteves un Desarrollador Web Frontend',
       description:
-        'Desde muy niño he estado interesado en las computadoras comenzando desde los videojuegos, cada vez que jugaba sentía una necesidad de saber cómo funciona todo.',
+        'Desde mi temprana adolescencia empecé a estudiar el "cómo", no sólo a aprender a usar los programas, sino a entender realmente cómo funcionan.',
     },
     intro: 'Hoy, soy',
     summary: {
@@ -127,9 +127,9 @@ export const table: MyLocale = {
   },
   blog: {
     seo: {
-      title: 'Blog - React, JavaScript, Recursos y más',
+      title: 'Un blog para aprender sobre JS, React, Vue, recursos y mucho más',
       description:
-        'Blog sobre noticias, tutoriales, paso a paso para crear funciones que nos ayudarán en nuestro desarrollo y mucho más de la mano de @danestves usando JavaScript.',
+        'Este blog está dedicado a todos aquellos que les gusta aprender un poco más de javascript ​por medio de sus ventajas y funciones.',
     },
     publishedAt: 'Publicado en',
     visits: 'visitas',

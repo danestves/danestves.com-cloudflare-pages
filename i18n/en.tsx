@@ -2,9 +2,9 @@ import type { MyLocale } from '.'
 
 export const table: MyLocale = {
   defaultSeo: {
-    title: 'Daniel Esteves - Frontend Web Developer',
+    title: 'Daniel Esteves - Frontend Developer',
     description:
-      'Daniel Esteves frontend web developer has made websites using WordPress, React, Gatsby, NextJS and more. Ready to make your dreams come true.',
+      'Daniel Esteves has been working as a Frontend Developer for more than 6 years, having experience on projects using React, jQuery, SASS and WordPress.',
     shareImage: 'https://danestves.com/og.png',
   },
   header: {
@@ -43,9 +43,9 @@ export const table: MyLocale = {
   },
   aboutMe: {
     seo: {
-      title: 'Learn more about me',
+      title: "Hello World. I'm Daniel Esteves a Frontend Web Developer",
       description:
-        'Since I was a kid I have been interested in computers starting from video games, every time I played I felt a need to know how everything works.',
+        'More than 6 years ago I started to learn how to program, the first language I learned was JavaScript and it was the start of my developer career.',
     },
     intro: "Hi, I'm",
     summary: {
@@ -91,9 +91,9 @@ export const table: MyLocale = {
   },
   blog: {
     seo: {
-      title: 'Blog - React, JavaScript, Resources and more',
+      title: 'A blog to learn about JavaScript, React, Vue, resources and much more',
       description:
-        'Blog about news, tutorials, step by step to create functions that will help us in our development and much more from @danestves using JavaScript.',
+        'This is a blog about news, tutorials, step by step to create functions that will help us in our development and much more with @danestves using JavaScript.',
     },
     publishedAt: 'Published at',
     visits: 'visits',
