@@ -21,7 +21,7 @@ import GET_PORTFOLIO from '@/graphql/getPortfolio.query.graphql'
 import GET_POST from '@/graphql/getPost.query.graphql'
 
 function fetchAPI(preview?: boolean): GraphQLClient {
-  return new GraphQLClient(process.env.GRAPHCMS_ENDPOINT as string, {
+  return new GraphQLClient(process.env.GRAPHCMS_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${
         preview ? process.env.GRAPHCMS_DEVELOP_TOKEN : process.env.GRAPHCMS_PRODUCTION_TOKEN
