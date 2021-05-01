@@ -1,3 +1,9 @@
+#### 1.1.6 (2021-05-01)
+
+##### New Features
+
+* **analytics:**  integrate plausible provider ([a45395f2](https://github.com/danestves/website/commit/a45395f2348d87522b64cc301f6c4865ce80a5f0))
+
 #### 1.1.5 (2021-05-01)
 
 ##### Bug Fixes
