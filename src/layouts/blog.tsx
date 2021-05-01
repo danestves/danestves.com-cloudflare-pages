@@ -49,9 +49,11 @@ export default function PostLayout({ post }: Props): JSX.Element {
     deck: 'danestves',
     template: 'blog',
     variables: {
-      img: post.cover.url,
+      image: post.cover.url,
       title: post.seo?.title,
-      description: post.seo?.description,
+      date: post.published,
+      dateLegend: t('blog.publishedAt'),
+      lang: locale,
     },
     meta: {
       id: post.slug,
