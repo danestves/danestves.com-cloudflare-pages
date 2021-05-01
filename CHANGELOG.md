@@ -2,8 +2,8 @@
 
 ##### Bug Fixes
 
-* **ci:**  fixing scripts of package.json (9e5af756)
-* **seo:**  removing username from seo title (b44292d2)
+- **ci:** fixing scripts of package.json (9e5af756)
+- **seo:** removing username from seo title (b44292d2)
 
 ### 1.1.0 (2021-05-01)
 
