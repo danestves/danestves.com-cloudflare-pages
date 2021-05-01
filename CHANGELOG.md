@@ -1,3 +1,13 @@
+#### 1.1.2 (2021-05-01)
+
+##### New Features
+
+* **seo:**  improving titles and descriptions with copy ai (d038f698)
+
+##### Bug Fixes
+
+* **auto:**  format for changelog (da183ae0)
+
 #### 1.1.1 (2021-05-01)
 
 ##### Bug Fixes
