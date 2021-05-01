@@ -2,9 +2,9 @@
 
 ##### Bug Fixes
 
-* **auto:**
-  *  repository field for package ([a71323ea](https://github.com/danestves/website/commit/a71323eadf460a22e6fd4118dea31f532a4b9fa8))
-  *  adding commit links for changelog ([c2e692a2](https://github.com/danestves/website/commit/c2e692a2b3269971baa10bbd9fe3ace48322165f))
+- **auto:**
+  - repository field for package ([a71323ea](https://github.com/danestves/website/commit/a71323eadf460a22e6fd4118dea31f532a4b9fa8))
+  - adding commit links for changelog ([c2e692a2](https://github.com/danestves/website/commit/c2e692a2b3269971baa10bbd9fe3ace48322165f))
 
 #### 1.1.2 (2021-05-01)
 
