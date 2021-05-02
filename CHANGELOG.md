@@ -2,6 +2,20 @@
 
 ##### New Features
 
+* **auto:**  updated CHANGELOG.md ([ff61832b](https://github.com/danestves/website/commit/ff61832bee4fe90ebbb10b66ad0b84d4d7db236b))
+* **search:**  integrating algolia for posts ([71053cae](https://github.com/danestves/website/commit/71053cae97e4f9a440097d92dd6306ef7d2890ed))
+
+##### Bug Fixes
+
+* **auto:**
+  *  format for changelog ([03d6af8c](https://github.com/danestves/website/commit/03d6af8ca48af106f33f12e7db88338bd28d8461))
+  *  format files ([8b077b21](https://github.com/danestves/website/commit/8b077b21c5ec82867f1b70b1861510ce33b811a1))
+  *  format for changelog ([2074d963](https://github.com/danestves/website/commit/2074d963b6a9ab89bbaf4d9647ecbcbe12c5a59e))
+
+## 2.0.0 (2021-05-02)
+
+##### New Features
+
 - **search:** integrating algolia for posts ([71053cae](https://github.com/danestves/website/commit/71053cae97e4f9a440097d92dd6306ef7d2890ed))
 
 ##### Bug Fixes
