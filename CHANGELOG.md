@@ -1,3 +1,9 @@
+#### 2.0.1 (2021-05-02)
+
+##### Bug Fixes
+
+* **components:**  imports for components ([bafc80aa](https://github.com/danestves/website/commit/bafc80aa031be7653c42368571282e70be73ee61))
+
 ## 2.0.0 (2021-05-02)
 
 ##### New Features
