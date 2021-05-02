@@ -2,11 +2,11 @@
 
 ##### New Features
 
-* **search:**  integrating algolia for posts ([71053cae](https://github.com/danestves/website/commit/71053cae97e4f9a440097d92dd6306ef7d2890ed))
+- **search:** integrating algolia for posts ([71053cae](https://github.com/danestves/website/commit/71053cae97e4f9a440097d92dd6306ef7d2890ed))
 
 ##### Bug Fixes
 
-* **auto:**  format for changelog ([2074d963](https://github.com/danestves/website/commit/2074d963b6a9ab89bbaf4d9647ecbcbe12c5a59e))
+- **auto:** format for changelog ([2074d963](https://github.com/danestves/website/commit/2074d963b6a9ab89bbaf4d9647ecbcbe12c5a59e))
 
 #### 1.1.6 (2021-05-01)
 
