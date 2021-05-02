@@ -1,9 +1,9 @@
 // Dependencies
-import Link, { LinkProps as LinkNextProps } from 'next/link'
+import NextLink, { LinkProps as LinkNextProps } from 'next/link'
 
 type LinkProps = React.ComponentProps<'a'> & LinkNextProps
 
-const CustomLink: React.FC<LinkProps> = ({
+export const Link: React.FC<LinkProps> = ({
   href,
   as,
   passHref,
@@ -13,7 +13,7 @@ const CustomLink: React.FC<LinkProps> = ({
   locale,
   ...rest
 }) => (
-  <Link
+  <NextLink
     href={href}
     as={as}
     replace={replace}
@@ -23,7 +23,7 @@ const CustomLink: React.FC<LinkProps> = ({
     locale={locale}
   >
     <a {...rest} />
-  </Link>
+  </NextLink>
 )
 
-export default CustomLink
+export default Link

@@ -10,7 +10,7 @@ import fetcher from '@/lib/fetcher'
 // Locales
 import type { MyLocale } from 'i18n'
 
-const Subscribe = (): JSX.Element => {
+export const Subscribe = (): JSX.Element => {
   const [form, setForm] = useState<{
     status: string
     message?: string

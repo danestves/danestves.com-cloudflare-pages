@@ -23,7 +23,7 @@ interface Props {
 }
 
 // More information about all settings here https://studio.cloudinary.com/
-const Cloudinary: React.FunctionComponent<Props> = ({
+export const Cloudinary: React.FunctionComponent<Props> = ({
   publicID,
   cloudName,
   fluid = true,

@@ -7,7 +7,7 @@ import { Link } from '@/components'
 // Locales
 import type { MyLocale } from 'i18n'
 
-const Footer = (): JSX.Element => {
+export const Footer = (): JSX.Element => {
   const { t } = useI18n<MyLocale>()
 
   return (

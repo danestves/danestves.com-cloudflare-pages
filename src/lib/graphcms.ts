@@ -67,10 +67,12 @@ export async function getAllPortfoliosWithSlug(
  */
 export async function getAllPostsForBlogPage(
   locale: Locale,
-  limit = 100
+  limit = 100,
+  search = '',
+  body = false
 ): Promise<GetAllPostsForBlogPageQuery> {
   return fetchAPI()
-    .request(GET_ALL_POSTS_FOR_BLOG_PAGE, { locale, limit })
+    .request(GET_ALL_POSTS_FOR_BLOG_PAGE, { search, body, locale, limit })
     .then((res) => res)
 }
 

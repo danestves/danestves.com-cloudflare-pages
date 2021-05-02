@@ -6,6 +6,7 @@ import { useI18n } from 'next-rosetta'
 // Components
 import Navigation from './Navigation'
 import MenuToggle from './MenuToggle'
+import { Search } from '../Search'
 
 // Hooks
 import { useClickOutside } from '@/hooks'
@@ -147,7 +148,7 @@ const MobileHeader = (): JSX.Element => {
     <div
       ref={containerRef}
       className={clsx(
-        'fixed top-0 bottom-0 right-0 overflow-hidden z-100 w-72 md:hidden transition-all duration-300',
+        'fixed top-0 bottom-0 right-0 overflow-hidden z-[100] w-72 md:hidden transition-all duration-300',
         isOpen ? 'h-screen' : 'h-20'
       )}
     >
@@ -159,6 +160,10 @@ const MobileHeader = (): JSX.Element => {
       />
 
       <Navigation toggle={toggleOpen} items={items} />
+
+      <div className="absolute flex items-center justify-center w-12 h-12 p-2 bg-primary rounded-full z-[100] top-5 right-20 focus:outline-none focus:ring-2 focus:ring-primary">
+        <Search />
+      </div>
 
       <MenuToggle isOpen={isOpen} toggle={toggleOpen} />
     </div>

@@ -10,7 +10,7 @@ import fetcher from '@/lib/fetcher'
 // Locales
 import type { MyLocale } from 'i18n'
 
-export default function ViewCounter({ slug }: { slug: string }): JSX.Element {
+export function ViewCounter({ slug }: { slug: string }): JSX.Element {
   const { t } = useI18n<MyLocale>()
   const { data } = useSWR(`/api/views/${slug}`, fetcher)
   const views = ((data as unknown) as Record<string, unknown>)?.total

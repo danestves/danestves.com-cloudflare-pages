@@ -6,7 +6,7 @@ import { useI18n } from 'next-rosetta'
 // Components
 import { Header, Footer, CallToAction } from '@/components'
 
-const Layout: React.FC = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
   const router = useRouter()
   const { t } = useI18n()
   const title = t('defaultSeo.title')

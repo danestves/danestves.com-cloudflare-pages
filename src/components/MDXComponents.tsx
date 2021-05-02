@@ -10,7 +10,10 @@ import Cloudinary from './Cloudinary'
 import Giphy from './Giphy'
 import { Alert } from './Alert'
 
-const CustomLink = ({ href, ...rest }: React.ComponentProps<'a'> & LinkNextProps): JSX.Element => {
+export const CustomLink = ({
+  href,
+  ...rest
+}: React.ComponentProps<'a'> & LinkNextProps): JSX.Element => {
   const newHref = href
   const isInternalLink = newHref && newHref.startsWith('/')
   const isHeaderLink = newHref && newHref.startsWith('#')

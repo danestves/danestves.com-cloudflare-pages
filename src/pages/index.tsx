@@ -74,7 +74,7 @@ const Index: NextPage<Props> = ({ posts }): JSX.Element => {
 
       <div className="w-full bg-white">
         <div className="container relative z-10 px-5 pb-32 -mt-24">
-          <div className="z-30 w-48 h-48 mx-auto border-white rounded-full border-10">
+          <div className="z-30 w-48 h-48 mx-auto border-white rounded-full border-[10px]">
             <Image
               src="/me.jpg"
               alt="Daniel Esteves"

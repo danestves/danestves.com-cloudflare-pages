@@ -4,13 +4,13 @@ import { useI18n } from 'next-rosetta'
 import { useRouter } from 'next/dist/client/router'
 
 // Components
-import { Link, LanguageSwitcher } from '@/components'
+import { Link, LanguageSwitcher, Search } from '@/components'
 import MobileHeader from './MobileHeader'
 
 // Locales
 import type { MyLocale } from 'i18n'
 
-const Header = (): JSX.Element => {
+export const Header = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false)
 
   const { t } = useI18n<MyLocale>()
@@ -100,7 +100,11 @@ const Header = (): JSX.Element => {
                 </Link>
               </div>
 
-              {!router.pathname.includes('/blog/[slug]') && <LanguageSwitcher />}
+              <div className="flex ml-3 space-x-6">
+                <Search />
+
+                {!router.pathname.includes('/blog/[slug]') && <LanguageSwitcher />}
+              </div>
             </div>
           </nav>
         </div>

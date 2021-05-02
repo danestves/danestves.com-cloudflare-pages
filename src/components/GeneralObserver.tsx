@@ -8,7 +8,7 @@ interface IGeneralObserverProps {
   height?: number
 }
 
-const GeneralObserver: React.FunctionComponent<IGeneralObserverProps> = ({
+export const GeneralObserver: React.FunctionComponent<IGeneralObserverProps> = ({
   children,
   onEnter,
   height = 0,

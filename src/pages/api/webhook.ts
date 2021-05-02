@@ -16,16 +16,20 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
   }
 
   try {
-    const {
-      data: { PUBLISHED },
-    } = req.body
+    const { data: post } = req.body
 
-    const { id: objectID, ...data } = PUBLISHED
+    if (post.stage === 'PUBLISHED') {
+      const { id, localizations, ...data } = post
 
-    await index.saveObject({ objectID, ...data })
+      for await (const locale of localizations) {
+        await index.saveObject({ objectID: `${id}-${locale.locale}`, id, ...locale, ...data })
+      }
 
-    res.send(201)
+      res.send(201)
+    }
   } catch (err) {
+    console.error(err?.message)
+
     res.status(400).send(err?.message)
   }
 }

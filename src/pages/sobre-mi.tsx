@@ -28,7 +28,7 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
       {/* Hero */}
       <div className="bg-primary">
         <div className="max-w-4xl px-5 py-32 mx-auto">
-          <h1 className="text-4xl font-bold leading-none md:text-7xl text-secondary">
+          <h1 className="text-4xl font-bold leading-none md:text-[5rem] text-secondary">
             <span className="font-mono">{'<'}</span> {t('aboutMe.intro')}
             <br /> Daniel
             <br /> Esteves <span className="font-mono">{'/>'}</span>
@@ -68,7 +68,9 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
                 <h4 className="mb-3 font-mono text-lg font-semibold text-secondary">
                   {item.subtitle} |{item.date}
                 </h4>
-                <p className="font-mono text-lg text-opacity-90 text-secondary">{item.content}</p>
+                <p className="font-mono text-lg text-opacity-[0.90] text-secondary">
+                  {item.content}
+                </p>
               </div>
             </div>
           ))}

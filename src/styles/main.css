@@ -161,3 +161,20 @@ pre {
 .mdx-marker {
   @apply block px-4 -mx-4 bg-gray-800 border-l-4 border-blue-500;
 }
+
+/* Algolia Search */
+.ais-Snippet-highlighted {
+  @apply not-italic font-medium text-[#5468FF];
+}
+
+.group:hover .ais-Snippet-highlighted {
+  @apply text-[#FFEB54] underline;
+}
+
+.ais-PoweredBy {
+  @apply flex items-center;
+}
+
+.ais-PoweredBy-logo {
+  @apply block h-[1.2em] w-auto;
+}

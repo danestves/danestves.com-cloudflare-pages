@@ -8,7 +8,7 @@ import { Link } from '@/components'
 // Locales
 import type { MyLocale } from 'i18n'
 
-const CallToAction = (): JSX.Element => {
+export const CallToAction = (): JSX.Element => {
   const { t } = useI18n<MyLocale>()
 
   return (

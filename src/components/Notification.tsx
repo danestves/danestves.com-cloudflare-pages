@@ -9,7 +9,7 @@ interface Props {
   children: React.ReactNode
 }
 
-const Notification = ({ isOpen, setIsOpen, onClose, children }: Props): JSX.Element => {
+export const Notification = ({ isOpen, setIsOpen, onClose, children }: Props): JSX.Element => {
   return (
     <div
       className={clsx(

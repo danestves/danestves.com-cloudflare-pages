@@ -3,5 +3,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "mdx-preview.preview.useVscodeMarkdownStyles": false
+  "exportall.config.folderListener": [
+    "/src/components",
+    "/src/components/Header",
+    "/src/components/Search"
+  ]
 }

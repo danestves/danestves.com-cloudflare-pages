@@ -13,7 +13,7 @@ import hydrate from 'next-mdx-remote/hydrate'
 import { Post } from '@/generated/graphql'
 
 // Components
-import { SEO, ViewsCounter, Subscribe, Link } from '@/components'
+import { SEO, ViewCounter, Subscribe, Link } from '@/components'
 import MDXComponents from '@/components/MDXComponents'
 
 // Interfaces
@@ -89,7 +89,9 @@ export default function PostLayout({ post }: Props): JSX.Element {
       <article className="container px-5 py-16">
         <div className="container">
           <div className="mx-auto text-center text-white lg:w-3/4 xl:w-2/3">
-            <h1 className="mb-20 text-3xl font-semibold sm:text-5xl md:text-7xl">{post.title}</h1>
+            <h1 className="mb-20 text-3xl font-semibold sm:text-5xl md:text-[5rem]">
+              {post.title}
+            </h1>
           </div>
         </div>
 
@@ -97,7 +99,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
           <GraphCmsImage
             image={post.cover as Asset}
             alt={post.title}
-            outerWrapperClassName="overflow-hidden shadow-xl rounded-2xl"
+            outerWrapperClassName="overflow-hidden shadow-xl rounded-[2rem]"
             withWebp
           />
 
@@ -124,7 +126,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
                   {readingTime({ wordCount: post.body.split(/\s+/gu).length, lang: locale })}
                 </p>
                 <p className="text-white">
-                  <ViewsCounter slug={post.slug} />
+                  <ViewCounter slug={post.slug} />
                 </p>
               </div>
             </div>

@@ -4,7 +4,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import clsx from 'clsx'
 
-const LanguageSwitcher = (): JSX.Element => {
+export const LanguageSwitcher = (): JSX.Element => {
   const { locale, locales, route, push, asPath } = useRouter()
 
   const handleChangeLanguage = (lang: string) => {

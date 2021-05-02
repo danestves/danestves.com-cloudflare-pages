@@ -16,7 +16,7 @@ import type { MyLocale } from 'i18n'
 // Utils
 import { formatDate } from '@/utils'
 
-const BlogCard = (post: Post): JSX.Element => {
+export const BlogCard = (post: Post): JSX.Element => {
   const { t } = useI18n<MyLocale>()
   const { locale } = useRouter()
 

@@ -1,5 +1,10 @@
-query getAllPostsForBlogPage($locale: Locale!, $limit: Int!) {
-  posts(orderBy: published_DESC, locales: [$locale], first: $limit) {
+query getAllPostsForBlogPage($search: String, $body: Boolean!, $locale: Locale!, $limit: Int!) {
+  posts(
+    where: { title_contains: $search, body_contains: $search }
+    orderBy: published_DESC
+    first: $limit
+    locales: [$locale]
+  ) {
     id
     title
     slug
@@ -10,7 +15,9 @@ query getAllPostsForBlogPage($locale: Locale!, $limit: Int!) {
       width
       url
     }
+    body @include(if: $body)
     seo(locales: [$locale]) {
+      title
       description
     }
   }

@@ -11,11 +11,9 @@ module.exports = {
   important: true,
   theme: {
     extend: {
-      borderRadius: {
-        '2xl': `2rem`,
-      },
-      borderWidth: {
-        10: `10px`,
+      boxShadow: {
+        search: '0 25px 50px -12px rgb(0 0 0 / 25%)',
+        'search-item': '0 1px 2px 0 rgb(0 0 0 / 5%)',
       },
       colors: {
         primary: `#00C389`,
@@ -37,25 +35,12 @@ module.exports = {
       container: {
         center: true,
       },
-      fontSize: {
-        '7xl': `5rem`,
-        '8xl': `6rem`,
-      },
       fontFamily: {
         sans: [`Inter`, ...fontFamily.sans],
         mono: [`Fira Code`, ...fontFamily.mono],
       },
-      height: {
-        88: `22rem`,
-      },
-      inset: {
-        '1/2': `50%`,
-      },
       maxHeight: (theme) => theme('spacing'),
       minHeight: (theme) => theme('spacing'),
-      textOpacity: {
-        90: `0.90`,
-      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
@@ -108,10 +93,11 @@ module.exports = {
           },
         },
       }),
-      zIndex: {
-        100: 100,
-      },
     },
   },
-  plugins: [require(`@tailwindcss/typography`), require('@tailwindcss/aspect-ratio')],
+  plugins: [
+    require(`@tailwindcss/typography`),
+    require('@tailwindcss/aspect-ratio'),
+    require('tailwindcss-pseudo-elements')(),
+  ],
 }

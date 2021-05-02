@@ -16,7 +16,7 @@ interface Props {
   children?: React.ReactNode
 }
 
-const SEO = ({
+export const SEO = ({
   isTemplate = true,
   type = 'website',
   ...props
