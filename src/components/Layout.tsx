@@ -25,9 +25,8 @@ export const Layout: React.FC = ({ children }) => {
   return (
     <>
       <DefaultSeo
-        title={title}
-        description={description}
         canonical={`https://danestves.com${lang}${router.asPath}`}
+        description={description}
         openGraph={{
           url: `https://danestves.com${lang}${router.asPath}`,
           title,
@@ -36,6 +35,7 @@ export const Layout: React.FC = ({ children }) => {
           site_name: title,
           type: 'website',
         }}
+        title={title}
         twitter={{
           handle: '@danestves',
           site: '@danestves',

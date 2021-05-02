@@ -23,16 +23,16 @@ export const BlogCard = (post: Post): JSX.Element => {
   return (
     <article className="mb-12">
       <Link
+        className="group hover:no-underline focus:no-underline"
         href={`/blog/${post.slug}-${post.id}`}
         locale={locale}
-        className="group hover:no-underline focus:no-underline"
       >
         <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
           <Image
-            image={post.cover as Asset}
-            withWebp
             alt={post.title}
+            image={post.cover as Asset}
             outerWrapperClassName="w-full"
+            withWebp
           />
         </div>
 

@@ -35,18 +35,18 @@ export const Search = (): JSX.Element => {
 
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)}>
+      <button onClick={() => setOpen(true)} type="button">
         <SearchIcon className="w-6 h-6 text-white" />
       </button>
 
-      <Transition.Root show={open} as={Fragment}>
+      <Transition.Root as={Fragment} show={open}>
         <Dialog
           as="div"
-          static
           className="fixed inset-0 z-[999999] overflow-y-auto"
           initialFocus={searchInputRef}
-          open={open}
           onClose={setOpen}
+          open={open}
+          static
         >
           <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <Transition.Child
@@ -62,7 +62,7 @@ export const Search = (): JSX.Element => {
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+            <span aria-hidden="true" className="hidden sm:inline-block sm:align-middle sm:h-screen">
               &#8203;
             </span>
             <div className="fixed left-0 top-0 h-screen w-screen z-[200] flex flex-col p-4 sm:p-6 md:p-[10vh] lg:p-[12vh]">
@@ -78,13 +78,13 @@ export const Search = (): JSX.Element => {
                 {/* Adding an extra div to avoid issues with Ref */}
                 <div className="transition-all transform">
                   <div
-                    ref={boxRef}
                     className="mx-auto w-full max-w-[47.375rem] flex flex-col min-h-0 rounded-[1rem] bg-white px-6 shadow-search"
+                    ref={boxRef}
                   >
                     <InstantSearch
-                      searchClient={searchClient}
                       indexName="posts"
                       onSearchStateChange={({ query }) => setSearch(query)}
+                      searchClient={searchClient}
                     >
                       <SearchHeader />
                       <Configure hitsPerPage={5} />

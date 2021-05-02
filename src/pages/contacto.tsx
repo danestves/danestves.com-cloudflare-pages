@@ -22,7 +22,7 @@ const Contacto: NextPage = () => {
 
   return (
     <>
-      <SEO title={t('contact.seo.title')} description={t('contact.seo.description')} />
+      <SEO description={t('contact.seo.description')} title={t('contact.seo.title')} />
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
@@ -45,10 +45,10 @@ const Contacto: NextPage = () => {
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#C3009B' }}>
                   <Image
+                    alt={t('contact.steps.first')}
+                    height={32}
                     src="/static/building.svg"
                     width={32}
-                    height={32}
-                    alt={t('contact.steps.first')}
                   />
                 </span>
                 <span className="text-white">{t('contact.steps.first')}</span>
@@ -56,10 +56,10 @@ const Contacto: NextPage = () => {
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#8900C3' }}>
                   <Image
+                    alt={t('contact.steps.second')}
+                    height={32}
                     src="/static/niche.svg"
                     width={32}
-                    height={32}
-                    alt={t('contact.steps.second')}
                   />
                 </span>
                 <span className="text-white">{t('contact.steps.second')}</span>
@@ -67,10 +67,10 @@ const Contacto: NextPage = () => {
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#2700C3' }}>
                   <Image
+                    alt={t('contact.steps.third')}
+                    height={32}
                     src="/static/design.svg"
                     width={32}
-                    height={32}
-                    alt={t('contact.steps.third')}
                   />
                 </span>
                 <span className="text-white">{t('contact.steps.third')}</span>
@@ -78,10 +78,10 @@ const Contacto: NextPage = () => {
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#003AC3' }}>
                   <Image
+                    alt={t('contact.steps.fourth')}
+                    height={32}
                     src="/static/palette.svg"
                     width={32}
-                    height={32}
-                    alt={t('contact.steps.fourth')}
                   />
                 </span>
                 <span className="text-white">{t('contact.steps.fourth')}</span>
@@ -89,10 +89,10 @@ const Contacto: NextPage = () => {
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#009BC3' }}>
                   <Image
+                    alt={t('contact.steps.fifth')}
+                    height={32}
                     src="/static/calendar.svg"
                     width={32}
-                    height={32}
-                    alt={t('contact.steps.fifth')}
                   />
                 </span>
                 <span className="text-white">{t('contact.steps.fifth')}</span>
@@ -100,10 +100,10 @@ const Contacto: NextPage = () => {
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#00C389' }}>
                   <Image
+                    alt={t('contact.steps.sixth')}
+                    height={32}
                     src="/static/computer.svg"
                     width={32}
-                    height={32}
-                    alt={t('contact.steps.sixth')}
                   />
                 </span>
                 <span className="text-white">{t('contact.steps.sixth')}</span>
@@ -113,72 +113,72 @@ const Contacto: NextPage = () => {
 
           <div>
             <form
-              className="kwes-form"
-              method="POST"
               action="https://kwes.io/api/foreign/forms/Mm2LUetuNurfSFDKUGRY"
+              className="kwes-form"
               lang={locale}
+              method="POST"
             >
               <div className="py-2">
-                <label htmlFor="name" className="sr-only">
+                <label className="sr-only" htmlFor="name">
                   {t('contact.form.name.label')}
                 </label>
                 <input
-                  id="name"
-                  type="name"
-                  name="name"
-                  required
-                  placeholder={t('contact.form.name.label')}
                   className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:bg-white focus:shadow-outline"
+                  id="name"
+                  name="name"
+                  placeholder={t('contact.form.name.label')}
+                  required
+                  type="name"
                 />
               </div>
 
               <div className="py-2">
-                <label htmlFor="email" className="sr-only">
+                <label className="sr-only" htmlFor="email">
                   {t('contact.form.email.label')}
                 </label>
                 <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  required
-                  placeholder={t('contact.form.email.label')}
                   className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:bg-white focus:shadow-outline"
+                  id="email"
+                  name="email"
+                  placeholder={t('contact.form.email.label')}
+                  required
+                  type="email"
                 />
               </div>
 
               <div className="py-2">
-                <label htmlFor="subject" className="sr-only">
+                <label className="sr-only" htmlFor="subject">
                   {t('contact.form.subject.label')}
                 </label>
                 <input
-                  id="subject"
-                  type="text"
-                  name="subject"
-                  required
-                  placeholder={t('contact.form.subject.label')}
                   className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:bg-white focus:shadow-outline"
+                  id="subject"
+                  name="subject"
+                  placeholder={t('contact.form.subject.label')}
+                  required
+                  type="text"
                 />
               </div>
 
               <div className="py-2">
-                <label htmlFor="message" className="sr-only">
+                <label className="sr-only" htmlFor="message">
                   {t('contact.form.message.label')}
                 </label>
                 <textarea
+                  className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:shadow-outline focus:bg-white"
                   id="message"
                   name="message"
-                  rows={4}
-                  required
                   placeholder={t('contact.form.message.label')}
-                  className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:shadow-outline focus:bg-white"
+                  required
+                  rows={4}
                 />
               </div>
 
               <div className="flex flex-wrap justify-end mt-4">
                 <div className="w-full mt-3 md:w-1/2 md:pl-2 md:mt-0">
                   <button
-                    type="submit"
                     className="block w-full py-3 font-bold text-white capitalize transition-all duration-200 border rounded bg-primary border-primary"
+                    type="submit"
                   >
                     {t('contact.form.button.label')}
                   </button>

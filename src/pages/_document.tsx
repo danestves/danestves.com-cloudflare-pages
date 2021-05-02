@@ -7,47 +7,47 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link
-            rel="preload"
+            as="font"
+            crossOrigin="anonymous"
             href="/static/fonts/inter-var-latin.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
             rel="preload"
-            href="/static/fonts/FiraCode-VF.woff2"
-            as="font"
             type="font/woff2"
+          />
+          <link
+            as="font"
             crossOrigin="anonymous"
+            href="/static/fonts/FiraCode-VF.woff2"
+            rel="preload"
+            type="font/woff2"
           />
-          <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png" />
+          <link href="/static/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+          <link href="/static/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
           <link
-            rel="icon"
-            type="image/png"
-            sizes="194x194"
             href="/static/icons/favicon-194x194.png"
+            rel="icon"
+            sizes="194x194"
+            type="image/png"
           />
           <link
-            rel="icon"
-            type="image/png"
-            sizes="192x192"
             href="/static/icons/android-chrome-192x192.png"
+            rel="icon"
+            sizes="192x192"
+            type="image/png"
           />
-          <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png" />
-          <link rel="manifest" href="/static/icons/site.webmanifest" />
-          <link rel="mask-icon" href="/static/icons/safari-pinned-tab.svg" color="#071d49" />
-          <link rel="shortcut icon" href="/static/icons/favicon.ico" />
+          <link href="/static/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+          <link href="/static/icons/site.webmanifest" rel="manifest" />
+          <link color="#071d49" href="/static/icons/safari-pinned-tab.svg" rel="mask-icon" />
+          <link href="/static/icons/favicon.ico" rel="shortcut icon" />
           <meta
-            name="apple-mobile-web-app-title"
             content="Desarrollador Web Frontend | @danestves"
+            name="apple-mobile-web-app-title"
           />
-          <meta name="application-name" content="Desarrollador Web Frontend | @danestves" />
-          <meta name="msapplication-TileColor" content="#071d49" />
-          <meta name="msapplication-config" content="/static/icons/browserconfig.xml" />
-          <meta name="theme-color" content="#071d49" />
+          <meta content="Desarrollador Web Frontend | @danestves" name="application-name" />
+          <meta content="#071d49" name="msapplication-TileColor" />
+          <meta content="/static/icons/browserconfig.xml" name="msapplication-config" />
+          <meta content="#071d49" name="theme-color" />
 
-          <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+          <link href="https://vitals.vercel-insights.com" rel="preconnect" />
         </Head>
 
         <body className="bg-secondary-700">

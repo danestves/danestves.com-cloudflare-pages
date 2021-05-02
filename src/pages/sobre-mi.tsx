@@ -23,7 +23,7 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
 
   return (
     <>
-      <SEO title={t('aboutMe.seo.title')} description={t('aboutMe.seo.description')} />
+      <SEO description={t('aboutMe.seo.description')} title={t('aboutMe.seo.title')} />
 
       {/* Hero */}
       <div className="bg-primary">
@@ -60,8 +60,8 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
         <div className="container mt-8 divide-y-2 divide-primary">
           {experience?.map((item) => (
             <div
-              key={item.id}
               className="max-w-4xl mx-auto first:border-t-2 first:border-primary last:border-b-2 last:border-primary"
+              key={item.id}
             >
               <div className="max-w-3xl py-6 mx-auto">
                 <h3 className="mb-3 font-mono text-2xl font-bold text-secondary">{item.title}</h3>

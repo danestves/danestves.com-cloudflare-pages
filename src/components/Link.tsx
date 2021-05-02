@@ -14,13 +14,13 @@ export const Link: React.FC<LinkProps> = ({
   ...rest
 }) => (
   <NextLink
-    href={href}
     as={as}
+    href={href}
+    locale={locale}
+    passHref={passHref}
     replace={replace}
     scroll={scroll}
     shallow={shallow}
-    passHref={passHref}
-    locale={locale}
   >
     <a {...rest} />
   </NextLink>

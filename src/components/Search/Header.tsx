@@ -7,30 +7,30 @@ export const SearchHeader = connectSearchBox(({ refine }) => {
     <header className="flex-none border-b border-[#e5e7eb] relative z-[1] flex items-center">
       <form
         action={undefined}
-        role="search"
-        noValidate
         className="flex items-center flex-auto min-w-0"
+        noValidate
+        role="search"
       >
-        <label htmlFor="search-input" id="search-label" className="flex-none">
+        <label className="flex-none" htmlFor="search-input" id="search-label">
           <SearchIcon className="w-6 h-6 text-[#5468FF]" />
         </label>
 
         <input
-          type="text"
-          className="appearance-none bg-transparent h-[4.5rem] text-base font-normal font-sans text-black mx-4 flex-auto min-w-0 focus:outline-none focus-visible:outline-none"
           aria-autocomplete="list"
           aria-labelledby="search-label"
-          id="search-input"
+          autoCapitalize="off"
           autoComplete="off"
           autoCorrect="off"
-          autoCapitalize="off"
-          spellCheck={false}
-          placeholder="Search posts"
+          className="appearance-none bg-transparent h-[4.5rem] text-base font-normal font-sans text-black mx-4 flex-auto min-w-0 focus:outline-none focus-visible:outline-none"
+          id="search-input"
           maxLength={64}
           onChange={(e) => refine(e.target.value)}
+          placeholder="Search posts"
+          spellCheck={false}
+          type="text"
         />
 
-        <button type="reset" title="Clear the query" className="hidden">
+        <button className="hidden" title="Clear the query" type="reset">
           esc <XIcon />
         </button>
       </form>

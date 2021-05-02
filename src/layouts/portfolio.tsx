@@ -29,10 +29,10 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
   return (
     <>
       <SEO
-        title={portfolio.seo?.title}
+        date={portfolio.publishedAt}
         description={portfolio.seo?.description}
         shareImage={`https://danestves.com/og.jpg`}
-        date={portfolio.publishedAt}
+        title={portfolio.seo?.title}
       />
 
       <div className="container px-5 py-16 space-y-16">
@@ -41,11 +41,11 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
         </h1>
 
         <Image
-          image={portfolio.cover as Asset}
           alt={portfolio.seo?.title}
+          image={portfolio.cover as Asset}
           maxWidth={984}
-          withWebp
           outerWrapperClassName="rounded-lg overflow-hidden mx-auto max-w-screen-lg"
+          withWebp
         />
 
         <div className="grid max-w-screen-md grid-cols-1 p-5 mx-auto bg-secondary-900 md:grid-cols-3 rounded-xl">
@@ -67,19 +67,19 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
             </h2>
             <div className="flex justify-center">
               <a
-                href={portfolio.project_url}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="flex items-center space-x-1 text-sm underline focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none text-primary"
+                href={portfolio.project_url}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 <span>Ver</span>
                 <svg
-                  stroke="currentColor"
+                  className="w-4 h-4"
                   fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
                   strokeWidth={0}
                   viewBox="0 0 24 24"
-                  className="w-4 h-4"
-                  height="1em"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
                 >

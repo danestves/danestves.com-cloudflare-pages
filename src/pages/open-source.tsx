@@ -27,7 +27,7 @@ const OpenSource: NextPage<Props> = ({ github }) => {
 
   return (
     <>
-      <SEO title={t('openSource.seo.title')} description={t('openSource.seo.description')} />
+      <SEO description={t('openSource.seo.description')} title={t('openSource.seo.title')} />
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
@@ -44,16 +44,16 @@ const OpenSource: NextPage<Props> = ({ github }) => {
           <GeneralObserver>
             <div className="relative">
               <object
-                data="https://github-readme-stats.danestves.com/api/pin/?username=opengraphimg&repo=generator&title_color=fff&icon_color=00C389&text_color=9f9f9f&bg_color=0c1014&show_owner=true"
                 className="w-full"
+                data="https://github-readme-stats.danestves.com/api/pin/?username=opengraphimg&repo=generator&title_color=fff&icon_color=00C389&text_color=9f9f9f&bg_color=0c1014&show_owner=true"
               ></object>
 
               {/* Fix object cannot be inside anchor tag (link not working) */}
               <a
-                href="https://github.com/opengraphimg/generator"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="absolute inset-0"
+                href="https://github.com/opengraphimg/generator"
+                rel="noopener noreferrer"
+                target="_blank"
               ></a>
             </div>
           </GeneralObserver>
@@ -70,6 +70,7 @@ const OpenSource: NextPage<Props> = ({ github }) => {
             <GeneralObserver key={repository.id}>
               <div className="relative">
                 <object
+                  className="w-full"
                   data={`https://github-readme-stats.danestves.com/api/pin/?username=${
                     repository.owner.login
                   }&repo=${
@@ -77,15 +78,14 @@ const OpenSource: NextPage<Props> = ({ github }) => {
                   }&title_color=fff&icon_color=00C389&text_color=9f9f9f&bg_color=0c1014${
                     repository.owner.login === 'opengraphimg' ? '&show_owner=true' : ''
                   }`}
-                  className="w-full"
                 ></object>
 
                 {/* Fix object cannot be inside anchor tag (link not working) */}
                 <a
-                  href={repository.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="absolute inset-0"
+                  href={repository.html_url}
+                  rel="noopener noreferrer"
+                  target="_blank"
                 ></a>
               </div>
             </GeneralObserver>

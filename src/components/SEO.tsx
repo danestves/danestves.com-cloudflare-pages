@@ -40,9 +40,8 @@ export const SEO = ({
 
   return (
     <NextSeo
-      title={parsedTitle}
-      description={description}
       canonical={`https://danestves.com${lang}${router.asPath}`}
+      description={description}
       openGraph={{
         url: `https://danestves.com${lang}${router.asPath}`,
         title: parsedTitle,
@@ -52,6 +51,7 @@ export const SEO = ({
         type,
         locale: router.locale,
       }}
+      title={parsedTitle}
       twitter={{
         handle: '@danestves',
         site: '@danestves',

@@ -26,7 +26,7 @@ export const CustomLink = ({
     return <NextLink {...rest} href={newHref} />
   }
 
-  return <a href={href} target="_blank" rel="noopener noreferrer" {...rest} />
+  return <a href={href} rel="noopener noreferrer" target="_blank" {...rest} />
 }
 
 const MDXComponents = {

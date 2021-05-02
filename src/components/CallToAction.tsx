@@ -17,10 +17,10 @@ export const CallToAction = (): JSX.Element => {
         <div className="flex flex-wrap items-center flex-1 w-full overflow-hidden rounded-lg bg-primary md:flex-no-wrap">
           <div className="w-full md:w-1/3 md:order-last">
             <Image
-              src="/programming-animation.gif"
               alt={t('cta.gif.alt') as string}
-              width={300}
               height={300}
+              src="/programming-animation.gif"
+              width={300}
             />
           </div>
           <div className="w-full px-4 pt-24 pb-8 md:p-12 md:w-2/3">
@@ -31,8 +31,8 @@ export const CallToAction = (): JSX.Element => {
               <p className="mb-4">{t('cta.summary')}</p>
             </div>
             <Link
-              href="/contacto"
               className="inline-block px-6 py-3 text-gray-300 transition-all duration-150 transform bg-black rounded-lg hover:shadow-lg hover:-translate-y-1 focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-primary focus:outline-none"
+              href="/contacto"
             >
               {t('cta.button.label')}
             </Link>

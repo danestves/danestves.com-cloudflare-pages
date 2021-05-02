@@ -14,7 +14,7 @@ const Navigation = ({
 }): JSX.Element => (
   <ul className="absolute w-full p-6 top-24">
     {items.map((item, i) => (
-      <MenuItem key={item.slug} i={i} toggle={() => toggle(false)} {...item} />
+      <MenuItem i={i} key={item.slug} toggle={() => toggle(false)} {...item} />
     ))}
   </ul>
 )

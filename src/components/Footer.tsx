@@ -24,18 +24,18 @@ export const Footer = (): JSX.Element => {
             <div className="-mx-4">
               <div className="flex mx-4 space-x-6">
                 <a
-                  href="https://github.com/danestves"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="GitHub"
                   className="text-primary"
+                  href="https://github.com/danestves"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="GitHub"
                 >
                   <svg
-                    stroke="currentColor"
                     fill="currentColor"
+                    height={24}
+                    stroke="currentColor"
                     strokeWidth={0}
                     viewBox="0 0 480 512"
-                    height={24}
                     width={24}
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -44,18 +44,18 @@ export const Footer = (): JSX.Element => {
                 </a>
 
                 <a
-                  href="https://twitter.com/danestves"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Twitter"
                   className="text-primary"
+                  href="https://twitter.com/danestves"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="Twitter"
                 >
                   <svg
-                    stroke="currentColor"
                     fill="currentColor"
+                    height={24}
+                    stroke="currentColor"
                     strokeWidth={0}
                     viewBox="0 0 512 512"
-                    height={24}
                     width={24}
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -64,18 +64,18 @@ export const Footer = (): JSX.Element => {
                 </a>
 
                 <a
-                  href="https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="YouTube"
                   className="text-primary"
+                  href="https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="YouTube"
                 >
                   <svg
-                    stroke="currentColor"
                     fill="currentColor"
+                    height={24}
+                    stroke="currentColor"
                     strokeWidth={0}
                     viewBox="0 0 576 512"
-                    height={24}
                     width={24}
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -91,32 +91,32 @@ export const Footer = (): JSX.Element => {
 
             <ul className="grid gap-2">
               <li>
-                <Link href="/" className="text-white hover:underline focus:outline-none">
+                <Link className="text-white hover:underline focus:outline-none" href="/">
                   {t('footer.menu.home')}
                 </Link>
               </li>
               <li>
-                <Link href="/sobre-mi" className="text-white hover:underline focus:outline-none">
+                <Link className="text-white hover:underline focus:outline-none" href="/sobre-mi">
                   {t('footer.menu.aboutMe')}
                 </Link>
               </li>
               <li>
-                <Link href="/open-source" className="text-white hover:underline focus:outline-none">
+                <Link className="text-white hover:underline focus:outline-none" href="/open-source">
                   {t('footer.menu.openSource')}
                 </Link>
               </li>
               <li>
-                <Link href="/portafolio" className="text-white hover:underline focus:outline-none">
+                <Link className="text-white hover:underline focus:outline-none" href="/portafolio">
                   {t('footer.menu.portfolio')}
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-white hover:underline focus:outline-none">
+                <Link className="text-white hover:underline focus:outline-none" href="/blog">
                   {t('footer.menu.blog')}
                 </Link>
               </li>
               <li>
-                <Link href="/contacto" className="text-white hover:underline focus:outline-none">
+                <Link className="text-white hover:underline focus:outline-none" href="/contacto">
                   {t('footer.menu.contact')}
                 </Link>
               </li>
@@ -130,25 +130,25 @@ export const Footer = (): JSX.Element => {
 
             <form
               action="https://www.getrevue.co/profile/danestves/add_subscriber"
-              method="post"
               className="flex flex-col items-start my-4 space-y-4 md:items-center md:flex-row md:space-y-0 md:space-x-4"
+              method="post"
             >
               <div className="w-full md:flex-1 md:w-auto">
-                <label htmlFor="member[email]" className="sr-only">
+                <label className="sr-only" htmlFor="member[email]">
                   {t('footer.newsletter.form.label')}
                 </label>
                 <input
-                  type="email"
-                  name="member[email]"
-                  id="member[email]"
-                  placeholder={t('footer.newsletter.form.placeholder')}
                   className="block w-full px-4 py-2 mx-auto font-mono leading-5 text-white placeholder-opacity-50 bg-transparent border border-white rounded-lg md:flex-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
+                  id="member[email]"
+                  name="member[email]"
+                  placeholder={t('footer.newsletter.form.placeholder')}
+                  type="email"
                 />
               </div>
 
               <button
-                type="submit"
                 className="px-4 py-2 rounded-lg text-secondary bg-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
+                type="submit"
               >
                 {t('footer.newsletter.form.button.label')} 👉
               </button>
@@ -163,13 +163,13 @@ export const Footer = (): JSX.Element => {
             Daniel Esteves © <span>{new Date().getFullYear()}</span> - {t('footer.copyright')}
             <span className="block mt-2 font-mono text-sm text-center text-primary">
               Designed by{` `}
-              <a href="https://twitter.com/vibrawifi" target="_blank" rel="noopener noreferrer">
+              <a href="https://twitter.com/vibrawifi" rel="noopener noreferrer" target="_blank">
                 <b>Vibra Wifi</b>
               </a>
               {` `}
               with
               {` `}
-              <a href="https://twitter.com/vicman_ve" target="_blank" rel="noopener noreferrer">
+              <a href="https://twitter.com/vicman_ve" rel="noopener noreferrer" target="_blank">
                 <b>Victor Velasquez</b>
               </a>
             </span>

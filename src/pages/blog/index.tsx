@@ -31,7 +31,7 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
 
   return (
     <>
-      <SEO title={t('blog.seo.title')} description={t('blog.seo.description')} />
+      <SEO description={t('blog.seo.description')} title={t('blog.seo.title')} />
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
@@ -42,18 +42,18 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
       <div className="container max-w-screen-xl px-5">
         {featuredPost && (
           <Link
+            className="group"
             href={`/blog/${featuredPost.slug}-${featuredPost.id}`}
             locale={locale}
-            className="group"
           >
             <div className="items-center max-w-lg gap-12 mx-auto lg:grid lg:grid-cols-12 lg:max-w-none">
               <div className="lg:col-span-7">
                 <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
                   <Image
-                    image={featuredPost.cover as Asset}
                     alt={featuredPost.title}
-                    withWebp
+                    image={featuredPost.cover as Asset}
                     outerWrapperClassName="w-full"
+                    withWebp
                   />
                 </div>
               </div>

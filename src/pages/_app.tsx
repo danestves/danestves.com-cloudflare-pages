@@ -18,15 +18,15 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
         <PlausibleProvider domain="danestves.com">
           <LogoJsonLd logo="https://danestves.com/logo.png" url="https://danestves.com" />
           <SocialProfileJsonLd
-            type="Person"
             name="Daniel Esteves"
-            url="https://danestves.com"
             sameAs={[
               'https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw',
               'https://instagram.com/danestves',
               'https://www.linkedin.com/in/danestves',
               'https://twitter.com/danestves',
             ]}
+            type="Person"
+            url="https://danestves.com"
           />
 
           <Layout>

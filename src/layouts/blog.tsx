@@ -63,27 +63,27 @@ export default function PostLayout({ post }: Props): JSX.Element {
   return (
     <>
       <SEO
-        isTemplate={false}
-        title={post.seo?.title}
-        description={post.seo?.description}
-        shareImage={flayyer.href()}
-        type="article"
         date={new Date(post.published).toISOString().slice(0, 19)}
+        description={post.seo?.description}
+        isTemplate={false}
+        shareImage={flayyer.href()}
+        title={post.seo?.title}
+        type="article"
       >
-        <meta property="profile:first_name" content="Daniel" />
-        <meta property="profile:last_name" content="Esteves" />
+        <meta content="Daniel" property="profile:first_name" />
+        <meta content="Esteves" property="profile:last_name" />
       </SEO>
 
       <ArticleJsonLd
-        url={window.location.href}
-        title={post.seo?.title as string}
-        images={[flayyer.href()]}
-        datePublished={new Date(post.published).toISOString().slice(0, 19)}
-        dateModified={new Date(post.updatedAt).toISOString().slice(0, 19)}
         authorName={['Daniel Esteves']}
-        publisherName="Daniel Esteves"
-        publisherLogo="https://danestves.com/logo.png"
+        dateModified={new Date(post.updatedAt).toISOString().slice(0, 19)}
+        datePublished={new Date(post.published).toISOString().slice(0, 19)}
         description={post.seo?.description as string}
+        images={[flayyer.href()]}
+        publisherLogo="https://danestves.com/logo.png"
+        publisherName="Daniel Esteves"
+        title={post.seo?.title as string}
+        url={window.location.href}
       />
 
       <article className="container px-5 py-16">
@@ -97,8 +97,8 @@ export default function PostLayout({ post }: Props): JSX.Element {
 
         <div className="max-w-5xl mx-auto">
           <GraphCmsImage
-            image={post.cover as Asset}
             alt={post.title}
+            image={post.cover as Asset}
             outerWrapperClassName="overflow-hidden shadow-xl rounded-[2rem]"
             withWebp
           />
@@ -106,11 +106,11 @@ export default function PostLayout({ post }: Props): JSX.Element {
           <div className="flex justify-center my-8">
             <div className="flex items-center space-x-4 divide-x-2 divide-white">
               <Image
+                alt="Daniel Esteves"
+                className="rounded-full"
+                height={75}
                 src="/me.jpg"
                 width={75}
-                height={75}
-                className="rounded-full"
-                alt="Daniel Esteves"
               />
 
               <div className="pl-4">
@@ -137,16 +137,16 @@ export default function PostLayout({ post }: Props): JSX.Element {
               <div className="flex-shrink-0">
                 {/* Heroicon name: solid/information-circle */}
                 <svg
-                  className="w-5 h-5 text-blue-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
                   aria-hidden="true"
+                  className="w-5 h-5 text-blue-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fillRule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
                     clipRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    fillRule="evenodd"
                   />
                 </svg>
               </div>
@@ -154,9 +154,9 @@ export default function PostLayout({ post }: Props): JSX.Element {
                 <p className="text-sm text-blue-700">{t('blog.alert.text')}</p>
                 <p className="mt-3 text-sm md:mt-0 md:ml-6">
                   <Link
+                    className="font-medium text-blue-700 whitespace-nowrap hover:text-blue-600"
                     href={`/blog/${post.localizations[0].slug}-${post.localizations[0].id}`}
                     locale={post.localizations[0].locale}
-                    className="font-medium text-blue-700 whitespace-nowrap hover:text-blue-600"
                   >
                     {t('blog.alert.button.label')} <span aria-hidden="true">&rarr;</span>
                   </Link>
@@ -177,18 +177,18 @@ export default function PostLayout({ post }: Props): JSX.Element {
 
           <div className="flex items-center justify-start mt-6 space-x-3">
             <a
-              href={editUrl(post.slug, locale as string)}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-white underline"
+              href={editUrl(post.slug, locale as string)}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               {t('blog.editOnGitHub')}
             </a>
             <a
-              href={discussUrl(post.slug)}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-white underline"
+              href={discussUrl(post.slug)}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               {t('blog.commentOnTwitter')}
             </a>

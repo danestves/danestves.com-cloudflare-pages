@@ -27,7 +27,7 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
 
   return (
     <>
-      <SEO title={t('portfolio.seo.title')} description={t('portfolio.seo.description')} />
+      <SEO description={t('portfolio.seo.description')} title={t('portfolio.seo.title')} />
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
@@ -41,16 +41,16 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
         {portfolios.map((portfolio) => (
           <div key={portfolio.slug}>
             <Link
+              className="grid items-center grid-cols-1 gap-6 overflow-hidden rounded-lg md:grid-cols-2 group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
               href={`/portafolio/${portfolio.slug}-${portfolio.id}`}
               locale={locale}
-              className="grid items-center grid-cols-1 gap-6 overflow-hidden rounded-lg md:grid-cols-2 group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
             >
               <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg">
                 <Image
-                  image={portfolio.cover as Asset}
                   alt={portfolio.title}
-                  withWebp
+                  image={portfolio.cover as Asset}
                   outerWrapperClassName="w-full"
+                  withWebp
                 />
               </div>
               <div>
@@ -60,8 +60,8 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
                 <p className="text-white">{portfolio.seo?.description}</p>
                 <div className="flex mt-4">
                   <button
-                    type="button"
                     className="flex items-center px-6 py-2 font-semibold transition-all duration-150 transform rounded group-hover:-translate-y-1 focus:outline-none bg-primary text-secondary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
+                    type="button"
                   >
                     {t('portfolio.portfolios.button.label')}
                   </button>

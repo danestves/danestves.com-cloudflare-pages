@@ -14,9 +14,9 @@ export const SearchHit = ({ hit, setOpen }: Props): JSX.Element => {
   return (
     <div className="relative group">
       <Link
+        className="block rounded-lg pr-5 pl-4 bg-[#f9fafb] shadow-search-item group-hover:bg-[#5468FF]"
         href={`/blog/${hit.slug}-${hit.id}`}
         locale={hit.locale}
-        className="block rounded-lg pr-5 pl-4 bg-[#f9fafb] shadow-search-item group-hover:bg-[#5468FF]"
         onClick={() => setOpen(false)}
       >
         <div className="flex items-center h-16">
