@@ -1,3 +1,9 @@
+### 2.2.0 (2021-05-08)
+
+##### New Features
+
+* **design:**  new fonts, deleting images and more ([d2bbd2a6](https://github.com/danestves/website/commit/d2bbd2a685494b980d3239e44d13e059f4e54f09))
+
 #### 2.1.1 (2021-05-08)
 
 ##### New Features
