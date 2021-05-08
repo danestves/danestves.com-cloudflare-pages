@@ -1,5 +1,4 @@
 // Dependencies
-import { useState } from 'react'
 import { useI18n } from 'next-rosetta'
 import { useRouter } from 'next/dist/client/router'
 import { useWindowScroll, usePrevious } from 'react-use'
@@ -13,8 +12,6 @@ import MobileHeader from './MobileHeader'
 import type { MyLocale } from 'i18n'
 
 export const Header = (): JSX.Element => {
-  const [isOpen, setIsOpen] = useState(false)
-
   const { t } = useI18n<MyLocale>()
   const router = useRouter()
   const { y } = useWindowScroll()
@@ -24,17 +21,13 @@ export const Header = (): JSX.Element => {
     <>
       <header
         className={clsx(
-          'top-0 z-50 hidden w-full bg-secondary-700 transform transition-transform duration-150 backdrop-filter backdrop-blur bg-opacity-70 md:block md:sticky',
-          prevY
-            ? y < 76 || prevY > y || isOpen
-              ? 'translate-0'
-              : '-translate-y-full'
-            : 'translate-0'
+          'hidden top-0 z-50 w-full bg-secondary-700 transform transition-transform duration-150 backdrop-filter backdrop-blur bg-opacity-70 sticky md:block',
+          prevY ? (y < 76 || prevY > y ? 'translate-0' : '-translate-y-full') : 'translate-0'
         )}
       >
-        <div className="md:px-8">
+        <div className="px-8">
           <nav className="container relative flex flex-wrap items-center justify-end">
-            <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
+            <div className="relative flex-1 flex-shrink-0">
               <Link href="/" title={t('header.menu.home')}>
                 <svg className="w-8 h-8 text-primary" viewBox="0 0 1080 1080">
                   <path
@@ -59,22 +52,7 @@ export const Header = (): JSX.Element => {
               </Link>
             </div>
 
-            <div className="flex-shrink-0 pr-4 md:hidden">
-              <button
-                aria-label="Menu"
-                className="block my-5 text-primary focus:outline-none focus:text-primary"
-                onClick={() => setIsOpen(!isOpen)}
-                type="button"
-              >
-                <svg className="w-10 h-10 fill-current" viewBox="0 0 24 24">
-                  <path d="M3 6C3 5.44772 3.44772 5 4 5H20C20.5523 5 21 5.44772 21 6C21 6.55228 20.5523 7 20 7H4C3.44772 7 3 6.55228 3 6Z" />
-                  <path d="M3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12Z" />
-                  <path d="M4 17C3.44772 17 3 17.4477 3 18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18C21 17.4477 20.5523 17 20 17H4Z" />
-                </svg>
-              </button>
-            </div>
-
-            <div className="hidden md:ml-10 md:flex md:bg-transparent md:items-center">
+            <div className="flex items-center ml-10 bg-transparent">
               <div className="flex items-center justify-center">
                 <Link
                   className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"

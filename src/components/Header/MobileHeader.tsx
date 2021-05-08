@@ -1,7 +1,8 @@
 // Dependencies
-import { useState, useRef } from 'react'
+import { useState, useRef, useMemo, memo } from 'react'
 import clsx from 'clsx'
 import { useI18n } from 'next-rosetta'
+import { document } from 'browser-monads-ts'
 
 // Components
 import Navigation from './Navigation'
@@ -20,6 +21,14 @@ const MobileHeader = (): JSX.Element => {
 
   const { t } = useI18n<MyLocale>()
   useClickOutside(containerRef, () => toggleOpen(false))
+
+  useMemo(() => {
+    if (isOpen) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+  }, [isOpen])
 
   const items = [
     {
@@ -170,4 +179,4 @@ const MobileHeader = (): JSX.Element => {
   )
 }
 
-export default MobileHeader
+export default memo(MobileHeader)

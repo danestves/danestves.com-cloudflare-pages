@@ -3,13 +3,6 @@
 
 declare module 'kwesforms'
 
-declare module 'browser-monads' {
-  export const window: Window & {
-    workbox: any
-  }
-  export const document: Document
-  export function exists(variable: any): boolean
-}
 declare module '*.graphql' {
   import { DocumentNode } from 'graphql'
 

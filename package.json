@@ -30,7 +30,7 @@
     "@headlessui/react": "^1.1.1",
     "@heroicons/react": "^1.0.1",
     "algoliasearch": "^4.9.1",
-    "browser-monads": "^1.0.0",
+    "browser-monads-ts": "^1.2.2",
     "clsx": "^1.1.1",
     "date-fns": "^2.21.3",
     "firebase-admin": "^9.7.0",

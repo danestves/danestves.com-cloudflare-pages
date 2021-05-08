@@ -1,6 +1,6 @@
 // Dependencies
 import { RefObject, useEffect } from 'react'
-import { document } from 'browser-monads'
+import { document } from 'browser-monads-ts'
 
 /**
  * Execute a function after click outside of the element

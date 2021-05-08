@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import GraphCmsImage from '@graphcms/react-image'
 import { ArticleJsonLd } from 'next-seo'
-import { window } from 'browser-monads'
+import { window } from 'browser-monads-ts'
 import { useRouter } from 'next/dist/client/router'
 import { useI18n } from 'next-rosetta'
 import { FlayyerIO } from '@flayyer/flayyer'
