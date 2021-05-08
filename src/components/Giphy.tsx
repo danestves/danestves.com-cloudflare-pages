@@ -2,6 +2,7 @@
 import useSWR from 'swr'
 import { Gif } from '@giphy/react-components'
 import { IGif } from '@giphy/js-types'
+import Image from 'next/image'
 
 // Components
 import { GeneralObserver } from '@/components'
@@ -16,6 +17,14 @@ export default function Giphy({ id }: { id: string }): JSX.Element | null {
   return gif ? (
     <GeneralObserver>
       <Gif gif={gif} width={300} />
+      <a
+        className="inline-flex mt-2"
+        href="https://giphy.com/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Image height={42} src="/static/giphy-copyright.gif" width={200} />
+      </a>
     </GeneralObserver>
   ) : null
 }
