@@ -1,8 +1,7 @@
 // Dependencies
 import Image from '@graphcms/react-image'
 import { useI18n } from 'next-rosetta'
-import { MdxRemote } from 'next-mdx-remote/types'
-import hydrate from 'next-mdx-remote/hydrate'
+import { MDXRemote } from 'next-mdx-remote'
 
 // @types
 import { Portfolio } from '@/generated/graphql'
@@ -19,7 +18,9 @@ import type { MyLocale } from 'i18n'
 
 interface Props {
   portfolio: Portfolio & {
-    mdx: MdxRemote.Source
+    mdx: {
+      compiledSource: string
+    }
   }
 }
 
@@ -93,9 +94,7 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
 
         <div className="max-w-screen-md mx-auto">
           <div className="max-w-full prose prose-lg">
-            {hydrate(portfolio.mdx, {
-              components: MDXComponents,
-            })}
+            <MDXRemote compiledSource={portfolio.mdx.compiledSource} components={MDXComponents} />
           </div>
         </div>
       </div>

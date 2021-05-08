@@ -1,7 +1,6 @@
 // Dependencies
 import { NextApiRequest, NextApiResponse } from 'next'
-import { SitemapStream, streamToPromise } from 'sitemap'
-import { Readable } from 'stream'
+import builder from 'xmlbuilder'
 
 // @types
 import { Locale } from '@/generated/graphql'
@@ -9,72 +8,59 @@ import { Locale } from '@/generated/graphql'
 // Libraries
 import { getAllPostsWithSlug } from '@/lib/graphcms'
 
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void | NextApiResponse<any>> => {
-  if (req.method === 'GET') {
-    try {
-      const links: any = [
-        {
-          url: 'https://danestves.com/en',
-          changefreq: 'monthly',
-          priority: 0.3,
-        },
-        {
-          url: 'https://danestves.com/blog',
-          changefreq: 'weekly',
-          priority: 0.3,
-        },
-        {
-          url: 'https://danestves.com/en/blog',
-          changefreq: 'weekly',
-          priority: 0.3,
-        },
-        {
-          url: 'https://danestves.com/portafolio',
-          changefreq: 'monthly',
-          priority: 0.3,
-        },
-        {
-          url: 'https://danestves.com/en/portafolio',
-          changefreq: 'monthly',
-          priority: 0.3,
-        },
-      ]
+export default async (_: NextApiRequest, res: NextApiResponse): Promise<void> => {
+  try {
+    const pages = ['', '/sobre-mi', '/open-source', '/portafolio', '/blog', '/contacto']
+    const languages = ['en', 'es']
 
-      await getAllPostsWithSlug('en' as Locale).then((res) => {
-        res.posts.map((post) => {
-          return links.push({
-            url: `https://danestves.com/en/blog/${post.slug}-${post.id}`,
-            lastmod: post.updatedAt,
-            changefreq: 'weekly',
-            priority: 0.3,
-          })
-        })
+    // Generate Sitemap
+    const newbuilder = builder
+      .begin()
+      .i('xml-stylesheet', 'type="text/xsl" href="/sitemap.xsl"')
+      .dec('1.0', 'UTF-8', true)
+    const root = newbuilder.node('urlset')
+    root.att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+
+    pages.map((page) => {
+      languages.map((lang) => {
+        const url = root.ele('url')
+
+        url.ele('loc', `https://danestves.com${lang === 'es' ? '' : `/${lang}`}${page}`)
+        url.ele('priority', `0.3`)
       })
-      await getAllPostsWithSlug('es' as Locale).then((res) => {
-        res.posts.map((post) => {
-          return links.push({
-            url: `https://danestves.com/blog/${post.slug}-${post.id}`,
-            lastmod: post.updatedAt,
-            changefreq: 'weekly',
-            priority: 0.3,
-          })
-        })
+    })
+
+    await getAllPostsWithSlug('en' as Locale).then((res) => {
+      res.posts.map((post) => {
+        const url = root.ele('url')
+
+        url.ele('loc', `https://danestves.com/en/blog/${post.slug}-${post.id}`)
+        url.ele('lastmod', `${new Date(post.updatedAt).toISOString()}`)
+        url.ele('changefreq', `monthly`)
+        url.ele('priority', `0.8`)
       })
+    })
+    await getAllPostsWithSlug('es' as Locale).then((res) => {
+      res.posts.map((post) => {
+        const url = root.ele('url')
 
-      const stream = new SitemapStream({ hostname: 'https://danestves.com' })
-      const sitemap = await streamToPromise(Readable.from(links).pipe(stream)).then((data) =>
-        data.toString()
-      )
+        url.ele('loc', `https://danestves.com/blog/${post.slug}-${post.id}`)
+        url.ele('lastmod', `${new Date(post.updatedAt).toISOString()}`)
+        url.ele('changefreq', `monthly`)
+        url.ele('priority', `0.8`)
+      })
+    })
 
-      res.setHeader('Content-Type', 'application/xml')
-      return res.status(200).send(sitemap)
-    } catch (error) {
-      return res.status(500).json({ error: error.message || error.toString() })
-    }
+    const xml = root.end({ pretty: true })
+
+    res.statusCode = 200
+
+    // Set appropriate header
+    res.setHeader('Content-Type', 'text/xml')
+    res.send(xml)
+  } catch (error) {
+    console.error(error)
+
+    res.status(500).send({ message: 'Server Error' })
   }
-
-  return res.status(400).send('Method not allowed')
 }

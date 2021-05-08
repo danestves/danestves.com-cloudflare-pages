@@ -1,8 +1,7 @@
 // Dependencies
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import { I18nProps } from 'next-rosetta'
-import renderToString from 'next-mdx-remote/render-to-string'
-import { MdxRemote } from 'next-mdx-remote/types'
+import { serialize } from 'next-mdx-remote/serialize'
 import he from 'he'
 import mdxPrism from 'mdx-prism'
 import remarkCodeTitles from 'remark-code-titles'
@@ -12,9 +11,6 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 // @types
 import { Locale, Portfolio as IPortfolio } from '@/generated/graphql'
-
-// Components
-import MDXComponents from '@/components/MDXComponents'
 
 // Layouts
 import PortfolioLayout from '@/layouts/portfolio'
@@ -27,7 +23,9 @@ import type { MyLocale } from 'i18n'
 
 interface Props {
   portfolio: IPortfolio & {
-    mdx: MdxRemote.Source
+    mdx: {
+      compiledSource: string
+    }
   }
 }
 
@@ -63,8 +61,7 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
       table,
       portfolio: {
         ...data.portfolio,
-        mdx: await renderToString(he.decode(data.portfolio?.body || ''), {
-          components: MDXComponents,
+        mdx: await serialize(he.decode(data.portfolio?.body || ''), {
           mdxOptions: {
             remarkPlugins: [remarkCodeTitles, remarkA11yEmoji],
             rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }], mdxPrism],
@@ -72,6 +69,7 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
         }),
       },
     },
+    revalidate: 600,
   }
 }
 

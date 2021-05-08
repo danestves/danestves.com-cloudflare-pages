@@ -6,8 +6,7 @@ import { window } from 'browser-monads'
 import { useRouter } from 'next/dist/client/router'
 import { useI18n } from 'next-rosetta'
 import { FlayyerIO } from '@flayyer/flayyer'
-import { MdxRemote } from 'next-mdx-remote/types'
-import hydrate from 'next-mdx-remote/hydrate'
+import { MDXRemote } from 'next-mdx-remote'
 
 // @types
 import { Post } from '@/generated/graphql'
@@ -36,7 +35,9 @@ const discussUrl = (slug: string): string => {
 
 interface Props {
   post: Post & {
-    mdx: MdxRemote.Source
+    mdx: {
+      compiledSource: string
+    }
   }
 }
 
@@ -168,9 +169,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
 
         <div className="relative max-w-3xl mx-auto mt-8">
           <div className="max-w-full prose prose-lg">
-            {hydrate(post.mdx, {
-              components: MDXComponents,
-            })}
+            <MDXRemote compiledSource={post.mdx.compiledSource} components={MDXComponents} />
           </div>
 
           <Subscribe />
