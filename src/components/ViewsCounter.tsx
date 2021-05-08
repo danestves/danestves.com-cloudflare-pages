@@ -1,7 +1,6 @@
 // Dependencies
 import { useEffect } from 'react'
 import useSWR from 'swr'
-import format from 'comma-number'
 import { useI18n } from 'next-rosetta'
 
 // Libraries
@@ -9,6 +8,9 @@ import fetcher from '@/lib/fetcher'
 
 // Locales
 import type { MyLocale } from 'i18n'
+
+// Utils
+import { formatCommaNumber } from '@/utils'
 
 export function ViewCounter({ slug }: { slug: string }): JSX.Element {
   const { t } = useI18n<MyLocale>()
@@ -26,7 +28,7 @@ export function ViewCounter({ slug }: { slug: string }): JSX.Element {
 
   return (
     <>
-      {views ? format(views) : '–––'} {t('blog.visits')}
+      {views ? formatCommaNumber(views as number) : '–––'} {t('blog.visits')}
     </>
   )
 }

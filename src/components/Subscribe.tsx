@@ -1,7 +1,6 @@
 // Dependencies
 import { useState } from 'react'
 import useSWR from 'swr'
-import format from 'comma-number'
 import { useI18n } from 'next-rosetta'
 
 // Libraries
@@ -9,6 +8,9 @@ import fetcher from '@/lib/fetcher'
 
 // Locales
 import type { MyLocale } from 'i18n'
+
+// Utils
+import { formatCommaNumber } from '@/utils'
 
 export const Subscribe = (): JSX.Element => {
   const [form, setForm] = useState<{
@@ -20,7 +22,9 @@ export const Subscribe = (): JSX.Element => {
   const [email, setEmail] = useState('')
   const { t } = useI18n<MyLocale>()
   const { data } = useSWR('/api/subscribers', fetcher)
-  const subscriberCount = format(((data as unknown) as Record<string, unknown>)?.count || 0)
+  const subscriberCount = formatCommaNumber(
+    (((data as unknown) as Record<string, unknown>)?.count as number) || 0
+  )
 
   const subscribe = async (e: React.ChangeEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()

@@ -6,8 +6,8 @@ import es from 'date-fns/locale/es'
  * Format the received date using [date-fns](https://date-fns.org/)
  * that is a lightweight library to format dates
  *
- * @param date - The date to format
- * @param formatter - The way to format the date
+ * @param date The date to format
+ * @param formatter The way to format the date
  *
  * @returns The string with the formatted date
  */
@@ -36,9 +36,9 @@ export const formatDate = (date: string | Date, formatter = 'mm/dd/yyyy', lang =
  * number of words with the words per minute
  * finally round result with `Math.ceil()`
  *
- * @param text - The string to analyze
- * @param singular - The sentence to show when reading time is equal to 1
- * @param plural - The sentence to show when reading time is moren than 1
+ * @param text The string to analyze
+ * @param singular The sentence to show when reading time is equal to 1
+ * @param plural The sentence to show when reading time is moren than 1
  *
  * @returns The estimated reading time
  */
@@ -75,29 +75,23 @@ export const readingTime = ({
 }
 
 /**
- * Generator of URL for open graph images
- *
- * @param title - The title to show in the image
- * @param tags - The tags to show in the image (optional)
- *
- * @returns The string with the generated URL to show the image
- */
-export const openGraphImgGenerator = (title: string, tags?: string[]): string => {
-  return `https://generator.opengraphimg.com/?title=${decodeURIComponent(
-    decodeURIComponent(title)
-  )}${
-    tags ? `&tags=${tags?.map((name: string) => name).join(`,`)}` : ''
-  }&author=danestves&background=00C389FF&boxBackground=071D49FF&titleMargin=-mt-12&tagsSize=text-3xl&atSymbol=true&authorSize=text-3xl`
-}
-
-/**
  * Returns if a target string contains any of the words of the pattern
  *
- * @param target - The string to analyze
- * @param pattern - The array of words for regex
+ * @param target The string to analyze
+ * @param pattern The array of words for regex
  */
 export const contains = (target: string, pattern: string[]): boolean => {
   const value = new RegExp(pattern.join('|')).test(target)
 
   return value
+}
+
+/**
+ * Format the given string (of number) or number to a readable format
+ *
+ * @param number The number to format
+ * @returns The string formated
+ */
+export const formatCommaNumber = (number: number | string): string => {
+  return new Intl.NumberFormat().format(Number(number))
 }

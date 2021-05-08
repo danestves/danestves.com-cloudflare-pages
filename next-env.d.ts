@@ -19,4 +19,3 @@ declare module '*.graphql' {
 declare module 'remark-code-titles'
 declare module '@fec/remark-a11y-emoji'
 declare module 'mdx-prism'
-declare module 'comma-number'
