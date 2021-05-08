@@ -1,3 +1,11 @@
+#### 2.2.3 (2021-05-08)
+
+##### New Features
+
+* **design:**
+  *  add overflow when menu is open ([ab3e4a78](https://github.com/danestves/website/commit/ab3e4a787e55ddd6df6e21a4996bf65cc618cf2e))
+  *  add sticky header and backdrop filter ([ed0b6eb6](https://github.com/danestves/website/commit/ed0b6eb6e7703ca80b64990df33678b1d6bc6393))
+
 #### 2.2.2 (2021-05-08)
 
 ##### New Features
