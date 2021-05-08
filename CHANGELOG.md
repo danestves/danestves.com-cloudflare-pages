@@ -1,3 +1,9 @@
+#### 2.2.1 (2021-05-08)
+
+##### New Features
+
+* **dependency:**  removing comma-number ([b24bd6ac](https://github.com/danestves/website/commit/b24bd6ac10a87cb43861957db89836804c8a6bd9))
+
 ### 2.2.0 (2021-05-08)
 
 ##### New Features
