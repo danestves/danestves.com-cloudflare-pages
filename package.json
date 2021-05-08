@@ -1,6 +1,6 @@
 {
   "name": "danestves-frontend",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Frontend website onf @danestves portfolio made with NextJS & GraphCMS",
   "repository": {
     "type": "git",
