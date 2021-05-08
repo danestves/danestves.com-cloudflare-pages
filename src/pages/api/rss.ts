@@ -9,27 +9,26 @@ import { Locale } from '@/generated/graphql'
 import { getAllPostsWithSlug } from '@/lib/graphcms'
 
 export default async (
-  req: NextApiRequest,
+  _: NextApiRequest,
   res: NextApiResponse
 ): Promise<void | NextApiResponse<any>> => {
-  const protocol = req.headers.referer?.split('://')[0] || 'http'
-  const host = req.headers.host
-
   try {
+    const baseUrl = 'https://danestves.com'
+
     const feed = new RSS({
       title: 'Daniel Esteves - Frontend Web Developer',
       description:
         'Daniel Esteves frontend web developer has made websites using WordPress, React, Gatsby, NextJS and more. Ready to make your dreams come true.',
       image_url: 'https://danestves.com/static/icons/favicon.ico',
-      site_url: `${protocol}://${host}`,
-      feed_url: `${protocol}://${host}/rss.xml`,
+      site_url: `${baseUrl}`,
+      feed_url: `${baseUrl}/rss.xml`,
     })
 
     await getAllPostsWithSlug('en' as Locale).then((res) => {
       res.posts.map((post) => {
         return feed.item({
           title: `${post.seo?.title} | @danestves` || '',
-          url: `${protocol}://${host}/en/blog/${post.slug}-${post.id}`,
+          url: `${baseUrl}/en/blog/${post.slug}-${post.id}`,
           date: post.published,
           description: post.seo?.description || '',
         })
@@ -39,7 +38,7 @@ export default async (
       res.posts.map((post) => {
         return feed.item({
           title: `${post.seo?.title} | @danestves` || '',
-          url: `${protocol}://${host}/blog/${post.slug}-${post.id}`,
+          url: `${baseUrl}/blog/${post.slug}-${post.id}`,
           date: post.published,
           description: post.seo?.description || '',
         })
