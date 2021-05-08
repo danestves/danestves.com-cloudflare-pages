@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import { useI18n } from 'next-rosetta'
 import { useRouter } from 'next/dist/client/router'
+import { useWindowScroll, usePrevious } from 'react-use'
+import clsx from 'clsx'
 
 // Components
 import { Link, LanguageSwitcher, Search } from '@/components'
@@ -15,10 +17,21 @@ export const Header = (): JSX.Element => {
 
   const { t } = useI18n<MyLocale>()
   const router = useRouter()
+  const { y } = useWindowScroll()
+  const prevY = usePrevious(y)
 
   return (
     <>
-      <header className="hidden w-full md:block">
+      <header
+        className={clsx(
+          'top-0 z-50 hidden w-full bg-secondary-700 transform transition-transform duration-150 backdrop-filter backdrop-blur bg-opacity-70 md:block md:sticky',
+          prevY
+            ? y < 76 || prevY > y || isOpen
+              ? 'translate-0'
+              : '-translate-y-full'
+            : 'translate-0'
+        )}
+      >
         <div className="md:px-8">
           <nav className="container relative flex flex-wrap items-center justify-end">
             <div className="relative flex-1 flex-shrink-0 py-4 pl-4 md:p-0">
