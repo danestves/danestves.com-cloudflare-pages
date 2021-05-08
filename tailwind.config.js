@@ -37,7 +37,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [`Inter`, ...fontFamily.sans],
-        mono: [`Fira Code`, ...fontFamily.mono],
+        title: [`Roboto Slab`, ...fontFamily.sans],
       },
       maxHeight: (theme) => theme('spacing'),
       minHeight: (theme) => theme('spacing'),

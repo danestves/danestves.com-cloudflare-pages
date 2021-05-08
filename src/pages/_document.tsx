@@ -6,20 +6,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link
-            as="font"
-            crossOrigin="anonymous"
-            href="/static/fonts/inter-var-latin.woff2"
-            rel="preload"
-            type="font/woff2"
-          />
-          <link
-            as="font"
-            crossOrigin="anonymous"
-            href="/static/fonts/FiraCode-VF.woff2"
-            rel="preload"
-            type="font/woff2"
-          />
           <link href="/static/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
           <link href="/static/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
           <link
@@ -47,7 +33,7 @@ export default class MyDocument extends Document {
           <meta content="/static/icons/browserconfig.xml" name="msapplication-config" />
           <meta content="#071d49" name="theme-color" />
 
-          <link href="https://vitals.vercel-insights.com" rel="preconnect" />
+          <meta content="fc24b57a0cc85e0e" name="yandex-verification" />
         </Head>
 
         <body className="bg-secondary-700">

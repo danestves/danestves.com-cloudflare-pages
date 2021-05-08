@@ -176,10 +176,7 @@ export const table: MyLocale = {
     summary:
       'I shape your ideas and make them come true. I will work with you side by side to make your final product much better than you expect.',
     menu: {
-      home: 'Home',
-      aboutMe: 'About Me',
       openSource: 'Open Source',
-      portfolio: 'Portfolio',
       blog: 'Blog',
       contact: 'Contact',
     },

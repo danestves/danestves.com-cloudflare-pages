@@ -87,27 +87,12 @@ export const Footer = (): JSX.Element => {
           </div>
 
           <div className="col-span-12 md:col-span-2">
-            <p className="mb-6 font-semibold text-white">Links</p>
+            <p className="mb-6 font-semibold text-white">Quick Links</p>
 
             <ul className="grid gap-2">
               <li>
-                <Link className="text-white hover:underline focus:outline-none" href="/">
-                  {t('footer.menu.home')}
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white hover:underline focus:outline-none" href="/sobre-mi">
-                  {t('footer.menu.aboutMe')}
-                </Link>
-              </li>
-              <li>
                 <Link className="text-white hover:underline focus:outline-none" href="/open-source">
                   {t('footer.menu.openSource')}
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white hover:underline focus:outline-none" href="/portafolio">
-                  {t('footer.menu.portfolio')}
                 </Link>
               </li>
               <li>
@@ -118,6 +103,11 @@ export const Footer = (): JSX.Element => {
               <li>
                 <Link className="text-white hover:underline focus:outline-none" href="/contacto">
                   {t('footer.menu.contact')}
+                </Link>
+              </li>
+              <li>
+                <Link className="text-white hover:underline focus:outline-none" href="/sitemap.xml">
+                  Sitemap
                 </Link>
               </li>
             </ul>

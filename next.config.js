@@ -72,7 +72,7 @@ const ContentSecurityPolicy = `
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
-  font-src 'self' *.amazonaws.com;
+  font-src 'self' *.googleapis.com *.amazonaws.com *.gstatic.com;
   worker-src 'self';
   object-src *.danestves.com;
   frame-src *.danestves.com;

@@ -176,10 +176,7 @@ export const table: MyLocale = {
     summary:
       'Plasmo tus ideas y las hago realidad. Trabajaré contigo lado a lado para que tu producto final sea mucho mejor de lo que esperas.',
     menu: {
-      home: 'Inicio',
-      aboutMe: 'Sobre Mí',
       openSource: 'Open Source',
-      portfolio: 'Portafolio',
       blog: 'Blog',
       contact: 'Contacto',
     },

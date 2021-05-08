@@ -161,10 +161,7 @@ export interface MyLocale {
   footer: {
     summary: string
     menu: {
-      home: string
-      aboutMe: string
       openSource: string
-      portfolio: string
       blog: string
       contact: string
     }
