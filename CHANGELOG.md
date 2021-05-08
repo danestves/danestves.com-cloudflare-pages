@@ -1,3 +1,13 @@
+#### 2.1.1 (2021-05-08)
+
+##### New Features
+
+* **api:**  removing logic for host ([8c5b17b3](https://github.com/danestves/website/commit/8c5b17b322034cb702f1a14b611081e4199957b5))
+
+##### Bug Fixes
+
+* **lint:**  avoid format CHANGELOG ([f844947e](https://github.com/danestves/website/commit/f844947e5d9bee3e1b2ed42ca06477d1498c43fb))
+
 ### 2.1.0 (2021-05-08)
 
 ##### Refactors
