@@ -1,3 +1,11 @@
+### 2.1.0 (2021-05-08)
+
+##### Refactors
+
+* **bump:**
+  *  update dependencies and xml 2 ([3229b791](https://github.com/danestves/website/commit/3229b791ef1fac5f5641af0c2cf8ccc226be414b))
+  *  update dependencies and xml ([4addd5ee](https://github.com/danestves/website/commit/4addd5eef99d2b852fa673cb7fdee51336f929a3))
+
 #### 2.0.1 (2021-05-02)
 
 ##### Bug Fixes
