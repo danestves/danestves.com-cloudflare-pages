@@ -1,3 +1,9 @@
+#### 2.2.2 (2021-05-08)
+
+##### New Features
+
+* **code:**  add attribution for giphy ([20f9ceaa](https://github.com/danestves/website/commit/20f9ceaa546231aed0f41dc508dcef8c8d14339d))
+
 #### 2.2.1 (2021-05-08)
 
 ##### New Features
