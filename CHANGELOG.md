@@ -1,3 +1,20 @@
+### 3.1.0 (2021-05-09)
+
+##### Chores
+
+* **dependecy:**  remove unused dependencies ([ca5c3023](https://github.com/danestves/website/commit/ca5c30237b6861d7011c7f2a5378fefc23c0b2e1))
+
+##### New Features
+
+* **design:**  changing code component ([68018bc3](https://github.com/danestves/website/commit/68018bc3920ee49fa04d17961319f6f55f5521a6))
+
+##### Bug Fixes
+
+* **design:**
+  *  trying to fix header blur in chromium ([28d79723](https://github.com/danestves/website/commit/28d79723374e52dab066eab07057429cce271060))
+  *  add missing styles for title tags ([df496fda](https://github.com/danestves/website/commit/df496fda55407b9e11798cccfa2492a437664653))
+* **texts:**  adjusting some of the texts ([9b1895df](https://github.com/danestves/website/commit/9b1895dfbe9f48e5e3cc27f3a12b1bbc056c9d90))
+
 ## 3.0.0 (2021-05-09)
 
 ##### New Features
