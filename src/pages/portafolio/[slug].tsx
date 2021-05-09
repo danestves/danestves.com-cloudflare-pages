@@ -3,7 +3,6 @@ import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import { I18nProps } from 'next-rosetta'
 import { serialize } from 'next-mdx-remote/serialize'
 import he from 'he'
-import mdxPrism from 'mdx-prism'
 import remarkCodeTitles from 'remark-code-titles'
 import remarkA11yEmoji from '@fec/remark-a11y-emoji'
 import rehypeSlug from 'rehype-slug'
@@ -64,7 +63,7 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
         mdx: await serialize(he.decode(data.portfolio?.body || ''), {
           mdxOptions: {
             remarkPlugins: [remarkCodeTitles, remarkA11yEmoji],
-            rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }], mdxPrism],
+            rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]],
           },
         }),
       },

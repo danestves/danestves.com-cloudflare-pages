@@ -22,135 +22,19 @@ h6 {
   @apply font-title;
 }
 
-/* Markdown styles */
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
-  @apply relative pl-6 -ml-6;
-}
-
-.prose h2 .icon::after,
-.prose h3 .icon::after,
-.prose h4 .icon::after,
-.prose h5 .icon::after,
-.prose h6 .icon::after {
-  @apply absolute top-0 left-0 hidden w-6 h-6 mr-2 font-bold text-white;
-
-  content: url('/static/link.svg');
-}
-
-.prose h2:hover > a > .icon::after,
-.prose h3:hover > a > .icon::after,
-.prose h4:hover > a > .icon::after,
-.prose h5:hover > a > .icon::after,
-.prose h6:hover > a > .icon::after {
-  @apply inline;
-}
-
-.prose pre {
-  @apply bg-gray-900 border border-gray-700;
-}
-
-.prose code {
-  @apply px-1 py-0.5 border border-gray-800 rounded-md bg-gray-900;
-}
-
-.prose img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: #5c6370;
-}
-
-.token.punctuation {
-  color: #abb2bf;
-}
-
-.token.selector,
-.token.tag {
-  color: #e06c75;
-}
-
-.token.property,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.attr-name,
-.token.deleted {
-  color: #d19a66;
-}
-
-.token.string,
-.token.char,
-.token.attr-value,
-.token.builtin,
-.token.inserted {
-  color: #98c379;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-  color: #56b6c2;
-}
-
-.token.atrule,
-.token.keyword {
-  color: #c678dd;
-}
-
-.token.function {
-  color: #61afef;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-  color: #c678dd;
-}
-
-.token.important,
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
-}
-
-.token.entity {
-  cursor: help;
-}
-
-code[class*='language-'],
-pre[class*='language-'] {
-  @apply text-gray-50;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 .remark-code-title {
-  @apply px-5 py-3 font-mono text-sm font-bold text-gray-200 bg-gray-800 border border-b-0 border-gray-700 rounded-t;
+  @apply px-5 py-3 font-mono text-sm font-bold border-b border-gray-700 rounded-t;
+  background-color: #282a36;
+  color: #f8f8f2;
 }
 
-.remark-code-title + pre {
+.dark .remark-code-title {
+  background-color: #011627;
+  color: #d6deeb;
+}
+
+.remark-code-title + pre,
+.remark-code-title + pre > pre {
   @apply mt-0 rounded-t-none;
 }
 

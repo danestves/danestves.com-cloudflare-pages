@@ -67,6 +67,13 @@ module.exports = {
               },
               code: { color: theme('colors.blue.400') },
             },
+            code: {
+              backgroundColor: '#282a36',
+              color: '#f8f8f2',
+              borderRadius: theme('borderRadius.md'),
+              padding: `${spacing[1]} ${spacing[0.5]}`,
+              fontWeight: theme('fontWeight.normal'),
+            },
             'h2,h3,h4': {
               color: theme('colors.gray.700'),
               'scroll-margin-top': spacing[32],
@@ -78,9 +85,7 @@ module.exports = {
               'p:last-of-type::after': false,
             },
             hr: { borderColor: theme('colors.gray.500') },
-            code: {
-              color: theme('colors.gray.100'),
-            },
+
             ol: {
               li: {
                 '&:before': {
@@ -102,10 +107,19 @@ module.exports = {
                 borderBottomColor: theme('colors.gray.300'),
               },
             },
+            pre: {
+              pre: {
+                margin: 0,
+              },
+            },
           },
         },
         dark: {
           css: {
+            code: {
+              backgroundColor: '#011627',
+              color: '#d6deeb',
+            },
             color: theme('colors.gray.200'),
             'h2,h3,h4': {
               color: theme('colors.gray.100'),
@@ -122,6 +136,22 @@ module.exports = {
             tbody: {
               tr: {
                 borderBottomColor: theme('colors.gray.300'),
+              },
+            },
+          },
+        },
+        lg: {
+          css: {
+            '.graphcms-image-wrapper img': {
+              margin: 0,
+            },
+            pre: {
+              padding: 0,
+              pre: {
+                paddingTop: '1em',
+                paddingRight: '1.5em',
+                paddingBottom: '1em',
+                paddingLeft: '1.5em',
               },
             },
           },
