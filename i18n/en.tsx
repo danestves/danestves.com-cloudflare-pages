@@ -18,27 +18,17 @@ export const table: MyLocale = {
     },
   },
   home: {
-    hero: {
-      alt: 'Daniel Esteves - JavaScript Fullstack Web Developer',
-    },
-    person: {
-      title: 'Frontend Web Developer',
-    },
-    resume: {
-      title: '<Hello World />',
-      p1:
-        'I have always been interested in how technology works and everything that makes it up. From how characters move within video games, to how social networks and websites work.',
-      p2:
-        "That's why I decided to become a fullstack programmer. Able to build applications, from the visual part to the databases.",
-      button: {
-        label: 'Get to know me better!',
+    summary: 'Passionate about technology and eager to learn and spread knowledge throughout',
+    buttons: {
+      contact: {
+        label: 'Contact',
       },
+    },
+    videos: {
+      title: 'Latest videos:',
     },
     posts: {
       title: 'Latest posts:',
-    },
-    technologies: {
-      title: 'Management of technologies such as',
     },
   },
   aboutMe: {
@@ -173,25 +163,6 @@ export const table: MyLocale = {
     },
   },
   footer: {
-    summary:
-      'I shape your ideas and make them come true. I will work with you side by side to make your final product much better than you expect.',
-    menu: {
-      openSource: 'Open Source',
-      blog: 'Blog',
-      contact: 'Contact',
-    },
-    newsletter: {
-      title: 'Join the Newsletter!',
-      summary:
-        'I promise not to spam you 🤘. I send an email every time I make a new blogpost or upload a new video.',
-      form: {
-        label: 'Email',
-        placeholder: 'Email',
-        button: {
-          label: 'Join',
-        },
-      },
-    },
     copyright: 'All rights reserved',
   },
 }

@@ -2,154 +2,131 @@
 import { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import { useI18n, I18nProps } from 'next-rosetta'
+import { useRouter } from 'next/router'
+import { google, youtube_v3 } from 'googleapis'
 
 // @types
 import { Post, Locale } from '@/generated/graphql'
 
 // Components
-import { Link, BlogCard } from '@/components'
+import { Link, BlogCard, VideoCard } from '@/components'
 
 // Libraries
 import { getAllPostsForBlogPage } from '@/lib/graphcms'
+import googleAuth from '@/lib/google/auth'
 
 // Locales
 import type { MyLocale } from 'i18n'
 
 interface Props {
   posts: Post[]
+  videos?: youtube_v3.Schema$Video[]
 }
 
-const Index: NextPage<Props> = ({ posts }): JSX.Element => {
+const Index: NextPage<Props> = ({ posts, videos }): JSX.Element => {
   const { t } = useI18n<MyLocale>()
+  const router = useRouter()
 
   return (
     <>
-      <div className="relative flex items-center py-32 lg:py-20">
-        <div className="absolute top-0 left-0 w-full h-full bg-secondary">
-          <Image
-            alt={t('home.hero.alt') as string}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            src="/hero.webp"
-          />
-          <div className="absolute inset-0 bg-opacity-75 bg-secondary" />
-        </div>
-        <div className="container z-20 grid items-center grid-cols-12 px-5">
-          <div className="col-span-12 md:col-span-5">
+      <div className="relative overflow-hidden bg-white dark:bg-secondary-500">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="relative z-10 pb-8 bg-white dark:bg-secondary-500 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <svg
-              className="w-48 h-48 mx-auto mb-4 md:mb-0 md:w-56 lg:w-64 md:h-56 lg:h-64 text-primary"
-              viewBox="0 0 1080 1080"
+              aria-hidden="true"
+              className="absolute inset-y-0 right-0 hidden w-32 h-full text-white transform translate-x-1/2 dark:text-secondary-500 lg:block"
+              fill="currentColor"
+              preserveAspectRatio="none"
+              viewBox="0 0 100 100"
             >
-              <path
-                d="M1061.237 540.246c-.105 288.558-237.61 520.991-526.204 520.991H207.654A188.891 188.891 0 0118.763 872.346V705.883a23.728 23.728 0 0123.71-23.727h24.166a46.911 46.911 0 0146.894 46.929V872.24a94.209 94.209 0 0094.226 94.226h327.608c235.697 0 430.275-189.278 431.1-424.975C967.292 305.25 776.013 113.533 540 113.533H207.76a94.226 94.226 0 00-94.227 94.191v143.227a46.911 46.911 0 01-46.894 46.893H42.473a23.71 23.71 0 01-23.71-23.692V207.654A188.927 188.927 0 01207.654 18.763H540c287.944 0 521.36 233.416 521.237 521.483z"
-                fill="currentColor"
-                id="prefix__path3982"
-                strokeWidth={1.755}
-              />
-              <path
-                d="M871.696 542.527c-1.368 182.907-152.984 329.17-335.855 329.17H255.232a46.929 46.929 0 01-46.928-46.894V706.04a23.886 23.886 0 0123.868-23.885h46.77a24.114 24.114 0 0124.132 24.149v58.582a12.04 12.04 0 0012.04 12.039h221.885c130.625 0 238.927-104.458 239.927-235.066A236.926 236.926 0 00540 303.074H315.113a12.04 12.04 0 00-12.039 12.04v58.599a24.131 24.131 0 01-24.131 24.131h-46.771a23.903 23.903 0 01-23.868-23.85V255.232a46.946 46.946 0 0146.928-46.928H540c184.065 0 333.1 149.877 331.696 334.223z"
-                fill="currentColor"
-                id="prefix__path3984"
-                strokeWidth={1.755}
-              />
-              <path
-                d="M587.385 542.352c-1.228 25.482-23.201 45.033-48.701 45.033H42.332a23.552 23.552 0 01-23.57-23.534v-47.649a23.552 23.552 0 0123.57-23.587h497.651a47.385 47.385 0 0147.402 49.737z"
-                fill="currentColor"
-                id="prefix__path3986"
-                strokeWidth={1.755}
-              />
+              <polygon points="50,0 100,0 50,100 0,100" />
             </svg>
+
+            <main className="max-w-screen-xl px-4 pt-24 mx-auto sm:pt-16 sm:px-6 lg:pt-20 lg:px-8 xl:pt-28">
+              <div className="sm:text-center lg:text-left">
+                <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-200 sm:text-5xl md:text-6xl">
+                  <span className="block xl:inline">Daniel Esteves</span>{' '}
+                  <span className="block text-primary-600 dark:text-primary-500 xl:inline">
+                    frontend developer
+                  </span>
+                </h1>
+                <p className="mt-3 text-base text-gray-500 dark:text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                  Lead Frontend Developer @{' '}
+                  <a
+                    className="underline text-primary-700 dark:text-primary-500"
+                    href="https://seeed.us"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Seeed
+                  </a>
+                  . {t('home.summary')} <b>LATAM</b>
+                </p>
+                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                  <div className="rounded-md shadow">
+                    <Link
+                      className="flex items-center justify-center w-full py-3 text-base font-medium text-white border border-transparent rounded-md bg-primary-600 min-w-[160px] hover:bg-primary-700 md:text-lg"
+                      href="/blog"
+                      locale={router.locale}
+                    >
+                      Blog
+                    </Link>
+                  </div>
+                  <div className="mt-3 sm:mt-0 sm:ml-3">
+                    <Link
+                      className="flex items-center justify-center w-full py-3 text-base font-medium border border-transparent rounded-md text-primary-700 bg-primary-100 min-w-[160px] hover:bg-primary-200 md:text-lg"
+                      href="/contacto"
+                      locale={router.locale}
+                    >
+                      {t('home.buttons.contact.label')}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </main>
           </div>
-          <div className="col-span-12 md:col-span-7">
-            <h1 className="mb-2 text-6xl font-bold leading-none text-center md:text-left text-primary">
-              Daniel Esteves
-            </h1>
-            <h2 className="font-mono text-xl text-center md:text-left text-primary">
-              {t('home.person.title')}
-            </h2>
-          </div>
+        </div>
+        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:flex">
+          <Image
+            alt="Daniel Esteves"
+            className="object-cover w-full h-56 sm:h-72 md:h-96 lg:w-full lg:h-full"
+            height={831}
+            objectFit="cover"
+            objectPosition="Center"
+            src="/static/img/hero.jpg"
+            width={1432}
+          />
         </div>
       </div>
 
-      <div className="w-full bg-white">
-        <div className="container relative z-10 px-5 pb-32 -mt-24">
-          <div className="z-30 w-48 h-48 mx-auto border-white rounded-full border-[10px]">
-            <Image
-              alt="Daniel Esteves"
-              className="rounded-full"
-              height={192}
-              src="/me.jpg"
-              width={192}
-            />
-          </div>
+      {videos?.length && (
+        <div className="w-full py-6 bg-[#f9f9f9] border-t border-black border-opacity-10 dark:bg-[#181818] dark:border-white dark:border-opacity-10">
+          <div className="container px-5 mb-10">
+            <div className="flex flex-row justify-between my-6">
+              <h2 className="flex flex-row self-center text-[20px] font-bold font-roboto text-black dark:text-white">
+                {t('home.videos.title')}
+              </h2>
+            </div>
 
-          <h2 className="mt-4 font-mono text-4xl text-center">{t('home.resume.title')}</h2>
-
-          <p className="max-w-4xl px-5 mx-auto mt-4 font-mono text-xl text-center">
-            {t('home.resume.p1')}
-          </p>
-
-          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl text-center">
-            {t('home.resume.p2')}
-          </p>
-
-          <div className="flex justify-center max-w-4xl mx-auto mt-5">
-            <Link
-              className="block px-5 py-2 rounded-full bg-secondary text-primary"
-              href="/sobre-mi"
-            >
-              {t('home.resume.button.label')}
-            </Link>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+              {videos.map((video) => (
+                <VideoCard key={video.id} {...video} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="w-full py-12">
         <div className="container max-w-screen-xl px-5">
-          <h2 className="text-3xl font-bold text-center text-primary">{t('home.posts.title')}</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-700 dark:text-primary">
+            {t('home.posts.title')}
+          </h2>
 
-          <div className="gap-6 mt-24 md:grid md:grid-cols-2 lg:grid-cols-3">
+          <div className="gap-6 mt-16 md:grid md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <BlogCard key={post.slug} {...post} />
             ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="w-full py-12 bg-primary">
-        <div className="max-w-4xl px-5 mx-auto">
-          <h2 className="text-3xl font-bold text-center text-secondary">
-            {t('home.technologies.title')}
-          </h2>
-
-          <div className="grid grid-cols-2 gap-8 mt-8 md:grid-cols-4">
-            <div className="text-center">
-              <div className="mx-auto">
-                <Image alt="React logo" height={128} src="/static/react.svg" width={128} />
-              </div>
-              <h2 className="font-mono text-xl font-bold text-secondary">
-                React / NextJS / Gatsby
-              </h2>
-            </div>
-            <div className="text-center">
-              <div className="mx-auto">
-                <Image alt="NodeJS logo" height={128} src="/static/nodejs.svg" width={128} />
-              </div>
-              <h2 className="font-mono text-xl font-bold text-secondary">NodeJS</h2>
-            </div>
-            <div className="text-center">
-              <div className="mx-auto">
-                <Image alt="GraphQL logo" height={128} src="/static/graphql.svg" width={128} />
-              </div>
-              <h2 className="font-mono text-xl font-bold text-secondary">GraphQL</h2>
-            </div>
-            <div className="text-center">
-              <div className="mx-auto">
-                <Image alt="WordPress logo" height={128} src="/static/wordpress.svg" width={128} />
-              </div>
-              <h2 className="font-mono text-xl font-bold text-secondary">WordPress</h2>
-            </div>
           </div>
         </div>
       </div>
@@ -160,13 +137,35 @@ const Index: NextPage<Props> = ({ posts }): JSX.Element => {
 export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const posts = await (await getAllPostsForBlogPage(locale as Locale, 3)).posts
+  const posts = (await getAllPostsForBlogPage(locale as Locale, 3)).posts
+
+  // Auth with Google and obtain the latest 3 videos from YouTube
+  const auth = await googleAuth.getClient()
+  const youtube = google.youtube({
+    auth,
+    version: 'v3',
+  })
+  const latestVideos = await youtube.playlistItems.list({
+    part: ['snippet', 'contentDetails'],
+    playlistId: 'UU6YYVDKZC3mu1iB8IOCFqcw', // The "default" playlist where all the videos are
+    maxResults: 4,
+  })
+  const videoIds =
+    latestVideos.data?.items?.map((video) => {
+      return video?.contentDetails?.videoId
+    }) || undefined
+  const videos = await youtube.videos.list({
+    part: ['snippet', 'statistics'],
+    id: videoIds as any,
+  })
 
   return {
     props: {
       table,
       posts,
+      videos: videos.data.items,
     },
+    revalidate: 60 * 60, // 1 hour
   }
 }
 

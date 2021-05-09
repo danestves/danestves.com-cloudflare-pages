@@ -3,6 +3,7 @@ import { useRouter } from 'next/dist/client/router'
 import { Listbox, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import clsx from 'clsx'
+import { ChevronDownIcon } from '@heroicons/react/solid'
 
 export const LanguageSwitcher = (): JSX.Element => {
   const { locale, locales, route, push, asPath } = useRouter()
@@ -16,39 +17,30 @@ export const LanguageSwitcher = (): JSX.Element => {
       {({ open }) => (
         <>
           <div className="relative">
-            <span className="inline-block w-full rounded-md shadow-sm">
-              <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border border-gray-300 rounded-md shadow-sm cursor-default bg-secondary-400 focus:outline-none focus:ring-1 focus:ring-secondary-500 focus:border-secondary-500 sm:text-sm">
-                <span className="flex items-center">
+            <span className="inline-block w-full rounded-md">
+              <Listbox.Button
+                className="relative w-full py-2 pl-3 pr-8 text-left rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded sm:text-sm"
+                title="Change the language of the page"
+              >
+                <span className="flex items-center w-8">
                   <Image
                     alt={locale}
-                    className="flex-shrink-0 w-8 h-8"
-                    height={32}
+                    className="flex-shrink-0"
+                    height={30}
+                    objectFit="contain"
                     src={`/static/lang/${locale}.svg`}
-                    width={32}
+                    width={60}
                   />
                 </span>
 
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 ml-3 pointer-events-none">
-                  {/* Heroicon name: solid/selector */}
-                  <svg
-                    aria-hidden="true"
-                    className="w-5 h-5 text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      clipRule="evenodd"
-                      d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                      fillRule="evenodd"
-                    />
-                  </svg>
+                  <ChevronDownIcon className="w-5 h-5" />
                 </span>
               </Listbox.Button>
             </span>
 
             <Transition
-              className="absolute z-20 w-full mt-1 rounded-md shadow-lg bg-secondary-400"
+              className="absolute z-20 w-full mt-1 rounded-md shadow-lg backdrop-filter backdrop-blur-[20px] saturate-[180%] bg-opacity-70 bg-white dark:bg-secondary-500 dark:bg-opacity-60"
               leave="transition ease-in duration-100"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"

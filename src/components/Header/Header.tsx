@@ -1,4 +1,5 @@
 // Dependencies
+import { memo } from 'react'
 import { useI18n } from 'next-rosetta'
 import { useRouter } from 'next/dist/client/router'
 import { useWindowScroll, usePrevious } from 'react-use'
@@ -7,6 +8,7 @@ import clsx from 'clsx'
 // Components
 import { Link, LanguageSwitcher, Search } from '@/components'
 import MobileHeader from './MobileHeader'
+import DarkModeToggle from './DarkModeToggle'
 
 // Locales
 import type { MyLocale } from 'i18n'
@@ -21,15 +23,16 @@ export const Header = (): JSX.Element => {
     <>
       <header
         className={clsx(
-          'hidden top-0 z-50 w-full bg-secondary-700 transform transition-transform duration-150 backdrop-filter backdrop-blur bg-opacity-70 sticky md:block',
+          'h-16 top-0 z-50 w-full bg-white transform transition-transform duration-150 backdrop-filter backdrop-blur-[20px] saturate-[180%] bg-opacity-70 sticky flex items-center shadow dark:shadow-none dark:bg-secondary dark:bg-opacity-60 md:h-auto',
           prevY ? (y < 76 || prevY > y ? 'translate-0' : '-translate-y-full') : 'translate-0'
         )}
+        id="sticky-nav"
       >
-        <div className="px-8">
+        <div className="hidden md:px-8 md:flex md:flex-1">
           <nav className="container relative flex flex-wrap items-center justify-end">
             <div className="relative flex-1 flex-shrink-0">
-              <Link href="/" title={t('header.menu.home')}>
-                <svg className="w-8 h-8 text-primary" viewBox="0 0 1080 1080">
+              <Link className="inline-flex" href="/" title={t('header.menu.home')}>
+                <svg className="w-8 h-8 text-primary-600 dark:text-primary" viewBox="0 0 1080 1080">
                   <path
                     d="M1061.237 540.246c-.105 288.558-237.61 520.991-526.204 520.991H207.654A188.891 188.891 0 0118.763 872.346V705.883a23.728 23.728 0 0123.71-23.727h24.166a46.911 46.911 0 0146.894 46.929V872.24a94.209 94.209 0 0094.226 94.226h327.608c235.697 0 430.275-189.278 431.1-424.975C967.292 305.25 776.013 113.533 540 113.533H207.76a94.226 94.226 0 00-94.227 94.191v143.227a46.911 46.911 0 01-46.894 46.893H42.473a23.71 23.71 0 01-23.71-23.692V207.654A188.927 188.927 0 01207.654 18.763H540c287.944 0 521.36 233.416 521.237 521.483z"
                     fill="currentColor"
@@ -52,38 +55,38 @@ export const Header = (): JSX.Element => {
               </Link>
             </div>
 
-            <div className="flex items-center ml-10 bg-transparent">
+            <div className="flex items-center ml-10 mr-6 bg-transparent">
               <div className="flex items-center justify-center">
                 <Link
-                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
                   href="/sobre-mi"
                   title="Sobre Mí"
                 >
                   {t('header.menu.aboutMe')}
                 </Link>
                 <Link
-                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
                   href="/open-source"
                   title="Open Source"
                 >
                   {t('header.menu.openSource')}
                 </Link>
                 <Link
-                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
                   href="/portafolio"
                   title="Portafolio"
                 >
                   {t('header.menu.portfolio')}
                 </Link>
                 <Link
-                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
                   href="/blog"
                   title="Blog"
                 >
                   {t('header.menu.blog')}
                 </Link>
                 <Link
-                  className="px-3 text-sm font-medium transition duration-200 text-primary py-7 hover:text-white focus:outline-none"
+                  className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
                   href="/contacto"
                   title="Contacto"
                 >
@@ -97,19 +100,15 @@ export const Header = (): JSX.Element => {
                 {!router.pathname.includes('/blog/[slug]') && <LanguageSwitcher />}
               </div>
             </div>
+
+            <DarkModeToggle />
           </nav>
         </div>
+
+        <MobileHeader />
       </header>
-
-      {!router.pathname.includes('/blog/[slug]') && (
-        <div className="fixed z-20 top-4 left-4 md:hidden">
-          <LanguageSwitcher />
-        </div>
-      )}
-
-      <MobileHeader />
     </>
   )
 }
 
-export default Header
+export default memo(Header)

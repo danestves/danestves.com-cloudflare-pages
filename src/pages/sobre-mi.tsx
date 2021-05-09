@@ -27,7 +27,7 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
 
       {/* Hero */}
       <div className="bg-primary">
-        <div className="max-w-4xl px-5 py-32 mx-auto">
+        <div className="py-32 px-5 mx-auto max-w-4xl">
           <h1 className="text-4xl font-bold leading-none md:text-[5rem] text-secondary">
             <span className="font-mono">{'<'}</span> {t('aboutMe.intro')}
             <br /> Daniel
@@ -37,22 +37,22 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
       </div>
 
       {/* Biography */}
-      <div className="w-full py-16 text-white bg-secondary">
+      <div className="py-16 w-full text-white bg-secondary">
         <div className="container px-5">
-          <p className="max-w-4xl px-5 mx-auto font-mono text-xl">{t('aboutMe.summary.p1')}</p>
+          <p className="px-5 mx-auto max-w-4xl font-mono text-xl">{t('aboutMe.summary.p1')}</p>
 
-          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl">{t('aboutMe.summary.p2')}</p>
+          <p className="px-5 mx-auto mt-8 max-w-4xl font-mono text-xl">{t('aboutMe.summary.p2')}</p>
 
-          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl">{t('aboutMe.summary.p3')}</p>
+          <p className="px-5 mx-auto mt-8 max-w-4xl font-mono text-xl">{t('aboutMe.summary.p3')}</p>
 
-          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl text-right">
+          <p className="px-5 mx-auto mt-8 max-w-4xl font-mono text-xl text-right">
             - {t('aboutMe.summary.sign')} 👨‍💻
           </p>
         </div>
       </div>
 
       {/* Experience and Educations */}
-      <div className="w-full px-5 py-12 bg-white">
+      <div className="py-12 px-5 w-full bg-white">
         <h2 className="text-3xl font-bold text-center text-secondary">
           {t('aboutMe.experience.title')}
         </h2>
@@ -60,10 +60,10 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
         <div className="container mt-8 divide-y-2 divide-primary">
           {experience?.map((item) => (
             <div
-              className="max-w-4xl mx-auto first:border-t-2 first:border-primary last:border-b-2 last:border-primary"
+              className="mx-auto max-w-4xl first:border-t-2 first:border-primary last:border-b-2 last:border-primary"
               key={item.id}
             >
-              <div className="max-w-3xl py-6 mx-auto">
+              <div className="py-6 mx-auto max-w-3xl">
                 <h3 className="mb-3 font-mono text-2xl font-bold text-secondary">{item.title}</h3>
                 <h4 className="mb-3 font-mono text-lg font-semibold text-secondary">
                   {item.subtitle} |{item.date}

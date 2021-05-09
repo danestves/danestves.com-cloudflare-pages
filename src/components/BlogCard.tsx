@@ -37,15 +37,15 @@ export const BlogCard = (post: Post): JSX.Element => {
         </div>
 
         <div className="mt-6">
-          <p className="my-2 text-xs text-white">
+          <p className="my-2 text-xs text-gray-500 dark:text-gray-400">
             {t('blog.publishedAt')}{' '}
             {formatDate(new Date(post.published).toISOString().slice(0, 19), 'MMM. d yyy', locale)}
           </p>
 
-          <h2 className="mb-2 text-2xl font-medium leading-tight text-white group-hover:underline group-focus:underline">
+          <h2 className="mb-2 text-2xl font-medium leading-tight text-gray-700 dark:text-white group-hover:underline group-focus:underline">
             {post.title}
           </h2>
-          <p className="text-sm text-white">{post.seo?.description}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300">{post.seo?.description}</p>
         </div>
       </Link>
     </article>

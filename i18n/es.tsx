@@ -18,27 +18,18 @@ export const table: MyLocale = {
     },
   },
   home: {
-    hero: {
-      alt: 'Daniel Esteves - Desarrollador web fullstack en JavaScript',
-    },
-    person: {
-      title: 'Desarrollador Web Frontend',
-    },
-    resume: {
-      title: '<Hola Mundo />',
-      p1:
-        'Siempre he estado interesado en cómo funciona la tecnología y todo lo que la conforma. Desde cómo los personajes se mueven dentro de los videojuegos, hasta el funcionamiento de las redes sociales y los sitios web.',
-      p2:
-        'Es por eso que decidí convertirme en programador fullstack. Capaz de construir aplicaciones, desde la parte visual hasta las bases de datos.',
-      button: {
-        label: '¡Conóceme más!',
+    summary:
+      'Apasionado por la tecnología con muchas ganas de aprender y esparcir conocimiento por toda',
+    buttons: {
+      contact: {
+        label: 'Contacto',
       },
+    },
+    videos: {
+      title: 'Últimos videos:',
     },
     posts: {
       title: 'Últimos posts:',
-    },
-    technologies: {
-      title: 'Manejo de tecnologías como:',
     },
   },
   aboutMe: {
@@ -173,25 +164,6 @@ export const table: MyLocale = {
     },
   },
   footer: {
-    summary:
-      'Plasmo tus ideas y las hago realidad. Trabajaré contigo lado a lado para que tu producto final sea mucho mejor de lo que esperas.',
-    menu: {
-      openSource: 'Open Source',
-      blog: 'Blog',
-      contact: 'Contacto',
-    },
-    newsletter: {
-      title: 'Unete al Newsletter!',
-      summary:
-        'Prometo no enviarte spam 🤘. Envío un correo cada vez que hago un nuevo blogpost o subo un nuevo video.',
-      form: {
-        label: 'Correo',
-        placeholder: 'Correo',
-        button: {
-          label: 'Unete',
-        },
-      },
-    },
     copyright: 'Todos los derechos reservados',
   },
 }

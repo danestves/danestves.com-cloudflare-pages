@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 html {
+  min-width: 360px;
   scroll-behavior: smooth;
+}
+
+@supports not (backdrop-filter: none) {
+  #sticky-nav {
+    @apply bg-opacity-100 backdrop-filter-none;
+  }
 }
 
 h1,

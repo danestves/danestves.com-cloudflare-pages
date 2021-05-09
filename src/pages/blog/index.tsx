@@ -35,7 +35,9 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
-          <h1 className="mb-10 text-4xl font-bold text-white sm:text-5xl md:text-6xl">Blog</h1>
+          <h1 className="mb-10 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+            Blog
+          </h1>
         </div>
       </section>
 
@@ -59,10 +61,10 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
               </div>
 
               <div className="mt-6 lg:col-span-5">
-                <h2 className="text-4xl font-semibold leading-tight text-white lg:text-5xl group-hover:underline group-focus:underline">
+                <h2 className="text-4xl font-semibold leading-tight text-gray-700 dark:text-white lg:text-5xl group-hover:underline group-focus:underline">
                   {featuredPost.title}
                 </h2>
-                <p className="mb-2 text-base text-white lg:text-lg">
+                <p className="mb-2 text-base text-gray-500 dark:text-gray-400 lg:text-lg">
                   {t('blog.publishedAt')}{' '}
                   {formatDate(
                     new Date(featuredPost.published).toISOString().slice(0, 19),
@@ -70,7 +72,7 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
                     locale
                   )}
                 </p>
-                <p className="my-4 text-lg text-white lg:text-xl">
+                <p className="my-4 text-lg text-gray-600 dark:text-gray-300 lg:text-xl">
                   {featuredPost.seo?.description}
                 </p>
               </div>

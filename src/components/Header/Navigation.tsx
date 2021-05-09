@@ -12,7 +12,7 @@ const Navigation = ({
     slug: string
   }[]
 }): JSX.Element => (
-  <ul className="absolute w-full p-6 top-24">
+  <ul className="absolute top-24 p-6 w-full">
     {items.map((item, i) => (
       <MenuItem i={i} key={item.slug} toggle={() => toggle(false)} {...item} />
     ))}

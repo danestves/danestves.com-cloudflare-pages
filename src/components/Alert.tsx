@@ -4,7 +4,7 @@ interface Props {
 
 const Danger = ({ children }: Props): JSX.Element => {
   return (
-    <div className="p-4 rounded-md bg-red-50">
+    <div className="p-4 bg-red-100 rounded-md dark:bg-red-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -32,7 +32,7 @@ const Danger = ({ children }: Props): JSX.Element => {
 
 const Info = ({ children }: Props): JSX.Element => {
   return (
-    <div className="p-4 rounded-md bg-blue-50">
+    <div className="p-4 bg-blue-100 rounded-md dark:bg-blue-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -60,7 +60,7 @@ const Info = ({ children }: Props): JSX.Element => {
 
 const Warning = ({ children }: Props): JSX.Element => {
   return (
-    <div className="p-4 rounded-md bg-yellow-50">
+    <div className="p-4 bg-yellow-100 rounded-md dark:bg-yellow-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -88,7 +88,7 @@ const Warning = ({ children }: Props): JSX.Element => {
 
 const Success = ({ children }: Props): JSX.Element => {
   return (
-    <div className="p-4 rounded-md bg-green-50">
+    <div className="p-4 bg-green-100 rounded-md dark:bg-green-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -116,7 +116,7 @@ const Success = ({ children }: Props): JSX.Element => {
 
 export const Alert = ({ children }: Props): JSX.Element => {
   return (
-    <div className="p-4 rounded-md bg-gray-50">
+    <div className="p-4 bg-gray-100 rounded-md dark:bg-gray-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}

@@ -3,11 +3,14 @@ import { useState, useRef, useMemo, memo } from 'react'
 import clsx from 'clsx'
 import { useI18n } from 'next-rosetta'
 import { document } from 'browser-monads-ts'
+import { useRouter } from 'next/dist/client/router'
 
 // Components
+import { LanguageSwitcher } from '@/components'
 import Navigation from './Navigation'
 import MenuToggle from './MenuToggle'
 import { Search } from '../Search'
+import DarkModeToggle from './DarkModeToggle'
 
 // Hooks
 import { useClickOutside } from '@/hooks'
@@ -21,6 +24,7 @@ const MobileHeader = (): JSX.Element => {
 
   const { t } = useI18n<MyLocale>()
   useClickOutside(containerRef, () => toggleOpen(false))
+  const router = useRouter()
 
   useMemo(() => {
     if (isOpen) {
@@ -156,21 +160,31 @@ const MobileHeader = (): JSX.Element => {
   return (
     <div
       className={clsx(
-        'fixed top-0 bottom-0 right-0 overflow-hidden z-[100] w-72 md:hidden transition-all duration-300',
+        'fixed top-0 right-0 overflow-hidden z-[100] w-72 transition-all duration-300 md:hidden',
         isOpen ? 'h-screen' : 'h-20'
       )}
       ref={containerRef}
     >
+      {!router.pathname.includes('/blog/[slug]') && (
+        <div className="fixed z-50 top-3 left-6 bg-white bg-opacity-70 backdrop-filter backdrop-blur-[20px] saturate-[180%] rounded py-1 dark:bg-secondary dark:bg-opacity-60 md:hidden">
+          <LanguageSwitcher />
+        </div>
+      )}
+
       <div
         className="absolute top-0 bottom-0 right-0 transition-all duration-300 bg-white w-72"
         style={{
-          clipPath: `circle(${isOpen ? 1000 * 1.5 + 200 : 24}px at 248px 44px)`,
+          clipPath: `circle(${isOpen ? 1000 * 1.5 + 200 : 24}px at 248px 32px)`,
         }}
       />
 
       <Navigation items={items} toggle={toggleOpen} />
 
-      <div className="absolute flex items-center justify-center w-12 h-12 p-2 bg-primary rounded-full z-[100] top-5 right-20 focus:outline-none focus:ring-2 focus:ring-primary">
+      <div className="absolute px-3 py-2 bg-white rounded-full top-3 right-36">
+        <DarkModeToggle />
+      </div>
+
+      <div className="absolute flex items-center justify-center w-12 h-12 p-2 bg-white rounded-full z-[100] top-2 right-20 focus:outline-none focus:ring-2 focus:ring-primary dark:bg-primary">
         <Search />
       </div>
 

@@ -3,6 +3,9 @@ const withProgressBar = require('next-progressbar')
 
 module.exports = withProgressBar(
   withPWA({
+    future: {
+      webpack5: true,
+    },
     pwa: {
       disable: process.env.NODE_ENV === 'development',
       dest: 'public',
@@ -16,6 +19,7 @@ module.exports = withProgressBar(
         'github-readme-stats.danestves.com',
         'raw.githubusercontent.com',
         'media.graphcms.com',
+        'i.ytimg.com',
       ],
     },
     async headers() {

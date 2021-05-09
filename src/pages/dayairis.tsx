@@ -16,7 +16,7 @@ const Dayairis: NextPage = () => {
         title="Dayairis"
       />
 
-      <div className="container max-w-6xl px-5 py-12 text-white">
+      <div className="container py-12 px-5 max-w-6xl text-white">
         <h2 className="text-3xl text-center">
           Hola amor{' '}
           <span aria-label="Love face" role="img">
@@ -30,11 +30,11 @@ const Dayairis: NextPage = () => {
           </span>
         </h2>
 
-        <div className="flex flex-wrap items-center justify-center py-5">
+        <div className="flex flex-wrap justify-center items-center py-5">
           <div className="w-full px-2 my-2 md:w-1/2">
             <Image
               alt="Dayairis"
-              className="block object-cover w-full max-w-sm mx-auto rounded-lg shadow-md dark:shadow-white-md"
+              className="block object-cover mx-auto w-full max-w-sm rounded-lg shadow-md dark:shadow-white-md"
               height={400}
               objectFit="cover"
               objectPosition="top"
@@ -69,7 +69,7 @@ const Dayairis: NextPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center py-5">
+        <div className="flex flex-wrap justify-center items-center py-5">
           <div className="order-2 w-full px-2 my-2 md:w-1/2 md:order-1">
             <p className="mb-6 text-lg text-center">
               Avanzamos rápidamente a un acontecimiento demasiado importante en tu vida:
@@ -91,7 +91,7 @@ const Dayairis: NextPage = () => {
           <div className="order-1 w-full px-2 my-2 md:w-1/2 md:order-2">
             <Image
               alt="Dayairis"
-              className="block object-cover w-full max-w-sm mx-auto rounded-lg shadow-md dark:shadow-white-md"
+              className="block object-cover mx-auto w-full max-w-sm rounded-lg shadow-md dark:shadow-white-md"
               height={400}
               objectFit="cover"
               objectPosition="top"
@@ -101,8 +101,8 @@ const Dayairis: NextPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center py-5">
-          <h2 className="w-full mb-6 text-2xl text-center">
+        <div className="flex flex-wrap justify-center items-center py-5">
+          <h2 className="mb-6 w-full text-2xl text-center">
             Las salidas contigo que espero nunca falten{' '}
             <span aria-label="Hands up" role="img">
               🙌
@@ -113,7 +113,7 @@ const Dayairis: NextPage = () => {
           <div className="w-full px-2 my-2 xs:w-1/2 md:w-1/3">
             <Image
               alt="Dayairis"
-              className="block object-cover w-full max-w-sm mx-auto rounded-lg shadow-md dark:shadow-white-md"
+              className="block object-cover mx-auto w-full max-w-sm rounded-lg shadow-md dark:shadow-white-md"
               height={400}
               objectFit="cover"
               objectPosition="top"
@@ -125,7 +125,7 @@ const Dayairis: NextPage = () => {
           <div className="w-full px-2 my-2 xs:w-1/2 md:w-1/3">
             <Image
               alt="Dayairis"
-              className="block object-cover w-full max-w-sm mx-auto rounded-lg shadow-md dark:shadow-white-md"
+              className="block object-cover mx-auto w-full max-w-sm rounded-lg shadow-md dark:shadow-white-md"
               height={400}
               objectFit="cover"
               objectPosition="top"
@@ -137,7 +137,7 @@ const Dayairis: NextPage = () => {
           <div className="w-full px-2 my-2 xs:w-1/2 md:w-1/3">
             <Image
               alt="Dayairis"
-              className="block object-cover w-full max-w-sm mx-auto rounded-lg shadow-md dark:shadow-white-md"
+              className="block object-cover mx-auto w-full max-w-sm rounded-lg shadow-md dark:shadow-white-md"
               height={400}
               objectFit="cover"
               objectPosition="top"
@@ -146,18 +146,18 @@ const Dayairis: NextPage = () => {
             />
           </div>
 
-          <h2 className="w-full my-6 text-2xl text-center">
+          <h2 className="my-6 w-full text-2xl text-center">
             Aún faltan muchas más fotos. Pero quiero decirte que no quiero que acaben las salidas,{' '}
             <b>no quiero</b> que acaben las sonrisas y no quiero que acabe este amor que siento por
             ti.
           </h2>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center py-5">
+        <div className="flex flex-wrap justify-center items-center py-5">
           <div className="w-full px-2 my-2 md:w-1/2">
             <Image
               alt="Dayairis"
-              className="block object-cover w-full max-w-sm mx-auto rounded-lg shadow-md dark:shadow-white-md"
+              className="block object-cover mx-auto w-full max-w-sm rounded-lg shadow-md dark:shadow-white-md"
               height={400}
               objectFit="cover"
               objectPosition="top"
@@ -199,13 +199,13 @@ const Dayairis: NextPage = () => {
 
         <hr className="my-6" />
 
-        <p className="max-w-md mx-auto mb-6 text-center">
+        <p className="mx-auto mb-6 max-w-md text-center">
           Daya, quiero agradecerte por estos ya dos años que has estado junto a mi. Se que no ha
           sido fácil, hemos tenido miles de peleas, muchas molestias; pero a pesar de todo eso aún
           seguimos juntos.
         </p>
 
-        <p className="max-w-md mx-auto mb-6 text-center">
+        <p className="mx-auto mb-6 max-w-md text-center">
           Se que hay veces en que dices{' '}
           <span className="italic font-bold">
             &quot;Verga, ya no quiero seguir siento que no me ama&quot;
@@ -215,7 +215,7 @@ const Dayairis: NextPage = () => {
           dejar de amar o voy a dejar la relación asi.
         </p>
 
-        <p className="max-w-md mx-auto mb-6 text-center">
+        <p className="mx-auto mb-6 max-w-md text-center">
           Ambos requerimos mucha paciencia para estar juntos{' '}
           <span aria-label="Joy faces" role="img">
             🤣🤣

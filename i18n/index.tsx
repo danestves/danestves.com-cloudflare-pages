@@ -15,24 +15,16 @@ export interface MyLocale {
     }
   }
   home: {
-    hero: {
-      alt: string
-    }
-    person: {
-      title: string
-    }
-    resume: {
-      title: string
-      p1: string
-      p2: string
-      button: {
+    summary: string
+    buttons: {
+      contact: {
         label: string
       }
     }
-    posts: {
+    videos: {
       title: string
     }
-    technologies: {
+    posts: {
       title: string
     }
   }
@@ -159,23 +151,6 @@ export interface MyLocale {
     }
   }
   footer: {
-    summary: string
-    menu: {
-      openSource: string
-      blog: string
-      contact: string
-    }
-    newsletter: {
-      title: string
-      summary: string
-      form: {
-        label: string
-        placeholder: string
-        button: {
-          label: string
-        }
-      }
-    }
     copyright: string
   }
 }

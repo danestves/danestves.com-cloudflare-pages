@@ -1,6 +1,8 @@
 // Dependencies
 import Image from 'next/image'
 import { useI18n } from 'next-rosetta'
+import { useRouter } from 'next/router'
+import { ExternalLinkIcon } from '@heroicons/react/solid'
 
 // Components
 import { Link } from '@/components'
@@ -10,36 +12,43 @@ import type { MyLocale } from 'i18n'
 
 export const CallToAction = (): JSX.Element => {
   const { t } = useI18n<MyLocale>()
+  const { locale } = useRouter()
 
   return (
-    <section className="container px-5">
-      <div className="max-w-5xl mx-auto my-16 lg:my-32">
-        <div className="flex flex-wrap items-center flex-1 w-full overflow-hidden rounded-lg bg-primary md:flex-no-wrap">
-          <div className="w-full md:w-1/3 md:order-last">
-            <Image
-              alt={t('cta.gif.alt') as string}
-              height={300}
-              src="/programming-animation.gif"
-              width={300}
-            />
-          </div>
-          <div className="w-full px-4 pt-24 pb-8 md:p-12 md:w-2/3">
-            <h2 className="mb-4 text-3xl font-bold text-black lg:mb-4 sm:text-4xl md:text-5xl">
-              {t('cta.title')}
-            </h2>
-            <div className="mb-4 lg:mb-4">
-              <p className="mb-4">{t('cta.summary')}</p>
+    <div className="relative bg-gray-800 dark:bg-secondary-800">
+      <div className="h-56 bg-primary-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+        <div className="flex h-full">
+          <Image
+            className="w-full h-full mix-blend-multiply"
+            height={864}
+            objectFit="cover"
+            objectPosition="center"
+            src="/static/img/cta.jpg"
+            width={1296}
+          />
+        </div>
+      </div>
+      <div className="relative px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-16">
+        <div className="md:ml-auto md:w-1/2 md:pl-10">
+          <p className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            {t('cta.title')}
+          </p>
+          <p className="mt-3 text-lg text-gray-300">{t('cta.summary')}</p>
+          <div className="mt-8">
+            <div className="inline-flex rounded-md shadow">
+              <Link
+                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-gray-900 bg-white border border-transparent rounded-md hover:bg-gray-50"
+                href="/contacto"
+                locale={locale}
+              >
+                {t('cta.button.label')}
+                <ExternalLinkIcon aria-hidden="true" className="w-5 h-5 ml-3 -mr-1 text-gray-400" />
+              </Link>
             </div>
-            <Link
-              className="inline-block px-6 py-3 text-gray-300 transition-all duration-150 transform bg-black rounded-lg hover:shadow-lg hover:-translate-y-1 focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-primary focus:outline-none"
-              href="/contacto"
-            >
-              {t('cta.button.label')}
-            </Link>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

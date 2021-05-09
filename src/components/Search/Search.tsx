@@ -35,8 +35,8 @@ export const Search = (): JSX.Element => {
 
   return (
     <>
-      <button onClick={() => setOpen(true)} type="button">
-        <SearchIcon className="w-6 h-6 text-white" />
+      <button onClick={() => setOpen(true)} title="cmd+k OR ctrl+k" type="button">
+        <SearchIcon className="w-6 h-6 text-primary-600 dark:text-white" />
       </button>
 
       <Transition.Root as={Fragment} show={open}>

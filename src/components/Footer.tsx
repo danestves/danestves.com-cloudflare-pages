@@ -1,170 +1,135 @@
 // Dependencies
+import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
+
+// @types
+import { MyLocale } from 'i18n'
 
 // Components
 import { Link } from '@/components'
 
-// Locales
-import type { MyLocale } from 'i18n'
+const navigation = {
+  main: [
+    {
+      name: {
+        en: 'RSS',
+        es: 'RSS',
+      },
+      href: '/rss.xml',
+    },
+    {
+      name: {
+        en: 'About',
+        es: 'Sobre mí',
+      },
+      href: '/sobre-mi',
+    },
+    {
+      name: {
+        en: 'Courses',
+        es: 'Cursos',
+      },
+      href: '/cursos',
+    },
+    {
+      name: {
+        en: 'Blog',
+        es: 'Blog',
+      },
+      href: '/blog',
+    },
+    {
+      name: {
+        en: 'Contact',
+        es: 'Contacto',
+      },
+      href: '/contacto',
+    },
+    {
+      name: {
+        en: 'Sitemap',
+        es: 'Sitemap',
+      },
+      href: '/sitemap.xml',
+    },
+  ],
+  social: [
+    {
+      name: 'Twitter',
+      href: 'https://twitter.com/danestves',
+      icon: (props: React.ComponentProps<'svg'>) => (
+        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Instagram',
+      href: 'https://instagram.com/danestves',
+      icon: (props: React.ComponentProps<'svg'>) => (
+        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+          <path
+            clipRule="evenodd"
+            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+            fillRule="evenodd"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: 'GitHub',
+      href: 'https://github.com/danestves',
+      icon: (props: React.ComponentProps<'svg'>) => (
+        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+          <path
+            clipRule="evenodd"
+            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+            fillRule="evenodd"
+          />
+        </svg>
+      ),
+    },
+  ],
+}
 
 export const Footer = (): JSX.Element => {
+  const { locale } = useRouter()
   const { t } = useI18n<MyLocale>()
 
   return (
-    <footer className="pt-5 bg-secondary">
-      <div className="container px-5">
-        <div className="grid grid-cols-12 gap-y-8 md:gap-8">
-          <div className="grid col-span-12 gap-4 mb-auto md:col-span-5">
-            <p className="text-2xl font-semibold text-white">Daniel Esteves</p>
-
-            <div>
-              <p className="mb-4 text-white">{t('footer.summary')}</p>
-            </div>
-
-            <div className="-mx-4">
-              <div className="flex mx-4 space-x-6">
-                <a
-                  className="text-primary"
-                  href="https://github.com/danestves"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  title="GitHub"
-                >
-                  <svg
-                    fill="currentColor"
-                    height={24}
-                    stroke="currentColor"
-                    strokeWidth={0}
-                    viewBox="0 0 480 512"
-                    width={24}
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z" />
-                  </svg>
-                </a>
-
-                <a
-                  className="text-primary"
-                  href="https://twitter.com/danestves"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  title="Twitter"
-                >
-                  <svg
-                    fill="currentColor"
-                    height={24}
-                    stroke="currentColor"
-                    strokeWidth={0}
-                    viewBox="0 0 512 512"
-                    width={24}
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
-                  </svg>
-                </a>
-
-                <a
-                  className="text-primary"
-                  href="https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  title="YouTube"
-                >
-                  <svg
-                    fill="currentColor"
-                    height={24}
-                    stroke="currentColor"
-                    strokeWidth={0}
-                    viewBox="0 0 576 512"
-                    width={24}
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-span-12 md:col-span-2">
-            <p className="mb-6 font-semibold text-white">Quick Links</p>
-
-            <ul className="grid gap-2">
-              <li>
-                <Link className="text-white hover:underline focus:outline-none" href="/open-source">
-                  {t('footer.menu.openSource')}
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white hover:underline focus:outline-none" href="/blog">
-                  {t('footer.menu.blog')}
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white hover:underline focus:outline-none" href="/contacto">
-                  {t('footer.menu.contact')}
-                </Link>
-              </li>
-              <li>
-                <Link className="text-white hover:underline focus:outline-none" href="/sitemap.xml">
-                  Sitemap
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="col-span-12 md:col-span-5">
-            <p className="mb-6 font-semibold text-white">{t('footer.newsletter.title')}</p>
-
-            <p className="mb-4 text-white">{t('footer.newsletter.summary')}</p>
-
-            <form
-              action="https://www.getrevue.co/profile/danestves/add_subscriber"
-              className="flex flex-col items-start my-4 space-y-4 md:items-center md:flex-row md:space-y-0 md:space-x-4"
-              method="post"
-            >
-              <div className="w-full md:flex-1 md:w-auto">
-                <label className="sr-only" htmlFor="member[email]">
-                  {t('footer.newsletter.form.label')}
-                </label>
-                <input
-                  className="block w-full px-4 py-2 mx-auto font-mono leading-5 text-white placeholder-opacity-50 bg-transparent border border-white rounded-lg md:flex-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
-                  id="member[email]"
-                  name="member[email]"
-                  placeholder={t('footer.newsletter.form.placeholder')}
-                  type="email"
-                />
-              </div>
-
-              <button
-                className="px-4 py-2 rounded-lg text-secondary bg-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
-                type="submit"
+    <footer className="bg-white dark:bg-secondary-600">
+      <div className="px-4 py-12 mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8">
+        <nav aria-label="Footer" className="flex flex-wrap justify-center -mx-5 -my-2">
+          {navigation.main.map((item, i) => (
+            <div className="px-5 py-2" key={i}>
+              <Link
+                className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400"
+                href={item.href}
+                locale={locale}
               >
-                {t('footer.newsletter.form.button.label')} 👉
-              </button>
-            </form>
-          </div>
+                {/* @ts-ignore: you can filter with string */}
+                {item.name[locale || 'en']}
+              </Link>
+            </div>
+          ))}
+        </nav>
+        <div className="flex justify-center mt-8 space-x-6">
+          {navigation.social.map((item) => (
+            <a
+              className="text-gray-400 hover:text-gray-500"
+              href={item.href}
+              key={item.name}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span className="sr-only">{item.name}</span>
+              <item.icon aria-hidden="true" className="w-6 h-6" />
+            </a>
+          ))}
         </div>
-      </div>
-
-      <div className="w-full py-5 mt-8 bg-secondary-800">
-        <div className="container px-5">
-          <p className="font-mono text-sm text-center text-primary">
-            Daniel Esteves © <span>{new Date().getFullYear()}</span> - {t('footer.copyright')}
-            <span className="block mt-2 font-mono text-sm text-center text-primary">
-              Designed by{` `}
-              <a href="https://twitter.com/vibrawifi" rel="noopener noreferrer" target="_blank">
-                <b>Vibra Wifi</b>
-              </a>
-              {` `}
-              with
-              {` `}
-              <a href="https://twitter.com/vicman_ve" rel="noopener noreferrer" target="_blank">
-                <b>Victor Velasquez</b>
-              </a>
-            </span>
-          </p>
-        </div>
+        <p className="mt-8 text-base text-center text-gray-400">
+          &copy; {new Date().getFullYear()} Daniel Esteves. {t('footer.copyright')}.
+        </p>
       </div>
     </footer>
   )

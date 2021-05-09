@@ -1,5 +1,5 @@
 // Dependencies
-import { format } from 'date-fns'
+import { format, formatDistanceToNow } from 'date-fns'
 import es from 'date-fns/locale/es'
 
 /**
@@ -25,6 +25,24 @@ export const formatDate = (date: string | Date, formatter = 'mm/dd/yyyy', lang =
 
   return format(new Date(date), formatter, {
     locale,
+  })
+}
+
+export const fromNow = (date: string | Date, lang = 'en'): string => {
+  let locale
+
+  switch (lang) {
+    case 'es':
+      locale = es
+      break
+    default:
+      locale = undefined
+      break
+  }
+
+  return formatDistanceToNow(new Date(date), {
+    locale,
+    addSuffix: true,
   })
 }
 

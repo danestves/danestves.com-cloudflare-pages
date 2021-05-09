@@ -7,7 +7,7 @@ module.exports = {
     './src/layouts/**/*.{ts,tsx}',
     './src/pages/**/*.{ts,tsx}',
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class',
   important: true,
   theme: {
     extend: {
@@ -16,7 +16,18 @@ module.exports = {
         'search-item': '0 1px 2px 0 rgb(0 0 0 / 5%)',
       },
       colors: {
-        primary: `#00C389`,
+        primary: {
+          DEFAULT: '#00c389',
+          100: '#ccf3e7',
+          200: '#99e7d0',
+          300: '#66dbb8',
+          400: '#33cfa1',
+          500: '#00c389',
+          600: '#009c6e',
+          700: '#007552',
+          800: '#004e37',
+          900: '#00271b',
+        },
         secondary: {
           DEFAULT: '#071d49',
           50: '#f3f4f6',
@@ -38,13 +49,14 @@ module.exports = {
       fontFamily: {
         sans: [`Inter`, ...fontFamily.sans],
         title: [`Roboto Slab`, ...fontFamily.sans],
+        roboto: [`Roboto`, ...fontFamily.sans],
       },
       maxHeight: (theme) => theme('spacing'),
       minHeight: (theme) => theme('spacing'),
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.200'),
+            color: theme('colors.gray.600'),
             a: {
               color: theme('colors.primary'),
               transition: theme('transitionProperty.all'),
@@ -56,12 +68,12 @@ module.exports = {
               code: { color: theme('colors.blue.400') },
             },
             'h2,h3,h4': {
-              color: theme('colors.gray.100'),
+              color: theme('colors.gray.700'),
               'scroll-margin-top': spacing[32],
             },
             blockquote: {
-              borderLeftColor: theme('colors.gray.500'),
-              color: theme('colors.gray.300'),
+              borderLeftColor: theme('colors.gray.300'),
+              color: theme('colors.gray.400'),
               'p:first-of-type::before': false,
               'p:last-of-type::after': false,
             },
@@ -78,8 +90,30 @@ module.exports = {
             },
             ul: {
               li: {
-                '&:before': { backgroundColor: theme('colors.gray.200') },
+                '&:before': { backgroundColor: theme('colors.gray.300') },
               },
+            },
+            strong: { color: theme('colors.gray.700') },
+            thead: {
+              color: theme('colors.gray.700'),
+            },
+            tbody: {
+              tr: {
+                borderBottomColor: theme('colors.gray.300'),
+              },
+            },
+          },
+        },
+        dark: {
+          css: {
+            color: theme('colors.gray.200'),
+            'h2,h3,h4': {
+              color: theme('colors.gray.100'),
+              'scroll-margin-top': spacing[32],
+            },
+            blockquote: {
+              borderLeftColor: theme('colors.gray.500'),
+              color: theme('colors.gray.400'),
             },
             strong: { color: theme('colors.gray.300') },
             thead: {
@@ -87,7 +121,7 @@ module.exports = {
             },
             tbody: {
               tr: {
-                borderBottomColor: theme('colors.white'),
+                borderBottomColor: theme('colors.gray.300'),
               },
             },
           },
@@ -96,8 +130,9 @@ module.exports = {
     },
   },
   plugins: [
-    require(`@tailwindcss/typography`),
+    require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/line-clamp'),
     require('tailwindcss-pseudo-elements')(),
   ],
 }

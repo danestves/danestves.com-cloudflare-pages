@@ -25,11 +25,11 @@ const MenuItem = ({
       onClick={toggle}
     >
       <Link className="flex items-center space-x-5 focus:outline-none" href={slug}>
-        <div className="flex items-center justify-center w-10 h-10 rounded-full" style={style}>
+        <div className="flex justify-center items-center w-10 h-10 rounded-full" style={style}>
           <Icon className="w-6 h-6" style={{ color: colors[i] }} />
         </div>
         <span
-          className="flex-1 inline-block px-2 py-1 text-sm rounded"
+          className="inline-block flex-1 py-1 px-2 text-sm rounded"
           style={{ ...style, color: colors[i] }}
         >
           {label}

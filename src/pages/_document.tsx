@@ -36,7 +36,7 @@ export default class MyDocument extends Document {
           <meta content="fc24b57a0cc85e0e" name="yandex-verification" />
         </Head>
 
-        <body className="bg-secondary-700">
+        <body className="bg-gray-100 dark:bg-secondary-500">
           <Main />
           <NextScript />
         </body>

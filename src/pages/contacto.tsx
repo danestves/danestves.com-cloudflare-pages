@@ -1,5 +1,5 @@
 // Dependencies
-import { useEffect } from 'react'
+import { useEffect, memo } from 'react'
 import { GetStaticProps, NextPage } from 'next'
 import kwesforms from 'kwesforms'
 import Image from 'next/image'
@@ -18,7 +18,7 @@ const Contacto: NextPage = () => {
 
   useEffect(() => {
     kwesforms.init()
-  }, [])
+  }, [locale])
 
   return (
     <>
@@ -26,7 +26,7 @@ const Contacto: NextPage = () => {
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
-          <h1 className="mb-10 text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+          <h1 className="mb-10 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
             {t('contact.title')}
           </h1>
         </div>
@@ -35,11 +35,11 @@ const Contacto: NextPage = () => {
       <section className="container px-5">
         <div className="grid items-center max-w-lg gap-16 mx-auto my-16 lg:max-w-none lg:grid-cols-2 xl:my-32">
           <div>
-            <h2 className="mb-4 text-3xl font-semibold text-white sm:text-4xl md:text-5xl">
+            <h2 className="mb-4 text-3xl font-semibold text-gray-700 dark:text-white sm:text-4xl md:text-5xl">
               {t('contact.subtitle')} 🚀
             </h2>
 
-            <p className="mb-4 text-white">{t('contact.summary')}</p>
+            <p className="mb-4 text-gray-500 dark:text-white">{t('contact.summary')}</p>
 
             <ul className="my-8">
               <li className="flex items-center my-4 space-x-4">
@@ -51,7 +51,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-white">{t('contact.steps.first')}</span>
+                <span className="text-gray-600 dark:text-white">{t('contact.steps.first')}</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#8900C3' }}>
@@ -62,7 +62,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-white">{t('contact.steps.second')}</span>
+                <span className="text-gray-600 dark:text-white">{t('contact.steps.second')}</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#2700C3' }}>
@@ -73,7 +73,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-white">{t('contact.steps.third')}</span>
+                <span className="text-gray-600 dark:text-white">{t('contact.steps.third')}</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#003AC3' }}>
@@ -84,7 +84,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-white">{t('contact.steps.fourth')}</span>
+                <span className="text-gray-600 dark:text-white">{t('contact.steps.fourth')}</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#009BC3' }}>
@@ -95,7 +95,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-white">{t('contact.steps.fifth')}</span>
+                <span className="text-gray-600 dark:text-white">{t('contact.steps.fifth')}</span>
               </li>
               <li className="flex items-center my-4 space-x-4">
                 <span className="flex p-4 rounded-full" style={{ background: '#00C389' }}>
@@ -106,7 +106,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-white">{t('contact.steps.sixth')}</span>
+                <span className="text-gray-600 dark:text-white">{t('contact.steps.sixth')}</span>
               </li>
             </ul>
           </div>
@@ -203,4 +203,4 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
   }
 }
 
-export default Contacto
+export default memo(Contacto)

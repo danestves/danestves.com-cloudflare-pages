@@ -31,17 +31,17 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
-          <h1 className="mb-10 text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+          <h1 className="mb-10 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
             {t('portfolio.title')}
           </h1>
         </div>
       </section>
 
-      <div className="container px-5 space-y-16">
+      <div className="container px-5 mb-24 space-y-16">
         {portfolios.map((portfolio) => (
           <div key={portfolio.slug}>
             <Link
-              className="grid items-center grid-cols-1 gap-6 overflow-hidden rounded-lg md:grid-cols-2 group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
+              className="grid items-center grid-cols-1 gap-6 pb-1 overflow-hidden transition-all duration-150 rounded-lg group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none hover:bg-gray-50 dark:hover:bg-secondary-700 hover:shadow md:grid-cols-2"
               href={`/portafolio/${portfolio.slug}-${portfolio.id}`}
               locale={locale}
             >
@@ -54,13 +54,13 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
                 />
               </div>
               <div>
-                <h2 className="mb-4 text-4xl leading-tight text-white group-hover:underline">
+                <h2 className="mb-4 text-4xl leading-tight text-gray-700 dark:text-white group-hover:underline">
                   {portfolio.title}
                 </h2>
-                <p className="text-white">{portfolio.seo?.description}</p>
+                <p className="text-gray-500 dark:text-white">{portfolio.seo?.description}</p>
                 <div className="flex mt-4">
                   <button
-                    className="flex items-center px-6 py-2 font-semibold transition-all duration-150 transform rounded group-hover:-translate-y-1 focus:outline-none bg-primary text-secondary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary"
+                    className="flex justify-center items-center py-3 font-semibold transition-all duration-150 transform rounded border border-primary-700 text-primary-700 bg-primary-100 min-w-[160px] group-hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary dark:bg-secondary-900 dark:text-secondary-100 dark:border-secondary-100"
                     type="button"
                   >
                     {t('portfolio.portfolios.button.label')}
@@ -78,7 +78,7 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
 export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const portfolios = await (await getAllPortfoliosForPortfolioPage(locale as any)).portfolios
+  const portfolios = (await getAllPortfoliosForPortfolioPage(locale as any)).portfolios
 
   return {
     props: {

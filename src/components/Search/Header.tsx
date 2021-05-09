@@ -7,7 +7,7 @@ export const SearchHeader = connectSearchBox(({ refine }) => {
     <header className="flex-none border-b border-[#e5e7eb] relative z-[1] flex items-center">
       <form
         action={undefined}
-        className="flex items-center flex-auto min-w-0"
+        className="flex flex-auto items-center min-w-0"
         noValidate
         role="search"
       >

@@ -7,6 +7,7 @@ import { useRouter } from 'next/dist/client/router'
 import { useI18n } from 'next-rosetta'
 import { FlayyerIO } from '@flayyer/flayyer'
 import { MDXRemote } from 'next-mdx-remote'
+import { InformationCircleIcon } from '@heroicons/react/solid'
 
 // @types
 import { Post } from '@/generated/graphql'
@@ -89,7 +90,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
 
       <article className="container px-5 py-16">
         <div className="container">
-          <div className="mx-auto text-center text-white lg:w-3/4 xl:w-2/3">
+          <div className="mx-auto text-center dark:text-white lg:w-3/4 xl:w-2/3">
             <h1 className="mb-20 text-3xl font-semibold sm:text-5xl md:text-[5rem]">
               {post.title}
             </h1>
@@ -105,7 +106,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
           />
 
           <div className="flex justify-center my-8">
-            <div className="flex items-center space-x-4 divide-x-2 divide-white">
+            <div className="flex items-center space-x-4 divide-x-2 divide-gray-300 dark:divide-white">
               <Image
                 alt="Daniel Esteves"
                 className="rounded-full"
@@ -115,41 +116,31 @@ export default function PostLayout({ post }: Props): JSX.Element {
               />
 
               <div className="pl-4">
-                <h2 className="text-lg font-semibold text-white">Daniel Esteves</h2>
-                <p className="text-white capitalize">
+                <h2 className="font-sans text-lg font-semibold text-gray-700 dark:text-white">
+                  Daniel Esteves
+                </h2>
+                <p className="text-gray-500 capitalize dark:text-white">
                   {formatDate(
                     new Date(post.published).toISOString().slice(0, 19),
                     'MMMM d, yyyy',
                     locale
                   )}
                 </p>
-                <p className="text-white">
+                <p className="text-gray-500 dark:text-white">
                   {readingTime({ wordCount: post.body.split(/\s+/gu).length, lang: locale })}
                 </p>
-                <p className="text-white">
+                <p className="text-gray-500 dark:text-white">
                   <ViewCounter slug={post.slug} />
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="max-w-lg p-4 ml-auto rounded-md bg-blue-50">
+          <div className="max-w-lg p-4 ml-auto bg-blue-100 rounded-md dark:bg-blue-50">
             <div className="flex">
               <div className="flex-shrink-0">
                 {/* Heroicon name: solid/information-circle */}
-                <svg
-                  aria-hidden="true"
-                  className="w-5 h-5 text-blue-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                    fillRule="evenodd"
-                  />
-                </svg>
+                <InformationCircleIcon className="w-5 h-5 text-blue-400" />
               </div>
               <div className="flex-1 ml-3 md:flex md:justify-between">
                 <p className="text-sm text-blue-700">{t('blog.alert.text')}</p>
@@ -168,7 +159,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
         </div>
 
         <div className="relative max-w-3xl mx-auto mt-8">
-          <div className="max-w-full prose prose-lg">
+          <div className="max-w-full prose prose-lg dark:prose-dark">
             <MDXRemote compiledSource={post.mdx.compiledSource} components={MDXComponents} />
           </div>
 

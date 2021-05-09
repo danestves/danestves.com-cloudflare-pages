@@ -37,7 +37,7 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
       />
 
       <div className="container px-5 py-16 space-y-16">
-        <h1 className="mb-10 text-4xl text-center text-white sm:text-5xl md:text-6xl">
+        <h1 className="mb-10 text-4xl text-center dark:text-white sm:text-5xl md:text-6xl">
           {portfolio.title}
         </h1>
 
@@ -49,26 +49,28 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
           withWebp
         />
 
-        <div className="grid max-w-screen-md grid-cols-1 p-5 mx-auto bg-secondary-900 md:grid-cols-3 rounded-xl">
+        <div className="grid max-w-screen-md grid-cols-1 p-5 mx-auto bg-gray-300 rounded-xl dark:bg-secondary-900 md:grid-cols-3">
           <div>
-            <h2 className="mb-2 font-semibold text-center text-white underline">
+            <h2 className="mb-2 font-semibold text-center underline dark:text-white">
               {t('portfolio.portfolios.industry')}
             </h2>
-            <p className="text-sm text-center text-white">{portfolio.industry}</p>
+            <p className="text-sm text-center dark:text-white">{portfolio.industry}</p>
           </div>
           <div>
-            <h2 className="mb-2 font-semibold text-center text-white underline">
+            <h2 className="mb-2 font-semibold text-center underline dark:text-white">
               {t('portfolio.portfolios.technology')}
             </h2>
-            <p className="text-sm text-center text-white">{portfolio.technologies.join(', ')}</p>
+            <p className="text-sm text-center dark:text-white">
+              {portfolio.technologies.join(', ')}
+            </p>
           </div>
           <div>
-            <h2 className="mb-2 font-semibold text-center text-white underline">
+            <h2 className="mb-2 font-semibold text-center underline dark:text-white">
               {t('portfolio.portfolios.web')}
             </h2>
             <div className="flex justify-center">
               <a
-                className="flex items-center space-x-1 text-sm underline focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none text-primary"
+                className="flex items-center space-x-1 text-sm font-semibold underline focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none dark:text-primary"
                 href={portfolio.project_url}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -93,7 +95,7 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
         </div>
 
         <div className="max-w-screen-md mx-auto">
-          <div className="max-w-full prose prose-lg">
+          <div className="max-w-full prose prose-lg dark:prose-dark">
             <MDXRemote compiledSource={portfolio.mdx.compiledSource} components={MDXComponents} />
           </div>
         </div>

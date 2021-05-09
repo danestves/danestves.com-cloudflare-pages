@@ -25,10 +25,10 @@ export const SearchHit = ({ hit, setOpen }: Props): JSX.Element => {
           </div>
 
           <div className="flex flex-col flex-auto min-w-0">
-            <p className="overflow-hidden font-semibold leading-6 text-left text-black overflow-ellipsis whitespace-nowrap group-hover:text-white">
+            <p className="overflow-hidden font-semibold leading-6 text-left text-black whitespace-nowrap overflow-ellipsis group-hover:text-white">
               <Snippet attribute="title" hit={hit} />
             </p>
-            <p className="overflow-hidden text-sm font-normal leading-6 text-left text-gray-400 overflow-ellipsis whitespace-nowrap group-hover:text-white">
+            <p className="overflow-hidden text-sm font-normal leading-6 text-left text-gray-400 whitespace-nowrap overflow-ellipsis group-hover:text-white">
               <Snippet attribute="body" hit={hit} />
             </p>
           </div>
