@@ -1,3 +1,9 @@
+## 3.0.0 (2021-05-09)
+
+##### New Features
+
+* **design:**  new design and colors for all the page ([4f0f95b5](https://github.com/danestves/website/commit/4f0f95b5f6b32181f9089f8aa19784f77423eb48))
+
 #### 2.2.3 (2021-05-08)
 
 ##### New Features
