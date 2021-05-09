@@ -96,7 +96,7 @@ export const table: MyLocale = {
       third: '¿Es una reestructuración o creación desde cero?',
       fourth: '¿Qué tal si tomamos un poco de inspiración?',
       fifth: 'Fijemos fechas de entrega',
-      sixth: 'Transformemos tu idea en un producto',
+      sixth: 'Transformemos tu idea en un producto o servicio',
     },
     form: {
       name: {
@@ -156,11 +156,11 @@ export const table: MyLocale = {
     gif: {
       alt: 'Persona programando animadas a través de un GIF',
     },
-    title: '¿Tienes una idea?',
+    title: '¿Qué quieres lograr hoy?',
     summary:
       'Ponte en contacto a través de este botón para que pueda saber más de tu producto o servicio y podamos discutir la mejor manera de llevarlo a cabo.',
     button: {
-      label: 'Quiero plasmar mi idea',
+      label: 'Hagamos esa idea realidad',
     },
   },
   footer: {

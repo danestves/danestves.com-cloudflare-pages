@@ -102,7 +102,7 @@ export const table: MyLocale = {
       description:
         "Let's make that idea a reality. Take the first step to get your product or service online.",
     },
-    title: "Let's make that idea a reality.",
+    title: "Let's make that idea a reality",
     subtitle: 'Take the first step',
     summary:
       'It all starts with one message. One idea to dominate them all 😎 grow your market or emerge with your new business.',
@@ -112,7 +112,7 @@ export const table: MyLocale = {
       third: 'Is it a restructuring or creation from scratch?',
       fourth: 'How about some inspiration?',
       fifth: "Let's set delivery dates",
-      sixth: "Let's transform your idea into a product",
+      sixth: "Let's transform your idea into a product or service",
     },
     form: {
       name: {
@@ -155,11 +155,11 @@ export const table: MyLocale = {
     gif: {
       alt: 'Person programming animated through a GIF',
     },
-    title: 'Do you have an idea?',
+    title: 'What do you want to achieve today?',
     summary:
       'Get in touch through this button so I can learn more about your product or service and we can discuss the best way to make it happen.',
     button: {
-      label: 'I want to realize my idea',
+      label: "Let's make that idea a reality",
     },
   },
   footer: {
