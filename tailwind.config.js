@@ -74,9 +74,12 @@ module.exports = {
               padding: `${spacing[1]} ${spacing[0.5]}`,
               fontWeight: theme('fontWeight.normal'),
             },
-            'h2,h3,h4': {
+            'h2,h3,h4,h5,h6': {
               color: theme('colors.gray.700'),
               'scroll-margin-top': spacing[32],
+              position: 'relative',
+              paddingLeft: spacing[6],
+              marginLeft: `-${spacing[6]}`,
             },
             blockquote: {
               borderLeftColor: theme('colors.gray.300'),
@@ -85,7 +88,6 @@ module.exports = {
               'p:last-of-type::after': false,
             },
             hr: { borderColor: theme('colors.gray.500') },
-
             ol: {
               li: {
                 '&:before': {
@@ -121,9 +123,8 @@ module.exports = {
               color: '#d6deeb',
             },
             color: theme('colors.gray.200'),
-            'h2,h3,h4': {
+            'h2,h3,h4,h5,h6': {
               color: theme('colors.gray.100'),
-              'scroll-margin-top': spacing[32],
             },
             blockquote: {
               borderLeftColor: theme('colors.gray.500'),
