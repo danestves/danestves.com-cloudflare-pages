@@ -1,5 +1,5 @@
 // Dependencies
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import { useI18n } from 'next-rosetta'
 
