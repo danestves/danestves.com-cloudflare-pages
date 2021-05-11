@@ -23,7 +23,7 @@ export const Subscribe = (): JSX.Element => {
   const { t } = useI18n<MyLocale>()
   const { data } = useSWR('/api/subscribers', fetcher)
   const subscriberCount = formatCommaNumber(
-    (((data as unknown) as Record<string, unknown>)?.count as number) || 0
+    ((data as unknown as Record<string, unknown>)?.count as number) || 0
   )
 
   const subscribe = async (e: React.ChangeEvent<HTMLFormElement>): Promise<void> => {

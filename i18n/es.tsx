@@ -40,12 +40,9 @@ export const table: MyLocale = {
     },
     intro: 'Hoy, soy',
     summary: {
-      p1:
-        'Desde muy niño he estado interesado en las computadoras comenzando desde los videojuegos, cada vez que jugaba sentía una necesidad de saber cómo eso está funcionando y cómo mi personaje hace cualquier movimiento; probando cada día más y más juegos me empezó a interesar cómo se pueden hacer las gráficas del juego y la interactividad contra el usuario.',
-      p2:
-        'Al llegar a la secundaria empecé a investigar sobre las computadoras y me empezó a interesar cómo las webs son construidas sobre todos las redes sociales, me gustaba la idea de que cuando un usuario le seleccionaba un menú se mostraban más opciones y animaciones, y eso fue lo que me enamoró del desarrollo web.',
-      p3:
-        'Comencé hace cinco años a trabajar y aprender desde el frontend, la parte visual de la web; hoy en día me considero un fullstack ya que gracias a el conocimiento que he obtenido puedo construir aplicaciones desde las vistas hasta las bases de datos y rutas. Me gusta aprender cada día más, integrar nuevas tecnologías y contribuir a nuevos proyectos para mejorar la productividad.',
+      p1: 'Desde muy niño he estado interesado en las computadoras comenzando desde los videojuegos, cada vez que jugaba sentía una necesidad de saber cómo eso está funcionando y cómo mi personaje hace cualquier movimiento; probando cada día más y más juegos me empezó a interesar cómo se pueden hacer las gráficas del juego y la interactividad contra el usuario.',
+      p2: 'Al llegar a la secundaria empecé a investigar sobre las computadoras y me empezó a interesar cómo las webs son construidas sobre todos las redes sociales, me gustaba la idea de que cuando un usuario le seleccionaba un menú se mostraban más opciones y animaciones, y eso fue lo que me enamoró del desarrollo web.',
+      p3: 'Comencé hace cinco años a trabajar y aprender desde el frontend, la parte visual de la web; hoy en día me considero un fullstack ya que gracias a el conocimiento que he obtenido puedo construir aplicaciones desde las vistas hasta las bases de datos y rutas. Me gusta aprender cada día más, integrar nuevas tecnologías y contribuir a nuevos proyectos para mejorar la productividad.',
       sign: 'Los veo en el código',
     },
     experience: {

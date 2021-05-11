@@ -15,7 +15,7 @@ import { formatCommaNumber } from '@/utils'
 export function ViewCounter({ slug }: { slug: string }): JSX.Element {
   const { t } = useI18n<MyLocale>()
   const { data } = useSWR(`/api/views/${slug}`, fetcher)
-  const views = ((data as unknown) as Record<string, unknown>)?.total
+  const views = (data as unknown as Record<string, unknown>)?.total
 
   useEffect(() => {
     const registerView = (): Promise<Response> =>
