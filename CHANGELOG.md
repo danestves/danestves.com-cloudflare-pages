@@ -1,3 +1,13 @@
+#### 3.1.1 (2021-05-11)
+
+##### Chores
+
+* **bump:**  updating dependencies ([8b3429f6](https://github.com/danestves/website/commit/8b3429f696857295c659d0e6e9105cd9966ed42d))
+
+##### Bug Fixes
+
+* **format:**  files prettier eslint format ([68f5ef1f](https://github.com/danestves/website/commit/68f5ef1f612daac25b6c406833881b9ddc10322c))
+
 ### 3.1.0 (2021-05-09)
 
 ##### Chores
