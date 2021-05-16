@@ -12,8 +12,8 @@ export const VideoCard = ({ id, snippet, statistics }: youtube_v3.Schema$Video):
   const supportsWebP = useWebPSupportCheck()
 
   const imageUrl = supportsWebP
-    ? snippet?.thumbnails?.maxres?.url?.replace('vi/', 'vi_webp/').replace('.jpg', '.webp')
-    : snippet?.thumbnails?.maxres?.url
+    ? snippet?.thumbnails?.medium?.url?.replace('vi/', 'vi_webp/').replace('.jpg', '.webp')
+    : snippet?.thumbnails?.medium?.url
 
   return (
     <div className="relative font-roboto">
@@ -28,9 +28,9 @@ export const VideoCard = ({ id, snippet, statistics }: youtube_v3.Schema$Video):
         >
           <Image
             alt={snippet?.title || 'YouTube Video'}
-            height={snippet?.thumbnails?.maxres?.height as number}
+            height={snippet?.thumbnails?.medium?.height as number}
             src={imageUrl as string}
-            width={snippet?.thumbnails?.maxres?.width as number}
+            width={snippet?.thumbnails?.medium?.width as number}
           />
         </a>
       </div>
