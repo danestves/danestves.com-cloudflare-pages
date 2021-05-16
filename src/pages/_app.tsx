@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
   return (
     <>
       <Head>
-        <link href="https://fonts.gstatic.com" rel="preconnect" />
+        <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Roboto+Slab:wght@500..700&family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet"
