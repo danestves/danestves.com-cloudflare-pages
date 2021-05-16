@@ -19,6 +19,7 @@ export const CallToAction = (): JSX.Element => {
       <div className="h-56 bg-primary-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
         <div className="flex h-full">
           <Image
+            alt="Call to action image"
             className="w-full h-full mix-blend-multiply"
             height={864}
             objectFit="cover"

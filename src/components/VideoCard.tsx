@@ -25,6 +25,7 @@ export const VideoCard = ({ id, snippet, statistics }: youtube_v3.Schema$Video):
           target="_blank"
         >
           <Image
+            alt={snippet?.title || 'YouTube Video'}
             height={snippet?.thumbnails?.maxres?.height as number}
             src={imageUrl as string}
             width={snippet?.thumbnails?.maxres?.width as number}
