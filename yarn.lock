@@ -1265,10 +1265,10 @@
   dependencies:
     tslib "^2.1.0"
 
-"@flayyer/flayyer-types@^1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@flayyer/flayyer-types/-/flayyer-types-1.11.1.tgz#60df0d62e7513d7aefb7a081ee11b3d775d6c3bf"
-  integrity sha512-Z7BLNE+ohiBfVE7o3tbhZK7HWYEmZ/MXuDw86zh636cGmWhJZqrLLWaYanrBPFboViPccSwAK8DrxHThpVv5OQ==
+"@flayyer/flayyer-types@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@flayyer/flayyer-types/-/flayyer-types-1.11.2.tgz#86a11787ba2d1a73ca59cb48f0bef1505e409932"
+  integrity sha512-e9wyZ8wFXmt2cjWTZM9y66d8zed2T4ukIuJ0pwC3AZwq8qHgkEjId9+PfqFjXVreRKUPhfdwL1179yrOQG/EdQ==
 
 "@flayyer/flayyer@^2.3.1":
   version "2.3.1"
@@ -2240,10 +2240,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.48.tgz#46a3df718aed5217277f2395a682e055a487e341"
   integrity sha512-z8wvSsgWQzkr4sVuMEEOvwMdOQjiRY2Y/ZW4fDfjfe3+TfQrZqFKOthBgk2RnVEmtOKrkwdZ7uTvsxTBLjKGDQ==
 
-"@types/node@^15.0.2":
-  version "15.0.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.0.2.tgz#51e9c0920d1b45936ea04341aa3e2e58d339fb67"
-  integrity sha512-p68+a+KoxpoB47015IeYZYRrdqMUcpbK8re/zpFB8Ld46LHC1lPEbp3EXgkEhAYEcPvjJF6ZO+869SQ0aH1dcA==
+"@types/node@^15.3.0":
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.3.0.tgz#d6fed7d6bc6854306da3dea1af9f874b00783e26"
+  integrity sha512-8/bnjSZD86ZfpBsDlCIkNXIvm+h6wi9g7IqL+kmFkQ+Wvu3JrasgLElfiPgoo8V8vVfnEi0QVS12gbl94h9YsQ==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -2270,10 +2270,10 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
 
-"@types/react-dom@^17.0.4":
-  version "17.0.4"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.4.tgz#d65159a847aca2a0fc87a7544a2f8fece8754d04"
-  integrity sha512-Wb6rlnPJfqbhpkvYN39y1NM/pOGGPzzIRquu0RdUMvTwgXNvASFO7pdtrtvyxGTQNb9wzBaQxXAWDdEqegZw2A==
+"@types/react-dom@^17.0.5":
+  version "17.0.5"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.5.tgz#df44eed5b8d9e0b13bb0cd38e0ea6572a1231227"
+  integrity sha512-ikqukEhH4H9gr4iJCmQVNzTB307kROe3XFfHAOTxOXPOw7lAoEXnM5KWTkzeANGL5Ce6ABfiMl/zJBYNi7ObmQ==
   dependencies:
     "@types/react" "*"
 
@@ -6022,10 +6022,10 @@ keyv@^3.0.0:
   dependencies:
     json-buffer "3.0.0"
 
-kwesforms@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/kwesforms/-/kwesforms-2.1.1.tgz#0da7462e21445acf5207533aba70f40942413cda"
-  integrity sha512-nAL0ydaqgBkBFvBtyx9DiTZOlPy3kWRu8ahF+kyyhg1TWDB5ulbZV9bhlGPj6zSb5rjWmXfZB15Ipz3k65nknQ==
+kwesforms@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/kwesforms/-/kwesforms-2.1.2.tgz#3a56a9fe4863bf226356ab4dda49d40a03bdac80"
+  integrity sha512-DMml5FWDU7XU5xK+kwpL+Y0+mtIIO1VhTBPYqpS+FvttztqaOv1Ht6nRJCIWp2+RB0QpY7c3UQSEni73UL0b9A==
 
 latest-version@5.1.0:
   version "5.1.0"
@@ -6637,10 +6637,10 @@ next-pwa@^5.2.21:
     workbox-webpack-plugin "^6.1.5"
     workbox-window "^6.1.5"
 
-next-rosetta@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/next-rosetta/-/next-rosetta-1.2.5.tgz#19f2bd51b8750cb7a668b98255bf9de59c124ccb"
-  integrity sha512-4YjtqrvCg638wyGTXvVabf/+vRxIetKOVqjszhhU3hw9KH3ACAY6s6+6ZDKQUBn2k6BjjWW7Ui5AJu6ALbxlBA==
+next-rosetta@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/next-rosetta/-/next-rosetta-1.2.7.tgz#944aba81687173f21a4276b1b12c892336d4ae98"
+  integrity sha512-0VBxzXKWmcOoChhjgoop0cRnOXg6g2xcTqa/Mp8CXBBS0Beb0HKdKOolvqbCNn564tjIMM0grJXSIIJgCF0tDg==
   dependencies:
     rosetta "^1.1.0"
     tslib "^2.2.0"
