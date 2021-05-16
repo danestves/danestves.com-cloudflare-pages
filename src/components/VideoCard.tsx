@@ -17,6 +17,8 @@ export const VideoCard = ({ id, snippet, statistics }: youtube_v3.Schema$Video):
 
   return (
     <div className="relative font-roboto">
+      <span className="sr-only">See {snippet?.title} on YouTube</span>
+
       <div className="relative flex-none block w-full">
         <a
           className="block h-full mx-auto overflow-hidden no-underline cursor-pointer"
