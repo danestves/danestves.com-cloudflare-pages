@@ -66,7 +66,7 @@ export const Header = (): JSX.Element => {
               </Link>
               <Link
                 className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
-                href="/open-source"
+                href="/github"
                 title="Open Source"
               >
                 {t('header.menu.openSource')}

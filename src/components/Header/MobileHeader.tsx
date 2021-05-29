@@ -93,7 +93,7 @@ const MobileHeader = (): JSX.Element => {
         </svg>
       ),
       label: t('header.menu.openSource'),
-      slug: '/open-source',
+      slug: '/github',
     },
     {
       icon: (props: React.ComponentProps<'svg'>) => (

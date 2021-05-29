@@ -34,6 +34,35 @@ module.exports = withProgressBar(
         },
       ]
     },
+    async redirects() {
+      return [
+        {
+          source: '/DanielEsteves.pdf',
+          destination: '/danestves-resume.pdf',
+          permanent: true,
+        },
+        {
+          source: '/danestves.pdf',
+          destination: '/danestves-resume.pdf',
+          permanent: true,
+        },
+        {
+          source: '/github',
+          destination: 'https://github.com/danestves?tab=repositories',
+          permanent: true,
+        },
+        {
+          source: '/twitter',
+          destination: 'https://twitter.com/danestves',
+          permanent: true,
+        },
+        {
+          source: '/youtube',
+          destination: 'https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw',
+          permanent: true,
+        },
+      ]
+    },
     async rewrites() {
       return [
         {

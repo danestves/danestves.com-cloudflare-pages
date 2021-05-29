@@ -20,27 +20,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/DanielEsteves.pdf",
-      "destination": "/danestves-resume.pdf"
-    },
-    {
-      "source": "/danestves.pdf",
-      "destination": "/danestves-resume.pdf"
-    },
-    {
-      "source": "/github",
-      "destination": "https://github.com/danestves"
-    },
-    {
-      "source": "/twitter",
-      "destination": "https://twitter.com/danestves"
-    },
-    {
-      "source": "/youtube",
-      "destination": "https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw"
-    }
   ]
 }

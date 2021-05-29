@@ -27,7 +27,9 @@ export const SEO = ({
   const title = props.title ? props.title : t('defaultSeo.title')
   const parsedTitle = isTemplate ? '%s | @danestves'.replace('%s', title) : title
   const description = props.description ? props.description : t('defaultSeo.description')
-  const shareImage = props.shareImage ? props.shareImage : t('defaultSeo.shareImage')
+  const shareImage = props.shareImage
+    ? props.shareImage
+    : `https://flayyer.ai/v2/danestves-com/_/_${router.asPath}`
 
   let lang = ''
   switch (router.locale) {

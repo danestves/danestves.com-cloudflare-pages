@@ -11,7 +11,7 @@ export const Layout: React.FC = ({ children }) => {
   const { t } = useI18n()
   const title = t('defaultSeo.title')
   const description = t('defaultSeo.description')
-  const shareImage = t('defaultSeo.shareImage')
+  // const shareImage = t('defaultSeo.shareImage')
 
   let lang = ''
   switch (router.locale) {
@@ -31,7 +31,7 @@ export const Layout: React.FC = ({ children }) => {
           url: `https://danestves.com${lang}${router.asPath}`,
           title,
           description,
-          images: [{ url: shareImage }],
+          images: [{ url: `https://flayyer.ai/v2/danestves-com/_/_${router.asPath}` }],
           site_name: title,
           type: 'website',
         }}
