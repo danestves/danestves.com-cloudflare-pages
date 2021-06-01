@@ -98,6 +98,19 @@ module.exports = {
             ul: {
               li: {
                 '&:before': { backgroundColor: theme('colors.gray.300') },
+                ul: {
+                  marginTop: `0 !important`,
+                },
+              },
+              ul: {
+                '&:first-child': {
+                  marginTop: `0 !important`,
+                },
+                li: {
+                  '&:first-child': {
+                    marginTop: `8px !important`,
+                  },
+                },
               },
             },
             strong: { color: theme('colors.gray.700') },
