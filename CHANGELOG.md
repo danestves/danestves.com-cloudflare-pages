@@ -1,3 +1,33 @@
+### 3.2.0 (2021-06-15)
+
+##### Chores
+
+* **deps:**  bump browserslist from 4.16.3 to 4.16.6 ([f2362d38](https://github.com/danestves/website/commit/f2362d382acfb94108979b089fb2b8a461b40e96))
+* **bump:**  updating dependencies ([d3c0ecb2](https://github.com/danestves/website/commit/d3c0ecb21464c0a91ccac3d64855d99e6e39ef37))
+
+##### New Features
+
+* **page:**  add new uses page ([1d08a757](https://github.com/danestves/website/commit/1d08a757a2085f6a65151bd0d22a6da9598ba945))
+* **img:**
+  *  putting medium images for youtube ([bbcd031a](https://github.com/danestves/website/commit/bbcd031a10da14448cd34f49f3fd695733401290))
+  *  optimize image size ([ed773c1f](https://github.com/danestves/website/commit/ed773c1ffdf108777ef69e7c63435450ec77a174))
+* **fonts:**
+  *  add fonts inside _document ([4067e720](https://github.com/danestves/website/commit/4067e720132b4ec07d60e6782547d52cd3f7d784))
+  *  add corss origin ([7c47fd2d](https://github.com/danestves/website/commit/7c47fd2d2df1599244db28189a7dd4dea49e607d))
+
+##### Bug Fixes
+
+* **code:**  redirects, remove open source and more ([6e7b470d](https://github.com/danestves/website/commit/6e7b470d15cb0d3e33551d3533e5b690b36b7cea))
+* **a11y:**
+  *  add text for yt links ([c95554f6](https://github.com/danestves/website/commit/c95554f66b47936e9eacfeefdfcd4d7ad90fe154))
+  *  alt for images ([9a72c6b5](https://github.com/danestves/website/commit/9a72c6b53cd39d45ffa14c0642982aefa57e8ce3))
+
+##### Other Changes
+
+* **chore:**
+  *  update dependencies ([fd63e559](https://github.com/danestves/website/commit/fd63e559c3d9ba4c947e64a65e4fc0d744b97881))
+  *  update dependencies ([55a8c036](https://github.com/danestves/website/commit/55a8c03618594bc34994d1ac7f105675cc58e4ba))
+
 #### 3.1.1 (2021-05-11)
 
 ##### Chores
