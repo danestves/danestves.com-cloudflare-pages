@@ -1,3 +1,19 @@
+#### 3.2.2 (2021-06-15)
+
+##### Chores
+
+* **deps:**
+  *  bump ws from 5.2.2 to 5.2.3 ([7dae31ce](https://github.com/danestves/website/commit/7dae31ce28703853441668d128bec5b5dca17595))
+  *  bump normalize-url from 4.5.0 to 4.5.1 ([7ee209d4](https://github.com/danestves/website/commit/7ee209d433883025285cbe7868d335ca7341fab4))
+
+##### Bug Fixes
+
+* **code:**  overflow text ([aaef2af5](https://github.com/danestves/website/commit/aaef2af5b173c213a16288fa25d2a1f7bd4b6ad2))
+
+##### Other Changes
+
+* danestves/website ([48344463](https://github.com/danestves/website/commit/4834446385f2584dfff97de8a34ea83608cb915b))
+
 #### 3.2.1 (2021-06-15)
 
 ### 3.2.0 (2021-06-15)
