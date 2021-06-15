@@ -1,3 +1,9 @@
+### 3.3.0 (2021-06-15)
+
+##### New Features
+
+* **lint:**  adding eslint config eslint ([b8285224](https://github.com/danestves/website/commit/b82852243ebc72e77591f09d034a9778a43e3326))
+
 #### 3.2.3 (2021-06-15)
 
 ##### Bug Fixes
