@@ -1,3 +1,9 @@
+#### 3.2.3 (2021-06-15)
+
+##### Bug Fixes
+
+* **config:**  moving webpack to a top level ([7f24fac6](https://github.com/danestves/website/commit/7f24fac689da7a4786fe45be74a8fc727f6f00a4))
+
 #### 3.2.2 (2021-06-15)
 
 ##### Chores
