@@ -8,6 +8,9 @@ import { google, youtube_v3 } from 'googleapis'
 // @types
 import { Post, Locale } from '@/generated/graphql'
 
+// Assets
+import HeroBanner from '../../public/static/img/hero.jpg'
+
 // Components
 import { Link, BlogCard, VideoCard } from '@/components'
 
@@ -90,11 +93,10 @@ const Index: NextPage<Props> = ({ posts, videos }): JSX.Element => {
           <Image
             alt="Daniel Esteves"
             className="object-cover w-full h-56 sm:h-72 md:h-96 lg:w-full lg:h-full"
-            height={831}
             objectFit="cover"
-            objectPosition="Center"
-            src="/static/img/hero.jpg"
-            width={1432}
+            objectPosition="center"
+            placeholder="blur"
+            src={HeroBanner}
           />
         </div>
       </div>

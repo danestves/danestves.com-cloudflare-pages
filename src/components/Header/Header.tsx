@@ -23,7 +23,7 @@ export const Header = (): JSX.Element => {
     <header
       // Need to search a work around to fix blur in Chromium https://bugs.chromium.org/p/chromium/issues/detail?id=986206
       className={clsx(
-        'h-16 top-0 z-50 w-full bg-white transform transition-transform duration-150 backdrop-filter backdrop-blur-[20px] saturate-[180%] bg-opacity-70 sticky flex items-center shadow dark:shadow-none dark:bg-secondary dark:bg-opacity-60 md:h-auto',
+        'h-16 top-0 z-50 w-full bg-gray-100 transform transition-transform duration-150 sticky flex items-center shadow dark:shadow-none dark:bg-secondary-500 md:h-auto',
         prevY ? (y < 76 || prevY > y ? 'translate-0' : '-translate-y-full') : 'translate-0'
       )}
       id="sticky-nav"
