@@ -23,7 +23,7 @@ export default function Giphy({ id }: { id: string }): JSX.Element | null {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <Image height={42} src="/static/giphy-copyright.gif" width={200} />
+        <Image alt="Giphy GIF" height={42} src="/static/giphy-copyright.gif" width={200} />
       </a>
     </GeneralObserver>
   ) : null

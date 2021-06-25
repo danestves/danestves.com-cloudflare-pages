@@ -1,4 +1,3 @@
-scripts
-node_modules
-public
-CHANGELOG.md
+**/node_modules/*
+**/out/*
+**/.next/*

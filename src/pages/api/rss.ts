@@ -8,10 +8,10 @@ import { Locale } from '@/generated/graphql'
 // Libraries
 import { getAllPostsWithSlug } from '@/lib/graphcms'
 
-export default async (
+export default async function handler(
   _: NextApiRequest,
   res: NextApiResponse
-): Promise<void | NextApiResponse<any>> => {
+): Promise<void | NextApiResponse<any>> {
   try {
     const baseUrl = 'https://danestves.com'
 

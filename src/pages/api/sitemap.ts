@@ -8,7 +8,7 @@ import { Locale } from '@/generated/graphql'
 // Libraries
 import { getAllPostsWithSlug } from '@/lib/graphcms'
 
-export default async (_: NextApiRequest, res: NextApiResponse): Promise<void> => {
+export default async function handler(_: NextApiRequest, res: NextApiResponse): Promise<void> {
   try {
     const pages = ['', '/sobre-mi', '/open-source', '/portafolio', '/blog', '/contacto']
     const languages = ['en', 'es']

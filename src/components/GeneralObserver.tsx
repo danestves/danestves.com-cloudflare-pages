@@ -1,5 +1,5 @@
 // Dependencies
-import { useRef, useEffect, useState } from 'react'
+import * as React from 'react'
 
 interface IGeneralObserverProps {
   /** Fires when IntersectionObserver enters viewport */
@@ -10,13 +10,17 @@ interface IGeneralObserverProps {
 
 export const GeneralObserver: React.FunctionComponent<IGeneralObserverProps> = ({
   children,
-  onEnter,
   height = 0,
+  ...props
 }) => {
-  const ref = useRef<HTMLElement>(null)
-  const [isChildVisible, setIsChildVisible] = useState(false)
+  const ref = React.useRef<HTMLElement>(null)
+  const [isChildVisible, setIsChildVisible] = React.useState(false)
 
-  useEffect(() => {
+  const onEnter = React.useCallback(() => {
+    props.onEnter?.()
+  }, [props])
+
+  React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.intersectionRatio > 0) {
@@ -33,10 +37,11 @@ export const GeneralObserver: React.FunctionComponent<IGeneralObserverProps> = (
         threshold: 0,
       }
     )
+
     if (ref && ref.current) {
       observer.observe(ref.current)
     }
-  }, [ref])
+  }, [ref, onEnter])
 
   return (
     <div

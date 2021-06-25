@@ -1,7 +1,7 @@
 // Dependencies
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const API_KEY = process.env.REVUE_TOKEN
 
   if (req.method === 'POST') {

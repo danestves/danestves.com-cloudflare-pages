@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 // Libraries
 import db from '@/lib/firebase'
 
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method === 'POST' && process.env.NODE_ENV === 'production') {
     const docRef = db.collection('views').doc(req.query.slug as string)
     const document = await docRef.get()

@@ -8,7 +8,7 @@ const algolia = algoliasearch(
 )
 const index = algolia.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME)
 
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method !== 'POST') return res.end()
 
   if (req.headers['authorization'] !== process.env.WEBHOOK_SECRET_KEY) {

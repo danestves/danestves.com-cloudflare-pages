@@ -15,11 +15,12 @@
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "lint": "next lint",
     "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config --config codegen.yml",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'feat(auto): updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'feat(auto): updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
-    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'feat(auto): updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'feat(auto): updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@fec/remark-a11y-emoji": "^3.1.0",
@@ -86,24 +87,20 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.24.0",
     "generate-changelog": "^1.8.0",
+    "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "next-progressbar": "^1.0.0",
     "postcss": "^8.3.5",
     "prettier": "^2.3.1",
     "rss": "^1.2.2",
-    "simple-git-hooks": "^2.4.1",
     "tailwindcss": "^2.2.4",
     "tailwindcss-pseudo-elements": "^2.0.0",
     "typescript": "^4.3.4"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
-      "yarn lint",
+      "yarn lint --dir src/pages",
       "yarn format"
     ]
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged",
-    "pre-push": "yarn type-check"
   }
 }

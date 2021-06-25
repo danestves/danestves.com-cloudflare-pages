@@ -9,6 +9,7 @@ import { google, youtube_v3 } from 'googleapis'
 import { Post, Locale } from '@/generated/graphql'
 
 // Assets
+// @ts-ignore: importing images it's ok
 import HeroBanner from '../../public/static/img/hero.jpg'
 
 // Components

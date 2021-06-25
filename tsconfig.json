@@ -1,28 +1,24 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "alwaysStrict": true,
-    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["dom", "es2017"],
+    "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext",
+    "isolatedModules": true,
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "i18n": ["i18n"]
     }
   },
-  "exclude": ["node_modules", "src/generated/graphql.ts", "public"],
-  "include": ["**/*.ts", "**/*.tsx", "**/*.graphql"]
+  "include": ["next-env.d.ts", "additional.d.ts", "node.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
