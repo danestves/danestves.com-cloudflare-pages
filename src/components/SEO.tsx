@@ -1,9 +1,10 @@
 // Dependencies
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
-import { NextSeo, NextSeoProps } from 'next-seo'
+import { NextSeo } from 'next-seo'
+import type { NextSeoProps } from 'next-seo'
 
-// Locales
+// Internals
 import type { MyLocale } from 'i18n'
 
 interface Props {
@@ -25,8 +26,12 @@ export const SEO = ({
   const { t } = useI18n<MyLocale>()
 
   const title = props.title ? props.title : t('defaultSeo.title')
-  const parsedTitle = isTemplate ? '%s | @danestves'.replace('%s', title) : title
-  const description = props.description ? props.description : t('defaultSeo.description')
+  const parsedTitle = isTemplate
+    ? '%s | @danestves'.replace('%s', title)
+    : title
+  const description = props.description
+    ? props.description
+    : t('defaultSeo.description')
   const shareImage = props.shareImage
     ? props.shareImage
     : `https://flayyer.ai/v2/danestves-com/_/_${router.asPath}`

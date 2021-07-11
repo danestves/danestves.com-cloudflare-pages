@@ -1,9 +1,9 @@
 // Dependencies
-import { useRouter } from 'next/dist/client/router'
 import { Listbox, Transition } from '@headlessui/react'
-import Image from 'next/image'
-import clsx from 'clsx'
 import { ChevronDownIcon } from '@heroicons/react/solid'
+import clsx from 'clsx'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 export const LanguageSwitcher = (): JSX.Element => {
   const { locale, locales, route, push, asPath } = useRouter()
@@ -13,7 +13,12 @@ export const LanguageSwitcher = (): JSX.Element => {
   }
 
   return (
-    <Listbox as="div" className="space-y-1" onChange={handleChangeLanguage} value={locale || 'en'}>
+    <Listbox
+      as="div"
+      className="space-y-1"
+      onChange={handleChangeLanguage}
+      value={locale || 'en'}
+    >
       {({ open }) => (
         <>
           <div className="relative">
@@ -56,7 +61,9 @@ export const LanguageSwitcher = (): JSX.Element => {
                       <div
                         className={clsx(
                           'cursor-pointer select-none relative py-2 pl-3 pr-9',
-                          active ? 'text-white bg-secondary-600 hover:text-white' : 'text-white'
+                          active
+                            ? 'text-white bg-secondary-600 hover:text-white'
+                            : 'text-white'
                         )}
                       >
                         <div className="flex items-center">

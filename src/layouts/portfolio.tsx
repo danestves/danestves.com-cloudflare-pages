@@ -1,19 +1,13 @@
 // Dependencies
 import Image from '@graphcms/react-image'
-import { useI18n } from 'next-rosetta'
 import { MDXRemote } from 'next-mdx-remote'
+import { useI18n } from 'next-rosetta'
 
-// @types
-import { Portfolio } from '@/generated/graphql'
-
-// Components
+// Internals
 import { SEO } from '@/components'
 import MDXComponents from '@/components/MDXComponents'
-
-// Interfaces
-import { Asset } from '@/interfaces'
-
-// Locales
+import type { Portfolio } from '@/generated/graphql'
+import type { Asset } from '@/interfaces'
 import type { MyLocale } from 'i18n'
 
 interface Props {
@@ -54,7 +48,9 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
             <h2 className="mb-2 font-semibold text-center underline dark:text-white">
               {t('portfolio.portfolios.industry')}
             </h2>
-            <p className="text-sm text-center dark:text-white">{portfolio.industry}</p>
+            <p className="text-sm text-center dark:text-white">
+              {portfolio.industry}
+            </p>
           </div>
           <div>
             <h2 className="mb-2 font-semibold text-center underline dark:text-white">
@@ -96,7 +92,10 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
 
         <div className="max-w-screen-md mx-auto">
           <div className="max-w-full prose prose-lg dark:prose-dark">
-            <MDXRemote compiledSource={portfolio.mdx.compiledSource} components={MDXComponents} />
+            <MDXRemote
+              compiledSource={portfolio.mdx.compiledSource}
+              components={MDXComponents}
+            />
           </div>
         </div>
       </div>

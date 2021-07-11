@@ -1,9 +1,9 @@
 // Dependencies
 import { useRouter } from 'next/router'
-import { DefaultSeo } from 'next-seo'
 import { useI18n } from 'next-rosetta'
+import { DefaultSeo } from 'next-seo'
 
-// Components
+// Internals
 import { Header, Footer, CallToAction } from '@/components'
 
 export const Layout: React.FC = ({ children }) => {
@@ -31,7 +31,9 @@ export const Layout: React.FC = ({ children }) => {
           url: `https://danestves.com${lang}${router.asPath}`,
           title,
           description,
-          images: [{ url: `https://flayyer.ai/v2/danestves-com/_/_${router.asPath}` }],
+          images: [
+            { url: `https://flayyer.ai/v2/danestves-com/_/_${router.asPath}` },
+          ],
           site_name: title,
           type: 'website',
         }}

@@ -1,20 +1,15 @@
 // Dependencies
-import { NextPage, GetStaticProps } from 'next'
 import Image from '@graphcms/react-image'
-import { useI18n, I18nProps } from 'next-rosetta'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
+import { useI18n } from 'next-rosetta'
+import type { I18nProps } from 'next-rosetta'
+import type { NextPage, GetStaticProps } from 'next'
 
-// @types
-import { Portfolio } from '@/generated/graphql'
-import { Asset } from '@/interfaces'
-
-// Components
+// Internals
 import { SEO, Link } from '@/components'
-
-// Libraries
 import { getAllPortfoliosForPortfolioPage } from '@/lib/graphcms'
-
-// Locales
+import type { Portfolio } from '@/generated/graphql'
+import type { Asset } from '@/interfaces'
 import type { MyLocale } from 'i18n'
 
 interface Props {
@@ -27,7 +22,10 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
 
   return (
     <>
-      <SEO description={t('portfolio.seo.description')} title={t('portfolio.seo.title')} />
+      <SEO
+        description={t('portfolio.seo.description')}
+        title={t('portfolio.seo.title')}
+      />
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
@@ -57,7 +55,9 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
                 <h2 className="mb-4 text-4xl leading-tight text-gray-700 dark:text-white group-hover:underline">
                   {portfolio.title}
                 </h2>
-                <p className="text-gray-500 dark:text-white">{portfolio.seo?.description}</p>
+                <p className="text-gray-500 dark:text-white">
+                  {portfolio.seo?.description}
+                </p>
                 <div className="flex mt-4">
                   <button
                     className="flex justify-center items-center py-3 font-semibold transition-all duration-150 transform rounded border border-primary-700 text-primary-700 bg-primary-100 min-w-[160px] group-hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary dark:bg-secondary-900 dark:text-secondary-100 dark:border-secondary-100"
@@ -75,10 +75,13 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
+  context
+) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const portfolios = (await getAllPortfoliosForPortfolioPage(locale as any)).portfolios
+  const portfolios = (await getAllPortfoliosForPortfolioPage(locale as any))
+    .portfolios
 
   return {
     props: {

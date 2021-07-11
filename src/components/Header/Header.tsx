@@ -1,16 +1,14 @@
 // Dependencies
-import { memo } from 'react'
-import { useI18n } from 'next-rosetta'
-import { useRouter } from 'next/dist/client/router'
-import { useWindowScroll, usePrevious } from 'react-use'
+import * as React from 'react'
 import clsx from 'clsx'
+import { useRouter } from 'next/router'
+import { useI18n } from 'next-rosetta'
+import { useWindowScroll, usePrevious } from 'react-use'
 
-// Components
+// Internals
 import { Link, LanguageSwitcher, Search } from '@/components'
 import MobileHeader from './MobileHeader'
 import DarkModeToggle from './DarkModeToggle'
-
-// Locales
 import type { MyLocale } from 'i18n'
 
 export const Header = (): JSX.Element => {
@@ -23,15 +21,26 @@ export const Header = (): JSX.Element => {
     <header
       className={clsx(
         'h-16 top-0 z-50 w-full bg-gray-100 transform transition-transform duration-150 sticky flex items-center shadow dark:shadow-none dark:bg-secondary-500 md:h-auto',
-        prevY ? (y < 76 || prevY > y ? 'translate-0' : '-translate-y-full') : 'translate-0'
+        prevY
+          ? y < 76 || prevY > y
+            ? 'translate-0'
+            : '-translate-y-full'
+          : 'translate-0'
       )}
       id="sticky-nav"
     >
       <div className="relative hidden md:px-8 md:flex md:flex-1">
         <nav className="container relative flex flex-wrap items-center justify-end">
           <div className="relative flex-1 flex-shrink-0">
-            <Link className="inline-flex" href="/" title={t('header.menu.home')}>
-              <svg className="w-8 h-8 text-primary-600 dark:text-primary" viewBox="0 0 1080 1080">
+            <Link
+              className="inline-flex"
+              href="/"
+              title={t('header.menu.home')}
+            >
+              <svg
+                className="w-8 h-8 text-primary-600 dark:text-primary"
+                viewBox="0 0 1080 1080"
+              >
                 <path
                   d="M1061.237 540.246c-.105 288.558-237.61 520.991-526.204 520.991H207.654A188.891 188.891 0 0118.763 872.346V705.883a23.728 23.728 0 0123.71-23.727h24.166a46.911 46.911 0 0146.894 46.929V872.24a94.209 94.209 0 0094.226 94.226h327.608c235.697 0 430.275-189.278 431.1-424.975C967.292 305.25 776.013 113.533 540 113.533H207.76a94.226 94.226 0 00-94.227 94.191v143.227a46.911 46.911 0 01-46.894 46.893H42.473a23.71 23.71 0 01-23.71-23.692V207.654A188.927 188.927 0 01207.654 18.763H540c287.944 0 521.36 233.416 521.237 521.483z"
                   fill="currentColor"
@@ -96,7 +105,9 @@ export const Header = (): JSX.Element => {
             <div className="flex ml-3 space-x-6">
               <Search />
 
-              {!router.pathname.includes('/blog/[slug]') && <LanguageSwitcher />}
+              {!router.pathname.includes('/blog/[slug]') && (
+                <LanguageSwitcher />
+              )}
             </div>
           </div>
 
@@ -109,4 +120,4 @@ export const Header = (): JSX.Element => {
   )
 }
 
-export default memo(Header)
+export default React.memo(Header)

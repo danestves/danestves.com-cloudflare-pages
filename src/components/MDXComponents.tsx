@@ -2,9 +2,9 @@
 import GraphCmsImage from '@graphcms/react-image'
 import { CodePen, YouTube, CodeSandbox, Tweet } from 'mdx-embed'
 import Image from 'next/image'
-import { LinkProps as LinkNextProps } from 'next/link'
+import type { LinkProps as LinkNextProps } from 'next/link'
 
-// Components
+// Internals
 import { Alert } from './Alert'
 import Cloudinary from './Cloudinary'
 import CodeBlock from './CodeBlock'

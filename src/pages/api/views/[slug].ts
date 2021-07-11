@@ -1,10 +1,13 @@
 // Dependencies
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-// Libraries
+// Internals
 import db from '@/lib/firebase'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
   if (req.method === 'POST' && process.env.NODE_ENV === 'production') {
     const docRef = db.collection('views').doc(req.query.slug as string)
     const document = await docRef.get()
@@ -14,7 +17,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } else {
       await db.runTransaction(async (transaction) => {
         return transaction.get(docRef).then((doc) => {
-          transaction.update(docRef, { value: Number(doc.data()?.value || 0) + 1 })
+          transaction.update(docRef, {
+            value: Number(doc.data()?.value || 0) + 1,
+          })
         })
       })
     }

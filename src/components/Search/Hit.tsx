@@ -2,15 +2,15 @@
 import { Snippet } from 'react-instantsearch-dom'
 import { DocumentIcon, ArrowSmRightIcon } from '@heroicons/react/outline'
 
-// Components
+// Internals
 import { Link } from '@/components'
 
-interface Props {
+interface SearchHitProps {
   hit: any
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const SearchHit = ({ hit, setOpen }: Props): JSX.Element => {
+export const SearchHit = ({ hit, setOpen }: SearchHitProps): JSX.Element => {
   return (
     <div className="relative group">
       <Link

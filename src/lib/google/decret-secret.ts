@@ -1,6 +1,7 @@
 // Dependencies
 import crypto from 'crypto'
 
+// Internals
 import key from './service-account.enc'
 
 const algorithm = 'aes-128-cbc'

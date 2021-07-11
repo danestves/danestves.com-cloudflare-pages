@@ -3,28 +3,18 @@ import { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import { useI18n, I18nProps } from 'next-rosetta'
 import { useRouter } from 'next/router'
-import { google, youtube_v3 } from 'googleapis'
 
-// @types
-import { Post, Locale } from '@/generated/graphql'
-
-// Assets
-// @ts-ignore: importing images it's ok
+// Internals
 import HeroBanner from '../../public/static/img/hero.jpg'
-
-// Components
 import { Link, BlogCard, VideoCard } from '@/components'
-
-// Libraries
+import { Post, Locale } from '@/generated/graphql'
 import { getAllPostsForBlogPage } from '@/lib/graphcms'
-import googleAuth from '@/lib/google/auth'
-
-// Locales
+import type { YouTubeVideo } from '@/interfaces'
 import type { MyLocale } from 'i18n'
 
 interface Props {
   posts: Post[]
-  videos?: youtube_v3.Schema$Video[]
+  videos?: YouTubeVideo[]
 }
 
 const Index: NextPage<Props> = ({ posts, videos }): JSX.Element => {
@@ -137,36 +127,33 @@ const Index: NextPage<Props> = ({ posts, videos }): JSX.Element => {
   )
 }
 
-export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
+  context
+) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
   const posts = (await getAllPostsForBlogPage(locale as Locale, 3)).posts
 
-  // Auth with Google and obtain the latest 3 videos from YouTube
-  const auth = await googleAuth.getClient()
-  const youtube = google.youtube({
-    auth,
-    version: 'v3',
-  })
-  const latestVideos = await youtube.playlistItems.list({
-    part: ['snippet', 'contentDetails'],
-    playlistId: 'UU6YYVDKZC3mu1iB8IOCFqcw', // The "default" playlist where all the videos are
-    maxResults: 4,
-  })
-  const videoIds =
-    latestVideos.data?.items?.map((video) => {
+  const getUrl = (
+    source = '/playlistItems?part=contentDetails&playlistId=UU6YYVDKZC3mu1iB8IOCFqcw&maxResults=4'
+  ) => {
+    return `https://www.googleapis.com/youtube/v3${source}&key=${process.env.YOUTUBE_API_KEY}`
+  }
+
+  const latestVideos = await fetch(getUrl()).then((response) => response.json())
+  const ids =
+    latestVideos?.items?.map((video: any) => {
       return video?.contentDetails?.videoId
     }) || undefined
-  const videos = await youtube.videos.list({
-    part: ['snippet', 'statistics'],
-    id: videoIds as any,
-  })
+  const videos = await fetch(
+    getUrl(`/videos?part=snippet,statistics&id=${ids.join(',')}`)
+  ).then((response) => response.json())
 
   return {
     props: {
       table,
       posts,
-      videos: videos.data.items,
+      videos: videos.items,
     },
     revalidate: 60 * 60, // 1 hour
   }

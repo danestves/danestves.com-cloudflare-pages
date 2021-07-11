@@ -1,7 +1,10 @@
 // Dependencies
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
   const API_KEY = process.env.REVUE_TOKEN
 
   if (req.method === 'POST') {
@@ -12,17 +15,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      const response = await fetch(`https://www.getrevue.co/api/v2/subscribers`, {
-        body: JSON.stringify({
-          email,
-          double_opt_in: false,
-        }),
-        headers: {
-          Authorization: `Token ${API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-      })
+      const response = await fetch(
+        `https://www.getrevue.co/api/v2/subscribers`,
+        {
+          body: JSON.stringify({
+            email,
+            double_opt_in: false,
+          }),
+          headers: {
+            Authorization: `Token ${API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          method: 'POST',
+        }
+      )
 
       if (response.status >= 400) {
         const text = await response.text()
@@ -49,7 +55,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const subscribers = await response.json()
 
-    res.setHeader('Cache-Control', 'public, s-maxage=1200, stale-while-revalidate=600')
+    res.setHeader(
+      'Cache-Control',
+      'public, s-maxage=1200, stale-while-revalidate=600'
+    )
 
     return res.status(200).json({ count: subscribers.length })
   }

@@ -1,20 +1,14 @@
 // Dependencies
 import Image from '@graphcms/react-image'
+import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
-import { useRouter } from 'next/dist/client/router'
 
-// @types
-import { Post } from '@/generated/graphql'
-import { Asset } from '@/interfaces'
-
-// Components
+// Internals
 import { Link } from '@/components'
-
-// Locales
-import type { MyLocale } from 'i18n'
-
-// Utils
 import { formatDate } from '@/utils'
+import type { Post } from '@/generated/graphql'
+import type { Asset } from '@/interfaces'
+import type { MyLocale } from 'i18n'
 
 export const BlogCard = (post: Post): JSX.Element => {
   const { t } = useI18n<MyLocale>()
@@ -39,13 +33,19 @@ export const BlogCard = (post: Post): JSX.Element => {
         <div className="mt-6">
           <p className="my-2 text-xs text-gray-500 dark:text-gray-400">
             {t('blog.publishedAt')}{' '}
-            {formatDate(new Date(post.published).toISOString().slice(0, 19), 'MMM. d yyy', locale)}
+            {formatDate(
+              new Date(post.published).toISOString().slice(0, 19),
+              'MMM. d yyy',
+              locale
+            )}
           </p>
 
           <h2 className="mb-2 text-2xl font-medium leading-tight text-gray-700 dark:text-white group-hover:underline group-focus:underline">
             {post.title}
           </h2>
-          <p className="text-sm text-gray-600 dark:text-gray-300">{post.seo?.description}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300">
+            {post.seo?.description}
+          </p>
         </div>
       </Link>
     </article>

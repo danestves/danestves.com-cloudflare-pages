@@ -1,11 +1,9 @@
 // Dependencies
-import { GetStaticProps, NextPage } from 'next'
 import { useI18n, I18nProps } from 'next-rosetta'
+import type { GetStaticProps, NextPage } from 'next'
 
-// Components
+// Internals
 import { SEO } from '@/components'
-
-// Locales
 import type { MyLocale } from 'i18n'
 
 interface Props {
@@ -23,11 +21,14 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
 
   return (
     <>
-      <SEO description={t('aboutMe.seo.description')} title={t('aboutMe.seo.title')} />
+      <SEO
+        description={t('aboutMe.seo.description')}
+        title={t('aboutMe.seo.title')}
+      />
 
       {/* Hero */}
       <div className="bg-primary">
-        <div className="py-32 px-5 mx-auto max-w-4xl">
+        <div className="max-w-4xl px-5 py-32 mx-auto">
           <h1 className="text-4xl font-bold leading-none md:text-[5rem] text-secondary">
             <span className="font-mono">{'<'}</span> {t('aboutMe.intro')}
             <br /> Daniel
@@ -37,22 +38,28 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
       </div>
 
       {/* Biography */}
-      <div className="py-16 w-full text-white bg-secondary">
+      <div className="w-full py-16 text-white bg-secondary">
         <div className="container px-5">
-          <p className="px-5 mx-auto max-w-4xl font-mono text-xl">{t('aboutMe.summary.p1')}</p>
+          <p className="max-w-4xl px-5 mx-auto font-mono text-xl">
+            {t('aboutMe.summary.p1')}
+          </p>
 
-          <p className="px-5 mx-auto mt-8 max-w-4xl font-mono text-xl">{t('aboutMe.summary.p2')}</p>
+          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl">
+            {t('aboutMe.summary.p2')}
+          </p>
 
-          <p className="px-5 mx-auto mt-8 max-w-4xl font-mono text-xl">{t('aboutMe.summary.p3')}</p>
+          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl">
+            {t('aboutMe.summary.p3')}
+          </p>
 
-          <p className="px-5 mx-auto mt-8 max-w-4xl font-mono text-xl text-right">
+          <p className="max-w-4xl px-5 mx-auto mt-8 font-mono text-xl text-right">
             - {t('aboutMe.summary.sign')} 👨‍💻
           </p>
         </div>
       </div>
 
       {/* Experience and Educations */}
-      <div className="py-12 px-5 w-full bg-white">
+      <div className="w-full px-5 py-12 bg-white">
         <h2 className="text-3xl font-bold text-center text-secondary">
           {t('aboutMe.experience.title')}
         </h2>
@@ -60,11 +67,13 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
         <div className="container mt-8 divide-y-2 divide-primary">
           {experience?.map((item) => (
             <div
-              className="mx-auto max-w-4xl first:border-t-2 first:border-primary last:border-b-2 last:border-primary"
+              className="max-w-4xl mx-auto first:border-t-2 first:border-primary last:border-b-2 last:border-primary"
               key={item.id}
             >
-              <div className="py-6 mx-auto max-w-3xl">
-                <h3 className="mb-3 font-mono text-2xl font-bold text-secondary">{item.title}</h3>
+              <div className="max-w-3xl py-6 mx-auto">
+                <h3 className="mb-3 font-mono text-2xl font-bold text-secondary">
+                  {item.title}
+                </h3>
                 <h4 className="mb-3 font-mono text-lg font-semibold text-secondary">
                   {item.subtitle} |{item.date}
                 </h4>
@@ -80,7 +89,9 @@ const AboutMe: NextPage<Props> = ({ experience }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
+  context
+) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
   const experience = await import(`@/data/experience/${locale}.json`)

@@ -1,29 +1,21 @@
 // Dependencies
-import Image from 'next/image'
-import GraphCmsImage from '@graphcms/react-image'
-import { ArticleJsonLd } from 'next-seo'
-import { window } from 'browser-monads-ts'
-import { useRouter } from 'next/dist/client/router'
-import { useI18n } from 'next-rosetta'
 import { FlayyerIO } from '@flayyer/flayyer'
-import { MDXRemote } from 'next-mdx-remote'
+import GraphCmsImage from '@graphcms/react-image'
 import { InformationCircleIcon } from '@heroicons/react/solid'
+import { window } from 'browser-monads-ts'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { MDXRemote } from 'next-mdx-remote'
+import { ArticleJsonLd } from 'next-seo'
+import { useI18n } from 'next-rosetta'
 
-// @types
-import { Post } from '@/generated/graphql'
-
-// Components
+// Internals
 import { SEO, ViewCounter, Subscribe, Link } from '@/components'
 import MDXComponents from '@/components/MDXComponents'
-
-// Interfaces
-import { Asset } from '@/interfaces'
-
-// Locales
-import type { MyLocale } from 'i18n'
-
-// Utils
 import { formatDate, readingTime } from '@/utils'
+import type { Post } from '@/generated/graphql'
+import type { Asset } from '@/interfaces'
+import type { MyLocale } from 'i18n'
 
 const editUrl = (slug: string, lang: string): string => {
   return `https://github.com/danestves/website/edit/master/src/data/posts/${lang}/${slug}.mdx`
@@ -127,7 +119,10 @@ export default function PostLayout({ post }: Props): JSX.Element {
                   )}
                 </p>
                 <p className="text-gray-500 dark:text-white">
-                  {readingTime({ wordCount: post.body.split(/\s+/gu).length, lang: locale })}
+                  {readingTime({
+                    wordCount: post.body.split(/\s+/gu).length,
+                    lang: locale,
+                  })}
                 </p>
                 <p className="text-gray-500 dark:text-white">
                   <ViewCounter slug={post.slug} />
@@ -150,7 +145,8 @@ export default function PostLayout({ post }: Props): JSX.Element {
                     href={`/blog/${post.localizations[0].slug}-${post.localizations[0].id}`}
                     locale={post.localizations[0].locale}
                   >
-                    {t('blog.alert.button.label')} <span aria-hidden="true">&rarr;</span>
+                    {t('blog.alert.button.label')}{' '}
+                    <span aria-hidden="true">&rarr;</span>
                   </Link>
                 </p>
               </div>
@@ -160,7 +156,10 @@ export default function PostLayout({ post }: Props): JSX.Element {
 
         <div className="relative max-w-3xl mx-auto mt-8">
           <div className="max-w-full prose prose-lg dark:prose-dark">
-            <MDXRemote compiledSource={post.mdx.compiledSource} components={MDXComponents} />
+            <MDXRemote
+              compiledSource={post.mdx.compiledSource}
+              components={MDXComponents}
+            />
           </div>
 
           <Subscribe />

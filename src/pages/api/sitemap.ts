@@ -1,16 +1,24 @@
 // Dependencies
-import { NextApiRequest, NextApiResponse } from 'next'
 import builder from 'xmlbuilder'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-// @types
-import { Locale } from '@/generated/graphql'
-
-// Libraries
+// Internals
 import { getAllPostsWithSlug } from '@/lib/graphcms'
+import type { Locale } from '@/generated/graphql'
 
-export default async function handler(_: NextApiRequest, res: NextApiResponse): Promise<void> {
+export default async function handler(
+  _: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
   try {
-    const pages = ['', '/sobre-mi', '/open-source', '/portafolio', '/blog', '/contacto']
+    const pages = [
+      '',
+      '/sobre-mi',
+      '/open-source',
+      '/portafolio',
+      '/blog',
+      '/contacto',
+    ]
     const languages = ['en', 'es']
 
     // Generate Sitemap
@@ -25,7 +33,10 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse): 
       languages.map((lang) => {
         const url = root.ele('url')
 
-        url.ele('loc', `https://danestves.com${lang === 'es' ? '' : `/${lang}`}${page}`)
+        url.ele(
+          'loc',
+          `https://danestves.com${lang === 'es' ? '' : `/${lang}`}${page}`
+        )
         url.ele('priority', `0.3`)
       })
     })

@@ -1,18 +1,24 @@
 // Dependencies
-import { youtube_v3 } from 'googleapis'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useWebPSupportCheck } from 'react-use-webp-support-check'
 
-// Utils
+// Internals
 import { fromNow } from '@/utils'
+import type { YouTubeVideo } from '@/interfaces'
 
-export const VideoCard = ({ id, snippet, statistics }: youtube_v3.Schema$Video): JSX.Element => {
+export const VideoCard = ({
+  id,
+  snippet,
+  statistics,
+}: YouTubeVideo): JSX.Element => {
   const router = useRouter()
   const supportsWebP = useWebPSupportCheck()
 
   const imageUrl = supportsWebP
-    ? snippet?.thumbnails?.medium?.url?.replace('vi/', 'vi_webp/').replace('.jpg', '.webp')
+    ? snippet?.thumbnails?.medium?.url
+        ?.replace('vi/', 'vi_webp/')
+        .replace('.jpg', '.webp')
     : snippet?.thumbnails?.medium?.url
 
   return (
@@ -54,7 +60,7 @@ export const VideoCard = ({ id, snippet, statistics }: youtube_v3.Schema$Video):
             <span className="inline-block">{statistics?.viewCount} views</span>
             <span className="inline-block mx-[4px]">•</span>
             <div className="inline-block">
-              {fromNow(snippet?.publishedAt as string, router.locale)}
+              {fromNow(snippet?.publishedAt, router.locale)}
             </div>
           </div>
         </div>

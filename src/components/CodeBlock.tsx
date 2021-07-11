@@ -1,8 +1,9 @@
 // Dependencies
-import Highlight, { defaultProps, Language } from 'prism-react-renderer'
+import { useTheme } from 'next-themes'
+import Highlight, { defaultProps } from 'prism-react-renderer'
 import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import nightOwlLight from 'prism-react-renderer/themes/dracula'
-import { useTheme } from 'next-themes'
+import type { Language } from 'prism-react-renderer'
 
 interface Props {
   className: Language
@@ -27,7 +28,9 @@ export const CodeBlock = ({ className, children }: Props): JSX.Element => {
             <div key={i} {...getLineProps({ line, key: i })}>
               {/* Verify if the last line is empty, if is, don't render nothing */}
               {i + 1 !== tokens.length &&
-                line.map((token, key) => <span key={key} {...getTokenProps({ token, key })} />)}
+                line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token, key })} />
+                ))}
             </div>
           ))}
         </pre>

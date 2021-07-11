@@ -1,30 +1,30 @@
 // Dependencies
-import { Fragment, useRef, useState, useMemo } from 'react'
+import * as React from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { SearchIcon } from '@heroicons/react/solid'
-import { useHotkeys } from 'react-hotkeys-hook'
-import { useClickAway } from 'react-use'
 import algoliasearch from 'algoliasearch/lite'
+import { useHotkeys } from 'react-hotkeys-hook'
 import { InstantSearch, Hits, Configure } from 'react-instantsearch-dom'
+import { useClickAway } from 'react-use'
 
-// Components
+// Internals
 import { SearchHeader } from './Header'
 import { SearchHit } from './Hit'
 import { SearchFooter } from './Footer'
 
 export const Search = (): JSX.Element => {
-  const [open, setOpen] = useState(false)
-  const [search, setSearch] = useState('')
+  const [open, setOpen] = React.useState(false)
+  const [search, setSearch] = React.useState('')
 
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const boxRef = useRef<HTMLDivElement>(null)
+  const searchInputRef = React.useRef<HTMLInputElement>(null)
+  const boxRef = React.useRef<HTMLDivElement>(null)
 
   useHotkeys('cmd+k', () => setOpen(true))
   useHotkeys('ctrl+k', () => setOpen(true))
   useHotkeys('esc', () => setOpen(false))
   useClickAway(boxRef, () => setOpen(false))
 
-  const searchClient = useMemo(
+  const searchClient = React.useMemo(
     () =>
       algoliasearch(
         process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
@@ -35,11 +35,15 @@ export const Search = (): JSX.Element => {
 
   return (
     <>
-      <button onClick={() => setOpen(true)} title="cmd+k OR ctrl+k" type="button">
+      <button
+        onClick={() => setOpen(true)}
+        title="cmd+k OR ctrl+k"
+        type="button"
+      >
         <SearchIcon className="w-6 h-6 text-primary-600 dark:text-white" />
       </button>
 
-      <Transition.Root as={Fragment} show={open}>
+      <Transition.Root as={React.Fragment} show={open}>
         <Dialog
           as="div"
           className="fixed inset-0 z-[999999] overflow-y-auto"
@@ -50,7 +54,7 @@ export const Search = (): JSX.Element => {
         >
           <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <Transition.Child
-              as={Fragment}
+              as={React.Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0"
               enterTo="opacity-100"
@@ -62,12 +66,15 @@ export const Search = (): JSX.Element => {
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
-            <span aria-hidden="true" className="hidden sm:inline-block sm:align-middle sm:h-screen">
+            <span
+              aria-hidden="true"
+              className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            >
               &#8203;
             </span>
             <div className="fixed left-0 top-0 h-screen w-screen z-[200] flex flex-col p-4 sm:p-6 md:p-[10vh] lg:p-[12vh]">
               <Transition.Child
-                as={Fragment}
+                as={React.Fragment}
                 enter="ease-out duration-300"
                 enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 enterTo="opacity-100 translate-y-0 sm:scale-100"
@@ -93,7 +100,9 @@ export const Search = (): JSX.Element => {
                         <div className="flex-auto pb-6 overflow-auto rounded-b-2xl">
                           <div id="search-container">
                             <Hits
-                              hitComponent={(props) => <SearchHit {...props} setOpen={setOpen} />}
+                              hitComponent={(props) => (
+                                <SearchHit {...props} setOpen={setOpen} />
+                              )}
                             />
                           </div>
                         </div>

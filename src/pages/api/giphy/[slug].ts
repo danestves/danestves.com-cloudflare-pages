@@ -1,11 +1,14 @@
 // Dependencies
-import { NextApiRequest, NextApiResponse } from 'next'
-import { GiphyFetch } from '@giphy/js-fetch-api'
 import 'isomorphic-fetch'
+import { GiphyFetch } from '@giphy/js-fetch-api'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 const giphyFetch = new GiphyFetch(process.env.GIPHY_TOKEN as string)
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
   if (req.method === 'GET') {
     const { data } = await giphyFetch.gif(req.query.slug as string)
 

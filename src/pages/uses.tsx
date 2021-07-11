@@ -1,14 +1,14 @@
 // Dependencies
-import he from 'he'
-import remarkCodeTitles from 'remark-code-titles'
 import remarkA11yEmoji from '@fec/remark-a11y-emoji'
-import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import { serialize } from 'next-mdx-remote/serialize'
-import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
+import he from 'he'
 import { MDXRemote } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
+import path from 'path'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import remarkCodeTitles from 'remark-code-titles'
+import rehypeSlug from 'rehype-slug'
 import type { GetStaticProps, NextPage } from 'next'
 import type { I18nProps } from 'next-rosetta'
 
@@ -19,16 +19,21 @@ import type { MyLocale } from 'i18n'
 const UsesPage: NextPage<{ mdx: { compiledSource: string } }> = ({ mdx }) => {
   return (
     <>
-      <div className="relative max-w-3xl mx-auto py-8 px-5">
+      <div className="relative max-w-3xl px-5 py-8 mx-auto">
         <div className="max-w-full prose prose-lg dark:prose-dark">
-          <MDXRemote compiledSource={mdx.compiledSource} components={MDXComponents} />
+          <MDXRemote
+            compiledSource={mdx.compiledSource}
+            components={MDXComponents}
+          />
         </div>
       </div>
     </>
   )
 }
 
-export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
+  context
+) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
   const pageFile = path.join('src', 'data', 'uses.mdx')
@@ -43,7 +48,10 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
       mdx: await serialize(he.decode(content), {
         mdxOptions: {
           remarkPlugins: [remarkCodeTitles, remarkA11yEmoji],
-          rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]],
+          rehypePlugins: [
+            rehypeSlug,
+            [rehypeAutolinkHeadings, { behavior: 'append' }],
+          ],
         },
       }),
     },

@@ -1,13 +1,11 @@
 // Dependencies
-import useSWR from 'swr'
 import { Gif } from '@giphy/react-components'
-import { IGif } from '@giphy/js-types'
 import Image from 'next/image'
+import useSWR from 'swr'
+import type { IGif } from '@giphy/js-types'
 
-// Components
+// Internals
 import { GeneralObserver } from '@/components'
-
-// Libraries
 import fetcher from '@/lib/fetcher'
 
 export default function Giphy({ id }: { id: string }): JSX.Element | null {
@@ -23,7 +21,12 @@ export default function Giphy({ id }: { id: string }): JSX.Element | null {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <Image alt="Giphy GIF" height={42} src="/static/giphy-copyright.gif" width={200} />
+        <Image
+          alt="Giphy GIF"
+          height={42}
+          src="/static/giphy-copyright.gif"
+          width={200}
+        />
       </a>
     </GeneralObserver>
   ) : null

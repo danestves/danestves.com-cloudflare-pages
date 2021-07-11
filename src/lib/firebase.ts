@@ -1,7 +1,7 @@
 // Dependencies
 import admin from 'firebase-admin'
 
-// Credentials
+// Internals
 import { getDecryptedSecret } from './google/decret-secret'
 
 if (!admin.apps.length) {

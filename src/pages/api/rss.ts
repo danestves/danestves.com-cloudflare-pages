@@ -1,12 +1,10 @@
 // Dependencies
-import { NextApiRequest, NextApiResponse } from 'next'
 import RSS from 'rss'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-// Generated
-import { Locale } from '@/generated/graphql'
-
-// Libraries
+// Internals
 import { getAllPostsWithSlug } from '@/lib/graphcms'
+import type { Locale } from '@/generated/graphql'
 
 export default async function handler(
   _: NextApiRequest,

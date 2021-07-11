@@ -1,8 +1,8 @@
-interface Props {
+interface AlertProps {
   children: React.ReactNode
 }
 
-const Danger = ({ children }: Props): JSX.Element => {
+const Danger = ({ children }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-red-100 rounded-md dark:bg-red-50">
       <div className="flex">
@@ -30,7 +30,7 @@ const Danger = ({ children }: Props): JSX.Element => {
   )
 }
 
-const Info = ({ children }: Props): JSX.Element => {
+const Info = ({ children }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-blue-100 rounded-md dark:bg-blue-50">
       <div className="flex">
@@ -58,7 +58,7 @@ const Info = ({ children }: Props): JSX.Element => {
   )
 }
 
-const Warning = ({ children }: Props): JSX.Element => {
+const Warning = ({ children }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-yellow-100 rounded-md dark:bg-yellow-50">
       <div className="flex">
@@ -86,7 +86,7 @@ const Warning = ({ children }: Props): JSX.Element => {
   )
 }
 
-const Success = ({ children }: Props): JSX.Element => {
+const Success = ({ children }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-green-100 rounded-md dark:bg-green-50">
       <div className="flex">
@@ -114,7 +114,7 @@ const Success = ({ children }: Props): JSX.Element => {
   )
 }
 
-export const Alert = ({ children }: Props): JSX.Element => {
+export const Alert = ({ children }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-gray-100 rounded-md dark:bg-gray-50">
       <div className="flex">

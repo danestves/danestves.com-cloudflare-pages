@@ -1,32 +1,28 @@
 // Dependencies
-import { useState, useRef, useMemo, memo } from 'react'
-import clsx from 'clsx'
-import { useI18n } from 'next-rosetta'
+import * as React from 'react'
 import { document } from 'browser-monads-ts'
-import { useRouter } from 'next/dist/client/router'
+import clsx from 'clsx'
+import { useRouter } from 'next/router'
+import { useI18n } from 'next-rosetta'
 
-// Components
+// Internals
 import { LanguageSwitcher } from '@/components'
 import Navigation from './Navigation'
 import MenuToggle from './MenuToggle'
 import { Search } from '../Search'
 import DarkModeToggle from './DarkModeToggle'
-
-// Hooks
 import { useClickOutside } from '@/hooks'
-
-// Locales
 import type { MyLocale } from 'i18n'
 
 const MobileHeader = (): JSX.Element => {
-  const [isOpen, toggleOpen] = useState(false)
-  const containerRef = useRef(null)
+  const [isOpen, toggleOpen] = React.useState(false)
+  const containerRef = React.useRef(null)
 
   const { t } = useI18n<MyLocale>()
   useClickOutside(containerRef, () => toggleOpen(false))
   const router = useRouter()
 
-  useMemo(() => {
+  React.useMemo(() => {
     if (isOpen) {
       document.body.classList.add('overflow-hidden')
     } else {
@@ -193,4 +189,4 @@ const MobileHeader = (): JSX.Element => {
   )
 }
 
-export default memo(MobileHeader)
+export default React.memo(MobileHeader)

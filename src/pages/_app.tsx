@@ -1,15 +1,13 @@
 // Dependencies
-import { AppProps } from 'next/app'
-import { LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { MDXEmbedProvider } from 'mdx-embed'
-import { I18nProvider } from 'next-rosetta'
 import PlausibleProvider from 'next-plausible'
+import { I18nProvider } from 'next-rosetta'
+import { LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { ThemeProvider } from 'next-themes'
+import type { AppProps } from 'next/app'
 
-// Components
+// Internals
 import { Layout } from '@/components'
-
-// Styles
 import '@/styles/main.css'
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
@@ -18,7 +16,10 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
       <I18nProvider table={pageProps.table}>
         <MDXEmbedProvider>
           <PlausibleProvider domain="danestves.com">
-            <LogoJsonLd logo="https://danestves.com/logo.png" url="https://danestves.com" />
+            <LogoJsonLd
+              logo="https://danestves.com/logo.png"
+              url="https://danestves.com"
+            />
             <SocialProfileJsonLd
               name="Daniel Esteves"
               sameAs={[

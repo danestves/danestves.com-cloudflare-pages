@@ -1,23 +1,17 @@
 // Dependencies
-import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
-import { I18nProps } from 'next-rosetta'
-import { serialize } from 'next-mdx-remote/serialize'
-import he from 'he'
-import remarkCodeTitles from 'remark-code-titles'
 import remarkA11yEmoji from '@fec/remark-a11y-emoji'
-import rehypeSlug from 'rehype-slug'
+import he from 'he'
+import { serialize } from 'next-mdx-remote/serialize'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSlug from 'rehype-slug'
+import remarkCodeTitles from 'remark-code-titles'
+import type { I18nProps } from 'next-rosetta'
+import type { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 
-// @types
-import { Locale, Portfolio as IPortfolio } from '@/generated/graphql'
-
-// Layouts
+// Internals
 import PortfolioLayout from '@/layouts/portfolio'
-
-// Libraries
 import { getAllPortfoliosWithSlug, getPortfolio } from '@/lib/graphcms'
-
-// Locales
+import type { Locale, Portfolio as IPortfolio } from '@/generated/graphql'
 import type { MyLocale } from 'i18n'
 
 interface Props {
@@ -28,7 +22,9 @@ interface Props {
   }
 }
 
-const Portfolio: NextPage<Props> = ({ portfolio }) => <PortfolioLayout portfolio={portfolio} />
+const Portfolio: NextPage<Props> = ({ portfolio }) => (
+  <PortfolioLayout portfolio={portfolio} />
+)
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const paths: Array<string | { params: any; locale?: string }> = []
@@ -38,7 +34,10 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     const data = await getAllPortfoliosWithSlug(locale as Locale)
 
     data.portfolios.map((portfolio) => {
-      paths.push({ params: { slug: `${portfolio.slug}-${portfolio.id}` }, locale })
+      paths.push({
+        params: { slug: `${portfolio.slug}-${portfolio.id}` },
+        locale,
+      })
     })
   }
 
@@ -48,7 +47,9 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   }
 }
 
-export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
+  context
+) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
   const baseSlug = (context.params?.slug as string).split('-')
@@ -63,7 +64,10 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
         mdx: await serialize(he.decode(data.portfolio?.body || ''), {
           mdxOptions: {
             remarkPlugins: [remarkCodeTitles, remarkA11yEmoji],
-            rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]],
+            rehypePlugins: [
+              rehypeSlug,
+              [rehypeAutolinkHeadings, { behavior: 'append' }],
+            ],
           },
         }),
       },

@@ -1,4 +1,4 @@
-// Components
+// Internals
 import MenuItem from './MenuItem'
 
 const Navigation = ({
@@ -12,7 +12,7 @@ const Navigation = ({
     slug: string
   }[]
 }): JSX.Element => (
-  <ul className="absolute top-24 p-6 w-full">
+  <ul className="absolute w-full p-6 top-24">
     {items.map((item, i) => (
       <MenuItem i={i} key={item.slug} toggle={() => toggle(false)} {...item} />
     ))}

@@ -1,28 +1,30 @@
 // Dependencies
-import { useEffect, memo } from 'react'
-import { GetStaticProps, NextPage } from 'next'
+import * as React from 'react'
 import kwesforms from 'kwesforms'
 import Image from 'next/image'
-import { useI18n, I18nProps } from 'next-rosetta'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
+import { useI18n } from 'next-rosetta'
+import type { I18nProps } from 'next-rosetta'
+import type { GetStaticProps, NextPage } from 'next'
 
-// Components
+// Internals
 import { SEO } from '@/components'
-
-// Locales
 import type { MyLocale } from 'i18n'
 
 const Contacto: NextPage = () => {
   const { t } = useI18n<MyLocale>()
   const { locale } = useRouter()
 
-  useEffect(() => {
+  React.useEffect(() => {
     kwesforms.init()
   }, [locale])
 
   return (
     <>
-      <SEO description={t('contact.seo.description')} title={t('contact.seo.title')} />
+      <SEO
+        description={t('contact.seo.description')}
+        title={t('contact.seo.title')}
+      />
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
@@ -39,11 +41,16 @@ const Contacto: NextPage = () => {
               {t('contact.subtitle')} 🚀
             </h2>
 
-            <p className="mb-4 text-gray-500 dark:text-white">{t('contact.summary')}</p>
+            <p className="mb-4 text-gray-500 dark:text-white">
+              {t('contact.summary')}
+            </p>
 
             <ul className="my-8">
               <li className="flex items-center my-4 space-x-4">
-                <span className="flex p-4 rounded-full" style={{ background: '#C3009B' }}>
+                <span
+                  className="flex p-4 rounded-full"
+                  style={{ background: '#C3009B' }}
+                >
                   <Image
                     alt={t('contact.steps.first')}
                     height={32}
@@ -51,10 +58,15 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">{t('contact.steps.first')}</span>
+                <span className="text-gray-600 dark:text-white">
+                  {t('contact.steps.first')}
+                </span>
               </li>
               <li className="flex items-center my-4 space-x-4">
-                <span className="flex p-4 rounded-full" style={{ background: '#8900C3' }}>
+                <span
+                  className="flex p-4 rounded-full"
+                  style={{ background: '#8900C3' }}
+                >
                   <Image
                     alt={t('contact.steps.second')}
                     height={32}
@@ -62,10 +74,15 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">{t('contact.steps.second')}</span>
+                <span className="text-gray-600 dark:text-white">
+                  {t('contact.steps.second')}
+                </span>
               </li>
               <li className="flex items-center my-4 space-x-4">
-                <span className="flex p-4 rounded-full" style={{ background: '#2700C3' }}>
+                <span
+                  className="flex p-4 rounded-full"
+                  style={{ background: '#2700C3' }}
+                >
                   <Image
                     alt={t('contact.steps.third')}
                     height={32}
@@ -73,10 +90,15 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">{t('contact.steps.third')}</span>
+                <span className="text-gray-600 dark:text-white">
+                  {t('contact.steps.third')}
+                </span>
               </li>
               <li className="flex items-center my-4 space-x-4">
-                <span className="flex p-4 rounded-full" style={{ background: '#003AC3' }}>
+                <span
+                  className="flex p-4 rounded-full"
+                  style={{ background: '#003AC3' }}
+                >
                   <Image
                     alt={t('contact.steps.fourth')}
                     height={32}
@@ -84,10 +106,15 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">{t('contact.steps.fourth')}</span>
+                <span className="text-gray-600 dark:text-white">
+                  {t('contact.steps.fourth')}
+                </span>
               </li>
               <li className="flex items-center my-4 space-x-4">
-                <span className="flex p-4 rounded-full" style={{ background: '#009BC3' }}>
+                <span
+                  className="flex p-4 rounded-full"
+                  style={{ background: '#009BC3' }}
+                >
                   <Image
                     alt={t('contact.steps.fifth')}
                     height={32}
@@ -95,10 +122,15 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">{t('contact.steps.fifth')}</span>
+                <span className="text-gray-600 dark:text-white">
+                  {t('contact.steps.fifth')}
+                </span>
               </li>
               <li className="flex items-center my-4 space-x-4">
-                <span className="flex p-4 rounded-full" style={{ background: '#00C389' }}>
+                <span
+                  className="flex p-4 rounded-full"
+                  style={{ background: '#00C389' }}
+                >
                   <Image
                     alt={t('contact.steps.sixth')}
                     height={32}
@@ -106,7 +138,9 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">{t('contact.steps.sixth')}</span>
+                <span className="text-gray-600 dark:text-white">
+                  {t('contact.steps.sixth')}
+                </span>
               </li>
             </ul>
           </div>
@@ -192,7 +226,9 @@ const Contacto: NextPage = () => {
   )
 }
 
-export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
+  context
+) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
 
@@ -203,4 +239,4 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (contex
   }
 }
 
-export default memo(Contacto)
+export default React.memo(Contacto)

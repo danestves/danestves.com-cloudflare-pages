@@ -1,32 +1,30 @@
 // Dependencies
-import { useState } from 'react'
-import useSWR from 'swr'
+import * as React from 'react'
 import { useI18n } from 'next-rosetta'
+import useSWR from 'swr'
 
-// Libraries
+// Internals
 import fetcher from '@/lib/fetcher'
-
-// Locales
+import { formatCommaNumber } from '@/utils'
 import type { MyLocale } from 'i18n'
 
-// Utils
-import { formatCommaNumber } from '@/utils'
-
 export const Subscribe = (): JSX.Element => {
-  const [form, setForm] = useState<{
+  const [form, setForm] = React.useState<{
     status: string
     message?: string
   }>({
     status: '',
   })
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = React.useState('')
   const { t } = useI18n<MyLocale>()
   const { data } = useSWR('/api/subscribers', fetcher)
   const subscriberCount = formatCommaNumber(
     ((data as unknown as Record<string, unknown>)?.count as number) || 0
   )
 
-  const subscribe = async (e: React.ChangeEvent<HTMLFormElement>): Promise<void> => {
+  const subscribe = async (
+    e: React.ChangeEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault()
     setForm({ status: 'loading' })
 

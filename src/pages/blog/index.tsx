@@ -1,24 +1,17 @@
 // Dependencies
-import { NextPage, GetStaticProps } from 'next'
 import Image from '@graphcms/react-image'
-import { useI18n, I18nProps } from 'next-rosetta'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
+import { useI18n } from 'next-rosetta'
+import type { I18nProps } from 'next-rosetta'
+import type { NextPage, GetStaticProps } from 'next'
 
-// @types
-import { Post } from '@/generated/graphql'
-import { Asset } from '@/interfaces'
-
-// Components
+// Internals
 import { SEO, Link, BlogCard } from '@/components'
-
-// Libraries
 import { getAllPostsForBlogPage } from '@/lib/graphcms'
-
-// Locales
-import type { MyLocale } from 'i18n'
-
-// Utils
 import { formatDate } from '@/utils'
+import type { Post } from '@/generated/graphql'
+import type { Asset } from '@/interfaces'
+import type { MyLocale } from 'i18n'
 
 interface Props {
   featuredPost: Post
@@ -31,7 +24,10 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
 
   return (
     <>
-      <SEO description={t('blog.seo.description')} title={t('blog.seo.title')} />
+      <SEO
+        description={t('blog.seo.description')}
+        title={t('blog.seo.title')}
+      />
 
       <section className="container">
         <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
@@ -90,7 +86,9 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (context) => {
+export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
+  context
+) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
   const data = await getAllPostsForBlogPage(locale as any)

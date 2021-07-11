@@ -1,5 +1,6 @@
 // Dependencies
-import NextLink, { LinkProps as LinkNextProps } from 'next/link'
+import NextLink from 'next/link'
+import type { LinkProps as LinkNextProps } from 'next/link'
 
 type LinkProps = React.ComponentProps<'a'> & LinkNextProps
 

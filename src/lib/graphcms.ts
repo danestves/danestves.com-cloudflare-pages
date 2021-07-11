@@ -1,8 +1,14 @@
 // Dependencies
 import { GraphQLClient } from 'graphql-request'
 
-// @types
-import {
+// Internals
+import GET_ALL_PORTFOLIOS_FOR_PORTFOLIO_PAGE from '@/graphql/getAllPortfoliosForPortfolioPage.query.graphql'
+import GET_ALL_PORTFOLIOS_WITH_SLUG from '@/graphql/getAllPortfoliosWithSlug.query.graphql'
+import GET_ALL_POSTS_FOR_BLOG_PAGE from '@/graphql/getAllPostsForBlogPage.query.graphql'
+import GET_ALL_POSTS_WITH_SLUG from '@/graphql/getAllPostsWithSlug.query.graphql'
+import GET_PORTFOLIO from '@/graphql/getPortfolio.query.graphql'
+import GET_POST from '@/graphql/getPost.query.graphql'
+import type {
   Locale,
   GetAllPortfoliosForPortfolioPageQuery,
   GetAllPortfoliosWithSlugQuery,
@@ -12,19 +18,13 @@ import {
   GetPostQuery,
 } from '@/generated/graphql'
 
-// Queries
-import GET_ALL_PORTFOLIOS_FOR_PORTFOLIO_PAGE from '@/graphql/getAllPortfoliosForPortfolioPage.query.graphql'
-import GET_ALL_PORTFOLIOS_WITH_SLUG from '@/graphql/getAllPortfoliosWithSlug.query.graphql'
-import GET_ALL_POSTS_FOR_BLOG_PAGE from '@/graphql/getAllPostsForBlogPage.query.graphql'
-import GET_ALL_POSTS_WITH_SLUG from '@/graphql/getAllPostsWithSlug.query.graphql'
-import GET_PORTFOLIO from '@/graphql/getPortfolio.query.graphql'
-import GET_POST from '@/graphql/getPost.query.graphql'
-
 function fetchAPI(preview?: boolean): GraphQLClient {
   return new GraphQLClient(process.env.GRAPHCMS_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${
-        preview ? process.env.GRAPHCMS_DEVELOP_TOKEN : process.env.GRAPHCMS_PRODUCTION_TOKEN
+        preview
+          ? process.env.GRAPHCMS_DEVELOP_TOKEN
+          : process.env.GRAPHCMS_PRODUCTION_TOKEN
       }`,
     },
   })
@@ -82,7 +82,9 @@ export async function getAllPostsForBlogPage(
  * @param locale - The locale to query
  * @returns The array of posts by locale with slug
  */
-export async function getAllPostsWithSlug(locale: Locale): Promise<GetAllPostsWithSlugQuery> {
+export async function getAllPostsWithSlug(
+  locale: Locale
+): Promise<GetAllPostsWithSlugQuery> {
   return fetchAPI()
     .request(GET_ALL_POSTS_WITH_SLUG, { locale })
     .then((res) => res)

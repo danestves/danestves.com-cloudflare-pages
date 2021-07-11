@@ -1,7 +1,7 @@
-// Components
+// Internals
 import { GeneralObserver } from '@/components'
 
-interface Props {
+interface CloudinaryProps {
   publicID: string
   cloudName: string
   fluid?: boolean
@@ -23,7 +23,7 @@ interface Props {
 }
 
 // More information about all settings here https://studio.cloudinary.com/
-export const Cloudinary: React.FunctionComponent<Props> = ({
+export const Cloudinary: React.FunctionComponent<CloudinaryProps> = ({
   publicID,
   cloudName,
   fluid = true,
@@ -43,13 +43,21 @@ export const Cloudinary: React.FunctionComponent<Props> = ({
   muted = false,
   otherParams,
 }): JSX.Element => {
-  const base = baseColor ? encodeURIComponent(baseColor) : encodeURIComponent('#000000')
-  const accent = accentColor ? encodeURIComponent(accentColor) : encodeURIComponent('#FF620C')
-  const color = iconsTextColor ? encodeURIComponent(iconsTextColor) : encodeURIComponent('#ffffff')
+  const base = baseColor
+    ? encodeURIComponent(baseColor)
+    : encodeURIComponent('#000000')
+  const accent = accentColor
+    ? encodeURIComponent(accentColor)
+    : encodeURIComponent('#FF620C')
+  const color = iconsTextColor
+    ? encodeURIComponent(iconsTextColor)
+    : encodeURIComponent('#ffffff')
   const logoOnClick = logoOnClickUrl
     ? `&player%5Blogo_onclick_url%5D=${encodeURIComponent(logoOnClickUrl)}`
     : ''
-  const logoImage = logoImageUrl ? `&player%5Blogo_image_url%5D=${logoImageUrl}` : ''
+  const logoImage = logoImageUrl
+    ? `&player%5Blogo_image_url%5D=${logoImageUrl}`
+    : ''
   const autoPlayMode = autoPlayOnScroll
     ? '&player%5Bautoplay_mode%5D=on-scroll'
     : '&source%5Bautoplay_on_scroll%5D=false'

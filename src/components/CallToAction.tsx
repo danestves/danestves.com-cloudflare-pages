@@ -1,13 +1,11 @@
 // Dependencies
-import Image from 'next/image'
-import { useI18n } from 'next-rosetta'
-import { useRouter } from 'next/router'
 import { ExternalLinkIcon } from '@heroicons/react/solid'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useI18n } from 'next-rosetta'
 
-// Components
+// Internals
 import { Link } from '@/components'
-
-// Locales
 import type { MyLocale } from 'i18n'
 
 export const CallToAction = (): JSX.Element => {
@@ -43,7 +41,10 @@ export const CallToAction = (): JSX.Element => {
                 locale={locale}
               >
                 {t('cta.button.label')}
-                <ExternalLinkIcon aria-hidden="true" className="w-5 h-5 ml-3 -mr-1 text-gray-400" />
+                <ExternalLinkIcon
+                  aria-hidden="true"
+                  className="w-5 h-5 ml-3 -mr-1 text-gray-400"
+                />
               </Link>
             </div>
           </div>

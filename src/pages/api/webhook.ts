@@ -1,6 +1,6 @@
 // Dependencies
-import type { NextApiRequest, NextApiResponse } from 'next'
 import algoliasearch from 'algoliasearch'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 const algolia = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
@@ -8,7 +8,10 @@ const algolia = algoliasearch(
 )
 const index = algolia.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME)
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
   if (req.method !== 'POST') return res.end()
 
   if (req.headers['authorization'] !== process.env.WEBHOOK_SECRET_KEY) {
@@ -22,7 +25,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { id, localizations, ...data } = post
 
       for await (const locale of localizations) {
-        await index.saveObject({ objectID: `${id}-${locale.locale}`, id, ...locale, ...data })
+        await index.saveObject({
+          objectID: `${id}-${locale.locale}`,
+          id,
+          ...locale,
+          ...data,
+        })
       }
 
       res.send(201)
