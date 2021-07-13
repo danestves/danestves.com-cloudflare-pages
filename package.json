@@ -79,7 +79,7 @@
     "@types/react-instantsearch-dom": "^6.10.2",
     "@types/rss": "^0.0.29",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
-    "@typescript-eslint/parser": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.3",
     "autoprefixer": "^10.3.0",
     "eslint": "^7.30.0",
     "eslint-config-next": "^11.0.1",
