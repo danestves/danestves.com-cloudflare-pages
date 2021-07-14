@@ -6375,10 +6375,10 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
-kwesforms@2.1.12:
-  version "2.1.12"
-  resolved "https://registry.yarnpkg.com/kwesforms/-/kwesforms-2.1.12.tgz#7176d668f067dafb9b92290cbdec6ea8937b6de0"
-  integrity sha512-r1qLVqAsD/3J2d6MHHrtFq0PTl358HzcYKkUwds2bMFnpIUoEqcAwtkRdhg//okMixGwZ6++syPBopugwqumPQ==
+kwesforms@2.1.13:
+  version "2.1.13"
+  resolved "https://registry.yarnpkg.com/kwesforms/-/kwesforms-2.1.13.tgz#0c1aecf781c7d726b393acb83c45417c72c5d7db"
+  integrity sha512-Cn2/qRwaO004YpTkXvFUUV6S3jhCeWTZhkZfC3a9hznbZLWm2vpjnlxNCEL9F3f68o+yMdkH/79oY0JcIoK6jQ==
 
 language-subtag-registry@~0.3.2:
   version "0.3.21"
