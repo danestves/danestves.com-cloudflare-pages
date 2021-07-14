@@ -73,7 +73,7 @@
     "@tailwindcss/line-clamp": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "@types/he": "^1.1.2",
-    "@types/node": "^16.3.1",
+    "@types/node": "^16.3.2",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "@types/react-instantsearch-dom": "^6.10.2",
