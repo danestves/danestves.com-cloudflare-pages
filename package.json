@@ -68,7 +68,7 @@
     "@flayyer/flayyer-types": "^1.11.2",
     "@graphql-codegen/cli": "1.21.7",
     "@graphql-codegen/typescript": "1.23.0",
-    "@graphql-codegen/typescript-operations": "1.18.3",
+    "@graphql-codegen/typescript-operations": "1.18.4",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/line-clamp": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
