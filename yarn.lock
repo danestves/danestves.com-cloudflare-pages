@@ -1404,58 +1404,58 @@
   dependencies:
     purgecss "^4.0.3"
 
-"@giphy/js-analytics@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@giphy/js-analytics/-/js-analytics-4.0.2.tgz#2b88e186a4b5e4e982f83cb6eda4d38ebef9777f"
-  integrity sha512-GZ3fdcc6M5aR0yW2QdZWCVuhf7UABJC4EBOw8O1vh0u4QhG8RGQvIBE5fT29Gn26oWXWy5jaEYdER5kxC5+cfw==
+"@giphy/js-analytics@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@giphy/js-analytics/-/js-analytics-4.0.3.tgz#e6b423d594d2fd565999cb25c5c925b115547c7c"
+  integrity sha512-TiZ7tgavIDnskG4m6Ux0BryHkQGIUUI8AKjGLpb/AlytFOKeQwIH4MMryMMiGZKEEHBe3dy/UH9Yl7+bonqCyA==
   dependencies:
-    "@giphy/js-types" "^4.0.0"
-    "@giphy/js-util" "^3.1.0"
+    "@giphy/js-types" "^4.0.1"
+    "@giphy/js-util" "^3.1.1"
     append-query "^2.1.0"
     throttle-debounce "^2.3.0"
 
-"@giphy/js-brand@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@giphy/js-brand/-/js-brand-2.0.2.tgz#bd40f63b1de9cb60b4116a78daa8b6c523e6954e"
-  integrity sha512-q2zDuVaDgobc5o9ucoFdYArrVKfyKXo0/jddvVgAazACLEPycAcxfqdyc98TRELwTVcmN/e0ULfLjim2lq3WXw==
+"@giphy/js-brand@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@giphy/js-brand/-/js-brand-2.0.3.tgz#9419931b87bec5e6cfe84c6552ac07002491a295"
+  integrity sha512-rFq1zo5GDz8gKtbEOHixXfVHGUIX7ksBoWYyfq+eS0VQoOFEJTl0k6ZKhya1hX0Jf5u7CgBycvPGKGLs7eBbbw==
   dependencies:
     emotion "10.0.27"
 
-"@giphy/js-fetch-api@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@giphy/js-fetch-api/-/js-fetch-api-4.0.2.tgz#81fa5e700870e4df02baa1d9ff3644854c45af54"
-  integrity sha512-grWYabjefgYkhjBaIaTpEOhVdrbbfghbZzdH2eCJKexXZF7REj8jaudDpkBYvjjYrtv/LEErcGqFIevHENuhLw==
+"@giphy/js-fetch-api@^4.0.2", "@giphy/js-fetch-api@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@giphy/js-fetch-api/-/js-fetch-api-4.0.3.tgz#8d40eaab0ce96dc565a1a721fd57828989cecc44"
+  integrity sha512-Jven1o7hYbUPZVWMtDedKK4hwslNAF07X8Z3OQ4sv1uprpYVZimcf0I1pN87XtwkdHLeQvn3ZZsQIswU4lIO2g==
   dependencies:
-    "@giphy/js-types" "^4.0.0"
-    "@giphy/js-util" "^3.1.0"
+    "@giphy/js-types" "^4.0.1"
+    "@giphy/js-util" "^3.1.1"
     qs "^6.9.4"
 
-"@giphy/js-types@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@giphy/js-types/-/js-types-4.0.0.tgz#68b29c12e4baf9071117f6c893ba02be2a1cdc4f"
-  integrity sha512-8VKllPsUEpzBNCo0RcubtsLi7rkojYy6QRqpSlvVE/tfbEbDTyWmZCqk+lEcU16GXnurg3K23K/+Zk/7zrpZSg==
+"@giphy/js-types@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@giphy/js-types/-/js-types-4.0.1.tgz#8a7408e4387f34079bc03553896b5fb85d0719b4"
+  integrity sha512-3h+5jZGAoDUd6/zbkN4jkqgjEhrERprREnxXzgxCw1MtmM7HQQTfwi4QViTLitT+2p7glukZLnxznjQ/SqbgLQ==
 
-"@giphy/js-util@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@giphy/js-util/-/js-util-3.1.0.tgz#984ce7c2bb8ce4c0a6fa47c4f416c55aa792a2bf"
-  integrity sha512-9AlUGT/hntGyDrqc39xYU+Fp7U8ijfR/8AoDpHnFPL0u1NXeoKwLJQR+I2D01uhv7OI4LM9YVxprqe8aOy68nw==
+"@giphy/js-util@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@giphy/js-util/-/js-util-3.1.1.tgz#35f98ad1148144e3b906e97127389aced386427d"
+  integrity sha512-+5X30Ll2KJwRw0/SFPi/fi+eqiaJmVRtO7Lp9NvoJ6k5jajQzGOXIh5h6G3695Y3qP0OFpeMS7DTE5rVUbZjFw==
   dependencies:
-    "@giphy/js-types" "^4.0.0"
+    "@giphy/js-types" "^4.0.1"
     dompurify "^2.2.2"
     uuid "^8.3.0"
 
-"@giphy/react-components@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@giphy/react-components/-/react-components-3.2.0.tgz#a0fadd9b102ba8d37c72e4a69527821e7527dd2c"
-  integrity sha512-LagR1x5nGwvFOl/G/qqRyFyXU0rb/THs/nHQjXC8eIUFrm8nhsFbRCoTnIdJp1UaJZ9lx+6OXFsaRw9L034FYA==
+"@giphy/react-components@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@giphy/react-components/-/react-components-3.2.1.tgz#5959c30b3583b9ace670b1b6dd85f3e010e892d1"
+  integrity sha512-MxBugIt0LnJEf9OdNSaO+eBRRwWGhdogK+vXHGP4trU1pHRF9t2QelbCfS+1U/5l2pzJCTJwcEDLq9o+uSOXRA==
   dependencies:
     "@emotion/core" "10.1.1"
     "@emotion/styled" "10.0.27"
-    "@giphy/js-analytics" "^4.0.2"
-    "@giphy/js-brand" "^2.0.2"
-    "@giphy/js-fetch-api" "^4.0.2"
-    "@giphy/js-types" "^4.0.0"
-    "@giphy/js-util" "^3.1.0"
+    "@giphy/js-analytics" "^4.0.3"
+    "@giphy/js-brand" "^2.0.3"
+    "@giphy/js-fetch-api" "^4.0.3"
+    "@giphy/js-types" "^4.0.1"
+    "@giphy/js-util" "^3.1.1"
     emotion-theming "10.0.27"
     intersection-observer "^0.11.0"
     react-use "15.3.4"
