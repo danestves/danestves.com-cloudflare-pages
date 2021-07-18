@@ -51,6 +51,12 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
               <Component {...pageProps} />
 
               <Script
+                async
+                data-api="/_hive"
+                src="/bee.js"
+                strategy="afterInteractive"
+              />
+              <Script
                 src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
                 strategy="afterInteractive"
               />
