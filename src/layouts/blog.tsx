@@ -1,5 +1,5 @@
 // Dependencies
-import { FlayyerIO } from '@flayyer/flayyer'
+import { Flyyer } from '@flyyer/flyyer'
 import GraphCmsImage from '@graphcms/react-image'
 import { InformationCircleIcon } from '@heroicons/react/solid'
 import { window } from 'browser-monads-ts'
@@ -35,28 +35,30 @@ interface Props {
 }
 
 export default function PostLayout({ post }: Props): JSX.Element {
-  const { locale } = useRouter()
+  const { asPath, locale } = useRouter()
   const { t } = useI18n<MyLocale>()
 
-  const flayyer = new FlayyerIO({
-    tenant: 'danestves',
-    deck: 'danestves',
-    template: 'blog',
-    variables: {
-      image: post.cover.url,
-      title: post.seo?.title,
-      date: post.published,
-      dateLegend: t('blog.publishedAt'),
-      lang: locale,
-    },
+  const flayyer = new Flyyer({
+    project: 'danestves-com',
+    path: asPath,
     meta: {
-      id: post.slug,
+      id: post.slug + '-' + post.id,
     },
   })
 
   return (
     <>
       <SEO
+        additionalMetaTags={[
+          {
+            property: 'flyyer:title',
+            content: post.seo?.title,
+          },
+          {
+            property: 'flyyer:image',
+            content: post.cover.url,
+          },
+        ]}
         date={new Date(post.published).toISOString().slice(0, 19)}
         description={post.seo?.description}
         isTemplate={false}

@@ -26,7 +26,6 @@ export default function PortfolioLayout({ portfolio }: Props): JSX.Element {
       <SEO
         date={portfolio.publishedAt}
         description={portfolio.seo?.description}
-        shareImage={`https://danestves.com/og.jpg`}
         title={portfolio.seo?.title}
       />
 

@@ -1,4 +1,5 @@
 // Dependencies
+import { Flyyer } from '@flyyer/flyyer'
 import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
 import { NextSeo } from 'next-seo'
@@ -25,17 +26,6 @@ export const SEO = ({
   const router = useRouter()
   const { t } = useI18n<MyLocale>()
 
-  const title = props.title ? props.title : t('defaultSeo.title')
-  const parsedTitle = isTemplate
-    ? '%s | @danestves'.replace('%s', title)
-    : title
-  const description = props.description
-    ? props.description
-    : t('defaultSeo.description')
-  const shareImage = props.shareImage
-    ? props.shareImage
-    : `https://flayyer.ai/v2/danestves-com/_/_${router.asPath}`
-
   let lang = ''
   switch (router.locale) {
     case 'en':
@@ -44,6 +34,20 @@ export const SEO = ({
     default:
       break
   }
+
+  const flayyer = new Flyyer({
+    project: 'danestves-com',
+    path: lang + router.asPath,
+  })
+
+  const title = props.title ? props.title : t('defaultSeo.title')
+  const parsedTitle = isTemplate
+    ? '%s | @danestves'.replace('%s', title)
+    : title
+  const description = props.description
+    ? props.description
+    : t('defaultSeo.description')
+  const shareImage = props.shareImage ? props.shareImage : flayyer.href()
 
   return (
     <NextSeo

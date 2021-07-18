@@ -32,7 +32,9 @@ export const Layout: React.FC = ({ children }) => {
           title,
           description,
           images: [
-            { url: `https://flayyer.ai/v2/danestves-com/_/_${router.asPath}` },
+            {
+              url: `https://cdn.flyyer.io/v2/danestves-com/_/_${lang}${router.asPath}`,
+            },
           ],
           site_name: title,
           type: 'website',
