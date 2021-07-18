@@ -1,6 +1,5 @@
 // Dependencies
 import { MDXEmbedProvider } from 'mdx-embed'
-import PlausibleProvider from 'next-plausible'
 import { I18nProvider } from 'next-rosetta'
 import { LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { ThemeProvider } from 'next-themes'
@@ -15,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
     <ThemeProvider attribute="class">
       <I18nProvider table={pageProps.table}>
         <MDXEmbedProvider>
-          <PlausibleProvider domain="danestves.com">
+          <>
             <LogoJsonLd
               logo="https://danestves.com/logo.png"
               url="https://danestves.com"
@@ -35,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element | null {
             <Layout>
               <Component {...pageProps} />
             </Layout>
-          </PlausibleProvider>
+          </>
         </MDXEmbedProvider>
       </I18nProvider>
     </ThemeProvider>
