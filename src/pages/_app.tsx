@@ -20,6 +20,8 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
   const acceptConsent = () => {
     setConsent('CONSENT_ACCEPTED', {
       expires: new Date(Date.now() + 60 * 60 * 24 * 365 * 1000),
+      sameSite: 'strict',
+      secure: true,
     })
 
     window.gtag?.('consent', 'update', {
