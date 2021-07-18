@@ -56,7 +56,8 @@ module.exports = withProgressBar(
         },
         {
           source: '/youtube',
-          destination: 'https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw',
+          destination:
+            'https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw',
           permanent: true,
         },
       ]
@@ -97,7 +98,7 @@ module.exports = withProgressBar(
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com plausible.io;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.googletagmanager.com;
   child-src *.youtube.com *.google.com *.twitter.com *.codepen.io *.cloudinary.com codesandbox.io danestves-git-feat-graphcms-danestves.vercel.app;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
