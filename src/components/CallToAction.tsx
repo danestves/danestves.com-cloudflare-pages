@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
 
 // Internals
+import CTA from '../../public/static/img/cta.jpg'
 import { Link } from '@/components'
 import type { MyLocale } from 'i18n'
 
@@ -19,11 +20,10 @@ export const CallToAction = (): JSX.Element => {
           <Image
             alt="Call to action image"
             className="w-full h-full mix-blend-multiply"
-            height={864}
             objectFit="cover"
             objectPosition="center"
-            src="/static/img/cta.jpg"
-            width={1296}
+            placeholder="blur"
+            src={CTA}
           />
         </div>
       </div>
