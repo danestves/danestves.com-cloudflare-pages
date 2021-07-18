@@ -1384,11 +1384,6 @@
   dependencies:
     tslib "^2.1.0"
 
-"@flayyer/flayyer-types@^1.11.2":
-  version "1.11.2"
-  resolved "https://registry.yarnpkg.com/@flayyer/flayyer-types/-/flayyer-types-1.11.2.tgz#86a11787ba2d1a73ca59cb48f0bef1505e409932"
-  integrity sha512-e9wyZ8wFXmt2cjWTZM9y66d8zed2T4ukIuJ0pwC3AZwq8qHgkEjId9+PfqFjXVreRKUPhfdwL1179yrOQG/EdQ==
-
 "@flyyer/flyyer@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@flyyer/flyyer/-/flyyer-3.0.1.tgz#9777da368b473c302479112b85fd287b64b6dbe6"
