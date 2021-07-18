@@ -6,7 +6,6 @@ import { I18nProvider } from 'next-rosetta'
 import { LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import { ThemeProvider } from 'next-themes'
 import Script from 'next/script'
-import { useCookie } from 'react-use'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
 
 // Internals
@@ -15,20 +14,6 @@ import { GA_MEASUREMENT_ID, pageview } from '@/lib/gtag'
 import '@/styles/main.css'
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
-  const [consent, setConsent] = useCookie('cookie_consent')
-
-  const acceptConsent = () => {
-    setConsent('CONSENT_ACCEPTED', {
-      expires: new Date(Date.now() + 60 * 60 * 24 * 365 * 1000),
-      sameSite: 'strict',
-      secure: true,
-    })
-
-    window.gtag?.('consent', 'update', {
-      ad_storage: 'granted',
-    })
-  }
-
   React.useEffect(() => {
     const handleRouteChange = (url: string) => {
       pageview(url)
@@ -86,40 +71,6 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element | null {
               `}
               </Script>
             </Layout>
-
-            {consent !== 'CONSENT_ACCEPTED' && (
-              <div className="fixed inset-x-0 bottom-0 pb-2 sm:pb-5">
-                <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                  <div className="p-2 bg-white rounded-lg shadow-lg sm:p-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center flex-1 w-0">
-                        <p className="ml-3 text-sm font-medium text-black">
-                          This site uses cookies to provide you with a better
-                          user experience. For more information, refer to our{' '}
-                          <a
-                            className="underline"
-                            href="https://www.privacypolicies.com/live/b48840a3-6609-410d-8ae9-cf75a727ff6b"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            Cookie Policy
-                          </a>
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0 order-3 w-auto mt-2 sm:order-2 sm:mt-0">
-                        <button
-                          className="flex items-center justify-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-secondary hover:bg-secondary-400"
-                          onClick={acceptConsent}
-                          type="button"
-                        >
-                          Ok
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
           </>
         </MDXEmbedProvider>
       </I18nProvider>
