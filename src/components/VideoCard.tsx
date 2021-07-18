@@ -35,6 +35,7 @@ export const VideoCard = ({
           <Image
             alt={snippet?.title || 'YouTube Video'}
             height={snippet?.thumbnails?.medium?.height as number}
+            loading="lazy"
             src={imageUrl as string}
             width={snippet?.thumbnails?.medium?.width as number}
           />
