@@ -89,7 +89,7 @@
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
     "next-progressbar": "^1.0.0",
-    "postcss": "^8.3.5",
+    "postcss": "^8.3.6",
     "prettier": "^2.3.2",
     "rss": "^1.2.2",
     "tailwindcss": "^2.2.4",
