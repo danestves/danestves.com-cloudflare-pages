@@ -1384,13 +1384,20 @@
   dependencies:
     tslib "^2.1.0"
 
-"@flyyer/flyyer@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@flyyer/flyyer/-/flyyer-3.0.1.tgz#9777da368b473c302479112b85fd287b64b6dbe6"
-  integrity sha512-qfJU4W7zBSEYDEdHX6b5u3BuA/tUHj3iIZ4mSWQN+r1uOG6lKIgVXk/oLNtZgcUM9wP+rzCISLAz8Awbpq8uVw==
+"@flyyer/flyyer-lite@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@flyyer/flyyer-lite/-/flyyer-lite-3.2.1.tgz#c7fde619aa2b7132d99f2098c300aa586e052e39"
+  integrity sha512-G77eEhZU8YwbGy2hGCh5xg9SzhuI1U2+rdZfRKVZU8uoJZUmsCQxHPgUatmmQN/2wcJBQdASn+XiK4wi+uDwLg==
   dependencies:
-    "@types/qs" "^6.9.6"
+    "@types/qs" "^6.9.7"
     qs "^6.10.1"
+
+"@flyyer/flyyer@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@flyyer/flyyer/-/flyyer-3.2.1.tgz#ff73b2882be34e5366f98498daff72858b9d9d60"
+  integrity sha512-jsfnAtpQfr7vmZiBHU0SoXchalSyivukxmhKoNAm1f1VyI2IYufwozD6LIMOBoIk/04KFK0ZZsvFDVKEJFxQvA==
+  dependencies:
+    "@flyyer/flyyer-lite" "^3.2.1"
 
 "@fullhuman/postcss-purgecss@^4.0.3":
   version "4.0.3"
@@ -2396,7 +2403,7 @@
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.6.tgz#df9c3c8b31a247ec315e6996566be3171df4b3b1"
   integrity sha512-0/HnwIfW4ki2D8L8c9GVcG5I72s9jP5GSLVF0VIXDW00kmIpA6O33G7a8n59Tmh7Nz0WUC3rSb7PTY/sdW2JzA==
 
-"@types/qs@^6.9.6":
+"@types/qs@^6.9.7":
   version "6.9.7"
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
   integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
