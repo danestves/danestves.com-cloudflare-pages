@@ -92,7 +92,7 @@
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
     "rss": "^1.2.2",
-    "tailwindcss": "^2.2.4",
+    "tailwindcss": "^2.2.7",
     "tailwindcss-pseudo-elements": "^2.0.0",
     "typescript": "^4.3.5"
   },
