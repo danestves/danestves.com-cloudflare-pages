@@ -1399,15 +1399,15 @@
   dependencies:
     purgecss "^4.0.3"
 
-"@giphy/js-analytics@^4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@giphy/js-analytics/-/js-analytics-4.0.3.tgz#e6b423d594d2fd565999cb25c5c925b115547c7c"
-  integrity sha512-TiZ7tgavIDnskG4m6Ux0BryHkQGIUUI8AKjGLpb/AlytFOKeQwIH4MMryMMiGZKEEHBe3dy/UH9Yl7+bonqCyA==
+"@giphy/js-analytics@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@giphy/js-analytics/-/js-analytics-4.0.4.tgz#b084bab3d108bb24c71b5cdd94411c551a44ed4c"
+  integrity sha512-Wa+eq5JPszKC9K3sXHXLCu9W8gL1HE0G3NSs/ptrb4H2Elp97dtICs2wp67QkiHIr8Vt5wyhYz330A5JgydD4A==
   dependencies:
     "@giphy/js-types" "^4.0.1"
     "@giphy/js-util" "^3.1.1"
     append-query "^2.1.0"
-    throttle-debounce "^2.3.0"
+    throttle-debounce "^3.0.1"
 
 "@giphy/js-brand@^2.0.3":
   version "2.0.3"
@@ -1439,14 +1439,14 @@
     dompurify "^2.2.2"
     uuid "^8.3.0"
 
-"@giphy/react-components@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@giphy/react-components/-/react-components-3.2.2.tgz#a75bcf877918df5b666a22d1c9197f8c85aa2be5"
-  integrity sha512-gQgte39c3LBZOGkkj/nuogV552pKAS4ZJssN+B4EcyY9fcoOWxv7dSs6xIGEzfefv15neiMysqjGe7IH4swgTA==
+"@giphy/react-components@^3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@giphy/react-components/-/react-components-3.2.4.tgz#eb0d50cca688973f3b617ea533adb718e21e462a"
+  integrity sha512-lS/vRAgPKlDqSRkpiS/2kECp4SjbyhZ2Kl8ZRNZnnw58ER3gcY2BYlGD4Xpo1n9s61PuZQmOTOReFQ/PbOl//w==
   dependencies:
     "@emotion/core" "10.1.1"
     "@emotion/styled" "10.0.27"
-    "@giphy/js-analytics" "^4.0.3"
+    "@giphy/js-analytics" "^4.0.4"
     "@giphy/js-brand" "^2.0.3"
     "@giphy/js-fetch-api" "^4.0.3"
     "@giphy/js-types" "^4.0.1"
@@ -1454,7 +1454,7 @@
     emotion-theming "10.0.27"
     intersection-observer "^0.11.0"
     react-use "17.2.4"
-    throttle-debounce "^2.3.0"
+    throttle-debounce "^3.0.1"
 
 "@google-cloud/common@^3.6.0":
   version "3.6.0"
@@ -9383,11 +9383,6 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
-
-throttle-debounce@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
-  integrity sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==
 
 throttle-debounce@^3.0.1:
   version "3.0.1"
