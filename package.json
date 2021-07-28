@@ -40,7 +40,7 @@
     "gray-matter": "^4.0.3",
     "he": "^1.2.0",
     "isomorphic-fetch": "^3.0.0",
-    "kwesforms": "2.1.14",
+    "kwesforms": "2.1.17",
     "mdx-embed": "^0.0.19",
     "next": "^11.0.1",
     "next-mdx-remote": "^3.0.4",
