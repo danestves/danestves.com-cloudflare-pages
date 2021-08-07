@@ -24,13 +24,6 @@ const navigation = {
     },
     {
       name: {
-        en: 'Courses',
-        es: 'Cursos',
-      },
-      href: '/cursos',
-    },
-    {
-      name: {
         en: 'Blog',
         es: 'Blog',
       },

@@ -3,6 +3,9 @@ const withProgressBar = require('next-progressbar')
 
 module.exports = withProgressBar(
   withPWA({
+    experimental: {
+      esmExternals: true,
+    },
     webpack5: true,
     pwa: {
       disable: process.env.NODE_ENV === 'development',

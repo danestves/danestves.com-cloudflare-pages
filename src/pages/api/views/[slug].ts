@@ -8,7 +8,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
-  if (req.method === 'POST' && process.env.NODE_ENV === 'production') {
+  if (req.method === 'POST') {
     const docRef = db.collection('views').doc(req.query.slug as string)
     const document = await docRef.get()
 
@@ -29,7 +29,7 @@ export default async function handler(
     return res.status(200).json({ total: getCurrentViews?.value })
   }
 
-  if (req.method === 'GET' && process.env.NODE_ENV === 'production') {
+  if (req.method === 'GET') {
     const snapshot = await db
       .collection('views')
       .doc(req.query.slug as string)
