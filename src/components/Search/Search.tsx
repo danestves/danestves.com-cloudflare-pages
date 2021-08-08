@@ -46,13 +46,13 @@ export const Search = (): JSX.Element => {
       <Transition.Root as={React.Fragment} show={open}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-[999999] overflow-y-auto"
+          className="overflow-y-auto fixed inset-0 z-[999999]"
           initialFocus={searchInputRef}
           onClose={setOpen}
           open={open}
           static
         >
-          <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+          <div className="flex justify-center items-end px-4 pt-4 pb-20 min-h-screen text-center sm:block sm:p-0">
             <Transition.Child
               as={React.Fragment}
               enter="ease-out duration-300"
@@ -62,17 +62,17 @@ export const Search = (): JSX.Element => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
+              <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
             <span
               aria-hidden="true"
-              className="hidden sm:inline-block sm:align-middle sm:h-screen"
+              className="hidden sm:inline-block sm:h-screen sm:align-middle"
             >
               &#8203;
             </span>
-            <div className="fixed left-0 top-0 h-screen w-screen z-[200] flex flex-col p-4 sm:p-6 md:p-[10vh] lg:p-[12vh]">
+            <div className="flex fixed top-0 left-0 z-[200] flex-col p-4 w-screen h-screen sm:p-6 md:p-[10vh] lg:p-[12vh]">
               <Transition.Child
                 as={React.Fragment}
                 enter="ease-out duration-300"
@@ -85,7 +85,7 @@ export const Search = (): JSX.Element => {
                 {/* Adding an extra div to avoid issues with Ref */}
                 <div className="transition-all transform">
                   <div
-                    className="mx-auto w-full max-w-[47.375rem] flex flex-col min-h-0 rounded-[1rem] bg-white px-6 shadow-search"
+                    className="flex flex-col px-6 mx-auto w-full max-w-[47.375rem] min-h-0 bg-white rounded-[1rem] shadow-search"
                     ref={boxRef}
                   >
                     <InstantSearch
@@ -97,7 +97,7 @@ export const Search = (): JSX.Element => {
                       <Configure hitsPerPage={5} />
 
                       {search.length > 0 && (
-                        <div className="flex-auto pb-6 overflow-auto rounded-b-2xl">
+                        <div className="overflow-auto flex-auto pb-6 rounded-b-2xl">
                           <div id="search-container">
                             <Hits
                               hitComponent={(props) => (

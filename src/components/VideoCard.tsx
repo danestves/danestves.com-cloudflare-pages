@@ -25,9 +25,9 @@ export const VideoCard = ({
     <div className="relative font-roboto">
       <span className="sr-only">See {snippet?.title} on YouTube</span>
 
-      <div className="relative flex-none block w-full">
+      <div className="block relative flex-none w-full">
         <a
-          className="block h-full mx-auto overflow-hidden no-underline cursor-pointer"
+          className="block overflow-hidden mx-auto h-full no-underline cursor-pointer"
           href={`https://www.youtube.com/watch?v=${id}`}
           rel="noopener noreferrer"
           target="_blank"
@@ -42,7 +42,7 @@ export const VideoCard = ({
         </a>
       </div>
 
-      <div className="relative flex flex-row mx-3 cursor-pointer">
+      <div className="flex relative flex-row mx-3 cursor-pointer">
         <div className="overflow-x-hidden">
           <h3 className="mt-3 mb-[6px]">
             <a
@@ -51,13 +51,13 @@ export const VideoCard = ({
               rel="noopener noreferrer"
               target="_blank"
             >
-              <span className="max-h-[40px] leading-[20px] text-[14px] font-medium font-roboto text-black overflow-ellipsis line-clamp-2 whitespace-normal dark:text-white">
+              <span className="max-h-[40px] font-roboto text-[14px] font-medium leading-[20px] text-black dark:text-white overflow-ellipsis whitespace-normal line-clamp-2">
                 {snippet?.title}
               </span>
             </a>
           </h3>
 
-          <div className="font-normal font-roboto leading-[18px] text-[14px] max-w-full overflow-hidden max-h-[36px] flex flex-wrap text-[#606060] dark:text-[#aaaaaa]">
+          <div className="flex overflow-hidden flex-wrap max-w-full max-h-[36px] font-roboto text-[14px] text-[#606060] dark:text-[#aaaaaa] font-normal leading-[18px]">
             <span className="inline-block">{statistics?.viewCount} views</span>
             <span className="inline-block mx-[4px]">•</span>
             <div className="inline-block">

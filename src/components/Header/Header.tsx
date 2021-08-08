@@ -20,17 +20,17 @@ export const Header = (): JSX.Element => {
   return (
     <header
       className={clsx(
-        'h-16 top-0 z-50 w-full bg-gray-100 transform transition-transform duration-150 sticky flex items-center shadow dark:shadow-none dark:bg-secondary-500 md:h-auto',
+        'flex sticky top-0 z-50 items-center w-full h-16 bg-gray-100 dark:bg-secondary-500 shadow dark:shadow-none transition-transform duration-150 transform md:h-auto',
         prevY
           ? y < 76 || prevY > y
-            ? 'translate-0'
+            ? 'translate-y-0'
             : '-translate-y-full'
-          : 'translate-0'
+          : 'translate-y-0'
       )}
       id="sticky-nav"
     >
-      <div className="relative hidden md:px-8 md:flex md:flex-1">
-        <nav className="container relative flex flex-wrap items-center justify-end">
+      <div className="hidden relative md:flex md:flex-1 md:px-8">
+        <nav className="container flex relative flex-wrap justify-end items-center">
           <div className="relative flex-1 flex-shrink-0">
             <Link
               className="inline-flex"
@@ -63,38 +63,38 @@ export const Header = (): JSX.Element => {
             </Link>
           </div>
 
-          <div className="flex items-center ml-10 mr-6 bg-transparent">
-            <div className="flex items-center justify-center">
+          <div className="flex items-center mr-6 ml-10 bg-transparent">
+            <div className="flex justify-center items-center">
               <Link
-                className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
+                className="py-7 px-3 text-sm font-medium text-primary-600 dark:text-primary dark:hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-black transition duration-200 focus:outline-none"
                 href="/sobre-mi"
                 title="Sobre Mí"
               >
                 {t('header.menu.aboutMe')}
               </Link>
               <Link
-                className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
+                className="py-7 px-3 text-sm font-medium text-primary-600 dark:text-primary dark:hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-black transition duration-200 focus:outline-none"
                 href="/github"
                 title="Open Source"
               >
                 {t('header.menu.openSource')}
               </Link>
               <Link
-                className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
+                className="py-7 px-3 text-sm font-medium text-primary-600 dark:text-primary dark:hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-black transition duration-200 focus:outline-none"
                 href="/portafolio"
                 title="Portafolio"
               >
                 {t('header.menu.portfolio')}
               </Link>
               <Link
-                className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
+                className="py-7 px-3 text-sm font-medium text-primary-600 dark:text-primary dark:hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-black transition duration-200 focus:outline-none"
                 href="/blog"
                 title="Blog"
               >
                 {t('header.menu.blog')}
               </Link>
               <Link
-                className="px-3 text-sm font-medium transition duration-200 text-primary-600 py-7 dark:text-primary dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:rounded"
+                className="py-7 px-3 text-sm font-medium text-primary-600 dark:text-primary dark:hover:text-white focus-visible:rounded focus-visible:ring-2 focus-visible:ring-black transition duration-200 focus:outline-none"
                 href="/contacto"
                 title="Contacto"
               >

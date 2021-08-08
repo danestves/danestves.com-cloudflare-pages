@@ -16,9 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "i18n": ["i18n"]
+      "i18n": ["i18n"],
+      "public": ["public"],
+      "seoConfig": ["./next-seo.config.ts"]
     }
   },
-  "include": ["next-env.d.ts", "additional.d.ts", "node.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "src/types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

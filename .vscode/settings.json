@@ -1,0 +1,5 @@
+{
+  "headwind.prependCustomClasses": true,
+  "headwind.removeDuplicates": true,
+  "headwind.runOnSave": true
+}

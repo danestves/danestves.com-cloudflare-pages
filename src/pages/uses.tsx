@@ -9,8 +9,8 @@ import path from 'path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkCodeTitles from 'remark-code-titles'
 import rehypeSlug from 'rehype-slug'
-import type { GetStaticProps, NextPage } from 'next'
 import type { I18nProps } from 'next-rosetta'
+import type { GetStaticProps, NextPage } from 'next'
 
 // Internals
 import MDXComponents from '@/components/MDXComponents'
@@ -20,7 +20,7 @@ const UsesPage: NextPage<{ mdx: { compiledSource: string } }> = ({ mdx }) => {
   return (
     <>
       <div className="relative max-w-3xl px-5 py-8 mx-auto">
-        <div className="max-w-full prose prose-lg dark:prose-dark">
+        <div className="dark:prose-dark max-w-full prose prose-lg">
           <MDXRemote
             compiledSource={mdx.compiledSource}
             components={MDXComponents}

@@ -3,10 +3,10 @@ import { connectPoweredBy } from 'react-instantsearch-dom'
 
 export const SearchFooter = connectPoweredBy(({ url }) => {
   return (
-    <footer className="flex-none flex justify-end py-5 border-t border-[#e5e7eb]">
+    <footer className="flex flex-none justify-end py-5 border-[#e5e7eb] border-t">
       <div className="h-[16px]">
         <a
-          className="flex items-center h-full space-x-2"
+          className="flex items-center space-x-2 h-full"
           href={url}
           rel="noopener noreferrer"
           target="_blank"
@@ -14,7 +14,7 @@ export const SearchFooter = connectPoweredBy(({ url }) => {
           <span className="text-[10px] text-gray-500">Search by</span>
           <svg
             aria-label="Algolia"
-            className="flex-shrink-0 block w-auto h-full ml-8"
+            className="block flex-shrink-0 ml-8 w-auto h-full"
             viewBox="0 0 485 120"
           >
             <g fill="none">

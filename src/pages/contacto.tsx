@@ -27,21 +27,21 @@ const Contacto: NextPage = () => {
       />
 
       <section className="container">
-        <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
-          <h1 className="mb-10 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+        <div className="lg:w-3/4 xl:w-2/3 mx-auto my-20 text-center">
+          <h1 className="dark:text-white sm:text-5xl md:text-6xl mb-10 text-4xl font-bold text-gray-900">
             {t('contact.title')}
           </h1>
         </div>
       </section>
 
       <section className="container px-5">
-        <div className="grid items-center max-w-lg gap-16 mx-auto my-16 lg:max-w-none lg:grid-cols-2 xl:my-32">
+        <div className="lg:grid-cols-2 lg:max-w-none xl:my-32 grid items-center max-w-lg gap-16 mx-auto my-16">
           <div>
-            <h2 className="mb-4 text-3xl font-semibold text-gray-700 dark:text-white sm:text-4xl md:text-5xl">
+            <h2 className="dark:text-white sm:text-4xl md:text-5xl mb-4 text-3xl font-semibold text-gray-700">
               {t('contact.subtitle')} 🚀
             </h2>
 
-            <p className="mb-4 text-gray-500 dark:text-white">
+            <p className="dark:text-white mb-4 text-gray-500">
               {t('contact.summary')}
             </p>
 
@@ -58,7 +58,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">
+                <span className="dark:text-white text-gray-600">
                   {t('contact.steps.first')}
                 </span>
               </li>
@@ -74,7 +74,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">
+                <span className="dark:text-white text-gray-600">
                   {t('contact.steps.second')}
                 </span>
               </li>
@@ -90,7 +90,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">
+                <span className="dark:text-white text-gray-600">
                   {t('contact.steps.third')}
                 </span>
               </li>
@@ -106,7 +106,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">
+                <span className="dark:text-white text-gray-600">
                   {t('contact.steps.fourth')}
                 </span>
               </li>
@@ -122,7 +122,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">
+                <span className="dark:text-white text-gray-600">
                   {t('contact.steps.fifth')}
                 </span>
               </li>
@@ -138,7 +138,7 @@ const Contacto: NextPage = () => {
                     width={32}
                   />
                 </span>
-                <span className="text-gray-600 dark:text-white">
+                <span className="dark:text-white text-gray-600">
                   {t('contact.steps.sixth')}
                 </span>
               </li>
@@ -157,7 +157,7 @@ const Contacto: NextPage = () => {
                   {t('contact.form.name.label')}
                 </label>
                 <input
-                  className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:bg-white focus:shadow-outline"
+                  className="focus:bg-white focus:outline-none w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded"
                   id="name"
                   name="name"
                   placeholder={t('contact.form.name.label')}
@@ -171,7 +171,7 @@ const Contacto: NextPage = () => {
                   {t('contact.form.email.label')}
                 </label>
                 <input
-                  className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:bg-white focus:shadow-outline"
+                  className="focus:bg-white focus:outline-none w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded"
                   id="email"
                   name="email"
                   placeholder={t('contact.form.email.label')}
@@ -185,7 +185,7 @@ const Contacto: NextPage = () => {
                   {t('contact.form.subject.label')}
                 </label>
                 <input
-                  className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:bg-white focus:shadow-outline"
+                  className="focus:bg-white focus:outline-none w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded"
                   id="subject"
                   name="subject"
                   placeholder={t('contact.form.subject.label')}
@@ -199,7 +199,7 @@ const Contacto: NextPage = () => {
                   {t('contact.form.message.label')}
                 </label>
                 <textarea
-                  className="w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded focus:outline-none focus:shadow-outline focus:bg-white"
+                  className="focus:bg-white focus:outline-none w-full px-3 py-2 font-mono placeholder-gray-500 transition-all duration-150 bg-white rounded"
                   id="message"
                   name="message"
                   placeholder={t('contact.form.message.label')}
@@ -209,9 +209,9 @@ const Contacto: NextPage = () => {
               </div>
 
               <div className="flex flex-wrap justify-end mt-4">
-                <div className="w-full mt-3 md:w-1/2 md:pl-2 md:mt-0">
+                <div className="md:pl-2 md:mt-0 md:w-1/2 w-full mt-3">
                   <button
-                    className="block w-full py-3 font-bold text-white capitalize transition-all duration-200 border rounded bg-primary border-primary"
+                    className="bg-primary border-primary block w-full py-3 font-bold text-white capitalize transition-all duration-200 border rounded"
                     type="submit"
                   >
                     {t('contact.form.button.label')}

@@ -1,5 +1,6 @@
 const { fontFamily, spacing } = require(`tailwindcss/defaultTheme`)
 
+/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
   mode: 'jit',
   purge: [
@@ -177,6 +178,5 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/line-clamp'),
-    require('tailwindcss-pseudo-elements')(),
   ],
 }

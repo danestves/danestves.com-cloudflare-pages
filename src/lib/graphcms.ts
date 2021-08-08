@@ -2,23 +2,14 @@
 import { GraphQLClient } from 'graphql-request'
 
 // Internals
-import GET_ALL_PORTFOLIOS_FOR_PORTFOLIO_PAGE from '@/graphql/getAllPortfoliosForPortfolioPage.query.graphql'
-import GET_ALL_PORTFOLIOS_WITH_SLUG from '@/graphql/getAllPortfoliosWithSlug.query.graphql'
-import GET_ALL_POSTS_FOR_BLOG_PAGE from '@/graphql/getAllPostsForBlogPage.query.graphql'
-import GET_ALL_POSTS_WITH_SLUG from '@/graphql/getAllPostsWithSlug.query.graphql'
-import GET_PORTFOLIO from '@/graphql/getPortfolio.query.graphql'
-import GET_POST from '@/graphql/getPost.query.graphql'
-import type {
-  Locale,
-  GetAllPortfoliosForPortfolioPageQuery,
-  GetAllPortfoliosWithSlugQuery,
-  GetAllPostsForBlogPageQuery,
-  GetAllPostsWithSlugQuery,
-  GetPortfolioQuery,
-  GetPostQuery,
-} from '@/generated/graphql'
+import { getSdk } from '@/generated/graphql'
 
-function fetchAPI(preview?: boolean): GraphQLClient {
+/**
+ * Client for GraphCMS API using `graphql-request`
+ *
+ * @param preview - If true, use the development token
+ */
+function client(preview = false): GraphQLClient {
   return new GraphQLClient(process.env.GRAPHCMS_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${
@@ -31,89 +22,12 @@ function fetchAPI(preview?: boolean): GraphQLClient {
 }
 
 /**
- * Get an array of portfolios
+ * Wrapper of the GraphCMS SDK to make it easier to use in the app.
  *
- * @param locale - The locale to query
- * @returns The array of portfolios by locale
+ * @param preview - If true, the request will be sent to the DRAFT endpoint.
  */
-export async function getAllPortfoliosForPortfolioPage(
-  locale: Locale
-): Promise<GetAllPortfoliosForPortfolioPageQuery> {
-  return fetchAPI()
-    .request(GET_ALL_PORTFOLIOS_FOR_PORTFOLIO_PAGE, { locale })
-    .then((res) => res)
-}
+export function sdk(preview = false) {
+  const sdk = getSdk(client(preview))
 
-/**
- * Get an array of portfolios with slug
- *
- * @param locale - The locale to query
- * @returns The array of portfolios by locale with slug
- */
-export async function getAllPortfoliosWithSlug(
-  locale: Locale
-): Promise<GetAllPortfoliosWithSlugQuery> {
-  return fetchAPI()
-    .request(GET_ALL_PORTFOLIOS_WITH_SLUG, { locale })
-    .then((res) => res)
-}
-
-/**
- * Get an array of posts
- *
- * @param locale - The locale to query
- * @param limit - The number of posts
- * @returns The array of posts by locale
- */
-export async function getAllPostsForBlogPage(
-  locale: Locale,
-  limit = 100,
-  search = '',
-  body = false
-): Promise<GetAllPostsForBlogPageQuery> {
-  return fetchAPI()
-    .request(GET_ALL_POSTS_FOR_BLOG_PAGE, { search, body, locale, limit })
-    .then((res) => res)
-}
-
-/**
- * Get an array of posts with slug
- *
- * @param locale - The locale to query
- * @returns The array of posts by locale with slug
- */
-export async function getAllPostsWithSlug(
-  locale: Locale
-): Promise<GetAllPostsWithSlugQuery> {
-  return fetchAPI()
-    .request(GET_ALL_POSTS_WITH_SLUG, { locale })
-    .then((res) => res)
-}
-
-export async function getPortfolio(
-  locale: Locale,
-  id: string,
-  preview?: boolean
-): Promise<GetPortfolioQuery> {
-  return fetchAPI()
-    .request(GET_PORTFOLIO, {
-      stage: preview ? 'DRAFT' : 'PUBLISHED',
-      locale,
-      id,
-    })
-    .then((res) => res)
-}
-
-export async function getPost(
-  locale: Locale,
-  id: string,
-  preview?: boolean
-): Promise<GetPostQuery> {
-  return fetchAPI()
-    .request(GET_POST, {
-      stage: preview ? 'DRAFT' : 'PUBLISHED',
-      locale,
-      id,
-    })
-    .then((res) => res)
+  return sdk
 }

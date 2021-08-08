@@ -18,12 +18,12 @@ export const Notification = ({
   return (
     <div
       className={clsx(
-        'fixed inset-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end',
+        'flex fixed inset-0 justify-center items-end py-6 px-4 pointer-events-none sm:justify-end sm:items-start sm:p-6',
         isOpen ? 'visible' : 'invisible'
       )}
     >
       <Transition
-        className="absolute w-full max-w-md overflow-hidden bg-white rounded-lg shadow-lg pointer-events-auto right-6 ring-1 ring-black ring-opacity-5"
+        className="overflow-hidden absolute right-6 w-full max-w-md bg-white rounded-lg ring-1 ring-black ring-opacity-5 shadow-lg pointer-events-auto"
         enter="transform ease-out duration-300 transition"
         enterFrom="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
         enterTo="translate-y-0 opacity-100 sm:translate-x-0"
@@ -34,12 +34,12 @@ export const Notification = ({
       >
         <div className="p-4">
           <div className="flex items-center space-x-4">
-            <div className="flex items-center justify-between flex-1 w-0">
+            <div className="flex flex-1 justify-between items-center w-0">
               {children}
             </div>
             <div className="flex flex-shrink-0 ml-4">
               <button
-                className="inline-flex text-gray-400 bg-white rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500"
+                className="inline-flex text-gray-400 hover:text-gray-500 bg-white rounded-md focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 focus:outline-none"
                 onClick={() => {
                   setIsOpen(false)
                   onClose()

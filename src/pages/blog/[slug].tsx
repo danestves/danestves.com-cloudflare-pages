@@ -6,12 +6,12 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import remarkCodeTitles from 'remark-code-titles'
 import type { I18nProps } from 'next-rosetta'
-import type { NextPage, GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 // Internals
 import BlogLayout from '@/layouts/blog'
-import { getAllPostsWithSlug, getPost } from '@/lib/graphcms'
-import type { Locale, Post } from '@/generated/graphql'
+import { sdk } from '@/lib/graphcms'
+import type { Post } from '@/generated/graphql'
 import type { MyLocale } from 'i18n'
 
 interface Props {
@@ -29,7 +29,11 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
   // Loop over every locale and later loop on every blog to add the locale
   for (const locale of locales as string[]) {
-    const data = await getAllPostsWithSlug(locale as Locale)
+    const data = await sdk()
+      .getAllPostsWithSlug({
+        locale: locale as any,
+      })
+      .then((data) => data.data)
 
     data.posts.map((post) => {
       paths.push({ params: { slug: `${post.slug}-${post.id}` }, locale })
@@ -50,7 +54,13 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
   const baseSlug = (context.params?.slug as string).split('-')
   const id = baseSlug[baseSlug.length - 1]
 
-  const data = await getPost(context.locale as any, id)
+  const data = await sdk()
+    .getPost({
+      id,
+      locale: locale as any,
+      stage: 'PUBLISHED' as any,
+    })
+    .then((data) => data.data)
 
   return {
     props: {
