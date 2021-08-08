@@ -22,6 +22,7 @@ export async function getSitemap(): Promise<string> {
     '/portafolio',
     '/blog',
     '/contacto',
+    '/uses',
   ]
   const languages = ['en', 'es']
   let posts: any[] = []
