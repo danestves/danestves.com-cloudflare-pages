@@ -12,9 +12,9 @@ interface SearchHitProps {
 
 export const SearchHit = ({ hit, setOpen }: SearchHitProps): JSX.Element => {
   return (
-    <div className="relative group">
+    <div className="group relative">
       <Link
-        className="block rounded-lg pr-5 pl-4 bg-[#f9fafb] shadow-search-item group-hover:bg-[#5468FF]"
+        className="block pr-5 pl-4 bg-[#f9fafb] group-hover:bg-[#5468FF] rounded-lg shadow-search-item"
         href={`/blog/${hit.slug}-${hit.id}`}
         locale={hit.locale}
         onClick={() => setOpen(false)}
@@ -25,10 +25,10 @@ export const SearchHit = ({ hit, setOpen }: SearchHitProps): JSX.Element => {
           </div>
 
           <div className="flex flex-col flex-auto min-w-0">
-            <p className="overflow-hidden font-semibold leading-6 text-left text-black whitespace-nowrap overflow-ellipsis group-hover:text-white">
+            <p className="overflow-hidden font-semibold leading-6 text-left text-black group-hover:text-white overflow-ellipsis whitespace-nowrap">
               <Snippet attribute="title" hit={hit} />
             </p>
-            <p className="overflow-hidden text-sm font-normal leading-6 text-left text-gray-400 whitespace-nowrap overflow-ellipsis group-hover:text-white">
+            <p className="overflow-hidden text-sm font-normal leading-6 text-left text-gray-400 group-hover:text-white overflow-ellipsis whitespace-nowrap">
               <Snippet attribute="body" hit={hit} />
             </p>
           </div>

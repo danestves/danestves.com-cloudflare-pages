@@ -1,5 +1,9 @@
+// Dependencies
+import { useI18n } from 'next-rosetta'
+
 // Internals
 import { Link } from '@/components'
+import type { MyLocale } from 'i18n'
 
 const colors = [
   '#C3009B',
@@ -24,6 +28,8 @@ const MenuItem = ({
   i: number
   toggle: () => void
 }): JSX.Element => {
+  const { t } = useI18n<MyLocale>()
+
   const style = { border: `2px solid ${colors[i]}` }
 
   return (
@@ -36,16 +42,16 @@ const MenuItem = ({
         href={slug}
       >
         <div
-          className="flex items-center justify-center w-10 h-10 rounded-full"
+          className="flex justify-center items-center w-10 h-10 rounded-full"
           style={style}
         >
           <Icon className="w-6 h-6" style={{ color: colors[i] }} />
         </div>
         <span
-          className="flex-1 inline-block px-2 py-1 text-sm rounded"
+          className="inline-block flex-1 py-1 px-2 text-sm rounded"
           style={{ ...style, color: colors[i] }}
         >
-          {label}
+          {t(`header.menu.${label}`)}
         </span>
       </Link>
     </li>

@@ -72,12 +72,12 @@ export const Subscribe = (): JSX.Element => {
 
   return (
     <div className="mt-12">
-      <div className="px-6 py-6 border rounded-lg bg-secondary md:py-12 md:px-12 lg:py-16 lg:px-16">
+      <div className="py-6 px-6 bg-secondary rounded-lg border md:py-12 md:px-12 lg:py-16 lg:px-16">
         <div>
           <h2 className="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
             {t('newsletter.title')}
           </h2>
-          <p className="max-w-3xl mt-3 text-lg leading-6 text-indigo-200">
+          <p className="mt-3 max-w-3xl text-lg leading-6 text-indigo-200">
             {t('newsletter.summary')}
           </p>
         </div>
@@ -88,7 +88,7 @@ export const Subscribe = (): JSX.Element => {
             </label>
             <input
               autoComplete="email"
-              className="w-full px-5 py-3 placeholder-gray-500 border-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-secondary focus:ring-white"
+              className="py-3 px-5 w-full placeholder-gray-500 rounded-md border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none"
               id="email"
               name="email"
               onChange={({ target }) => setEmail(target.value)}
@@ -98,7 +98,7 @@ export const Subscribe = (): JSX.Element => {
               value={email}
             />
             <button
-              className="flex items-center justify-center w-full px-5 py-3 mt-3 text-base font-medium border border-transparent rounded-md shadow text-secondary bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-secondary focus:ring-white sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
+              className="flex justify-center items-center py-3 px-5 mt-3 w-full text-base font-medium text-secondary bg-primary hover:bg-primary rounded-md border border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-secondary shadow focus:outline-none sm:flex-shrink-0 sm:mt-0 sm:ml-3 sm:w-auto"
               disabled={!email}
               type="submit"
             >

@@ -68,14 +68,6 @@ module.exports = withProgressBar(
     async rewrites() {
       return [
         {
-          source: '/sitemap.xml',
-          destination: '/api/sitemap/',
-        },
-        {
-          source: '/rss.xml',
-          destination: '/api/rss/',
-        },
-        {
           source: '/bee.js',
           destination: 'https://cdn.splitbee.io/sb.js',
         },

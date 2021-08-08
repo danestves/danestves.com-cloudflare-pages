@@ -15,7 +15,7 @@ export const CallToAction = (): JSX.Element => {
 
   return (
     <div className="relative bg-gray-800 dark:bg-secondary-800">
-      <div className="h-56 bg-primary-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+      <div className="h-56 bg-primary-600 sm:h-72 md:absolute md:left-0 md:w-1/2 md:h-full">
         <div className="flex h-full">
           <Image
             alt="Call to action image"
@@ -27,8 +27,8 @@ export const CallToAction = (): JSX.Element => {
           />
         </div>
       </div>
-      <div className="relative px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-16">
-        <div className="md:ml-auto md:w-1/2 md:pl-10">
+      <div className="relative py-12 px-4 mx-auto max-w-7xl sm:px-6 lg:py-16 lg:px-8">
+        <div className="md:pl-10 md:ml-auto md:w-1/2">
           <p className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             {t('cta.title')}
           </p>
@@ -36,14 +36,14 @@ export const CallToAction = (): JSX.Element => {
           <div className="mt-8">
             <div className="inline-flex rounded-md shadow">
               <Link
-                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-gray-900 bg-white border border-transparent rounded-md hover:bg-gray-50"
+                className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-gray-900 bg-white hover:bg-gray-50 rounded-md border border-transparent"
                 href="/contacto"
                 locale={locale}
               >
                 {t('cta.button.label')}
                 <ExternalLinkIcon
                   aria-hidden="true"
-                  className="w-5 h-5 ml-3 -mr-1 text-gray-400"
+                  className="-mr-1 ml-3 w-5 h-5 text-gray-400"
                 />
               </Link>
             </div>

@@ -4,10 +4,10 @@ import { SearchIcon, XIcon } from '@heroicons/react/solid'
 
 export const SearchHeader = connectSearchBox(({ refine }) => {
   return (
-    <header className="flex-none border-b border-[#e5e7eb] relative z-[1] flex items-center">
+    <header className="flex relative z-[1] flex-none items-center border-[#e5e7eb] border-b">
       <form
         action={undefined}
-        className="flex flex-auto items-center min-w-0"
+        className="flex items-center flex-auto min-w-0"
         noValidate
         role="search"
       >
@@ -21,7 +21,7 @@ export const SearchHeader = connectSearchBox(({ refine }) => {
           autoCapitalize="off"
           autoComplete="off"
           autoCorrect="off"
-          className="appearance-none bg-transparent h-[4.5rem] text-base font-normal font-sans text-black mx-4 flex-auto min-w-0 focus:outline-none focus-visible:outline-none"
+          className="flex-auto mx-4 min-w-0 h-[4.5rem] font-sans text-base font-normal text-black bg-transparent appearance-none focus-visible:focus:outline-none"
           id="search-input"
           maxLength={64}
           onChange={(e) => refine(e.target.value)}
@@ -35,10 +35,7 @@ export const SearchHeader = connectSearchBox(({ refine }) => {
         </button>
       </form>
 
-      <button
-        className="flex-none text-[0px] rounded-md bg-[#f9fafb] border border-[#d1d5db] py-[0.125rem] px-[0.374rem] content-before before:text-[#9ca3af] before:text-sm before:leading-5"
-        tw-content-before="esc"
-      >
+      <button className="before:content-['esc'] flex-none py-[0.125rem] px-[0.374rem] text-[0px] before:text-[#9ca3af] before:text-sm before:leading-5 bg-[#f9fafb] rounded-md border-[#d1d5db] border">
         Cancel
       </button>
     </header>

@@ -7,7 +7,7 @@ import type { NextPage, GetStaticProps } from 'next'
 
 // Internals
 import { SEO, Link } from '@/components'
-import { getAllPortfoliosForPortfolioPage } from '@/lib/graphcms'
+import { sdk } from '@/lib/graphcms'
 import type { Portfolio } from '@/generated/graphql'
 import type { Asset } from '@/interfaces'
 import type { MyLocale } from 'i18n'
@@ -28,8 +28,8 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
       />
 
       <section className="container">
-        <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
-          <h1 className="mb-10 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+        <div className="lg:w-3/4 xl:w-2/3 mx-auto my-20 text-center">
+          <h1 className="dark:text-white sm:text-5xl md:text-6xl mb-10 text-4xl font-bold text-gray-900">
             {t('portfolio.title')}
           </h1>
         </div>
@@ -39,11 +39,11 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
         {portfolios.map((portfolio) => (
           <div key={portfolio.slug}>
             <Link
-              className="grid items-center grid-cols-1 gap-6 pb-1 overflow-hidden transition-all duration-150 rounded-lg group focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary focus:outline-none hover:bg-gray-50 dark:hover:bg-secondary-700 hover:shadow md:grid-cols-2"
+              className="group hover:bg-gray-50 dark:hover:bg-secondary-700 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary hover:shadow focus:outline-none md:grid-cols-2 grid items-center grid-cols-1 gap-6 pb-1 overflow-hidden transition-all duration-150 rounded-lg"
               href={`/portafolio/${portfolio.slug}-${portfolio.id}`}
               locale={locale}
             >
-              <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg">
+              <div className="group-hover:shadow-lg flex w-full overflow-hidden duration-200 transform rounded-lg">
                 <Image
                   alt={portfolio.title}
                   image={portfolio.cover as Asset}
@@ -52,15 +52,15 @@ const PortfolioPage: NextPage<Props> = ({ portfolios }) => {
                 />
               </div>
               <div>
-                <h2 className="mb-4 text-4xl leading-tight text-gray-700 dark:text-white group-hover:underline">
+                <h2 className="dark:text-white group-hover:underline mb-4 text-4xl leading-tight text-gray-700">
                   {portfolio.title}
                 </h2>
-                <p className="text-gray-500 dark:text-white">
+                <p className="dark:text-white text-gray-500">
                   {portfolio.seo?.description}
                 </p>
                 <div className="flex mt-4">
                   <button
-                    className="flex justify-center items-center py-3 font-semibold transition-all duration-150 transform rounded border border-primary-700 text-primary-700 bg-primary-100 min-w-[160px] group-hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary dark:bg-secondary-900 dark:text-secondary-100 dark:border-secondary-100"
+                    className="flex justify-center items-center py-3 min-w-[160px] font-semibold text-primary-700 dark:text-secondary-100 bg-primary-100 dark:bg-secondary-900 rounded border border-primary-700 dark:border-secondary-100 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-secondary transition-all duration-150 transform group-hover:-translate-y-1 focus:outline-none"
                     type="button"
                   >
                     {t('portfolio.portfolios.button.label')}
@@ -80,8 +80,11 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
 ) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const portfolios = (await getAllPortfoliosForPortfolioPage(locale as any))
-    .portfolios
+  const portfolios = await sdk()
+    .getAllPortfoliosForPortfolioPage({
+      locale: locale as any,
+    })
+    .then(({ data }) => data.portfolios)
 
   return {
     props: {

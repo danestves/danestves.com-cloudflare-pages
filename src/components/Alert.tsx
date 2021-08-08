@@ -4,7 +4,7 @@ interface AlertProps {
 
 const Danger = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-red-100 rounded-md dark:bg-red-50">
+    <div className="p-4 bg-red-100 dark:bg-red-50 rounded-md">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -32,7 +32,7 @@ const Danger = ({ children }: AlertProps): JSX.Element => {
 
 const Info = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-blue-100 rounded-md dark:bg-blue-50">
+    <div className="p-4 bg-blue-100 dark:bg-blue-50 rounded-md">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -60,7 +60,7 @@ const Info = ({ children }: AlertProps): JSX.Element => {
 
 const Warning = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-yellow-100 rounded-md dark:bg-yellow-50">
+    <div className="p-4 bg-yellow-100 dark:bg-yellow-50 rounded-md">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -88,7 +88,7 @@ const Warning = ({ children }: AlertProps): JSX.Element => {
 
 const Success = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-green-100 rounded-md dark:bg-green-50">
+    <div className="p-4 bg-green-100 dark:bg-green-50 rounded-md">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -116,7 +116,7 @@ const Success = ({ children }: AlertProps): JSX.Element => {
 
 export const Alert = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-gray-100 rounded-md dark:bg-gray-50">
+    <div className="p-4 bg-gray-100 dark:bg-gray-50 rounded-md">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}

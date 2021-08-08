@@ -7,7 +7,7 @@ import type { NextPage, GetStaticProps } from 'next'
 
 // Internals
 import { SEO, Link, BlogCard } from '@/components'
-import { getAllPostsForBlogPage } from '@/lib/graphcms'
+import { sdk } from '@/lib/graphcms'
 import { formatDate } from '@/utils'
 import type { Post } from '@/generated/graphql'
 import type { Asset } from '@/interfaces'
@@ -30,8 +30,8 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
       />
 
       <section className="container">
-        <div className="mx-auto my-20 text-center lg:w-3/4 xl:w-2/3">
-          <h1 className="mb-10 text-4xl font-bold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+        <div className="lg:w-3/4 xl:w-2/3 mx-auto my-20 text-center">
+          <h1 className="dark:text-white sm:text-5xl md:text-6xl mb-10 text-4xl font-bold text-gray-900">
             Blog
           </h1>
         </div>
@@ -44,9 +44,9 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
             href={`/blog/${featuredPost.slug}-${featuredPost.id}`}
             locale={locale}
           >
-            <div className="items-center max-w-lg gap-12 mx-auto lg:grid lg:grid-cols-12 lg:max-w-none">
+            <div className="lg:grid lg:grid-cols-12 lg:max-w-none items-center max-w-lg gap-12 mx-auto">
               <div className="lg:col-span-7">
-                <div className="flex w-full overflow-hidden duration-200 transform rounded-lg group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1">
+                <div className="group-hover:shadow-lg group-focus:shadow-lg group-hover:-translate-y-1 group-focus:-translate-y-1 flex w-full overflow-hidden duration-200 transform rounded-lg">
                   <Image
                     alt={featuredPost.title}
                     image={featuredPost.cover as Asset}
@@ -56,11 +56,11 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
                 </div>
               </div>
 
-              <div className="mt-6 lg:col-span-5">
-                <h2 className="text-4xl font-semibold leading-tight text-gray-700 dark:text-white lg:text-5xl group-hover:underline group-focus:underline">
+              <div className="lg:col-span-5 mt-6">
+                <h2 className="dark:text-white group-hover:underline group-focus:underline lg:text-5xl text-4xl font-semibold leading-tight text-gray-700">
                   {featuredPost.title}
                 </h2>
-                <p className="mb-2 text-base text-gray-500 dark:text-gray-400 lg:text-lg">
+                <p className="dark:text-gray-400 lg:text-lg mb-2 text-base text-gray-500">
                   {t('blog.publishedAt')}{' '}
                   {formatDate(
                     new Date(featuredPost.published).toISOString().slice(0, 19),
@@ -68,7 +68,7 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
                     locale
                   )}
                 </p>
-                <p className="my-4 text-lg text-gray-600 dark:text-gray-300 lg:text-xl">
+                <p className="dark:text-gray-300 lg:text-xl my-4 text-lg text-gray-600">
                   {featuredPost.seo?.description}
                 </p>
               </div>
@@ -76,7 +76,7 @@ const BlogPage: NextPage<Props> = ({ featuredPost, posts }) => {
           </Link>
         )}
 
-        <div className="gap-6 my-24 md:grid md:grid-cols-2 lg:grid-cols-3">
+        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-24">
           {posts.map((post) => (
             <BlogCard key={post.slug} {...post} />
           ))}
@@ -91,7 +91,14 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
 ) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const data = await getAllPostsForBlogPage(locale as any)
+  const data = await sdk()
+    .getAllPostsForBlogPage({
+      body: false,
+      limit: 100,
+      locale: locale as any,
+      search: '',
+    })
+    .then((data) => data.data)
 
   return {
     props: {

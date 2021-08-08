@@ -7,7 +7,7 @@ const MenuToggle = ({
 }): JSX.Element => (
   <button
     aria-label="Open/Close Menu"
-    className="absolute flex items-center justify-center text-secondary-500 w-12 h-12 p-2 rounded-full z-[100] top-2 right-4 focus:outline-none focus:ring-2 focus:ring-primary"
+    className="flex absolute top-2 right-4 z-[100] justify-center items-center p-2 w-12 h-12 text-secondary-500 rounded-full focus:ring-2 focus:ring-primary focus:outline-none"
     onClick={() => toggle(!isOpen)}
     type="button"
   >

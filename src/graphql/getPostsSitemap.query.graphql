@@ -1,0 +1,19 @@
+query getPostsSitemap {
+  posts(orderBy: published_DESC) {
+    localizations(includeCurrent: true) {
+      locale
+      localizations {
+        locale
+        id
+        slug
+      }
+      id
+      updatedAt(variation: COMBINED)
+      title
+      slug
+      seo {
+        description
+      }
+    }
+  }
+}

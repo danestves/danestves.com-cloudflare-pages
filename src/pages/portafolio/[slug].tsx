@@ -10,8 +10,8 @@ import type { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 
 // Internals
 import PortfolioLayout from '@/layouts/portfolio'
-import { getAllPortfoliosWithSlug, getPortfolio } from '@/lib/graphcms'
-import type { Locale, Portfolio as IPortfolio } from '@/generated/graphql'
+import { sdk } from '@/lib/graphcms'
+import type { Portfolio as IPortfolio } from '@/generated/graphql'
 import type { MyLocale } from 'i18n'
 
 interface Props {
@@ -31,7 +31,11 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
   // Loop over every locale and later loop on every portfolio to add the locale
   for (const locale of locales as string[]) {
-    const data = await getAllPortfoliosWithSlug(locale as Locale)
+    const data = await sdk()
+      .getAllPortfoliosWithSlug({
+        locale: locale as any,
+      })
+      .then((data) => data.data)
 
     data.portfolios.map((portfolio) => {
       paths.push({
@@ -54,7 +58,13 @@ export const getStaticProps: GetStaticProps<I18nProps<MyLocale>> = async (
   const { table = {} } = await import(`i18n/${locale}`)
   const baseSlug = (context.params?.slug as string).split('-')
   const id = baseSlug[baseSlug.length - 1]
-  const data = await getPortfolio(context.locale as any, id)
+  const data = await sdk()
+    .getPortfolio({
+      id,
+      locale: locale as any,
+      stage: 'PUBLISHED' as any,
+    })
+    .then((data) => data.data)
 
   return {
     props: {

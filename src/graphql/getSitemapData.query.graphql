@@ -1,0 +1,36 @@
+query getSitemapData {
+  posts(orderBy: published_DESC) {
+    localizations(includeCurrent: true) {
+      locale
+      localizations {
+        locale
+        id
+        slug
+      }
+      id
+      updatedAt(variation: COMBINED)
+      title
+      slug
+      seo {
+        description
+      }
+    }
+  }
+  portfolios(orderBy: publishedAt_DESC) {
+    localizations(includeCurrent: true) {
+      locale
+      localizations {
+        locale
+        id
+        slug
+      }
+      id
+      updatedAt(variation: COMBINED)
+      title
+      slug
+      seo {
+        description
+      }
+    }
+  }
+}
