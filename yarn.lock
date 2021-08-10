@@ -1495,19 +1495,19 @@
   dependencies:
     emotion "10.0.27"
 
-"@giphy/js-fetch-api@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@giphy/js-fetch-api/-/js-fetch-api-4.1.0.tgz#4fb3b5f1c7eb96d0a0d1916d8b1dbc00ef1c0151"
-  integrity sha512-D/vZdGKwlqYDan70xwpi6Zu+B8nbF7YsGt1euiTneBBVdMHqyM2BR2JF+169P6qFq/WRZcE2QxpHzRkqyHJxSg==
+"@giphy/js-fetch-api@^4.1.0", "@giphy/js-fetch-api@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@giphy/js-fetch-api/-/js-fetch-api-4.1.1.tgz#ae7e4bea32ac4188ab3b16ce16896baf49749eae"
+  integrity sha512-LqmFNKrRHjeWUL+WUg+x7sszTaBUmydVUSkZ2UA0xWohDKLGYSQM3kRrukdVqWd88jZ76JdxadsAj82CbtelRA==
   dependencies:
-    "@giphy/js-types" "^4.0.2"
-    "@giphy/js-util" "^3.1.2"
+    "@giphy/js-types" "^4.0.3"
+    "@giphy/js-util" "^4.0.0"
     qs "^6.9.4"
 
-"@giphy/js-types@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@giphy/js-types/-/js-types-4.0.2.tgz#e3962b3dbcdf72674f9511b19e449dee8e2af4e6"
-  integrity sha512-fraw9ttGUYZDmN0q5yx810W45/fLRgIQRdhTGRnpEuxm/KgUobJ/BNBBMSp6fagaUmMNqZ6lxk4i/jUBB3fH0w==
+"@giphy/js-types@^4.0.2", "@giphy/js-types@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@giphy/js-types/-/js-types-4.0.3.tgz#3f802d6a1639eed2eef604942814db1dea55290d"
+  integrity sha512-IMfpb5LYcFLHc0v6uGHBuXO5T15G+I/++6ZkuapVWqRcm58BqaWg6/YViJkSU0Sm/IWKaXAVwHUd4p/RtJFWng==
 
 "@giphy/js-util@^3.1.2":
   version "3.1.2"
@@ -1515,6 +1515,15 @@
   integrity sha512-YpTWkI1PEq2QwFHjUyjf9dtjKkTFGMjOWY59k7APDWYUsaZcd1wUhj/9yae+PRKaKxNPwkdJOB7IRbh91kX2uQ==
   dependencies:
     "@giphy/js-types" "^4.0.2"
+    dompurify "^2.2.2"
+    uuid "^8.3.0"
+
+"@giphy/js-util@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@giphy/js-util/-/js-util-4.0.0.tgz#57cdc750cded426abe303b866de884e0964c42cd"
+  integrity sha512-zV3q7rhjj9vE2adt3nzgultZXNagROXB+5/4vMmi77uOFytOpPIZLzK4P+vZzXPAoV8Z8wuYwY0SzTiOoH2SDQ==
+  dependencies:
+    "@giphy/js-types" "^4.0.3"
     dompurify "^2.2.2"
     uuid "^8.3.0"
 
