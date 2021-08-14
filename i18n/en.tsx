@@ -18,7 +18,8 @@ export const table: MyLocale = {
     },
   },
   home: {
-    summary: 'Passionate about technology and eager to learn and spread knowledge throughout',
+    summary:
+      'Passionate about technology and eager to learn and spread knowledge throughout',
     buttons: {
       contact: {
         label: 'Contact',
@@ -78,7 +79,8 @@ export const table: MyLocale = {
   },
   blog: {
     seo: {
-      title: 'A blog to learn about JavaScript, React, Vue, resources and much more',
+      title:
+        'A blog to learn about JavaScript, React, Vue, resources and much more',
       description:
         'This is a blog about news, tutorials, step by step to create functions that will help us in our development and much more with @danestves using JavaScript.',
     },
@@ -90,7 +92,6 @@ export const table: MyLocale = {
         label: 'Entra aquí',
       },
     },
-    editOnGitHub: 'Edit on GitHub',
     commentOnTwitter: 'Comment on Twitter',
   },
   contact: {
@@ -131,7 +132,8 @@ export const table: MyLocale = {
   },
   newsletter: {
     title: 'Want to be the first to read my posts?',
-    summary: 'Subscribe to the newsletter and you will get tutorials, news and first-hand posts.',
+    summary:
+      'Subscribe to the newsletter and you will get tutorials, news and first-hand posts.',
     form: {
       label: 'Email',
       placeholder: 'Enter your email',

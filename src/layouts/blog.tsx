@@ -17,9 +17,6 @@ import type { Post } from '@/generated/graphql'
 import type { Asset } from '@/interfaces'
 import type { MyLocale } from 'i18n'
 
-const editUrl = (slug: string, lang: string): string => {
-  return `https://github.com/danestves/website/edit/master/src/data/posts/${lang}/${slug}.mdx`
-}
 const discussUrl = (slug: string): string => {
   return `https://mobile.twitter.com/search?q=${encodeURIComponent(
     `https://danestves.com/blog/${slug}`
@@ -84,7 +81,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
 
       <article className="container px-5 py-16">
         <div className="container">
-          <div className="mx-auto text-center dark:text-white lg:w-3/4 xl:w-2/3">
+          <div className="dark:text-white lg:w-3/4 xl:w-2/3 mx-auto text-center">
             <h1 className="mb-20 text-3xl font-semibold sm:text-5xl md:text-[5rem]">
               {post.title}
             </h1>
@@ -100,7 +97,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
           />
 
           <div className="flex justify-center my-8">
-            <div className="flex items-center space-x-4 divide-x-2 divide-gray-300 dark:divide-white">
+            <div className="dark:divide-white flex items-center space-x-4 divide-x-2 divide-gray-300">
               <Image
                 alt="Daniel Esteves"
                 className="rounded-full"
@@ -110,40 +107,40 @@ export default function PostLayout({ post }: Props): JSX.Element {
               />
 
               <div className="pl-4">
-                <h2 className="font-sans text-lg font-semibold text-gray-700 dark:text-white">
+                <h2 className="dark:text-white font-sans text-lg font-semibold text-gray-700">
                   Daniel Esteves
                 </h2>
-                <p className="text-gray-500 capitalize dark:text-white">
+                <p className="dark:text-white text-gray-500 capitalize">
                   {formatDate(
                     new Date(post.published).toISOString().slice(0, 19),
                     'MMMM d, yyyy',
                     locale
                   )}
                 </p>
-                <p className="text-gray-500 dark:text-white">
+                <p className="dark:text-white text-gray-500">
                   {readingTime({
                     wordCount: post.body.split(/\s+/gu).length,
                     lang: locale,
                   })}
                 </p>
-                <p className="text-gray-500 dark:text-white">
+                <p className="dark:text-white text-gray-500">
                   <ViewCounter slug={post.slug} />
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="max-w-lg p-4 ml-auto bg-blue-100 rounded-md dark:bg-blue-50">
+          <div className="dark:bg-blue-50 max-w-lg p-4 ml-auto bg-blue-100 rounded-md">
             <div className="flex">
               <div className="flex-shrink-0">
                 {/* Heroicon name: solid/information-circle */}
                 <InformationCircleIcon className="w-5 h-5 text-blue-400" />
               </div>
-              <div className="flex-1 ml-3 md:flex md:justify-between">
+              <div className="md:flex md:justify-between flex-1 ml-3">
                 <p className="text-sm text-blue-700">{t('blog.alert.text')}</p>
-                <p className="mt-3 text-sm md:mt-0 md:ml-6">
+                <p className="md:mt-0 md:ml-6 mt-3 text-sm">
                   <Link
-                    className="font-medium text-blue-700 whitespace-nowrap hover:text-blue-600"
+                    className="whitespace-nowrap hover:text-blue-600 font-medium text-blue-700"
                     href={`/blog/${post.localizations[0].slug}-${post.localizations[0].id}`}
                     locale={post.localizations[0].locale}
                   >
@@ -157,7 +154,7 @@ export default function PostLayout({ post }: Props): JSX.Element {
         </div>
 
         <div className="relative max-w-3xl mx-auto mt-8">
-          <div className="max-w-full prose prose-lg dark:prose-dark">
+          <div className="dark:prose-dark max-w-full prose prose-lg">
             <MDXRemote
               compiledSource={post.mdx.compiledSource}
               components={MDXComponents}
@@ -167,14 +164,6 @@ export default function PostLayout({ post }: Props): JSX.Element {
           <Subscribe />
 
           <div className="flex items-center justify-start mt-6 space-x-3">
-            <a
-              className="text-white underline"
-              href={editUrl(post.slug, locale as string)}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {t('blog.editOnGitHub')}
-            </a>
             <a
               className="text-white underline"
               href={discussUrl(post.slug)}

@@ -52,7 +52,8 @@ export const table: MyLocale = {
   openSource: {
     seo: {
       title: 'Open Source - Proyectos para la comunidad',
-      description: 'Proyectos libres para aportar nuevas herramientas a la comunidad.',
+      description:
+        'Proyectos libres para aportar nuevas herramientas a la comunidad.',
     },
     highlights: {
       title: 'Proyectos destacados',
@@ -127,12 +128,12 @@ export const table: MyLocale = {
         label: 'Click here',
       },
     },
-    editOnGitHub: 'Editar en GitHub',
     commentOnTwitter: 'Comentar en Twitter',
   },
   newsletter: {
     title: '¿Quieres ser el primero en leer mis posts?',
-    summary: 'Suscríbete al newsletter y tendrás tutoriales, noticias y posts de primera mano.',
+    summary:
+      'Suscríbete al newsletter y tendrás tutoriales, noticias y posts de primera mano.',
     form: {
       label: 'Correo',
       placeholder: 'Ingresa tu correo',

@@ -84,7 +84,6 @@ export interface MyLocale {
         label: string
       }
     }
-    editOnGitHub: string
     commentOnTwitter: string
   }
   contact: {
