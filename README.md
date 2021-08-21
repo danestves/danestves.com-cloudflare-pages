@@ -1,28 +1,33 @@
-# Starting something cool
+# NextJS Typescript Boilerplate
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+Bootstrap a developer-friendly NextJS app configured with:
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+- [Typescript](https://www.typescriptlang.org/)
+- Linting with [ESLint](https://eslint.org/)
+- Formatting with [Prettier](https://prettier.io/)
+- Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
+- Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
 
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+## Preview
 
-## Contributors ✨
+Preview the example live on [StackBlitz](http://stackblitz.com/):
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest)
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/ielijose"><img src="https://avatars.githubusercontent.com/u/2319641?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eli José Carrasquero</b></sub></a><br /><a href="#blog-ielijose" title="Blogposts">📝</a></td>
-    <td align="center"><a href="https://github.com/Andresdamelio"><img src="https://avatars.githubusercontent.com/u/36086897?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrés D' Amelio</b></sub></a><br /><a href="https://github.com/danestves/website/issues?q=author%3Aandresdamelio" title="Bug reports">🐛</a></td>
-  </tr>
-</table>
+## Deploy your own
 
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest&project-name=with-typescript-eslint-jest&repository-name=with-typescript-eslint-jest)
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+## How to use
+
+Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+
+```bash
+npx create-next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
+# or
+yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
+```
+
+Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).

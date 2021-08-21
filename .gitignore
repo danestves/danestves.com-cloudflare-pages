@@ -32,7 +32,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-public/sitemap.xml
-public/rss.xml
-public/sw.js
-public/workbox-*.js
