@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       </Transition>
 
       <Transition
-        as={React.Fragment}
+        className="w-screen min-h-screen"
         enter="transform transition duration-[400ms]"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -43,9 +43,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         leaveTo="opacity-0"
         show={!isLoading}
       >
-        <div>
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
       </Transition>
     </>
   )
