@@ -1,13 +1,19 @@
 // Dependencies
 import * as React from 'react'
 import { Transition } from '@headlessui/react'
+import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
 
 // Internals
 import { Logo, Rings } from '@/components'
 import '@/styles/main.css'
+import defaultSeo, { texts } from 'seoConfig'
 
-export default function App({ Component, pageProps }: AppProps): JSX.Element {
+export default function App({
+  Component,
+  pageProps,
+  router,
+}: AppProps): JSX.Element {
   const [isLoading, setIsLoading] = React.useState(true)
 
   React.useEffect(() => {
@@ -16,8 +22,28 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
     }, 1000)
   })
 
+  const lang = router.locale === 'es' ? '/es' : ''
+  const basePath = `https://danestves.com${lang}${router.asPath}`
+
   return (
     <>
+      <DefaultSeo
+        {...defaultSeo(router.locale)}
+        canonical={basePath}
+        openGraph={{
+          ...defaultSeo(router.locale).openGraph,
+          images: [
+            {
+              url: `https://cdn.flyyer.io/v2/danestves-com/_/_${lang}${router.asPath}`,
+              alt: texts.title[router.locale],
+              height: 630,
+              width: 1200,
+            },
+          ],
+          url: basePath,
+        }}
+      />
+
       <Transition
         as="div"
         className="flex items-center justify-center w-screen h-screen"

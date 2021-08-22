@@ -25,7 +25,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
+    "browser-monads-ts": "^1.2.2",
     "next": "^11.1.0",
+    "next-seo": "^4.26.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

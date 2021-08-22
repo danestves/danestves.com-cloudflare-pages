@@ -1430,6 +1430,13 @@ brorand@^1.0.1, brorand@^1.1.0:
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
+browser-monads-ts@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/browser-monads-ts/-/browser-monads-ts-1.2.2.tgz#98fa4c4928fc69ff66ec06b21c2b09e3d2a7eee4"
+  integrity sha512-8Y5OUXCSxDSkVpqEYZOc6BSsC6IlAhsAdgh/5JHohqllTSVT/gpmbwrqWl+q/jReKKPa8W3tn+urZ3F126of0g==
+  dependencies:
+    nothing-mock "^1.0.4"
+
 browser-process-hrtime@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/browser-process-hrtime/-/browser-process-hrtime-1.0.0.tgz#3c9b4b7d782c8121e56f10106d84c0d0ffc94626"
@@ -4279,6 +4286,11 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
+next-seo@^4.26.0:
+  version "4.26.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.26.0.tgz#4218cfae5651fdc2e330dcdf1cc1b34ce199d41c"
+  integrity sha512-5TqywQ3XAwqdmEU1AyNZjR7WdDKFTkDD8aBtgQelPvzBUEy8i0mTjtiw+09jhiHFNik6FqS8uPKCaYcY6jRgSQ==
+
 next@^11.1.0:
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/next/-/next-11.1.0.tgz#767d4c4fa0b9b0c768cdbd6c9f03dd86b5d701c0"
@@ -4427,6 +4439,11 @@ normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
   integrity sha1-LRDAa9/TEuqXd2laTShDlFa3WUI=
+
+nothing-mock@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/nothing-mock/-/nothing-mock-1.0.4.tgz#470b6bd7f7e0dd900b101ed77178683db5141298"
+  integrity sha512-wl5hpQruSQHt5M15oY/akWd7hFPyec0uTCUHYQa3WhBeTxonsFnMKmixaCDvb4U7MN9UjS2UvXw3s4KxjrNjKg==
 
 npm-run-path@^4.0.1:
   version "4.0.1"
