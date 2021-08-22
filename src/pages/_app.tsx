@@ -5,7 +5,7 @@ import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
 
 // Internals
-import { Logo, Rings } from '@/components'
+import { Layout, Logo, Rings } from '@/components'
 import '@/styles/main.css'
 import defaultSeo, { texts } from 'seoConfig'
 
@@ -60,6 +60,7 @@ export default function App({
       </Transition>
 
       <Transition
+        as="div"
         className="w-screen min-h-screen"
         enter="transform transition duration-[400ms]"
         enterFrom="opacity-0"
@@ -69,7 +70,9 @@ export default function App({
         leaveTo="opacity-0"
         show={!isLoading}
       >
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </Transition>
     </>
   )
