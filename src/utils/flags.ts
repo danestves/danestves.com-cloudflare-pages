@@ -18,7 +18,7 @@ import USAsset from 'public/static/flags/US.png'
 import UYAsset from 'public/static/flags/UY.png'
 import VEAsset from 'public/static/flags/VE.png'
 
-export const FLAGS = {
+export const ES_FLAGS = {
   AR: {
     name: 'Argentina',
     image: ARAsset,
@@ -79,10 +79,6 @@ export const FLAGS = {
     name: 'El Salvador',
     image: SVAsset,
   },
-  US: {
-    name: 'United States',
-    image: USAsset,
-  },
   UY: {
     name: 'Uruguay',
     image: UYAsset,
@@ -91,4 +87,9 @@ export const FLAGS = {
     name: 'Venezuela',
     image: VEAsset,
   },
+}
+
+export const US_FLAG = {
+  name: 'United States',
+  image: USAsset,
 }

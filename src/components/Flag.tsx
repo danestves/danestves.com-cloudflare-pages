@@ -5,7 +5,7 @@ import useSWR from 'swr'
 
 // Internals
 import { fetcher } from '@/lib'
-import { FLAGS } from '@/utils'
+import { ES_FLAGS, US_FLAG } from '@/utils'
 
 export type FlagProps = {
   locale?: string
@@ -18,21 +18,25 @@ export const Flag = (props: FlagProps): JSX.Element => {
   if (!data) return null
 
   if (locale === 'es') {
-    if (FLAGS[data.country]) {
+    if (ES_FLAGS[data.country]) {
       return (
         <Image
-          alt={FLAGS[data.country].name}
+          alt={ES_FLAGS[data.country].name}
           placeholder="blur"
-          src={FLAGS[data.country].image}
+          src={ES_FLAGS[data.country].image}
         />
       )
     } else {
       return (
-        <Image alt={FLAGS.ES.name} placeholder="blur" src={FLAGS.ES.image} />
+        <Image
+          alt={ES_FLAGS.ES.name}
+          placeholder="blur"
+          src={ES_FLAGS.ES.image}
+        />
       )
     }
   } else if (locale === 'en') {
-    return <Image alt={FLAGS.US.name} placeholder="blur" src={FLAGS.US.image} />
+    return <Image alt={US_FLAG.name} placeholder="blur" src={US_FLAG.image} />
   }
 }
 
