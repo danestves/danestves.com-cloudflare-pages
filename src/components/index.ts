@@ -1,3 +1,6 @@
+export * from './Flag'
+export * from './LanguageSwitcher'
 export * from './Layout'
 export * from './Link'
 export * from './Logo'
+export * from './ThemeSwitcher'

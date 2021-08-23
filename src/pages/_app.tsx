@@ -1,6 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { Transition } from '@headlessui/react'
+import { I18nProvider } from 'next-rosetta'
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
 
@@ -26,7 +27,7 @@ export default function App({
   const basePath = `https://danestves.com${lang}${router.asPath}`
 
   return (
-    <>
+    <I18nProvider table={pageProps.table}>
       <DefaultSeo
         {...defaultSeo(router.locale)}
         canonical={basePath}
@@ -74,6 +75,6 @@ export default function App({
           <Component {...pageProps} />
         </Layout>
       </Transition>
-    </>
+    </I18nProvider>
   )
 }
