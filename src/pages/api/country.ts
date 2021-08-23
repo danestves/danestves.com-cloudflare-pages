@@ -10,7 +10,7 @@ export default async function handler(
       .then((response) => response.json())
       .then((json) => json.countryCode)
 
-    return res.json({ country })
+    return res.json({ country, ip: req.connection.remoteAddress })
   } catch (error) {
     return res.status(200).json(error)
   }
