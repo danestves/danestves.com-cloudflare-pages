@@ -30,7 +30,7 @@
     "@graphcms/react-image": "^1.0.1",
     "@headlessui/react": "^1.4.0",
     "@heroicons/react": "^1.0.4",
-    "algoliasearch": "^4.10.3",
+    "algoliasearch": "^4.10.4",
     "browser-monads-ts": "^1.2.2",
     "clsx": "^1.1.1",
     "date-fns": "^2.23.0",
