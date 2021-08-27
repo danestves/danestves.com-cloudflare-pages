@@ -29,9 +29,6 @@ jobs:
       - name: Run ESLint
         run: yarn lint
 
-      - name: Run stylelint
-        run: yarn stylelint
-
   deploy:
     runs-on: ubuntu-latest
     needs: lint
