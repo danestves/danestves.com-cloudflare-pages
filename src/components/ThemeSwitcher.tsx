@@ -1,5 +1,5 @@
-// Dependencies
-import { MoonIcon } from '@heroicons/react/solid'
+// Internals
+import { MoonIcon } from '@/components/Icons'
 
 export const ThemeSwitcher = (): JSX.Element => {
   return (

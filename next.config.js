@@ -1,4 +1,8 @@
 // @ts-check
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+const withPlugins = require('next-compose-plugins')
 const withPreact = require('next-plugin-preact')
 
 /**
@@ -11,4 +15,7 @@ const nextConfig = {
   },
 }
 
-module.exports = module.exports = withPreact(nextConfig)
+module.exports = module.exports = withPlugins(
+  [[withBundleAnalyzer], [withPreact]],
+  nextConfig
+)

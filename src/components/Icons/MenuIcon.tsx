@@ -1,4 +1,4 @@
-export const MenuIcon = (props: React.SVGProps<SVGSVGElement>): JSX.Element => {
+export function MenuIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       fill="none"

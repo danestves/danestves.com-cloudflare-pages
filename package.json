@@ -9,7 +9,8 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "analyze": "ANALYZE=true yarn build"
   },
   "husky": {
     "hooks": {
@@ -25,11 +26,12 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
-    "@heroicons/react": "^1.0.4",
+    "@next/bundle-analyzer": "^11.1.0",
     "browser-monads-ts": "^1.2.2",
     "framer-motion": "^4.1.17",
     "nanoid": "^3.1.25",
     "next": "^11.1.0",
+    "next-compose-plugins": "^2.2.1",
     "next-plugin-preact": "^3.0.6",
     "next-rosetta": "^1.3.1",
     "next-seo": "^4.26.0",

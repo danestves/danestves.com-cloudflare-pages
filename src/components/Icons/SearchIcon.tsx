@@ -1,6 +1,4 @@
-export const SearchIcon = (
-  props: React.SVGProps<SVGSVGElement>
-): JSX.Element => {
+export function SearchIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       fill="none"
