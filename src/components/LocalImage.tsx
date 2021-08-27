@@ -66,7 +66,7 @@ export const LocalImage = ({
       animate={loaded ? 'loaded' : 'loading'}
       initial="loading"
       style={{ originX: 0.5, originY: 0.5 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.2 }}
       variants={variants}
     >
       <NextImage {...image} onLoadingComplete={() => setLoaded(true)} />
