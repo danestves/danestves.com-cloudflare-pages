@@ -12,6 +12,7 @@
       },
       {
         "metric": "largest-contentful-paint",
+        "maxNumericValue": 3000,
         "budget": 3000
       },
       {

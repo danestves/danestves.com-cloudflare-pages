@@ -39,9 +39,9 @@ jobs:
         with:
           github-token: ${{ secrets.GH_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID}}
-          vercel-project-id: ${{ secrets.PROJECT_ID}}
-          vercel-project-name: 'nextjs-tooling'
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+          vercel-project-name: 'danestves'
     outputs:
       preview-url: ${{ steps.vercel-deployment.outputs.preview-url }}
 
