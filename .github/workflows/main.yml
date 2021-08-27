@@ -66,7 +66,6 @@ jobs:
     steps:
       - uses: actions/github-script@v4
       - name: Format lighthouse score
-        id: format_lighthouse_score
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
