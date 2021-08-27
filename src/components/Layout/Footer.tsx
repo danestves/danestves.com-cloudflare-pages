@@ -5,36 +5,8 @@ import Router from 'next/router'
 
 // Internals
 import { Link } from '@/components'
+import { FLOATING_MENU, MENU } from '@/constants'
 import AssetLogo from 'public/static/favicon.png'
-
-const menu = [
-  {
-    href: '/about',
-    label: {
-      en: 'about me',
-      es: 'sobre mi',
-    },
-  },
-  {
-    href: '/github',
-    label: 'open source',
-  },
-  {
-    href: '/portfolio',
-    label: 'portafolio',
-  },
-  {
-    href: '/blog',
-    label: 'blog',
-  },
-  {
-    href: '/contact',
-    label: {
-      en: 'contact',
-      es: 'contacto',
-    },
-  },
-]
 
 export const Footer = (): JSX.Element => {
   return (
@@ -42,20 +14,22 @@ export const Footer = (): JSX.Element => {
       <div className="fixed bottom-8 left-12">
         <Link
           className="font-semibold uppercase text-primary"
-          href="/blog"
+          href={FLOATING_MENU.left.href}
           locale={Router.locale}
         >
-          blog
+          {FLOATING_MENU.left.label}
         </Link>
       </div>
 
       <div className="fixed bottom-8 right-12">
         <Link
           className="font-semibold uppercase text-primary"
-          href="/contact"
+          href={FLOATING_MENU.right.href}
           locale={Router.locale}
         >
-          contacto 🤙
+          {FLOATING_MENU.right.label[Router.locale] ||
+            FLOATING_MENU.right.label}{' '}
+          🤙
         </Link>
       </div>
 
@@ -70,7 +44,7 @@ export const Footer = (): JSX.Element => {
           </Link>
 
           <ul className="flex flex-col items-center justify-center xs:flex-row xs:space-x-4">
-            {menu.map((item) => (
+            {MENU.map((item) => (
               <li key={nanoid()}>
                 <Link
                   className="text-[10px] text-[#989898] uppercase font-semibold leading-3 hover:text-primary"

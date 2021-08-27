@@ -56,8 +56,8 @@ export default function App({
         leaveTo="opacity-0 scale-95"
         show={isLoading}
       >
-        <Logo className="absolute mt-px -ml-px" />
-        <Rings />
+        <Logo className="absolute mt-[2px] -ml-px" />
+        <Rings animate className="w-[177px]" />
       </Transition>
 
       <Transition

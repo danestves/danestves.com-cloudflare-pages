@@ -1,9 +1,9 @@
 // Dependencies
-import Image from 'next/image'
 import Router from 'next/router'
 import useSWR from 'swr'
 
 // Internals
+import { LocalImage } from '@/components'
 import { fetcher } from '@/lib'
 import { ES_FLAGS, US_FLAG } from '@/utils'
 
@@ -20,23 +20,35 @@ export const Flag = (props: FlagProps): JSX.Element => {
   if (locale === 'es') {
     if (ES_FLAGS[data.country]) {
       return (
-        <Image
-          alt={ES_FLAGS[data.country].name}
-          placeholder="blur"
-          src={ES_FLAGS[data.country].image}
+        <LocalImage
+          image={{
+            alt: ES_FLAGS[data.country].name,
+            placeholder: 'blur',
+            src: ES_FLAGS[data.country].image,
+          }}
         />
       )
     } else {
       return (
-        <Image
-          alt={ES_FLAGS.ES.name}
-          placeholder="blur"
-          src={ES_FLAGS.ES.image}
+        <LocalImage
+          image={{
+            alt: ES_FLAGS.ES.name,
+            placeholder: 'blur',
+            src: ES_FLAGS.ES.image,
+          }}
         />
       )
     }
   } else if (locale === 'en') {
-    return <Image alt={US_FLAG.name} placeholder="blur" src={US_FLAG.image} />
+    return (
+      <LocalImage
+        image={{
+          alt: US_FLAG.name,
+          placeholder: 'blur',
+          src: US_FLAG.image,
+        }}
+      />
+    )
   }
 }
 
