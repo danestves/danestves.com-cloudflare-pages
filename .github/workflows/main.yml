@@ -66,6 +66,7 @@ jobs:
     steps:
       - uses: actions/github-script@v4
       - name: Format lighthouse score
+        uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -97,6 +98,8 @@ jobs:
     needs: create_comment
     steps:
       - uses: marocchino/sticky-pull-request-comment@v2
+      - name: Comment lighthouse score on PR
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           number: ${{ github.event.issue.number }}
