@@ -43,7 +43,7 @@ export const Header = (): JSX.Element => {
       </header>
 
       {/* Left Sidebar */}
-      <div className="fixed top-0 left-0 hidden h-full px-12 md:block">
+      <aside className="fixed top-0 left-0 z-10 hidden h-full px-12 md:block">
         <ul className="flex flex-col items-center justify-center h-full space-y-4 rotate-180">
           {MENU.map((item) => (
             <li key={nanoid()}>
@@ -57,10 +57,10 @@ export const Header = (): JSX.Element => {
             </li>
           ))}
         </ul>
-      </div>
+      </aside>
 
       {/* Right Sidebar */}
-      <div className="fixed top-0 right-0 hidden h-full px-12 md:block">
+      <aside className="fixed top-0 right-0 z-10 hidden h-full px-12 md:block">
         <ul className="flex flex-col items-center justify-center h-full space-y-4 rotate-180">
           {SOCIAL.map((item) => (
             <li key={nanoid()}>
@@ -74,7 +74,7 @@ export const Header = (): JSX.Element => {
             </li>
           ))}
         </ul>
-      </div>
+      </aside>
     </>
   )
 }
