@@ -70,8 +70,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const result = ${{ steps.lighthouse_audit.outputs.manifest }}[0].summary
-            const links = ${{ steps.lighthouse_audit.outputs.links }}
+            const result = ${{ needs.lighthouse.outputs.manifest }}[0].summary
+            const links = ${{ needs.lighthouse.outputs.links }}
 
             const formatResult = (res) => Math.round((res * 100))
             Object.keys(result).forEach(key => result[key] = formatResult(result[key]))
@@ -103,4 +103,4 @@ jobs:
           number: ${{ github.event.issue.number }}
           header: lighthouse
           message: |
-            ${{ steps.format_lighthouse_score.outputs.comment }}
+            ${{ needs.create_comment.outputs.comment }}
