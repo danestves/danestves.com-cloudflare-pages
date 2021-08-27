@@ -1515,10 +1515,10 @@
     dompurify "^2.2.2"
     uuid "^8.3.0"
 
-"@giphy/react-components@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@giphy/react-components/-/react-components-4.0.1.tgz#3f77dcb01087850146650a37264fc2bdd87faee4"
-  integrity sha512-ziFtMUWzAJ4mr1xejl1XAiQN0qkuQeA9ry86nA2sk72RJDIyG9bTWbG9cIpizLDfQqUlIsNWq3onn46UUa2Z/w==
+"@giphy/react-components@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@giphy/react-components/-/react-components-5.0.1.tgz#52c526bd876194022c70e3f7aaaa32f45ce198f5"
+  integrity sha512-yktaEJ0ByVx13yBFBR71KDVJOZ33Bbd2vW/iTI1Zx+daCWv2shGgfCpafu3fGwP3A/2HMr1pfnlSh+xs5rPOLQ==
   dependencies:
     "@emotion/core" "10.1.1"
     "@emotion/styled" "10.0.27"
