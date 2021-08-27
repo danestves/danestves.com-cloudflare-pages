@@ -1,4 +1,4 @@
-export const Logo = (props: React.ComponentProps<'svg'>): JSX.Element => {
+export const Logo = (props: React.SVGProps<SVGSVGElement>): JSX.Element => {
   return (
     <svg
       fill="none"

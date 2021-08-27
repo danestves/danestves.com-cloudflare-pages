@@ -1,7 +1,7 @@
 // Internals
 import { clsx } from '@/utils'
 
-export type RingsProps = React.ComponentProps<'svg'> & {
+export type RingsProps = React.SVGProps<SVGSVGElement> & {
   animate?: boolean
 }
 
