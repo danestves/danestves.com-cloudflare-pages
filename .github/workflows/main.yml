@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: lighthouse
     steps:
-      - uses: actions/github-script@v4
+      - uses: actions/checkout@v2
       - name: Format lighthouse score
         uses: actions/github-script@v4
         with:
@@ -97,7 +97,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: create_comment
     steps:
-      - uses: marocchino/sticky-pull-request-comment@v2
+      - uses: actions/checkout@v2
       - name: Comment lighthouse score on PR
         uses: marocchino/sticky-pull-request-comment@v2
         with:
