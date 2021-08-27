@@ -12,20 +12,18 @@ export const LanguageSwitcher = (): JSX.Element => {
   const { t } = useI18n<Locale>()
 
   return (
-    <Menu as="div" className="relative inline-block text-left">
-      <div>
-        <Menu.Button className="inline-flex items-center px-4 py-2 space-x-4 rounded-md focus:outline focus:ring-4 focus:ring-primary focus:ring-opacity-50 focus:outline-none">
-          <div className="w-6 h-6 rounded-full">
-            <Flag />
-          </div>
-          <span className="font-semibold uppercase sr-only text-primary md:not-sr-only">
-            {t('header.switcher.lang')}{' '}
-            <span aria-label="waving hand" role="img">
-              👋🏻
-            </span>
+    <Menu as="div" className="relative inline-flex text-left">
+      <Menu.Button className="inline-flex items-center space-x-4 rounded-full md:rounded-md md:px-4 md:py-2 focus:outline focus:ring-4 focus:ring-primary focus:ring-opacity-50 focus:outline-none">
+        <div className="rounded-full w-9 h-9 md:w-6 md:h-6">
+          <Flag />
+        </div>
+        <span className="font-semibold uppercase sr-only text-primary md:not-sr-only">
+          {t('header.switcher.lang')}{' '}
+          <span aria-label="waving hand" role="img">
+            👋🏻
           </span>
-        </Menu.Button>
-      </div>
+        </span>
+      </Menu.Button>
 
       <Transition
         as={React.Fragment}
@@ -36,7 +34,7 @@ export const LanguageSwitcher = (): JSX.Element => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 mt-2 overflow-hidden origin-top-right bg-white rounded-md shadow-lg w-max ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 mt-2 overflow-hidden origin-top-right bg-white rounded-md shadow-lg top-full w-max ring-1 ring-black ring-opacity-5 focus:outline-none">
           <Menu.Item>
             <Link
               className="inline-flex items-center p-4 mx-auto space-x-4 transition-colors duration-200 group hover:bg-primary"

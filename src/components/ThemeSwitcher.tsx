@@ -7,7 +7,7 @@ export const ThemeSwitcher = (): JSX.Element => {
       className="inline-flex p-2 text-white rounded-full bg-primary focus:ring-4 focus:outline-none focus:ring-primary focus:ring-opacity-50"
       type="button"
     >
-      <MoonIcon className="inline-block w-6 h-6" />
+      <MoonIcon className="inline-block w-[21px] h-auto" />
     </button>
   )
 }

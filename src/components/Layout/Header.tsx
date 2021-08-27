@@ -4,7 +4,14 @@ import { useRouter } from 'next/router'
 import { useWindowScroll } from 'react-use'
 
 // Internals
-import { LanguageSwitcher, Link, LocalImage, ThemeSwitcher } from '@/components'
+import {
+  LanguageSwitcher,
+  Link,
+  LocalImage,
+  Search,
+  ThemeSwitcher,
+} from '@/components'
+import { MenuIcon } from '@/components/Icons'
 import { MENU, SOCIAL } from '@/constants'
 import { clsx } from '@/utils'
 import AssetLogo from 'public/static/favicon.png'
@@ -17,28 +24,69 @@ export const Header = (): JSX.Element => {
     <>
       <header
         className={clsx(
-          'fixed top-0 left-0 w-full px-12 transition-all duration-200 z-20',
+          'fixed top-0 left-0 w-full px-6 md:px-12 transition-all duration-200 z-20',
           y >= 104 ? 'bg-white shadow py-2' : 'py-6'
         )}
       >
         <div className="flex items-center justify-between w-full">
-          <Link
-            className="inline-block w-8 h-8 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50"
-            href="/"
-            locale={router.locale}
-          >
-            <LocalImage
-              image={{
-                alt: '@danestves',
-                placeholder: 'blur',
-                src: AssetLogo,
-              }}
-            />
-          </Link>
+          <div className="flex items-center space-x-6">
+            <button
+              className="block rounded-md md:hidden focus:outline focus:ring-4 focus:ring-secondary focus:ring-opacity-50 focus:outline-none"
+              type="button"
+            >
+              <MenuIcon className="h-auto text-secondary w-[31px]" />
+            </button>
 
-          <ThemeSwitcher />
+            <div className="block md:hidden">
+              <ThemeSwitcher />
+            </div>
 
-          <LanguageSwitcher />
+            <Link
+              className="hidden w-9 h-9 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50 md:inline-block"
+              href="/"
+              locale={router.locale}
+            >
+              <LocalImage
+                image={{
+                  alt: '@danestves',
+                  placeholder: 'blur',
+                  src: AssetLogo,
+                }}
+              />
+            </Link>
+          </div>
+
+          <div className="flex">
+            <Link
+              className="inline-block md:hidden w-9 h-9 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50"
+              href="/"
+              locale={router.locale}
+            >
+              <LocalImage
+                container={{
+                  className: 'inline-flex',
+                }}
+                image={{
+                  alt: '@danestves',
+                  placeholder: 'blur',
+                  src: AssetLogo,
+                }}
+              />
+            </Link>
+
+            {/* We put a padding left to simulate that in desktop is centered */}
+            <div className="hidden md:block md:pl-12">
+              <ThemeSwitcher />
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-6">
+            <div className="block md:hidden">
+              <Search />
+            </div>
+
+            <LanguageSwitcher />
+          </div>
         </div>
       </header>
 
