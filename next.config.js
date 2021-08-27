@@ -15,7 +15,4 @@ const nextConfig = {
   },
 }
 
-module.exports = module.exports = withPlugins(
-  [[withBundleAnalyzer], [withPreact]],
-  nextConfig
-)
+module.exports = withPlugins([[withBundleAnalyzer], [withPreact]], nextConfig)
