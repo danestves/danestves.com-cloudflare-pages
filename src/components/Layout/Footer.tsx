@@ -11,7 +11,8 @@ import AssetLogo from 'public/static/favicon.png'
 export const Footer = (): JSX.Element => {
   return (
     <>
-      <div className="fixed bottom-8 left-12">
+      {/* Left Link */}
+      <div className="fixed hidden bottom-8 left-12 md:block">
         <Link
           className="font-semibold uppercase text-primary"
           href={FLOATING_MENU.left.href}
@@ -21,7 +22,8 @@ export const Footer = (): JSX.Element => {
         </Link>
       </div>
 
-      <div className="fixed bottom-8 right-12">
+      {/* Right Link */}
+      <div className="fixed hidden bottom-8 right-12 md:block">
         <Link
           className="font-semibold uppercase text-primary"
           href={FLOATING_MENU.right.href}

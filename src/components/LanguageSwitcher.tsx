@@ -18,8 +18,11 @@ export const LanguageSwitcher = (): JSX.Element => {
           <div className="w-6 h-6 rounded-full">
             <Flag />
           </div>
-          <span className="font-semibold uppercase text-primary">
-            {t('header.switcher.lang')} 👋🏻
+          <span className="font-semibold uppercase sr-only text-primary md:not-sr-only">
+            {t('header.switcher.lang')}{' '}
+            <span aria-label="waving hand" role="img">
+              👋🏻
+            </span>
           </span>
         </Menu.Button>
       </div>
@@ -44,7 +47,10 @@ export const LanguageSwitcher = (): JSX.Element => {
                 <Flag locale={Router.locale === 'en' ? 'es' : 'en'} />
               </div>
               <span className="font-semibold uppercase transition-colors duration-200 text-primary group-hover:text-white">
-                {Router.locale === 'en' ? 'Hola' : 'Hello'} 👋🏻
+                {Router.locale === 'en' ? 'Hola' : 'Hello'}{' '}
+                <span aria-label="waving hand" role="img">
+                  👋🏻
+                </span>
               </span>
             </Link>
           </Menu.Item>

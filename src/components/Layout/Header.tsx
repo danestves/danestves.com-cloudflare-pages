@@ -42,7 +42,8 @@ export const Header = (): JSX.Element => {
         </div>
       </header>
 
-      <div className="fixed top-0 left-0 h-full px-12">
+      {/* Left Sidebar */}
+      <div className="fixed top-0 left-0 hidden h-full px-12 md:block">
         <ul className="flex flex-col items-center justify-center h-full space-y-4 rotate-180">
           {MENU.map((item) => (
             <li key={nanoid()}>
@@ -58,7 +59,8 @@ export const Header = (): JSX.Element => {
         </ul>
       </div>
 
-      <div className="fixed top-0 right-0 h-full px-12">
+      {/* Right Sidebar */}
+      <div className="fixed top-0 right-0 hidden h-full px-12 md:block">
         <ul className="flex flex-col items-center justify-center h-full space-y-4 rotate-180">
           {SOCIAL.map((item) => (
             <li key={nanoid()}>
