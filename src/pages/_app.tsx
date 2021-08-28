@@ -21,7 +21,7 @@ export default function App({
     setTimeout(() => {
       setIsLoading(false)
     }, 1000)
-  })
+  }, [])
 
   const lang = router.locale === 'es' ? '/es' : ''
   const basePath = `https://danestves.com${lang}${router.asPath}`
