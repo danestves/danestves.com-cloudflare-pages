@@ -72,4 +72,4 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const script = require("../lighthouse-comment.js");
-            script({ context: { links: ${{ steps.lighthouse_audit.outputs.links }}, result: ${{ steps.lighthouse_audit.outputs.manifest }}[0].summary } })
+            script({ context: { links: ${{ steps.lighthouse.outputs.links }}, result: ${{ steps.lighthouse.outputs.manifest }}[0].summary } })
