@@ -1,17 +1,21 @@
-import React from 'react'
-import { render } from '../testUtils'
+// Dependencies
+import * as React from 'react'
+
+// Internals
 import { HomePage } from '@/pages'
+import { render } from '../testUtils'
+import getVideos from '../__mocks__/youtube/videos'
 
 describe('HomePage', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(<HomePage />, {})
+    const { asFragment } = render(
+      <HomePage
+        videos={{
+          videos: getVideos(),
+        }}
+      />
+    )
+
     expect(asFragment()).toMatchSnapshot()
   })
-
-  // it('clicking button triggers alert', () => {
-  //   const { getByText } = render(<Home />, {})
-  //   window.alert = jest.fn()
-  //   fireEvent.click(getByText('Test Button'))
-  //   expect(window.alert).toHaveBeenCalledWith('With typescript and Jest')
-  // })
 })

@@ -1,5 +1,5 @@
 // Dependencies
-import { render, RenderResult } from '@testing-library/react'
+import { render, RenderResult } from '@testing-library/preact'
 // import { ThemeProvider } from "my-ui-lib"
 // import { TranslationProvider } from "my-i18n-lib"
 // import defaultStrings from "i18n/en-x-default"
@@ -20,7 +20,7 @@ const customRender = (ui: React.ReactElement, options = {}): RenderResult => {
 }
 
 // re-export everything
-export * from '@testing-library/react'
+export * from '@testing-library/preact'
 
 // override render method
 export { customRender as render }

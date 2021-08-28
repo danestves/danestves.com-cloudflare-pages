@@ -15,8 +15,8 @@ export default async function handler(
       .then((response) => response.json())
       .then((json) => json.countryCode)
 
-    return res.json({ country })
+    return res.status(200).json({ country })
   } catch (error) {
-    return res.status(200).json(error)
+    return res.status(400).json(error)
   }
 }
