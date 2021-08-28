@@ -3,7 +3,7 @@ import type { I18nProps } from 'next-rosetta'
 import type { GetStaticProps, NextPage } from 'next'
 
 // Internals
-import { Hero } from '@/components/Sections'
+import { Hero, LatestVideos } from '@/components/Sections'
 import { Videos } from '@/interfaces'
 import { getVideos } from '@/lib'
 import type { Locale } from 'i18n'
@@ -12,10 +12,11 @@ export type HomePageProps = {
   videos: Videos
 }
 
-export const HomePage: NextPage<HomePageProps> = () => {
+export const HomePage: NextPage<HomePageProps> = ({ videos }) => {
   return (
     <>
       <Hero />
+      <LatestVideos {...videos} />
     </>
   )
 }

@@ -21,7 +21,7 @@ class MyDocument extends Document {
             rel="preconnect"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@700&display=swap"
             rel="stylesheet"
           />
         </Head>

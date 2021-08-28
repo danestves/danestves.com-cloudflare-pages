@@ -20,6 +20,7 @@ module.exports = {
         padding: '1rem',
       },
       fontFamily: {
+        roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
       screens: {
@@ -46,5 +47,7 @@ module.exports = {
       }
       addUtilities(newUtilities)
     }),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/line-clamp'),
   ],
 }
