@@ -71,5 +71,17 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const script = require("../lighthouse-comment.js");
-            script({ context: { links: ${{ steps.lighthouse.outputs.links }}, result: ${{ steps.lighthouse.outputs.manifest }}[0].summary } })
+            core.setOutput("comment", ${{ needs.lighthouse.outputs.manifest }}[0].summary);
+
+  comment_results:
+    runs-on: ubuntu-latest
+    needs: format_message
+    steps:
+      - uses: actions/checkout@v2
+      - name: Comment the results on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ github.event.issue.number }}
+          header: lighthouse
+          message: ${{ needs.format_message.outputs.comment }}
