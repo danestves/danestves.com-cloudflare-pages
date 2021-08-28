@@ -1,8 +1,4 @@
 export interface Videos {
-  videos: VideosI
-}
-
-export interface VideosI {
   kind: string
   etag: string
   items?: ItemsEntity[] | null

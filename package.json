@@ -52,7 +52,6 @@
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.4",
     "@types/react": "^17.0.19",
-    "@types/react-test-renderer": "^17.0.1",
     "@types/tailwindcss": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",

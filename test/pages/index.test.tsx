@@ -8,13 +8,7 @@ import getVideos from '../__mocks__/youtube/videos'
 
 describe('HomePage', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(
-      <HomePage
-        videos={{
-          videos: getVideos(),
-        }}
-      />
-    )
+    const { asFragment } = render(<HomePage videos={getVideos()} />)
 
     expect(asFragment()).toMatchSnapshot()
   })
