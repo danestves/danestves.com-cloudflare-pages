@@ -60,28 +60,3 @@ jobs:
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
           runs: 3
-
-  format_message:
-    runs-on: ubuntu-latest
-    needs: lighthouse
-    steps:
-      - uses: actions/checkout@v2
-      - name: Format message for PR
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            core.setOutput("comment", ${{ needs.lighthouse.outputs.manifest }}[0].summary);
-
-  comment_results:
-    runs-on: ubuntu-latest
-    needs: format_message
-    steps:
-      - uses: actions/checkout@v2
-      - name: Comment the results on PR
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ github.event.issue.number }}
-          header: lighthouse
-          message: ${{ needs.format_message.outputs.comment }}
