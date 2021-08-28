@@ -34,7 +34,8 @@ jobs:
     needs: lint
     steps:
       - uses: actions/checkout@v2
-      - uses: amondnet/vercel-action@v20
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
         id: vercel-deployment
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
