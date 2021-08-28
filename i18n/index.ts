@@ -4,4 +4,5 @@ export interface Locale {
       lang: string
     }
   }
+  search: string
 }

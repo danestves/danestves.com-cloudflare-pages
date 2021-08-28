@@ -24,25 +24,25 @@ export const Header = (): JSX.Element => {
     <>
       <header
         className={clsx(
-          'fixed top-0 left-0 w-full px-6 md:px-12 transition-all duration-200 z-20',
+          'fixed top-0 left-0 w-full px-6 transition-all duration-200 z-20 lg:px-12',
           y >= 104 ? 'bg-white shadow py-2' : 'py-6'
         )}
       >
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center space-x-6">
             <button
-              className="block rounded-md md:hidden focus:outline focus:ring-4 focus:ring-secondary focus:ring-opacity-50 focus:outline-none"
+              className="block rounded-md focus:outline focus:ring-4 focus:ring-secondary focus:ring-opacity-50 focus:outline-none lg:hidden"
               type="button"
             >
               <MenuIcon className="h-auto text-secondary w-[31px]" />
             </button>
 
-            <div className="block md:hidden">
+            <div className="block lg:hidden">
               <ThemeSwitcher />
             </div>
 
             <Link
-              className="hidden w-9 h-9 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50 md:inline-block"
+              className="hidden w-9 h-9 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50 lg:inline-block"
               href="/"
               locale={router.locale}
             >
@@ -58,7 +58,7 @@ export const Header = (): JSX.Element => {
 
           <div className="flex">
             <Link
-              className="inline-block md:hidden w-9 h-9 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50"
+              className="inline-block w-9 h-9 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50 md:ml-20 lg:hidden"
               href="/"
               locale={router.locale}
             >
@@ -75,13 +75,13 @@ export const Header = (): JSX.Element => {
             </Link>
 
             {/* We put a padding left to simulate that in desktop is centered */}
-            <div className="hidden md:block md:pl-12">
+            <div className="hidden lg:block lg:pl-12">
               <ThemeSwitcher />
             </div>
           </div>
 
           <div className="flex items-center space-x-6">
-            <div className="block md:hidden">
+            <div className="block lg:hidden">
               <Search />
             </div>
 
@@ -91,7 +91,7 @@ export const Header = (): JSX.Element => {
       </header>
 
       {/* Left Sidebar */}
-      <aside className="fixed top-0 left-0 z-10 hidden h-full px-12 md:block">
+      <aside className="fixed top-0 left-0 z-10 hidden h-full px-12 lg:block">
         <ul className="flex flex-col items-center justify-center h-full space-y-4 rotate-180">
           {MENU.map((item) => (
             <li key={nanoid()}>
@@ -108,7 +108,7 @@ export const Header = (): JSX.Element => {
       </aside>
 
       {/* Right Sidebar */}
-      <aside className="fixed top-0 right-0 z-10 hidden h-full px-12 md:block">
+      <aside className="fixed top-0 right-0 z-10 hidden h-full px-12 lg:block">
         <ul className="flex flex-col items-center justify-center h-full space-y-4 rotate-180">
           {SOCIAL.map((item) => (
             <li key={nanoid()}>
