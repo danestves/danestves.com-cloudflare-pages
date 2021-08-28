@@ -1,5 +1,5 @@
-// Internals
-import { axios } from '@/lib'
+// Dependencies
+import axios from 'axios'
 
 /**
  * Custom fetcher to handle the fetching of the data with SWR.
