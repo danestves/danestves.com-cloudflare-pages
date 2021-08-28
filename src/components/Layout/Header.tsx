@@ -50,6 +50,7 @@ export const Header = (): JSX.Element => {
                 image={{
                   alt: '@danestves',
                   placeholder: 'blur',
+                  priority: true,
                   src: AssetLogo,
                 }}
               />
@@ -69,6 +70,7 @@ export const Header = (): JSX.Element => {
                 image={{
                   alt: '@danestves',
                   placeholder: 'blur',
+                  priority: true,
                   src: AssetLogo,
                 }}
               />

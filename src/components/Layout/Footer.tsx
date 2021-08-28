@@ -31,7 +31,9 @@ export const Footer = (): JSX.Element => {
         >
           {FLOATING_MENU.right.label[Router.locale] ||
             FLOATING_MENU.right.label}{' '}
-          🤙
+          <span aria-label="call me hand" role="img">
+            🤙
+          </span>
         </Link>
       </div>
 
