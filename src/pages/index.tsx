@@ -8,7 +8,10 @@ import MeMaskD from 'public/static/me-mask-d.png'
 import type { Locale } from 'i18n'
 
 export const HomePage = (): JSX.Element => (
-  <section className="container relative" id="danestves-section-hero">
+  <section
+    className="container relative overflow-hidden"
+    id="danestves-section-hero"
+  >
     <Rings className="relative left-1/2 -translate-x-1/2 mx-auto w-[563px] h-auto sm:left-[46%] md:left-[38%] lg:left-auto lg:transform-none lg:w-full lg:max-w-[731px]" />
     <div className="absolute mt-2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:mt-3">
       <LocalImage
