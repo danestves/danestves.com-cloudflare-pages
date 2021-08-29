@@ -1,16 +1,22 @@
+// Dependencies
+import { useI18n } from 'next-rosetta'
+
 // Internals
 import { ContentCard } from '@/components'
 import { PostsQuery } from '@/generated/graphql'
+import type { Locale } from 'i18n'
 
 export type LatestPostsProps = {
   posts: PostsQuery['posts']
 }
 
 export const LatestPosts = ({ posts }: LatestPostsProps): JSX.Element => {
+  const { t } = useI18n<Locale>()
+
   return (
     <section className="container py-20" id="danestves-section-hero">
       <h2 className="text-[26px] text-center text-[#071D49] font-black uppercase">
-        últimos posts{' '}
+        {t('sections.latest.posts.title')}{' '}
         <span aria-label="victory hand" role="img">
           ✌️
         </span>

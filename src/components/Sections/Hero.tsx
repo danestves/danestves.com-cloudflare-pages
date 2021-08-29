@@ -1,8 +1,14 @@
+// Dependencies
+import { useI18n } from 'next-rosetta'
+
 // Internals
 import { LocalImage, Rings, Search } from '@/components'
+import type { Locale } from 'i18n'
 import MeMaskD from 'public/static/me-mask-d.png'
 
 export const Hero = (): JSX.Element => {
+  const { t } = useI18n<Locale>()
+
   return (
     <section
       className="container relative overflow-hidden"
@@ -37,8 +43,10 @@ export const Hero = (): JSX.Element => {
           <a href="https://seeed.us" rel="noopener noreferrer" target="_blank">
             Seeed
           </a>
-          . <br /> <b>Apasionado por la tecnología</b> con muchas ganas de
-          aprender y esparcir conocimiento por toda LATAM
+          . <br />{' '}
+          <span
+            dangerouslySetInnerHTML={{ __html: t('sections.hero.description') }}
+          />
         </p>
       </div>
 

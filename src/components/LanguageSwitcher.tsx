@@ -41,6 +41,7 @@ export const LanguageSwitcher = (): JSX.Element => {
               className="inline-flex items-center p-4 mx-auto space-x-4 transition-colors duration-200 group hover:bg-primary"
               href={router.asPath}
               locale={router.locale === 'en' ? 'es' : 'en'}
+              scroll
             >
               <div className="w-6 h-6 rounded-full">
                 <Flag locale={router.locale === 'en' ? 'es' : 'en'} />

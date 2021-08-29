@@ -1,10 +1,12 @@
 // Dependencies
 import Image from '@graphcms/react-image'
 import { useRouter } from 'next/router'
+import { useI18n } from 'next-rosetta'
 
 // Internals
 import { clsx, formatDate } from '@/utils'
 import type { OverwritableType } from '@/types'
+import type { Locale } from 'i18n'
 
 interface ContentCardProps<T> {
   description: string
@@ -27,6 +29,7 @@ export function ContentCard<T extends React.ElementType = 'div'>({
   ...rest
 }: OverwritableType<ContentCardProps<T>, T>): JSX.Element {
   const router = useRouter()
+  const { t } = useI18n<Locale>()
 
   const ElementType: React.ElementType = as || 'div'
 
@@ -46,7 +49,7 @@ export function ContentCard<T extends React.ElementType = 'div'>({
       </div>
       {date && (
         <p className="mt-4 text-[10px] font-bold text-primary">
-          Published at{' '}
+          {t('components.contentcard.published')}{' '}
           <time dateTime={date}>
             {formatDate({
               date: new Date(date).toISOString().slice(0, 19),

@@ -1,15 +1,18 @@
 // Dependencies
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useI18n } from 'next-rosetta'
 
 // Internals
 import { Link } from '@/components'
 import { YoutubeIcon } from '@/components/Icons'
 import { fromNow } from '@/utils'
 import type { Videos } from '@/interfaces'
+import type { Locale } from 'i18n'
 
 export const LatestVideos = (props: Videos): JSX.Element => {
   const router = useRouter()
+  const { t } = useI18n<Locale>()
 
   return (
     <section
@@ -17,7 +20,7 @@ export const LatestVideos = (props: Videos): JSX.Element => {
       id="danestves-section-latest-videos"
     >
       <h2 className="w-full max-w-[977px] mx-auto text-[26px] font-black text-[#071D49] uppercase lg:pl-8">
-        <span>últimos vídeos</span>{' '}
+        <span>{t('sections.latest.videos.title')}</span>{' '}
         <YoutubeIcon className="inline-block w-8 h-[22px] ml-3" />
       </h2>
 
