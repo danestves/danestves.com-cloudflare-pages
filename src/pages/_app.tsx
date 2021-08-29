@@ -43,6 +43,7 @@ export default function App({
 
       <Script
         async
+        data-cache="true"
         data-website-id="2449233b-a011-4a8b-af21-1fe1af5f6b29"
         defer
         src="https://analytics.danestves.com/umami.js"
