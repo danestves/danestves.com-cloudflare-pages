@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "@graphcms/react-image": "^1.0.1",
     "@headlessui/react": "^1.4.0",
     "@next/bundle-analyzer": "^11.1.0",
     "@tailwindcss/aspect-ratio": "^0.2.1",

@@ -1,5 +1,5 @@
 query posts($first: Int!, $locale: Locale!) {
-  posts(orderBy: publishedAt_DESC, first: $first, locales: [$locale]) {
+  posts(orderBy: published_DESC, first: $first, locales: [$locale]) {
     id
     title
     slug

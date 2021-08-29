@@ -1,6 +1,7 @@
 // Dependencies
 import dynamic from 'next/dynamic'
 
+export const ContentCard = dynamic(() => import('./ContentCard'))
 export const Flag = dynamic(() => import('./Flag'))
 export const LanguageSwitcher = dynamic(() => import('./LanguageSwitcher'))
 export const Layout = dynamic(() => import('./Layout/Layout'))

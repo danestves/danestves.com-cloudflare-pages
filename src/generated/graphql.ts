@@ -4744,7 +4744,7 @@ export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Po
 
 export const PostsDocument = gql`
     query posts($first: Int!, $locale: Locale!) {
-  posts(orderBy: publishedAt_DESC, first: $first, locales: [$locale]) {
+  posts(orderBy: published_DESC, first: $first, locales: [$locale]) {
     id
     title
     slug
