@@ -115,9 +115,14 @@ export const Header = (): JSX.Element => {
           {SOCIAL.map((item) => (
             <li key={nanoid()}>
               <Link
-                className="text-[10px] text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
+                className={clsx(
+                  'text-[10px] text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary',
+                  `umami--click--social-${item.href}`
+                )}
                 href={item.href}
                 locale={router.locale}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 {item.label[router.locale] || item.label}
               </Link>

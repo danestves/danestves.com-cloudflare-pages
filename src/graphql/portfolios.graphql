@@ -1,0 +1,16 @@
+query portfolios($first: Int!, $locale: Locale!) {
+  portfolios(orderBy: title_ASC, first: $first, locales: [$locale]) {
+    id
+    title
+    slug
+    project_url
+    cover(locales: [en]) {
+      handle
+      height
+      width
+    }
+    seo {
+      description
+    }
+  }
+}

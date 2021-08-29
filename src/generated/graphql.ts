@@ -4733,6 +4733,14 @@ export enum _SystemDateTimeFieldVariation {
   Combined = 'combined'
 }
 
+export type PortfoliosQueryVariables = Exact<{
+  first: Scalars['Int'];
+  locale: Locale;
+}>;
+
+
+export type PortfoliosQuery = { __typename?: 'Query', portfolios: Array<{ __typename?: 'Portfolio', id: string, title: string, slug: string, project_url: string, cover: { __typename?: 'Asset', handle: string, height?: Maybe<number>, width?: Maybe<number> }, seo?: Maybe<{ __typename?: 'Seo', description: string }> }> };
+
 export type PostsQueryVariables = Exact<{
   first: Scalars['Int'];
   locale: Locale;
@@ -4742,6 +4750,24 @@ export type PostsQueryVariables = Exact<{
 export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, slug: string, published: any, cover: { __typename?: 'Asset', handle: string, height?: Maybe<number>, width?: Maybe<number> }, seo?: Maybe<{ __typename?: 'Seo', description: string }> }> };
 
 
+export const PortfoliosDocument = gql`
+    query portfolios($first: Int!, $locale: Locale!) {
+  portfolios(orderBy: title_ASC, first: $first, locales: [$locale]) {
+    id
+    title
+    slug
+    project_url
+    cover(locales: [en]) {
+      handle
+      height
+      width
+    }
+    seo {
+      description
+    }
+  }
+}
+    `;
 export const PostsDocument = gql`
     query posts($first: Int!, $locale: Locale!) {
   posts(orderBy: published_DESC, first: $first, locales: [$locale]) {
@@ -4765,9 +4791,13 @@ export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, str
 
 
 const defaultWrapper: SdkFunctionWrapper = (action, _operationName) => action();
+const PortfoliosDocumentString = print(PortfoliosDocument);
 const PostsDocumentString = print(PostsDocument);
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    portfolios(variables: PortfoliosQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<{ data?: PortfoliosQuery | undefined; extensions?: any; headers: Dom.Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper((wrappedRequestHeaders) => client.rawRequest<PortfoliosQuery>(PortfoliosDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'portfolios');
+    },
     posts(variables: PostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<{ data?: PostsQuery | undefined; extensions?: any; headers: Dom.Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<PostsQuery>(PostsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'posts');
     }

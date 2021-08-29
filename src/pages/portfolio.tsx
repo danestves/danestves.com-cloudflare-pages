@@ -6,20 +6,20 @@ import type { I18nProps } from 'next-rosetta'
 // Internals
 import { ContentCard, Link } from '@/components'
 import { sdk } from '@/lib'
-import type { PostsQuery } from '@/generated/graphql'
+import type { PortfoliosQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
 
-export type PostsPageProps = {
-  posts: PostsQuery['posts']
+export type PortfolioPageProps = {
+  portfolios: PortfoliosQuery['portfolios']
 }
 
-export const PostsPage: NextPage<PostsPageProps> = ({ posts }) => {
+export const PortfolioPage: NextPage<PortfolioPageProps> = ({ portfolios }) => {
   const router = useRouter()
 
   return (
     <section className="w-full py-32">
       <h1 className="text-[26px] text-[#071D49] font-black text-center uppercase">
-        Blog{' '}
+        Portafolio{' '}
         <span aria-label="victory hand" role="img">
           ✌️
         </span>
@@ -27,16 +27,17 @@ export const PostsPage: NextPage<PostsPageProps> = ({ posts }) => {
 
       <div className="container mt-5 max-w-[977px] mx-auto">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-          {posts.map((post) => (
+          {portfolios.map((portfolio) => (
             <ContentCard
               as={Link}
-              date={post.published}
-              description={post.seo.description}
-              href={`/posts/${post.slug}`}
-              image={post.cover}
-              key={post.id}
+              description={portfolio.seo.description}
+              href={portfolio.project_url}
+              image={portfolio.cover}
+              key={portfolio.id}
               locale={router.locale}
-              title={post.title}
+              rel="noopener noreferrer"
+              target="_blank"
+              title={portfolio.title}
             />
           ))}
         </div>
@@ -50,15 +51,15 @@ export const getStaticProps: GetStaticProps<I18nProps<Locale>> = async (
 ) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const posts = await sdk().posts({
+  const portfolios = await sdk().portfolios({
     first: 50,
     locale: locale as any,
   })
 
   return {
-    props: { table, posts: posts.data.posts },
+    props: { table, portfolios: portfolios.data.portfolios },
     revalidate: 60 * 60, // 1 hour
   }
 }
 
-export default PostsPage
+export default PortfolioPage
