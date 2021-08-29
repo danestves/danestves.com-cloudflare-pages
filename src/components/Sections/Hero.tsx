@@ -18,6 +18,7 @@ export const Hero = (): JSX.Element => {
           image={{
             alt: '@danestves',
             placeholder: 'blur',
+            priority: true,
             src: MeMaskD,
           }}
         />
