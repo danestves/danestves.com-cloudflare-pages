@@ -41,7 +41,10 @@ export const getStaticProps: GetStaticProps<I18nProps<Locale>> = async (
     locale: locale as any,
   })
 
-  return { props: { table, posts: posts.data.posts, videos } }
+  return {
+    props: { table, posts: posts.data.posts, videos },
+    revalidate: 60 * 60, // 1 hour
+  }
 }
 
 export default HomePage
