@@ -57,9 +57,9 @@ export const Header = (): JSX.Element => {
             </Link>
           </div>
 
-          <div className="flex">
+          <div className="flex lg:pl-20">
             <Link
-              className="inline-block w-9 h-9 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50 md:ml-20 lg:hidden"
+              className="inline-block w-9 h-9 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50 lg:hidden"
               href="/"
               locale={router.locale}
             >
@@ -77,7 +77,7 @@ export const Header = (): JSX.Element => {
             </Link>
 
             {/* We put a padding left to simulate that in desktop is centered */}
-            <div className="hidden lg:block lg:pl-12">
+            <div className="hidden lg:block">
               <ThemeSwitcher />
             </div>
           </div>
