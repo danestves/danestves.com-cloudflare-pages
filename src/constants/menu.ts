@@ -18,7 +18,7 @@ export const MENU = [
     },
   },
   {
-    href: '/blog',
+    href: '/posts',
     label: 'blog',
   },
   {

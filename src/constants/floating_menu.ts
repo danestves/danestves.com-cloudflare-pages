@@ -1,6 +1,6 @@
 export const FLOATING_MENU = {
   left: {
-    href: '/blog',
+    href: '/posts',
     label: 'blog',
   },
   right: {
