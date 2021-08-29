@@ -38,14 +38,14 @@ export const LatestVideos = (props: Videos): JSX.Element => {
                         alt={video.snippet?.title || 'YouTube Video'}
                         className="absolute"
                         height={
-                          video.snippet?.thumbnails?.maxres?.height as number
+                          video.snippet?.thumbnails?.medium?.height as number
                         }
                         loading="lazy"
                         objectFit="cover"
                         objectPosition="center"
-                        src={video.snippet?.thumbnails?.maxres?.url as string}
+                        src={video.snippet?.thumbnails?.medium?.url as string}
                         width={
-                          video.snippet?.thumbnails?.maxres?.width as number
+                          video.snippet?.thumbnails?.medium?.width as number
                         }
                       />
                     </div>

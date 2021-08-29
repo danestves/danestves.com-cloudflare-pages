@@ -44,7 +44,12 @@ export const Footer = (): JSX.Element => {
             href="/"
             locale={Router.locale}
           >
-            <Image alt="@danestves" placeholder="blur" src={AssetLogo} />
+            <Image
+              alt="@danestves"
+              placeholder="blur"
+              priority
+              src={AssetLogo}
+            />
           </Link>
 
           <ul className="flex flex-col items-center justify-center xs:flex-row xs:space-x-4">
