@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { I18nProvider } from 'next-rosetta'
 import { DefaultSeo } from 'next-seo'
+import Script from 'next/script'
 import type { AppProps } from 'next/app'
 
 // Internals
@@ -39,6 +40,13 @@ export default function App({
       <Layout>
         <Component {...pageProps} />
       </Layout>
+
+      <Script
+        async
+        data-website-id="2449233b-a011-4a8b-af21-1fe1af5f6b29"
+        defer
+        src="https://analytics.danestves.com/umami.js"
+      />
     </I18nProvider>
   )
 }

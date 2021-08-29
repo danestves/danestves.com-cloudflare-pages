@@ -4,7 +4,7 @@ import type { GetStaticProps, NextPage } from 'next'
 import type { I18nProps } from 'next-rosetta'
 
 // Internals
-import { ContentCard } from '@/components'
+import { ContentCard, Link } from '@/components'
 import { sdk } from '@/lib'
 import type { PostsQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
@@ -29,10 +29,13 @@ export const PostsPage: NextPage<PostsPageProps> = ({ posts }) => {
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
           {posts.map((post) => (
             <ContentCard
+              as={Link}
               date={post.published}
               description={post.seo.description}
+              href={`/posts/${post.slug}`}
               image={post.cover}
               key={post.id}
+              locale={router.locale}
               title={post.title}
             />
           ))}
