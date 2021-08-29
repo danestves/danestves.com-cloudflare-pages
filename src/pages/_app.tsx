@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { I18nProvider } from 'next-rosetta'
 import { DefaultSeo } from 'next-seo'
-import PlausibleProvider from 'next-plausible'
+import Script from 'next/script'
 import type { AppProps } from 'next/app'
 
 // Internals
@@ -19,29 +19,34 @@ export default function App({
   const basePath = `https://danestves.com${lang}${router.asPath}`
 
   return (
-    <PlausibleProvider domain="danestves.com">
-      <I18nProvider table={pageProps.table}>
-        <DefaultSeo
-          {...defaultSeo(router.locale)}
-          canonical={basePath}
-          openGraph={{
-            ...defaultSeo(router.locale).openGraph,
-            images: [
-              {
-                url: `https://cdn.flyyer.io/v2/danestves-com/_/_${lang}${router.asPath}`,
-                alt: texts.title[router.locale],
-                height: 630,
-                width: 1200,
-              },
-            ],
-            url: basePath,
-          }}
-        />
+    <I18nProvider table={pageProps.table}>
+      <DefaultSeo
+        {...defaultSeo(router.locale)}
+        canonical={basePath}
+        openGraph={{
+          ...defaultSeo(router.locale).openGraph,
+          images: [
+            {
+              url: `https://cdn.flyyer.io/v2/danestves-com/_/_${lang}${router.asPath}`,
+              alt: texts.title[router.locale],
+              height: 630,
+              width: 1200,
+            },
+          ],
+          url: basePath,
+        }}
+      />
 
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </I18nProvider>
-    </PlausibleProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+
+      <Script
+        data-api="/api/event"
+        data-domain="danestves.com"
+        defer
+        src="/js/script.js"
+      />
+    </I18nProvider>
   )
 }
