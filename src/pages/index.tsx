@@ -3,7 +3,12 @@ import type { I18nProps } from 'next-rosetta'
 import type { GetStaticProps, NextPage } from 'next'
 
 // Internals
-import { Hero, LatestPosts, LatestVideos } from '@/components/Sections'
+import {
+  CallToAction,
+  Hero,
+  LatestPosts,
+  LatestVideos,
+} from '@/components/Sections'
 import { Videos } from '@/interfaces'
 import { getVideos, sdk } from '@/lib'
 import type { PostsQuery } from '@/generated/graphql'
@@ -20,6 +25,7 @@ export const HomePage: NextPage<HomePageProps> = ({ posts, videos }) => {
       <Hero />
       <LatestVideos {...videos} />
       <LatestPosts posts={posts} />
+      <CallToAction />
     </>
   )
 }
