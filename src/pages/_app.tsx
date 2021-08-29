@@ -1,12 +1,11 @@
 // Dependencies
 import * as React from 'react'
-import { Transition } from '@headlessui/react'
 import { I18nProvider } from 'next-rosetta'
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
 
 // Internals
-import { Layout, Logo, Rings } from '@/components'
+import { Layout } from '@/components'
 import '@/styles/main.css'
 import defaultSeo, { texts } from 'seoConfig'
 
@@ -15,14 +14,6 @@ export default function App({
   pageProps,
   router,
 }: AppProps): JSX.Element {
-  const [isLoading, setIsLoading] = React.useState(true)
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
-  }, [])
-
   const lang = router.locale === 'es' ? '/es' : ''
   const basePath = `https://danestves.com${lang}${router.asPath}`
 
@@ -45,36 +36,9 @@ export default function App({
         }}
       />
 
-      <Transition
-        as="div"
-        className="flex items-center justify-center w-screen h-screen"
-        enter="transform transition duration-[400ms]"
-        enterFrom="opacity-0 scale-50"
-        enterTo="opacity-100 scale-100"
-        leave="transform duration-200 transition ease-in-out"
-        leaveFrom="opacity-100 scale-100"
-        leaveTo="opacity-0 scale-95"
-        show={isLoading}
-      >
-        <Logo className="absolute mt-[2px] -ml-px" />
-        <Rings animate className="w-[177px]" />
-      </Transition>
-
-      <Transition
-        as="div"
-        className="w-screen min-h-screen"
-        enter="transform transition duration-[400ms]"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transform duration-200 transition ease-in-out"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-        show={!isLoading}
-      >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Transition>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </I18nProvider>
   )
 }

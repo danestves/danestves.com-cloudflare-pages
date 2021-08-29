@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { useI18n } from 'next-rosetta'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 
 // Internals
 import { Flag, Link } from '@/components'
@@ -10,6 +10,7 @@ import type { Locale } from 'i18n'
 
 export const LanguageSwitcher = (): JSX.Element => {
   const { t } = useI18n<Locale>()
+  const router = useRouter()
 
   return (
     <Menu as="div" className="relative inline-flex text-left">
@@ -38,14 +39,14 @@ export const LanguageSwitcher = (): JSX.Element => {
           <Menu.Item>
             <Link
               className="inline-flex items-center p-4 mx-auto space-x-4 transition-colors duration-200 group hover:bg-primary"
-              href={Router.asPath}
-              locale={Router.locale === 'en' ? 'es' : 'en'}
+              href={router.asPath}
+              locale={router.locale === 'en' ? 'es' : 'en'}
             >
               <div className="w-6 h-6 rounded-full">
-                <Flag locale={Router.locale === 'en' ? 'es' : 'en'} />
+                <Flag locale={router.locale === 'en' ? 'es' : 'en'} />
               </div>
               <span className="font-semibold uppercase transition-colors duration-200 text-primary group-hover:text-white">
-                {Router.locale === 'en' ? 'Hola' : 'Hello'}{' '}
+                {router.locale === 'en' ? 'Hola' : 'Hello'}{' '}
                 <span aria-label="waving hand" role="img">
                   👋🏻
                 </span>

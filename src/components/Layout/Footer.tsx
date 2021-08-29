@@ -1,7 +1,7 @@
 // Dependencies
 import { nanoid } from 'nanoid'
 import Image from 'next/image'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 
 // Internals
 import { Link } from '@/components'
@@ -9,6 +9,8 @@ import { FLOATING_MENU, MENU } from '@/constants'
 import AssetLogo from 'public/static/favicon.png'
 
 export const Footer = (): JSX.Element => {
+  const router = useRouter()
+
   return (
     <>
       {/* Left Link */}
@@ -16,7 +18,7 @@ export const Footer = (): JSX.Element => {
         <Link
           className="font-semibold uppercase text-primary"
           href={FLOATING_MENU.left.href}
-          locale={Router.locale}
+          locale={router.locale}
         >
           {FLOATING_MENU.left.label}
         </Link>
@@ -27,9 +29,9 @@ export const Footer = (): JSX.Element => {
         <Link
           className="font-semibold uppercase text-primary"
           href={FLOATING_MENU.right.href}
-          locale={Router.locale}
+          locale={router.locale}
         >
-          {FLOATING_MENU.right.label[Router.locale] ||
+          {FLOATING_MENU.right.label[router.locale] ||
             FLOATING_MENU.right.label}{' '}
           <span aria-label="call me hand" role="img">
             🤙
@@ -42,7 +44,7 @@ export const Footer = (): JSX.Element => {
           <Link
             className="inline-block mx-auto h-9 w-9"
             href="/"
-            locale={Router.locale}
+            locale={router.locale}
           >
             <Image
               alt="@danestves"
@@ -58,9 +60,9 @@ export const Footer = (): JSX.Element => {
                 <Link
                   className="text-[10px] text-[#989898] uppercase font-semibold leading-3 hover:text-primary"
                   href={item.href}
-                  locale={Router.locale}
+                  locale={router.locale}
                 >
-                  {item.label[Router.locale] || item.label}
+                  {item.label[router.locale] || item.label}
                 </Link>
               </li>
             ))}

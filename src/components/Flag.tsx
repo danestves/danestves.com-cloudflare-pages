@@ -1,5 +1,5 @@
 // Dependencies
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
 // Internals
@@ -12,8 +12,9 @@ export type FlagProps = {
 }
 
 export const Flag = (props: FlagProps): JSX.Element => {
+  const router = useRouter()
   const { data } = useSWR<{ country: string }>('/api/country', fetcher)
-  const locale = props.locale || Router.locale
+  const locale = props.locale || router.locale
 
   if (!data) return null
 
