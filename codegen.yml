@@ -1,0 +1,12 @@
+overwrite: true
+schema: '${GRAPHCMS_ENDPOINT}'
+documents: 'src/**/*.graphql'
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-graphql-request'
+    config:
+      autogenSWRKey: true
+      rawRequest: true

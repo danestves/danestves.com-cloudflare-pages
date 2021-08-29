@@ -10,7 +10,8 @@
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test",
     "prepare": "husky install",
-    "analyze": "ANALYZE=true yarn build"
+    "analyze": "ANALYZE=true yarn build",
+    "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config --config codegen.yml"
   },
   "husky": {
     "hooks": {
@@ -33,6 +34,8 @@
     "browser-monads-ts": "^1.2.2",
     "date-fns": "^2.23.0",
     "framer-motion": "^4.1.17",
+    "graphql": "^15.5.1",
+    "graphql-request": "^3.5.0",
     "nanoid": "^3.1.25",
     "next": "^11.1.0",
     "next-compose-plugins": "^2.2.1",
@@ -50,6 +53,10 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@graphql-codegen/cli": "2.1.1",
+    "@graphql-codegen/typescript": "2.1.2",
+    "@graphql-codegen/typescript-graphql-request": "^4.1.2",
+    "@graphql-codegen/typescript-operations": "2.1.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/preact": "^2.0.1",
     "@types/jest": "^27.0.1",

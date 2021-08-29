@@ -1,0 +1,16 @@
+query posts($first: Int!, $locale: Locale!) {
+  posts(orderBy: publishedAt_DESC, first: $first, locales: [$locale]) {
+    id
+    title
+    slug
+    published
+    cover(locales: [en]) {
+      handle
+      height
+      width
+    }
+    seo {
+      description
+    }
+  }
+}
