@@ -6158,6 +6158,11 @@ next-compose-plugins@^2.2.1:
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.1.tgz#020fc53f275a7e719d62521bef4300fbb6fde5ab"
   integrity sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==
 
+next-plausible@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/next-plausible/-/next-plausible-2.1.1.tgz#d64a1660840c93be50c3cdb96abc13758004fb1d"
+  integrity sha512-uua8WXHHnkQVTknSTBpCPN6fKCcOiSPgSWtFCUsgZS6nLP5Gj5W77I8n7hiNRpH6yw9tUbW8eF+fR/ch22pk8g==
+
 next-plugin-preact@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/next-plugin-preact/-/next-plugin-preact-3.0.6.tgz#22d566e8e5d50cb4cfc78360d367df44d6aaf94f"

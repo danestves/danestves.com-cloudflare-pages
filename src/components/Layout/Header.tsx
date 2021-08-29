@@ -1,6 +1,7 @@
 // Dependencies
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
+import { usePlausible } from 'next-plausible'
 import { useWindowScroll } from 'react-use'
 
 // Internals
@@ -18,6 +19,7 @@ import AssetLogo from 'public/static/favicon.png'
 
 export const Header = (): JSX.Element => {
   const router = useRouter()
+  const plausible = usePlausible()
   const { y } = useWindowScroll()
 
   return (
@@ -115,12 +117,10 @@ export const Header = (): JSX.Element => {
           {SOCIAL.map((item) => (
             <li key={nanoid()}>
               <Link
-                className={clsx(
-                  'text-[10px] text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary',
-                  `umami--click--social-${item.href}`
-                )}
+                className="text-[10px] text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
                 href={item.href}
                 locale={router.locale}
+                onClick={() => plausible(item.label)}
                 rel="noopener noreferrer"
                 target="_blank"
               >
