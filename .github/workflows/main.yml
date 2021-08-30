@@ -56,6 +56,9 @@ jobs:
         with:
           urls: |
             ${{ needs.deploy.outputs.preview-url }}
+            ${{ needs.deploy.outputs.preview-url }}/portfolio
+            ${{ needs.deploy.outputs.preview-url }}/posts
+            ${{ needs.deploy.outputs.preview-url }}/posts/how-to-create-awesome-ogimages-using-react-components
           budgetPath: ./budget.json
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
