@@ -15,7 +15,7 @@ const nextConfig = {
   },
   // @ts-ignore the rest of the config is not required
   images: {
-    domains: ['i.ytimg.com'],
+    domains: ['i.ytimg.com', 'raw.githubusercontent.com'],
     minimumCacheTTL: 31536000,
   },
   async redirects() {

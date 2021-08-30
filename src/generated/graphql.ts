@@ -4741,6 +4741,15 @@ export type PortfoliosQueryVariables = Exact<{
 
 export type PortfoliosQuery = { __typename?: 'Query', portfolios: Array<{ __typename?: 'Portfolio', id: string, title: string, slug: string, project_url: string, cover: { __typename?: 'Asset', handle: string, height?: Maybe<number>, width?: Maybe<number> }, seo?: Maybe<{ __typename?: 'Seo', description: string }> }> };
 
+export type PostQueryVariables = Exact<{
+  slug: Scalars['String'];
+  stage: Stage;
+  locale: Locale;
+}>;
+
+
+export type PostQuery = { __typename?: 'Query', post?: Maybe<{ __typename?: 'Post', id: string, title: string, slug: string, published: any, body: string, cover: { __typename?: 'Asset', handle: string, height?: Maybe<number>, width?: Maybe<number> }, seo?: Maybe<{ __typename?: 'Seo', title: string, description: string }> }> };
+
 export type PostsQueryVariables = Exact<{
   first: Scalars['Int'];
   locale: Locale;
@@ -4748,6 +4757,13 @@ export type PostsQueryVariables = Exact<{
 
 
 export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, slug: string, published: any, cover: { __typename?: 'Asset', handle: string, height?: Maybe<number>, width?: Maybe<number> }, seo?: Maybe<{ __typename?: 'Seo', description: string }> }> };
+
+export type PostsWithSlugQueryVariables = Exact<{
+  first: Scalars['Int'];
+}>;
+
+
+export type PostsWithSlugQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', slug: string }> };
 
 
 export const PortfoliosDocument = gql`
@@ -4763,6 +4779,26 @@ export const PortfoliosDocument = gql`
       width
     }
     seo {
+      description
+    }
+  }
+}
+    `;
+export const PostDocument = gql`
+    query post($slug: String!, $stage: Stage!, $locale: Locale!) {
+  post(where: {slug: $slug}, stage: $stage, locales: [$locale]) {
+    id
+    title
+    slug
+    published
+    body
+    cover(locales: [en]) {
+      handle
+      height
+      width
+    }
+    seo {
+      title
       description
     }
   }
@@ -4786,20 +4822,35 @@ export const PostsDocument = gql`
   }
 }
     `;
+export const PostsWithSlugDocument = gql`
+    query postsWithSlug($first: Int!) {
+  posts(first: $first) {
+    slug
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
 
 
 const defaultWrapper: SdkFunctionWrapper = (action, _operationName) => action();
 const PortfoliosDocumentString = print(PortfoliosDocument);
+const PostDocumentString = print(PostDocument);
 const PostsDocumentString = print(PostsDocument);
+const PostsWithSlugDocumentString = print(PostsWithSlugDocument);
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
     portfolios(variables: PortfoliosQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<{ data?: PortfoliosQuery | undefined; extensions?: any; headers: Dom.Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<PortfoliosQuery>(PortfoliosDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'portfolios');
     },
+    post(variables: PostQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<{ data?: PostQuery | undefined; extensions?: any; headers: Dom.Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper((wrappedRequestHeaders) => client.rawRequest<PostQuery>(PostDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'post');
+    },
     posts(variables: PostsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<{ data?: PostsQuery | undefined; extensions?: any; headers: Dom.Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<PostsQuery>(PostsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'posts');
+    },
+    postsWithSlug(variables: PostsWithSlugQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<{ data?: PostsWithSlugQuery | undefined; extensions?: any; headers: Dom.Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper((wrappedRequestHeaders) => client.rawRequest<PostsWithSlugQuery>(PostsWithSlugDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'postsWithSlug');
     }
   };
 }

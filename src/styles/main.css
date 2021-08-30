@@ -1,3 +1,40 @@
 @tailwind base;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
+
+.prose h2 .icon::after,
+.prose h3 .icon::after,
+.prose h4 .icon::after,
+.prose h5 .icon::after,
+.prose h6 .icon::after {
+  @apply absolute top-0 left-0 hidden w-6 h-6 mr-2 font-bold text-white;
+
+  content: url('/static/link.svg');
+}
+
+.prose h2:hover > a > .icon::after,
+.prose h3:hover > a > .icon::after,
+.prose h4:hover > a > .icon::after,
+.prose h5:hover > a > .icon::after,
+.prose h6:hover > a > .icon::after {
+  @apply inline;
+}
+
+.remark-code-title {
+  @apply px-5 py-3 font-mono text-sm font-bold border-b border-gray-700 rounded-t;
+
+  background-color: #282a36;
+  color: #f8f8f2;
+}
+
+.remark-code-title + pre,
+.remark-code-title + pre > pre {
+  @apply mt-0 rounded-t-none;
+}

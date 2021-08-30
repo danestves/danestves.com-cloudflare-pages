@@ -1,0 +1,18 @@
+query post($slug: String!, $stage: Stage!, $locale: Locale!) {
+  post(where: { slug: $slug }, stage: $stage, locales: [$locale]) {
+    id
+    title
+    slug
+    published
+    body
+    cover(locales: [en]) {
+      handle
+      height
+      width
+    }
+    seo {
+      title
+      description
+    }
+  }
+}
