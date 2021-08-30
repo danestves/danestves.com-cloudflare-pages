@@ -11,12 +11,12 @@ import type { Sdk } from '@/generated/graphql'
  * @param preview - If true, use the development token
  */
 function client(preview = false): GraphQLClient {
-  return new GraphQLClient(process.env.GRAPHCMS_ENDPOINT, {
+  return new GraphQLClient(process.env.GRAPHCMS_CONTENT_API, {
     headers: {
       Authorization: `Bearer ${
         preview
-          ? process.env.GRAPHCMS_DEVELOP_TOKEN
-          : process.env.GRAPHCMS_PRODUCTION_TOKEN
+          ? process.env.GRAPHCMS_CONTENT_API_TOKEN_DEVELOP
+          : process.env.GRAPHCMS_CONTENT_API_TOKEN_PRODUCTION
       }`,
     },
   })

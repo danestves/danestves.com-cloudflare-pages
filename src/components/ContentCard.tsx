@@ -18,12 +18,14 @@ interface ContentCardProps<T> {
   title: string
   as?: T
   date?: string
+  descriptionClassName?: string
 }
 
 export function ContentCard<T extends React.ElementType = 'div'>({
   as,
   date,
   description,
+  descriptionClassName,
   image,
   title,
   ...rest
@@ -67,7 +69,12 @@ export function ContentCard<T extends React.ElementType = 'div'>({
       >
         {title}
       </h3>
-      <p className="mt-[6px] text-[10px] font-bold text-[#838383]">
+      <p
+        className={clsx(
+          'mt-[6px] text-[10px] font-bold text-[#838383]',
+          descriptionClassName
+        )}
+      >
         {description}
       </p>
     </ElementType>

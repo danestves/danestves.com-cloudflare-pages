@@ -30,8 +30,10 @@ export const PostsPage: NextPage<PostsPageProps> = ({ posts }) => {
           {posts.map((post) => (
             <ContentCard
               as={Link}
+              className="p-1 overflow-hidden transition-colors duration-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:ring-offset-2 focus:ring-offset-primary"
               date={post.published}
               description={post.seo.description}
+              descriptionClassName="line-clamp-3"
               href={`/posts/${post.slug}`}
               image={post.cover}
               key={post.id}

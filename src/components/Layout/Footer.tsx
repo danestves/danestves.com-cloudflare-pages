@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 // Internals
 import { Link } from '@/components'
 import { FLOATING_MENU, MENU } from '@/constants'
-import AssetLogo from 'public/static/favicon.png'
+import AssetLogo from 'public/static/logo.png'
 
 export const Footer = (): JSX.Element => {
   const router = useRouter()

@@ -15,7 +15,7 @@ import {
 import { MenuIcon } from '@/components/Icons'
 import { MENU, SOCIAL } from '@/constants'
 import { clsx } from '@/utils'
-import AssetLogo from 'public/static/favicon.png'
+import AssetLogo from 'public/static/logo.png'
 
 export const Header = (): JSX.Element => {
   const router = useRouter()
@@ -59,7 +59,7 @@ export const Header = (): JSX.Element => {
             </Link>
           </div>
 
-          <div className="flex lg:pl-20">
+          <div className="flex lg:pl-24">
             <Link
               className="inline-block w-9 h-9 focus:outline-none focus:rounded focus:ring-4 focus:ring-secondary focus:ring-opacity-50 lg:hidden"
               href="/"

@@ -3,6 +3,7 @@ export interface Locale {
     contentcard: {
       published: string
     }
+    views: string
   }
   header: {
     switcher: {

@@ -9,6 +9,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes contentcard-title-open {
+  from {
+    @apply line-clamp-none;
+  }
+  to {
+    @apply line-clamp-2;
+  }
+}
+
+@keyframes contentcard-title-close {
+  from {
+    @apply line-clamp-2;
+  }
+  to {
+    @apply line-clamp-none;
+  }
+}
+
 .prose h2 .icon::after,
 .prose h3 .icon::after,
 .prose h4 .icon::after,

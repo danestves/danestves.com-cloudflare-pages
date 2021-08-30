@@ -17,3 +17,4 @@ export const Logo = dynamic(() => import('./Logo/Logo'))
 export const Rings = dynamic(() => import('./Logo/Rings'))
 export const Search = dynamic(() => import('./Search'))
 export const ThemeSwitcher = dynamic(() => import('./ThemeSwitcher'))
+export * from './Views'
