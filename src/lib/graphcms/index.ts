@@ -3,6 +3,10 @@ import { GraphQLClient } from 'graphql-request'
 
 // Internals
 import { getSdk } from '@/generated/graphql'
+import {
+  getDecryptedDevelopToken,
+  getDecryptedProductionToken,
+} from './decret-tokens'
 import type { Sdk } from '@/generated/graphql'
 
 /**
@@ -14,9 +18,7 @@ function client(preview = false): GraphQLClient {
   return new GraphQLClient(process.env.GRAPHCMS_CONTENT_API, {
     headers: {
       Authorization: `Bearer ${
-        preview
-          ? process.env.GRAPHCMS_CONTENT_API_TOKEN_DEVELOP
-          : process.env.GRAPHCMS_CONTENT_API_TOKEN_PRODUCTION
+        preview ? getDecryptedDevelopToken() : getDecryptedProductionToken()
       }`,
     },
   })

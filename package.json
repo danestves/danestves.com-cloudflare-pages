@@ -29,9 +29,9 @@
     "@giphy/js-fetch-api": "^4.1.1",
     "@giphy/react-components": "^5.0.1",
     "@graphcms/react-image": "^1.0.1",
-    "@headlessui/react": "^1.4.0",
+    "@headlessui/react": "^1.4.1",
     "@next/bundle-analyzer": "^11.1.0",
-    "@supabase/supabase-js": "^1.22.3",
+    "@supabase/supabase-js": "^1.22.4",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/line-clamp": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
@@ -39,7 +39,7 @@
     "browser-monads-ts": "^1.2.2",
     "date-fns": "^2.23.0",
     "framer-motion": "^4.1.17",
-    "graphql": "^15.5.1",
+    "graphql": "^15.5.2",
     "graphql-request": "^3.5.0",
     "mdx-embed": "^0.0.19",
     "nanoid": "^3.1.25",
@@ -62,6 +62,7 @@
     "rehype-autolink-headings": "^6.1.0",
     "rehype-slug": "^5.0.0",
     "remark-code-titles": "^0.1.2",
+    "string-crypto": "^2.0.2",
     "swr": "^1.0.0"
   },
   "devDependencies": {
@@ -75,7 +76,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/preact": "^2.0.1",
     "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.6",
+    "@types/node": "^16.7.7",
     "@types/react": "^17.0.19",
     "@types/tailwindcss": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
@@ -92,7 +93,7 @@
     "lint-staged": "^11.1.2",
     "postcss": "^8.3.6",
     "prettier": "^2.3.2",
-    "tailwindcss": "^2.2.8",
+    "tailwindcss": "^2.2.9",
     "typescript": "^4.4.2"
   }
 }
