@@ -4,7 +4,7 @@
     "resourceSizes": [
       {
         "resourceType": "script",
-        "budget": 150
+        "budget": 307200
       },
       {
         "resourceType": "total",
