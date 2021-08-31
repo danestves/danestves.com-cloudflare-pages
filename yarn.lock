@@ -1460,20 +1460,20 @@
   dependencies:
     tslib "^2.1.0"
 
-"@flyyer/flyyer-lite@^3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@flyyer/flyyer-lite/-/flyyer-lite-3.2.1.tgz#c7fde619aa2b7132d99f2098c300aa586e052e39"
-  integrity sha512-G77eEhZU8YwbGy2hGCh5xg9SzhuI1U2+rdZfRKVZU8uoJZUmsCQxHPgUatmmQN/2wcJBQdASn+XiK4wi+uDwLg==
+"@flyyer/flyyer-lite@^3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@flyyer/flyyer-lite/-/flyyer-lite-3.3.2.tgz#e071c95d0cdde83d4be03f8d078f1d53c04d7a4b"
+  integrity sha512-y2GCZaYWWvWz5tImvjiYP+E6Xl2O42UQtNjYtWZJfovraUhcP3ru70IAgr6GK1rJvsQdzeCuJSVeqcyvi8tU3A==
   dependencies:
     "@types/qs" "^6.9.7"
     qs "^6.10.1"
 
-"@flyyer/flyyer@^3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@flyyer/flyyer/-/flyyer-3.2.1.tgz#ff73b2882be34e5366f98498daff72858b9d9d60"
-  integrity sha512-jsfnAtpQfr7vmZiBHU0SoXchalSyivukxmhKoNAm1f1VyI2IYufwozD6LIMOBoIk/04KFK0ZZsvFDVKEJFxQvA==
+"@flyyer/flyyer@^3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@flyyer/flyyer/-/flyyer-3.3.2.tgz#e05aa93049df0e2e04bc00ffec67acb04b0a57db"
+  integrity sha512-qy9feCxmkh4F90AccRzygvRkbDEfJvWNZsXwdWU0GxzFxzaQp9EC6k5j5Y1r3+YcEXQDwgKa4uY1deimy4HzpQ==
   dependencies:
-    "@flyyer/flyyer-lite" "^3.2.1"
+    "@flyyer/flyyer-lite" "^3.3.2"
 
 "@giphy/js-analytics@^4.0.6":
   version "4.0.6"
