@@ -35,7 +35,7 @@
     "clsx": "^1.1.1",
     "date-fns": "^2.23.0",
     "firebase-admin": "^9.11.1",
-    "graphql": "^15.5.1",
+    "graphql": "^15.5.2",
     "graphql-request": "^3.5.0",
     "gray-matter": "^4.0.3",
     "he": "^1.2.0",
