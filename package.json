@@ -55,7 +55,7 @@
     "react-dom": "^17.0.2",
     "react-hotkeys-hook": "^3.4.0",
     "react-instantsearch-dom": "^6.12.1",
-    "react-use": "^17.2.4",
+    "react-use": "^17.3.1",
     "react-use-webp-support-check": "^1.0.21",
     "rehype": "^12.0.0",
     "rehype-autolink-headings": "^6.0.0",
