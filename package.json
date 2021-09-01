@@ -75,7 +75,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "@types/gtag.js": "^0.0.7",
     "@types/he": "^1.1.2",
-    "@types/node": "^16.7.1",
+    "@types/node": "^16.7.10",
     "@types/prettier": "^2.3.2",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
