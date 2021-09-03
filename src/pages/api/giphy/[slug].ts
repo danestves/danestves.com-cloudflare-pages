@@ -1,5 +1,5 @@
 // Dependencies
-import { GiphyFetch } from '@giphy/js-fetch-api'
+import { GiphyFetch } from '@giphy/js-fetch-api/dist/api'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const giphyFetch = new GiphyFetch(process.env.GIPHY_TOKEN as string)

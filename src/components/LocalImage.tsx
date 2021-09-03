@@ -1,26 +1,13 @@
 // Dependencies
 import * as React from 'react'
-import { motion } from 'framer-motion'
 import NextImage from 'next/image'
-import type { HTMLMotionProps } from 'framer-motion'
 import type { ImageProps as NextImageProps } from 'next/image'
-
-const variants = {
-  loading: {
-    scale: 1.2,
-    filter: 'blur(42px)',
-  },
-  loaded: {
-    scale: 1,
-    filter: 'blur(0px)',
-  },
-}
 
 export type LocalImageProps = {
   /**
    * The props for the `<div>` element using `framer-motion`.
    */
-  container?: HTMLMotionProps<'div'>
+  container?: React.ComponentProps<'div'>
   /**
    * The props for the `<Image />` element using `next/image`.
    */
@@ -58,19 +45,10 @@ export const LocalImage = ({
   container,
   image,
 }: LocalImageProps): JSX.Element => {
-  const [loaded, setLoaded] = React.useState(false)
-
   return (
-    <motion.div
-      {...container}
-      animate={loaded ? 'loaded' : 'loading'}
-      initial="loading"
-      style={{ originX: 0.5, originY: 0.5 }}
-      transition={{ duration: 0.2 }}
-      variants={variants}
-    >
-      <NextImage {...image} onLoadingComplete={() => setLoaded(true)} />
-    </motion.div>
+    <div {...container}>
+      <NextImage {...image} />
+    </div>
   )
 }
 

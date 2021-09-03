@@ -2,7 +2,7 @@
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
 import { usePlausible } from 'next-plausible'
-import { useWindowScroll } from 'react-use'
+import useWindowScroll from 'react-use/lib/useWindowScroll'
 
 // Internals
 import {

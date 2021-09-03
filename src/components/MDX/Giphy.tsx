@@ -1,5 +1,5 @@
 // Dependencies
-import { Gif } from '@giphy/react-components'
+import Gif from '@giphy/react-components/dist/components/gif'
 import Image from 'next/image'
 import useSWR from 'swr'
 import type { IGif } from '@giphy/js-types'
