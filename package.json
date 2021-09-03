@@ -32,9 +32,6 @@
     "@headlessui/react": "^1.4.1",
     "@next/bundle-analyzer": "^11.1.2",
     "@supabase/supabase-js": "^1.22.4",
-    "@tailwindcss/aspect-ratio": "^0.2.1",
-    "@tailwindcss/line-clamp": "^0.2.1",
-    "@tailwindcss/typography": "^0.4.1",
     "axios": "^0.21.1",
     "browser-monads-ts": "^1.2.2",
     "date-fns": "^2.23.0",
@@ -61,7 +58,6 @@
     "rehype-autolink-headings": "^6.1.0",
     "rehype-slug": "^5.0.0",
     "remark-code-titles": "^0.1.2",
-    "string-crypto": "^2.0.2",
     "swr": "^1.0.0"
   },
   "devDependencies": {
@@ -72,6 +68,9 @@
     "@graphql-codegen/typescript": "2.1.2",
     "@graphql-codegen/typescript-graphql-request": "^4.1.2",
     "@graphql-codegen/typescript-operations": "2.1.2",
+    "@tailwindcss/aspect-ratio": "^0.2.1",
+    "@tailwindcss/line-clamp": "^0.2.1",
+    "@tailwindcss/typography": "^0.4.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/preact": "^2.0.1",
     "@types/jest": "^27.0.1",

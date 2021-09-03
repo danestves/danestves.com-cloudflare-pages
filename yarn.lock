@@ -8782,11 +8782,6 @@ string-argv@0.3.1:
   resolved "https://registry.yarnpkg.com/string-argv/-/string-argv-0.3.1.tgz#95e2fbec0427ae19184935f816d74aaa4c5c19da"
   integrity sha512-a1uQGz7IyVy9YwhqjZIZu1c8JO8dNIe20xBmSS6qu9kv++k3JGzCVmprbNN5Kn+BgzD5E7YYwg1CcjuJMRNsvg==
 
-string-crypto@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/string-crypto/-/string-crypto-2.0.2.tgz#edd3ce05335705aa927ee94d8c8221600478badd"
-  integrity sha512-LhWeKBSpThCr/XEIltPNNfg9Rp10Ei/xPYANF2Y4ezaoXuF0fOU2vjwRfcaK1kgavkKkBqMWvh222cscP9myCA==
-
 string-env-interpolation@1.0.1, string-env-interpolation@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/string-env-interpolation/-/string-env-interpolation-1.0.1.tgz#ad4397ae4ac53fe6c91d1402ad6f6a52862c7152"
