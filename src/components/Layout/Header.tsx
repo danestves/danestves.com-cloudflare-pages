@@ -2,6 +2,7 @@
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
 import { usePlausible } from 'next-plausible'
+import { useI18n } from 'next-rosetta'
 import useWindowScroll from 'react-use/lib/useWindowScroll'
 
 // Internals
@@ -16,10 +17,12 @@ import { MenuIcon } from '@/components/Icons'
 import { MENU, SOCIAL } from '@/constants'
 import { clsx } from '@/utils'
 import AssetLogo from 'public/static/logo.png'
+import type { Locale } from 'i18n'
 
 export const Header = (): JSX.Element => {
   const router = useRouter()
   const plausible = usePlausible()
+  const { t } = useI18n<Locale>()
   const { y } = useWindowScroll()
 
   return (
@@ -33,6 +36,7 @@ export const Header = (): JSX.Element => {
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center space-x-6">
             <button
+              aria-label={t('components.layout.menu.toggle')}
               className="block rounded-md focus:outline focus:ring-4 focus:ring-secondary focus:ring-opacity-50 focus:outline-none lg:hidden"
               type="button"
             >
@@ -100,7 +104,7 @@ export const Header = (): JSX.Element => {
           {MENU.map((item) => (
             <li key={nanoid()}>
               <Link
-                className="text-[10px] text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
+                className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
                 href={item.href}
                 locale={router.locale}
               >
@@ -117,7 +121,7 @@ export const Header = (): JSX.Element => {
           {SOCIAL.map((item) => (
             <li key={nanoid()}>
               <Link
-                className="text-[10px] text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
+                className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
                 href={item.href}
                 locale={router.locale}
                 onClick={() => plausible(item.label)}

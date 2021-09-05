@@ -61,7 +61,7 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
           />
         </div>
         {date && (
-          <p className="mt-4 text-[10px] font-bold text-primary">
+          <p className="mt-4 text-xs font-semibold text-primary">
             {t('components.contentcard.published')}{' '}
             <time dateTime={date}>
               {formatDate({
@@ -72,17 +72,17 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
             </time>
           </p>
         )}
-        <h3
+        <h2
           className={clsx(
             'text-xl font-bold text-[#071D49]',
             date ? 'mt-[6px]' : 'mt-4'
           )}
         >
           {title}
-        </h3>
+        </h2>
         <p
           className={clsx(
-            'mt-[6px] text-[10px] font-bold text-[#838383]',
+            'mt-[6px] text-xs font-semibold text-[#838383]',
             descriptionClassName
           )}
         >

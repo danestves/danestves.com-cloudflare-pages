@@ -56,7 +56,7 @@ export const LatestVideos = (props: Videos): JSX.Element => {
                   <h3 className="text-xs font-bold text-white sr-only font-roboto lg:line-clamp-2 lg:not-sr-only lg:mt-3">
                     {video.snippet.title}
                   </h3>
-                  <p className="text-xs font-bold text-white sr-only font-roboto lg:not-sr-only lg:mt-2">
+                  <p className="text-xs font-medium text-white sr-only font-roboto lg:not-sr-only lg:mt-2">
                     {video.statistics.viewCount} views •{' '}
                     {fromNow({
                       date: video.snippet.publishedAt,

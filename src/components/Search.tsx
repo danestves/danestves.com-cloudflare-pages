@@ -11,7 +11,11 @@ export const Search = (): JSX.Element => {
   return (
     <div className="flex items-center space-x-2">
       <div className="lg:p-2 lg:border lg:rounded-full lg:border-primary">
-        <button className="p-2 rounded-full bg-primary" type="button">
+        <button
+          aria-label={t('search')}
+          className="p-2 rounded-full bg-primary"
+          type="button"
+        >
           <SearchIcon className="w-5 h-5 text-white" />
         </button>
       </div>

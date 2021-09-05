@@ -3,6 +3,16 @@ export interface Locale {
     contentcard: {
       published: string
     }
+    layout: {
+      menu: {
+        toggle: string
+      }
+    }
+    switcher: {
+      theme: {
+        label: string
+      }
+    }
     views: string
   }
   header: {

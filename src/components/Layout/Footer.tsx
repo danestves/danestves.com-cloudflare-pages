@@ -58,7 +58,7 @@ export const Footer = (): JSX.Element => {
             {MENU.map((item) => (
               <li key={nanoid()}>
                 <Link
-                  className="text-[10px] text-[#989898] uppercase font-semibold leading-3 hover:text-primary"
+                  className="text-xs text-[#989898] uppercase font-semibold leading-3 hover:text-primary"
                   href={item.href}
                   locale={router.locale}
                 >
@@ -68,7 +68,7 @@ export const Footer = (): JSX.Element => {
             ))}
           </ul>
 
-          <p className="text-[10px] text-[#989898] text-center font-semibold leading-3">
+          <p className="text-xs text-[#989898] text-center font-semibold leading-3">
             © 2021 Daniel Esteves. Todos los derechos reservados.
           </p>
         </div>
