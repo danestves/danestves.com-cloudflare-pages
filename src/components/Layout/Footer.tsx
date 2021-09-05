@@ -1,12 +1,10 @@
 // Dependencies
 import { nanoid } from 'nanoid'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 // Internals
-import { Link } from '@/components'
+import { Link, Logo } from '@/components'
 import { FLOATING_MENU, MENU } from '@/constants'
-import AssetLogo from 'public/static/logo.png'
 
 export const Footer = (): JSX.Element => {
   const router = useRouter()
@@ -46,12 +44,8 @@ export const Footer = (): JSX.Element => {
             href="/"
             locale={router.locale}
           >
-            <Image
-              alt="@danestves"
-              placeholder="blur"
-              priority
-              src={AssetLogo}
-            />
+            <span className="sr-only">@danestves</span>
+            <Logo aria-hidden="true" className="h-9 w-9" />
           </Link>
 
           <ul className="flex flex-col items-center justify-center xs:flex-row xs:space-x-4">
