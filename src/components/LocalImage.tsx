@@ -5,7 +5,7 @@ import type { ImageProps as NextImageProps } from 'next/image'
 
 export type LocalImageProps = {
   /**
-   * The props for the `<div>` element using `framer-motion`.
+   * The props for the `<div>` element.
    */
   container?: React.ComponentProps<'div'>
   /**
