@@ -1,5 +1,4 @@
 // Dependencies
-import GraphCMSImage from '@graphcms/react-image'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { MDXRemote } from 'next-mdx-remote'
@@ -11,7 +10,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 // Internals
-import { Views } from '@/components'
+import { GraphImage, Views } from '@/components'
 import MDXComponents from '@/components/MDX/Components'
 import { sdk } from '@/lib'
 import { formatDate } from '@/utils'
@@ -40,14 +39,14 @@ export const PostPage: NextPage<PostPageProps> = ({ post }) => {
         <div className="grid items-center grid-cols-12 mb-6 gap-y-5 lg:gap-10">
           <div className="col-span-12 lg:col-span-7">
             <div className="overflow-hidden rounded-[18px]">
-              <GraphCMSImage
+              <GraphImage
                 alt={post.title}
                 image={{
                   ...post.cover,
                   height: 360,
                   width: 640,
                 }}
-                withWebp
+                priority
               />
             </div>
             <div className="flex items-end px-6 -mt-8 space-x-4">

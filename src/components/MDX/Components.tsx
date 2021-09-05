@@ -1,12 +1,11 @@
 // Dependencies
-import GraphCmsImage from '@graphcms/react-image'
 import { CodePen, YouTube, CodeSandbox, Tweet } from 'mdx-embed'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import type { LinkProps as LinkNextProps } from 'next/link'
 
 // Internals
-import { Link as NextLink } from '@/components'
+import { GraphImage, Link as NextLink } from '@/components'
 
 const AlertInfo = dynamic(
   () => import('@/components/Alert').then((mod) => mod.Alert.Info),
@@ -53,7 +52,7 @@ const MDXComponents = {
   Cloudinary,
   Giphy,
   AlertInfo,
-  GraphCmsImage,
+  GraphCmsImage: GraphImage,
   code: CodeBlock,
 }
 

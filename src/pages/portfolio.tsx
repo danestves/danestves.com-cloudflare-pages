@@ -27,7 +27,7 @@ export const PortfolioPage: NextPage<PortfolioPageProps> = ({ portfolios }) => {
 
       <div className="container mt-5 max-w-[977px] mx-auto">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-          {portfolios.map((portfolio) => (
+          {portfolios.map((portfolio, index) => (
             <ContentCard
               as={Link}
               description={portfolio.seo.description}
@@ -35,6 +35,7 @@ export const PortfolioPage: NextPage<PortfolioPageProps> = ({ portfolios }) => {
               image={portfolio.cover}
               key={portfolio.id}
               locale={router.locale}
+              priorityImage={index <= 2}
               rel="noopener noreferrer"
               target="_blank"
               title={portfolio.title}

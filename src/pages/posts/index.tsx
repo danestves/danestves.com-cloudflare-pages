@@ -27,7 +27,7 @@ export const PostsPage: NextPage<PostsPageProps> = ({ posts }) => {
 
       <div className="container mt-5 max-w-[977px] mx-auto">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <ContentCard
               as={Link}
               className="p-1 overflow-hidden transition-colors duration-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:ring-offset-2 focus:ring-offset-primary"
@@ -38,6 +38,7 @@ export const PostsPage: NextPage<PostsPageProps> = ({ posts }) => {
               image={post.cover}
               key={post.id}
               locale={router.locale}
+              priorityImage={index <= 2}
               title={post.title}
             />
           ))}

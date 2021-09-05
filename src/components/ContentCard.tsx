@@ -1,12 +1,12 @@
 // Dependencies
 import * as React from 'react'
-import Image from '@graphcms/react-image'
 import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
 
 // Internals
 import { clsx, formatDate } from '@/utils'
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@/types'
+import { GraphImage } from '.'
 import type { Locale } from 'i18n'
 
 interface Props {
@@ -16,6 +16,7 @@ interface Props {
     height?: number
     width?: number
   }
+  priorityImage?: boolean
   title: string
   date?: string
   descriptionClassName?: string
@@ -37,6 +38,7 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
       as,
       date,
       descriptionClassName,
+      priorityImage,
       ...props
     }: ContentCardProps<C>,
     ref?: PolymorphicRef<C>
@@ -49,7 +51,7 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
     return (
       <Component {...props} ref={ref}>
         <div className="overflow-hidden rounded-lg">
-          <Image
+          <GraphImage
             alt={title}
             // We make sure to use the correct image size based on the image's aspect ratio
             image={{
@@ -57,7 +59,7 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
               height: 360,
               width: 640,
             }}
-            withWebp
+            priority={priorityImage}
           />
         </div>
         {date && (
