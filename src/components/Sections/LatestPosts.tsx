@@ -30,6 +30,7 @@ export const LatestPosts = ({ posts }: LatestPostsProps): JSX.Element => {
             as={Link}
             date={post.published}
             description={post.seo.description}
+            descriptionClassName="line-clamp-3"
             href={`/posts/${post.slug}`}
             image={post.cover}
             key={post.id}
