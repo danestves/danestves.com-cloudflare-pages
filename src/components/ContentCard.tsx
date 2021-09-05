@@ -1,3 +1,11 @@
+/**
+ * This is an implementation based on `@graphcms/react-image`
+ *
+ * Reference: https://github.com/GraphCMS/react-image/blob/ec3b4c6cdc/src/index.js
+ *
+ * But using the `priority` prop like `next/image` does.
+ */
+
 // Dependencies
 import * as React from 'react'
 import { useRouter } from 'next/router'
@@ -59,6 +67,7 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
               height: 360,
               width: 640,
             }}
+            maxWidth={640}
             priority={priorityImage}
           />
         </div>

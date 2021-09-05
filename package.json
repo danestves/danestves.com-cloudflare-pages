@@ -29,6 +29,7 @@
     "@giphy/js-fetch-api": "^4.1.1",
     "@giphy/react-components": "^5.1.1",
     "@headlessui/react": "^1.4.1",
+    "@stitches/react": "^1.0.0",
     "@supabase/supabase-js": "^1.22.5",
     "axios": "^0.21.3",
     "browser-monads-ts": "^1.2.2",

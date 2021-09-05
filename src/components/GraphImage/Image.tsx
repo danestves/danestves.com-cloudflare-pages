@@ -1,3 +1,6 @@
+// Internals
+import { ImageElement } from './styles'
+
 /* eslint-disable @next/next/no-img-element */
 export type ImageProps = React.ComponentPropsWithoutRef<'img'> & {
   opacity?: 0 | 1
@@ -6,28 +9,20 @@ export type ImageProps = React.ComponentPropsWithoutRef<'img'> & {
 
 export const Image = ({
   alt,
-  onLoad,
+  onLoad = null,
   opacity,
-  transitionDelay,
+  transitionDelay = '',
   ...props
 }: ImageProps): JSX.Element => {
   return (
-    <img
+    <ImageElement
       {...props}
       alt={alt}
-      onLoad={onLoad}
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        transition: 'opacity 0.5s',
+      css={{
         transitionDelay,
         opacity,
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        objectPosition: 'center',
       }}
+      onLoad={onLoad}
     />
   )
 }

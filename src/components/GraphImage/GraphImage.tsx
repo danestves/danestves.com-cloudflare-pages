@@ -11,15 +11,9 @@ if (typeof window !== 'undefined') {
   require('intersection-observer')
 }
 
-/**
- * Cache if we've intersected an image before so we don't
- * lazy-load & fade in on subsequent mounts.
- */
-const imageCache = {}
-const inImageCache = (
-  { handle }: GraphImageProps['image'],
-  shouldCache?: boolean
-) => {
+// Cache if we've intersected an image before so we don't have to wait for it
+const imageCache: { [key: string]: boolean } = {}
+const inImageCache = (handle: string, shouldCache?: boolean) => {
   if (imageCache[handle]) {
     return true
   }
@@ -31,42 +25,43 @@ const inImageCache = (
   return false
 }
 
-/**
- * Add IntersectionObserver to component
- */
-const listeners = []
-let io: IntersectionObserver
+// Add IntersectionObserver to component
+const listeners: [Element, () => void][] = []
 const getIO = () => {
-  if (typeof io === 'undefined' && typeof window !== 'undefined') {
-    io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          listeners.forEach((listener) => {
-            if (listener[0] === entry.target) {
-              // Edge doesn't currently support isIntersecting, so also test for an intersectionRatio > 0
-              if (entry.isIntersecting || entry.intersectionRatio > 0) {
-                // when we intersect we cache the intersecting image for subsequent mounts
-                io.unobserve(listener[0])
-                listener[1]()
-              }
+  return new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        listeners.forEach((listener) => {
+          if (listener[0] === entry.target) {
+            // Edge doesn't currently support isIntersecting, so also test for an intersectionRatio > 0
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              // when we intersect we cache the intersecting image for subsequent mounts
+              observer.unobserve(listener[0])
+              listener[1]()
             }
-          })
+          }
         })
-      },
-      { rootMargin: '200px' }
-    )
-  }
-
-  return io
+      })
+    },
+    {
+      rootMargin: '400px',
+    }
+  )
 }
 
 const listenToIntersections = (element: Element, callback: () => void) => {
-  getIO().observe(element)
   listeners.push([element, callback])
+
+  getIO().observe(element)
 }
 
-const bgColor = (backgroundColor?: boolean | string) =>
-  typeof backgroundColor === 'boolean' ? 'lightgray' : backgroundColor
+/**
+ * Get background color for image given a background color
+ * or a boolean to use the default background color
+ */
+const bgColor = (backgroundColor?: boolean | string) => {
+  return typeof backgroundColor === 'boolean' ? 'lightgray' : backgroundColor
+}
 
 export type ResizeImageProps = {
   width: number
@@ -79,24 +74,36 @@ export type ResizeImageProps = {
  *
  * If used with native height & width from GraphCMS it produces no transform
  */
-const resizeImage = ({ width, height, fit }: ResizeImageProps) =>
-  `resize=w:${width},h:${height},fit:${fit}`
+const resizeImage = ({ width, height, fit }: ResizeImageProps) => {
+  return `resize=w:${width},h:${height},fit:${fit}`
+}
 
 /**
  * Filestack supports serving modern formats (like WebP) for supported browsers.
  *
  * See: https://www.filestack.com/docs/api/processing/#auto-image-conversion
  */
-const compressAndWebp = (webp?: boolean) =>
-  `${webp ? 'auto_image/' : ''}compress`
+const compressAndWebp = (webp?: boolean) => {
+  return `${webp ? 'auto_image/' : ''}compress`
+}
 
+/**
+ * Build the URL for the image given the base URL, resize, transforms, webp and handle
+ */
 const constructURL =
   (handle: string, withWebp: boolean, baseURI: string) =>
   (resize: string) =>
-  (transforms: string[]) =>
-    [baseURI, resize, ...transforms, compressAndWebp(withWebp), handle].join(
-      '/'
-    )
+  (transforms: string[]) => {
+    const url = [
+      baseURI,
+      resize,
+      ...transforms,
+      compressAndWebp(withWebp),
+      handle,
+    ].join('/')
+
+    return url
+  }
 
 /**
  * Responsiveness transforms
@@ -110,6 +117,9 @@ const responsiveSizes = (size: number) => [
   size * 3,
 ]
 
+/**
+ * Returns the widths for the image given the width and the max width
+ */
 const getWidths = (width: number, maxWidth: number) => {
   const sizes = responsiveSizes(maxWidth).filter((size) => size < width)
 
@@ -122,6 +132,10 @@ const getWidths = (width: number, maxWidth: number) => {
   return finalSizes
 }
 
+/**
+ * Return the srcset for the image given the base URI, the widths,
+ * the fit and the transforms
+ */
 const srcSet = (
   srcBase: (props: string[]) => (transforms: string[]) => string,
   srcWidths: number[],
@@ -138,225 +152,185 @@ const srcSet = (
     .join(',\n')
 }
 
-const imgSizes = (maxWidth: number) =>
-  `(max-width: ${maxWidth}px) 100vw, ${maxWidth}px`
+/**
+ * Return the sizes for the image given the max width
+ */
+const imgSizes = (maxWidth: number) => {
+  return `(max-width: ${maxWidth}px) 100vw, ${maxWidth}px`
+}
 
-export class GraphImage extends React.Component<
-  GraphImageProps,
-  { isVisible: boolean; imgLoaded: boolean; IOSupported: boolean }
-> {
-  static defaultProps = {
-    alt: '',
-    backgroundColor: '',
-    baseURI: 'https://media.graphcms.com',
-    blurryPlaceholder: true,
-    className: '',
-    fadeIn: true,
-    fit: ImageFit.Crop,
-    maxWidth: 800,
-    outerWrapperClassName: '',
-    priority: false,
-    style: {},
-    title: '',
-    transforms: [],
-    withWebp: true,
-  }
+export const GraphImage: React.FC<GraphImageProps> = ({
+  alt = '',
+  backgroundColor = '',
+  baseURI = 'https://media.graphcms.com',
+  blurryPlaceholder = true,
+  className = '',
+  fadeIn = true,
+  fit = ImageFit.Crop,
+  maxWidth = 800,
+  outerWrapperClassName = '',
+  priority = false,
+  style = {},
+  title = '',
+  transforms = [],
+  withWebp = true,
+  ...props
+}) => {
+  const [isVisible, setIsVisible] = React.useState(false)
+  const [imgLoaded, setImgLoaded] = React.useState(false)
+  const [IOSupported, setIOSupported] = React.useState(false)
 
-  constructor(props: GraphImageProps) {
-    super(props)
+  const seenBefore = inImageCache('')
 
-    let isVisible = true
-    let imgLoaded = true
-    let IOSupported = false
+  React.useEffect(() => {
+    if (!seenBefore) {
+      setIOSupported(true)
+    }
+  }, [seenBefore])
 
-    const seenBefore = inImageCache(props.image)
+  const onImageLoaded = React.useCallback(() => {
+    if (IOSupported) {
+      setImgLoaded(true)
 
-    if (
-      !seenBefore &&
-      typeof window !== 'undefined' &&
-      window.IntersectionObserver
-    ) {
-      isVisible = false
-      imgLoaded = false
-      IOSupported = true
+      inImageCache(props.image.handle, true)
     }
 
-    // Never render image while server rendering
-    if (typeof window === 'undefined') {
-      isVisible = false
-      imgLoaded = false
+    if (props.onLoad) {
+      props.onLoad()
     }
+  }, [IOSupported, props])
 
-    this.state = {
-      isVisible,
-      imgLoaded,
-      IOSupported,
-    }
+  const handleRef = React.useCallback(
+    (node: HTMLDivElement) => {
+      if (IOSupported && node) {
+        listenToIntersections(node, () => {
+          setIsVisible(true)
+        })
+      }
+    },
+    [IOSupported]
+  )
 
-    this.handleRef = this.handleRef.bind(this)
-    this.onImageLoaded = this.onImageLoaded.bind(this)
-  }
+  const {
+    image: { width, height, handle },
+  } = props
 
-  onImageLoaded(): void {
-    if (this.state.IOSupported) {
-      this.setState(
-        () => ({
-          imgLoaded: true,
-        }),
-        () => {
-          inImageCache(this.props.image, true)
-        }
-      )
-    }
-    if (this.props.onLoad) {
-      this.props.onLoad()
-    }
-  }
-
-  handleRef(ref: HTMLImageElement | null): void {
-    if (this.state.IOSupported && ref) {
-      listenToIntersections(ref, () => {
-        this.setState({ isVisible: true, imgLoaded: false })
-      })
-    }
-  }
-
-  render(): JSX.Element {
-    const {
-      alt,
-      backgroundColor,
-      baseURI,
-      blurryPlaceholder,
-      className,
-      fadeIn,
-      fit,
-      image: { width, height, handle },
-      maxWidth,
-      priority,
-      outerWrapperClassName,
-      style,
-      title,
-      transforms,
-      withWebp,
-    } = this.props
-
-    if (width && height && handle) {
-      // unify after webp + blur resolved
-      const srcBase = constructURL(handle, withWebp, baseURI)
-      const thumbBase = constructURL(handle, false, baseURI)
-
-      // construct the final image url
-      const sizedSrc = srcBase(resizeImage({ width, height, fit }))
-      const finalSrc = sizedSrc(transforms)
-
-      // construct blurry placeholder url
-      const thumbSize = { width: 20, height: 20, fit: ImageFit.Crop }
-      const thumbSrc = thumbBase(resizeImage(thumbSize))(['blur=amount:2'])
-
-      // construct srcSet if maxWidth provided
-      const srcSetImgs = srcSet(
-        srcBase as any,
-        getWidths(width, maxWidth),
-        fit,
-        transforms
-      )
-      const sizes = imgSizes(maxWidth)
-
-      // The outer div is necessary to reset the z-index to 0.
-      return (
-        <>
-          <div
-            className={`${outerWrapperClassName} graphcms-image-outer-wrapper`}
-            style={{
-              zIndex: 0,
-              // Let users set component to be absolutely positioned.
-              position: style.position === 'absolute' ? 'initial' : 'relative',
-            }}
-          >
-            <div
-              className={`${className} graphcms-image-wrapper`}
-              ref={this.handleRef}
-              style={{
-                position: 'relative',
-                overflow: 'hidden',
-                zIndex: 1,
-                ...style,
-              }}
-            >
-              {/* Preserve the aspect ratio. */}
-              <div
-                style={{
-                  width: '100%',
-                  paddingBottom: `${100 / (width / height)}%`,
-                }}
-              />
-
-              {/* Show the blurry thumbnail image. */}
-              {blurryPlaceholder && (
-                <Image
-                  alt={alt}
-                  opacity={this.state.imgLoaded ? 0 : 1}
-                  src={thumbSrc}
-                  title={title}
-                  transitionDelay="0.25s"
-                />
-              )}
-
-              {/* Show a solid background color. */}
-              {backgroundColor && (
-                <div
-                  style={{
-                    backgroundColor: bgColor(backgroundColor),
-                    position: 'absolute',
-                    top: 0,
-                    bottom: 0,
-                    opacity: this.state.imgLoaded ? 0 : 1,
-                    transitionDelay: '0.25s',
-                    right: 0,
-                    left: 0,
-                  }}
-                  title={title}
-                />
-              )}
-
-              {/* Once the image is visible, start downloading the image */}
-              {this.state.isVisible && (
-                <Image
-                  alt={alt}
-                  onLoad={this.onImageLoaded}
-                  opacity={this.state.imgLoaded || !fadeIn ? 1 : 0}
-                  sizes={sizes}
-                  src={finalSrc}
-                  srcSet={srcSetImgs}
-                  title={title}
-                />
-              )}
-            </div>
-          </div>
-
-          {priority ? (
-            // Note how we omit the `href` attribute, as it would only be relevant
-            // for browsers that do not support `imagesrcset`, and in those cases
-            // it would likely cause the incorrect image to be preloaded.
-            //
-            // https://html.spec.whatwg.org/multipage/semantics.html#attr-link-imagesrcset
-            <Head>
-              <link
-                as="image"
-                href={srcSetImgs ? undefined : finalSrc}
-                // @ts-ignore: imagesizes is not yet in the link element type.
-                imagesizes={sizes}
-                // @ts-ignore: imagesrcset is not yet in the link element type.
-                imagesrcset={srcSetImgs}
-                key={'__graphcms-img-' + finalSrc + srcSetImgs + sizes}
-                rel="preload"
-              ></link>
-            </Head>
-          ) : null}
-        </>
-      )
-    }
-
+  if (!width && !height && !handle) {
     return null
   }
+
+  // unify after webp + blur resolved
+  const srcBase = constructURL(handle, withWebp, baseURI)
+  const thumbBase = constructURL(handle, false, baseURI)
+
+  // construct the final image url
+  const sizedSrc = srcBase(resizeImage({ width, height, fit }))
+  const finalSrc = sizedSrc(transforms)
+
+  // construct blurry placeholder url
+  const thumbSize = { width: 20, height: 20, fit: ImageFit.Crop }
+  const thumbSrc = thumbBase(resizeImage(thumbSize))(['blur=amount:2'])
+
+  // construct srcSet if maxWidth provided
+  const srcSetImgs = srcSet(
+    srcBase as any,
+    getWidths(width, maxWidth),
+    fit,
+    transforms
+  )
+  const sizes = imgSizes(maxWidth)
+
+  return (
+    <>
+      <div
+        // The outer div is necessary to reset the z-index to 0.
+        className={`${outerWrapperClassName} graphcms-image-outer-wrapper`}
+        style={{
+          zIndex: 0,
+          // Let users set component to be absolutely positioned.
+          position: style.position === 'absolute' ? 'initial' : 'relative',
+        }}
+      >
+        <div
+          className={`${className} graphcms-image-wrapper`}
+          ref={handleRef}
+          style={{
+            position: 'relative',
+            overflow: 'hidden',
+            zIndex: 1,
+            ...style,
+          }}
+        >
+          {/* Preserve the aspect ratio. */}
+          <div
+            style={{
+              width: '100%',
+              paddingBottom: `${100 / (width / height)}%`,
+            }}
+          />
+
+          {/* Show the blurry thumbnail image. */}
+          {blurryPlaceholder && (
+            <Image
+              alt={alt}
+              opacity={imgLoaded ? 0 : 1}
+              src={thumbSrc}
+              title={title}
+              transitionDelay="0.25s"
+            />
+          )}
+
+          {/* Show a solid background color. */}
+          {backgroundColor && (
+            <div
+              style={{
+                backgroundColor: bgColor(backgroundColor),
+                position: 'absolute',
+                top: 0,
+                bottom: 0,
+                opacity: imgLoaded ? 0 : 1,
+                transitionDelay: '0.25s',
+                right: 0,
+                left: 0,
+              }}
+              title={title}
+            />
+          )}
+
+          {/* Once the image is visible, start downloading the image */}
+          {isVisible && (
+            <Image
+              alt={alt}
+              onLoad={onImageLoaded}
+              opacity={imgLoaded || !fadeIn ? 1 : 0}
+              sizes={sizes}
+              src={finalSrc}
+              srcSet={srcSetImgs}
+              title={title}
+            />
+          )}
+        </div>
+      </div>
+
+      {priority ? (
+        // Note how we omit the `href` attribute, as it would only be relevant
+        // for browsers that do not support `imagesrcset`, and in those cases
+        // it would likely cause the incorrect image to be preloaded.
+        //
+        // https://html.spec.whatwg.org/multipage/semantics.html#attr-link-imagesrcset
+        <Head>
+          <link
+            as="image"
+            href={srcSetImgs ? undefined : finalSrc}
+            // @ts-ignore: imagesizes is not yet in the link element type.
+            imagesizes={sizes}
+            // @ts-ignore: imagesrcset is not yet in the link element type.
+            imagesrcset={srcSetImgs}
+            key={'__graphcms-img-' + finalSrc + srcSetImgs + sizes}
+            rel="preload"
+          ></link>
+        </Head>
+      ) : null}
+    </>
+  )
 }
