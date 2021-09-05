@@ -54,8 +54,8 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
             // We make sure to use the correct image size based on the image's aspect ratio
             image={{
               ...image,
-              height: Number(image.height),
-              width: Number(image.width),
+              height: 360,
+              width: 640,
             }}
             withWebp
           />

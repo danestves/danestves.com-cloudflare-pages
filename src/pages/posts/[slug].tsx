@@ -44,8 +44,8 @@ export const PostPage: NextPage<PostPageProps> = ({ post }) => {
                 alt={post.title}
                 image={{
                   ...post.cover,
-                  height: Number(post.cover.height),
-                  width: Number(post.cover.width),
+                  height: 360,
+                  width: 640,
                 }}
                 withWebp
               />
