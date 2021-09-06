@@ -13,7 +13,7 @@ export const Layout: React.FC = ({ children }) => {
   React.useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
-    }, 1000)
+    }, 500)
   }, [])
 
   return (
