@@ -2,6 +2,9 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import type { DocumentContext, DocumentInitialProps } from 'next/document'
 
+// Internals
+import { getCssText } from '@/lib'
+
 class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
@@ -23,6 +26,10 @@ class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@400;500&display=swap"
             rel="stylesheet"
+          />
+          <style
+            dangerouslySetInnerHTML={{ __html: getCssText() }}
+            id="stitches"
           />
         </Head>
 
