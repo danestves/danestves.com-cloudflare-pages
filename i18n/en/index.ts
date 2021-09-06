@@ -1,6 +1,7 @@
 // Internals
 import { contentcard, layout, switcher, views } from './components'
 import header from './header'
+import { pages } from './pages'
 import calltoaction from './sections/calltoaction'
 import hero from './sections/hero'
 import latest from './sections/latest'
@@ -15,6 +16,7 @@ export const table: Locale = {
     views,
   },
   header,
+  pages,
   search,
   sections: {
     calltoaction,

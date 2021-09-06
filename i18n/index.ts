@@ -20,6 +20,18 @@ export interface Locale {
       lang: string
     }
   }
+  pages: {
+    posts: {
+      slug: {
+        published: string
+        sharer: {
+          share: string
+          shared: string
+          copied: string
+        }
+      }
+    }
+  }
   search: string
   sections: {
     calltoaction: {

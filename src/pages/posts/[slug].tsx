@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
+import { useI18n } from 'next-rosetta'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkCodeTitles from 'remark-code-titles'
@@ -11,10 +12,13 @@ import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 // Internals
 import { GraphImage, Views } from '@/components'
+import { ShareIcon } from '@/components/Icons/ShareIcon'
 import MDXComponents from '@/components/MDX/Components'
+import useShare from '@/hooks/useShare'
 import { sdk } from '@/lib/graphcms'
 import { formatDate } from '@/utils'
 import type { PostQuery } from '@/generated/graphql'
+import type { Locale } from 'i18n'
 import AssetMe from 'public/static/me.png'
 
 export type PostPageProps = {
@@ -25,6 +29,14 @@ export type PostPageProps = {
 
 export const PostPage: NextPage<PostPageProps> = ({ post }) => {
   const router = useRouter()
+  const { t } = useI18n<Locale>()
+  const { canShare, hasShared, share } = useShare({
+    title: post.title,
+    text: post.seo.description,
+    url: `https://danestves.com${router.locale !== 'en' ? '/es' : ''}/posts/${
+      post.slug
+    }`,
+  })
 
   return (
     <section className="w-full py-32">
@@ -36,8 +48,8 @@ export const PostPage: NextPage<PostPageProps> = ({ post }) => {
       </h2>
 
       <div className="container mt-5 max-w-[977px] mx-auto">
-        <div className="grid items-center grid-cols-12 mb-6 gap-y-5 lg:gap-10">
-          <div className="col-span-12 lg:col-span-7">
+        <div className="grid items-center grid-cols-12 mb-6 gap-y-5 md:gap-10">
+          <div className="col-span-12 md:col-span-7">
             <div className="overflow-hidden rounded-[18px]">
               <GraphImage
                 alt={post.title}
@@ -49,18 +61,38 @@ export const PostPage: NextPage<PostPageProps> = ({ post }) => {
                 priority
               />
             </div>
-            <div className="flex items-end px-6 -mt-8 space-x-4">
-              <div className="w-16 h-16 overflow-hidden rounded-full drop-shadow-lg">
+            <div className="relative flex items-end px-6 -mt-10 space-x-4">
+              <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-lg">
                 <Image alt="@danestves" placeholder="blur" src={AssetMe} />
               </div>
 
               <Views slug={post.slug} />
+
+              <div className="absolute flex justify-end flex-1 right-6 bottom-6">
+                <button
+                  className="z-10 flex items-center px-3 py-2 text-xs font-bold text-black rounded-full bg-primary"
+                  onClick={share}
+                  type="button"
+                >
+                  <span className="sr-only sm:not-sr-only">
+                    {hasShared
+                      ? !canShare
+                        ? t('pages.posts.slug.sharer.copied')
+                        : t('pages.posts.slug.sharer.shared')
+                      : t('pages.posts.slug.sharer.share')}
+                  </span>
+                  <ShareIcon
+                    aria-hidden="true"
+                    className="w-4 h-4 sm:ml-2 sm:-mr-1"
+                  />
+                </button>
+              </div>
             </div>
           </div>
-          <div className="col-span-12 space-y-4 lg:col-span-5">
+          <div className="col-span-12 space-y-4 md:col-span-5">
             <h1 className="text-2xl font-bold text-[#071D49]">{post.title}</h1>
             <p className="text-xs font-bold text-primary">
-              Publicado{' '}
+              {t('pages.posts.slug.published')}{' '}
               <time dateTime={post.published}>
                 {formatDate({
                   date: new Date(post.published).toISOString().slice(0, 19),
@@ -125,11 +157,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const post = data.post
   const mdx = await serialize(post.body, {
     mdxOptions: {
-      remarkPlugins: [remarkCodeTitles],
       rehypePlugins: [
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: 'append' }],
       ],
+      remarkPlugins: [remarkCodeTitles],
     },
   })
 
