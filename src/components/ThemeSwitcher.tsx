@@ -2,7 +2,7 @@
 import { useI18n } from 'next-rosetta'
 
 // Internals
-import { MoonIcon } from '@/components/Icons'
+import { MoonIcon } from '@/components/Icons/MoonIcon'
 import type { Locale } from 'i18n'
 
 export const ThemeSwitcher = (): JSX.Element => {

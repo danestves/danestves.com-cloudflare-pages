@@ -1,5 +1,5 @@
 // Internals
-import { GeneralObserver } from '@/components'
+import { GeneralObserver } from '@/components/GeneralObserver'
 
 interface CloudinaryProps {
   publicID: string

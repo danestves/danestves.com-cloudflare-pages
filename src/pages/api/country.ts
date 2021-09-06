@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 // Internals
-import { getIP } from '@/lib'
+import { getIP } from '@/lib/getIP'
 
 export default async function handler(
   req: NextApiRequest,

@@ -3,7 +3,7 @@ import nc from 'next-connect'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 // Internals
-import { supabase } from '@/lib'
+import { supabase } from '@/lib/supabase'
 
 const handler = nc<NextApiRequest, NextApiResponse>()
   .post(async (req, res) => {

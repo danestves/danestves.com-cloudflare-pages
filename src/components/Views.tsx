@@ -4,7 +4,7 @@ import { useI18n } from 'next-rosetta'
 import useSWR from 'swr'
 
 // Internals
-import { fetcher } from '@/lib'
+import { fetcher } from '@/lib/fetcher'
 import type { Locale } from 'i18n'
 
 export type ViewsProps = {

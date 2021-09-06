@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import type { DocumentContext, DocumentInitialProps } from 'next/document'
 
 // Internals
-import { getCssText } from '@/lib'
+import { getCssText } from '@/lib/stitches'
 
 class MyDocument extends Document {
   static async getInitialProps(

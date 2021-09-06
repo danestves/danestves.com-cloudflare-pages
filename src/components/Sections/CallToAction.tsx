@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
 
 // Internals
-import { Link } from '@/components'
-import { LinkOutIcon } from '@/components/Icons'
+import { Link } from '@/components/Link'
+import { LinkOutIcon } from '@/components/Icons/LinkOutIcon'
 import type { Locale } from 'i18n'
 
 export const CallToAction = (): JSX.Element => {

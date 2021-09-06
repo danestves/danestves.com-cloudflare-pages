@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
 
 // Internals
-import { Link } from '@/components'
-import { YoutubeIcon } from '@/components/Icons'
+import { Link } from '@/components/Link'
+import { YoutubeIcon } from '@/components/Icons/YoutubeIcon'
 import { fromNow } from '@/utils'
 import type { Videos } from '@/interfaces'
 import type { Locale } from 'i18n'

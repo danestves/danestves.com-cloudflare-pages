@@ -5,7 +5,7 @@ import type { I18nProps } from 'next-rosetta'
 
 // Internals
 import { ContentCard, Link } from '@/components'
-import { sdk } from '@/lib'
+import { sdk } from '@/lib/graphcms'
 import type { PortfoliosQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
 

@@ -2,7 +2,7 @@
 import { useI18n } from 'next-rosetta'
 
 // Internals
-import { SearchIcon } from '@/components/Icons'
+import { SearchIcon } from '@/components/Icons/SearchIcon'
 import type { Locale } from 'i18n'
 
 export const Search = (): JSX.Element => {

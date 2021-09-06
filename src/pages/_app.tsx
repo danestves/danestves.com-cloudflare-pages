@@ -6,7 +6,7 @@ import PlausibleProvider from 'next-plausible'
 import type { AppProps } from 'next/app'
 
 // Internals
-import { Layout } from '@/components'
+import { Layout } from '@/components/Layout/Layout'
 import '@/styles/main.css'
 import defaultSeo, { texts } from 'seoConfig'
 

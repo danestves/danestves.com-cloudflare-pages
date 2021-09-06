@@ -12,7 +12,7 @@ import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 // Internals
 import { GraphImage, Views } from '@/components'
 import MDXComponents from '@/components/MDX/Components'
-import { sdk } from '@/lib'
+import { sdk } from '@/lib/graphcms'
 import { formatDate } from '@/utils'
 import type { PostQuery } from '@/generated/graphql'
 import AssetMe from 'public/static/me.png'

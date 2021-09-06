@@ -10,7 +10,8 @@ import {
   LatestVideos,
 } from '@/components/Sections'
 import { Videos } from '@/interfaces'
-import { getVideos, sdk } from '@/lib'
+import { sdk } from '@/lib/graphcms'
+import { getVideos } from '@/lib/youtube'
 import type { PostsQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
 

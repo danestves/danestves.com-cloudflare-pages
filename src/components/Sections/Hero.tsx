@@ -2,7 +2,8 @@
 import { useI18n } from 'next-rosetta'
 
 // Internals
-import { LocalImage, Rings, Search } from '@/components'
+import { Rings, Search } from '@/components'
+import { LocalImage } from '@/components/LocalImage'
 import type { Locale } from 'i18n'
 import MeMaskD from 'public/static/me-mask-d.png'
 
