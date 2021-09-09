@@ -16,9 +16,12 @@ const AlertInfo = dynamic(
 const Cloudinary = dynamic(() => import('./Cloudinary'), {
   ssr: false,
 })
-const CodeBlock = dynamic(() => import('./CodeBlock'), {
-  ssr: false,
-})
+const CodeBlock = dynamic(
+  () => import('./CodeBlock/CodeBlock').then((mod) => mod.CodeBlock),
+  {
+    ssr: false,
+  }
+)
 const Giphy = dynamic(() => import('./Giphy'), {
   ssr: false,
 })

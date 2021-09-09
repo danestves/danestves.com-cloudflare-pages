@@ -14,12 +14,6 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      animation: {
-        'contentcard-title-open':
-          'contentcard-title-open 0.1s linear 0.1s forwards',
-        'contentcard-title-close':
-          'contentcard-title-close 0.1s linear 0.1s forwards',
-      },
       colors: {
         primary: '#00C389',
         secondary: '#29ABE2',
