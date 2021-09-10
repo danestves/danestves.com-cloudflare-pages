@@ -47,7 +47,7 @@ module.exports = {
             code: {
               backgroundColor: '#282a36',
               color: '#f8f8f2',
-              borderRadius: theme('borderRadius.md'),
+              borderRadius: theme('borderRadius.lg'),
               padding: `${defaultTheme.spacing[1]} ${defaultTheme.spacing[0.5]}`,
               fontWeight: theme('fontWeight.normal'),
             },
@@ -131,6 +131,7 @@ module.exports = {
               margin: 0,
             },
             pre: {
+              borderRadius: '0.5rem',
               padding: 0,
               pre: {
                 paddingTop: '1em',
