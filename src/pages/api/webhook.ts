@@ -40,18 +40,19 @@ export default async function handler(
         })
 
         await index.saveObject({
-          objectID: `${id}-${locale.locale}`,
-          id,
-          slug: data.slug,
-          title: locale.title,
           cover: {
             ...data.cover,
             ...asset.asset,
           },
+          id,
+          locale: locale.locale,
+          objectID: `${id}-${locale.locale}`,
           seo: {
             ...data.seo,
             ...seo.seo,
           },
+          slug: data.slug,
+          title: locale.title,
         })
       }
 

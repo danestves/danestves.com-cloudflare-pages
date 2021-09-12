@@ -4,6 +4,22 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* clears the 'X' from Internet Explorer */
+  input[type='search']::-ms-clear,
+  input[type='search']::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* clears the 'X' from Chrome */
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
 }
 
 @tailwind components;
@@ -80,4 +96,17 @@ pre[class*='language-'] {
 .language-css .token.string,
 .style .token.string {
   color: #87c38a !important;
+}
+
+/* Algolia Search */
+.ais-Snippet-highlighted {
+  @apply not-italic text-secondary group-hover:text-white group-hover:underline;
+}
+
+.ais-PoweredBy {
+  @apply flex items-center;
+}
+
+.ais-PoweredBy-logo {
+  @apply block h-[1.2em] w-auto;
 }

@@ -8,6 +8,18 @@ export interface Locale {
         toggle: string
       }
     }
+    search: {
+      button: {
+        label: string
+      }
+      footer: {
+        credit: string
+      }
+      input: {
+        cancel: string
+        placeholder: string
+      }
+    }
     switcher: {
       theme: {
         label: string

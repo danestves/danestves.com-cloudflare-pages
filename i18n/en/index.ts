@@ -1,5 +1,5 @@
 // Internals
-import { contentcard, layout, switcher, views } from './components'
+import { components } from './components'
 import header from './header'
 import { pages } from './pages'
 import calltoaction from './sections/calltoaction'
@@ -9,12 +9,7 @@ import search from './search'
 import type { Locale } from '../'
 
 export const table: Locale = {
-  components: {
-    contentcard,
-    layout,
-    switcher,
-    views,
-  },
+  components,
   header,
   pages,
   search,
