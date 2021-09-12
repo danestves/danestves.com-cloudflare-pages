@@ -56,6 +56,14 @@ export default async function handler(
       }
 
       return res.send(201)
+    } else if (post.stage === 'DRAFT') {
+      const { data: post } = req.body
+
+      for await (const locale of post.localizations) {
+        await index.deleteObject(`${post.id}-${locale.locale}`)
+      }
+
+      return res.send(201)
     }
   } catch (err) {
     console.error(err?.message)
