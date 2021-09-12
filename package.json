@@ -29,7 +29,6 @@
     "@giphy/js-fetch-api": "^4.1.2",
     "@giphy/react-components": "^5.3.1",
     "@headlessui/react": "^1.4.1",
-    "@mapbox/rehype-prism": "^0.7.0",
     "@react-hookz/web": "^9.0.0",
     "@stitches/react": "^1.1.0",
     "@supabase/supabase-js": "^1.22.6",
