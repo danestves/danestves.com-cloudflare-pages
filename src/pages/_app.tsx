@@ -21,24 +21,23 @@ export default function App({
   return (
     <PlausibleProvider domain="danestves.com">
       <I18nProvider table={pageProps.table}>
-        <DefaultSeo
-          {...defaultSeo(router.locale)}
-          canonical={basePath}
-          openGraph={{
-            ...defaultSeo(router.locale).openGraph,
-            images: [
-              {
-                url: `https://cdn.flyyer.io/v2/danestves-com/_/_${lang}${router.asPath}`,
-                alt: texts.title[router.locale],
-                height: 630,
-                width: 1200,
-              },
-            ],
-            url: basePath,
-          }}
-        />
-
         <Layout>
+          <DefaultSeo
+            {...defaultSeo(router.locale)}
+            canonical={basePath}
+            openGraph={{
+              ...defaultSeo(router.locale).openGraph,
+              images: [
+                {
+                  url: `https://cdn.flyyer.io/v2/danestves-com/_/_${lang}${router.asPath}`,
+                  alt: texts.title[router.locale],
+                  height: 630,
+                  width: 1200,
+                },
+              ],
+              url: basePath,
+            }}
+          />
           <Component {...pageProps} />
         </Layout>
       </I18nProvider>

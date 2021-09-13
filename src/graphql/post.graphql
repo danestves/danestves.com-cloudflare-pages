@@ -1,6 +1,7 @@
 query post($slug: String!, $stage: Stage!, $locale: Locale!) {
   post(where: { slug: $slug }, stage: $stage, locales: [$locale]) {
     id
+    updatedAt(variation: COMBINED)
     title
     slug
     published
@@ -8,7 +9,13 @@ query post($slug: String!, $stage: Stage!, $locale: Locale!) {
     cover(locales: [en]) {
       handle
       height
+      url
       width
+    }
+    tags {
+      id
+      name
+      slug
     }
     seo {
       title

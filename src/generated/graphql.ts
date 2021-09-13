@@ -4743,7 +4743,7 @@ export type PostQueryVariables = Exact<{
 }>;
 
 
-export type PostQuery = { __typename?: 'Query', post?: Maybe<{ __typename?: 'Post', id: string, title: string, slug: string, published: any, body: string, cover: { __typename?: 'Asset', handle: string, height?: Maybe<number>, width?: Maybe<number> }, seo?: Maybe<{ __typename?: 'Seo', title: string, description: string }> }> };
+export type PostQuery = { __typename?: 'Query', post?: Maybe<{ __typename?: 'Post', id: string, updatedAt: any, title: string, slug: string, published: any, body: string, cover: { __typename?: 'Asset', handle: string, height?: Maybe<number>, url: string, width?: Maybe<number> }, tags: Array<{ __typename?: 'Tag', id: string, name: string, slug: string }>, seo?: Maybe<{ __typename?: 'Seo', title: string, description: string }> }> };
 
 export type PostsQueryVariables = Exact<{
   first: Scalars['Int'];
@@ -4798,6 +4798,7 @@ export const PostDocument = gql`
     query post($slug: String!, $stage: Stage!, $locale: Locale!) {
   post(where: {slug: $slug}, stage: $stage, locales: [$locale]) {
     id
+    updatedAt(variation: COMBINED)
     title
     slug
     published
@@ -4805,7 +4806,13 @@ export const PostDocument = gql`
     cover(locales: [en]) {
       handle
       height
+      url
       width
+    }
+    tags {
+      id
+      name
+      slug
     }
     seo {
       title
