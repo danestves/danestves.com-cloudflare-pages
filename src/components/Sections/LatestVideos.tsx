@@ -16,7 +16,7 @@ export const LatestVideos = (props: Videos): JSX.Element => {
 
   return (
     <section
-      className="relative w-full pl-4 mt-5 lg:mt-0 lg:px-4"
+      className="relative w-full pl-4 mt-5 overflow-hidden lg:mt-0 lg:px-4"
       id="danestves-section-latest-videos"
     >
       <h2 className="w-full max-w-[977px] mx-auto text-[26px] font-black text-[#071D49] uppercase lg:pl-8">
