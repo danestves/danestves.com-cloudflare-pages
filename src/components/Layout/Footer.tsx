@@ -50,14 +50,14 @@ export const Footer = (): JSX.Element => {
           </Link>
 
           <ul className="flex flex-col items-center justify-center xs:flex-row xs:space-x-4">
-            {MENU.map((item) => (
+            {MENU.map(({ label, ...item }) => (
               <li key={nanoid()}>
                 <Link
+                  {...item}
                   className="text-xs text-[#989898] uppercase font-semibold leading-3 hover:text-primary"
-                  href={item.href}
                   locale={router.locale}
                 >
-                  {item.label[router.locale] || item.label}
+                  {label[router.locale] || label}
                 </Link>
               </li>
             ))}

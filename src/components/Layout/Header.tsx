@@ -72,28 +72,30 @@ export const Header = (): JSX.Element => {
                       </div>
                     </div>
                     <div className="px-2 pt-2 pb-3">
-                      {MENU.map((item) => (
+                      {MENU.map(({ label, ...item }) => (
                         <Link
+                          {...item}
                           className="block px-3 py-2 text-base text-[#989898] font-semibold rounded-md uppercase hover:text-primary"
-                          href={item.href}
                           key={item.href}
                           locale={router.locale}
                         >
-                          {item.label[router.locale] || item.label}
+                          {label[router.locale] || label}
                         </Link>
                       ))}
                     </div>
 
                     <div className="px-5 py-3 bg-gray-50">
                       <div className="flex justify-between max-w-xs mx-auto">
-                        {SOCIAL.map((item) => (
+                        {SOCIAL.map(({ label, ...item }) => (
                           <Link
+                            {...item}
                             className="block px-3 py-2 text-base text-[#989898] font-semibold rounded-md uppercase hover:text-primary"
-                            href={item.href}
                             key={item.href}
                             locale={router.locale}
                           >
-                            <span className="sr-only">{item.label}</span>
+                            <span className="sr-only">
+                              {label[router.locale] || label}
+                            </span>
                             <item.icon aria-hidden="true" className="w-6 h-6" />
                           </Link>
                         ))}
@@ -147,14 +149,14 @@ export const Header = (): JSX.Element => {
       {/* Left Sidebar */}
       <aside className="fixed top-0 left-0 z-10 hidden h-full px-12 lg:block">
         <ul className="flex flex-col items-center justify-center h-full space-y-4 rotate-180">
-          {MENU.map((item) => (
+          {MENU.map(({ label, ...item }) => (
             <li key={nanoid()}>
               <Link
+                {...item}
                 className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
-                href={item.href}
                 locale={router.locale}
               >
-                {item.label[router.locale] || item.label}
+                {label[router.locale] || label}
               </Link>
             </li>
           ))}
@@ -164,17 +166,15 @@ export const Header = (): JSX.Element => {
       {/* Right Sidebar */}
       <aside className="fixed top-0 right-0 z-10 hidden h-full px-12 lg:block">
         <ul className="flex flex-col items-center justify-center h-full space-y-4 rotate-180">
-          {SOCIAL.map((item) => (
+          {SOCIAL.map(({ label, ...item }) => (
             <li key={nanoid()}>
               <Link
+                {...item}
                 className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
-                href={item.href}
                 locale={router.locale}
-                onClick={() => plausible(item.label)}
-                rel="noopener noreferrer"
-                target="_blank"
+                onClick={() => plausible(label[router.locale] || label)}
               >
-                {item.label[router.locale] || item.label}
+                {label[router.locale] || label}
               </Link>
             </li>
           ))}

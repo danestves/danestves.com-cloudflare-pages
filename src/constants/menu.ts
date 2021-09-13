@@ -1,4 +1,11 @@
-export const MENU = [
+// Internals
+import type { LinkProps } from '@/components'
+
+type MenuItem = LinkProps & {
+  label: string | { en: string; es: string }
+}
+
+export const MENU: MenuItem[] = [
   {
     href: '/about',
     label: {
@@ -9,6 +16,8 @@ export const MENU = [
   {
     href: '/github',
     label: 'open source',
+    rel: 'noopener noreferrer',
+    target: '_blank',
   },
   {
     href: '/portfolio',
