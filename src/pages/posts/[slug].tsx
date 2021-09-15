@@ -1,4 +1,5 @@
 // Dependencies
+import axios from 'axios'
 import { window } from 'browser-monads-ts'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -27,9 +28,10 @@ export type PostPageProps = {
   post: PostQuery['post'] & {
     mdx: MDXRemoteSerializeResult<Record<string, unknown>>
   }
+  views: number
 }
 
-export const PostPage: NextPage<PostPageProps> = ({ post }) => {
+export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
   const router = useRouter()
   const { t } = useI18n<Locale>()
   const { canShare, hasShared, share } = useShare({
@@ -70,7 +72,10 @@ export const PostPage: NextPage<PostPageProps> = ({ post }) => {
             property: 'flyyer:title',
             content: post.seo?.title,
           },
-
+          {
+            property: 'flyyer:views',
+            content: views,
+          },
           {
             property: 'article:modified_time',
             content: post.updatedAt,
@@ -254,9 +259,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   })
 
-  console.info(process.env.VERCEL_URL)
-  const slug = `https://danestves.com/api/views/${post.slug}`
-  const views = await fetch(slug).then((res) => res.text())
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000'
+  const slug = `/api/views/${post.slug}`
+  const views = await axios
+    .get(`${baseUrl}${slug}`)
+    .then((res) => res.data.views)
 
   return {
     props: {
@@ -268,6 +277,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         mdx,
       },
       table,
+      views,
     },
     revalidate: 60 * 60,
   }
