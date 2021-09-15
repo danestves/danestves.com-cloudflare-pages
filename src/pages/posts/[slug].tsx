@@ -254,6 +254,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   })
 
+  console.info(process.env.VERCEL_URL)
   const slug = `https://danestves.com/api/views/${post.slug}`
   const views = await fetch(slug).then((res) => res.text())
 
