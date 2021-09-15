@@ -265,11 +265,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     .select('value')
     .eq('id', post.slug)
     .limit(1)
+    .then(({ data }) => data[0].value)
 
   return {
     props: {
       fallback: {
-        [slug]: views.data[0].value,
+        [slug]: views,
       },
       post: {
         ...post,
