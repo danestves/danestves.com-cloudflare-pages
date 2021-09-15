@@ -69,6 +69,10 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
             content: post.cover?.url,
           },
           {
+            property: 'flyyer:locale',
+            content: router.locale,
+          },
+          {
             property: 'flyyer:title',
             content: post.seo?.title,
           },
