@@ -1,5 +1,4 @@
 // Dependencies
-import axios from 'axios'
 import { window } from 'browser-monads-ts'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -23,6 +22,7 @@ import { formatDate } from '@/utils'
 import type { PostQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
 import AssetMe from 'public/static/me.png'
+import supabase from '@/lib/supabase'
 
 export type PostPageProps = {
   post: PostQuery['post'] & {
@@ -259,18 +259,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   })
 
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000'
   const slug = `/api/views/${post.slug}`
-  const views = await axios
-    .get(`${baseUrl}${slug}`)
-    .then((res) => res.data.views)
+  const views = await supabase
+    .from('views')
+    .select('value')
+    .eq('id', post.slug)
+    .limit(1)
 
   return {
     props: {
       fallback: {
-        slug: views,
+        [slug]: views,
       },
       post: {
         ...post,
