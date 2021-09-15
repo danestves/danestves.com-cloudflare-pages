@@ -1,6 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { useI18n } from 'next-rosetta'
+import { NextSeo } from 'next-seo'
 import useSWR from 'swr'
 
 // Internals
@@ -25,9 +26,19 @@ export const Views = ({ slug }: ViewsProps): JSX.Element => {
   }, [slug])
 
   return (
-    <span className="px-3 py-2 text-xs font-bold text-black rounded-full bg-primary">
-      {data?.views ? data.views : '---'} {t('components.views')}
-    </span>
+    <>
+      <NextSeo
+        additionalMetaTags={[
+          {
+            property: 'flyyer:views',
+            content: `${data?.views ?? 0}`,
+          },
+        ]}
+      />
+      <span className="px-3 py-2 text-xs font-bold text-black rounded-full bg-primary">
+        {data?.views ? data.views : '---'} {t('components.views')}
+      </span>
+    </>
   )
 }
 

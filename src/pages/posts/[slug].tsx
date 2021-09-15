@@ -70,6 +70,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post }) => {
             property: 'flyyer:title',
             content: post.seo?.title,
           },
+
           {
             property: 'article:modified_time',
             content: post.updatedAt,
@@ -253,13 +254,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   })
 
+  const slug = `https://danestves.com/api/views/${post.slug}`
+  const views = await fetch(slug).then((res) => res.text())
+
   return {
     props: {
-      table,
+      fallback: {
+        slug: views,
+      },
       post: {
         ...post,
         mdx,
       },
+      table,
     },
     revalidate: 60 * 60,
   }
