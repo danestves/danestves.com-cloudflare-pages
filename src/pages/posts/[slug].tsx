@@ -60,7 +60,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post }) => {
           },
           {
             property: 'flyyer:date',
-            content: post.published,
+            content: new Date(post.published).toISOString(),
           },
           {
             property: 'flyyer:image',
@@ -76,7 +76,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post }) => {
           },
           {
             property: 'article:published_time',
-            content: new Date(post.published).toISOString().slice(0, 19),
+            content: new Date(post.published).toISOString(),
           },
           {
             property: 'article:tag',
