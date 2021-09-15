@@ -29,7 +29,7 @@ export default function App({
               ...defaultSeo(router.locale).openGraph,
               images: [
                 {
-                  url: `https://cdn.flyyer.io/v2/danestves-com/_/_${lang}${router.asPath}`,
+                  url: `https://cdn.flyyer.io/v2/danestves-preview/_/_${lang}${router.asPath}`,
                   alt: texts.title[router.locale],
                   height: 630,
                   width: 1200,
