@@ -269,7 +269,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       fallback: {
-        [slug]: views,
+        [slug]: views.data[0].value,
       },
       post: {
         ...post,
