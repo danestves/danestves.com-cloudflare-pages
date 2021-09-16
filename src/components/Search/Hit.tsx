@@ -1,9 +1,9 @@
 // Dependencies
 import { Snippet } from 'react-instantsearch-dom'
-import { HiOutlineDocument, HiOutlineArrowRight } from 'react-icons/hi'
+import { HiOutlineDocument, HiOutlineArrowRight } from 'react-icons/hi/index'
 
 // Internals
-import { Link } from '@/components'
+import { Link } from '../'
 
 interface SearchHitProps {
   hit: any

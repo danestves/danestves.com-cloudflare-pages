@@ -2,10 +2,10 @@
 import { useI18n } from 'next-rosetta'
 
 // Internals
-import { Rings, Search } from '@/components'
-import { LocalImage } from '@/components/LocalImage'
-import type { Locale } from 'i18n'
+import { Rings, Search } from '../'
+import { LocalImage } from '../LocalImage'
 import MeMaskD from 'public/static/me-mask-d.png'
+import type { Locale } from 'i18n'
 
 export const Hero = (): JSX.Element => {
   const { t } = useI18n<Locale>()

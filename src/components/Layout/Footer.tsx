@@ -3,8 +3,7 @@ import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
 
 // Internals
-import { Link } from '@/components/Link'
-import { Logo } from '@/components/Logo/Logo'
+import { Link, Logo } from '../'
 import { FLOATING_MENU, MENU } from '@/constants'
 
 export const Footer = (): JSX.Element => {

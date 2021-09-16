@@ -13,8 +13,8 @@ import { useI18n } from 'next-rosetta'
 
 // Internals
 import { clsx, formatDate } from '@/utils'
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@/types'
-import { GraphImage } from '.'
+import { GraphImage } from './GraphImage'
+import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@/types'
 import type { Locale } from 'i18n'
 
 interface Props {

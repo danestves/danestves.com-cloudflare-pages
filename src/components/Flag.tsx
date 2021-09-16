@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
 // Internals
-import { LocalImage } from '@/components/LocalImage'
+import { LocalImage } from './LocalImage'
 import { fetcher } from '@/lib/fetcher'
 import { ES_FLAGS, US_FLAG } from '@/utils'
 

@@ -9,10 +9,10 @@ import { InstantSearch, Hits, Configure } from 'react-instantsearch-dom'
 import { useI18n } from 'next-rosetta'
 
 // Internals
-import { SearchIcon } from '@/components/Icons/SearchIcon'
-import Hit from './Hit'
-import SearchFooter from './Footer'
-import SearchInput from './Input'
+import { SearchHit } from './Hit'
+import { SearchFooter } from './Footer'
+import { SearchInput } from './Input'
+import { SearchIcon } from '../Icons'
 import type { Locale } from 'i18n'
 
 const searchClient = algoliasearch(
@@ -114,7 +114,7 @@ export const Search = (): JSX.Element => {
                         <div id="search-container">
                           <Hits
                             hitComponent={(props) => (
-                              <Hit {...props} setOpen={setSearchOpen} />
+                              <SearchHit {...props} setOpen={setSearchOpen} />
                             )}
                           />
                         </div>

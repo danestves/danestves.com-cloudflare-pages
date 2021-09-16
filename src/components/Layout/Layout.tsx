@@ -5,7 +5,7 @@ import { Transition } from '@headlessui/react'
 // Internals
 import Header from './Header'
 import Footer from './Footer'
-import { Logo, Rings } from '..'
+import { Logo, Rings } from '../Logo'
 
 export const Layout: React.FC = ({ children }) => {
   const [isLoading, setIsLoading] = React.useState(true)

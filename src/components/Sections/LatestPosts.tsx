@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
 
 // Internals
-import { ContentCard, Link } from '@/components'
-import { PostsQuery } from '@/generated/graphql'
+import { ContentCard, Link } from '../'
+import type { PostsQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
 
 export type LatestPostsProps = {

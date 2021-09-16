@@ -6,7 +6,8 @@ import { useI18n } from 'next-rosetta'
 import { useRouter } from 'next/router'
 
 // Internals
-import { Flag, Link } from '@/components'
+import { Flag } from './Flag'
+import { Link } from './Link'
 import type { Locale } from 'i18n'
 
 export const LanguageSwitcher = (): JSX.Element => {

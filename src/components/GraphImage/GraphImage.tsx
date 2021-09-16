@@ -3,9 +3,9 @@ import * as React from 'react'
 import Head from 'next/head'
 
 // Internals
-import { GraphImageProps } from '@/types/graphcms'
-import { Image } from './Image'
 import { ImageFit } from '@/generated/graphql'
+import { Image } from './Image'
+import type { GraphImageProps } from '@/types/graphcms'
 
 if (typeof window !== 'undefined') {
   require('intersection-observer')

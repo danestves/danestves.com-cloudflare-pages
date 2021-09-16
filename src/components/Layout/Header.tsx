@@ -8,14 +8,8 @@ import { useI18n } from 'next-rosetta'
 import useWindowScroll from 'react-use/lib/useWindowScroll'
 
 // Internals
-import {
-  LanguageSwitcher,
-  Link,
-  Logo,
-  Search,
-  ThemeSwitcher,
-} from '@/components'
-import { MenuIcon, XIcon } from '@/components/Icons'
+import { LanguageSwitcher, Link, Logo, Search, ThemeSwitcher } from '../'
+import { MenuIcon, XIcon } from '../Icons'
 import { MENU, SOCIAL } from '@/constants'
 import { clsx } from '@/utils'
 import type { Locale } from 'i18n'
