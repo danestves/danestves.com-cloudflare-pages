@@ -30,7 +30,7 @@ export default function App({
         locale: language,
       })
     }
-  }, [])
+  }, [language, router, setLanguage])
 
   return (
     <ThemeProvider
