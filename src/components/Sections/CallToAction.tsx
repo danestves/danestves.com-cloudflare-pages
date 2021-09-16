@@ -13,7 +13,7 @@ export const CallToAction = (): JSX.Element => {
 
   return (
     <section className="container py-6" id="danestves-section-call-to-action">
-      <div className="w-full max-w-[977px] p-8 mx-auto rounded-[20px] bg-primary backdrop-blur-lg">
+      <div className="w-full max-w-[977px] p-8 mx-auto rounded-[20px] bg-primary backdrop-blur-lg transition-colors duration-100 dark:bg-[#292929] dark:shadow-xl dark:border dark:border-[#393939]">
         <h2 className="text-[26px] font-black text-center text-white uppercase">
           {t('sections.calltoaction.title')}
         </h2>
@@ -24,7 +24,7 @@ export const CallToAction = (): JSX.Element => {
 
         <div className="flex justify-center mt-8">
           <Link
-            className="inline-flex items-center justify-center flex-wrap px-5 py-[10px] text-xl font-bold text-white rounded-2xl bg-[#00247D]"
+            className="inline-flex items-center justify-center flex-wrap px-5 py-[10px] text-xl font-bold text-white rounded-2xl bg-secondary"
             href="/contact"
             locale={router.locale}
           >

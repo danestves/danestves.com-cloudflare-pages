@@ -133,7 +133,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
       />
 
       <section className="w-full py-32">
-        <h2 className="text-[26px] text-[#071D49] font-black text-center uppercase">
+        <h2 className="text-[26px] text-secondary-darker font-black text-center uppercase dark:text-secondary">
           Blog{' '}
           <span aria-label="victory hand" role="img">
             ✌️
@@ -183,7 +183,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
               </div>
             </div>
             <div className="col-span-12 space-y-4 md:col-span-5">
-              <h1 className="text-2xl font-bold text-[#071D49]">
+              <h1 className="text-2xl font-bold text-secondary-darker dark:text-secondary">
                 {post.title}
               </h1>
               <p className="text-xs font-bold text-primary">
@@ -203,7 +203,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
               </p>
             </div>
           </div>
-          <div className="max-w-full prose prose-lg">
+          <div className="max-w-full prose prose-lg dark:prose-dark">
             <MDXRemote
               compiledSource={post.mdx.compiledSource}
               components={MDXComponents}

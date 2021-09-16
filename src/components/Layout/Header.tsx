@@ -31,7 +31,7 @@ export const Header = (): JSX.Element => {
       <header
         className={clsx(
           'fixed top-0 left-0 w-full px-6 transition-all duration-200 z-20 lg:px-12',
-          y >= 104 ? 'bg-white shadow py-2' : 'py-6'
+          y >= 104 ? 'bg-white shadow py-2 dark:bg-[#292929]' : 'py-6'
         )}
       >
         <div className="flex items-center justify-between w-full">
@@ -153,7 +153,7 @@ export const Header = (): JSX.Element => {
             <li key={nanoid()}>
               <Link
                 {...item}
-                className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
+                className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary dark:text-[#B1B1B1]"
                 locale={router.locale}
               >
                 {label[router.locale] || label}
@@ -170,7 +170,7 @@ export const Header = (): JSX.Element => {
             <li key={nanoid()}>
               <Link
                 {...item}
-                className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary"
+                className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary dark:text-[#B1B1B1]"
                 locale={router.locale}
                 onClick={() => plausible(label[router.locale] || label)}
               >

@@ -20,7 +20,7 @@ export const Layout: React.FC = ({ children }) => {
     <>
       <Transition
         as="div"
-        className="fixed z-50 flex items-center justify-center w-screen h-screen bg-white"
+        className="fixed z-50 flex items-center justify-center w-screen h-screen bg-white dark:bg-[#292929]"
         enter="transform transition duration-[400ms]"
         enterFrom="opacity-0 scale-50"
         enterTo="opacity-100 scale-100"

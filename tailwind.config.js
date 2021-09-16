@@ -11,12 +11,12 @@ module.exports = {
     content: ['./src/{components,pages}/**/*.{ts,tsx}'],
     safelist: ['max-w-md', 'max-w-lg'],
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         primary: '#00C389',
-        secondary: '#29ABE2',
+        secondary: { DEFAULT: '#29ABE2', darker: '#071D49' },
       },
       container: {
         center: true,
@@ -99,17 +99,25 @@ module.exports = {
         },
         dark: {
           css: {
-            code: {
-              backgroundColor: '#011627',
-              color: '#d6deeb',
-            },
-            color: theme('colors.gray.200'),
-            'h2,h3,h4,h5,h6': {
-              color: theme('colors.gray.100'),
+            a: {
+              color: '#29ABE2',
             },
             blockquote: {
               borderLeftColor: theme('colors.gray.500'),
               color: theme('colors.gray.400'),
+            },
+            code: {
+              backgroundColor: '#1d1f21',
+              color: '#c5c8c6',
+            },
+            color: '#838383',
+            'h2,h3,h4,h5,h6': {
+              color: '#29ABE2',
+            },
+            ol: {
+              li: {
+                '&::before': { color: '#fff', fontWeight: 700 },
+              },
             },
             strong: { color: theme('colors.gray.300') },
             thead: {

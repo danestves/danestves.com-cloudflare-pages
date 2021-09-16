@@ -24,6 +24,7 @@ interface Props {
     height?: number
     width?: number
   }
+  isHome?: boolean
   priorityImage?: boolean
   title: string
   date?: string
@@ -42,6 +43,7 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
     {
       description,
       image,
+      isHome,
       title,
       as,
       date,
@@ -85,15 +87,16 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
         )}
         <h2
           className={clsx(
-            'text-xl font-bold text-[#071D49]',
-            date ? 'mt-[6px]' : 'mt-4'
+            'text-xl font-bold text-secondary-darker transition-colors duration-100',
+            date ? 'mt-[6px]' : 'mt-4',
+            isHome ? 'dark:text-white' : 'dark:text-secondary'
           )}
         >
           {title}
         </h2>
         <p
           className={clsx(
-            'mt-[6px] text-xs font-semibold text-[#838383]',
+            'mt-[6px] text-xs font-semibold text-[#838383] transition-colors duration-100',
             descriptionClassName
           )}
         >

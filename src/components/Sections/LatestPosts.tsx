@@ -17,7 +17,7 @@ export const LatestPosts = ({ posts }: LatestPostsProps): JSX.Element => {
 
   return (
     <section className="container py-20" id="danestves-section-hero">
-      <h2 className="text-[26px] text-center text-[#071D49] font-black uppercase">
+      <h2 className="text-[26px] text-center text-secondary-darker font-black uppercase transition-colors duration-100 dark:text-secondary">
         {t('sections.latest.posts.title')}{' '}
         <span aria-label="victory hand" role="img">
           ✌️

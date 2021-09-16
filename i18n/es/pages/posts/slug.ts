@@ -3,7 +3,7 @@ export const slug = {
   sharer: {
     share: 'Comparte este post',
     shared: 'Compartido!',
-    copied: 'Enlace copiado al portapapeles 📋',
+    copied: 'Link copiado 📋',
   },
 }
 

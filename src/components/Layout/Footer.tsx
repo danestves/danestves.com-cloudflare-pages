@@ -38,7 +38,7 @@ export const Footer = (): JSX.Element => {
         </Link>
       </div>
 
-      <footer className="w-full py-8 bg-white">
+      <footer className="w-full py-8 bg-white dark:bg-[#292929]">
         <div className="container flex flex-col justify-center space-y-8">
           <Link
             className="inline-block mx-auto h-9 w-9"
@@ -54,7 +54,7 @@ export const Footer = (): JSX.Element => {
               <li key={nanoid()}>
                 <Link
                   {...item}
-                  className="text-xs text-[#989898] uppercase font-semibold leading-3 hover:text-primary"
+                  className="text-xs text-[#989898] uppercase font-semibold leading-3 hover:text-primary dark:text-[#B1B1B1]"
                   locale={router.locale}
                 >
                   {label[router.locale] || label}
@@ -63,7 +63,7 @@ export const Footer = (): JSX.Element => {
             ))}
           </ul>
 
-          <p className="text-xs text-[#989898] text-center font-semibold leading-3">
+          <p className="text-xs text-[#989898] text-center font-semibold leading-3 dark:text-[#B1B1B1]">
             © 2021 Daniel Esteves. Todos los derechos reservados.
           </p>
         </div>

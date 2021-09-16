@@ -33,7 +33,7 @@ class MyDocument extends Document {
           />
         </Head>
 
-        <body>
+        <body className="bg-white transition-colors duration-100 dark:bg-[#292929]">
           <Main />
           <NextScript />
         </body>

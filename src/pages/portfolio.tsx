@@ -18,7 +18,7 @@ export const PortfolioPage: NextPage<PortfolioPageProps> = ({ portfolios }) => {
 
   return (
     <section className="w-full py-32">
-      <h1 className="text-[26px] text-[#071D49] font-black text-center uppercase">
+      <h1 className="text-[26px] text-secondary-darker font-black text-center uppercase dark:text-secondary">
         Portafolio{' '}
         <span aria-label="victory hand" role="img">
           ✌️
