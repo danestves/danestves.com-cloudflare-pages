@@ -1,6 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { useLocalStorageValue } from '@react-hookz/web'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { I18nProvider } from 'next-rosetta'
 import { DefaultSeo } from 'next-seo'
 import PlausibleProvider from 'next-plausible'
@@ -57,7 +58,23 @@ export default function App({
                 url: basePath,
               }}
             />
-            <Component {...pageProps} />
+            <LazyMotion features={domAnimation}>
+              <m.div
+                animate="pageAnimate"
+                initial="pageInitial"
+                key={router.route}
+                variants={{
+                  pageInitial: {
+                    opacity: 0,
+                  },
+                  pageAnimate: {
+                    opacity: 1,
+                  },
+                }}
+              >
+                <Component {...pageProps} />
+              </m.div>
+            </LazyMotion>
           </Layout>
         </I18nProvider>
       </PlausibleProvider>

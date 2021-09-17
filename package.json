@@ -37,6 +37,7 @@
     "browser-monads-ts": "^1.2.2",
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.23.0",
+    "framer-motion": "^4.1.17",
     "graphql": "^15.5.3",
     "graphql-request": "^3.5.0",
     "mdx-embed": "^0.0.19",

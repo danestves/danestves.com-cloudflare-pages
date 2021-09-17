@@ -1,4 +1,5 @@
 // Dependencies
+import { m } from 'framer-motion'
 import { useI18n } from 'next-rosetta'
 
 // Internals
@@ -10,12 +11,28 @@ import type { Locale } from 'i18n'
 export const Hero = (): JSX.Element => {
   const { t } = useI18n<Locale>()
 
+  const MotionRings = m(Rings)
+
   return (
     <section
       className="container relative overflow-hidden"
       id="danestves-section-hero"
     >
-      <Rings className="relative left-1/2 -translate-x-1/2 mx-auto w-[563px] h-auto sm:left-[46%] md:left-[38%] lg:left-auto lg:transform-none lg:w-full lg:max-w-[731px]" />
+      <div className="relative left-1/2 -translate-x-1/2 mx-auto w-[563px] h-auto sm:left-[46%] md:left-[38%] lg:left-auto lg:transform-none lg:w-full lg:max-w-[731px]">
+        <MotionRings
+          animate={{ scale: 1, opacity: 1 }}
+          className="w-full h-auto"
+          exit={{ scale: 0, opacity: 0 }}
+          initial={{ scale: 0, opacity: 0 }}
+          key="danestves-section-hero"
+          transition={{
+            type: 'spring',
+            damping: 20,
+            stiffness: 100,
+          }}
+        />
+      </div>
+
       <div className="absolute mt-2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:mt-3">
         <LocalImage
           container={{
@@ -32,7 +49,7 @@ export const Hero = (): JSX.Element => {
       </div>
 
       {/* Floating Card */}
-      <div className="w-full max-w-[332px] -mt-16 mx-auto pl-8 pr-5 pt-3 pb-4 bg-opacity-[0.65] bg-primary backdrop-blur-sm rounded-[20px] md:-mt-32 lg:absolute lg:mr-32 lg:mt-auto lg:-translate-y-1/2 lg:top-1/2 lg:right-1/2">
+      <div className="w-full max-w-[332px] -mt-16 mx-auto pl-8 pr-5 pt-3 pb-4 bg-opacity-80 bg-primary backdrop-blur-sm rounded-[20px] dark:bg-opacity-[0.65] md:-mt-32 lg:absolute lg:mr-32 lg:mt-auto lg:-translate-y-1/2 lg:top-1/2 lg:right-1/2">
         <h1 className="text-2xl font-black text-white uppercase">
           daniel esteves{' '}
           <span aria-label="victory hand" role="img">

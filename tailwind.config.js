@@ -27,8 +27,8 @@ module.exports = {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
       screens: {
-        xs: '475px',
         ...defaultTheme.screens,
+        xs: '475px',
       },
       typography: (theme) => ({
         DEFAULT: {

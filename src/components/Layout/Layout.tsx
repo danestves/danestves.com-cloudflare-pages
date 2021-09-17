@@ -30,7 +30,7 @@ export const Layout: React.FC = ({ children }) => {
         show={isLoading}
       >
         <Logo className="absolute mt-1 -ml-px" />
-        <Rings animate className="w-[177px]" />
+        <Rings animateRings className="w-[177px]" />
       </Transition>
 
       <Header />
