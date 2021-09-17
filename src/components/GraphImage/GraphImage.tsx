@@ -334,3 +334,5 @@ export const GraphImage: React.FC<GraphImageProps> = ({
     </>
   )
 }
+
+export default GraphImage

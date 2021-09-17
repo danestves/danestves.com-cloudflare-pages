@@ -146,3 +146,5 @@ Alert.Danger = Danger
 Alert.Info = Info
 Alert.Warning = Warning
 Alert.Success = Success
+
+export default Alert

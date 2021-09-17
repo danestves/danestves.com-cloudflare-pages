@@ -1,14 +1,14 @@
 // Dependencies
 import dynamic from 'next/dynamic'
 
-export * from './Alert'
-export * from './ContentCard'
-export * from './GeneralObserver'
-export * from './GraphImage'
 export * from './Link'
 export * from './Logo'
 
+export const Alert = dynamic(() => import('./Alert'))
+export const ContentCard = dynamic(() => import('./ContentCard'))
 export const Flag = dynamic(() => import('./Flag'))
+export const GeneralObserver = dynamic(() => import('./GeneralObserver'))
+export const GraphImage = dynamic(() => import('./GraphImage/GraphImage'))
 export const LanguageSwitcher = dynamic(() => import('./LanguageSwitcher'))
 export const Layout = dynamic(() => import('./Layout/Layout'))
 export const Search = dynamic(() => import('./Search/Search'))
