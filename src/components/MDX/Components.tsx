@@ -8,7 +8,7 @@ import type { LinkProps as LinkNextProps } from 'next/link'
 import { GraphImage, Link as NextLink } from '..'
 
 const AlertInfo = dynamic(
-  () => import('@/components/Alert').then((mod) => mod.Alert.Info),
+  () => import('../Alert').then((mod) => mod.Alert.Info),
   {
     ssr: false,
   }

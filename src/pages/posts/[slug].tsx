@@ -14,7 +14,7 @@ import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 // Internals
 import { GraphImage, Views } from '@/components'
-import { ShareIcon } from '@/components/Icons/ShareIcon'
+import { ShareIcon } from '@/components/Icons'
 import MDXComponents from '@/components/MDX/Components'
 import useShare from '@/hooks/useShare'
 import { sdk } from '@/lib/graphcms'

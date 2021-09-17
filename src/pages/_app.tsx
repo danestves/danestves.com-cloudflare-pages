@@ -9,7 +9,7 @@ import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 
 // Internals
-import { Layout } from '@/components/Layout/Layout'
+import { Layout } from '@/components'
 import '@/styles/main.css'
 import defaultSeo, { texts } from 'seoConfig'
 
