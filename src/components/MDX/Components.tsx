@@ -1,11 +1,14 @@
 // Dependencies
-import { CodePen, YouTube, CodeSandbox, Tweet } from 'mdx-embed'
+import { CodePen } from 'mdx-embed/dist/components/codepen'
+import { CodeSandbox } from 'mdx-embed/dist/components/codesandbox'
+import { Tweet } from 'mdx-embed/dist/components/twitter/tweet'
+import { YouTube } from 'mdx-embed/dist/components/youtube'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import type { LinkProps as LinkNextProps } from 'next/link'
 
 // Internals
-import { GraphImage, Link as NextLink } from '..'
+import { GraphImage, Link as NextLink } from '../'
 
 const AlertInfo = dynamic(
   () => import('../Alert').then((mod) => mod.Alert.Info),
@@ -16,12 +19,6 @@ const AlertInfo = dynamic(
 const Cloudinary = dynamic(() => import('./Cloudinary'), {
   ssr: false,
 })
-const CodeBlock = dynamic(
-  () => import('./CodeBlock/CodeBlock').then((mod) => mod.CodeBlock),
-  {
-    ssr: false,
-  }
-)
 const Giphy = dynamic(() => import('./Giphy'), {
   ssr: false,
 })
@@ -56,7 +53,6 @@ const MDXComponents = {
   Giphy,
   AlertInfo,
   GraphCmsImage: GraphImage,
-  code: CodeBlock,
 }
 
 export default MDXComponents

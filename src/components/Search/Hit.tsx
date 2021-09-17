@@ -1,9 +1,9 @@
 // Dependencies
 import { Snippet } from 'react-instantsearch-dom'
-import { HiOutlineDocument, HiOutlineArrowRight } from 'react-icons/hi/index'
 
 // Internals
 import { Link } from '../'
+import { OutlineArrowRight, OutlineDocument } from '../Icons'
 
 interface SearchHitProps {
   hit: any
@@ -21,7 +21,7 @@ export const SearchHit = ({ hit, setOpen }: SearchHitProps): JSX.Element => {
       >
         <div className="flex items-center h-16">
           <div className="flex-none mr-[0.875rem]">
-            <HiOutlineDocument className="w-5 h-auto text-[#71717a] group-hover:text-white" />
+            <OutlineDocument className="w-5 h-auto text-[#71717a] group-hover:text-white" />
           </div>
 
           <div className="flex flex-col flex-auto min-w-0">
@@ -34,7 +34,7 @@ export const SearchHit = ({ hit, setOpen }: SearchHitProps): JSX.Element => {
           </div>
 
           <div className="flex-none mr-[0.875rem]">
-            <HiOutlineArrowRight className="w-5 h-5 text-[#71717a] group-hover:text-white" />
+            <OutlineArrowRight className="w-5 h-5 text-[#71717a] group-hover:text-white" />
           </div>
         </div>
       </Link>

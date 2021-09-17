@@ -72,7 +72,44 @@ pre[class*='language-'] {
   hyphens: none;
 }
 
-/* Code blocks */
+/*
+ Margin and rounding are personal preferences,
+ overflow-x-auto is recommended.
+*/
+.prose pre.torchlight {
+  @apply my-4 rounded-lg overflow-x-auto;
+}
+
+.remark-code-title + pre.torchlight {
+  @apply mt-0 rounded-t-none;
+}
+
+/*
+ Add some vertical padding and expand the width
+ to fill its container. The horizontal padding
+ comes at the line level so that background
+ colors extend edge to edge.
+*/
+.prose pre.torchlight code {
+  @apply block py-4 min-w-max;
+}
+
+/*
+ Horizontal line padding.
+*/
+.prose pre.torchlight code .line {
+  @apply px-4;
+}
+
+/*
+ Push the code away from the line numbers and
+ summary caret indicators.
+*/
+.prose pre.torchlight code .line-number,
+.prose pre.torchlight code .summary-caret {
+  @apply mr-4;
+}
+
 pre[class*='language-'] {
   @apply rounded-lg p-4 overflow-auto my-2 mx-0;
 }

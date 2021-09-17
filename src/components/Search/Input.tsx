@@ -1,9 +1,9 @@
 // Dependencies
-import { HiSearch, HiX } from 'react-icons/hi'
 import { connectSearchBox } from 'react-instantsearch-dom'
 import { useI18n } from 'next-rosetta'
 
 // Internals
+import { SearchIcon, XIcon } from '../Icons'
 import type { Locale } from 'i18n'
 
 export const SearchInput = connectSearchBox(({ currentRefinement, refine }) => {
@@ -18,7 +18,7 @@ export const SearchInput = connectSearchBox(({ currentRefinement, refine }) => {
         role="search"
       >
         <label className="flex-none" htmlFor="search-input" id="search-label">
-          <HiSearch className="w-6 h-6 text-secondary" />
+          <SearchIcon className="w-6 h-6 text-secondary" />
         </label>
 
         <input
@@ -39,7 +39,7 @@ export const SearchInput = connectSearchBox(({ currentRefinement, refine }) => {
         />
 
         <button className="hidden" title="Clear the query" type="reset">
-          <kbd>esc</kbd> <HiX />
+          <kbd>esc</kbd> <XIcon />
         </button>
       </form>
 

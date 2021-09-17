@@ -4,6 +4,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const withPlugins = require('next-compose-plugins')
 const withPreact = require('next-plugin-preact')
+const withTM = require('next-transpile-modules')([
+  'remark-torchlight',
+  '@torchlight-api/torchlight-cli',
+])
 
 /**
  * @type {import('next').NextConfig}
@@ -54,4 +58,7 @@ const nextConfig = {
   },
 }
 
-module.exports = withPlugins([[withBundleAnalyzer], [withPreact]], nextConfig)
+module.exports = withPlugins(
+  [withTM, [withBundleAnalyzer], [withPreact]],
+  nextConfig
+)

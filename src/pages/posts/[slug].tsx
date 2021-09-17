@@ -9,6 +9,7 @@ import { ArticleJsonLd, NextSeo } from 'next-seo'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkCodeTitles from 'remark-code-titles'
+import torchlight from 'remark-torchlight'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
@@ -259,7 +260,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: 'append' }],
       ],
-      remarkPlugins: [remarkCodeTitles],
+      remarkPlugins: [
+        remarkCodeTitles,
+        [
+          torchlight,
+          {
+            config: {
+              token: process.env.TORCHLIGHT_API_TOKEN,
+              theme: 'github-dark',
+            },
+          },
+        ],
+      ],
     },
   })
 
