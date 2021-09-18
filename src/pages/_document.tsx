@@ -18,15 +18,6 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link href="https://fonts.googleapis.com" rel="preconnect" />
-          <link
-            crossOrigin="anonymous"
-            href="https://fonts.gstatic.com"
-            rel="preconnect"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@400;500&display=swap"
-            rel="stylesheet"
-          />
           <style
             dangerouslySetInnerHTML={{ __html: getCssText() }}
             id="stitches"
