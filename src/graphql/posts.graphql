@@ -1,12 +1,20 @@
 query posts($first: Int!, $locale: Locale!) {
   posts(orderBy: published_DESC, first: $first, locales: [$locale]) {
+    localizations {
+      title
+      seo {
+        description
+      }
+    }
     id
+    updatedAt(variation: COMBINED)
     title
     slug
     published
     cover(locales: [en]) {
       handle
       height
+      url
       width
     }
     seo {
