@@ -12,7 +12,7 @@ export const Footer = (): JSX.Element => {
   return (
     <>
       {/* Left Link */}
-      <div className="fixed hidden bottom-8 left-12 lg:block">
+      <div className="fixed z-10 hidden bottom-8 left-12 lg:block">
         <Link
           className="font-semibold uppercase text-primary"
           href={FLOATING_MENU.left.href}
@@ -23,7 +23,7 @@ export const Footer = (): JSX.Element => {
       </div>
 
       {/* Right Link */}
-      <div className="fixed hidden bottom-8 right-12 lg:block">
+      <div className="fixed z-10 hidden bottom-8 right-12 lg:block">
         <Link
           className="font-semibold uppercase text-primary"
           href={FLOATING_MENU.right.href}
