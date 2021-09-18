@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import { useI18n } from 'next-rosetta'
-import { ArticleJsonLd } from 'next-seo'
+import { ArticleJsonLd, BlogJsonLd } from 'next-seo'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkCodeTitles from 'remark-code-titles'
@@ -79,31 +79,17 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
           },
           {
             property: 'flyyer:views',
-            content: views,
-          },
-          {
-            property: 'article:modified_time',
-            content: post.updatedAt,
-          },
-          {
-            property: 'article:published_time',
-            content: new Date(post.published).toISOString(),
-          },
-          {
-            property: 'article:tag',
-            content: post.tags?.map((tag) => tag.name).join(', '),
-          },
-          {
-            property: 'profile:first_name',
-            content: 'Daniel',
-          },
-          {
-            property: 'profile:last_name',
-            content: 'Esteves',
+            content: `${views}`,
           },
         ]}
         description={post.seo.description}
         openGraph={{
+          article: {
+            authors: ['https://twitter.com/@danestves'],
+            modifiedTime: post.updatedAt,
+            publishedTime: new Date(post.published).toISOString(),
+            tags: post.tags?.map((tag) => tag.name),
+          },
           images: [
             {
               alt: post.seo.title,
@@ -112,6 +98,12 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
               width: 1200,
             },
           ],
+          profile: {
+            firstName: 'Daniel',
+            gender: 'male',
+            lastName: 'Esteves',
+            username: 'danestves',
+          },
           type: 'article',
         }}
         title={post.seo.title}
@@ -127,6 +119,18 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
         ]}
         publisherLogo="https://danestves.com/static/logo.png"
         publisherName="Daniel Esteves"
+        title={post.seo?.title as string}
+        url={window.location.href}
+      />
+
+      <BlogJsonLd
+        authorName="Daniel Esteves"
+        dateModified={post.updatedAt}
+        datePublished={new Date(post.published).toISOString().slice(0, 19)}
+        description={post.seo?.description.replace(/\n/g, ' ') as string}
+        images={[
+          `https://cdn.flyyer.io/v2/danestves-preview/_/_${lang}${router.asPath}`,
+        ]}
         title={post.seo?.title as string}
         url={window.location.href}
       />

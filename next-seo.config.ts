@@ -95,6 +95,7 @@ const seo = (lang: string): DefaultSeoProps => {
         description: texts.description.es,
         openGraph: {
           ...common.openGraph,
+          description: texts.description.es,
           locale: 'es_ES',
           title: texts.title.es,
         },
@@ -106,6 +107,7 @@ const seo = (lang: string): DefaultSeoProps => {
         description: texts.description.en,
         openGraph: {
           ...common.openGraph,
+          description: texts.description.en,
           locale: 'en_US',
           title: texts.title.en,
         },

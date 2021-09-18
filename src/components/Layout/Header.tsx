@@ -48,7 +48,7 @@ export const Header = (): JSX.Element => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Popover.Panel
-                  className="absolute inset-x-0 top-0 z-10 p-2 transition origin-top-left transform md:hidden"
+                  className="absolute inset-x-0 top-0 z-10 p-2 transition origin-top-left transform lg:hidden"
                   focus
                 >
                   <div className="overflow-hidden bg-white rounded-lg shadow-md ring-1 ring-black ring-opacity-5">
