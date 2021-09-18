@@ -1,48 +1,30 @@
 export default jest.fn(() => {
   return [
     {
-      id: 'ckmsiypqwqq6w0b68ro9yoy70',
-      title: 'Why you should ditch jQuery for native JavaScript',
-      slug: 'why-you-should-ditch-jquery-for-native-javascript',
-      published: '2019-09-23',
+      localizations: [
+        {
+          title:
+            'Qué es Flyyer y cómo crear impresionantes og:images con React',
+          seo: {
+            description:
+              'Usando Flyyer puedes crear og:images para tu aplicación React o Vue.js. Está creado con estándares web y funciona en todos los navegadores modernos.\n\nTengo ya un tiempo probando Flyyer el cual es un og:image como servicio, lo que nos promete este servicio es crear templates con React o Vue y usarlos para crear imágenes basándonos en ellos.',
+          },
+        },
+      ],
+      id: 'ckmsgs7cwqj0o0c817wvtpojn',
+      updatedAt: '2021-08-30T00:59:47.274387+00:00',
+      title: 'How to create awesome og:images using React components',
+      slug: 'how-to-create-awesome-ogimages-using-react-components',
+      published: '2021-02-15',
       cover: {
-        handle: 'nw4fILsaRI6X6Ak0pYLQ',
+        handle: 'bwfDQKPXQNyKRPhYYO9a',
         height: 1080,
+        url: 'https://media.graphcms.com/bwfDQKPXQNyKRPhYYO9a',
         width: 1920,
       },
       seo: {
         description:
-          'Do you wish you could relive the days when jQuery ruled? Better get your applications on steroids if you want to stand a chance.',
-      },
-    },
-    {
-      id: 'ckmsitgpcqfll0b24c39lpbnq',
-      title: 'How to upgrade everything to Hooks?',
-      slug: 'how-to-upgrade-everything-to-hooks',
-      published: '2019-08-09',
-      cover: {
-        handle: 'Ztjch3ISh6iEfFFxZCcA',
-        height: 1080,
-        width: 1920,
-      },
-      seo: {
-        description:
-          'What are hooks? Hooks are the next definite step in React development. If you are new to React, you have to learn Hooks in order to develop apps in the future.',
-      },
-    },
-    {
-      id: 'ckmsihglsqlp00c81cgzrtrw6',
-      title: 'Some tools that Chrome DevTools offers for taking screenshots',
-      slug: 'some-tools-that-chrome-devtools-offers-for-taking-screenshots',
-      published: '2020-05-02',
-      cover: {
-        handle: '8FbBtOdvTW6ZMorBVljQ',
-        height: 1080,
-        width: 1920,
-      },
-      seo: {
-        description:
-          'When taking screenshots of websites, we usually resort to other tools, but the browser can help us to do it better.',
+          "Flyyer simplifies the process of creating Facebook Open Graph image tags for your web or mobile application's share metadata.\n\nI have already some time testing Flyyer which is an og:image as a service, what this service promises us is to create templates with React or Vue and use them to create images based on them.",
       },
     },
   ]
