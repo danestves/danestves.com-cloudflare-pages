@@ -210,6 +210,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
             <MDXRemote
               compiledSource={post.mdx.compiledSource}
               components={MDXComponents}
+              lazy
             />
           </div>
         </div>
