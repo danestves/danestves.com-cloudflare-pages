@@ -1891,10 +1891,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@stitches/react@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.1.0.tgz#49342e085528d689b983682e112b79c5a0b0efb4"
-  integrity sha512-g1XZsmB3tFL5i9aaBx0+P4C83j3vf/PEmLc5e9PlumE5c6q3zsdbbOVr4ZC52eGm4MCvM+2bbAJ++rtTUa6ahw==
+"@stitches/react@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.2.0.tgz#cdb69256d76bcb4753417d59bc42da21fd603ba1"
+  integrity sha512-GuMh610X3oJB2pdywARg1jccjAEvrDbq4iwy1SernR/4o1FX5SOTJZIjC4CquagZQjL00KFV8Cwfq/12FS6aBg==
 
 "@supabase/gotrue-js@^1.17.1":
   version "1.17.1"
@@ -3983,10 +3983,10 @@ date-fns@^1.27.2:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
-date-fns@^2.23.0:
-  version "2.23.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
-  integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
+date-fns@^2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.24.0.tgz#7d86dc0d93c87b76b63d213b4413337cfd1c105d"
+  integrity sha512-6ujwvwgPID6zbI0o7UbURi2vlLDR9uP26+tW6Lg+Ji3w7dd0i3DOcjcClLjLPranT60SSEFBwdSyYwn/ZkPIuw==
 
 debounce@^1.2.0:
   version "1.2.1"
@@ -7539,10 +7539,10 @@ next-mdx-remote@^3.0.4:
     esbuild "^0.12.9"
     pkg-dir "^5.0.0"
 
-next-plausible@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/next-plausible/-/next-plausible-2.1.1.tgz#d64a1660840c93be50c3cdb96abc13758004fb1d"
-  integrity sha512-uua8WXHHnkQVTknSTBpCPN6fKCcOiSPgSWtFCUsgZS6nLP5Gj5W77I8n7hiNRpH6yw9tUbW8eF+fR/ch22pk8g==
+next-plausible@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/next-plausible/-/next-plausible-2.1.2.tgz#6b98e97a56d1e875acef06a432848a2d89ecca4d"
+  integrity sha512-HRhRJcBhvO/rUOJBnTJiC/gaFNDLJjo9wP0tRlTJ3Za7bE32ByT/6Ex0N5BT6zA9wWQncLkajoClxIQ5uozZ2w==
 
 next-plugin-preact@^3.0.6:
   version "3.0.6"
