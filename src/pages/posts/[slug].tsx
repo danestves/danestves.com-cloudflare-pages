@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import { useI18n } from 'next-rosetta'
-import { ArticleJsonLd, NextSeo } from 'next-seo'
+import { ArticleJsonLd } from 'next-seo'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkCodeTitles from 'remark-code-titles'
@@ -14,7 +14,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 // Internals
-import { GraphImage, Views } from '@/components'
+import { GraphImage, Seo, Views } from '@/components'
 import { ShareIcon } from '@/components/Icons'
 import MDXComponents from '@/components/MDX/Components'
 import useShare from '@/hooks/useShare'
@@ -47,7 +47,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
 
   return (
     <>
-      <NextSeo
+      <Seo
         additionalMetaTags={[
           {
             property: 'date',
@@ -104,7 +104,6 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
         ]}
         description={post.seo.description}
         openGraph={{
-          description: post.seo.description,
           images: [
             {
               alt: post.seo.title,
@@ -113,7 +112,6 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
               width: 1200,
             },
           ],
-          title: post.seo.title,
           type: 'article',
         }}
         title={post.seo.title}

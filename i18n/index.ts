@@ -34,6 +34,10 @@ export interface Locale {
   }
   pages: {
     posts: {
+      seo: {
+        title: string
+        description: string
+      }
       slug: {
         published: string
         sharer: {

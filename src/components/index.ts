@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 
 export * from './Link'
 export * from './Logo'
+export * from './Seo'
 
 export const Alert = dynamic(() => import('./Alert'))
 export const ContentCard = dynamic(() => import('./ContentCard'))
