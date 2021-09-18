@@ -17,6 +17,11 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link
+            crossOrigin="anonymous"
+            href="https://vitals.vercel-insights.com"
+            rel="preconnect"
+          />
           <style
             dangerouslySetInnerHTML={{ __html: getCssText() }}
             id="stitches"
