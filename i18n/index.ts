@@ -33,6 +33,12 @@ export interface Locale {
     }
   }
   pages: {
+    portfolio: {
+      seo: {
+        title: string
+        description: string
+      }
+    }
     posts: {
       seo: {
         title: string
