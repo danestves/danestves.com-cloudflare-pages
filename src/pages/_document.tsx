@@ -17,7 +17,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link href="https://fonts.googleapis.com" rel="preconnect" />
           <style
             dangerouslySetInnerHTML={{ __html: getCssText() }}
             id="stitches"
