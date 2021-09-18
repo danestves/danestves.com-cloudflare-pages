@@ -4751,7 +4751,7 @@ export type PostsQueryVariables = Exact<{
 }>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, updatedAt: any, title: string, slug: string, published: any, localizations: Array<{ __typename?: 'Post', title: string, seo?: Maybe<{ __typename?: 'Seo', description: string }> }>, cover: { __typename?: 'Asset', handle: string, height?: Maybe<number>, url: string, width?: Maybe<number> }, seo?: Maybe<{ __typename?: 'Seo', description: string }> }> };
+export type PostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, updatedAt: any, title: string, slug: string, published: any, localizations: Array<{ __typename?: 'Post', title: string, seo?: Maybe<{ __typename?: 'Seo', description: string }> }>, cover: { __typename?: 'Asset', handle: string, height?: Maybe<number>, url: string, width?: Maybe<number> }, tags: Array<{ __typename?: 'Tag', name: string }>, seo?: Maybe<{ __typename?: 'Seo', description: string }> }> };
 
 export type PostsWithSlugQueryVariables = Exact<{
   first: Scalars['Int'];
@@ -4840,6 +4840,9 @@ export const PostsDocument = gql`
       height
       url
       width
+    }
+    tags {
+      name
     }
     seo {
       description

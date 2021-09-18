@@ -59,6 +59,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: '/feed.xml',
+        destination: '/api/feed',
+      },
+      {
         source: '/sitemap.xml',
         destination: '/api/sitemap',
       },

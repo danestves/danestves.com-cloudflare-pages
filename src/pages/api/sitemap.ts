@@ -61,7 +61,7 @@ const STATIC_URLS = [
 ]
 
 export default async function handler(
-  req: NextApiRequest,
+  _: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
   // Ensure response is XML & gzip encoded

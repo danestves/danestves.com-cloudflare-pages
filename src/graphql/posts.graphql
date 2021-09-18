@@ -17,6 +17,9 @@ query posts($first: Int!, $locale: Locale!) {
       url
       width
     }
+    tags {
+      name
+    }
     seo {
       description
     }

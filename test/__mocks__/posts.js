@@ -22,6 +22,14 @@ export default jest.fn(() => {
         url: 'https://media.graphcms.com/bwfDQKPXQNyKRPhYYO9a',
         width: 1920,
       },
+      tags: [
+        {
+          name: 'Development',
+        },
+        {
+          name: 'Social Media',
+        },
+      ],
       seo: {
         description:
           "Flyyer simplifies the process of creating Facebook Open Graph image tags for your web or mobile application's share metadata.\n\nI have already some time testing Flyyer which is an og:image as a service, what this service promises us is to create templates with React or Vue and use them to create images based on them.",

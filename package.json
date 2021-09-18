@@ -64,6 +64,7 @@
     "rehype-slug": "^5.0.0",
     "remark-code-titles": "^0.1.2",
     "remark-torchlight": "^0.0.2",
+    "rss": "^1.2.2",
     "sitemap": "^7.0.0",
     "swr": "^1.0.1"
   },
@@ -86,6 +87,7 @@
     "@types/qs": "^6.9.7",
     "@types/react": "^17.0.21",
     "@types/react-instantsearch-dom": "^6.12.0",
+    "@types/rss": "^0.0.29",
     "@types/tailwindcss": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
