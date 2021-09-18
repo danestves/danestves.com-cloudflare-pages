@@ -133,6 +133,10 @@ pre[class*='language-'] {
   hyphens: none;
 }
 
+.prose {
+  content-visibility: auto;
+}
+
 /*
  Margin and rounding are personal preferences,
  overflow-x-auto is recommended.
