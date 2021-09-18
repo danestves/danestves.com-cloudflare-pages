@@ -1,6 +1,5 @@
 // Dependencies
 import * as React from 'react'
-import { useLocalStorageValue } from '@react-hookz/web'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { I18nProvider } from 'next-rosetta'
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
@@ -20,18 +19,6 @@ export default function App({
 }: AppProps): JSX.Element {
   const lang = router.locale === 'es' ? '/es' : ''
   const basePath = `https://danestves.com${lang}${router.asPath}`
-
-  const [language, setLanguage] = useLocalStorageValue<string>('lang')
-
-  React.useEffect(() => {
-    if (!language) {
-      setLanguage(router.locale)
-    } else {
-      router.push(router.asPath, undefined, {
-        locale: language,
-      })
-    }
-  }, [language, router, setLanguage])
 
   return (
     <ThemeProvider

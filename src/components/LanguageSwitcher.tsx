@@ -1,7 +1,6 @@
 // Dependencies
 import * as React from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { useLocalStorageValue } from '@react-hookz/web'
 import { useI18n } from 'next-rosetta'
 import { useRouter } from 'next/router'
 
@@ -11,13 +10,8 @@ import { Link } from './Link'
 import type { Locale } from 'i18n'
 
 export const LanguageSwitcher = (): JSX.Element => {
-  const [, setLanguage] = useLocalStorageValue<string>('lang')
   const { t } = useI18n<Locale>()
   const router = useRouter()
-
-  const handleChangeLanguage = (lang: string): void => {
-    setLanguage(lang)
-  }
 
   return (
     <Menu as="div" className="relative inline-flex text-left">
@@ -48,10 +42,6 @@ export const LanguageSwitcher = (): JSX.Element => {
               className="inline-flex items-center p-4 mx-auto space-x-4 transition-colors duration-200 group hover:bg-primary"
               href={router.asPath}
               locale={router.locale === 'en' ? 'es' : 'en'}
-              onClick={() =>
-                handleChangeLanguage(router.locale === 'en' ? 'es' : 'en')
-              }
-              scroll
             >
               <div className="w-6 h-6 rounded-full">
                 <Flag locale={router.locale === 'en' ? 'es' : 'en'} />
