@@ -19,6 +19,11 @@ class MyDocument extends Document {
         <Head>
           <link
             crossOrigin="anonymous"
+            href="https://plausible.io"
+            rel="preconnect"
+          />
+          <link
+            crossOrigin="anonymous"
             href="https://vitals.vercel-insights.com"
             rel="preconnect"
           />
