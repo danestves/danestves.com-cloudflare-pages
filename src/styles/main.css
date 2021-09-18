@@ -44,9 +44,8 @@
 }
 
 .remark-code-title {
-  @apply px-5 py-3 font-mono text-sm font-bold border-b border-gray-700 rounded-t-lg;
+  @apply px-5 py-3 font-mono text-sm font-bold border-b border-gray-700 rounded-t-lg bg-[#24292e] dark:bg-[#1d1f21];
 
-  background-color: #282a36;
   color: #f8f8f2;
 }
 
