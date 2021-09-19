@@ -26,12 +26,7 @@ const nextConfig = {
     return [
       {
         source: '/DanielEsteves.pdf',
-        destination: '/danestves-resume.pdf',
-        permanent: true,
-      },
-      {
-        source: '/danestves.pdf',
-        destination: '/danestves-resume.pdf',
+        destination: '/danestves.pdf',
         permanent: true,
       },
       {

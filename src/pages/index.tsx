@@ -10,6 +10,7 @@ import {
   LatestVideos,
 } from '@/components/Sections'
 import { Videos } from '@/interfaces'
+import { Locale as GraphLocale } from '@/generated/graphql'
 import { sdk } from '@/lib/graphcms'
 import { getVideos } from '@/lib/youtube'
 import type { PostsQuery } from '@/generated/graphql'
@@ -39,7 +40,7 @@ export const getStaticProps: GetStaticProps<I18nProps<Locale>> = async (
   const videos = await getVideos()
   const posts = await sdk().posts({
     first: 3,
-    locale: locale as any,
+    locale: locale as GraphLocale,
   })
 
   return {

@@ -18,16 +18,17 @@ import { GraphImage, Seo, Views } from '@/components'
 import { ShareIcon } from '@/components/Icons'
 import MDXComponents from '@/components/MDX/Components'
 import useShare from '@/hooks/useShare'
+import { Locale as GraphLocale, Stage } from '@/generated/graphql'
 import { sdk } from '@/lib/graphcms'
+import supabase from '@/lib/supabase'
 import { formatDate } from '@/utils'
+import AssetMe from 'public/static/me.png'
 import type { PostQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
-import AssetMe from 'public/static/me.png'
-import supabase from '@/lib/supabase'
 
 export type PostPageProps = {
   post: PostQuery['post'] & {
-    mdx: MDXRemoteSerializeResult<Record<string, unknown>>
+    mdx: MDXRemoteSerializeResult
   }
   views: number
 }
@@ -245,9 +246,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale || context.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
   const { data } = await sdk().post({
-    locale: locale as any,
-    slug: context.params.slug as string,
-    stage: 'PUBLISHED' as any,
+    locale: locale as GraphLocale,
+    slug: String(context.params.slug),
+    stage: Stage.Published,
   })
 
   if (!data.post) {

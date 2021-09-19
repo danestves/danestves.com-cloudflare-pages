@@ -6,6 +6,7 @@ import type { I18nProps } from 'next-rosetta'
 
 // Internals
 import { ContentCard, Link, Seo } from '@/components'
+import { Locale as GraphLocale } from '@/generated/graphql'
 import { sdk } from '@/lib/graphcms'
 import type { PostsQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
@@ -63,7 +64,7 @@ export const getStaticProps: GetStaticProps<I18nProps<Locale>> = async (
   const { table = {} } = await import(`i18n/${locale}`)
   const posts = await sdk().posts({
     first: 50,
-    locale: locale as any,
+    locale: locale as GraphLocale,
   })
 
   return {

@@ -33,6 +33,11 @@ export interface Locale {
     }
   }
   pages: {
+    about: {
+      title: string
+      paragraphs: string[]
+      buttons: string[]
+    }
     portfolio: {
       seo: {
         title: string

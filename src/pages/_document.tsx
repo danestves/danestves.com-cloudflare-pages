@@ -32,7 +32,6 @@ class MyDocument extends Document {
             id="stitches"
           />
         </Head>
-
         <body className="bg-white transition-colors duration-100 dark:bg-[#292929]">
           <Main />
           <NextScript />
