@@ -4,6 +4,7 @@ import type { I18nProps } from 'next-rosetta'
 import type { GetStaticProps, NextPage } from 'next'
 
 // Internals
+import { Seo } from '@/components'
 import { OutlineDocumentDownload } from '@/components/Icons'
 import { Hero } from '@/components/Sections'
 import type { Locale } from 'i18n'
@@ -13,6 +14,10 @@ export const AboutMe: NextPage = () => {
 
   return (
     <>
+      <Seo
+        description={t('pages.about.seo.description')}
+        title={t('pages.about.seo.title')}
+      />
       <Hero />
       <div className="container space-y-4 max-w-[977px]">
         <h1 className="text-[26px] text-secondary-darker font-black text-center uppercase dark:text-secondary">

@@ -34,9 +34,13 @@ export interface Locale {
   }
   pages: {
     about: {
-      title: string
-      paragraphs: string[]
       buttons: string[]
+      paragraphs: string[]
+      seo: {
+        title: string
+        description: string
+      }
+      title: string
     }
     portfolio: {
       seo: {
