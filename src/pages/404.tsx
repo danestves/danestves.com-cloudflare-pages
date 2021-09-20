@@ -14,7 +14,6 @@ import {
   OutlineRssIcon,
   OutlineUserCircleIcon,
 } from '@/components/Icons'
-import { WHATSAPP_TEXT } from '@/constants'
 import Logo from 'public/static/logo.png'
 import type { Locale } from 'i18n'
 
@@ -60,9 +59,7 @@ const links = [
       en: 'Reach out me for any questions or feedback',
       es: 'Contacta conmigo para cualquier duda o comentario',
     },
-    href: `https://wa.me/584123697600?text=${encodeURIComponent(
-      WHATSAPP_TEXT
-    )}`,
+    href: `https://wa.me/message/V2KA74PJTEEYP1`,
     icon: OutlineChatAlt2Icon,
     title: {
       en: 'Contact',
@@ -174,9 +171,7 @@ const NotFoundPage: NextLayoutPage = () => {
   )
 }
 
-NotFoundPage.getLayout = (page) => {
-  return <>{page}</>
-}
+NotFoundPage.getLayout = (page) => <>{page}</>
 
 export const getStaticProps: GetStaticProps<I18nProps<Locale>> = async (
   ctx

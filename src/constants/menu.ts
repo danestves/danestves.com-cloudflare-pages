@@ -5,24 +5,6 @@ type MenuItem = LinkProps & {
   label: string | { en: string; es: string }
 }
 
-const formatter = new Intl.DateTimeFormat('en', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-})
-
-export const WHATSAPP_TEXT = `Hello Daniel, I want additional information about your development services.
-
-*I'm writing you from your website.*
-
----
-
-Hola Daniel, me gustaría saber más información sobre tus servicios de desarrollo web.
-
-*Te escribo desde tu sitio web.*
-
-${formatter.format(new Date())}`
-
 export const MENU: MenuItem[] = [
   {
     href: '/about',
@@ -49,9 +31,7 @@ export const MENU: MenuItem[] = [
     label: 'blog',
   },
   {
-    href: `https://wa.me/584123697600?text=${encodeURIComponent(
-      WHATSAPP_TEXT
-    )}`,
+    href: `https://wa.me/message/V2KA74PJTEEYP1`,
     label: {
       en: 'contact',
       es: 'contacto',

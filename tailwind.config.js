@@ -16,7 +16,20 @@ module.exports = {
     extend: {
       colors: {
         primary: '#00C389',
-        secondary: { DEFAULT: '#29ABE2', darker: '#071D49' },
+        secondary: {
+          50: '#F3FAFD',
+          100: '#DDF2FA',
+          200: '#B0E0F4',
+          300: '#83CEEE',
+          400: '#56BDE8',
+          500: '#29ABE2',
+          600: '#1A8DBE',
+          700: '#146C91',
+          800: '#0E4B64',
+          900: '#082937',
+          DEFAULT: '#29ABE2',
+          darker: '#071D49',
+        },
       },
       container: {
         center: true,
