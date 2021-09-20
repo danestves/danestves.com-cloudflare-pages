@@ -1,33 +1,45 @@
-# NextJS Typescript Boilerplate
+# danestves.com
 
-Bootstrap a developer-friendly NextJS app configured with:
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-- [Typescript](https://www.typescriptlang.org/)
-- Linting with [ESLint](https://eslint.org/)
-- Formatting with [Prettier](https://prettier.io/)
-- Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
-- Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 
-## Preview
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+_<small>Inspired by Leerob README.md</small>_
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest)
+- **Framework:** [NextJS](https://nextjs.org/)
+- **Database:** [Supabase](https://supabase.io/)
+- **Deployment:** [Vercel](https://vercel.com/)
+- **Content:** [MDX](https://github.com/mdx-js/mdx) + [GraphCMS](https://graphcms.com/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 
-## Deploy your own
+## Overview
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## Overview
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest&project-name=with-typescript-eslint-jest&repository-name=with-typescript-eslint-jest)
+- `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering Giphy, country flags, [sitemap.xml](https://danestves.com/sitemap.xml), [feed.xml](https://danestves.com/feed.xml), post views, and webhooks for Algolia.
+- `pages/posts/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx) and [GraphCMS](https://graphcms.com/).
+- `pages/*` - All other static pages.
 
-## How to use
+## Contributors ✨
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-```bash
-npx create-next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
-# or
-yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
-```
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://danestves.com/"><img src="https://avatars.githubusercontent.com/u/31737273?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel Esteves</b></sub></a><br /><a href="https://github.com/weareseeed/react-square-web-payments-sdk/commits?author=danestves" title="Code">💻</a> <a href="https://github.com/weareseeed/react-square-web-payments-sdk/commits?author=danestves" title="Documentation">📖</a> <a href="https://react-square-web-payments-sdk.weareseeed.com/" title="Examples">💡</a> <a href="https://github.com/weareseeed/react-square-web-payments-sdk/commits?author=danestves" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/ielijose"><img src="https://avatars.githubusercontent.com/u/2319641?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eli José Carrasquero</b></sub></a><br /><a href="#blog-ielijose" title="Blogposts">📝</a></td>
+    <td align="center"><a href="https://github.com/Andresdamelio"><img src="https://avatars.githubusercontent.com/u/36086897?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrés D' Amelio</b></sub></a><br /><a href="https://github.com/danestves/website/issues?q=author%3Aandresdamelio" title="Bug reports">🐛</a></td>
+  </tr>
+</table>
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
