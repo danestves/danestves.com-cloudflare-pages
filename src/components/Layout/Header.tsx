@@ -72,6 +72,13 @@ export const Header = (): JSX.Element => {
                           className="block px-3 py-2 text-base text-[#989898] font-semibold rounded-md uppercase hover:text-primary"
                           key={item.href}
                           locale={router.locale}
+                          onClick={
+                            item.href.includes('contact')
+                              ? () => {
+                                  plausible('Contact')
+                                }
+                              : undefined
+                          }
                         >
                           {label[router.locale] || label}
                         </Link>

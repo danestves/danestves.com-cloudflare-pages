@@ -24,6 +24,7 @@ export default function App({
     <ThemeProvider
       attribute="class"
       defaultTheme="system"
+      enableSystem
       themes={['dark', 'light']}
     >
       <PlausibleProvider domain="danestves.com">

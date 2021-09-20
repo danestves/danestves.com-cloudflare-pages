@@ -1,6 +1,7 @@
 // Dependencies
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
+import { usePlausible } from 'next-plausible'
 
 // Internals
 import { Link, Logo } from '../'
@@ -8,6 +9,7 @@ import { FLOATING_MENU, MENU } from '@/constants'
 
 export const Footer = (): JSX.Element => {
   const router = useRouter()
+  const plausible = usePlausible()
 
   return (
     <>
@@ -55,6 +57,13 @@ export const Footer = (): JSX.Element => {
                   {...item}
                   className="text-xs text-[#989898] uppercase font-semibold leading-3 hover:text-primary dark:text-[#B1B1B1]"
                   locale={router.locale}
+                  onClick={
+                    item.href.includes('contact')
+                      ? () => {
+                          plausible('Contact')
+                        }
+                      : undefined
+                  }
                 >
                   {label[router.locale] || label}
                 </Link>
