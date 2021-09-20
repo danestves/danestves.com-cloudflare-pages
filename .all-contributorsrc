@@ -43,6 +43,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "jasba24",
+      "name": "Sebastian Buitrago",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71221550?v=4",
+      "profile": "https://github.com/jasba24",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,

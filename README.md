@@ -1,9 +1,7 @@
 # danestves.com
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 _<small>Inspired by Leerob README.md</small>_
@@ -35,6 +33,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/SalomonDev"><img src="https://avatars.githubusercontent.com/u/66646454?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Salomon Sanchez</b></sub></a><br /><a href="#design-SalomonDev" title="Design">🎨</a></td>
     <td align="center"><a href="https://github.com/ielijose"><img src="https://avatars.githubusercontent.com/u/2319641?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eli José Carrasquero</b></sub></a><br /><a href="#blog-ielijose" title="Blogposts">📝</a></td>
     <td align="center"><a href="https://github.com/Andresdamelio"><img src="https://avatars.githubusercontent.com/u/36086897?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrés D' Amelio</b></sub></a><br /><a href="https://github.com/danestves/website/issues?q=author%3Aandresdamelio" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/jasba24"><img src="https://avatars.githubusercontent.com/u/71221550?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebastian Buitrago</b></sub></a><br /><a href="#content-jasba24" title="Content">🖋</a></td>
   </tr>
 </table>
 
