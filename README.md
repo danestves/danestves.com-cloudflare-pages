@@ -1,7 +1,9 @@
 # danestves.com
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 _<small>Inspired by Leerob README.md</small>_
@@ -30,9 +32,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://danestves.com/"><img src="https://avatars.githubusercontent.com/u/31737273?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel Esteves</b></sub></a><br /><a href="https://github.com/danestves/website/commits?author=danestves" title="Code">💻</a> <a href="https://github.com/danestves/website/commits?author=danestves" title="Documentation">📖</a> <a href="#example-danestves" title="Examples">💡</a> <a href="https://github.com/danestves/website/commits?author=danestves" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/SalomonDev"><img src="https://avatars.githubusercontent.com/u/66646454?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Salomon Sanchez</b></sub></a><br /><a href="#design-SalomonDev" title="Design">🎨</a></td>
     <td align="center"><a href="https://github.com/ielijose"><img src="https://avatars.githubusercontent.com/u/2319641?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eli José Carrasquero</b></sub></a><br /><a href="#blog-ielijose" title="Blogposts">📝</a></td>
     <td align="center"><a href="https://github.com/Andresdamelio"><img src="https://avatars.githubusercontent.com/u/36086897?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrés D' Amelio</b></sub></a><br /><a href="https://github.com/danestves/website/issues?q=author%3Aandresdamelio" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/SalomonDev"><img src="https://avatars.githubusercontent.com/u/66646454?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Salomon Sanchez</b></sub></a><br /><a href="#design-SalomonDev" title="Design">🎨</a></td>
   </tr>
 </table>
 

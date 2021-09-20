@@ -18,6 +18,15 @@
       ]
     },
     {
+      "login": "SalomonDev",
+      "name": "Salomon Sanchez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66646454?v=4",
+      "profile": "https://github.com/SalomonDev",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
       "login": "ielijose",
       "name": "Eli José Carrasquero",
       "avatar_url": "https://avatars.githubusercontent.com/u/2319641?v=4",
@@ -33,15 +42,6 @@
       "profile": "https://github.com/Andresdamelio",
       "contributions": [
         "bug"
-      ]
-    },
-    {
-      "login": "SalomonDev",
-      "name": "Salomon Sanchez",
-      "avatar_url": "https://avatars.githubusercontent.com/u/66646454?v=4",
-      "profile": "https://github.com/SalomonDev",
-      "contributions": [
-        "design"
       ]
     }
   ],
