@@ -3,6 +3,9 @@ export interface Locale {
     contentcard: {
       published: string
     }
+    footer: {
+      rights: string
+    }
     layout: {
       menu: {
         toggle: string

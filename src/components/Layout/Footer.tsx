@@ -2,14 +2,17 @@
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
 import { usePlausible } from 'next-plausible'
+import { useI18n } from 'next-rosetta'
 
 // Internals
-import { Link, Logo } from '../'
 import { FLOATING_MENU, MENU } from '@/constants'
+import { Link, Logo } from '../'
+import type { Locale } from 'i18n'
 
 export const Footer = (): JSX.Element => {
   const router = useRouter()
   const plausible = usePlausible()
+  const { t } = useI18n<Locale>()
 
   return (
     <>
@@ -72,7 +75,7 @@ export const Footer = (): JSX.Element => {
           </ul>
 
           <p className="text-xs text-[#989898] text-center font-semibold leading-3 dark:text-[#B1B1B1]">
-            © 2021 Daniel Esteves. Todos los derechos reservados.
+            © 2021 Daniel Esteves. {t('components.footer.rights')}
           </p>
         </div>
       </footer>
