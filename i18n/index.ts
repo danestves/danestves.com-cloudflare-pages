@@ -42,6 +42,17 @@ export interface Locale {
       }
       title: string
     }
+    notFound: {
+      caption: string
+      cta: string
+      popular: string
+      seo: {
+        title: string
+        description: string
+      }
+      subtitle: string
+      title: string
+    }
     portfolio: {
       seo: {
         title: string

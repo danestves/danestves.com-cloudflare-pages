@@ -11,7 +11,7 @@ const formatter = new Intl.DateTimeFormat('en', {
   day: 'numeric',
 })
 
-const WHATSAPP_TEXT = `Hello Daniel, I want additional information about your development services.
+export const WHATSAPP_TEXT = `Hello Daniel, I want additional information about your development services.
 
 *I'm writing you from your website.*
 
