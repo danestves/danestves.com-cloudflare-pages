@@ -8,7 +8,7 @@ import { Locale } from '@/generated/graphql'
 import { sdk } from '@/lib/graphcms'
 
 const baseURL = 'https://danestves.com'
-const flyyerURL = 'https://cdn.flyyer.io/v2/danestves-preview/_/_'
+const flyyerURL = 'https://cdn.flyyer.io/v2/danestves/_/_'
 const STATIC_URLS = [
   {
     changefreq: 'monthly',

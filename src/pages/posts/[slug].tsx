@@ -95,7 +95,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
             {
               alt: post.seo.title,
               height: 630,
-              url: `https://cdn.flyyer.io/v2/danestves-preview/_/_${lang}${router.asPath}`,
+              url: `https://cdn.flyyer.io/v2/danestves/_/_${lang}${router.asPath}`,
               width: 1200,
             },
           ],
@@ -116,7 +116,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
         datePublished={new Date(post.published).toISOString().slice(0, 19)}
         description={post.seo?.description.replace(/\n/g, ' ') as string}
         images={[
-          `https://cdn.flyyer.io/v2/danestves-preview/_/_${lang}${router.asPath}`,
+          `https://cdn.flyyer.io/v2/danestves/_/_${lang}${router.asPath}`,
         ]}
         publisherLogo="https://danestves.com/static/logo.png"
         publisherName="Daniel Esteves"
@@ -130,7 +130,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, views }) => {
         datePublished={new Date(post.published).toISOString().slice(0, 19)}
         description={post.seo?.description.replace(/\n/g, ' ') as string}
         images={[
-          `https://cdn.flyyer.io/v2/danestves-preview/_/_${lang}${router.asPath}`,
+          `https://cdn.flyyer.io/v2/danestves/_/_${lang}${router.asPath}`,
         ]}
         title={post.seo?.title as string}
         url={window.location.href}
