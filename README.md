@@ -1,7 +1,9 @@
 # danestves.com
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 _<small>Inspired by Leerob README.md</small>_
@@ -11,8 +13,6 @@ _<small>Inspired by Leerob README.md</small>_
 - **Deployment:** [Vercel](https://vercel.com/)
 - **Content:** [MDX](https://github.com/mdx-js/mdx) + [GraphCMS](https://graphcms.com/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-
-## Overview
 
 ## Overview
 
