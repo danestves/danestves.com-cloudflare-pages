@@ -37,6 +37,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/contact',
+        destination: 'https://wa.me/message/V2KA74PJTEEYP1',
+        permanent: true,
+      },
+      {
         source: '/DanielEsteves.pdf',
         destination: '/danestves.pdf',
         permanent: true,
