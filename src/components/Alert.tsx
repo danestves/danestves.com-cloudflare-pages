@@ -1,10 +1,10 @@
-interface AlertProps {
+export type AlertProps = {
   children: React.ReactNode
 }
 
 const Danger = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-red-100 dark:bg-red-50 rounded-md">
+    <div className="p-4 bg-red-100 rounded-md dark:bg-red-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -23,7 +23,7 @@ const Danger = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="my-0 text-sm text-red-700">{children}</p>
+          <p className="!my-0 text-sm text-red-700">{children}</p>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@ const Danger = ({ children }: AlertProps): JSX.Element => {
 
 const Info = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-blue-100 dark:bg-blue-50 rounded-md">
+    <div className="p-4 bg-blue-100 rounded-md dark:bg-blue-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -51,7 +51,7 @@ const Info = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="my-0 text-sm text-blue-700">{children}</p>
+          <p className="!my-0 text-sm text-blue-700">{children}</p>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@ const Info = ({ children }: AlertProps): JSX.Element => {
 
 const Warning = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-yellow-100 dark:bg-yellow-50 rounded-md">
+    <div className="p-4 bg-yellow-100 rounded-md dark:bg-yellow-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -79,7 +79,7 @@ const Warning = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="my-0 text-sm text-yellow-700">{children}</p>
+          <p className="!my-0 text-sm text-yellow-700">{children}</p>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@ const Warning = ({ children }: AlertProps): JSX.Element => {
 
 const Success = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-green-100 dark:bg-green-50 rounded-md">
+    <div className="p-4 bg-green-100 rounded-md dark:bg-green-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -107,7 +107,7 @@ const Success = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="my-0 text-sm text-green-700">{children}</p>
+          <p className="!my-0 text-sm text-green-700">{children}</p>
         </div>
       </div>
     </div>
@@ -116,7 +116,7 @@ const Success = ({ children }: AlertProps): JSX.Element => {
 
 export const Alert = ({ children }: AlertProps): JSX.Element => {
   return (
-    <div className="p-4 bg-gray-100 dark:bg-gray-50 rounded-md">
+    <div className="p-4 bg-gray-100 rounded-md dark:bg-gray-50">
       <div className="flex">
         <div className="flex-shrink-0">
           {/* Heroicon name: solid/information-circle */}
@@ -135,7 +135,7 @@ export const Alert = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="my-0 text-sm text-gray-700">{children}</p>
+          <p className="!my-0 text-sm text-gray-700">{children}</p>
         </div>
       </div>
     </div>
@@ -146,3 +146,5 @@ Alert.Danger = Danger
 Alert.Info = Info
 Alert.Warning = Warning
 Alert.Success = Success
+
+export default Alert

@@ -1,12 +1,9 @@
-const dev = process.env.NODE_ENV !== 'production'
+// Dependencies
+import axios from 'axios'
 
-export const server = dev ? 'http://localhost:3000' : 'https://danestves.com'
-
-export default async function Fetcher(
-  input: RequestInfo,
-  init?: RequestInit | undefined
-): Promise<Response> {
-  const res = await fetch(input, init)
-
-  return res.json()
+/**
+ * Custom fetcher to handle the fetching of the data with SWR.
+ */
+export async function fetcher<P = any>(url: string): Promise<P> {
+  return axios.get<P>(url).then((res) => res.data)
 }

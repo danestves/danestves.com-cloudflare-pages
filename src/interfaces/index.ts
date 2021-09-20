@@ -1,56 +1,20 @@
-// @types
-import { Asset as GraphCmsAsset } from '@/generated/graphql'
-
-export interface Asset extends GraphCmsAsset {
-  height: number
-  width: number
+export interface Videos {
+  kind: string
+  etag: string
+  items?: ItemsEntity[] | null
+  pageInfo: PageInfo
 }
 
-export interface Default {
-  url: string
-  width: number
-  height: number
-}
-
-export interface Medium {
-  url: string
-  width: number
-  height: number
-}
-
-export interface High {
-  url: string
-  width: number
-  height: number
-}
-
-export interface Standard {
-  url: string
-  width: number
-  height: number
-}
-
-export interface Maxres {
-  url: string
-  width: number
-  height: number
-}
-
-export interface Thumbnails {
-  default: Default
-  medium: Medium
-  high: High
-  standard: Standard
-  maxres: Maxres
-}
-
-export interface Localized {
-  title: string
-  description: string
+export interface ItemsEntity {
+  kind: string
+  etag: string
+  id: string
+  snippet: Snippet
+  statistics: Statistics
 }
 
 export interface Snippet {
-  publishedAt: Date
+  publishedAt: string
   channelId: string
   title: string
   description: string
@@ -59,7 +23,26 @@ export interface Snippet {
   categoryId: string
   liveBroadcastContent: string
   localized: Localized
-  defaultAudioLanguage: string
+  defaultAudioLanguage?: string | null
+}
+
+export interface Thumbnails {
+  default: DefaultOrMediumOrHighOrStandardOrMaxres
+  medium: DefaultOrMediumOrHighOrStandardOrMaxres
+  high: DefaultOrMediumOrHighOrStandardOrMaxres
+  standard: DefaultOrMediumOrHighOrStandardOrMaxres
+  maxres: DefaultOrMediumOrHighOrStandardOrMaxres
+}
+
+export interface DefaultOrMediumOrHighOrStandardOrMaxres {
+  url: string
+  width: number
+  height: number
+}
+
+export interface Localized {
+  title: string
+  description: string
 }
 
 export interface Statistics {
@@ -70,10 +53,7 @@ export interface Statistics {
   commentCount: string
 }
 
-export interface YouTubeVideo {
-  kind: string
-  etag: string
-  id: string
-  snippet: Snippet
-  statistics: Statistics
+export interface PageInfo {
+  totalResults: number
+  resultsPerPage: number
 }

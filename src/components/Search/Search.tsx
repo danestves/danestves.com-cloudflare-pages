@@ -1,58 +1,68 @@
 // Dependencies
 import * as React from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { SearchIcon } from '@heroicons/react/solid'
+import { useClickOutside } from '@react-hookz/web'
 import algoliasearch from 'algoliasearch/lite'
+import { useRouter } from 'next/router'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { InstantSearch, Hits, Configure } from 'react-instantsearch-dom'
-import { useClickAway } from 'react-use'
+import { useI18n } from 'next-rosetta'
 
 // Internals
-import { SearchHeader } from './Header'
 import { SearchHit } from './Hit'
 import { SearchFooter } from './Footer'
+import { SearchInput } from './Input'
+import { SearchIcon } from '../Icons'
+import type { Locale } from 'i18n'
+
+const searchClient = algoliasearch(
+  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+  process.env.NEXT_PUBLIC_ALGOLIA_API_KEY
+)
 
 export const Search = (): JSX.Element => {
-  const [open, setOpen] = React.useState(false)
-  const [search, setSearch] = React.useState('')
+  const [isSearchOpen, setSearchOpen] = React.useState(false)
+  const [search, setSearch] = React.useState<any>({})
 
   const searchInputRef = React.useRef<HTMLInputElement>(null)
   const boxRef = React.useRef<HTMLDivElement>(null)
 
-  useHotkeys('cmd+k', () => setOpen(true))
-  useHotkeys('ctrl+k', () => setOpen(true))
-  useHotkeys('esc', () => setOpen(false))
-  useClickAway(boxRef, () => setOpen(false))
+  const { t } = useI18n<Locale>()
+  const router = useRouter()
 
-  const searchClient = React.useMemo(
-    () =>
-      algoliasearch(
-        process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-        process.env.NEXT_PUBLIC_ALGOLIA_API_KEY
-      ),
-    []
-  )
+  useHotkeys('cmd+k', () => setSearchOpen(true))
+  useHotkeys('ctrl+k', () => setSearchOpen(true))
+  useHotkeys('esc', () => setSearchOpen(false))
+  useClickOutside(boxRef, () => setSearchOpen(false))
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        title="cmd+k OR ctrl+k"
-        type="button"
-      >
-        <SearchIcon className="w-6 h-6 text-primary-600 dark:text-white" />
-      </button>
+      <div className="flex items-center space-x-2">
+        <div className="lg:p-2 lg:border lg:rounded-full lg:border-primary">
+          <button
+            aria-label={t('components.search.button.label')}
+            className="p-2 rounded-full bg-primary"
+            onClick={() => setSearchOpen(!isSearchOpen)}
+            type="button"
+          >
+            <SearchIcon className="w-5 h-5 text-white transition-colors duration-100 dark:text-[#292929]" />
+          </button>
+        </div>
+        <span className="text-xs text-[#989898] font-semibold sr-only transition-colors duration-100 dark:text-[#B1B1B1] lg:not-sr-only">
+          {t('components.search.button.label')}
+        </span>
+      </div>
 
-      <Transition.Root as={React.Fragment} show={open}>
+      <Transition.Root as={React.Fragment} show={isSearchOpen}>
         <Dialog
           as="div"
           className="overflow-y-auto fixed inset-0 z-[999999]"
           initialFocus={searchInputRef}
-          onClose={setOpen}
-          open={open}
+          onClose={setSearchOpen}
+          open={isSearchOpen}
           static
         >
-          <div className="flex justify-center items-end px-4 pt-4 pb-20 min-h-screen text-center sm:block sm:p-0">
+          <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <Transition.Child
               as={React.Fragment}
               enter="ease-out duration-300"
@@ -62,7 +72,7 @@ export const Search = (): JSX.Element => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <Dialog.Overlay className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -85,28 +95,30 @@ export const Search = (): JSX.Element => {
                 {/* Adding an extra div to avoid issues with Ref */}
                 <div className="transition-all transform">
                   <div
-                    className="flex flex-col px-6 mx-auto w-full max-w-[47.375rem] min-h-0 bg-white rounded-[1rem] shadow-search"
+                    className="flex flex-col px-6 mx-auto w-full max-w-[47.375rem] min-h-0 bg-white rounded-[1rem] shadow-search dark:bg-[#292929]"
                     ref={boxRef}
                   >
                     <InstantSearch
                       indexName="posts"
-                      onSearchStateChange={({ query }) => setSearch(query)}
+                      onSearchStateChange={setSearch}
                       searchClient={searchClient}
+                      searchState={search}
                     >
-                      <SearchHeader />
-                      <Configure hitsPerPage={5} />
+                      <SearchInput defaultRefinement={search.query} />
+                      <Configure
+                        filters={`locale:${router.locale}`}
+                        hitsPerPage={5}
+                      />
 
-                      {search.length > 0 && (
-                        <div className="overflow-auto flex-auto pb-6 rounded-b-2xl">
-                          <div id="search-container">
-                            <Hits
-                              hitComponent={(props) => (
-                                <SearchHit {...props} setOpen={setOpen} />
-                              )}
-                            />
-                          </div>
+                      <div className="flex-auto py-6 overflow-auto rounded-b-2xl">
+                        <div id="search-container">
+                          <Hits
+                            hitComponent={(props) => (
+                              <SearchHit {...props} setOpen={setSearchOpen} />
+                            )}
+                          />
                         </div>
-                      )}
+                      </div>
 
                       <SearchFooter />
                     </InstantSearch>

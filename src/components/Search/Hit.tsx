@@ -1,9 +1,9 @@
 // Dependencies
 import { Snippet } from 'react-instantsearch-dom'
-import { DocumentIcon, ArrowSmRightIcon } from '@heroicons/react/outline'
 
 // Internals
-import { Link } from '@/components'
+import { Link } from '../'
+import { OutlineArrowRight, OutlineDocument } from '../Icons'
 
 interface SearchHitProps {
   hit: any
@@ -12,29 +12,29 @@ interface SearchHitProps {
 
 export const SearchHit = ({ hit, setOpen }: SearchHitProps): JSX.Element => {
   return (
-    <div className="group relative">
+    <div className="relative my-1 group">
       <Link
-        className="block pr-5 pl-4 bg-[#f9fafb] group-hover:bg-[#5468FF] rounded-lg shadow-search-item"
-        href={`/blog/${hit.slug}-${hit.id}`}
+        className="block pr-5 pl-4 bg-[#f9fafb] group-hover:bg-secondary rounded-lg shadow-search-item dark:bg-[#393939]"
+        href={`/posts/${hit.slug}`}
         locale={hit.locale}
         onClick={() => setOpen(false)}
       >
         <div className="flex items-center h-16">
           <div className="flex-none mr-[0.875rem]">
-            <DocumentIcon className="w-5 h-5 text-[#71717a] group-hover:text-white" />
+            <OutlineDocument className="w-5 h-auto text-[#71717a] group-hover:text-white" />
           </div>
 
           <div className="flex flex-col flex-auto min-w-0">
-            <p className="overflow-hidden font-semibold leading-6 text-left text-black group-hover:text-white overflow-ellipsis whitespace-nowrap">
+            <p className="overflow-hidden font-semibold leading-6 text-left text-black overflow-ellipsis whitespace-nowrap group-hover:text-white dark:text-[#F5F5F5]">
               <Snippet attribute="title" hit={hit} />
             </p>
-            <p className="overflow-hidden text-sm font-normal leading-6 text-left text-gray-400 group-hover:text-white overflow-ellipsis whitespace-nowrap">
-              <Snippet attribute="body" hit={hit} />
+            <p className="overflow-hidden text-sm font-normal leading-6 text-left text-gray-400 overflow-ellipsis whitespace-nowrap group-hover:text-white">
+              <Snippet attribute="seo.description" hit={hit} />
             </p>
           </div>
 
           <div className="flex-none mr-[0.875rem]">
-            <ArrowSmRightIcon className="w-5 h-5 text-[#71717a] group-hover:text-white" />
+            <OutlineArrowRight className="w-5 h-5 text-[#71717a] group-hover:text-white" />
           </div>
         </div>
       </Link>

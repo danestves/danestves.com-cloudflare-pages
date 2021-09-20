@@ -1,100 +1,81 @@
-const { fontFamily, spacing } = require(`tailwindcss/defaultTheme`)
+// Dependencies
+const defaultTheme = require('tailwindcss/defaultTheme')
+const plugin = require('tailwindcss/plugin')
 
-/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
+/**
+ * @type {import("@types/tailwindcss/tailwind-config").TailwindConfig }
+ **/
 module.exports = {
   mode: 'jit',
-  purge: [
-    './src/components/**/*.{ts,tsx}',
-    './src/layouts/**/*.{ts,tsx}',
-    './src/pages/**/*.{ts,tsx}',
-  ],
+  purge: {
+    content: ['./src/{components,pages}/**/*.{ts,tsx}'],
+    safelist: ['max-w-md', 'max-w-lg'],
+  },
   darkMode: 'class',
-  important: true,
   theme: {
     extend: {
-      boxShadow: {
-        search: '0 25px 50px -12px rgb(0 0 0 / 25%)',
-        'search-item': '0 1px 2px 0 rgb(0 0 0 / 5%)',
-      },
       colors: {
-        primary: {
-          DEFAULT: '#00c389',
-          100: '#ccf3e7',
-          200: '#99e7d0',
-          300: '#66dbb8',
-          400: '#33cfa1',
-          500: '#00c389',
-          600: '#009c6e',
-          700: '#007552',
-          800: '#004e37',
-          900: '#00271b',
-        },
+        primary: '#00C389',
         secondary: {
-          DEFAULT: '#071d49',
-          50: '#f3f4f6',
-          100: '#e6e8ed',
-          200: '#c1c7d2',
-          300: '#9ca5b6',
-          400: '#516180',
-          500: '#071d49',
-          600: '#061a42',
-          700: '#051637',
-          800: '#04112c',
-          900: '#030e24',
+          50: '#F3FAFD',
+          100: '#DDF2FA',
+          200: '#B0E0F4',
+          300: '#83CEEE',
+          400: '#56BDE8',
+          500: '#29ABE2',
+          600: '#1A8DBE',
+          700: '#146C91',
+          800: '#0E4B64',
+          900: '#082937',
+          DEFAULT: '#29ABE2',
+          darker: '#071D49',
         },
-        tertiary: `#2F80ED`,
       },
       container: {
         center: true,
+        padding: '1rem',
       },
       fontFamily: {
-        sans: [`Inter`, ...fontFamily.sans],
-        title: [`Roboto Slab`, ...fontFamily.sans],
-        roboto: [`Roboto`, ...fontFamily.sans],
+        roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
+        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
-      maxHeight: (theme) => theme('spacing'),
-      minHeight: (theme) => theme('spacing'),
+      screens: {
+        ...defaultTheme.screens,
+        xs: '475px',
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.600'),
+            color: '#838383',
             a: {
-              color: theme('colors.primary'),
+              color: '#071D49',
               transition: theme('transitionProperty.all'),
               transitionDuration: theme('transitionDuration.200'),
               '&:hover': {
-                color: theme('colors.primary'),
-                opacity: theme('opacity.75'),
+                color: '#071D49',
+                opacity: theme('opacity.80'),
               },
               code: { color: theme('colors.blue.400') },
             },
             code: {
               backgroundColor: '#282a36',
               color: '#f8f8f2',
-              borderRadius: theme('borderRadius.md'),
-              padding: `${spacing[1]} ${spacing[0.5]}`,
+              borderRadius: theme('borderRadius.lg'),
+              padding: `${defaultTheme.spacing[1]} ${defaultTheme.spacing[0.5]}`,
               fontWeight: theme('fontWeight.normal'),
             },
             'h2,h3,h4,h5,h6': {
-              color: theme('colors.gray.700'),
-              'scroll-margin-top': spacing[32],
+              color: '#071D49',
+              'scroll-margin-top': defaultTheme.spacing[32],
               position: 'relative',
-              paddingLeft: spacing[6],
-              marginLeft: `-${spacing[6]}`,
+              paddingLeft: defaultTheme.spacing[6],
+              marginLeft: `-${defaultTheme.spacing[6]}`,
             },
             blockquote: {
               borderLeftColor: theme('colors.gray.300'),
               color: theme('colors.gray.400'),
               'p:first-of-type::before': false,
               'p:last-of-type::after': false,
-            },
-            hr: { borderColor: theme('colors.gray.500') },
-            ol: {
-              li: {
-                '&:before': {
-                  color: theme('colors.gray.200'),
-                },
-              },
             },
             ul: {
               li: {
@@ -114,7 +95,6 @@ module.exports = {
                 },
               },
             },
-            strong: { color: theme('colors.gray.700') },
             thead: {
               color: theme('colors.gray.700'),
             },
@@ -132,17 +112,25 @@ module.exports = {
         },
         dark: {
           css: {
-            code: {
-              backgroundColor: '#011627',
-              color: '#d6deeb',
-            },
-            color: theme('colors.gray.200'),
-            'h2,h3,h4,h5,h6': {
-              color: theme('colors.gray.100'),
+            a: {
+              color: '#29ABE2',
             },
             blockquote: {
               borderLeftColor: theme('colors.gray.500'),
               color: theme('colors.gray.400'),
+            },
+            code: {
+              backgroundColor: '#1d1f21',
+              color: '#c5c8c6',
+            },
+            color: '#838383',
+            'h2,h3,h4,h5,h6': {
+              color: '#29ABE2',
+            },
+            ol: {
+              li: {
+                '&::before': { color: '#fff', fontWeight: 700 },
+              },
             },
             strong: { color: theme('colors.gray.300') },
             thead: {
@@ -160,7 +148,11 @@ module.exports = {
             '.graphcms-image-wrapper img': {
               margin: 0,
             },
+            '.giphy-gif-img': {
+              margin: 0,
+            },
             pre: {
+              borderRadius: '0.5rem',
               padding: 0,
               pre: {
                 paddingTop: '1em',
@@ -174,9 +166,26 @@ module.exports = {
       }),
     },
   },
+  variants: {
+    extend: {},
+  },
   plugins: [
-    require('@tailwindcss/typography'),
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        '.horizontal-tb': {
+          writingMode: 'horizontal-tb',
+        },
+        '.vertical-rl': {
+          writingMode: 'vertical-rl',
+        },
+        '.vertical-lr': {
+          writingMode: 'vertical-lr',
+        },
+      }
+      addUtilities(newUtilities)
+    }),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
   ],
 }

@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /dayairis
 
 Sitemap: https://danestves.com/sitemap.xml

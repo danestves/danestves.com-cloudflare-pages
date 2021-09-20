@@ -2,6 +2,9 @@
 import algoliasearch from 'algoliasearch'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+// Internals
+import { sdk } from '@/lib/graphcms'
+
 const algolia = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
   process.env.ALGOLIA_ADMIN_API_KEY
@@ -24,16 +27,44 @@ export default async function handler(
     if (post.stage === 'PUBLISHED') {
       const { id, localizations, ...data } = post
 
+      // We get the Asset URL from Post
+      const { data: asset } = await sdk().asset({
+        id: post.cover.id,
+      })
+
       for await (const locale of localizations) {
+        // We get the SEO with Locale
+        const { data: seo } = await sdk().seo({
+          id: data.seo.id,
+          locale: locale.locale,
+        })
+
         await index.saveObject({
-          objectID: `${id}-${locale.locale}`,
+          cover: {
+            ...data.cover,
+            ...asset.asset,
+          },
           id,
-          ...locale,
-          ...data,
+          locale: locale.locale,
+          objectID: `${id}-${locale.locale}`,
+          seo: {
+            ...data.seo,
+            ...seo.seo,
+          },
+          slug: data.slug,
+          title: locale.title,
         })
       }
 
-      res.send(201)
+      return res.send(201)
+    } else if (post.stage === 'DRAFT') {
+      const { data: post } = req.body
+
+      for await (const locale of post.localizations) {
+        await index.deleteObject(`${post.id}-${locale.locale}`)
+      }
+
+      return res.send(201)
     }
   } catch (err) {
     console.error(err?.message)

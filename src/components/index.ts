@@ -1,19 +1,17 @@
-export * from './Alert'
-export * from './BlogCard'
-export * from './CallToAction'
-export * from './Cloudinary'
-export * from './CodeBlock'
-export * from './Footer'
-export * from './GeneralObserver'
-export * from './Giphy'
-export * from './Header'
-export * from './LanguageSwitcher'
-export * from './Layout'
+// Dependencies
+import dynamic from 'next/dynamic'
+
 export * from './Link'
-export * from './MDXComponents'
-export * from './Notification'
-export * from './SEO'
-export * from './Search'
-export * from './Subscribe'
-export * from './VideoCard'
-export * from './ViewsCounter'
+export * from './Logo'
+export * from './Seo'
+
+export const Alert = dynamic(() => import('./Alert'))
+export const ContentCard = dynamic(() => import('./ContentCard'))
+export const Flag = dynamic(() => import('./Flag'))
+export const GeneralObserver = dynamic(() => import('./GeneralObserver'))
+export const GraphImage = dynamic(() => import('./GraphImage/GraphImage'))
+export const LanguageSwitcher = dynamic(() => import('./LanguageSwitcher'))
+export const Layout = dynamic(() => import('./Layout/Layout'))
+export const Search = dynamic(() => import('./Search/Search'))
+export const ThemeSwitcher = dynamic(() => import('./ThemeSwitcher'))
+export const Views = dynamic(() => import('./Views'))

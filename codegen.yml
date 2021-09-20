@@ -1,5 +1,5 @@
 overwrite: true
-schema: ${GRAPHCMS_ENDPOINT}
+schema: '${GRAPHCMS_CONTENT_API}'
 documents: 'src/**/*.graphql'
 generates:
   src/generated/graphql.ts:
@@ -8,4 +8,5 @@ generates:
       - 'typescript-operations'
       - 'typescript-graphql-request'
     config:
+      autogenSWRKey: true
       rawRequest: true

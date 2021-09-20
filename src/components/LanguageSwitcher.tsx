@@ -1,114 +1,62 @@
 // Dependencies
-import { Listbox, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
-import clsx from 'clsx'
-import Image from 'next/image'
+import * as React from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { useI18n } from 'next-rosetta'
 import { useRouter } from 'next/router'
 
-export const LanguageSwitcher = (): JSX.Element => {
-  const { locale, locales, route, push, asPath } = useRouter()
+// Internals
+import { Flag } from './Flag'
+import { Link } from './Link'
+import type { Locale } from 'i18n'
 
-  const handleChangeLanguage = (lang: string) => {
-    return push(route, asPath, { locale: lang })
-  }
+export const LanguageSwitcher = (): JSX.Element => {
+  const { t } = useI18n<Locale>()
+  const router = useRouter()
 
   return (
-    <Listbox
-      as="div"
-      className="space-y-1"
-      onChange={handleChangeLanguage}
-      value={locale || 'en'}
-    >
-      {({ open }) => (
-        <>
-          <div className="relative">
-            <span className="inline-block w-full rounded-md">
-              <Listbox.Button
-                className="relative py-2 pr-8 pl-3 w-full text-left rounded-md focus-visible:rounded focus-visible:ring-2 focus-visible:ring-black focus:outline-none sm:text-sm"
-                title="Change the language of the page"
-              >
-                <span className="flex items-center w-8">
-                  <Image
-                    alt={locale}
-                    className="flex-shrink-0"
-                    height={30}
-                    objectFit="contain"
-                    src={`/static/lang/${locale}.svg`}
-                    width={60}
-                  />
-                </span>
+    <Menu as="div" className="relative inline-flex text-left">
+      <Menu.Button className="inline-flex items-center space-x-4 rounded-full md:rounded-md md:px-4 md:py-2 focus:outline focus:ring-4 focus:ring-primary focus:ring-opacity-50 focus:outline-none">
+        <div className="rounded-full w-9 h-9 md:w-6 md:h-6">
+          <Flag />
+        </div>
+        <span className="font-semibold uppercase sr-only text-primary md:not-sr-only">
+          {t('header.switcher.lang')}{' '}
+          <span aria-label="waving hand" role="img">
+            👋🏻
+          </span>
+        </span>
+      </Menu.Button>
 
-                <span className="flex absolute inset-y-0 right-0 items-center pr-2 ml-3 pointer-events-none">
-                  <ChevronDownIcon className="w-5 h-5" />
-                </span>
-              </Listbox.Button>
-            </span>
-
-            <Transition
-              className="absolute z-20 mt-1 w-full bg-white dark:bg-secondary-500 bg-opacity-70 dark:bg-opacity-60 rounded-md shadow-lg saturate-[180%] backdrop-filter backdrop-blur-[20px]"
-              leave="transition ease-in duration-100"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-              show={open}
+      <Transition
+        as={React.Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="absolute right-0 mt-2 overflow-hidden origin-top-right bg-white rounded-md shadow-lg top-full w-max ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Item>
+            <Link
+              className="inline-flex items-center p-4 mx-auto space-x-4 transition-colors duration-200 group hover:bg-primary"
+              href={router.asPath}
+              locale={router.locale === 'en' ? 'es' : 'en'}
             >
-              <Listbox.Options
-                className="overflow-auto py-1 max-h-60 text-base leading-6 rounded-md shadow-sm focus:outline-none sm:text-sm sm:leading-5"
-                static
-              >
-                {locales?.map((loc) => (
-                  <Listbox.Option key={loc} value={loc}>
-                    {({ selected, active }) => (
-                      <div
-                        className={clsx(
-                          'relative py-2 pr-9 pl-3 cursor-pointer select-none',
-                          active
-                            ? 'text-white hover:text-white bg-secondary-600'
-                            : 'text-white'
-                        )}
-                      >
-                        <div className="flex items-center">
-                          <Image
-                            alt={loc}
-                            className="flex-shrink-0 w-8 h-6"
-                            height={24}
-                            src={`/static/lang/${loc}.svg`}
-                            width={32}
-                          />
-                        </div>
-
-                        {selected && (
-                          <span
-                            className={clsx(
-                              'flex absolute inset-y-0 right-0 items-center pr-4',
-                              active ? 'text-white' : 'text-secondary-600'
-                            )}
-                          >
-                            {/* Heroicon name: solid/check */}
-                            <svg
-                              aria-hidden="true"
-                              className="w-5 h-5"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                clipRule="evenodd"
-                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                fillRule="evenodd"
-                              />
-                            </svg>
-                          </span>
-                        )}
-                      </div>
-                    )}
-                  </Listbox.Option>
-                ))}
-              </Listbox.Options>
-            </Transition>
-          </div>
-        </>
-      )}
-    </Listbox>
+              <div className="w-6 h-6 rounded-full">
+                <Flag locale={router.locale === 'en' ? 'es' : 'en'} />
+              </div>
+              <span className="font-semibold uppercase transition-colors duration-200 text-primary group-hover:text-white">
+                {router.locale === 'en' ? 'Hola' : 'Hello'}{' '}
+                <span aria-label="waving hand" role="img">
+                  👋🏻
+                </span>
+              </span>
+            </Link>
+          </Menu.Item>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   )
 }
 

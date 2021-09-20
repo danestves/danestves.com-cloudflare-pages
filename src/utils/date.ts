@@ -2,6 +2,12 @@
 import { format, formatDistanceToNow } from 'date-fns'
 import es from 'date-fns/locale/es'
 
+export type FormatDateProps = {
+  date: string | Date
+  formatter?: string
+  locale?: 'en' | 'es' | string
+}
+
 /**
  * Format the received date using [date-fns](https://date-fns.org/)
  * that is a lightweight library to format dates
@@ -11,41 +17,24 @@ import es from 'date-fns/locale/es'
  *
  * @returns The string with the formatted date
  */
-export const formatDate = (
-  date: string | Date,
+export const formatDate = ({
+  date,
   formatter = 'mm/dd/yyyy',
-  lang = 'en'
-): string => {
-  let locale: Locale | undefined
-
-  switch (lang) {
-    case 'es':
-      locale = es
-      break
-    default:
-      locale = undefined
-      break
-  }
-
+  locale = 'en',
+}: FormatDateProps): string => {
   return format(new Date(date), formatter, {
-    locale,
+    locale: locale === 'es' ? es : undefined,
   })
 }
 
-export const fromNow = (date: string | Date, lang = 'en'): string => {
-  let locale: Locale | undefined
+export type FromNowProps = {
+  date: string | Date
+  locale?: 'en' | 'es' | string
+}
 
-  switch (lang) {
-    case 'es':
-      locale = es
-      break
-    default:
-      locale = undefined
-      break
-  }
-
+export const fromNow = ({ date, locale = 'en' }: FromNowProps): string => {
   return formatDistanceToNow(new Date(date), {
-    locale,
+    locale: locale === 'es' ? es : undefined,
     addSuffix: true,
   })
 }

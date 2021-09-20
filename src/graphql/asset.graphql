@@ -1,0 +1,5 @@
+query asset($id: ID!) {
+  asset(where: { id: $id }) {
+    url
+  }
+}

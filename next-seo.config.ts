@@ -1,86 +1,119 @@
 // Dependencies
 import type { DefaultSeoProps } from 'next-seo'
 
-const baseUrl = 'https://danestves.com'
-
-const common: DefaultSeoProps = {
+const baseURL = 'https://danestves.com'
+export const texts = {
+  description: {
+    en: 'Content about JavaScript, web development, frontend skills, React, Vue, CSS and much, much more.',
+    es: 'Contenido sobre JavaScript, desarrollo web, habilidades sobre frontend, React, Vue, CSS y mucho, mucho más.',
+  },
+  title: {
+    en: 'danestves | Frontend Content Creator, React, Vue and CSS',
+    es: 'danestves | Creador de contenido Frontend, React, Vue y CSS',
+  },
+}
+export const common: DefaultSeoProps = {
+  additionalLinkTags: [
+    {
+      href: '/static/icons/apple-touch-icon.png',
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+    },
+    {
+      href: '/static/icons/favicon-32x32.png',
+      rel: 'icon',
+      sizes: '32x32',
+    },
+    {
+      href: '/static/icons/favicon-16x16.png',
+      rel: 'icon',
+      sizes: '16x16',
+    },
+    {
+      href: '/static/icons/site.webmanifest',
+      rel: 'manifest',
+    },
+    {
+      href: '/static/icons/safari-pinned-tab.svg',
+      rel: 'mask-icon',
+      color: '#29abe2',
+    },
+    {
+      href: '/static/icons/favicon.ico',
+      rel: 'shortcut icon',
+    },
+  ],
+  additionalMetaTags: [
+    {
+      content: '#ffffff',
+      name: 'msapplication-TileColor',
+    },
+    {
+      content: '/static/icons/browserconfig.xml',
+      name: 'msapplication-config',
+    },
+    {
+      content: '#ffffff',
+      name: 'theme-color',
+    },
+  ],
+  defaultOpenGraphImageHeight: 630,
+  defaultOpenGraphImageWidth: 1200,
   languageAlternates: [
-    { href: `${baseUrl}/en`, hrefLang: 'en' },
-    { href: baseUrl, hrefLang: 'es' },
+    {
+      href: baseURL,
+      hrefLang: 'en',
+    },
+    {
+      href: `${baseURL}/es`,
+      hrefLang: 'es',
+    },
   ],
   openGraph: {
-    defaultImageHeight: 630,
-    defaultImageWidth: 1200,
+    locale: 'en_US',
     profile: {
       firstName: 'Daniel',
       gender: 'male',
       lastName: 'Esteves',
       username: 'danestves',
     },
-    site_name: 'Daniel Esteves',
+    site_name: '@danestves',
     type: 'website',
-    url: baseUrl,
   },
   twitter: {
+    cardType: 'summary_large_image',
     handle: '@danestves',
     site: '@danestves',
-    cardType: 'summary_large_image',
   },
 }
-const title_by_lang = {
-  en: 'Daniel Esteves - Frontend Developer',
-  es: 'Daniel Esteves - Frontend Developer',
-}
-const description_by_lang = {
-  en: 'Daniel Esteves has been working as a Frontend Developer for more than 6 years, having experience on projects using React, jQuery, SASS and WordPress.',
-  es: 'Daniel Esteves desarrollador web frontend ha realizado sitios web utilizando WordPress, React, Gatsby, NextJS y mucho más. Listo para hacer tus sueños realidad.',
-}
 
-const getSeoByLang = (lang: string): DefaultSeoProps => {
+const seo = (lang: string): DefaultSeoProps => {
   switch (lang) {
-    case 'en':
-      return {
-        ...common,
-        description: description_by_lang['en'],
-        openGraph: {
-          ...common.openGraph,
-          description: description_by_lang['en'],
-          images: [
-            {
-              url: `https://cdn.flyyer.io/v2/danestves-com/_/_/${lang}`,
-              alt: 'Daniel Esteves',
-              height: 630,
-              width: 1200,
-            },
-          ],
-          locale: 'en',
-          title: title_by_lang['en'],
-        },
-        title: title_by_lang['en'],
-      }
     case 'es':
       return {
         ...common,
-        description: description_by_lang['es'],
+        description: texts.description.es,
         openGraph: {
           ...common.openGraph,
-          description: description_by_lang['es'],
-          images: [
-            {
-              url: `https://cdn.flyyer.io/v2/danestves-com/_/_/`,
-              alt: 'Daniel Esteves',
-              height: 630,
-              width: 1200,
-            },
-          ],
-          locale: 'es',
-          title: title_by_lang['es'],
+          description: texts.description.es,
+          locale: 'es_ES',
+          title: texts.title.es,
         },
-        title: title_by_lang['es'],
+        title: texts.title.es,
       }
     default:
-      return common
+      return {
+        ...common,
+        description: texts.description.en,
+        openGraph: {
+          ...common.openGraph,
+          description: texts.description.en,
+          locale: 'en_US',
+          title: texts.title.en,
+        },
+        title: texts.title.en,
+      }
   }
 }
 
-export default getSeoByLang
+export default seo
