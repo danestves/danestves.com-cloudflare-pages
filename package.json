@@ -29,7 +29,7 @@
     "@giphy/js-fetch-api": "^4.1.2",
     "@giphy/react-components": "^5.3.1",
     "@headlessui/react": "^1.4.1",
-    "@react-hookz/web": "^9.0.0",
+    "@react-hookz/web": "^10.0.0",
     "@stitches/react": "^1.2.0",
     "@supabase/supabase-js": "^1.22.6",
     "algoliasearch": "^4.10.5",

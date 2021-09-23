@@ -1851,13 +1851,13 @@
     "@prefresh/core" "^1.3.1"
     "@prefresh/utils" "^1.1.0"
 
-"@react-hookz/web@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@react-hookz/web/-/web-9.0.0.tgz#1123277fc33135c1c123f115ea67e6a09e955fb3"
-  integrity sha512-aLzMOFbeogKiRbaZvu2CDuzxeRe6LdpaZvILTSJu1CwZVoTlXwnZyVbNTMqKosgl9e8qdA0wwXRP4E9FxnEMRA==
+"@react-hookz/web@^10.0.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@react-hookz/web/-/web-10.1.0.tgz#bbdf0a2b5ff92dc665ba862bc078803947726d14"
+  integrity sha512-JpLRR3mFOuAXJB/OQ2VEdTkXgE/7Wupao78yTVsqbtQEPl2p5KMkSMWWl5hYXKxYI7Dj7s4ywKZtWuEcvxoT5A==
   dependencies:
     "@types/js-cookie" "^2.2.7"
-    "@types/react" "^17.0.19"
+    "@types/react" "^17.0.24"
     "@types/react-dom" "^17.0.9"
 
 "@rushstack/eslint-patch@^1.0.6":
@@ -2216,7 +2216,7 @@
     "@types/react" "*"
     "@types/react-instantsearch-core" "*"
 
-"@types/react@*", "@types/react@^17.0.19":
+"@types/react@*":
   version "17.0.20"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.20.tgz#a4284b184d47975c71658cd69e759b6bd37c3b8c"
   integrity sha512-wWZrPlihslrPpcKyCSlmIlruakxr57/buQN1RjlIeaaTWDLtJkTtRW429MoQJergvVKc4IWBpRhWw7YNh/7GVA==
@@ -2229,6 +2229,15 @@
   version "17.0.22"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.22.tgz#c80d1d0e87fe953bae3ab273bef451dea1a6291b"
   integrity sha512-kq/BMeaAVLJM6Pynh8C2rnr/drCK+/5ksH0ch9asz+8FW3DscYCIEFtCeYTFeIx/ubvOsMXmRfy7qEJ76gM96A==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^17.0.24":
+  version "17.0.24"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.24.tgz#7e1b3f78d0fc53782543f9bce6d949959a5880bd"
+  integrity sha512-eIpyco99gTH+FTI3J7Oi/OH8MZoFMJuztNRimDOJwH4iGIsKV2qkGnk4M9VzlaVWeEEWLWSQRy0FEA0Kz218cg==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
