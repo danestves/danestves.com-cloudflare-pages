@@ -1,4 +1,5 @@
 export * from './GitHubIcon'
+export * from './InformationCircleIcon'
 export * from './LinkOutIcon'
 export * from './MenuIcon'
 export * from './MoonIcon'
