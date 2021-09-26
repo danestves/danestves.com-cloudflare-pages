@@ -90,8 +90,8 @@ module.exports = withPlugins(
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.plausible.io;
-  child-src *.youtube.com *.google.com *.twitter.com *.codepen.io *.cloudinary.com codesandbox.io danestves-git-feat-graphcms-danestves.vercel.app;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.twitter.com *.youtube.com plausible.io;
+  child-src 'self' *.codepen.io *.cloudinary.com *.google.com *.twitter.com *.youtube.com codesandbox.io;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
   media-src 'none';
@@ -99,7 +99,7 @@ const ContentSecurityPolicy = `
   font-src 'self' *.googleapis.com *.amazonaws.com *.gstatic.com;
   worker-src 'self';
   object-src 'self';
-  frame-src 'self' *.codepen.io *.codesandbox.io;
+  frame-src 'self' codepen.io codesandbox.io;
 `
 
 const securityHeaders = [
