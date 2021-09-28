@@ -1852,10 +1852,10 @@
     "@prefresh/core" "^1.3.1"
     "@prefresh/utils" "^1.1.0"
 
-"@react-hookz/web@^10.1.1":
-  version "10.1.1"
-  resolved "https://registry.yarnpkg.com/@react-hookz/web/-/web-10.1.1.tgz#7b9572163e3df2ec07bc4dd42a440cbb383a6264"
-  integrity sha512-MSls7FBCwHtOxt/n5mpxspBahYQYGQezB6NBmoIT9Ao83zZNckIwIzqxh1pGb58mZBiq5rLuU0UT1AzcVP4T5Q==
+"@react-hookz/web@^11.0.0":
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/@react-hookz/web/-/web-11.1.0.tgz#9ded6dc1177ee710526e1d86fd8f687bb29a33a0"
+  integrity sha512-nsdDDtZdqyBhJM+bZCwToDRraIDkEjmH2N3SKXCHUxQ/Wo6KThSI9YVOzcgNlD0/raQQFTjqOnPvgLnGV7y7Lg==
   dependencies:
     "@types/js-cookie" "^2.2.7"
     "@types/react" "^17.0.24"
