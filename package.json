@@ -40,7 +40,7 @@
     "framer-motion": "^4.1.17",
     "graphql": "^15.6.0",
     "graphql-request": "^3.5.0",
-    "mdx-embed": "^0.0.21",
+    "mdx-embed": "^0.0.22",
     "nanoid": "^3.1.28",
     "next": "^11.1.2",
     "next-compose-plugins": "^2.2.1",
