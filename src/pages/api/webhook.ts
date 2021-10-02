@@ -1,9 +1,9 @@
 // Dependencies
 import algoliasearch from 'algoliasearch'
-import type { NextApiRequest, NextApiResponse } from 'next'
 
 // Internals
 import { sdk } from '@/lib/graphcms'
+import { handler } from '@/lib/handler'
 
 const algolia = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
@@ -11,12 +11,7 @@ const algolia = algoliasearch(
 )
 const index = algolia.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME)
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
-  if (req.method !== 'POST') return res.end()
-
+export default handler.post(async (req, res) => {
   if (req.headers['authorization'] !== process.env.WEBHOOK_SECRET_KEY) {
     return res.status(401).end()
   }
@@ -71,4 +66,4 @@ export default async function handler(
 
     res.status(400).send(err?.message)
   }
-}
+})

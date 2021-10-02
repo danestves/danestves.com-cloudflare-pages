@@ -1,18 +1,15 @@
 // Dependencies
 import RSS from 'rss'
 import { createGzip } from 'zlib'
-import type { NextApiRequest, NextApiResponse } from 'next'
 
 // Internals
 import { Locale } from '@/generated/graphql'
+import { handler } from '@/lib/handler'
 import { sdk } from '@/lib/graphcms'
 
 const baseURL = 'https://danestves.com'
 
-export default async function handler(
-  _: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
+export default handler.get(async (_, res) => {
   // Ensure response is XML & gzip encoded
   res.setHeader('Cache-Control', `stale-while-revalidate=${60 * 60}`)
   res.setHeader('Content-Type', 'application/xml')
@@ -52,4 +49,4 @@ export default async function handler(
   })
 
   return res.send(createGzip().end(feed.xml()))
-}
+})

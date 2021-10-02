@@ -1,14 +1,9 @@
-// Dependencies
-import type { NextApiRequest, NextApiResponse } from 'next'
-
 // Internals
 import { Locale, Stage } from '@/generated/graphql'
+import { handler } from '@/lib/handler'
 import { sdk } from '@/lib/graphcms'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
+export default handler.get(async (req, res) => {
   // Check the secret and next parameters
   // This secret should only be known to this API route and the CMS
   if (
@@ -39,4 +34,4 @@ export default async function handler(
   // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
   res.writeHead(307, { Location: `/posts/${post.slug}` })
   res.end()
-}
+})

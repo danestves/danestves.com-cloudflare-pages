@@ -1,18 +1,13 @@
 // Dependencies
 import { GiphyFetch } from '@giphy/js-fetch-api/dist/api'
-import type { NextApiRequest, NextApiResponse } from 'next'
+
+// Internals
+import { handler } from '@/lib/handler'
 
 const giphyFetch = new GiphyFetch(process.env.GIPHY_TOKEN as string)
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> {
-  if (req.method === 'GET') {
-    const { data } = await giphyFetch.gif(req.query.slug as string)
+export default handler.get(async (req, res) => {
+  const { data } = await giphyFetch.gif(req.query.slug as string)
 
-    return res.status(200).json({ gif: data })
-  }
-
-  return res.status(400).send('Method not allowed')
-}
+  return res.status(200).json({ gif: data })
+})

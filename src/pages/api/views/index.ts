@@ -1,11 +1,8 @@
-// Dependencies
-import nc from 'next-connect'
-import type { NextApiRequest, NextApiResponse } from 'next'
-
 // Internals
+import { handler } from '@/lib/handler'
 import { supabase } from '@/lib/supabase'
 
-const handler = nc<NextApiRequest, NextApiResponse>().get(async (req, res) => {
+export default handler.get(async (req, res) => {
   const { data: views, error } = await supabase
     .from('views')
     .select('value')
@@ -26,5 +23,3 @@ const handler = nc<NextApiRequest, NextApiResponse>().get(async (req, res) => {
 
   return res.status(200).json({ views })
 })
-
-export default handler
