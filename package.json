@@ -77,7 +77,7 @@
     "@graphql-codegen/typescript-graphql-request": "^4.1.4",
     "@graphql-codegen/typescript-operations": "2.1.6",
     "@next/bundle-analyzer": "^11.1.2",
-    "@tailwindcss/aspect-ratio": "^0.2.2",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/line-clamp": "^0.2.2",
     "@tailwindcss/typography": "^0.4.1",
     "@testing-library/jest-dom": "^5.14.1",
