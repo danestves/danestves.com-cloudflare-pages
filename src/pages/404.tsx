@@ -96,7 +96,7 @@ const NotFoundPage: NextLayoutPage = () => {
               <p className="text-sm font-semibold tracking-wide uppercase text-[#838383]">
                 {t('pages.notFound.subtitle')}
               </p>
-              <h1 className="mt-2 text-4xl font-extrabold tracking-tight transition-colors duration-100 text-secondary-darker dark:text-secondary sm:text-5xl">
+              <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-secondary-darker dark:text-secondary sm:text-5xl">
                 {t('pages.notFound.title')}
               </h1>
               <p className="mt-2 text-lg text-[#838383]">
@@ -104,7 +104,7 @@ const NotFoundPage: NextLayoutPage = () => {
               </p>
             </div>
             <div className="mt-12">
-              <h2 className="text-sm font-semibold tracking-wide uppercase transition-colors duration-100 text-secondary-darker dark:text-secondary">
+              <h2 className="text-sm font-semibold tracking-wide uppercase text-secondary-darker dark:text-secondary">
                 {t('pages.notFound.popular')}
               </h2>
               <ul
@@ -125,7 +125,7 @@ const NotFoundPage: NextLayoutPage = () => {
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-base font-medium transition-colors duration-100 text-secondary-darker dark:text-secondary">
+                      <h3 className="text-base font-medium text-secondary-darker dark:text-secondary">
                         <span className="rounded-sm focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-secondary">
                           <Link
                             className="focus:outline-none"

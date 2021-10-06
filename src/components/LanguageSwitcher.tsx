@@ -36,7 +36,7 @@ export const LanguageSwitcher = (): JSX.Element => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 mt-2 overflow-hidden origin-top-right bg-white rounded-md shadow-lg top-full w-max ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 mt-2 overflow-hidden origin-top-right bg-white dark:bg-[#292929] rounded-md shadow-lg top-full w-max ring-1 ring-black ring-opacity-5 focus:outline-none">
           <Menu.Item>
             <Link
               className="inline-flex items-center p-4 mx-auto space-x-4 transition-colors duration-200 group hover:bg-primary"

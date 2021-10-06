@@ -33,7 +33,7 @@ export const AboutMe: NextPage = () => {
         ))}
         <div className="flex justify-center space-x-4">
           <a
-            className="inline-flex items-center text-secondary-darker min-w-[100px] bg-transparent border border-primary rounded-md py-2 px-4 transition-colors duration-100 hover:bg-primary dark:text-[#B1B1B1] dark:hover:text-[#292929]"
+            className="inline-flex items-center text-secondary-darker min-w-[100px] bg-transparent border border-primary rounded-md py-2 px-4 hover:bg-primary dark:text-[#B1B1B1] dark:hover:text-[#292929]"
             href="/danestves.pdf"
             rel="noopener noreferrer"
             target="_blank"

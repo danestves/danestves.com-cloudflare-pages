@@ -19,7 +19,7 @@ export const LatestVideos = (props: Videos): JSX.Element => {
       className="relative w-full pl-4 mt-5 overflow-hidden lg:-mt-24 lg:px-4"
       id="danestves-section-latest-videos"
     >
-      <h2 className="w-full max-w-[977px] mx-auto text-[26px] font-black text-secondary-darker uppercase transition-colors duration-100 dark:text-secondary lg:pl-8">
+      <h2 className="w-full max-w-[977px] mx-auto text-[26px] font-black text-secondary-darker uppercase dark:text-secondary lg:pl-8">
         <span>{t('sections.latest.videos.title')}</span>{' '}
         <YoutubeIcon className="inline-block w-8 h-[22px] ml-3" />
       </h2>

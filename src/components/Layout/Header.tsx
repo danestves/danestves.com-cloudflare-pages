@@ -5,12 +5,12 @@ import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
 import { usePlausible } from 'next-plausible'
 import { useI18n } from 'next-rosetta'
-import useWindowScroll from 'react-use/lib/useWindowScroll'
 
 // Internals
 import { LanguageSwitcher, Link, Logo, Search, ThemeSwitcher } from '../'
 import { MenuIcon, XIcon } from '../Icons'
 import { MENU, SOCIAL } from '@/constants'
+import { useWindowScroll } from '@/hooks/useWindowScroll'
 import { clsx } from '@/utils'
 import type { Locale } from 'i18n'
 

@@ -87,7 +87,7 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
         )}
         <h2
           className={clsx(
-            'text-xl font-bold text-secondary-darker transition-colors duration-100',
+            'text-xl font-bold text-secondary-darker',
             date ? 'mt-[6px]' : 'mt-4',
             isHome ? 'dark:text-white' : 'dark:text-secondary'
           )}
@@ -96,7 +96,7 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
         </h2>
         <p
           className={clsx(
-            'mt-[6px] text-xs font-semibold text-[#838383] transition-colors duration-100',
+            'mt-[6px] text-xs font-semibold text-[#838383]',
             descriptionClassName
           )}
         >

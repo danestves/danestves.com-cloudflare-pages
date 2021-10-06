@@ -45,10 +45,10 @@ export const Search = (): JSX.Element => {
             onClick={() => setSearchOpen(!isSearchOpen)}
             type="button"
           >
-            <SearchIcon className="w-5 h-5 text-white transition-colors duration-100 dark:text-[#292929]" />
+            <SearchIcon className="w-5 h-5 text-white dark:text-[#292929]" />
           </button>
         </div>
-        <span className="text-xs text-[#989898] font-semibold sr-only transition-colors duration-100 dark:text-[#B1B1B1] lg:not-sr-only">
+        <span className="text-xs text-[#989898] font-semibold sr-only dark:text-[#B1B1B1] lg:not-sr-only">
           {t('components.search.button.label')}
         </span>
       </div>

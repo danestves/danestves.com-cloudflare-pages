@@ -38,7 +38,7 @@ export const ServerErrorPage: NextLayoutPage = ({ statusCode }) => {
             </p>
             <div className="sm:ml-6">
               <div className="sm:border-l sm:border-gray-200 sm:pl-6">
-                <h1 className="text-4xl font-extrabold tracking-tight transition-colors duration-100 text-secondary-darker dark:text-secondary sm:text-5xl">
+                <h1 className="text-4xl font-extrabold tracking-tight text-secondary-darker dark:text-secondary sm:text-5xl">
                   {statusCode
                     ? `An error ${statusCode} occurred on server`
                     : 'An error occurred on client'}
