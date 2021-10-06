@@ -313,7 +313,7 @@ export const getStaticProps: GetStaticProps = async ({
           {
             config: {
               token: process.env.TORCHLIGHT_API_TOKEN,
-              theme: 'github-dark',
+              theme: 'atom-one-dark',
             },
           },
         ],

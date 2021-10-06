@@ -29,6 +29,7 @@ export const App: NextComponentType<
     <ThemeProvider
       attribute="class"
       defaultTheme="system"
+      disableTransitionOnChange
       enableSystem
       themes={['dark', 'light']}
     >

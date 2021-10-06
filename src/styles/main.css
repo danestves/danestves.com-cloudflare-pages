@@ -1,3 +1,5 @@
+@import 'microtip';
+
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
@@ -106,7 +108,7 @@
 }
 
 .remark-code-title {
-  @apply px-5 py-3 font-mono text-sm font-bold border-b border-gray-700 rounded-t-lg bg-[#24292e] dark:bg-[#1d1f21];
+  @apply px-5 py-3 font-mono text-sm font-bold border-b border-gray-700 rounded-t-lg bg-[#282c34] dark:bg-[#1d1f21];
 
   color: #f8f8f2;
 }
@@ -142,10 +144,11 @@ pre[class*='language-'] {
  overflow-x-auto is recommended.
 */
 .prose pre.torchlight {
-  @apply my-4 rounded-lg overflow-x-auto;
+  @apply my-4 rounded-lg overflow-x-auto bg-[#282C34];
 }
 
-.remark-code-title + pre.torchlight {
+.remark-code-title + pre.torchlight,
+.remark-code-title + div[data-code-block] > pre.torchlight {
   @apply mt-0 rounded-t-none;
 }
 
@@ -170,6 +173,10 @@ pre[class*='language-'] {
  Push the code away from the line numbers and
  summary caret indicators.
 */
+.prose pre.torchlight code .line-number {
+  @apply text-right select-none;
+}
+
 .prose pre.torchlight code .line-number,
 .prose pre.torchlight code .summary-caret {
   @apply mr-4;

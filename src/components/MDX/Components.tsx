@@ -9,6 +9,7 @@ import type { LinkProps as LinkNextProps } from 'next/link'
 
 // Internals
 import { GraphImage, Link as NextLink } from '../'
+import { Pre } from './Pre'
 
 const AlertInfo = dynamic(
   () => import('../Alert').then((mod) => mod.Alert.Info),
@@ -43,16 +44,17 @@ export const CustomLink = ({
 }
 
 const MDXComponents = {
-  Image,
   a: CustomLink,
-  Tweet,
-  CodePen,
-  YouTube,
-  CodeSandbox,
-  Cloudinary,
-  Giphy,
   AlertInfo,
+  Cloudinary,
+  CodePen,
+  CodeSandbox,
   GraphCmsImage: GraphImage,
+  Giphy,
+  Image,
+  pre: Pre,
+  Tweet,
+  YouTube,
 }
 
 export default MDXComponents
