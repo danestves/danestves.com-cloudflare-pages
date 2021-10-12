@@ -34,7 +34,7 @@
     "@stitches/react": "^1.2.5",
     "@supabase/supabase-js": "^1.24.0",
     "algoliasearch": "^4.10.5",
-    "axios": "^0.22.0",
+    "axios": "^0.23.0",
     "browser-monads-ts": "^1.2.2",
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.25.0",
