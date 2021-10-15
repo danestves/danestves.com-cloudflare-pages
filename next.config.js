@@ -20,7 +20,7 @@ const nextConfig = {
   // @ts-ignore the rest of the config is not required
   images: {
     domains: ['i.ytimg.com', 'media.graphcms.com', 'raw.githubusercontent.com'],
-    minimumCacheTTL: 31536000,
+    minimumCacheTTL: 15778463,
   },
   async headers() {
     return [
