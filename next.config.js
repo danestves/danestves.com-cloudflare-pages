@@ -4,15 +4,15 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const withPlugins = require('next-compose-plugins')
 const withPreact = require('next-plugin-preact')
-const withTM = require('next-transpile-modules')([
-  'remark-torchlight',
-  '@torchlight-api/torchlight-cli',
-])
+const withTM = require('next-transpile-modules')(['remark-torchlight'])
 
 /**
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
+  experimental: {
+    esmExternals: 'loose',
+  },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es'],
@@ -20,7 +20,8 @@ const nextConfig = {
   // @ts-ignore the rest of the config is not required
   images: {
     domains: ['i.ytimg.com', 'media.graphcms.com', 'raw.githubusercontent.com'],
-    minimumCacheTTL: 15778463,
+    // ttl cache of 6 months in seconds
+    minimumCacheTTL: 15768000,
   },
   async headers() {
     return [
