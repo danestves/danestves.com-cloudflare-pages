@@ -11,7 +11,7 @@ specifiers:
   '@graphql-codegen/typescript-graphql-request': ^4.1.6
   '@graphql-codegen/typescript-operations': 2.1.8
   '@headlessui/react': ^1.4.1
-  '@next/bundle-analyzer': ^11.1.2
+  '@next/bundle-analyzer': ^12.0.0
   '@radix-ui/react-icons': ^1.0.3
   '@react-hookz/web': ^12.0.0
   '@stitches/react': ^1.2.5
@@ -133,7 +133,7 @@ devDependencies:
   '@graphql-codegen/typescript': 2.2.4_graphql@15.6.1
   '@graphql-codegen/typescript-graphql-request': 4.1.6_bfcf55d5ebb6f7c14c21508acbb1fba7
   '@graphql-codegen/typescript-operations': 2.1.8_graphql@15.6.1
-  '@next/bundle-analyzer': 11.1.2
+  '@next/bundle-analyzer': 12.0.0
   '@tailwindcss/aspect-ratio': 0.3.0_tailwindcss@2.2.17
   '@tailwindcss/line-clamp': 0.2.2_tailwindcss@2.2.17
   '@tailwindcss/typography': 0.4.1_tailwindcss@2.2.17
@@ -2142,8 +2142,8 @@ packages:
     resolution: {integrity: sha512-jDJTpta+P4p1NZTFVLHJ/TLFVYVcOqv6l8xwOeBKNPMgY/zDYH/YH7SJbvrr/h1RcS9GzbPcLKGzpuK9cV56UA==}
     dev: false
 
-  /@next/bundle-analyzer/11.1.2:
-    resolution: {integrity: sha512-gDQ+tG8S+7fEL2NqubhZRFvQEYB4tKavTqONHDqSVxBMZ8sSzm12IzF2zZDIXdnrMzD90wmIZFUjC0EFnoHMSg==}
+  /@next/bundle-analyzer/12.0.0:
+    resolution: {integrity: sha512-kc3Xw0qOO9Rkvhye+ZOzN9RK5h4khT7IQQM8sxTHIxfkL2jPhmDgE5uwcjpNm/8d4ILn4lITazaH9MPLKJ/Xdg==}
     dependencies:
       webpack-bundle-analyzer: 4.3.0
     transitivePeerDependencies:
