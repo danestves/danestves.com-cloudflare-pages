@@ -61,7 +61,7 @@ specifiers:
   next-rosetta: ^1.3.1
   next-seo: ^4.28.1
   next-themes: ^0.0.15
-  next-transpile-modules: ^8.0.0
+  next-transpile-modules: ^9.0.0
   postcss: ^8.3.11
   preact: ^10.5.15
   preact-render-to-string: ^5.1.19
@@ -109,7 +109,7 @@ dependencies:
   next-rosetta: 1.3.1_b6dfa637f610373477bc703d61249a1f
   next-seo: 4.28.1_40524510fc2c990571a272b475307b2c
   next-themes: 0.0.15_40524510fc2c990571a272b475307b2c
-  next-transpile-modules: 8.0.0
+  next-transpile-modules: 9.0.0
   preact: 10.5.15
   preact-render-to-string: 5.1.19_preact@10.5.15
   react: /@preact/compat/17.0.2_preact@10.5.15
@@ -8193,8 +8193,8 @@ packages:
     resolution: {integrity: sha1-yobR/ogoFpsBICCOPchCS524NCw=}
     dev: false
 
-  /next-transpile-modules/8.0.0:
-    resolution: {integrity: sha512-Q2f2yB0zMJ8KJbIYAeZoIxG6cSfVk813zr6B5HzsLMBVcJ3FaF8lKr7WG66n0KlHCwjLSmf/6EkgI6QQVWHrDw==}
+  /next-transpile-modules/9.0.0:
+    resolution: {integrity: sha512-VCNFOazIAnXn1hvgYYSTYMnoWgKgwlYh4lm1pKbSfiB3kj5ZYLcKVhfh3jkPOg1cnd9DP+pte9yCUocdPEUBTQ==}
     dependencies:
       enhanced-resolve: 5.8.3
       escalade: 3.1.1
