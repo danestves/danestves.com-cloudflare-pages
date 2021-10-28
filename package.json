@@ -39,7 +39,7 @@
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.25.0",
     "framer-motion": "^4.1.17",
-    "graphql": "^15.6.1",
+    "graphql": "^16.0.0",
     "graphql-request": "^3.6.1",
     "mdx-embed": "^0.0.22",
     "microtip": "^0.2.2",
