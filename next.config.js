@@ -3,7 +3,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 const withPlugins = require('next-compose-plugins')
-const withPreact = require('next-plugin-preact')
 const withTM = require('next-transpile-modules')([
   '@torchlight-api/torchlight-cli',
   'remark-torchlight',
@@ -84,10 +83,7 @@ const nextConfig = {
   },
 }
 
-module.exports = withPlugins(
-  [withTM, [withBundleAnalyzer], [withPreact]],
-  nextConfig
-)
+module.exports = withPlugins([withTM, [withBundleAnalyzer]], nextConfig)
 
 // https://securityheaders.com
 const ContentSecurityPolicy = `
