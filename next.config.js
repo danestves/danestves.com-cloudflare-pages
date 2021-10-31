@@ -20,10 +20,8 @@ const nextConfig = {
     defaultLocale: 'en',
     locales: ['en', 'es'],
   },
-  // @ts-ignore the rest of the config is not required
   images: {
     domains: ['i.ytimg.com', 'media.graphcms.com', 'raw.githubusercontent.com'],
-    // ttl cache of 6 months in seconds
     minimumCacheTTL: 15768000,
   },
   async headers() {
