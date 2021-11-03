@@ -111,14 +111,14 @@ const NotFoundPage: NextLayoutPage = () => {
                 className="mt-4 border-t border-b border-[#d3d3d3] divide-y divide-[#d3d3d3] dark:border-[#434343] dark:divide-[#434343]"
                 role="list"
               >
-                {links.map((link, i) => (
+                {links.map(({icon: Icon, ...link}, i) => (
                   <li
                     className="relative flex items-start py-6 space-x-4"
                     key={i}
                   >
                     <div className="flex-shrink-0">
                       <span className="flex items-center justify-center w-12 h-12 rounded-lg bg-secondary bg-opacity-20 dark:bg-opacity-10">
-                        <link.icon
+                        <Icon
                           aria-hidden="true"
                           className="w-6 h-6 text-secondary"
                         />

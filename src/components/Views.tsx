@@ -9,11 +9,14 @@ import type { Locale } from 'i18n'
 
 export type ViewsProps = {
   slug: string
+  views: number
 }
 
-export const Views = ({ slug }: ViewsProps): JSX.Element => {
+export const Views = ({ slug, views }: ViewsProps): JSX.Element => {
   const { t } = useI18n<Locale>()
-  const { data } = useSWR<{ views: number }>(`/api/views/${slug}`, fetcher)
+  const { data } = useSWR<{ views: number }>(`/api/views/${slug}`, fetcher, {
+    fallback: { views },
+  })
 
   React.useEffect(() => {
     const registerView = (): Promise<Response> =>

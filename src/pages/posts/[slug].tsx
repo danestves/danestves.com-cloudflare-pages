@@ -23,7 +23,7 @@ import { Locale as GraphLocale, Stage } from '@/generated/graphql'
 import { sdk } from '@/lib/graphcms'
 import supabase from '@/lib/supabase'
 import { formatDate } from '@/utils'
-import AssetMe from 'public/static/me.png'
+import AssetMe from 'public/static/me.jpeg'
 import type { PostQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
 
@@ -199,7 +199,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
                     <Image alt="@danestves" placeholder="blur" src={AssetMe} />
                   </div>
 
-                  <Views slug={post.slug} />
+                  <Views slug={post.slug} views={views} />
 
                   <div className="absolute flex justify-end flex-1 right-6 bottom-6">
                     <button

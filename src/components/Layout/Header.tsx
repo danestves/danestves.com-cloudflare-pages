@@ -87,7 +87,7 @@ export const Header = (): JSX.Element => {
 
                     <div className="px-5 py-3 bg-gray-50">
                       <div className="flex justify-between max-w-xs mx-auto">
-                        {SOCIAL.map(({ label, ...item }) => (
+                        {SOCIAL.map(({ icon: Icon, label, ...item }) => (
                           <Link
                             {...item}
                             className="block px-3 py-2 text-base text-[#989898] font-semibold rounded-md uppercase hover:text-primary"
@@ -97,7 +97,7 @@ export const Header = (): JSX.Element => {
                             <span className="sr-only">
                               {label[router.locale] || label}
                             </span>
-                            <item.icon aria-hidden="true" className="w-6 h-6" />
+                            <Icon aria-hidden="true" className="w-6 h-6" />
                           </Link>
                         ))}
                       </div>
