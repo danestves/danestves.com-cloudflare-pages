@@ -42,5 +42,6 @@ export default handler
       return res.status(400).json({ error })
     }
 
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
     return res.status(200).json({ views: views.length ? views[0].value : 0 })
   })
