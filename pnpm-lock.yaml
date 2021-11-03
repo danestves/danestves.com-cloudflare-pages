@@ -22,10 +22,10 @@ specifiers:
   '@torchlight-api/torchlight-cli': ^0.1.2
   '@types/node': ^16.11.6
   '@types/qs': ^6.9.7
-  '@types/react': ^17.0.33
+  '@types/react': ^17.0.34
   '@types/react-instantsearch-dom': ^6.12.0
   '@types/rss': ^0.0.29
-  '@types/tailwindcss': ^2.2.2
+  '@types/tailwindcss': ^2.2.3
   '@typescript-eslint/eslint-plugin': ^5.3.0
   '@typescript-eslint/parser': ^5.3.0
   algoliasearch: ^4.11.0
@@ -37,7 +37,7 @@ specifiers:
   eslint: 7.32.0
   eslint-config-next: ^12.0.2
   eslint-config-prettier: ^8.3.0
-  framer-motion: ^5.0.2
+  framer-motion: ^5.2.0
   graphql: ^16.0.1
   graphql-request: ^3.6.1
   graphql-tag: ^2.12.5
@@ -50,7 +50,7 @@ specifiers:
   next-compose-plugins: ^2.2.1
   next-connect: ^0.11.0
   next-mdx-remote: ^3.0.7
-  next-plausible: ^3.0.1
+  next-plausible: ^3.1.0
   next-rosetta: ^1.3.1
   next-seo: ^4.28.1
   next-themes: ^0.0.15
@@ -84,7 +84,7 @@ dependencies:
   browser-monads-ts: 1.2.2
   copy-to-clipboard: 3.3.1
   date-fns: 2.25.0
-  framer-motion: 5.0.2_react-dom@17.0.2+react@17.0.2
+  framer-motion: 5.2.0_react-dom@17.0.2+react@17.0.2
   graphql: 16.0.1
   graphql-request: 3.6.1_graphql@16.0.1
   mdx-embed: 0.0.22_react-dom@17.0.2+react@17.0.2
@@ -94,7 +94,7 @@ dependencies:
   next-compose-plugins: 2.2.1
   next-connect: 0.11.0
   next-mdx-remote: 3.0.7_react-dom@17.0.2+react@17.0.2
-  next-plausible: 3.0.1_c26ef06698b9ab1b17bf6451df0179c6
+  next-plausible: 3.1.0_c26ef06698b9ab1b17bf6451df0179c6
   next-rosetta: 1.3.1_next@12.0.2+react@17.0.2
   next-seo: 4.28.1_c26ef06698b9ab1b17bf6451df0179c6
   next-themes: 0.0.15_c26ef06698b9ab1b17bf6451df0179c6
@@ -126,10 +126,10 @@ devDependencies:
   '@torchlight-api/torchlight-cli': 0.1.2
   '@types/node': 16.11.6
   '@types/qs': 6.9.7
-  '@types/react': 17.0.33
+  '@types/react': 17.0.34
   '@types/react-instantsearch-dom': 6.12.0
   '@types/rss': 0.0.29
-  '@types/tailwindcss': 2.2.2
+  '@types/tailwindcss': 2.2.3
   '@typescript-eslint/eslint-plugin': 5.3.0_17f50caceef7fa1e82b14d5986b10305
   '@typescript-eslint/parser': 5.3.0_eslint@7.32.0+typescript@4.4.4
   autoprefixer: 10.4.0_postcss@8.3.11
@@ -1637,15 +1637,15 @@ packages:
     resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==}
     engines: {node: '>=10.10.0'}
     dependencies:
-      '@humanwhocodes/object-schema': 1.2.0
+      '@humanwhocodes/object-schema': 1.2.1
       debug: 4.3.2
       minimatch: 3.0.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@humanwhocodes/object-schema/1.2.0:
-    resolution: {integrity: sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==}
+  /@humanwhocodes/object-schema/1.2.1:
+    resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
   /@iarna/toml/2.2.5:
@@ -2108,7 +2108,7 @@ packages:
   /@types/react-instantsearch-core/6.10.5:
     resolution: {integrity: sha512-VjXJFUfsPdWMSiugJiQc950G9ZRjCEIzqQ9/K915d1f1BsVE2TE57PcfHSxAy1pGDDR8FT5uAgAaOMyKJ66NJQ==}
     dependencies:
-      '@types/react': 17.0.33
+      '@types/react': 17.0.34
       algoliasearch: 4.11.0
       algoliasearch-helper: 3.6.2_algoliasearch@4.11.0
     dev: true
@@ -2116,12 +2116,12 @@ packages:
   /@types/react-instantsearch-dom/6.12.0:
     resolution: {integrity: sha512-O08H+ye4e4kEnYHmMrov9FPNRDJwfCWthNZf4aztqahpU8LSbAiuFQGVy84SHUvg/jfNcG4333SsVnAQLtbS7A==}
     dependencies:
-      '@types/react': 17.0.33
+      '@types/react': 17.0.34
       '@types/react-instantsearch-core': 6.10.5
     dev: true
 
-  /@types/react/17.0.33:
-    resolution: {integrity: sha512-pLWntxXpDPaU+RTAuSGWGSEL2FRTNyRQOjSWDke/rxRg14ncsZvx8AKWMWZqvc1UOaJIAoObdZhAWvRaHFi5rw==}
+  /@types/react/17.0.34:
+    resolution: {integrity: sha512-46FEGrMjc2+8XhHXILr+3+/sTe3OfzSPU9YGKILLrUYbQ1CLQC9Daqo1KzENGXAWwrFwiY0l4ZbF20gRvgpWTg==}
     dependencies:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
@@ -2142,8 +2142,8 @@ packages:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: true
 
-  /@types/tailwindcss/2.2.2:
-    resolution: {integrity: sha512-VgNJQstMEaSqCu6cL39pgUqHW+EKHPsQ3zazeQDoO1USfyOvsuIiCFzmPqreAYswHntxmeNM+/V45d3n5KRo4Q==}
+  /@types/tailwindcss/2.2.3:
+    resolution: {integrity: sha512-TVUPMsaHn0vreZPRE1nCo7c3AKNz1tXSxvgbBmPE9eN2RXKCUONlnDyHGX82iGWQz8t43XBIqqWKkJaVWcjAZQ==}
     dev: true
 
   /@types/unist/2.0.6:
@@ -4537,15 +4537,15 @@ packages:
     resolution: {integrity: sha512-MHOhvvxHTfRFpF1geTK9czMIZ6xclsEor2wkIGYYq+PxcQqT7vStJqjhe6S1TenZrMZzo+wlqOufBDVepUEgPg==}
     dev: true
 
-  /framer-motion/5.0.2_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-9noBJ3CxSE8MCe0Dj0MqCXBnPFjaOMyx4q6zqV3CWqvsPZSUxsyUaF6Ds3FhFOAABQFesFYCX968Wf48Lalztw==}
+  /framer-motion/5.2.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-268cYeh0GNWm26nqicXGuAZOlodvR/huY6KGAP5NuoRhrGnDTv5jgCGt9pZelk6qXsBGPEUMqE6xaYYpTSaHmg==}
     peerDependencies:
       react: '>=16.8 || ^17.0.0'
       react-dom: '>=16.8 || ^17.0.0'
     dependencies:
       framesync: 6.0.1
       hey-listen: 1.0.8
-      popmotion: 10.0.2
+      popmotion: 11.0.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       style-value-types: 5.0.0
@@ -6328,8 +6328,8 @@ packages:
       - supports-color
     dev: false
 
-  /next-plausible/3.0.1_c26ef06698b9ab1b17bf6451df0179c6:
-    resolution: {integrity: sha512-DA7MgmLf68HWkUdncQwok/auALuZR6G2OkgDydy0ADncRIjmX5nv+E3ia8C3LJ5jLvoNRwX5eUeuna0Ao+exuQ==}
+  /next-plausible/3.1.0_c26ef06698b9ab1b17bf6451df0179c6:
+    resolution: {integrity: sha512-UAyK+WkdOmSXsWuYxpfZQFfDn6U59PU6vXvDzb3zvkZnT57dryPdRlUXEVuXU5vpvfpJd5rfes+oLTc2+DCcQw==}
     peerDependencies:
       next: ^11.1.0 || ^12.0.0
       react: ^16.8.0 || ^17.0.0
@@ -6954,8 +6954,8 @@ packages:
       semver-compare: 1.0.0
     dev: true
 
-  /popmotion/10.0.2:
-    resolution: {integrity: sha512-8vgx02LL7Odk/kwSGigAnlPRLJK+Dfked571ZAHGzkxPNWThkU5mQX0xPmibIMAULZehWBV7hGN7LSCpaV3cfw==}
+  /popmotion/11.0.0:
+    resolution: {integrity: sha512-kJDyaG00TtcANP5JZ51od+DCqopxBm2a/Txh3Usu23L9qntjY5wumvcVf578N8qXEHR1a+jx9XCv8zOntdYalQ==}
     dependencies:
       framesync: 6.0.1
       hey-listen: 1.0.8
