@@ -21,6 +21,7 @@ const nextConfig = {
   },
   images: {
     domains: ['i.ytimg.com', 'media.graphcms.com', 'raw.githubusercontent.com'],
+    formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 15768000,
   },
   async headers() {
