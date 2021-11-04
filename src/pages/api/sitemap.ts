@@ -62,7 +62,7 @@ const STATIC_URLS = [
 
 export default handler.get(async (_, res) => {
   // Ensure response is XML & gzip encoded
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+  res.setHeader('Cache-Control', 's-maxage=0')
   res.setHeader('Content-Type', 'application/xml')
   res.setHeader('Content-Encoding', 'gzip')
 
