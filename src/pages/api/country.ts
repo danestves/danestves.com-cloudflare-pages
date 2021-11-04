@@ -10,6 +10,7 @@ export default handler.get(async (req, res) => {
       .then((response) => response.json())
       .then((json) => json.countryCode)
 
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
     return res.status(200).json({ country })
   } catch (error) {
     return res.status(400).json(error)
