@@ -13,7 +13,10 @@ export type FlagProps = {
 
 export const Flag = (props: FlagProps): JSX.Element => {
   const router = useRouter()
-  const { data } = useSWR<{ country: string }>('/api/country', fetcher)
+  const { data } = useSWR<{ country: string }>(
+    `https://extreme-ip-lookup.com/json?key=${process.env.NEXT_PUBLIC_IP_LOOKUP_API_KEY}`,
+    fetcher
+  )
   const locale = props.locale || router.locale
 
   if (!data) return null
