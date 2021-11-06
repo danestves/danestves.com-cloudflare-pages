@@ -40,7 +40,7 @@ specifiers:
   framer-motion: ^5.2.1
   graphql: ^16.0.1
   graphql-request: ^3.6.1
-  graphql-tag: ^2.12.5
+  graphql-tag: ^2.12.6
   husky: ^7.0.4
   lint-staged: ^11.2.6
   mdx-embed: ^0.0.22
@@ -50,7 +50,7 @@ specifiers:
   next-compose-plugins: ^2.2.1
   next-connect: ^0.11.0
   next-mdx-remote: ^3.0.7
-  next-plausible: ^3.1.2
+  next-plausible: ^3.1.3
   next-rosetta: ^1.3.1
   next-seo: ^4.28.1
   next-themes: ^0.0.15
@@ -94,7 +94,7 @@ dependencies:
   next-compose-plugins: 2.2.1
   next-connect: 0.11.0
   next-mdx-remote: 3.0.7_react-dom@17.0.2+react@17.0.2
-  next-plausible: 3.1.2_72b2f1fb664d51f286fb64a58e104b48
+  next-plausible: 3.1.3_72b2f1fb664d51f286fb64a58e104b48
   next-rosetta: 1.3.1_next@12.0.3+react@17.0.2
   next-seo: 4.28.1_72b2f1fb664d51f286fb64a58e104b48
   next-themes: 0.0.15_72b2f1fb664d51f286fb64a58e104b48
@@ -117,7 +117,7 @@ devDependencies:
   '@giphy/js-types': 4.1.0
   '@graphql-codegen/cli': 2.2.2_2980e1257fac3bfcd4f9cdeedd7c375c
   '@graphql-codegen/typescript': 2.3.1_graphql@16.0.1
-  '@graphql-codegen/typescript-graphql-request': 4.3.0_61e3c3f56f38912af4266bfed55f031f
+  '@graphql-codegen/typescript-graphql-request': 4.3.0_111dcd73effe1000bfae70323cc39253
   '@graphql-codegen/typescript-operations': 2.2.0_graphql@16.0.1
   '@next/bundle-analyzer': 12.0.3
   '@tailwindcss/aspect-ratio': 0.3.0_tailwindcss@2.2.19
@@ -136,7 +136,7 @@ devDependencies:
   eslint: 7.32.0
   eslint-config-next: 12.0.3_f1f8405fe2323de6c036095b8b1e40f0
   eslint-config-prettier: 8.3.0_eslint@7.32.0
-  graphql-tag: 2.12.5_graphql@16.0.1
+  graphql-tag: 2.12.6_graphql@16.0.1
   husky: 7.0.4
   lint-staged: 11.2.6
   postcss: 8.3.11
@@ -1270,7 +1270,7 @@ packages:
       tslib: 2.3.1
     dev: true
 
-  /@graphql-codegen/typescript-graphql-request/4.3.0_61e3c3f56f38912af4266bfed55f031f:
+  /@graphql-codegen/typescript-graphql-request/4.3.0_111dcd73effe1000bfae70323cc39253:
     resolution: {integrity: sha512-oj/6PMfzuQQNwX6aYAlDMKSgeaTO9Lahf09zHlR0NqKptovNdUL6wvy4xFn3rzdxcKt5MQRKrsK7Glw9N1TwXg==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -1282,7 +1282,7 @@ packages:
       auto-bind: 4.0.0
       graphql: 16.0.1
       graphql-request: 3.6.1_graphql@16.0.1
-      graphql-tag: 2.12.5_graphql@16.0.1
+      graphql-tag: 2.12.6_graphql@16.0.1
       tslib: 2.3.1
     transitivePeerDependencies:
       - supports-color
@@ -1331,7 +1331,7 @@ packages:
       change-case-all: 1.0.14
       dependency-graph: 0.11.0
       graphql: 16.0.1
-      graphql-tag: 2.12.5_graphql@16.0.1
+      graphql-tag: 2.12.6_graphql@16.0.1
       parse-filepath: 1.0.2
       tslib: 2.3.1
     transitivePeerDependencies:
@@ -4799,11 +4799,11 @@ packages:
       graphql: 16.0.1
     dev: true
 
-  /graphql-tag/2.12.5_graphql@16.0.1:
-    resolution: {integrity: sha512-5xNhP4063d16Pz3HBtKprutsPrmHZi5IdUGOWRxA2B6VF7BIRGOHZ5WQvDmJXZuPcBg7rYwaFxvQYjqkSdR3TQ==}
+  /graphql-tag/2.12.6_graphql@16.0.1:
+    resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==}
     engines: {node: '>=10'}
     peerDependencies:
-      graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+      graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       graphql: 16.0.1
       tslib: 2.3.1
@@ -6336,8 +6336,8 @@ packages:
       - supports-color
     dev: false
 
-  /next-plausible/3.1.2_72b2f1fb664d51f286fb64a58e104b48:
-    resolution: {integrity: sha512-C9d8+0eDbBTApxlUAXqsN7fwS+BpWh9vGnG5oiKibSA4hknh1mzo+wlD5/OZ/Boe/L3iR6lquiBw+jAWHYY8aw==}
+  /next-plausible/3.1.3_72b2f1fb664d51f286fb64a58e104b48:
+    resolution: {integrity: sha512-5e4jODgfF5sqL8E2HDrK8iWy1z67fFZJ4KsrbF+c0ZorhbqKl/kbocKESOWlelrl5gZpXIGb9Od2+XTuOUZAiA==}
     peerDependencies:
       next: ^11.1.0 || ^12.0.0
       react: ^16.8.0 || ^17.0.0
