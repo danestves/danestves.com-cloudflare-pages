@@ -1,24 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+   <channel>
+      <title><![CDATA[danestves | Frontend Content Creator, React, Vue and CSS]]></title>
+      <description><![CDATA[Content about JavaScript, web development, frontend skills, React, Vue, CSS and much, much more.]]></description>
+      <link>https://danestves.com</link>
+      <image>
+         <url>https://danestves.com/logo.png</url>
+         <title>danestves | Frontend Content Creator, React, Vue and CSS</title>
+         <link>https://danestves.com</link>
+      </image>
+      <generator>RSS for Node</generator>
+      <lastBuildDate>Thu, 11 Nov 2021 06:11:41 GMT</lastBuildDate>
+      <atom:link href="https://danestves.com/feed.xml" rel="self" type="application/rss+xml" />
+      <language><![CDATA[en]]></language>
+      <webMaster><![CDATA[@danestves]]></webMaster>
+      <item>
+         <title><![CDATA[How to create awesome og:images using React components]]></title>
+         <description><![CDATA[Flyyer simplifies the process of creating Facebook Open Graph image tags for your web or mobile application's share metadata.
 
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[danestves | Frontend Content Creator, React, Vue and CSS]]></title><description><![CDATA[Content about JavaScript, web development, frontend skills, React, Vue, CSS and much, much more.]]></description><link>https://danestves.com</link><image><url>https://danestves.com/logo.png</url><title>danestves | Frontend Content Creator, React, Vue and CSS</title><link>https://danestves.com</link></image><generator>RSS for Node</generator><lastBuildDate>Thu, 11 Nov 2021 06:11:41 GMT</lastBuildDate><atom:link href="https://danestves.com/feed.xml" rel="self" type="application/rss+xml"/><language><![CDATA[en]]></language><webMaster><![CDATA[@danestves]]></webMaster><item><title><![CDATA[How to create awesome og:images using React components]]></title><description><![CDATA[Flyyer simplifies the process of creating Facebook Open Graph image tags for your web or mobile application's share metadata.
+I have already some time testing Flyyer which is an og:image as a service, what this service promises us is to create templates with React or Vue and use them to create images based on them.]]></description>
+         <link>https://danestves.com/posts/how-to-create-awesome-ogimages-using-react-components</link>
+         <guid isPermaLink="false">https://danestves.com/posts/how-to-create-awesome-ogimages-using-react-components</guid>
+         <category><![CDATA[Development]]></category>
+         <category><![CDATA[Social Media]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Mon, 15 Feb 2021 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+         <title><![CDATA[TailwindCSS - What it is & how to get started with Visual Studio Code]]></title>
+         <description><![CDATA[In this blogpost you will learn what is Tailwind, what are the best VS Code extensions and how to get the most out of it.
 
-I have already some time testing Flyyer which is an og:image as a service, what this service promises us is to create templates with React or Vue and use them to create images based on them.]]></description><link>https://danestves.com/posts/how-to-create-awesome-ogimages-using-react-components</link><guid isPermaLink="false">https://danestves.com/posts/how-to-create-awesome-ogimages-using-react-components</guid><category><![CDATA[Development]]></category><category><![CDATA[Social Media]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Mon, 15 Feb 2021 00:00:00 GMT</pubDate></item><item><title><![CDATA[TailwindCSS - What it is & how to get started with Visual Studio Code]]></title><description><![CDATA[In this blogpost you will learn what is Tailwind, what are the best VS Code extensions and how to get the most out of it.
+Tailwind is a CSS framework that is based on providing utility classes with which we can build any interface, make them unique and at the same time learn CSS while we are writing the classes.]]></description>
+         <link>https://danestves.com/posts/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code</link>
+         <guid isPermaLink="false">https://danestves.com/posts/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code</guid>
+         <category><![CDATA[Technology]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Sun, 14 Feb 2021 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+         <title><![CDATA[A boilerplate for NextJS with TypeScript, ESLint, Prettier and TailwindCSS]]></title>
+         <description><![CDATA[We will see how to configure NextJS with TypeScript, ESLint, Prettier and TailwindCSS to generate a boilerplate ready to be used in any project.
 
-Tailwind is a CSS framework that is based on providing utility classes with which we can build any interface, make them unique and at the same time learn CSS while we are writing the classes.]]></description><link>https://danestves.com/posts/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code</link><guid isPermaLink="false">https://danestves.com/posts/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code</guid><category><![CDATA[Technology]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Sun, 14 Feb 2021 00:00:00 GMT</pubDate></item><item><title><![CDATA[A boilerplate for NextJS with TypeScript, ESLint, Prettier and TailwindCSS]]></title><description><![CDATA[We will see how to configure NextJS with TypeScript, ESLint, Prettier and TailwindCSS to generate a boilerplate ready to be used in any project.
+To use Next.js with TypeScript, ESLint, Prettier and TailwindCSS you have to go through several pages of documentation on various websites. But in this post I will guide you how you can do it in simple steps.]]></description>
+         <link>https://danestves.com/posts/nextjs-boilerplate-with-typescript-eslint-prettier-and-tailwindcss</link>
+         <guid isPermaLink="false">https://danestves.com/posts/nextjs-boilerplate-with-typescript-eslint-prettier-and-tailwindcss</guid>
+         <category><![CDATA[Development]]></category>
+         <category><![CDATA[Code Examples]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Sat, 06 Feb 2021 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+         <title><![CDATA[How TypeScript enforced cleaner architecture in a React App]]></title>
+         <description><![CDATA[Are you tired of writing PropTypes all over the code? Are you looking for a better way? You have found it.
 
-To use Next.js with TypeScript, ESLint, Prettier and TailwindCSS you have to go through several pages of documentation on various websites. But in this post I will guide you how you can do it in simple steps.]]></description><link>https://danestves.com/posts/nextjs-boilerplate-with-typescript-eslint-prettier-and-tailwindcss</link><guid isPermaLink="false">https://danestves.com/posts/nextjs-boilerplate-with-typescript-eslint-prettier-and-tailwindcss</guid><category><![CDATA[Development]]></category><category><![CDATA[Code Examples]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Sat, 06 Feb 2021 00:00:00 GMT</pubDate></item><item><title><![CDATA[How TypeScript enforced cleaner architecture in a React App]]></title><description><![CDATA[Are you tired of writing PropTypes all over the code? Are you looking for a better way? You have found it.
+The core feature of React is components. It helps us to have a true separation of concepts. We need a lot of them to build a complete UI, so we need to make them interact.]]></description>
+         <link>https://danestves.com/posts/how-typescript-enforced-cleaner-architecture-in-react-app</link>
+         <guid isPermaLink="false">https://danestves.com/posts/how-typescript-enforced-cleaner-architecture-in-react-app</guid>
+         <category><![CDATA[Development]]></category>
+         <category><![CDATA[Code Examples]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Wed, 03 Feb 2021 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+         <title><![CDATA[What is TailwindCSS and how to use it with create-react-app]]></title>
+         <description><![CDATA[I have created a brief tutorial that will cover all you need to get started with create-react-app (using TailwindCSS and inline styles).
 
-The core feature of React is components. It helps us to have a true separation of concepts. We need a lot of them to build a complete UI, so we need to make them interact.]]></description><link>https://danestves.com/posts/how-typescript-enforced-cleaner-architecture-in-react-app</link><guid isPermaLink="false">https://danestves.com/posts/how-typescript-enforced-cleaner-architecture-in-react-app</guid><category><![CDATA[Development]]></category><category><![CDATA[Code Examples]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Wed, 03 Feb 2021 00:00:00 GMT</pubDate></item><item><title><![CDATA[What is TailwindCSS and how to use it with create-react-app]]></title><description><![CDATA[I have created a brief tutorial that will cover all you need to get started with create-react-app (using TailwindCSS and inline styles).
-
-TailwindCSS is a low-level, highly customizable framework that provides us with many utility classes that we can use in our HTML to perform any styling or animation we want without interfering with your CSS.]]></description><link>https://danestves.com/posts/what-is-tailwindcss-and-how-to-use-it-with-create-react-app</link><guid isPermaLink="false">https://danestves.com/posts/what-is-tailwindcss-and-how-to-use-it-with-create-react-app</guid><category><![CDATA[Tools]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Mon, 07 Sep 2020 00:00:00 GMT</pubDate></item><item><title><![CDATA[Some tools that Chrome DevTools offers for taking screenshots]]></title><description><![CDATA[When taking screenshots of websites, we usually resort to other tools, but the browser can help us to do it better.
+TailwindCSS is a low-level, highly customizable framework that provides us with many utility classes that we can use in our HTML to perform any styling or animation we want without interfering with your CSS.]]></description>
+         <link>https://danestves.com/posts/what-is-tailwindcss-and-how-to-use-it-with-create-react-app</link>
+         <guid isPermaLink="false">https://danestves.com/posts/what-is-tailwindcss-and-how-to-use-it-with-create-react-app</guid>
+         <category><![CDATA[Tools]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Mon, 07 Sep 2020 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+         <title><![CDATA[Some tools that Chrome DevTools offers for taking screenshots]]></title>
+         <description><![CDATA[When taking screenshots of websites, we usually resort to other tools, but the browser can help us to do it better.
 
 To take a screenshot, we normally use the Save-downloaded-image hotkey and just extract the image from the downloaded archive by opening it in a file manager of our choice.
 
-But now with Chrome DevTools, we can take screenshots without extracting anything 😲.]]></description><link>https://danestves.com/posts/some-tools-that-chrome-devtools-offers-for-taking-screenshots</link><guid isPermaLink="false">https://danestves.com/posts/some-tools-that-chrome-devtools-offers-for-taking-screenshots</guid><category><![CDATA[Tools]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Sat, 02 May 2020 00:00:00 GMT</pubDate></item><item><title><![CDATA[AlpineJS: a Framework for Building Fast and Functional Frontends]]></title><description><![CDATA[When we need to make an interactive application and React or Vue is too much for us, AlpineJS comes in to make our work faster.
+But now with Chrome DevTools, we can take screenshots without extracting anything 😲.]]></description>
+         <link>https://danestves.com/posts/some-tools-that-chrome-devtools-offers-for-taking-screenshots</link>
+         <guid isPermaLink="false">https://danestves.com/posts/some-tools-that-chrome-devtools-offers-for-taking-screenshots</guid>
+         <category><![CDATA[Tools]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Sat, 02 May 2020 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+         <title><![CDATA[AlpineJS: a Framework for Building Fast and Functional Frontends]]></title>
+         <description><![CDATA[When we need to make an interactive application and React or Vue is too much for us, AlpineJS comes in to make our work faster.
 
-Basically, when we need to make an interactive application and React or Vue is too much for us (not development-wise but time-wise) we can easily use AlpineJS which uses all the features of Vue for HTML behavior.]]></description><link>https://danestves.com/posts/alpinejs-the-javascript-lightweight-framework</link><guid isPermaLink="false">https://danestves.com/posts/alpinejs-the-javascript-lightweight-framework</guid><category><![CDATA[Technology]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Sat, 04 Apr 2020 00:00:00 GMT</pubDate></item><item><title><![CDATA[What is TailwindCSS and why you should learn It in 2020]]></title><description><![CDATA[TailwindCSS is a wrapper around low-level CSS utilities with which to create custom designed sites without having to modify any vendor-specific styles.
+Basically, when we need to make an interactive application and React or Vue is too much for us (not development-wise but time-wise) we can easily use AlpineJS which uses all the features of Vue for HTML behavior.]]></description>
+         <link>https://danestves.com/posts/alpinejs-the-javascript-lightweight-framework</link>
+         <guid isPermaLink="false">https://danestves.com/posts/alpinejs-the-javascript-lightweight-framework</guid>
+         <category><![CDATA[Technology]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Sat, 04 Apr 2020 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+         <title><![CDATA[What is TailwindCSS and why you should learn It in 2020]]></title>
+         <description><![CDATA[TailwindCSS is a wrapper around low-level CSS utilities with which to create custom designed sites without having to modify any vendor-specific styles.
 
-What does this mean? Basically, Tailwind will give us the utility classes we need to create fast and fully customizable interfaces.]]></description><link>https://danestves.com/posts/what-is-tailwindcss-and-why-you-should-learn-it-in-2020</link><guid isPermaLink="false">https://danestves.com/posts/what-is-tailwindcss-and-why-you-should-learn-it-in-2020</guid><category><![CDATA[Technology]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Mon, 13 Jan 2020 00:00:00 GMT</pubDate></item><item><title><![CDATA[Why you should ditch jQuery for native JavaScript]]></title><description><![CDATA[Do you wish you could relive the days when jQuery ruled? Better get your applications on steroids if you want to stand a chance.
+What does this mean? Basically, Tailwind will give us the utility classes we need to create fast and fully customizable interfaces.]]></description>
+         <link>https://danestves.com/posts/what-is-tailwindcss-and-why-you-should-learn-it-in-2020</link>
+         <guid isPermaLink="false">https://danestves.com/posts/what-is-tailwindcss-and-why-you-should-learn-it-in-2020</guid>
+         <category><![CDATA[Technology]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Mon, 13 Jan 2020 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+         <title><![CDATA[Why you should ditch jQuery for native JavaScript]]></title>
+         <description><![CDATA[Do you wish you could relive the days when jQuery ruled? Better get your applications on steroids if you want to stand a chance.
 
-jQuery is a cross-platform JavaScript library, initially created so that the code we wrote in Google Chrome could also work in Mozilla, Internet Explorer and all available browsers.]]></description><link>https://danestves.com/posts/why-you-should-ditch-jquery-for-native-javascript</link><guid isPermaLink="false">https://danestves.com/posts/why-you-should-ditch-jquery-for-native-javascript</guid><category><![CDATA[Development]]></category><category><![CDATA[Code Examples]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Mon, 23 Sep 2019 00:00:00 GMT</pubDate></item><item><title><![CDATA[How to upgrade everything to Hooks?]]></title><description><![CDATA[What are hooks? Hooks are the next definite step in React development. If you are new to React, you have to learn Hooks to develop apps in the future.
+jQuery is a cross-platform JavaScript library, initially created so that the code we wrote in Google Chrome could also work in Mozilla, Internet Explorer and all available browsers.]]></description>
+         <link>https://danestves.com/posts/why-you-should-ditch-jquery-for-native-javascript</link>
+         <guid isPermaLink="false">https://danestves.com/posts/why-you-should-ditch-jquery-for-native-javascript</guid>
+         <category><![CDATA[Development]]></category>
+         <category><![CDATA[Code Examples]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Mon, 23 Sep 2019 00:00:00 GMT</pubDate>
+      </item>
+      <item>
+         <title><![CDATA[How to upgrade everything to Hooks?]]></title>
+         <description><![CDATA[What are hooks? Hooks are the next definite step in React development. If you are new to React, you have to learn Hooks to develop apps in the future.
 
-It is well-known that the more we are writing plain JavaScript without making Babel compile so many things, our code will be much more optimized and faster.]]></description><link>https://danestves.com/posts/how-to-upgrade-everything-to-hooks</link><guid isPermaLink="false">https://danestves.com/posts/how-to-upgrade-everything-to-hooks</guid><category><![CDATA[Development]]></category><category><![CDATA[Code Examples]]></category><dc:creator><![CDATA[@danestves]]></dc:creator><pubDate>Fri, 09 Aug 2019 00:00:00 GMT</pubDate></item></channel></rss>
+It is well-known that the more we are writing plain JavaScript without making Babel compile so many things, our code will be much more optimized and faster.]]></description>
+         <link>https://danestves.com/posts/how-to-upgrade-everything-to-hooks</link>
+         <guid isPermaLink="false">https://danestves.com/posts/how-to-upgrade-everything-to-hooks</guid>
+         <category><![CDATA[Development]]></category>
+         <category><![CDATA[Code Examples]]></category>
+         <dc:creator><![CDATA[@danestves]]></dc:creator>
+         <pubDate>Fri, 09 Aug 2019 00:00:00 GMT</pubDate>
+      </item>
+   </channel>
+</rss>
