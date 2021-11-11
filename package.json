@@ -11,7 +11,9 @@
     "test-all": "pnpm lint && pnpm type-check && pnpm test",
     "prepare": "husky install",
     "analyze": "ANALYZE=true pnpm build",
-    "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config --config codegen.yml"
+    "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config --config codegen.yml",
+    "transpile": "babel sitemap-generator.ts --extensions \".ts\" --out-dir .build",
+    "generate-sitemap": "node .build/sitemap-generator.js"
   },
   "husky": {
     "hooks": {
@@ -66,6 +68,7 @@
     "swr": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
     "@giphy/js-types": "^4.1.0",
