@@ -32,7 +32,6 @@ export default handler.get(async (_, res) => {
       'Content about JavaScript, web development, frontend skills, React, Vue, CSS and much, much more.',
     image_url: `${baseURL}/logo.png`,
     language: 'en',
-    ttl: 60,
     webMaster: '@danestves',
   })
 
