@@ -1,0 +1,10 @@
+{
+  "clearnUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/resume",
+      "destination": "https://read.cv/danestves"
+    }
+  ]
+}
