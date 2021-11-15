@@ -23,7 +23,7 @@ specifiers:
   '@torchlight-api/torchlight-cli': ^0.1.2
   '@types/node': ^16.11.7
   '@types/qs': ^6.9.7
-  '@types/react': 17.0.34
+  '@types/react': 17.0.35
   '@types/react-instantsearch-dom': ^6.12.0
   '@types/rss': ^0.0.29
   '@types/tailwindcss': ^2.2.4
@@ -128,7 +128,7 @@ devDependencies:
   '@torchlight-api/torchlight-cli': 0.1.2
   '@types/node': 16.11.7
   '@types/qs': 6.9.7
-  '@types/react': 17.0.34
+  '@types/react': 17.0.35
   '@types/react-instantsearch-dom': 6.12.0
   '@types/rss': 0.0.29
   '@types/tailwindcss': 2.2.4
@@ -2314,14 +2314,6 @@ packages:
     dependencies:
       '@types/react': 17.0.35
       '@types/react-instantsearch-core': 6.10.5
-    dev: true
-
-  /@types/react/17.0.34:
-    resolution: {integrity: sha512-46FEGrMjc2+8XhHXILr+3+/sTe3OfzSPU9YGKILLrUYbQ1CLQC9Daqo1KzENGXAWwrFwiY0l4ZbF20gRvgpWTg==}
-    dependencies:
-      '@types/prop-types': 15.7.4
-      '@types/scheduler': 0.16.2
-      csstype: 3.0.9
     dev: true
 
   /@types/react/17.0.35:
