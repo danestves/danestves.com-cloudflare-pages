@@ -17,9 +17,7 @@ export const Seo = (props: SeoProps): JSX.Element => {
 
   return (
     <NextSeo
-      {...props}
       openGraph={{
-        ...props.openGraph,
         description,
         images: [
           {
@@ -30,7 +28,9 @@ export const Seo = (props: SeoProps): JSX.Element => {
           },
         ],
         title,
+        ...props.openGraph,
       }}
+      {...props}
     />
   )
 }

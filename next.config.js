@@ -24,40 +24,6 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 15768000,
   },
-  async redirects() {
-    return [
-      {
-        source: '/contact',
-        destination: 'https://wa.me/message/V2KA74PJTEEYP1',
-        permanent: true,
-      },
-      {
-        source: '/DanielEsteves.pdf',
-        destination: '/danestves.pdf',
-        permanent: true,
-      },
-      {
-        source: '/github',
-        destination: 'https://github.com/danestves?tab=repositories',
-        permanent: true,
-      },
-      {
-        source: '/twitter',
-        destination: 'https://twitter.com/danestves',
-        permanent: true,
-      },
-      {
-        source: '/youtube',
-        destination: 'https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw',
-        permanent: true,
-      },
-      {
-        source: '/youtube/:id',
-        destination: 'https://www.youtube.com/watch?v=:id',
-        permanent: true,
-      },
-    ]
-  },
   async rewrites() {
     return [
       {
