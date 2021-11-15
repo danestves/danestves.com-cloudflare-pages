@@ -16,7 +16,7 @@ specifiers:
   '@radix-ui/react-icons': ^1.0.3
   '@react-hookz/web': ^12.0.0
   '@stitches/react': ^1.2.5
-  '@supabase/supabase-js': ^1.27.0
+  '@supabase/supabase-js': ^1.28.0
   '@tailwindcss/aspect-ratio': ^0.3.0
   '@tailwindcss/line-clamp': ^0.2.2
   '@tailwindcss/typography': ^0.4.1
@@ -32,7 +32,7 @@ specifiers:
   algoliasearch: ^4.11.0
   autoprefixer: ^10.4.0
   axios: ^0.24.0
-  browser-monads-ts: ^1.2.2
+  browser-monads-ts: ^1.2.4
   copy-to-clipboard: ^3.3.1
   date-fns: ^2.25.0
   eslint: 7.32.0
@@ -79,10 +79,10 @@ dependencies:
   '@radix-ui/react-icons': 1.0.3_react@17.0.2
   '@react-hookz/web': 12.0.0_react-dom@17.0.2+react@17.0.2
   '@stitches/react': 1.2.5_react@17.0.2
-  '@supabase/supabase-js': 1.27.0
+  '@supabase/supabase-js': 1.28.0
   algoliasearch: 4.11.0
   axios: 0.24.0
-  browser-monads-ts: 1.2.2
+  browser-monads-ts: 1.2.4
   copy-to-clipboard: 3.3.1
   date-fns: 2.25.0
   framer-motion: 5.3.0_react-dom@17.0.2+react@17.0.2
@@ -1981,8 +1981,8 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@supabase/gotrue-js/1.20.0:
-    resolution: {integrity: sha512-udv6o44JPqQWc8dh9bJnvvUpPKFtzVpSpsTKiS541gjR9kNCgdxkMMYBh5653W9gKfcmqN5mYf9/hYzDOoB6ww==}
+  /@supabase/gotrue-js/1.21.0:
+    resolution: {integrity: sha512-ZQuCe+HO1vXdjH1MqJsK0lOvZPpPT5mGGLQm0/3RFqyhEgdTHm2GsefruRc+3/08KHnaYXXDP/9AWM0eFb/AjQ==}
     dependencies:
       cross-fetch: 3.1.4
     dev: false
@@ -2006,10 +2006,10 @@ packages:
       cross-fetch: 3.1.4
     dev: false
 
-  /@supabase/supabase-js/1.27.0:
-    resolution: {integrity: sha512-oAm111Y1t7X+S5GeJWw9NdzAn1A1Cz5WAB/evYjM4ut7ZVWpeaEAlQ2p34MAjDrRVAcCfEr75rQwLTCqPcmMMQ==}
+  /@supabase/supabase-js/1.28.0:
+    resolution: {integrity: sha512-dGY8CsS0gYLdQeTW8ueMrR+CC9+LTg/0KuM57ul00FwyqtyJQMNARYePr+IcUF9ML2B6KTNibnKuwSU2BbxnRA==}
     dependencies:
-      '@supabase/gotrue-js': 1.20.0
+      '@supabase/gotrue-js': 1.21.0
       '@supabase/postgrest-js': 0.35.0
       '@supabase/realtime-js': 1.2.1
       '@supabase/storage-js': 1.5.0
@@ -2868,8 +2868,8 @@ packages:
     resolution: {integrity: sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=}
     dev: false
 
-  /browser-monads-ts/1.2.2:
-    resolution: {integrity: sha512-8Y5OUXCSxDSkVpqEYZOc6BSsC6IlAhsAdgh/5JHohqllTSVT/gpmbwrqWl+q/jReKKPa8W3tn+urZ3F126of0g==}
+  /browser-monads-ts/1.2.4:
+    resolution: {integrity: sha512-WDQvWgLHRXE/6L8Yq1MNDHRPuTi/JXhtSMsOThAebf9Cu/yAO8vW4sIY/ziXgEoW9nrDbSN4JkrefYRDdGc2lQ==}
     engines: {node: '>=10'}
     dependencies:
       nothing-mock: 1.0.4
