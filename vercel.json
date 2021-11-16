@@ -1,5 +1,5 @@
 {
-  "clearnUrls": true,
+  "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
     {

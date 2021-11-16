@@ -3,40 +3,32 @@ import { window } from 'browser-monads-ts'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
+import { useMDXComponent } from 'next-contentlayer/hooks'
 import { useI18n } from 'next-rosetta'
 import { ArticleJsonLd, BlogJsonLd } from 'next-seo'
-import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import remarkCodeTitles from 'remark-code-titles'
-import torchlight from 'remark-torchlight'
+import { allEnglishPosts, allSpanishPosts } from '.contentlayer/data'
+import type { EnglishPost, SpanishPost } from '.contentlayer/types'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 // Internals
-import { GraphImage, Seo, Views } from '@/components'
+import { Seo, Views } from '@/components'
 import { InformationCircleIcon, ShareIcon } from '@/components/Icons'
 import MDXComponents from '@/components/MDX/Components'
 import useShare from '@/hooks/useShare'
-import { Locale as GraphLocale, Stage } from '@/generated/graphql'
-import { sdk } from '@/lib/graphcms'
-import supabase from '@/lib/supabase'
+import { getViewsBySlug } from '@/lib/supabase'
 import { formatDate } from '@/utils'
 import AssetMe from 'public/static/me.jpeg'
-import type { PostQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
 
 export type PostPageProps = {
-  post: PostQuery['post'] & {
-    mdx: MDXRemoteSerializeResult
-  }
+  post: EnglishPost | SpanishPost
   preview: boolean
   views: number
 }
 
 export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
   const router = useRouter()
+  const Component = useMDXComponent(post.body.code)
   const { t } = useI18n<Locale>()
   const { canShare, hasShared, share } = useShare({
     title: post.title,
@@ -57,24 +49,16 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
       <Seo
         additionalMetaTags={[
           {
-            property: 'date',
-            content: formatDate({
-              date: new Date(post.published).toISOString().slice(0, 19),
-              formatter: 'MMM. d yyy',
-              locale: router.locale,
-            }),
-          },
-          {
             property: 'flyyer:content',
             content: post.seo?.description,
           },
           {
             property: 'flyyer:date',
-            content: new Date(post.published).toISOString(),
+            content: new Date(post.publishedAt).toISOString(),
           },
           {
             property: 'flyyer:image',
-            content: post.cover?.url,
+            content: post.cover,
           },
           {
             property: 'flyyer:locale',
@@ -93,9 +77,9 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
         openGraph={{
           article: {
             authors: ['https://twitter.com/@danestves'],
-            modifiedTime: post.updatedAt,
-            publishedTime: new Date(post.published).toISOString(),
-            tags: post.tags?.map((tag) => tag.name),
+            modifiedTime: post.publishedAt,
+            publishedTime: new Date(post.publishedAt).toISOString(),
+            tags: post.tags?.map((tag) => tag),
           },
           images: [
             {
@@ -118,8 +102,8 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
 
       <ArticleJsonLd
         authorName={['Daniel Esteves']}
-        dateModified={post.updatedAt}
-        datePublished={new Date(post.published).toISOString().slice(0, 19)}
+        dateModified={post.publishedAt}
+        datePublished={new Date(post.publishedAt).toISOString().slice(0, 19)}
         description={post.seo?.description.replace(/\n/g, ' ') as string}
         images={[
           `https://cdn.flyyer.io/v2/danestves/_/_${lang}${router.asPath}`,
@@ -132,8 +116,8 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
 
       <BlogJsonLd
         authorName="Daniel Esteves"
-        dateModified={post.updatedAt}
-        datePublished={new Date(post.published).toISOString().slice(0, 19)}
+        dateModified={post.publishedAt}
+        datePublished={new Date(post.publishedAt).toISOString().slice(0, 19)}
         description={post.seo?.description.replace(/\n/g, ' ') as string}
         images={[
           `https://cdn.flyyer.io/v2/danestves/_/_${lang}${router.asPath}`,
@@ -173,7 +157,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
         )}
 
         <h2 className="text-[26px] text-secondary-darker font-black text-center uppercase dark:text-secondary">
-          {router.isFallback ? 'Loading...' : 'Blog'}{' '}
+          Blog{' '}
           <span aria-label="victory hand" role="img">
             ✌️
           </span>
@@ -183,15 +167,13 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
           <div className="container mt-5 max-w-[977px] mx-auto">
             <div className="grid items-center grid-cols-12 mb-6 gap-y-5 md:gap-10">
               <div className="col-span-12 md:col-span-7">
-                <div className="overflow-hidden rounded-[18px]">
-                  <GraphImage
+                <div className="overflow-hidden flex rounded-[18px]">
+                  <Image
                     alt={post.title}
-                    image={{
-                      ...post.cover,
-                      height: 360,
-                      width: 640,
-                    }}
+                    height={360}
                     priority
+                    src={post.cover}
+                    width={640}
                   />
                 </div>
                 <div className="relative flex items-end px-6 -mt-10 space-x-4">
@@ -228,13 +210,9 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
                 </h1>
                 <p className="text-xs font-bold text-primary">
                   {t('pages.posts.slug.published')}{' '}
-                  <time
-                    dateTime={new Date(post.published)
-                      .toISOString()
-                      .slice(0, 19)}
-                  >
+                  <time dateTime={new Date(post.publishedAt).toISOString()}>
                     {formatDate({
-                      date: new Date(post.published).toISOString().slice(0, 19),
+                      date: new Date(post.publishedAt).toISOString(),
                       formatter: 'MMM. d yyy',
                       locale: router.locale,
                     })}
@@ -246,11 +224,7 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
               </div>
             </div>
             <div className="max-w-full prose prose-lg dark:prose-dark">
-              <MDXRemote
-                compiledSource={post.mdx.compiledSource}
-                components={MDXComponents}
-                lazy
-              />
+              <Component components={MDXComponents} />
             </div>
           </div>
         )}
@@ -264,15 +238,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
   // Loop over every locale and later loop on every blog to add the locale
   for (const locale of locales as string[]) {
-    const data = await sdk()
-      .postsWithSlug({
-        first: 50,
-      })
-      .then((data) => data.data)
-
-    data.posts.map((post) => {
-      paths.push({ params: { slug: post.slug }, locale })
-    })
+    allEnglishPosts.map((p) => paths.push({ params: { slug: p.slug }, locale }))
   }
 
   return {
@@ -281,68 +247,29 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({
-  preview = false,
-  ...ctx
-}) => {
+export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
   const locale = ctx.locale || ctx.defaultLocale
   const { table = {} } = await import(`i18n/${locale}`)
-  const { data } = await sdk(preview).post({
-    locale: locale as GraphLocale,
-    slug: String(ctx.params.slug),
-    stage: preview ? Stage.Draft : Stage.Published,
-  })
+  let post: EnglishPost | SpanishPost
 
-  if (!data.post) {
-    return {
-      notFound: true,
-    }
+  switch (locale) {
+    case 'es':
+      post = allSpanishPosts.find((p) => p.slug === ctx.params.slug)
+      break
+    default:
+      post = allEnglishPosts.find((p) => p.slug === ctx.params.slug)
+      break
   }
 
-  const post = data.post
-  const mdx = await serialize(post.body, {
-    mdxOptions: {
-      rehypePlugins: [
-        rehypeSlug,
-        [rehypeAutolinkHeadings, { behavior: 'append' }],
-      ],
-      remarkPlugins: [
-        remarkCodeTitles,
-        [
-          torchlight,
-          {
-            config: {
-              token: process.env.TORCHLIGHT_API_TOKEN,
-              theme: 'atom-one-dark',
-            },
-          },
-        ],
-      ],
-    },
-  })
-
-  const slug = `/api/views/${post.slug}`
-  const views = await supabase
-    .from('views')
-    .select('value')
-    .eq('id', post.slug)
-    .limit(1)
-    .then(({ data }) => data[0].value)
+  const views = await getViewsBySlug(post.slug)
 
   return {
     props: {
-      fallback: {
-        [slug]: views,
-      },
-      post: {
-        ...post,
-        mdx,
-      },
-      preview,
+      post,
       table,
       views,
     },
-    revalidate: 60 * 60,
+    revalidate: 12 * 60 * 60,
   }
 }
 

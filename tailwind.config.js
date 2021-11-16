@@ -58,8 +58,8 @@ module.exports = {
               code: { color: theme('colors.blue.400') },
             },
             code: {
-              backgroundColor: '#282a36',
-              color: '#f8f8f2',
+              backgroundColor: '#1d1f21',
+              color: '#c5c8c6',
               borderRadius: theme('borderRadius.lg'),
               padding: `${defaultTheme.spacing[1]} ${defaultTheme.spacing[0.5]}`,
               fontWeight: theme('fontWeight.normal'),
@@ -103,11 +103,6 @@ module.exports = {
                 borderBottomColor: theme('colors.gray.300'),
               },
             },
-            pre: {
-              pre: {
-                margin: 0,
-              },
-            },
           },
         },
         dark: {
@@ -119,11 +114,7 @@ module.exports = {
               borderLeftColor: theme('colors.gray.500'),
               color: theme('colors.gray.400'),
             },
-            code: {
-              backgroundColor: '#1d1f21',
-              color: '#c5c8c6',
-            },
-            color: '#838383',
+            color: '#B4B4B4',
             'h2,h3,h4,h5,h6': {
               color: '#29ABE2',
             },
@@ -150,16 +141,6 @@ module.exports = {
             },
             '.giphy-gif-img': {
               margin: 0,
-            },
-            pre: {
-              borderRadius: '0.5rem',
-              padding: 0,
-              pre: {
-                paddingTop: '1em',
-                paddingRight: '1.5em',
-                paddingBottom: '1em',
-                paddingLeft: '1.5em',
-              },
             },
           },
         },

@@ -167,7 +167,7 @@ export const Header = (): JSX.Element => {
       {/* Right Sidebar */}
       <aside className="fixed top-0 right-0 z-10 hidden h-full px-12 lg:block">
         <ul className="flex flex-col items-center justify-center h-full space-y-4 rotate-180">
-          {SOCIAL.map(({ label, ...item }) => (
+          {SOCIAL.map(({ icon: _, label, ...item }) => (
             <li key={nanoid()}>
               <Link
                 {...item}

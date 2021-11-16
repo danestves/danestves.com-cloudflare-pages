@@ -5,9 +5,10 @@ import copy from 'copy-to-clipboard'
 
 // Internals
 import { clsx } from '@/utils'
+import { stringify } from '@/utils/stringify'
 
 export type CodeProps = {
-  className: string
+  className?: string
 }
 
 export const Pre: React.FC<CodeProps> = ({
@@ -15,24 +16,15 @@ export const Pre: React.FC<CodeProps> = ({
   className,
 }): JSX.Element => {
   const [hasCopied, setHasCopied] = React.useState(false)
-  const [code, setCode] = React.useState(undefined)
+  const [code] = React.useState(() => stringify(children))
   const preRef = React.useRef<HTMLPreElement | null>(null)
 
   React.useEffect(() => {
-    if (preRef.current) {
-      const codeElement = preRef.current.querySelector('code')
+    if (hasCopied) {
+      copy(code)
 
-      // Remove line-numbering from code
-      const code = codeElement.innerText.replace(/^[0-9\s]{1,2}/gm, '')
-
-      setCode(code)
+      setTimeout(() => setHasCopied(false), 1500)
     }
-  }, [preRef])
-
-  React.useEffect(() => {
-    if (hasCopied) copy(code)
-
-    setTimeout(() => setHasCopied(false), 1500)
   }, [code, hasCopied])
 
   return (

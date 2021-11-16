@@ -10,6 +10,7 @@ import type { AppContext, AppInitialProps, AppLayoutProps } from 'next/app'
 
 // Internals
 import { Layout } from '@/components'
+import '@/styles/prism-one-dark.css'
 import '@/styles/main.css'
 import defaultSeo, { texts } from 'seoConfig'
 
