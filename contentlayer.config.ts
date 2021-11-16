@@ -5,7 +5,7 @@ import type { ComputedFields } from 'contentlayer/source-files'
 import readingTime from 'reading-time'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import remarkCodeTitles from 'remark-code-titles'
+import rehypeCodeTitles from 'rehype-code-titles'
 import rehypePrism from 'rehype-prism-plus'
 
 const computedFields: ComputedFields = {
@@ -73,10 +73,15 @@ const contentLayerConfig = makeSource({
   mdx: {
     rehypePlugins: [
       rehypeSlug,
-      rehypePrism,
+      rehypeCodeTitles,
+      [
+        rehypePrism,
+        {
+          showLineNumbers: true,
+        },
+      ],
       [rehypeAutolinkHeadings, { behavior: 'append' }],
     ],
-    remarkPlugins: [remarkCodeTitles],
   },
 })
 

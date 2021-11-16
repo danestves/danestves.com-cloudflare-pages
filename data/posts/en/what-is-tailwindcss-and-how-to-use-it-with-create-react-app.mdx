@@ -1,0 +1,196 @@
+---
+title: 'What is TailwindCSS and how to use it with create-react-app'
+publishedAt: '09/07/2020'
+cover: '/static/images/what-is-tailwindcss-and-how-to-use-it-with-create-react-app/banner.jpeg'
+seo:
+  {
+    title: 'What is TailwindCSS and how to use it with create-react-app',
+    description:
+      'I have created a brief tutorial that will cover all you need to get started with create-react-app (using TailwindCSS and inline styles).
+
+      TailwindCSS is a low-level, highly customizable framework that provides us with many utility classes that we can use in our HTML to perform any styling or animation we want without interfering with your CSS.',
+  }
+tags:
+  - 'Technology'
+---
+
+## What is TailwindCSS?
+
+It is a low-level, highly customizable framework that provides us with a large number of utility classes that we can use in our HTML to perform any styling and/or animation we want without interfering with your own CSS.
+
+<Cloudinary
+  publicID="tailwind-home_blupsr"
+  cloudName="daniel-esteves"
+  baseColor="#071d49"
+  accentColor="#00C389"
+  logoOnClickUrl="https://danestves.com/blog/configurar-tailwindcss-con-create-react-app"
+  logoImageUrl="https://danestves.com/logo.png"
+  title="How to configure TailwindCSS with create-react-app?"
+  subtitle="Video made recording the demo of Tailwind v1"
+/>
+
+## Initialize the project 🎉
+
+What we will do is to start a `create-react-app` project from scratch with the following commands:
+
+```bash
+# npm
+npx create-react-app tailwind-cra
+
+# yarn
+yarn create react-app tailwind-cra
+```
+
+➡️ After the project has been configured we will enter the folder:
+
+```bash
+cd tailwind-cra
+```
+
+📦 And now let's proceed to install TailwindCSS in our project:
+
+```bash
+# npm
+npm i tailwindcss
+
+# yarn
+yarn add tailwindcss
+```
+
+⚙ Now let's configure our scripts to run Tailwind:
+
+```json
+"scripts": {
+  "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",
+  "prestart": "npm run build:tailwind",
+  "prebuild": "npm run build:tailwind",
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+}
+```
+
+The `build:tailwind` script will compile our `src/tailwind.css` file and generate a `src/tailwind.output.css` file (we will use it later to import it into our application).
+
+⚠️ _**Note:**_ lthe generation of `src/tailwind.css` will only be done once each time we run a script, if we want to edit our own site styles it is better to use a separate `.css` or `.scss`.
+
+### Let's configure our styles
+
+Let's configure our styles
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Now we are going to edit our `App.js` and we will put the following code:
+
+```jsx
+// Dependencies
+import React from 'react'
+
+// Styles
+import './tailwind.output.css'
+
+const App = () => {
+  return (
+    <div className="min-h-screen bg-gray-500">
+      <h2 className="text-center text-4xl font-bold text-blue-900">
+        TailwindCSS + React
+      </h2>
+    </div>
+  )
+}
+
+export default App
+```
+
+Now that we have everything ready we only have to start our application with:
+
+```bash
+# npm
+npm run start
+
+# yarn
+yarn start
+```
+
+This script will take care of generating our `tailwind.output.css` file inside `src` and after that it will build our application, which should look something like this
+
+<CodeSandbox codeSandboxId="tailwindcss-cra-16efl" />
+
+🎉 Done! We have our application made with `create-react-app` together with Tailwind to be able to style it.
+
+### Recomendaciones
+
+Do not make changes to `tailwind.output.css` as each time the script is run your changes will be overwritten by running either `start` or `build`. Instead we should put our changes in `src/tailwind.css` and restart the script each time we make a change. (I recommend making a separate file to handle styles and not using `tailwind.css`).
+
+❕ _**Important:**_ we must add `tailwind.output.css` to our `.gitignore` to avoid committing it to GitHub, GitLab or BitBucket as this file will be generated before running either `start` or `build`.
+
+## Preparing for production 🚀 and a surprise 🤩
+
+Now we are going to install two dependencies that we are going to need:
+
+```bash
+# npm
+npm i npm-run-all chokidar-cli
+
+# yarn
+yarn add npm-run-all chokidar-cli
+```
+
+- `npm run all` is an npm package to run several scripts at the same time.
+- `chokidar-cli` is a package that allows us to see changes in any file we specify in our project.
+
+Now we are going to change our scripts in the `package.json`:
+
+```json
+"scripts": {
+  "build:tailwind": "tailwind build src/tailwind.css -o src/tailwind.output.css",
+  "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'",
+
+  "start": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
+  "start:react": "react-scripts start",
+
+  "prebuild": "run-s build:tailwind",
+
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
+```
+
+🎉 **Surprise!** you will notice that we have added a script called `watch:tailwind`, this script will serve to make a new build every time the css changes, ignoring `tailwind.output.css` so we avoid having infinite build loops.
+
+### TailwindCSS configuration file
+
+In the root of our project we are going to create a `tailwind.config.js` file with this code:
+
+```js
+module.exports = {
+  purge: [
+    'src/**/*.js',
+    'src/**/*.jsx',
+    'src/**/*.ts',
+    'src/**/*.tsx',
+    'public/**/*.html',
+  ],
+  theme: {
+    extend: {},
+  },
+  variants: {},
+  plugins: [],
+}
+```
+
+One of the most fascinating features is that we can tell Tailwind where are the files that have your classes and so it does a cleanup in `build` to remove classes that we are not using and we have a file with a minimum weight in our final `.css`.
+
+## Conclusions ✨
+
+In this blogpost we learned how to perform a configuration for our React application created through CRA and we could also see how to perform realtime watch of our `.css` files to detect any changes we have 🙌.
+
+If you want to know how to customize Tailwind classes you can go to [this documentation link](https://tailwindcss.com/docs/theme) to learn more about what directives we can modify and extend, now, with nothing more to add.
+
+**- See you at code 👨‍💻**

@@ -107,17 +107,6 @@
   @apply inline;
 }
 
-.remark-code-title {
-  @apply px-5 py-3 font-mono text-sm font-bold border-b border-gray-700 rounded-t-lg bg-[#282c34] dark:bg-[#1d1f21];
-
-  color: #f8f8f2;
-}
-
-.remark-code-title + pre,
-.remark-code-title + pre > pre {
-  @apply mt-0 rounded-t-none;
-}
-
 /* Algolia Search */
 .ais-Snippet-highlighted {
   @apply not-italic text-secondary group-hover:text-white group-hover:underline;

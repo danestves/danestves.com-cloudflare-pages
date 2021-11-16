@@ -19,7 +19,7 @@ Es bien conocido que mientras más estemos escribiendo JavaScript plano sin hace
 
 Normalmente nosotros hacemos un componente de tipo clase de esta manera:
 
-```jsx showLineNumbers
+```jsx
 import React, { Component } from 'react'
 
 class Counter extends Component {
@@ -47,7 +47,7 @@ export default Counter
 
 El código aparte de que se ve largo 😒 hace que Babel transpile más cosas innecesarias, que el código se haga más largo y que pese mucho más nuestro JavaScript final. Para hacer que todos estos puntos mejoren llegaron los Hooks, haremos el mismo código pero usando el Hook de `useState()`:
 
-```jsx showLineNumbers
+```jsx
 import React, { useState } from 'react'
 
 export default function Counter() {
@@ -66,7 +66,7 @@ export default function Counter() {
 
 Podemos hacerlo de la siguiente manera:
 
-```jsx showLineNumbers
+```jsx
 import React, { useState } from 'react'
 
 export default function ContactForm() {
@@ -93,7 +93,7 @@ export default function ContactForm() {
 
 Gracias a esto podemos hacer que nuestras aplicaciones estén más actualizadas, mucho más rápida para nuestros clientes y utilizando las últimas características. Ahora, ¿qué pasa con `componentDidMount()` el cual usamos para mayormente obtener data? Ahora es mucho más fácil:
 
-```jsx showLineNumbers
+```jsx
 import React, { useEffect } from 'react'
 
 export default function Home() {

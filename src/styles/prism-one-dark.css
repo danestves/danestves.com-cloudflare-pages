@@ -43,6 +43,31 @@ pre {
   overflow-x: auto;
 }
 
+.rehype-code-title {
+  background-color: var(--syntax-bg);
+  border-bottom-width: 1px;
+  border-color: rgba(55, 65, 81, 1);
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  color: var(--syntax-fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.875rem /* 14px */;
+  font-weight: bold;
+  line-height: 1.25rem /* 20px */;
+  padding-left: 1.25rem /* 20px */;
+  padding-right: 1.25rem /* 20px */;
+  padding-top: 0.75rem /* 12px */;
+  padding-bottom: 0.75rem /* 12px */;
+}
+
+.rehype-code-title + [data-code-block='true'],
+.rehype-code-title + [data-code-block='true'] > pre {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  margin-top: 0px;
+}
+
 .prose code {
   background-color: var(--syntax-bg) !important;
   color: var(--syntax-fg) !important;

@@ -29,14 +29,14 @@ Ya se que me vas a comentar que aún hay proyectos que utilizan jQuery como lo e
 
 Las animaciones que hacemos con `.fadeIn()` cómodamente ahora las podríamos hacer con una clase en CSS y hacer algo así:
 
-```js showLineNumbers
+```js
 const photo = document.getElementById('myPhoto')
 
 photo.classList.add('show')
 photo.classList.remove('hide')
 ```
 
-```css showLineNumbers
+```css
 .show {
   transition: opacity 400ms;
 }
@@ -54,13 +54,13 @@ Muchas personas usaban jQuery más que todo por su selector que llamaba mucho la
 
 1. Vamos a crear nuestro JavaScript con el selector que queremos realizar:
 
-```js showLineNumbers
+```js
 const $ = document.querySelector.bind(document) // Creamos un selector que haga referencia a todo el documento actual
 ```
 
 2. Creamos un HTML con atributos que podamos manejar:
 
-```html showLineNumbers
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -75,7 +75,7 @@ const $ = document.querySelector.bind(document) // Creamos un selector que haga 
 
 3. Ahora podemos cambiar propiedades de los elementos de la siguiente manera:
 
-```js showLineNumbers
+```js
 const $ = document.querySelector.bind(document)
 
 $('body').style.background = 'red'
