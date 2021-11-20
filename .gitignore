@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+public/sitemap.xml
+public/feed.xml
 
 # testing
 /coverage
