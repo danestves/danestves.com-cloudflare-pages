@@ -38,9 +38,7 @@ AppDocument.getInitialProps = async (ctx) => {
   const countryCode = ctx.res.getHeader('X-Country-Code') as string
 
   // Set a cookie containing the country code
-  ctx.res.setHeader('Set-Cookie', [
-    `countryCode=${countryCode}; path=/; max-age=31536000; samesite=strict`,
-  ])
+  ctx.res.setHeader('Set-Cookie', [`countryCode=${countryCode};`])
 
   const initialProps = await Document.getInitialProps(ctx)
 
