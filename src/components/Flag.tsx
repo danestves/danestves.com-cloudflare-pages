@@ -6,12 +6,13 @@ import { LocalImage } from './LocalImage'
 import { ES_FLAGS, US_FLAG } from '@/utils'
 
 export type FlagProps = {
+  countryCode: string
   locale?: string
 }
 
 export const Flag = (props: FlagProps): JSX.Element => {
   const router = useRouter()
-  const countryCode = router.query.countryCode as string
+  const countryCode = props.countryCode
   const locale = props.locale || router.locale
 
   if (locale === 'es') {

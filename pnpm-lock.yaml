@@ -42,6 +42,7 @@ specifiers:
   graphql-request: ^3.6.1
   graphql-tag: ^2.12.6
   husky: ^7.0.4
+  js-cookie: ^3.0.1
   lint-staged: ^12.0.3
   mdx-embed: ^0.0.22
   microtip: ^0.2.2
@@ -76,7 +77,7 @@ dependencies:
   '@giphy/react-components': 5.4.0_react-dom@17.0.2+react@17.0.2
   '@headlessui/react': 1.4.2_react-dom@17.0.2+react@17.0.2
   '@radix-ui/react-icons': 1.0.3_react@17.0.2
-  '@react-hookz/web': 12.0.0_react-dom@17.0.2+react@17.0.2
+  '@react-hookz/web': 12.0.0_5a0c155615ca300261ded0e44a22fbd0
   '@stitches/react': 1.2.5_react@17.0.2
   '@supabase/supabase-js': 1.28.0
   algoliasearch: 4.11.0
@@ -87,6 +88,7 @@ dependencies:
   date-fns: 2.26.0
   graphql: 16.0.1
   graphql-request: 3.6.1_graphql@16.0.1
+  js-cookie: 3.0.1
   mdx-embed: 0.0.22_react-dom@17.0.2+react@17.0.2
   microtip: 0.2.2
   nanoid: 3.1.30
@@ -2397,7 +2399,7 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@react-hookz/web/12.0.0_react-dom@17.0.2+react@17.0.2:
+  /@react-hookz/web/12.0.0_5a0c155615ca300261ded0e44a22fbd0:
     resolution: {integrity: sha512-DG6BxsYF+noqQnnRMClEKE+Xz3kp2TtG+C6H3vCEyj4k48+TErlUII6EUvzJ6MTVrPWLc00KCe4ppcLD+gEG0A==}
     peerDependencies:
       js-cookie: ^3.0.1
@@ -2408,6 +2410,7 @@ packages:
         optional: true
     dependencies:
       '@types/js-cookie': 2.2.7
+      js-cookie: 3.0.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: false
@@ -6202,6 +6205,11 @@ packages:
 
   /js-cookie/2.2.1:
     resolution: {integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==}
+    dev: false
+
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
     dev: false
 
   /js-tokens/4.0.0:

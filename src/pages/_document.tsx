@@ -1,18 +1,10 @@
 // Dependencies
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import type { DocumentContext, DocumentInitialProps } from 'next/document'
 
 // Internals
 import { getCssText } from '@/lib/stitches'
 
-class MyDocument extends Document {
-  static async getInitialProps(
-    ctx: DocumentContext
-  ): Promise<DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
-
+export default class AppDocument extends Document {
   render(): JSX.Element {
     return (
       <Html>
@@ -42,4 +34,17 @@ class MyDocument extends Document {
   }
 }
 
-export default MyDocument
+AppDocument.getInitialProps = async (ctx) => {
+  const countryCode = ctx.res.getHeader('X-Country-Code') as string
+
+  // Set a cookie containing the country code
+  ctx.res.setHeader('Set-Cookie', [
+    `countryCode=${countryCode}; path=/; max-age=31536000; samesite=strict`,
+  ])
+
+  const initialProps = await Document.getInitialProps(ctx)
+
+  return {
+    ...initialProps,
+  }
+}

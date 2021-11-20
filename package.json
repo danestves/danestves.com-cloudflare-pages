@@ -41,6 +41,7 @@
     "date-fns": "^2.26.0",
     "graphql": "^16.0.1",
     "graphql-request": "^3.6.1",
+    "js-cookie": "^3.0.1",
     "mdx-embed": "^0.0.22",
     "microtip": "^0.2.2",
     "nanoid": "^3.1.30",

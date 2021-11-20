@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(req: NextRequest) {
-  const { nextUrl: url, geo } = req
+  const { geo } = req
   const countryCode = geo.country || 'US'
 
   const ContentSecurityPolicy = `
@@ -20,30 +20,25 @@ export function middleware(req: NextRequest) {
     frame-src 'self' codepen.io codesandbox.io player.cloudinary.com;
   `
 
-  // Avoid infinite loop by only redirecting if the query
-  // params were changed
-  if (!url.searchParams.has('countryCode')) {
-    url.searchParams.set('countryCode', countryCode)
+  const response = NextResponse.next()
 
-    const response = NextResponse.rewrite(url)
+  response.headers.set(
+    'Content-Security-Policy',
+    ContentSecurityPolicy.replace(/\n/g, '')
+  )
+  response.headers.set('Referrer-Policy', 'origin-when-cross-origin')
+  response.headers.set(
+    'Permissions-Policy',
+    'camera=(), microphone=(), geolocation=()'
+  )
+  response.headers.set(
+    'Strict-Transport-Security',
+    'max-age=31536000; includeSubDomains; preload'
+  )
+  response.headers.set('X-Frame-Options', 'DENY')
+  response.headers.set('X-Content-Type-Options', 'nosniff')
+  response.headers.set('X-DNS-Prefetch-Control', 'on')
+  response.headers.set('X-Country-Code', countryCode)
 
-    response.headers.set(
-      'Content-Security-Policy',
-      ContentSecurityPolicy.replace(/\n/g, '')
-    )
-    response.headers.set('Referrer-Policy', 'origin-when-cross-origin')
-    response.headers.set(
-      'Permissions-Policy',
-      'camera=(), microphone=(), geolocation=()'
-    )
-    response.headers.set(
-      'Strict-Transport-Security',
-      'max-age=31536000; includeSubDomains; preload'
-    )
-    response.headers.set('X-Frame-Options', 'DENY')
-    response.headers.set('X-Content-Type-Options', 'nosniff')
-    response.headers.set('X-DNS-Prefetch-Control', 'on')
-
-    return response
-  }
+  return response
 }

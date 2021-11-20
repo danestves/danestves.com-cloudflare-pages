@@ -17,7 +17,7 @@ export const App: NextComponentType<
   AppContext,
   AppInitialProps,
   AppLayoutProps
-> = ({ Component, pageProps, router }: AppLayoutProps) => {
+> = ({ Component, pageProps, router }) => {
   const lang = router.locale === 'es' ? '/es' : ''
   const basePath = `https://danestves.com${lang}${router.asPath}`
 
