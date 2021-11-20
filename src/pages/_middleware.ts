@@ -1,7 +1,13 @@
 // Dependencies
 import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-export function middleware() {
+export function middleware(req: NextRequest) {
+  const { nextUrl: url, geo } = req
+  const countryCode = geo.country || 'US'
+
+  url.searchParams.set('countryCode', countryCode)
+
   const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.twitter.com *.youtube.com plausible.io;
@@ -16,7 +22,7 @@ export function middleware() {
     frame-src 'self' codepen.io codesandbox.io player.cloudinary.com;
   `
 
-  const response = NextResponse.next()
+  const response = NextResponse.rewrite(url)
 
   response.headers.set(
     'Content-Security-Policy',

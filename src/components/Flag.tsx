@@ -1,10 +1,8 @@
 // Dependencies
 import { useRouter } from 'next/router'
-import useSWR from 'swr'
 
 // Internals
 import { LocalImage } from './LocalImage'
-import { fetcher } from '@/lib/fetcher'
 import { ES_FLAGS, US_FLAG } from '@/utils'
 
 export type FlagProps = {
@@ -13,22 +11,17 @@ export type FlagProps = {
 
 export const Flag = (props: FlagProps): JSX.Element => {
   const router = useRouter()
-  const { data } = useSWR<{ country: string }>(
-    `https://extreme-ip-lookup.com/json?key=${process.env.NEXT_PUBLIC_IP_LOOKUP_API_KEY}`,
-    fetcher
-  )
+  const countryCode = router.query.countryCode as string
   const locale = props.locale || router.locale
 
-  if (!data) return null
-
   if (locale === 'es') {
-    if (ES_FLAGS[data.country]) {
+    if (ES_FLAGS[countryCode]) {
       return (
         <LocalImage
           image={{
-            alt: ES_FLAGS[data.country].name,
+            alt: ES_FLAGS[countryCode].name,
             placeholder: 'blur',
-            src: ES_FLAGS[data.country].image,
+            src: ES_FLAGS[countryCode].image,
           }}
         />
       )
