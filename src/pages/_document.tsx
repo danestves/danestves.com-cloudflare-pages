@@ -33,16 +33,3 @@ export default class AppDocument extends Document {
     )
   }
 }
-
-AppDocument.getInitialProps = async (ctx) => {
-  const countryCode = ctx.res.getHeader('X-Country-Code') as string
-
-  // Set a cookie containing the country code
-  ctx.res.setHeader('Set-Cookie', [`countryCode=${countryCode};`])
-
-  const initialProps = await Document.getInitialProps(ctx)
-
-  return {
-    ...initialProps,
-  }
-}

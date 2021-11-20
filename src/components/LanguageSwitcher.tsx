@@ -1,25 +1,27 @@
 // Dependencies
 import * as React from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import Cookies from 'js-cookie'
 import { useI18n } from 'next-rosetta'
 import { useRouter } from 'next/router'
 
 // Internals
+import useRequest from '@/hooks/useRequest'
 import { Flag } from './Flag'
 import { Link } from './Link'
 import type { Locale } from 'i18n'
 
 export const LanguageSwitcher = (): JSX.Element => {
-  const countryCode = Cookies.get('countryCode')
   const { t } = useI18n<Locale>()
   const router = useRouter()
+  const { data } = useRequest<{ countryCode: string }>({
+    url: '/api/country',
+  })
 
   return (
     <Menu as="div" className="relative inline-flex text-left">
       <Menu.Button className="inline-flex items-center space-x-4 rounded-full md:rounded-md md:px-4 md:py-2 focus:outline focus:ring-4 focus:ring-primary focus:ring-opacity-50 focus:outline-none">
         <div className="rounded-full w-9 h-9 md:w-6 md:h-6">
-          <Flag countryCode={countryCode} />
+          <Flag countryCode={data?.countryCode || ''} />
         </div>
         <span className="font-semibold uppercase sr-only text-primary md:not-sr-only">
           {t('header.switcher.lang')}{' '}
@@ -47,7 +49,7 @@ export const LanguageSwitcher = (): JSX.Element => {
             >
               <div className="w-6 h-6 rounded-full">
                 <Flag
-                  countryCode={countryCode}
+                  countryCode={data?.countryCode || ''}
                   locale={router.locale === 'en' ? 'es' : 'en'}
                 />
               </div>
