@@ -1,25 +1,19 @@
+// Dependencies
+import type { NextApiRequest, NextApiResponse } from 'next'
+
 // Internals
-import { handler } from '@/lib/handler'
-import { supabase } from '@/lib/supabase'
+import prisma from '@/lib/prisma'
 
-export default handler.get(async (req, res) => {
-  const { data: views, error } = await supabase
-    .from('views')
-    .select('value')
-    .then((res) => {
-      const views = res.data.reduce((a, b) => {
-        return a.value + b.value
-      })
-
-      return {
-        ...res,
-        data: views,
-      }
+export default async function handler(_: NextApiRequest, res: NextApiResponse) {
+  try {
+    const totalViews = await prisma.views.aggregate({
+      _sum: {
+        count: true,
+      },
     })
 
-  if (error) {
-    return res.status(400).json({ error })
+    return res.status(200).json({ views: totalViews._sum.count.toString() })
+  } catch (e) {
+    return res.status(500).json({ message: e.message })
   }
-
-  return res.status(200).json({ views })
-})
+}

@@ -15,7 +15,7 @@ import { Seo, Views } from '@/components'
 import { InformationCircleIcon, ShareIcon } from '@/components/Icons'
 import MDXComponents from '@/components/MDX/Components'
 import useShare from '@/hooks/useShare'
-import { getViewsBySlug } from '@/lib/supabase'
+import { getPostViews } from '@/lib/prisma'
 import { formatDate } from '@/utils'
 import AssetMe from 'public/static/me.jpeg'
 import type { Locale } from 'i18n'
@@ -23,7 +23,7 @@ import type { Locale } from 'i18n'
 export type PostPageProps = {
   post: EnglishPost | SpanishPost
   preview: boolean
-  views: number
+  views: string
 }
 
 export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
@@ -262,13 +262,13 @@ export const getStaticProps: GetStaticProps = async ({ ...ctx }) => {
       break
   }
 
-  const views = await getViewsBySlug(post.slug)
+  const views = await getPostViews(post.slug.toString())
 
   return {
     props: {
       post,
       table,
-      views,
+      views: views.count.toString(),
     },
     revalidate: 12 * 60 * 60,
   }

@@ -1,47 +1,38 @@
 // Internals
 import { handler } from '@/lib/handler'
-import { supabase } from '@/lib/supabase'
+import prisma, { getPostViews } from '@/lib/prisma'
 
 export default handler
   .post(async (req, res) => {
     try {
-      const { slug } = req.query
-      const { data } = await supabase
-        .from('views')
-        .select('value')
-        .eq('id', slug)
-        .limit(1)
+      const slug = req.query.slug.toString()
+      const newOrUpdatedViews = await prisma.views.upsert({
+        create: {
+          slug,
+        },
+        update: {
+          count: {
+            increment: 1,
+          },
+        },
+        where: { slug },
+      })
 
-      if (!data.length) {
-        await supabase.from('views').insert({ id: slug, value: 1 })
-      } else {
-        await supabase
-          .from('views')
-          .update({ value: data[0].value + 1 })
-          .eq('id', slug)
-      }
-
-      const currentViews = await supabase
-        .from('views')
-        .select('value')
-        .eq('id', slug)
-        .limit(1)
-
-      return res.status(200).json({ views: currentViews.data[0].value })
-    } catch (error) {
-      return res.status(500).json({ error })
+      return res.status(200).json({
+        views: newOrUpdatedViews.count.toString(),
+      })
+    } catch (e) {
+      return res.status(500).json({ error: e.message })
     }
   })
   .get(async (req, res) => {
-    const { data: views, error } = await supabase
-      .from('views')
-      .select('value')
-      .eq('id', req.query.slug)
+    try {
+      const slug = req.query.slug.toString()
 
-    if (error) {
-      return res.status(400).json({ error })
+      const views = await getPostViews(slug)
+
+      return res.status(200).json({ views: views.count.toString() })
+    } catch (e) {
+      return res.status(500).json({ error: e.message })
     }
-
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
-    return res.status(200).json({ views: views.length ? views[0].value : 0 })
   })
