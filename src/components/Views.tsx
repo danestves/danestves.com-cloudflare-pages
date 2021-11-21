@@ -1,11 +1,10 @@
 // Dependencies
 import * as React from 'react'
 import { useI18n } from 'next-rosetta'
-import useSWR from 'swr'
 
 // Internals
-import { fetcher } from '@/lib/fetcher'
 import type { Locale } from 'i18n'
+import useRequest from '@/hooks/useRequest'
 
 export type ViewsProps = {
   slug: string
@@ -14,9 +13,16 @@ export type ViewsProps = {
 
 export const Views = ({ slug, views }: ViewsProps): JSX.Element => {
   const { t } = useI18n<Locale>()
-  const { data } = useSWR<{ views: number }>(`/api/views/${slug}`, fetcher, {
-    fallback: { views },
-  })
+  const { data } = useRequest<{ views: number }>(
+    {
+      url: `/api/views/${slug}`,
+    },
+    {
+      fallbackData: {
+        views,
+      },
+    }
+  )
 
   React.useEffect(() => {
     const registerView = (): Promise<Response> =>

@@ -4,6 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+public/sitemap.xml
+public/feed.xml
+public/feed.rss
+public/feed.json
+public/feed.atom
 
 # testing
 /coverage
@@ -34,3 +39,6 @@ yarn-error.log*
 .vercel
 
 *.tsbuildinfo
+
+# Contentlayer
+.contentlayer

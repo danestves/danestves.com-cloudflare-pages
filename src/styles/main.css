@@ -89,6 +89,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.prose a {
+  @apply break-all;
+}
+
 .prose h2 .icon::after,
 .prose h3 .icon::after,
 .prose h4 .icon::after,
@@ -105,106 +109,6 @@
 .prose h5:hover > a > .icon::after,
 .prose h6:hover > a > .icon::after {
   @apply inline;
-}
-
-.remark-code-title {
-  @apply px-5 py-3 font-mono text-sm font-bold border-b border-gray-700 rounded-t-lg bg-[#282c34] dark:bg-[#1d1f21];
-
-  color: #f8f8f2;
-}
-
-.remark-code-title + pre,
-.remark-code-title + pre > pre {
-  @apply mt-0 rounded-t-none;
-}
-
-code[class*='language-'],
-pre[class*='language-'] {
-  color: #c5c8c6;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  line-height: 1.5;
-
-  tab-size: 4;
-
-  hyphens: none;
-}
-
-.prose {
-  content-visibility: auto;
-}
-
-/*
- Margin and rounding are personal preferences,
- overflow-x-auto is recommended.
-*/
-.prose pre.torchlight {
-  @apply my-4 rounded-lg overflow-x-auto bg-[#282C34];
-}
-
-.remark-code-title + pre.torchlight,
-.remark-code-title + div[data-code-block] > pre.torchlight {
-  @apply mt-0 rounded-t-none;
-}
-
-/*
- Add some vertical padding and expand the width
- to fill its container. The horizontal padding
- comes at the line level so that background
- colors extend edge to edge.
-*/
-.prose pre.torchlight code {
-  @apply block py-4 min-w-max;
-}
-
-/*
- Horizontal line padding.
-*/
-.prose pre.torchlight code .line {
-  @apply px-4;
-}
-
-/*
- Push the code away from the line numbers and
- summary caret indicators.
-*/
-.prose pre.torchlight code .line-number {
-  @apply text-right select-none;
-}
-
-.prose pre.torchlight code .line-number,
-.prose pre.torchlight code .summary-caret {
-  @apply mr-4;
-}
-
-pre[class*='language-'] {
-  @apply rounded-lg p-4 overflow-auto my-2 mx-0;
-}
-
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background: #1d1f21;
-}
-
-/* Inline code */
-:not(pre) > code[class*='language-'] {
-  padding: 0.1em;
-  border-radius: 0.5em;
-}
-
-.token.tag.class-name {
-  color: #96cbfe !important;
-  text-decoration: none !important;
-}
-
-.language-css .token.string,
-.style .token.string {
-  color: #87c38a !important;
 }
 
 /* Algolia Search */

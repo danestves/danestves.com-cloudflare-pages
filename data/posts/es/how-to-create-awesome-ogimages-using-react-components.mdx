@@ -1,0 +1,351 @@
+---
+title: 'Qué es Flyyer y cómo crear impresionantes og:images con React'
+publishedAt: '02/15/2021'
+cover: '/static/images/how-to-create-awesome-ogimages-using-react-components/banner.jpeg'
+seo:
+  {
+    title: 'Qué es Flyyer y cómo crear impresionantes og:images con React',
+    description:
+      'Usando Flyyer puedes crear og:images para tu aplicación React o Vue.js. Está creado con estándares web y funciona en todos los navegadores modernos.
+      <br />
+      <br />
+      Tengo ya un tiempo probando Flyyer el cual es un og:image como servicio, lo que nos promete este servicio es crear templates con React o Vue y usarlos para crear imágenes basándonos en ellos.',
+  }
+tags:
+  - 'Development'
+  - 'Social Media'
+---
+
+Una de las cosas más tediosas al escribir posts no es escribirlo en si, es encontrar una imagen correcta para que cuando la compartamos en redes sociales llame la atención y las personas quieran entrar a verla; inclusive usamos herramientas como Canva o PhotoShop para hacerlas, o llamamos a nuestro equipo de diseño y marketing para que creen esta imagen. **✋ Ya no más**
+
+## ¿Y si te digo que puedes crear imágenes con componentes de React?
+
+Tengo ya un tiempo probando [Flyyer](https://flyyer.io) el cual es un _`og:image` as a service_, lo que nos promete este servicio es crear `templates` con React o Vue y usarlos para crear imágenes con base en ellos, en estos `templates` podemos pasarle variables con los que podamos construir nuestras imágenes, por ejemplo el `title` y el `backgroundImg` de un post y podemos obtener los siguientes resultados:
+
+<a
+  aria-label="Flyyer.io | Flyyer.com platform for better links"
+  href="https://flyyer.io"
+>
+  <Image
+    alt="Preview de image con diseño de Twitter"
+    className="rounded-xl border border-white overflow-hidden max-w-md"
+    height={346}
+    src="/static/images/how-to-create-awesome-ogimages-using-react-components/img1.png"
+    objectFit="fill"
+    width={466}
+  />
+</a>
+
+Inclusive podemos detectar si el `userAgent` es WhatsApp y generar una imagen específica para esta app:
+
+<a
+  aria-label="Flyyer.io | Flyyer.com platform for better links"
+  href="https://flyyer.io"
+>
+  <Image
+    alt="Preview de image con diseño de WhatsApp"
+    className="rounded max-w-lg overflow-hidden"
+    height={152}
+    src="/static/images/how-to-create-awesome-ogimages-using-react-components/img2.png"
+    objectFit="fill"
+    width={480}
+  />
+</a>
+
+En este caso como ejemplo es solo un cuadrado gris, pero podemos meter lo que sea allí; gracias a la manera en como funciona [Flyyer](https://flyyer.io) podemos generar un view distinto dependiendo del `userAgent`, que actualmente son muchísimos los que soporta:
+
+```ts
+declare enum FlyyerAgentName {
+  FACEBOOK = 'facebook',
+  MESSENGER = 'messenger',
+  WHATSAPP = 'whatsapp',
+  INSTAGRAM = 'instagram',
+  LINKEDIN = 'linkedin',
+  PINTEREST = 'pinterest',
+  TELEGRAM = 'telegram',
+  TWITTER = 'twitter',
+  BING = 'bing',
+  REDDIT = 'reddit',
+  GOOGLE = 'google',
+  GOOGLE_ADS = 'google ads',
+  AMAZON_ALEXA = 'amazon alexa',
+  AMAZON = 'amazon',
+  YANDEX = 'yandex',
+  YAHOO = 'yahoo',
+  HUBSPOT = 'hubspot',
+  MSN = 'msn',
+  ZOOM = 'zoom',
+  SLACK = 'slack',
+  DISCORD = 'discord',
+  SAFARI = 'safari',
+  FLIPBOARD = 'flipboard',
+  APPLE = 'apple',
+  DUCKDUCKGO = 'duckduckgo',
+  DISQUS = 'disqus',
+}
+```
+
+Esto son los actuales, pero poco a poco van agregando más agentes para que podamos personalizar aún más nuestras imágenes
+
+## ¿Cómo empezar con Flyyer?
+
+Primero que todo quiero comentarte que este tutorial será para React, pero si quieres saber cómo hacerlo con Vue déjamelo saber en mi [Twitter](https://twitter.com/messages/compose?recipient_id=554765148) con un DM.
+
+Ahora iniciemos creando una app de Flyyer:
+
+```bash
+yarn create flyyer-app flyyer-tutorial
+```
+
+Se te presentarán algunas opciones para crear la aplicación, para este tutorial seguiremos con la opción de `react-typescript-tailwind`.
+
+Si aún no sabes de TypeScript te recomiendo [este post](/es/posts/how-typescript-enforced-cleaner-architecture-in-react-app) donde enseño TS con React), luego de elegir esa opción le damos enter y esperamos a que se cree la carpeta con la aplicación.
+
+> **Nota:** Antes de que se termine necesitaremos una **FLYYER_KEY** para poder hacer deploy de nuestra aplicación dentro de Flyyer, para eso nos crearemos una cuenta en Flyyer y tomaremos la key de nuestra cuenta, entra a **https://flyyer.io/dashboard/YOUR_USERNAME/settings** para obtener la key. Guarda esta key, ya que la utilizaremos más adelante.
+
+Cuando ya se haya terminado, entramos a la carpeta e instalamos las dependencias
+
+```bash
+cd flyyer-tutorial && yarn
+```
+
+Después de instalar las dependencias nos encontraremos con esta estructura de carpetas y archivos
+
+```
+flyyer-tutorial/
+├── static/
+│   ├── background.jpg
+│   └── logo.svg
+├── templates/
+│   └── hello.tsx
+├── .eslintrc.js
+├── .gitignore
+├── flyyer.config.js
+├── package.json
+├── tsconfig.json
+├── types.d.ts
+└── README.md
+```
+
+Lo más importante es lo que está dentro de la carpeta `templates`, ahí tendremos nuestro primer archivo llamado `main.tsx`.
+
+```tsx:main.tsx
+import React from "react"
+import { TemplateProps } from "@flyyer/flyyer-types";
+import classNames from "classnames";
+
+import "../styles/tailwind.css";
+
+import background from "../static/background.jpg";
+import logo from "../static/logo.svg";
+
+function Layer({ className, ...props}: React.ComponentPropsWithoutRef<"div">) {
+  return <div {...props} className={classNames("absolute inset-0", className)} />;
+}
+
+// Make sure to 'export default' a React component
+export default function MainTemplate({ variables }: TemplateProps) {
+  const {
+    title = "Hello world!",
+    img = background,
+    description,
+  } = variables;
+
+  return (
+    <>
+      <Layer>
+        <img className="w-full h-full object-cover" src={img} />
+      </Layer>
+      <Layer className="bg-gradient-to-t from-gray-500 mt-64" />
+      <Layer className="flex flex-col justify-end items-start px-12 py-12 text-white">
+        <img src={logo} className={classNames("filter-white" /* custom */, "w-36 h-36")} />
+        <h1 className="text-6xl mt-4">{title}</h1>
+        {description && (
+          <h2 className="text-4xl font-mono tracking-wider mt-2">{description}</h2>
+        )}
+      </Layer>
+    </>
+  );
+}
+```
+
+Como puedes notar es un componente como cualquier otro de React, pero la diferencia es que podemos personalizarlo como nosotros queramos para crear una `og:image` única.
+
+Recibe como parámetros las `variables` que en este caso es lo que se manda a través de la URL y que usaremos para mandar cualquier tipo de dato y renderizarlo en el componente para que al final nos entregue una imagen.
+
+En este caso la URL de una imagen se vería así:
+
+```
+?title=Hello&20Word&img=my_image.jpg&description=here%20is%20my%20description
+```
+
+Puedes notar que se manda en formato de URL Params, no tenemos que preocuparnos porque los caracteres se vean de una manera distinta, por ejemplo los espacios son transpilados a `%20` ya Flyyer se encarga de parsear estos datos y entregárnoslo de una manera limpia en el componente de React.
+
+Ahora para ver nuestro componente iniciamos el servidor de desarrollo con:
+
+```bash
+yarn start
+```
+
+<Image
+  alt="Inicio de servidor de desarrollo con la terminal"
+  height={342}
+  src="/static/images/how-to-create-awesome-ogimages-using-react-components/img3.png"
+  width={607}
+/>
+
+Para ver nuestro componente ingresamos a <a aria-label="Flyyer Studio" href="https://flyyer.github.io/flyyer-studio/">Flyyer Studio</a> y tendremos la siguiente pantalla:
+
+<Image
+  alt="Flyyer Studio"
+  height={1001}
+  src="/static/images/how-to-create-awesome-ogimages-using-react-components/img4.png"
+  width={1156}
+/>
+
+Ahora esta grandiosa pantalla es donde tendremos refrescado automático cada vez que cambiamos algo en el componente y en donde le podemos pasar variables para ver cómo actúa nuestro componente:
+
+| Campo      | Descripción                                                                                                                                                         |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Base URL   | La URL de nuestro servidor local, por default `http://localhost:7777`                                                                                               |
+| Templates  | El nombre del template que queremos ver, estos nombres será el nombre del archivo dentro de la carpeta `templates`                                                  |
+| User agent | Podemos emular el agente desde donde queremos ver la imagen, por ahora tiene `default` que es el navegador y WhatsApp, pero poco a poco irán agregando más          |
+| Variables  | Y aquí se puede decir que es donde sucede la magia, es donde pasaremos todas las variables en formato JSON y jugaremos con ellas para ver cómo actúa nuestra imagen |
+
+<Image
+  alt="Flyyer Studio"
+  height={1001}
+  src="/static/images/how-to-create-awesome-ogimages-using-react-components/img5.png"
+  width={1156}
+/>
+
+Ahora vamos a crear un custom component para cuando sea la vista de WhatsApp
+
+```tsx:main.tsx
+import React from "react"
+// Añade FlyyerAgentName para traer el enum que usaremos más abajo
+import { TemplateProps, FlyyerAgentName } from "@flyyer/flyyer-types";
+import classNames from "classnames";
+
+import "../styles/tailwind.css";
+
+import background from "../static/background.jpg";
+import logo from "../static/logo.svg";
+
+function Layer({ className, ...props}: React.ComponentPropsWithoutRef<"div">) {
+  return <div {...props} className={classNames("absolute inset-0", className)} />;
+}
+
+// Añade agent para poder usar esta prop también
+export default function MainTemplate({ agent, variables }: TemplateProps) {
+  const {
+    title = "Hello world!",
+    img = background,
+    description,
+  } = variables;
+
+  // Y ahora añadimos este condicional para detectar su el userAgent es WhatsApp
+  if (agent.name === FlyyerAgentName.WHATSAPP) {
+    return (
+      <Layer className="p-20 bg-white">
+        <img
+          src={logo}
+          alt={title}
+          className="w-full h-full"
+        />
+      </Layer>
+    );
+  }
+
+  return (
+    <>
+      <Layer>
+        <img className="w-full h-full object-cover" src={img} />
+      </Layer>
+      <Layer className="bg-gradient-to-t from-gray-500 mt-64" />
+      <Layer className="flex flex-col justify-end items-start px-12 py-12 text-white">
+        <img src={logo} className={classNames("filter-white" /* custom */, "w-36 h-36")} />
+        <h1 className="text-6xl mt-4">{title}</h1>
+        {description && (
+          <h2 className="text-4xl font-mono tracking-wider mt-2">{description}</h2>
+        )}
+      </Layer>
+    </>
+  );
+}
+```
+
+Con eso, ahora nos vamos a nuestro navegador y cambiamos el `User agent` a WhatsApp
+
+<Image
+  alt="Flyyer Studio con Whatsapp como agent"
+  height={1001}
+  src="/static/images/how-to-create-awesome-ogimages-using-react-components/img6.png"
+  width={1156}
+/>
+
+Veremos que ahora tenemos nuestra vista de cómo se vería la imagen en WhatsApp, y así podemos personalizar como nosotros queramos la vista en WhatsApp y la vista normal. Recuerda que no únicamente tenemos solo WhatsApp, tenemos toda una lista de agents que podemos utilizar para personalizar las imágenes.
+
+Ahora, de aquí en adelante te toca darle tu toque personal, cambiar colores, crear nuevo código y personalizarlo a tu manera. Por motivos del post de mi parte yo lo dejaré así de simple para que podamos continuar con la explicación.
+
+## Deploy de nuestro componente
+
+Bien, después de que ya hayamos personalizado nuestro componente ha llegado la hora de hacer deploy de nuestra app, y esto es muy sencillo. ¿Recuerdas `Flyyer_KEY` que te comenté más arriba usaríamos más adelante? Bueno, ahora mismo la vamos a utilizar; lo primero que haremos es pausar la ejecución del servidor de desarrollo de Flyyer y ejecutamos los siguientes comandos en la terminal:
+
+```bash
+# Recuerda reemplazar el texto después del = con tu llave
+export FLYYER_KEY=wdswermdcl8346egcsre
+```
+
+```bash
+yarn build && yarn deploy
+```
+
+Después de que se haya terminado, nuestro template estará arriba en Flyyer para que pueda ser usado, podrás ver las propiedades de tu deploy dentro de tu cuenta en Flyyer que previamente creamos.
+
+## ¿Cómo podemos usar nuestro componente?
+
+Quiero darle mucha más visibilidad a la documentación así que te dejaré enlaces directos a cómo usar Flyyer con tu tecnología favorita, la documentación está muy bien escrita y además, ya pasaste la parte más _complicada_ que es la creación de tu componente de `og:image`:
+
+- [Next.js](https://docs.flyyer.com/guides/javascript/nextjs)
+- [Gatsby.js](https://docs.flyyer.com/guides/javascript/gatsbyjs)
+- [Express](https://docs.flyyer.com/guides/javascript/expressjs)
+- [Docusaurus.io](https://docs.flyyer.com/guides/javascript/docusaurus)
+- [Python](https://docs.flyyer.com/guides/python/flyyer)
+- [Django](https://docs.flyyer.com/guides/python/django)
+- [Ruby](https://docs.flyyer.com/guides/ruby/flyyer)
+- [Ruby on Rails](https://docs.flyyer.com/guides/ruby/rails)
+- [PHP](https://docs.flyyer.com/guides/php/flyyer)
+- [WordPress](https://docs.flyyer.com/guides/php/wordpress)
+
+## ¿Quieres ver un ejemplo corriendo?
+
+Inspecciona esta página con la consola del navegador y luego te vas al `<head>`, busca un tag llamado `og:image` y te darás cuenta cómo funciona ya arriba en producción, incluso puedes entrar a la URL de la imagen para que puedas verla tu mismo.
+
+En todo mi sitio web yo utilizo NextJS, si quieres ver cómo yo lo implemento te dejo un estracto de código y el enlace directo al archivo:
+
+```tsx:src/layouts/blog.tsx
+const flyyer = new Flyyer({
+  tenant: 'danestves',
+  deck: 'danestves',
+  template: 'blog',
+  variables: {
+    img: `https://danestves.com${frontMatter.image}`,
+    title: frontMatter.seotitle,
+    description: frontMatter.summary,
+  },
+  meta: {
+    id: frontMatter.slug,
+  },
+})
+```
+
+[Ver archivo](https://github.com/danestves/website/blob/master/src/layouts/blog.tsx#L40)
+
+## Conclusiones
+
+Como puedes ver cada vez salen más y más herramientas que nos hacen el desarrollo muchísimo más fácil cada día, ahora solo llamamos a una librería y ya hace todo el trabajo por nosotros. **Tercerizar** los servicios es para mi una de las mejores cosas de la programación.
+
+Espero que este post haya sido de mucha ayuda y si quieres que haga un post sobre cómo realizar las `og:image` con Vue déjamelo saber en un comentario en Twitter y así sabré cuantas personas están interesadas por el siguiente post 🚀
+
+**- Los veo en el código 👨‍💻**

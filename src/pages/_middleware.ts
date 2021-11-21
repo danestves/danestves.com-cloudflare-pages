@@ -13,7 +13,7 @@ export function middleware() {
     font-src 'self' *.googleapis.com *.amazonaws.com *.gstatic.com;
     worker-src 'self';
     object-src 'self';
-    frame-src 'self' codepen.io codesandbox.io;
+    frame-src 'self' codepen.io codesandbox.io player.cloudinary.com;
   `
 
   const response = NextResponse.next()

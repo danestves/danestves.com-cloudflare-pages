@@ -1,18 +1,10 @@
 // Dependencies
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import type { DocumentContext, DocumentInitialProps } from 'next/document'
 
 // Internals
 import { getCssText } from '@/lib/stitches'
 
-class MyDocument extends Document {
-  static async getInitialProps(
-    ctx: DocumentContext
-  ): Promise<DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
-
+export default class AppDocument extends Document {
   render(): JSX.Element {
     return (
       <Html>
@@ -32,6 +24,7 @@ class MyDocument extends Document {
             id="stitches"
           />
         </Head>
+
         <body className="bg-white dark:bg-[#292929]">
           <Main />
           <NextScript />
@@ -40,5 +33,3 @@ class MyDocument extends Document {
     )
   }
 }
-
-export default MyDocument

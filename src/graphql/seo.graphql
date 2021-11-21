@@ -1,5 +1,0 @@
-query seo($id: ID!, $locale: Locale!) {
-  seo(where: { id: $id }, locales: [$locale]) {
-    description
-  }
-}

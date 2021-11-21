@@ -14,27 +14,20 @@ export const MENU: MenuItem[] = [
     },
   },
   {
-    href: '/github',
+    href: 'https://github.com/danestves',
     label: 'open source',
     rel: 'noopener noreferrer',
     target: '_blank',
   },
   {
-    href: '/portfolio',
+    href: 'https://read.cv/danestves',
     label: {
-      en: 'portfolio',
-      es: 'portafolio',
+      en: 'Resume',
+      es: 'Curriculum',
     },
   },
   {
     href: '/posts',
     label: 'blog',
-  },
-  {
-    href: `https://wa.me/message/V2KA74PJTEEYP1`,
-    label: {
-      en: 'contact',
-      es: 'contacto',
-    },
   },
 ]

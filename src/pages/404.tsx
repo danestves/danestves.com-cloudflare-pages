@@ -32,14 +32,14 @@ const links = [
   },
   {
     description: {
-      en: 'See my work',
-      es: 'Ve mi trabajo',
+      en: 'See my resume',
+      es: 'Ve mi curriculum',
     },
-    href: '/portfolio',
+    href: 'https://read.cv/danestves',
     icon: OutlineBriefcaseIcon,
     title: {
-      en: 'Portfolio',
-      es: 'Portafolio',
+      en: 'Resume',
+      es: 'Curriculum',
     },
   },
   {
@@ -59,7 +59,7 @@ const links = [
       en: 'Reach out me for any questions or feedback',
       es: 'Contacta conmigo para cualquier duda o comentario',
     },
-    href: `https://wa.me/message/V2KA74PJTEEYP1`,
+    href: `https://twitter.com/messages/compose?recipient_id=554765148`,
     icon: OutlineChatAlt2Icon,
     title: {
       en: 'Contact',
@@ -111,7 +111,7 @@ const NotFoundPage: NextLayoutPage = () => {
                 className="mt-4 border-t border-b border-[#d3d3d3] divide-y divide-[#d3d3d3] dark:border-[#434343] dark:divide-[#434343]"
                 role="list"
               >
-                {links.map(({icon: Icon, ...link}, i) => (
+                {links.map(({ icon: Icon, ...link }, i) => (
                   <li
                     className="relative flex items-start py-6 space-x-4"
                     key={i}

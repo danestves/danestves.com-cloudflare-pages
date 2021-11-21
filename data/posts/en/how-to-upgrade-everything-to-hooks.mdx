@@ -1,0 +1,110 @@
+---
+title: 'How to upgrade everything to Hooks?'
+publishedAt: '08/09/2019'
+cover: '/static/images/how-to-upgrade-everything-to-hooks/banner.jpg'
+seo:
+  {
+    title: 'How to upgrade everything to Hooks?',
+    description:
+      'What are hooks? Hooks are the next definite step in React development. If you are new to React, you have to learn Hooks to develop apps in the future.
+      <br />
+      <br />
+      It is well-known that the more we are writing plain JavaScript without making Babel compile so many things, our code will be much more optimized and faster.',
+  }
+tags:
+  - 'Development'
+  - 'Code Examples'
+---
+
+It is well known that the more we are writing plain JavaScript without making Babel compile so many things our code will be much more optimized and faster. For this comes React Hooks, available since version `>=16.8.0` replacing practically everything we had used before with class components, there are only two methods that have not been able to replace Hooks yet: `componentDidCatch` and `getDerivedStateFromError` 😔.
+
+Normally we make a component of type class in this way:
+
+```jsx
+import React, { Component } from 'react'
+
+class Counter extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0,
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+      </div>
+    )
+  }
+}
+
+export default Counter
+```
+
+The code apart from looking long 😒 makes Babel transpile more unnecessary things, makes the code longer and makes our final JavaScript much heavier. To make all these points better the Hooks arrived, we will do the same code but using the `useState()` Hook:
+
+```jsx
+import React, { useState } from 'react'
+
+export default function Counter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+**Much more condensed code right 😨😱?** Apart from this we are using practically plain JavaScript this makes Babel not having to compile even more unnecessary code, and we can even do the state of our form inputs with Hooks! 😎💪
+
+We can do this in the following way:
+
+```jsx
+import React, { useState } from 'react'
+
+export default function ContactForm() {
+  // We first declare inputs the state and setInputs the function, and equate it to an object
+  const [inputs, setInputs] = useState({})
+
+  const handleChange = (e) => {
+    // This will allow us to access the event properties asynchronously.
+    e.persist()
+    // Now we call the function, pass it the current state and also pass it the name of the field and its value. It will save it just like an object
+    setInputs((inputs) => ({ ...inputs, [e.target.name]: e.target.value }))
+  }
+
+  return (
+    <form>
+      {/*...*/}
+      <label htmlFor="name">Name</label>
+      <input type="text" name="name" onChange={handleChange} />
+      {/*...*/}
+    </form>
+  )
+}
+```
+
+Thanks to this we can make our applications more up to date, much faster for our customers and using the latest features. Now, what about `componentDidMount()` which we use to mostly get data? Now it is much easier:
+
+```jsx
+import React, { useEffect } from 'react'
+
+export default function Home() {
+  // We will simply call the useEffect() function and inside we can see what we need to do when the component loads
+  useEffect(() => {
+    dataFetch()
+  }, [])
+}
+```
+
+That's it 😎! What is the array I put at the end? That serves to tell that `useEffect()` if it depends on some state to work and also if you don't put that array even if it is empty it will enter in an infinite loop; this way it ensures that it is executed once and only when it is needed.
+
+**_Is it advisable to upgrade everything to Hooks?_** From my point of view, yes, why? The less code you have to compile Babel will be much better for your business or application. The best? You learn to use JavaScript much better 💪

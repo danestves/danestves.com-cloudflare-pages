@@ -1,5 +1,4 @@
 // Dependencies
-import { m } from 'framer-motion'
 import { useI18n } from 'next-rosetta'
 
 // Internals
@@ -11,26 +10,13 @@ import type { Locale } from 'i18n'
 export const Hero = (): JSX.Element => {
   const { t } = useI18n<Locale>()
 
-  const MotionRings = m(Rings)
-
   return (
     <section
       className="container relative overflow-hidden"
       id="danestves-section-hero"
     >
       <div className="relative left-1/2 -translate-x-1/2 mx-auto w-[563px] h-auto sm:left-[46%] md:left-[38%] lg:left-auto lg:transform-none lg:w-full lg:max-w-[731px]">
-        <MotionRings
-          animate={{ scale: 1, opacity: 1 }}
-          className="w-full h-auto"
-          exit={{ scale: 0, opacity: 0 }}
-          initial={{ scale: 0, opacity: 0 }}
-          key="danestves-section-hero"
-          transition={{
-            type: 'spring',
-            damping: 20,
-            stiffness: 100,
-          }}
-        />
+        <Rings className="w-full h-auto" />
       </div>
 
       <div className="absolute mt-2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:mt-3">

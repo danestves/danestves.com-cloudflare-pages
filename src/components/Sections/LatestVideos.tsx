@@ -31,7 +31,7 @@ export const LatestVideos = (props: Videos): JSX.Element => {
               <li key={video.id}>
                 <Link
                   className="block"
-                  href={`/youtube/${video.id}`}
+                  href={`https://www.youtube.com/watch?v=${video.id}`}
                   rel="noopener noreferrer"
                   target="_blank"
                 >

@@ -1,14 +1,15 @@
 // Dependencies
+import { nanoid } from 'nanoid'
+import type { EnglishPost, SpanishPost } from '.contentlayer/types'
 import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
 
 // Internals
 import { ContentCard, Link } from '../'
-import type { PostsQuery } from '@/generated/graphql'
 import type { Locale } from 'i18n'
 
 export type LatestPostsProps = {
-  posts: PostsQuery['posts']
+  posts: EnglishPost[] | SpanishPost[]
 }
 
 export const LatestPosts = ({ posts }: LatestPostsProps): JSX.Element => {
@@ -25,15 +26,15 @@ export const LatestPosts = ({ posts }: LatestPostsProps): JSX.Element => {
       </h2>
 
       <div className="grid max-w-[977px] grid-cols-1 gap-5 mx-auto mt-6 lg:grid-cols-3">
-        {posts.map((post) => (
+        {posts.map((post: EnglishPost | SpanishPost) => (
           <ContentCard
             as={Link}
-            date={post.published}
-            description={post.seo.description}
+            date={post.publishedAt}
+            description={post.seo?.description}
             descriptionClassName="line-clamp-3"
             href={`/posts/${post.slug}`}
             image={post.cover}
-            key={post.id}
+            key={nanoid()}
             locale={router.locale}
             title={post.title}
           />

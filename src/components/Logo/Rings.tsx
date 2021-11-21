@@ -1,6 +1,5 @@
 // Dependencies
 import * as React from 'react'
-import { m } from 'framer-motion'
 
 // Internals
 import { clsx } from '@/utils'
@@ -9,7 +8,7 @@ export type RingsProps = React.SVGProps<SVGSVGElement> & {
   animateRings?: boolean
 }
 
-export const BaseRings = React.forwardRef<SVGSVGElement, RingsProps>(
+export const Rings = React.forwardRef<SVGSVGElement, RingsProps>(
   ({ animateRings, ...props }, ref) => (
     <svg
       fill="none"
@@ -91,7 +90,5 @@ export const BaseRings = React.forwardRef<SVGSVGElement, RingsProps>(
     </svg>
   )
 )
-
-export const Rings = m(BaseRings)
 
 export default Rings

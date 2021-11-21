@@ -1,0 +1,235 @@
+---
+title: 'A boilerplate for NextJS with TypeScript, ESLint, Prettier and TailwindCSS'
+publishedAt: '02/06/2021'
+cover: '/static/images/nextjs-boilerplate-with-typescript-eslint-prettier-and-tailwindcss/banner.jpeg'
+seo:
+  {
+    title: 'A boilerplate for NextJS with TypeScript, ESLint, Prettier and TailwindCSS',
+    description:
+      'We will see how to configure NextJS with TypeScript, ESLint, Prettier and TailwindCSS to generate a boilerplate ready to be used in any project.
+      <br />
+      <br />
+      To use Next.js with TypeScript, ESLint, Prettier and TailwindCSS you have to go through several pages of documentation on various websites. But in this post I will guide you how you can do it in simple steps.',
+  }
+tags:
+  - 'Development'
+  - 'Code Examples'
+---
+
+To use Next.js with TypeScript, ESLint, Prettier and TailwindCSS you have to go through several pages of documentation on various websites. To get your development environment up and running, this post will save you time and give you all the code and choices you need to make to get it working properly.
+
+1. **First of all let's start a new project with Next**
+
+```bash:npm
+npx create-next-app tailwind-typescript
+```
+
+```bash:yarn
+yarn create next-app tailwind-typescript
+```
+
+After the process is complete we go to our folder with `cd tailwind-typescript` and open it with our favorite code editor.
+
+2. **TypeScript configuration**
+
+```bash:npm
+npm install -D typescript @types/react @types/node
+```
+
+```bash:yarn
+yarn add --dev typescript @types/react @types/node
+```
+
+After installation we will create a `next-env.d.ts` and `tsconfig.json` file in the root of our project in which we will have the following configuration:
+
+```ts:next-env.d.ts
+/// <reference types="next" />
+/// <reference types="next/types/global" />
+```
+
+```json:tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "exclude": ["node_modules", ".next", "out"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]
+}
+```
+
+Now we must change files from JavaScript to TypeScript:
+
+```bash
+./pages/_app.js # a ./pages/_app.tsx
+./pages/index.js # a ./pages/index.tsx
+./pages/api/hello.js # a ./pages/api/hello.ts
+```
+
+3. **Configuring ESLint with Prettier and Husky**
+
+```bash:npm
+npm install -D eslint eslint-config-prettier eslint-plugin-prettier prettier husky lint-staged
+```
+
+```bash:yarn
+yarn add --dev eslint eslint-config-prettier eslint-plugin-prettier prettier husky lint-staged
+```
+
+We create a `.prettierrc` file in the root of our project with the following content:
+
+```json
+{
+  "semi": false,
+  "singleQuote": true
+}
+```
+
+We create an `.eslintrc` file in the root of our project with the following content:
+
+```json
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "react/display-name": 0,
+    "react/prop-types": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "@typescript-eslint/indent": 0,
+    "@typescript-eslint/member-delimiter-style": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/no-unused-vars": [
+      2,
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-console": [
+      2,
+      {
+        "allow": ["warn", "error"]
+      }
+    ]
+  }
+}
+```
+
+Now in our `package.json` we add new scripts and the `husky` and `lint-staged` configuration:
+
+```json
+{
+  // ...
+  "scripts": {
+    // ...
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext ts --ext tsx --ext js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": ["yarn lint", "yarn format"]
+  }
+  // ...
+}
+```
+
+4. **Proceed to install Tailwind**
+
+```bash:npm
+npm install tailwindcss@latest postcss@latest autoprefixer@latest
+```
+
+```bash:yarn
+yarn add tailwindcss@latest postcss@latest autoprefixer@latest
+```
+
+After we have everything installed, we are going to generate an initial configuration of TailwindCSS with PostCSS:
+
+```bash
+npx tailwindcss init -p
+```
+
+Now we use one of the core features of Tailwind that is to remove classes not used in production, for that in the root of our project is the file `tailwind.config.js` and we will change it to the following code:
+
+```js:tailwind.config.js
+module.exports = {
+  purge: ["./components/**/*.{js,jsx,ts,tsx}", "./pages/**/*.{js,jsx,ts,tsx}"],
+  darkMode: false,
+  theme: {
+    extend: {}
+  },
+  variants: {
+    extend: {}
+  },
+  plugins: []
+}
+```
+
+The final step is to import Tailwind into our CSS and add inside our `_app.tsx` the `import` to the styles:
+
+```css:./styles/main.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+```tsx:./pages/_app.tsx
+// Add this line
+import "../styles/main.css";
+```
+
+## That's all 🤯
+
+```bash:npm
+npm run dev
+```
+
+```bash:yarn
+yarn dev
+```
+
+Now at `http://localhost:3000` you have a fully functional runtime environment. Throughout this entire post we learned how to configure NextJS with TypeScript, ESLint, Prettier and TailwindCSS. All this to generate a boilerplate ready to be used in any project and create amazing products for our users 🚀.
+
+**- See you at code 👨‍💻**

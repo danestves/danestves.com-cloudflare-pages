@@ -4,7 +4,7 @@ export const FLOATING_MENU = {
     label: 'blog',
   },
   right: {
-    href: '/contact',
+    href: 'https://twitter.com/messages/compose?recipient_id=554765148',
     label: {
       en: 'contact',
       es: 'contacto',

@@ -1,0 +1,237 @@
+---
+title: 'How TypeScript enforced cleaner architecture in a React App'
+publishedAt: '02/03/2021'
+cover: '/static/images/how-typescript-enforced-cleaner-architecture-in-react-app/banner.jpeg'
+seo:
+  {
+    title: 'How TypeScript enforced cleaner architecture in a React App',
+    description:
+      'Are you tired of writing PropTypes all over the code? Are you looking for a better way? You have found it.
+      <br />
+      <br />
+      The core feature of React is components. It helps us to have a true separation of concepts. We need a lot of them to build a complete UI, so we need to make them interact.',
+  }
+tags:
+  - 'Development'
+  - 'Code Examples'
+---
+
+If you're a React.js developer and you don't use TypeScript, this article is for you!
+
+## 🔌 Props are a means of contact
+
+The core feature of React is components. It helps us to have a [true separation of concepts](https://dottedsquirrel.com/react/rethinking-soc-with-react/). We need a lot of them to build a complete UI, so we need to make them interact.
+
+The simple way to move data from one component to another is through props:
+
+```jsx:single-post.jsx
+import React from 'react'
+
+import Post from './Post'
+
+export default function SinglePost({ post }) {
+  return (
+    <>
+      <Post title={post.title} description={post.description} />
+    </>
+  )
+}
+```
+
+This is a typical pattern: a component gets information from props, uses other components and provides them with props. The `SinglePost` component here uses the `Post` component. To provide information from `SinglePost` to `Post`, we use props. It is a means of communication, and should be viewed as such by developers.
+
+What then is a perfect means of contact? It's not so much the ability to connect, but **the UX features surrounding it**.
+
+To talk to some friends, I use WhatsApp. I can send and receive messages, of course, but what are the features we have around that? To know if my message has been read, I saw the blue check, great. I don't have the possibility to edit my message, I don't like it at all (long live Telegram) What about React props? You can assign a value to a component, ok, but what **developer experience** do we have around this? **Type check**
+
+Types can strengthen the DX (Developer Experience), because when something is wrong, it can alert us. Using [prop-types](https://www.npmjs.com/package/prop-types) is the normal way to add **type check** to our props.
+
+```jsx:post.jsx
+import React from "react";
+import PropTypes from "prop-types";
+
+const Post = ({ title, description = "" }) => {
+  return (
+    <div className="px-6 py-2 rounded shadow-sm">
+      <h2 className="text-2xl font-bold">{title}</h2>
+      {description && (
+        <p className="text-sm">{description}</p>
+      )}
+    </div>
+  );
+};
+
+Post.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string
+};
+
+export default Post
+```
+
+Great, we can communicate more efficiently, since we can decide if a prop is required or not, if it is a string or another type, or even give a strict list of possible values! In our case, when we want to see our Post, and we don't pass it a title, this is what the browser tells us:
+
+<Image
+  alt="Console error when not passing the prop title to it"
+  height={58}
+  src="/static/images/how-typescript-enforced-cleaner-architecture-in-react-app/img1.png"
+  width={660}
+/>
+
+Perfect! Nice catch PropTypes, thanks! Imagine now that we can take this definition of additional test types and testing all of our code even further 🚀
+
+## 😎 TypeScript gets in on the action
+
+The prop-types library was included in React before React v15.5. The React team took the option to extract it from the core, true to their ideology of providing an unpopular library, to allow developers to use other typing systems, such as Flow or TypeScript. The latter, let's give it a try.
+
+One of TypeScript's entry hurdles is that the tool has to be built and configured before you can use it. It is not as easy as `yarn add prop-types`, no doubt. In my opinion, the best way to learn TypeScript is to skip this step entirely. Just build a new React application with CRA, and let's start learning!
+
+```bash:create-react-app.sh
+yarn create react-app my-project --template typescript
+```
+
+Creado. Ahora, en nuestro componente de `<Post />`, vamos a cambiar de PropTypes a TypeScript.
+
+```tsx:post.tsx
+import * as React from "react";
+
+interface Props {
+  title: string
+  description?: string
+}
+
+const Post = ({ title, description = "" }: Props): JSX.Element => {
+  return (
+    <div className="px-6 py-2 rounded shadow-sm">
+      <h2 className="text-2xl font-bold">{title}</h2>
+      {description && (
+        <p className="text-sm">{description}</p>
+      )}
+    </div>
+  );
+};
+
+export default Post
+```
+
+The magic of TypeScript is that the `type` and `interfaces` we have are not only available exclusively. To deduce the knowledge, it also analyzes our code.
+
+TypeScript also comes with a little extra: you can do it right in the code editor when you are developing. To get hints from a function, you don't have to wait for them to run in the browser, as was the case with prop-types.
+
+This is what my VSCode shows with a function I have to check the read time of a text:
+
+<Image
+  alt="Example function to demonstrate how TypeScript parses code"
+  height={727}
+  src="/static/images/how-typescript-enforced-cleaner-architecture-in-react-app/img2.png"
+  width={1219}
+/>
+
+While we're at it, let's also change our `<SinglePost />` component:
+
+```tsx:single-post.tsx
+import * as React from 'react'
+
+import Post from './Post'
+
+interface Props {
+  post: {
+    title: string
+    description?: string
+  }
+}
+
+export default function SinglePost({ post }: Props) {
+  return (
+    <>
+      <Post title={post.title} description={post.description} />
+    </>
+  )
+}
+```
+
+But what happens when we want to receive a string that can only be `small`, `medium` or `large` for example for the size of the post photo? Well, let's see the following code and how TypeScript acts with the validation:
+
+```tsx:single-post.tsx
+import * as React from 'react'
+
+import Post from './Post'
+
+interface Props {
+  post: {
+    title: string
+    description?: string
+    imageSize: "small" | "medium" | "large"
+  }
+}
+
+export default function SinglePost({ post }: Props): JSX.Element {
+  return (
+    <>
+      <Post title={post.title} description={post.description} />
+    </>
+  )
+}
+```
+
+```tsx:post.tsx
+import * as React from 'react'
+
+interface Props {
+  title: string
+  description?: string
+  imageSize: 'small' | 'medium' | 'large'
+}
+
+const Post = ({ title, description = '', imageSize }: Props): JSX.Element => {
+  return (
+    <div className="px-6 py-2 rounded shadow-sm">
+      <h2 className="text-2xl font-bold">{title}</h2>
+      {description && <p className="text-sm">{description}</p>}
+      <img src="https://picsum.photos/200/300" alt={title} className={imageSize} />
+    </div>
+  )
+}
+
+export default Post
+```
+
+Now if we hover the mouse over our code where the `<Post />` component is in `single-post.tsx` we will see the following error:
+
+<Image
+  alt="TypeScript error of a missing prop"
+  height={256}
+  src="/static/images/how-typescript-enforced-cleaner-architecture-in-react-app/img3.png"
+  width={1004}
+/>
+
+By adding the new prop and opening the quotes we will notice that TypeScript is now autocompleting the possible sizes that can be passed to it and additionally telling us that we must pass it the correct prop because otherwise it does not match the types that were declared:
+
+<Image
+  alt="TypeScript error of the prop imageSize"
+  height={129}
+  src="/static/images/how-typescript-enforced-cleaner-architecture-in-react-app/img4.png"
+  width={771}
+/>
+
+Amazing, don't you think? 😎
+
+And what's really cool is that TypeScript is not restricted to props parts, unlike PropTypes. All of our JavaScript code, even what is not connected to our React components, can have alerts. Even what is not fully connected to the front-end, because TypeScript works with NodeJS like a charm.
+
+Now, in our code, we can be sure.
+
+<Giphy id="Wn74RUT0vjnoU98Hnt" />
+
+TypeScript will be there to yell at us if there is a discrepancy somewhere, pointing out the bug that was right under our noses, but that we somehow overlooked.
+
+## 🧐 Conclusions
+
+I'm not going to lie, the road is not easy with TypeScript and sometimes the learning curve can be tough. But it's certainly worth it, I guess (?) 😂
+
+By proposing an open source tool that is responsive to JavaScript advances, Microsoft has done a great job. This new quasi-standard has been embraced by the JS ecosystem, and many libraries are compatible with TypeScript to allow us to do our code, as we did in our examples with React's `JSX.Element`.
+
+It was a gamble to myself to get into TypeScript some time ago, and I was always losing. Now in 2021? It's a pretty obvious bet. Today, use it! You won't regret it.
+
+Oh and if I forgot to tell you `JSX.Element` is a way of telling TypeScript that what that function returns is JSX and it doesn't need to do anything else, in later posts I'll be putting out about **learning TypeScript with React** I'll explain what `FunctionalComponent` and `JSX.Element` are for in our code.
+
+**- See you at code 👨‍💻**

@@ -1,0 +1,181 @@
+---
+title: 'TailwindCSS - What it is & how to get started with Visual Studio Code'
+publishedAt: '02/14/2021'
+cover: '/static/images/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code/banner.jpeg'
+seo:
+  {
+    title: 'TailwindCSS - What it is & how to get started with Visual Studio Code',
+    description:
+      'In this blogpost you will learn what is Tailwind, what are the best VS Code extensions and how to get the most out of it.
+      <br />
+      <br />
+      Tailwind is a CSS framework that is based on providing utility classes with which we can build any interface, make them unique and at the same time learn CSS while we are writing the classes.',
+  }
+tags:
+  - 'Technology'
+---
+
+## What is TailwindCSS?
+
+Tailwind is a CSS framework that is based on providing utility classes with which we can build any interface, make them unique and at the same time learn CSS while we are writing the classes.
+
+With this also gives us the possibility to create our own reusable components, imagine a button which will be our base with a specific padding and a specific font and size but will change color when we use it for example in save buttons (green or blue), cancel (usually gray) or delete (red); then we call our component and with a class, for example `bg-red-500` we change the color and still have the same initial aesthetics.
+
+This helps us above all to be more agile while we are developing a project, since we are a little more focused on using the classes and adjusting the design than on making our own styles, trying to make everything responsive, more than 10 `@media` in our CSS to make our section never look bad. Using this kind of tools will help us to make our development more agile, and in this post I will explain you how.
+
+## The first step is documentation
+
+The Tailwind website is incredibly beautiful and intuitive, when we [enter the documentation](https://tailwindcss.com) we find this section that with an animation shows us how Tailwind classes work and how we can build a testimonial that seems simple but has a certain **_I don't know what_** and catches the attention:
+
+<a
+  aria-label="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML."
+  href="https://tailwindcss.com"
+>
+  <Image
+    alt="First section of the TailwindCSS documentation"
+    height={1001}
+    src="/static/images/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code/img1.png"
+    objectFit="contain"
+    width={1471}
+  />
+</a>
+
+Para comenzar le damos click al botón `Get started` y entraremos a una página inicial que nos presentará la documentación inicial sobre Tailwind.
+
+<a
+  aria-label="Documentation - Tailwind CSS"
+  href="https://tailwindcss.com/docs"
+>
+  <Image
+    alt="TailwindCSS documentation"
+    height={1001}
+    src="/static/images/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code/img2.png"
+    width={1471}
+  />
+</a>
+
+The best way (and I say this as a personal opinion) is in [his YouTube channel](https://www.youtube.com/tailwindlabs), all videos are in English but thanks to YouTube's algorithm we can activate subtitles if we need it to understand what is spoken in the video, and strangely from my own experience I can say that the translations are 90% good. In these videos Adam Watham the creator of TailwindCSS takes us through a way in which we make the frontend of the applications, add various animations and incidentally teaches us to extend the settings of this framework 🎉.
+
+If we navigate in the left bar down we can find absolutely all the utilities that this framework offers us:
+
+<a
+  aria-label="Documentation - Tailwind CSS"
+  href="https://tailwindcss.com/docs"
+>
+  <Image
+    alt="Sidebar with a list of TailwindCSS utilities"
+    height={222}
+    src="/static/images/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code/img3.png"
+    objectFit="contain"
+    width={916}
+  />
+</a>
+
+If we enter to any section we can find an interface where we will see:
+
+1. a table with a the list of all the classes that belong to that section, with the name of the class and its value.
+2. Examples of use bein graphed so that they can be better understood.
+3. And finally a section to further customize these classes.
+
+<a
+  aria-label="Flex Direction - Tailwind CSS"
+  href="https://tailwindcss.com/docs/flex-direction"
+>
+  <Image
+    alt="Flex Direction documentation"
+    height={1001}
+    src="/static/images/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code/img4.png"
+    width={1471}
+  />
+</a>
+
+## We can learn CSS thanks to Tailwind classes 🤯
+
+Tailwind is very semantic with the way its classes are written:
+
+- If we want to align the text of a button, we use `text-left`, `text-center` and more.
+- If we want to add more columns to our grid we use `grid-col-12` or for rows `grid-row-8`, and looking at the documentation we see that on the back we use `grid-template-columns` and `grid-template-rows`.
+- If we want to add the red color we use shades from number 100 to 900, for example `bg-red-600`.
+
+Behind Tailwind uses a lot of CSS variables in a way that we did not imagine, many classes like `bg-opacity-75` what it has inside is a CSS variable `--tw-bg-opacity: 0.75;` so this would apply an opacity to our background, but _how does Tailwind interact with that variable?_ simple, I show it to you with an example:
+
+For example, the `bg-white` class would have this output:
+
+```css
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+}
+```
+
+As you can notice by default it already comes with the `--tw-bg-opacity` variable inside it, so when we add `bg-opacity-75` in our browser console we will be able to see this:
+
+<Image
+  alt="Tailwind classes in Chrome developer tools"
+  height={116}
+  src="/static/images/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code/img5.png"
+  width={441}
+/>
+
+It overwrites the original variable and `bg-white` interacts with the new variable to generate an opacity. This is mostly how the whole framework works, no classes on top of classes to overwrite things, it uses the potential we already have in CSS and takes it to a new level so high that it doesn't look like CSS, but it is.
+
+## VSCode + TailwindCSS
+
+What I like most about Tailwind is the integration it has with VSCode thanks to three extensions that will make your life much easier:
+
+1. [Headwind](https://marketplace.visualstudio.com/items?itemName=heybourn.headwind)
+
+This extension allows us to organize our HTML classes by functionality, breakpoints and even pseudo-selectors.
+
+<Image
+  src="https://raw.githubusercontent.com/heybourn/headwind/master/img/explainer.gif"
+  alt="Headwind demo GIF"
+  width={960}
+  height={752}
+/>
+
+2. [Tailwind CSS Intellisense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+
+This extension reads your Tailwind configuration file and as you write classes it gives you a list of suggestions and you can even see the value of each class.
+
+<Image
+  src="https://raw.githubusercontent.com/bradlc/vscode-tailwindcss/master/packages/vscode-tailwindcss/.github/autocomplete.png"
+  alt="Tailwind CSS Intellisense Demo Image"
+  width={2080}
+  height={1170}
+/>
+
+<Image
+  src="https://raw.githubusercontent.com/bradlc/vscode-tailwindcss/master/packages/vscode-tailwindcss/.github/hover.png"
+  alt="Tailwind CSS Intellisense in hover demo image"
+  width={2080}
+  height={1170}
+/>
+
+3. [Tailwind Shades](https://marketplace.visualstudio.com/items?itemName=bourhaouta.tailwindshades)
+
+Last but not least (because I use it a lot) we have Tailwind Shades, this great extension generates the shades given a color so we can further customize the color mix of our page.
+
+<Image
+  src="https://raw.githubusercontent.com/bourhaouta/vscode-tailwindshades/master/media/demo.gif"
+  alt="Tailwind Shades GIF demo"
+  width={874}
+  height={520}
+/>
+
+## How can I install Tailwind in my favorite framework?
+
+Over several months several boilerplates have come out showing how to integrate Tailwind with your favorite tool, and here are some of them:
+
+- [create-react-app](/blog/configurar-tailwindcss-con-create-react-app)
+- [Next.js](https://tailwindcss.com/docs/guides/nextjs)
+- [Vue 3 (Vite)](https://tailwindcss.com/docs/guides/vue-3-vite)
+- [Laravel](https://tailwindcss.com/docs/guides/laravel)
+- [Nuxt.js](https://tailwindcss.com/docs/guides/nuxtjs)
+- [Gatsby](https://tailwindcss.com/docs/guides/gatsby)
+
+## Conclusions
+
+Sometimes trying a new tool can be difficult, but in my personal opinion I recommend you to take that first step, start by making small projects, adding complexity and making your own components. My own website with animations and transitions is completely done in Tailwind. At my workplace we also use Tailwind for all our projects, and let me tell you that the agility when developing interfaces went up by 40% and the time per project decreased 🎉 so come on! Give it a try
+
+**- See you at code 👨‍💻**
