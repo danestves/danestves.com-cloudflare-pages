@@ -14,7 +14,7 @@ export default handler.get(async (req, res) => {
       }`
     )
 
-    return res.status(200).json({ country: data?.country || 'US' })
+    return res.status(200).json({ country: data?.countryCode || 'US' })
   } catch (error) {
     return res.status(400).json(error)
   }
