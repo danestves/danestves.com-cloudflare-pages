@@ -40,6 +40,12 @@ const nextConfig = {
       },
       {
         destination:
+          '/es/posts/what-is-tailwindcss-and-how-to-use-it-with-create-react-app',
+        source: '/blog/configurar-tailwindcss-con-create-react-app',
+        permanent: true,
+      },
+      {
+        destination:
           '/posts/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code',
         source:
           '/blog/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code-ckmsbs7f4qa8d0c81g79bp228',
