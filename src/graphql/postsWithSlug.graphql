@@ -1,5 +1,0 @@
-query postsWithSlug($first: Int!) {
-  posts(first: $first) {
-    slug
-  }
-}

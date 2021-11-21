@@ -20,10 +20,10 @@ export const MENU: MenuItem[] = [
     target: '_blank',
   },
   {
-    href: '/portfolio',
+    href: 'https://read.cv/danestves',
     label: {
-      en: 'portfolio',
-      es: 'portafolio',
+      en: 'Resume',
+      es: 'Curriculum',
     },
   },
   {

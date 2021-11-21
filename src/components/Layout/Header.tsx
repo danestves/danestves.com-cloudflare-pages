@@ -70,7 +70,7 @@ export const Header = (): JSX.Element => {
                         <Link
                           {...item}
                           className="block px-3 py-2 text-base text-[#989898] font-semibold rounded-md uppercase hover:text-primary"
-                          key={item.href}
+                          key={nanoid()}
                           locale={router.locale}
                           onClick={
                             item.href.includes('contact')
@@ -91,7 +91,7 @@ export const Header = (): JSX.Element => {
                           <Link
                             {...item}
                             className="block px-3 py-2 text-base text-[#989898] font-semibold rounded-md uppercase hover:text-primary"
-                            key={item.href}
+                            key={nanoid()}
                             locale={router.locale}
                           >
                             <span className="sr-only">

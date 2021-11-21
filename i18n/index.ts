@@ -56,12 +56,6 @@ export interface Locale {
       subtitle: string
       title: string
     }
-    portfolio: {
-      seo: {
-        title: string
-        description: string
-      }
-    }
     posts: {
       seo: {
         title: string

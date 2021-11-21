@@ -32,14 +32,14 @@ const links = [
   },
   {
     description: {
-      en: 'See my work',
-      es: 'Ve mi trabajo',
+      en: 'See my resume',
+      es: 'Ve mi curriculum',
     },
-    href: '/portfolio',
+    href: 'https://read.cv/danestves',
     icon: OutlineBriefcaseIcon,
     title: {
-      en: 'Portfolio',
-      es: 'Portafolio',
+      en: 'Resume',
+      es: 'Curriculum',
     },
   },
   {

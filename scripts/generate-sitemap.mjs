@@ -26,22 +26,6 @@ const STATIC_URLS = [
     changefreq: 'monthly',
     img: [
       {
-        url: `${FLYYER_URL}/portfolio`,
-      },
-      {
-        url: `${FLYYER_URL}/es/portfolio`,
-      },
-    ],
-    links: [
-      { lang: 'en', url: `${BASE_URL}/portfolio` },
-      { lang: 'es', url: `${BASE_URL}/es/portfolio` },
-    ],
-    url: `${BASE_URL}/portfolio`,
-  },
-  {
-    changefreq: 'monthly',
-    img: [
-      {
         url: `${FLYYER_URL}/posts`,
       },
       {

@@ -8,7 +8,7 @@ import Image from 'next/image'
 import type { LinkProps as LinkNextProps } from 'next/link'
 
 // Internals
-import { GraphImage, Link as NextLink } from '../'
+import { Link as NextLink } from '../'
 import { Pre } from './Pre'
 
 const Cloudinary = dynamic(() => import('./Cloudinary'), {
@@ -42,7 +42,6 @@ const MDXComponents = {
   Cloudinary,
   CodePen,
   CodeSandbox,
-  GraphCmsImage: GraphImage,
   Giphy,
   Image,
   pre: Pre,
