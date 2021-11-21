@@ -90,6 +90,8 @@ async function generateSitemap() {
 
   // Write user-generated pages to sitemap
   posts.forEach((post) => {
+    const lastmod = new Date(post.publishedAt.slice(0, 10))
+
     sitemap.write({
       changefreq: 'monthly',
       img: [
@@ -112,7 +114,7 @@ async function generateSitemap() {
         { lang: 'en', url: `${BASE_URL}/posts/${post.slug}` },
         { lang: 'es', url: `${BASE_URL}/es/posts/${post.slug}` },
       ],
-      lastmod: post.publishedAt,
+      lastmod,
       priority: 0.7,
       url: `${BASE_URL}/posts/${post.slug}`,
     })

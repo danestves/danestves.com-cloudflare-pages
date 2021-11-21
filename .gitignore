@@ -6,6 +6,9 @@
 .pnp.js
 public/sitemap.xml
 public/feed.xml
+public/feed.rss
+public/feed.json
+public/feed.atom
 
 # testing
 /coverage
