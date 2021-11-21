@@ -1,4 +1,4 @@
 **/node_modules/*
 **/out/*
 **/.next/*
-src/generated/graphql.ts
+src/types/**

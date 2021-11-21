@@ -12,7 +12,6 @@
     "test-all": "pnpm lint && pnpm type-check && pnpm test",
     "prepare": "husky install",
     "analyze": "ANALYZE=true pnpm build",
-    "generate": "DOTENV_CONFIG_PATH=.env.local graphql-codegen -r dotenv/config --config codegen.yml",
     "generate:rss": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
     "generate:sitemap": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-sitemap.mjs"
   },
