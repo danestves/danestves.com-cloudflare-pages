@@ -6,6 +6,7 @@ import algoliasearch from 'algoliasearch/lite'
 import { useRouter } from 'next/router'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { InstantSearch, Hits, Configure } from 'react-instantsearch-dom'
+import { usePlausible } from 'next-plausible'
 import { useI18n } from 'next-rosetta'
 
 // Internals
@@ -27,6 +28,7 @@ export const Search = (): JSX.Element => {
   const searchInputRef = React.useRef<HTMLInputElement>(null)
   const boxRef = React.useRef<HTMLDivElement>(null)
 
+  const plausible = usePlausible()
   const { t } = useI18n<Locale>()
   const router = useRouter()
 
@@ -42,7 +44,10 @@ export const Search = (): JSX.Element => {
           <button
             aria-label={t('components.search.button.label')}
             className="p-2 rounded-full bg-primary"
-            onClick={() => setSearchOpen(!isSearchOpen)}
+            onClick={() => {
+              setSearchOpen(!isSearchOpen)
+              plausible('Opened Search')
+            }}
             type="button"
           >
             <SearchIcon className="w-5 h-5 text-white dark:text-[#292929]" />

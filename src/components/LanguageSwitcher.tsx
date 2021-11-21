@@ -1,6 +1,7 @@
 // Dependencies
 import * as React from 'react'
 import { Menu, Transition } from '@headlessui/react'
+import { usePlausible } from 'next-plausible'
 import { useI18n } from 'next-rosetta'
 import { useRouter } from 'next/router'
 
@@ -11,6 +12,7 @@ import { Link } from './Link'
 import type { Locale } from 'i18n'
 
 export const LanguageSwitcher = (): JSX.Element => {
+  const plausible = usePlausible()
   const { t } = useI18n<Locale>()
   const router = useRouter()
   const { data } = useRequest<{ country: string }>({
@@ -46,6 +48,11 @@ export const LanguageSwitcher = (): JSX.Element => {
               className="inline-flex items-center p-4 mx-auto space-x-4 transition-colors duration-200 group hover:bg-primary"
               href={router.asPath}
               locale={router.locale === 'en' ? 'es' : 'en'}
+              onClick={() =>
+                plausible(
+                  `Change language: ${router.locale === 'en' ? 'es' : 'en'}`
+                )
+              }
             >
               <div className="w-6 h-6 rounded-full">
                 <Flag

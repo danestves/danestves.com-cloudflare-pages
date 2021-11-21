@@ -60,12 +60,13 @@ export const Footer = (): JSX.Element => {
                   {...item}
                   className="text-xs text-[#989898] uppercase font-semibold leading-3 hover:text-primary dark:text-[#B1B1B1]"
                   locale={router.locale}
-                  onClick={
-                    item.href.includes('contact')
-                      ? () => {
-                          plausible('Contact')
-                        }
-                      : undefined
+                  onClick={() =>
+                    plausible('Clicked on footer menu', {
+                      props: {
+                        label,
+                        locale: router.locale,
+                      },
+                    })
                   }
                 >
                   {label[router.locale] || label}

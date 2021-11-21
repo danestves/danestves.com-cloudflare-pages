@@ -72,12 +72,14 @@ export const Header = (): JSX.Element => {
                           className="block px-3 py-2 text-base text-[#989898] font-semibold rounded-md uppercase hover:text-primary"
                           key={nanoid()}
                           locale={router.locale}
-                          onClick={
-                            item.href.includes('contact')
-                              ? () => {
-                                  plausible('Contact')
-                                }
-                              : undefined
+                          onClick={() =>
+                            plausible('Clicked on menu', {
+                              props: {
+                                device: 'mobile',
+                                label,
+                                locale: router.locale,
+                              },
+                            })
                           }
                         >
                           {label[router.locale] || label}
@@ -93,6 +95,15 @@ export const Header = (): JSX.Element => {
                             className="block px-3 py-2 text-base text-[#989898] font-semibold rounded-md uppercase hover:text-primary"
                             key={nanoid()}
                             locale={router.locale}
+                            onClick={() =>
+                              plausible('Clicked on social link', {
+                                props: {
+                                  device: 'mobile',
+                                  label: label[router.locale] || label,
+                                  locale: router.locale,
+                                },
+                              })
+                            }
                           >
                             <span className="sr-only">
                               {label[router.locale] || label}
@@ -156,6 +167,15 @@ export const Header = (): JSX.Element => {
                 {...item}
                 className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary dark:text-[#B1B1B1]"
                 locale={router.locale}
+                onClick={() => {
+                  plausible('Clicked on menu', {
+                    props: {
+                      device: 'desktop',
+                      label,
+                      locale: router.locale,
+                    },
+                  })
+                }}
               >
                 {label[router.locale] || label}
               </Link>
@@ -173,7 +193,15 @@ export const Header = (): JSX.Element => {
                 {...item}
                 className="text-xs text-[#989898] uppercase font-semibold leading-3 vertical-rl hover:text-primary dark:text-[#B1B1B1]"
                 locale={router.locale}
-                onClick={() => plausible(label[router.locale] || label)}
+                onClick={() =>
+                  plausible('Clicked on social link', {
+                    props: {
+                      device: 'desktop',
+                      label: label[router.locale] || label,
+                      locale: router.locale,
+                    },
+                  })
+                }
               >
                 {label[router.locale] || label}
               </Link>

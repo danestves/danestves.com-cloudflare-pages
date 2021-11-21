@@ -1,11 +1,18 @@
 // Dependencies
 import * as React from 'react'
+import { window } from 'browser-monads-ts'
+import Script from 'next/script'
 import { I18nProvider } from 'next-rosetta'
 import { DefaultSeo, LogoJsonLd, SocialProfileJsonLd } from 'next-seo'
 import PlausibleProvider from 'next-plausible'
 import { ThemeProvider } from 'next-themes'
 import type { NextComponentType } from 'next'
-import type { AppContext, AppInitialProps, AppLayoutProps } from 'next/app'
+import type {
+  AppContext,
+  AppInitialProps,
+  AppLayoutProps,
+  NextWebVitalsMetric,
+} from 'next/app'
 
 // Internals
 import { Layout } from '@/components'
@@ -68,11 +75,42 @@ export const App: NextComponentType<
             type="Person"
             url="https://danestves.com"
           />
+
           {getLayout(<Component {...pageProps} />)}
+
+          <Script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
+              `,
+            }}
+            id="plausible-instance"
+            strategy="afterInteractive"
+          ></Script>
         </I18nProvider>
       </PlausibleProvider>
     </ThemeProvider>
   )
+}
+
+export function reportWebVitals(props: NextWebVitalsMetric) {
+  // Inspired by:
+  // https://nextjs.org/docs/advanced-features/measuring-performance#sending-results-to-analytics
+
+  const event_category =
+    props.label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric'
+  const value = Math.round(
+    props.name === 'CLS' ? props.value * 1000 : props.value
+  )
+  const event_label = props.id
+
+  window?.plausible?.('Web Vitals Report', {
+    props: {
+      event_category,
+      value,
+      event_label,
+    },
+  })
 }
 
 export default App

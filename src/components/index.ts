@@ -1,7 +1,6 @@
 // Dependencies
 import dynamic from 'next/dynamic'
 
-export const Alert = dynamic(() => import('./Alert'))
 export const ContentCard = dynamic(() => import('./ContentCard'))
 export const Flag = dynamic(() => import('./Flag'))
 export const GeneralObserver = dynamic(() => import('./GeneralObserver'))
