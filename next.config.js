@@ -18,7 +18,7 @@ const nextConfig = {
     locales: ['en', 'es'],
   },
   images: {
-    domains: ['i.ytimg.com', 'media.graphcms.com', 'raw.githubusercontent.com'],
+    domains: ['i.ytimg.com', 'raw.githubusercontent.com'],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 15768000,
   },

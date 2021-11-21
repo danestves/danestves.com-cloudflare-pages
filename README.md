@@ -11,13 +11,13 @@ _<small>Inspired by Leerob README.md</small>_
 - **Framework:** [NextJS](https://nextjs.org/)
 - **Database:** [Supabase](https://supabase.io/)
 - **Deployment:** [Vercel](https://vercel.com/)
-- **Content:** [MDX](https://github.com/mdx-js/mdx) + [GraphCMS](https://graphcms.com/)
+- **Content:** [MDX](https://github.com/mdx-js/mdx) + [Contentlayer](https://www.contentlayer.dev/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 
 ## Overview
 
-- `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering Giphy, country flags, [sitemap.xml](https://danestves.com/sitemap.xml), [feed.xml](https://danestves.com/feed.xml), post views, and webhooks for Algolia.
-- `pages/posts/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx) and [GraphCMS](https://graphcms.com/).
+- `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering Giphy, country flags, and post views.
+- `pages/posts/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx) and [Contentlayer](https://www.contentlayer.dev/).
 - `pages/*` - All other static pages.
 
 ## Contributors ✨

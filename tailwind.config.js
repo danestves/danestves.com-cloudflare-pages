@@ -136,9 +136,6 @@ module.exports = {
         },
         lg: {
           css: {
-            '.graphcms-image-wrapper img': {
-              margin: 0,
-            },
             '.giphy-gif-img': {
               margin: 0,
             },
