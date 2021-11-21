@@ -1,11 +1,7 @@
 // Dependencies
 import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
 
-export function middleware(req: NextRequest) {
-  const { geo } = req
-  const countryCode = geo.country || 'US'
-
+export function middleware() {
   const ContentSecurityPolicy = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.twitter.com *.youtube.com plausible.io;
@@ -38,7 +34,6 @@ export function middleware(req: NextRequest) {
   response.headers.set('X-Frame-Options', 'DENY')
   response.headers.set('X-Content-Type-Options', 'nosniff')
   response.headers.set('X-DNS-Prefetch-Control', 'on')
-  response.headers.set('X-Country-Code', countryCode)
 
   return response
 }

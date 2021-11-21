@@ -13,7 +13,7 @@ import type { Locale } from 'i18n'
 export const LanguageSwitcher = (): JSX.Element => {
   const { t } = useI18n<Locale>()
   const router = useRouter()
-  const { data } = useRequest<{ countryCode: string }>({
+  const { data } = useRequest<{ country: string }>({
     url: '/api/country',
   })
 
@@ -21,7 +21,7 @@ export const LanguageSwitcher = (): JSX.Element => {
     <Menu as="div" className="relative inline-flex text-left">
       <Menu.Button className="inline-flex items-center space-x-4 rounded-full md:rounded-md md:px-4 md:py-2 focus:outline focus:ring-4 focus:ring-primary focus:ring-opacity-50 focus:outline-none">
         <div className="rounded-full w-9 h-9 md:w-6 md:h-6">
-          <Flag countryCode={data?.countryCode || ''} />
+          <Flag countryCode={data?.country || ''} />
         </div>
         <span className="font-semibold uppercase sr-only text-primary md:not-sr-only">
           {t('header.switcher.lang')}{' '}
@@ -49,7 +49,7 @@ export const LanguageSwitcher = (): JSX.Element => {
             >
               <div className="w-6 h-6 rounded-full">
                 <Flag
-                  countryCode={data?.countryCode || ''}
+                  countryCode={data?.country || ''}
                   locale={router.locale === 'en' ? 'es' : 'en'}
                 />
               </div>
