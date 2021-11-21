@@ -41,7 +41,7 @@ const nextConfig = {
         destination:
           '/posts/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code',
         source:
-          '/en/blog/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code-ckmsbs7f4qa8d0c81g79bp228',
+          '/blog/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code-ckmsbs7f4qa8d0c81g79bp228',
         permanent: true,
       },
       {
@@ -53,14 +53,6 @@ const nextConfig = {
         destination: resume,
         source: '/resume',
         permanent: true,
-      },
-    ]
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap',
       },
     ]
   },
