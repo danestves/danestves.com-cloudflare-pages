@@ -1,12 +1,15 @@
 // Dependencies
 import axios from 'axios'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 // Internals
 import { getIP } from '@/lib/getIP'
-import { handler } from '@/lib/handler'
 import type { IPLookup } from '@/types/IpLookup'
 
-export default handler.get(async (req, res) => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
     const { data } = await axios.get<IPLookup>(
       `https://extreme-ip-lookup.com/json/${getIP(req)}?key=${
@@ -18,4 +21,4 @@ export default handler.get(async (req, res) => {
   } catch (error) {
     return res.status(400).json(error)
   }
-})
+}

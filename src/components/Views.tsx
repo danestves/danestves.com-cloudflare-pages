@@ -8,21 +8,22 @@ import useRequest from '@/hooks/useRequest'
 
 export type ViewsProps = {
   slug: string
-  views: number
+  views: string
 }
 
-export const Views = ({ slug, views }: ViewsProps): JSX.Element => {
+export const Views = ({ slug, ...props }: ViewsProps): JSX.Element => {
   const { t } = useI18n<Locale>()
-  const { data } = useRequest<{ views: number }>(
+  const { data } = useRequest<{ views: string }>(
     {
       url: `/api/views/${slug}`,
     },
     {
       fallbackData: {
-        views,
+        views: props.views,
       },
     }
   )
+  const views = new Number(data?.views)
 
   React.useEffect(() => {
     const registerView = (): Promise<Response> =>
@@ -35,7 +36,7 @@ export const Views = ({ slug, views }: ViewsProps): JSX.Element => {
 
   return (
     <span className="px-3 py-2 text-xs font-bold text-black rounded-full bg-primary">
-      {data?.views ? data.views : '---'} {t('components.views')}
+      {views ? views.toLocaleString() : '---'} {t('components.views')}
     </span>
   )
 }

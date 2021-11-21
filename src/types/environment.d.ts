@@ -5,6 +5,10 @@ namespace NodeJS {
      */
     readonly ALGOLIA_ADMIN_API_KEY: string
     /**
+     * The database url for your Prisma database.
+     */
+    readonly DATABASE_URL: string
+    /**
      * Giphy API token
      */
     readonly GIPHY_TOKEN: string
@@ -36,6 +40,10 @@ namespace NodeJS {
      * Revue API token to manage newsletter (https://www.getrevue.co/app/integrations)
      */
     readonly REVUE_TOKEN: string
+    /**
+     * The database url for your Prisma database to make migrations. (Only DEV)
+     */
+    readonly SHADOW_DATABASE_URL: string
     /**
      * YouTube API key
      */
