@@ -23,14 +23,34 @@ const nextConfig = {
     minimumCacheTTL: 15768000,
   },
   async redirects() {
+    const resume = 'https://read.cv/danestves'
+
     return [
+      {
+        destination: '/es/posts/how-to-upgrade-everything-to-hooks',
+        source:
+          '/blog/react-hooks-la-oportunidad-de-mejorar-ckmsitgpcqfll0b24c39lpbnq',
+        permanent: true,
+      },
       {
         destination: '/danestves.pdf',
         source: '/DanielEsteves.pdf',
         permanent: true,
       },
       {
-        destination: 'https://read.cv/danestves',
+        destination:
+          '/posts/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code',
+        source:
+          '/en/blog/tailwindcss-what-it-is-and-how-to-get-started-with-visual-studio-code-ckmsbs7f4qa8d0c81g79bp228',
+        permanent: true,
+      },
+      {
+        destination: resume,
+        source: '/portafolio/plexus-market-ckng74mu8dvsl0a81lmi29om5',
+        permanent: true,
+      },
+      {
+        destination: resume,
         source: '/resume',
         permanent: true,
       },
