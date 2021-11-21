@@ -10,7 +10,7 @@ export default handler.get(async (req, res) => {
   try {
     const { data } = await axios.get<IPLookup>(
       `https://extreme-ip-lookup.com/json/${getIP(req)}?key=${
-        process.env.NEXT_PUBLIC_IP_LOOKUP_API_KEY
+        process.env.IP_LOOKUP_API_KEY
       }`
     )
 
