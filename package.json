@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
