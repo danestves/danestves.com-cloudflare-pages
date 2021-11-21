@@ -73,8 +73,8 @@ pre {
   color: var(--syntax-fg) !important;
 }
 
-.prose code[class*='language-'],
-.prose pre[class*='language-'] {
+.prose [data-code-block='true'] code,
+.prose [data-code-block='true'] pre {
   background: var(--syntax-bg);
   color: var(--syntax-fg);
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);

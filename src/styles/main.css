@@ -89,6 +89,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.prose a {
+  @apply break-all;
+}
+
 .prose h2 .icon::after,
 .prose h3 .icon::after,
 .prose h4 .icon::after,
