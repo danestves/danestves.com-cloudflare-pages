@@ -11,12 +11,6 @@ import type { LinkProps as LinkNextProps } from 'next/link'
 import { GraphImage, Link as NextLink } from '../'
 import { Pre } from './Pre'
 
-const AlertInfo = dynamic(
-  () => import('../Alert').then((mod) => mod.Alert.Info),
-  {
-    ssr: false,
-  }
-)
 const Cloudinary = dynamic(() => import('./Cloudinary'), {
   ssr: false,
 })
@@ -45,7 +39,6 @@ export const CustomLink = ({
 
 const MDXComponents = {
   a: CustomLink,
-  AlertInfo,
   Cloudinary,
   CodePen,
   CodeSandbox,

@@ -218,9 +218,10 @@ export const PostPage: NextPage<PostPageProps> = ({ post, preview, views }) => {
                     })}
                   </time>
                 </p>
-                <p className="text-xs font-bold text-[#838383] whitespace-pre-line">
-                  {post.seo.description}
-                </p>
+                <p
+                  className="text-xs font-bold text-[#838383] whitespace-pre-line"
+                  dangerouslySetInnerHTML={{ __html: post.seo.description }}
+                ></p>
               </div>
             </div>
             <div className="max-w-full prose prose-lg dark:prose-dark">

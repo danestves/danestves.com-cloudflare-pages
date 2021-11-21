@@ -1,8 +1,8 @@
 export type AlertProps = {
-  children: React.ReactNode
+  description?: string
 }
 
-const Danger = ({ children }: AlertProps): JSX.Element => {
+const Danger = ({ description }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-red-100 rounded-md dark:bg-red-50">
       <div className="flex">
@@ -23,14 +23,14 @@ const Danger = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="!my-0 text-sm text-red-700">{children}</p>
+          <p className="!my-0 text-sm text-red-700">{description}</p>
         </div>
       </div>
     </div>
   )
 }
 
-const Info = ({ children }: AlertProps): JSX.Element => {
+const Info = ({ description }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-blue-100 rounded-md dark:bg-blue-50">
       <div className="flex">
@@ -51,14 +51,14 @@ const Info = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="!my-0 text-sm text-blue-700">{children}</p>
+          <p className="!my-0 text-sm text-blue-700">{description}</p>
         </div>
       </div>
     </div>
   )
 }
 
-const Warning = ({ children }: AlertProps): JSX.Element => {
+const Warning = ({ description }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-yellow-100 rounded-md dark:bg-yellow-50">
       <div className="flex">
@@ -79,14 +79,14 @@ const Warning = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="!my-0 text-sm text-yellow-700">{children}</p>
+          <p className="!my-0 text-sm text-yellow-700">{description}</p>
         </div>
       </div>
     </div>
   )
 }
 
-const Success = ({ children }: AlertProps): JSX.Element => {
+const Success = ({ description }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-green-100 rounded-md dark:bg-green-50">
       <div className="flex">
@@ -107,14 +107,14 @@ const Success = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="!my-0 text-sm text-green-700">{children}</p>
+          <p className="!my-0 text-sm text-green-700">{description}</p>
         </div>
       </div>
     </div>
   )
 }
 
-export const Alert = ({ children }: AlertProps): JSX.Element => {
+export const Alert = ({ description }: AlertProps): JSX.Element => {
   return (
     <div className="p-4 bg-gray-100 rounded-md dark:bg-gray-50">
       <div className="flex">
@@ -135,7 +135,7 @@ export const Alert = ({ children }: AlertProps): JSX.Element => {
           </svg>
         </div>
         <div className="flex-1 ml-3 md:flex md:justify-between">
-          <p className="!my-0 text-sm text-gray-700">{children}</p>
+          <p className="!my-0 text-sm text-gray-700">{description}</p>
         </div>
       </div>
     </div>

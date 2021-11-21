@@ -7,6 +7,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeCodeTitles from 'rehype-code-titles'
 import rehypePrism from 'rehype-prism-plus'
+import remarkGfm from 'remark-gfm'
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -82,6 +83,7 @@ const contentLayerConfig = makeSource({
       ],
       [rehypeAutolinkHeadings, { behavior: 'append' }],
     ],
+    remarkPlugins: [remarkGfm],
   },
 })
 
