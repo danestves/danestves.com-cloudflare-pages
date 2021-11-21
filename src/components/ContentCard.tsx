@@ -1,29 +1,17 @@
-/**
- * This is an implementation based on `@graphcms/react-image`
- *
- * Reference: https://github.com/GraphCMS/react-image/blob/ec3b4c6cdc/src/index.js
- *
- * But using the `priority` prop like `next/image` does.
- */
-
 // Dependencies
 import * as React from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useI18n } from 'next-rosetta'
 
 // Internals
 import { clsx, formatDate } from '@/utils'
-import { GraphImage } from './GraphImage'
 import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@/types'
 import type { Locale } from 'i18n'
 
 interface Props {
   description: string
-  image: {
-    handle: string
-    height?: number
-    width?: number
-  }
+  image: string
   isHome?: boolean
   priorityImage?: boolean
   title: string
@@ -60,17 +48,14 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
 
     return (
       <Component {...props} ref={ref}>
-        <div className="overflow-hidden rounded-lg">
-          <GraphImage
+        <div className="flex overflow-hidden rounded-lg">
+          <Image
             alt={title}
-            // We make sure to use the correct image size based on the image's aspect ratio
-            image={{
-              ...image,
-              height: 360,
-              width: 640,
-            }}
-            maxWidth={640}
+            height={360}
+            objectFit="cover"
             priority={priorityImage}
+            src={image}
+            width={640}
           />
         </div>
         {date && (
@@ -100,7 +85,8 @@ export const ContentCard: ContentCardComponent = React.forwardRef(
             descriptionClassName
           )}
         >
-          {description}
+          {/* Remove HTML from description */}
+          {description.replace(/<\/?[^>]+(>|$)/g, '')}
         </p>
       </Component>
     )

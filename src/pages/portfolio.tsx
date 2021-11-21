@@ -41,7 +41,7 @@ export const PortfolioPage: NextPage<PortfolioPageProps> = ({ portfolios }) => {
                 as={Link}
                 description={portfolio.seo.description}
                 href={portfolio.project_url}
-                image={portfolio.cover}
+                image={portfolio.cover.handle}
                 key={portfolio.id}
                 locale={router.locale}
                 priorityImage={index <= 2}
