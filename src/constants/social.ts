@@ -9,21 +9,21 @@ type MenuItem = LinkProps & {
 
 export const SOCIAL: MenuItem[] = [
   {
-    href: '/twitter',
+    href: 'https://twitter.com/danestves',
     icon: TwitterIcon,
     label: 'twitter',
     rel: 'noopener noreferrer',
     target: '_blank',
   },
   {
-    href: '/youtube',
+    href: 'https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw',
     icon: YoutubeIcon,
     label: 'youtube',
     rel: 'noopener noreferrer',
     target: '_blank',
   },
   {
-    href: '/github',
+    href: 'https://github.com/danestves',
     icon: GitHubIcon,
     label: 'github',
     rel: 'noopener noreferrer',

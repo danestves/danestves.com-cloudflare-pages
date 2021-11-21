@@ -22,6 +22,20 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 15768000,
   },
+  async redirects() {
+    return [
+      {
+        destination: '/danestves.pdf',
+        source: '/DanielEsteves.pdf',
+        permanent: true,
+      },
+      {
+        destination: 'https://read.cv/danestves',
+        source: '/resume',
+        permanent: true,
+      },
+    ]
+  },
   async rewrites() {
     return [
       {
