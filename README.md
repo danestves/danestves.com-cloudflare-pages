@@ -9,7 +9,8 @@
 _<small>Inspired by Leerob README.md</small>_
 
 - **Framework:** [NextJS](https://nextjs.org/)
-- **Database:** [Supabase](https://supabase.io/)
+- **Database**: [PlanetScale](https://planetscale.com)
+- **ORM**: [Prisma](https://prisma.io/)
 - **Deployment:** [Vercel](https://vercel.com/)
 - **Content:** [MDX](https://github.com/mdx-js/mdx) + [Contentlayer](https://www.contentlayer.dev/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
