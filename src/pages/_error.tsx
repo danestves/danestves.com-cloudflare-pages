@@ -9,11 +9,11 @@ import { formatDate } from '@/utils'
 export const ServerErrorPage: NextLayoutPage = ({ statusCode }) => {
   const router = useRouter()
 
-  const whatsappHelpText = () => {
+  const text = () => {
     return `Hello Daniel, i have a trouble with this route.
 
-*Route*: _${router.asPath}_
-*Date*: ${formatDate({
+Route: ${router.asPath}
+Date: ${formatDate({
       date: new Date(),
       formatter: 'PPpp',
       locale: router.locale,
@@ -57,10 +57,9 @@ export const ServerErrorPage: NextLayoutPage = ({ statusCode }) => {
                 </Link>
                 <Link
                   className="inline-flex items-center px-4 py-2 text-sm font-medium border border-transparent rounded-md text-secondary-700 bg-secondary-100 hover:bg-secondary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 dark:focus:ring-offset-[#292929]"
-                  href={`https://wa.me/584123697600?text=${encodeURIComponent(
-                    whatsappHelpText()
-                  )}`}
-                  locale={router.locale}
+                  href={`https://twitter.com/messages/compose?recipient_id=554765148&text=${text()}`}
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
                   Contact support
                 </Link>
