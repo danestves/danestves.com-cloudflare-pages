@@ -62,7 +62,7 @@
     "@commitlint/config-conventional": "^15.0.0",
     "@giphy/js-types": "^4.1.0",
     "@next/bundle-analyzer": "^12.0.4",
-    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/line-clamp": "^0.2.2",
     "@tailwindcss/typography": "^0.4.1",
     "@types/node": "^16.11.11",
