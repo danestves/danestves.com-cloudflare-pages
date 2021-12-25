@@ -6,11 +6,7 @@ const plugin = require('tailwindcss/plugin')
  * @type {import("@types/tailwindcss/tailwind-config").TailwindConfig }
  **/
 module.exports = {
-  mode: 'jit',
-  purge: {
-    content: ['./src/{components,pages}/**/*.{ts,tsx}'],
-    safelist: ['max-w-md', 'max-w-lg'],
-  },
+  content: ['./src/{components,pages}/**/*.{ts,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
