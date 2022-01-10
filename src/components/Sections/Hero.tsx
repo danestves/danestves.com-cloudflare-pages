@@ -43,11 +43,7 @@ export const Hero = (): JSX.Element => {
           </span>
         </h1>
         <p className="mt-1 text-xs text-white">
-          Lead Frontend Developer @{' '}
-          <a href="https://seeed.us" rel="noopener noreferrer" target="_blank">
-            Seeed
-          </a>
-          . <br />{' '}
+          Senior Frontend Engineer. <br />{' '}
           <span
             dangerouslySetInnerHTML={{ __html: t('sections.hero.description') }}
           />
