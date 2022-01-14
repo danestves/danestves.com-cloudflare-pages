@@ -1,6 +1,7 @@
+// Dependencies
 import ReactDOMServer from 'react-dom/server';
-import type { EntryContext } from 'remix';
 import { RemixServer } from 'remix';
+import type { EntryContext } from 'remix';
 
 export default function handleRequest(
   request: Request,
