@@ -1,21 +1,19 @@
-// Required for installGlobals();
+// Dependencies
 import '@remix-run/cloudflare-pages';
-
-// Required for custom adapters
+import { createRequestHandler as createRemixRequestHandler } from '@remix-run/server-runtime';
 import type {
   AppLoadContext,
   ServerBuild,
   ServerPlatform,
 } from '@remix-run/server-runtime';
-import { createRequestHandler as createRemixRequestHandler } from '@remix-run/server-runtime';
-
-// Required only for Worker Site
-import type { Options as KvAssetHandlerOptions } from '@cloudflare/kv-asset-handler';
 import {
   getAssetFromKV,
   MethodNotAllowedError,
   NotFoundError,
 } from '@cloudflare/kv-asset-handler';
+import type { Options as KvAssetHandlerOptions } from '@cloudflare/kv-asset-handler';
+
+// @ts-ignore
 import manifest from '__STATIC_CONTENT_MANIFEST';
 
 export interface GetLoadContextFunction<Env = unknown> {

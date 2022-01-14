@@ -1,9 +1,13 @@
-import * as build from '../build/index.js';
+// Internals
 import {
   createFetchHandler,
   createWorkerAssetHandler,
   // createPageAssetHandler,
 } from './adapter';
+import { createContext } from './context';
+// @ts-ignore
+import * as build from '../build/index.js';
+import type { Env } from '~/types';
 
 const handleFetch = createFetchHandler({
   /**
@@ -29,7 +33,7 @@ const handleFetch = createFetchHandler({
    * @returns Context
    */
   getLoadContext(request, env, ctx) {
-    return { env, ctx };
+    return createContext(request, env as Env, ctx);
   },
 
   /**
