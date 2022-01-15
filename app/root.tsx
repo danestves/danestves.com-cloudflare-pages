@@ -7,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  json,
   useCatch,
   useLoaderData,
   useLocation,
@@ -17,9 +18,11 @@ import {
   useTheme,
 } from 'remix-themes';
 import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
+import type { Language } from 'remix-i18next';
 import type { Theme } from 'remix-themes';
 
 // Internals
+import { useRemixI18Next } from '~/lib/remix-i18n';
 import stylesUrl from './styles/tailwind.css';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
 import { getSeo } from './utils/seo';
@@ -43,6 +46,8 @@ export let meta: MetaFunction = ({ data }) => {
 };
 
 type LoaderData = {
+  i18n: Record<string, Language>;
+  locale: string;
   requestInfo: {
     origin: string;
     path: string;
@@ -53,10 +58,16 @@ type LoaderData = {
 };
 
 export let loader: LoaderFunction = async ({ request, context }) => {
-  let { theme: themeSession } = context as Context;
-  let theme = await themeSession(request);
+  let { theme: themeSession, i18n } = context as Context;
+  let [theme, locale, translations] = await Promise.all([
+    themeSession(request),
+    i18n.i18next.getLocale(request),
+    i18n.i18next.getTranslations(request, 'common'),
+  ]);
 
   let data: LoaderData = {
+    i18n: translations,
+    locale,
     requestInfo: {
       origin: getDomainUrl(request),
       path: new URL(request.url).pathname,
@@ -66,13 +77,19 @@ export let loader: LoaderFunction = async ({ request, context }) => {
     },
   };
 
-  return data;
+  const headers: HeadersInit = new Headers();
+  headers.append('Set-Cookie', await i18n.cookie.serialize(locale));
+
+  return json(data, {
+    headers,
+  });
 };
 
 function App() {
   let data = useLoaderData<LoaderData>();
 
   let [theme] = useTheme();
+  useRemixI18Next(data.locale);
 
   return (
     <html className={clsx(theme)} lang="en">

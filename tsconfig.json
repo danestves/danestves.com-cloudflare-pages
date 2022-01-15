@@ -2,5 +2,8 @@
   "files": [],
   "exclude": ["node_modules"],
   "extends": "./other/shared-tsconfig.json",
-  "references": [{ "path": "app" }, { "path": "types" }]
+  "references": [{ "path": "app" }, { "path": "types" }, {
+    "path": "worker"
+  }
+  ]
 }

@@ -1,0 +1,18 @@
+{
+  "header": {
+    "switcher": {
+      "language": {
+        "text": "Hola"
+      },
+      "theme": {
+        "dark": "cambiar a modo claro",
+        "light": "cambiar a modo oscuro"
+      }
+    }
+  },
+  "components": {
+    "post-card": {
+      "published": "Publicado en"
+    }
+  }
+}

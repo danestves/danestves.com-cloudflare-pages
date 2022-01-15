@@ -11,8 +11,7 @@
     "noEmit": true,
     "typeRoots": [
       "../types",
-      "../node_modules/@types",
-      "@cloudflare/workers-types"
+      "../node_modules/@types"
     ]
   }
 }
