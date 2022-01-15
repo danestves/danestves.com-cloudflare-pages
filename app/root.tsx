@@ -16,21 +16,29 @@ import {
   ThemeProvider,
   useTheme,
 } from 'remix-themes';
-import type { LinksFunction, MetaFunction, LoaderFunction } from 'remix';
+import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
 import type { Theme } from 'remix-themes';
 
 // Internals
 import stylesUrl from './styles/tailwind.css';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
+import { getSeo } from './utils/seo';
 import type { Context } from '~/types';
 
+let [seoMeta, seoLinks] = getSeo();
+
 export let links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: stylesUrl }];
+  return [...seoLinks, { rel: 'stylesheet', href: stylesUrl }];
 };
 
-export let meta: MetaFunction = () => {
+export let meta: MetaFunction = ({ data }) => {
+  let { requestInfo } = data as LoaderData;
+
   return {
     viewport: 'width=device-width, initial-scale=1',
+    ...seoMeta,
+    'twitter:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`,
+    'og:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`,
   };
 };
 
@@ -62,24 +70,24 @@ export let loader: LoaderFunction = async ({ request, context }) => {
 };
 
 function App() {
-  const data = useLoaderData<LoaderData>();
+  let data = useLoaderData<LoaderData>();
 
-  const [theme] = useTheme();
+  let [theme] = useTheme();
 
   return (
     <html className={clsx(theme)} lang="en">
       <head>
         <meta charSet="utf-8" />
         <Meta />
+        <PreventFlashOnWrongTheme
+          ssrTheme={Boolean(data.requestInfo.session.theme)}
+        />
 
         <link
           href={removeTrailingSlash(
             `${data.requestInfo.origin}${data.requestInfo.path}`
           )}
           rel="canonical"
-        />
-        <PreventFlashOnWrongTheme
-          ssrTheme={Boolean(data.requestInfo.session.theme)}
         />
         <Links />
       </head>
@@ -110,8 +118,8 @@ export default function AppWithProviders() {
 
 // https://remix.run/docs/en/v1/api/conventions#catchboundary
 export function CatchBoundary() {
-  const caught = useCatch();
-  const location = useLocation();
+  let caught = useCatch();
+  let location = useLocation();
 
   console.error('CatchBoundary', caught);
 
@@ -141,7 +149,7 @@ export function CatchBoundary() {
 
 // https://remix.run/docs/en/v1/api/conventions#errorboundary
 export function ErrorBoundary({ error }: { error: Error }) {
-  const location = useLocation();
+  let location = useLocation();
 
   console.error(error);
 
