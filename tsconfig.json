@@ -4,9 +4,9 @@
   "extends": "./other/shared-tsconfig.json",
   "references": [
     { "path": "app" },
-    { "path": "types" },
     {
-      "path": "worker"
-    }
+      "path": "types"
+    },
+    { "path": "worker" }
   ]
 }
