@@ -6,3 +6,4 @@
 /node_modules
 /dist
 /app/styles/tailwind.css
+/other/shared-tsconfig.json
