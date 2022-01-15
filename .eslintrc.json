@@ -1,3 +1,6 @@
 {
-  "extends": ["@remix-run", "prettier"]
+  "extends": ["@remix-run", "prettier"],
+  "rules": {
+    "jsx-a11y/alt-text": "off"
+  }
 }

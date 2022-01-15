@@ -22,11 +22,19 @@ import type { Language } from 'remix-i18next';
 import type { Theme } from 'remix-themes';
 
 // Internals
-import { useRemixI18Next } from '~/lib/remix-i18n';
+import { Footer } from './components/footer';
+import { Header } from './components/header';
+import { LeftSidebar } from './components/left-sidebar';
+import { RightSidebar } from './components/right-sidebar';
+import { useRemixI18Next } from './lib/remix-i18n';
 import stylesUrl from './styles/tailwind.css';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
 import { getSeo } from './utils/seo';
-import type { Context } from '~/types';
+import type { Context, Handler } from '~/types';
+
+export let handle: Handler = {
+  id: 'root',
+};
 
 let [seoMeta, seoLinks] = getSeo();
 
@@ -35,17 +43,18 @@ export let links: LinksFunction = () => {
 };
 
 export let meta: MetaFunction = ({ data }) => {
-  let { requestInfo } = data as LoaderData;
+  let { requestInfo } = data as RootLoaderData;
 
   return {
     viewport: 'width=device-width, initial-scale=1',
     ...seoMeta,
-    'twitter:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`,
-    'og:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`,
+    'twitter:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo?.path}`,
+    'og:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo?.path}`,
   };
 };
 
-type LoaderData = {
+export type RootLoaderData = {
+  country: string;
   i18n: Record<string, Language>;
   locale: string;
   requestInfo: {
@@ -64,8 +73,10 @@ export let loader: LoaderFunction = async ({ request, context }) => {
     i18n.i18next.getLocale(request),
     i18n.i18next.getTranslations(request, 'common'),
   ]);
+  let country = request.headers.get('CF-IPCOUNTRY') || 'US';
 
-  let data: LoaderData = {
+  let data: RootLoaderData = {
+    country,
     i18n: translations,
     locale,
     requestInfo: {
@@ -86,10 +97,10 @@ export let loader: LoaderFunction = async ({ request, context }) => {
 };
 
 function App() {
-  let data = useLoaderData<LoaderData>();
+  let data = useLoaderData<RootLoaderData>();
 
   let [theme] = useTheme();
-  useRemixI18Next(data.locale);
+  useRemixI18Next(data?.locale || 'en');
 
   return (
     <html className={clsx(theme)} lang="en">
@@ -97,12 +108,12 @@ function App() {
         <meta charSet="utf-8" />
         <Meta />
         <PreventFlashOnWrongTheme
-          ssrTheme={Boolean(data.requestInfo.session.theme)}
+          ssrTheme={Boolean(data?.requestInfo?.session?.theme)}
         />
 
         <link
           href={removeTrailingSlash(
-            `${data.requestInfo.origin}${data.requestInfo.path}`
+            `${data?.requestInfo?.origin}${data?.requestInfo?.path}`
           )}
           rel="canonical"
         />
@@ -110,7 +121,13 @@ function App() {
       </head>
 
       <body className="bg-white dark:bg-[#292929] transition duration-500">
+        <Header />
+        <LeftSidebar />
+        <RightSidebar />
+
         <Outlet />
+
+        <Footer />
 
         <ScrollRestoration />
         <Scripts />
@@ -121,11 +138,11 @@ function App() {
 }
 
 export default function AppWithProviders() {
-  let data = useLoaderData<LoaderData>();
+  let data = useLoaderData<RootLoaderData>();
 
   return (
     <ThemeProvider
-      specifiedTheme={data.requestInfo.session.theme}
+      specifiedTheme={data?.requestInfo?.session?.theme}
       themeAction="/action/set-theme"
     >
       <App />

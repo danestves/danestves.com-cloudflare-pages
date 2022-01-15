@@ -1,3 +1,6 @@
+// Dependencies
+import * as React from 'react';
+
 function getDomainUrl(request: Request) {
   const host =
     request.headers.get('X-Forwarded-Host') ?? request.headers.get('host');
@@ -23,4 +26,7 @@ function removeTrailingSlash(s: string) {
   return s.endsWith('/') ? s.slice(0, -1) : s;
 }
 
-export { getDomainUrl, getUrl, removeTrailingSlash };
+const useSSRLayoutEffect =
+  typeof window === 'undefined' ? () => {} : React.useLayoutEffect;
+
+export { getDomainUrl, getUrl, removeTrailingSlash, useSSRLayoutEffect };
