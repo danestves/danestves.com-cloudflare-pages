@@ -1,6 +1,7 @@
 /.cache
 /.github
 /.husky
+/.idea
 /build
 /public
 /node_modules
