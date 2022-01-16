@@ -60,6 +60,7 @@ module.exports = {
       };
       addUtilities(newUtilities);
     }),
+    require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/typography'),
   ],

@@ -37,13 +37,14 @@ const Flag = ({ countryCode = 'US', ...props }: FlagProps): JSX.Element => {
         getImageBuilder(imageProps.id, imageProps.alt),
         10
       )}
-      className="aspect-w-1 aspect-h-1 flex"
+      className="aspect-w-1 aspect-h-1"
       img={
         <img
           {...getImgProps(getImageBuilder(imageProps.id, imageProps.alt), {
             widths: [24],
             sizes: ['24px'],
           })}
+          className="rounded-full"
           height={24}
           width={24}
         />
