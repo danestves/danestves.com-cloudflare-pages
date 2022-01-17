@@ -1,9 +1,11 @@
 node_modules
+.DS_Store
 
 # Remix
 /.cache
 /build
 /public/build
+/content/.cache.json
 
 # Custom Build
 /dist
@@ -17,4 +19,4 @@ node_modules
 
 # Miniflare
 /.mf
-/.env
+.env

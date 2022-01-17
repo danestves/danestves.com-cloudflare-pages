@@ -28,9 +28,11 @@ import { LeftSidebar } from './components/left-sidebar';
 import { RightSidebar } from './components/right-sidebar';
 import { useRemixI18Next } from './lib/remix-i18n';
 import stylesUrl from './styles/tailwind.css';
+import { i18n, i18nStorage } from './utils/i18n.server';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
 import { getSeo } from './utils/seo';
-import type { Context, Handler } from '~/types';
+import { themeSessionResolver } from './utils/theme.server';
+import type { Handler } from '~/types';
 
 export let handle: Handler = {
   id: 'root',
@@ -66,12 +68,11 @@ export type RootLoaderData = {
   };
 };
 
-export let loader: LoaderFunction = async ({ request, context }) => {
-  let { theme: themeSession, i18n } = context as Context;
+export let loader: LoaderFunction = async ({ request }) => {
   let [theme, locale, translations] = await Promise.all([
-    themeSession(request),
-    i18n.i18next.getLocale(request),
-    i18n.i18next.getTranslations(request, 'common'),
+    themeSessionResolver(request),
+    i18n.getLocale(request),
+    i18n.getTranslations(request, 'common'),
   ]);
   let country = request.headers.get('CF-IPCOUNTRY') || 'US';
 
@@ -89,7 +90,7 @@ export let loader: LoaderFunction = async ({ request, context }) => {
   };
 
   const headers: HeadersInit = new Headers();
-  headers.append('Set-Cookie', await i18n.cookie.serialize(locale));
+  headers.append('Set-Cookie', await i18nStorage.serialize(locale));
 
   return json(data, {
     headers,

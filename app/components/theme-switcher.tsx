@@ -1,12 +1,14 @@
 // Dependencies
+import { useTranslation } from 'react-i18next';
 import { Theme, useTheme } from 'remix-themes';
 
 // Internals
 import { MoonIcon } from './icons/moon-icon';
-// import { Themed } from './themed';
+import { Themed } from './themed';
 
 function ThemeSwitcher() {
-  const [, setTheme] = useTheme();
+  let { t } = useTranslation();
+  let [, setTheme] = useTheme();
 
   return (
     <button
@@ -21,10 +23,10 @@ function ThemeSwitcher() {
       <MoonIcon className="inline-block w-[21px] h-auto" />
 
       <span className="sr-only">
-        {/* <Themed
+        <Themed
           dark={t('header.switcher.theme.dark')}
           light={t('header.switcher.theme.light')}
-        /> */}
+        />
       </span>
     </button>
   );

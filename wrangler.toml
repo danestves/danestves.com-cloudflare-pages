@@ -5,15 +5,20 @@ account_id = "4f24d74527ce9e478456c5a88e466269"
 zone_id = "fb4b53a2355b1f7287627892124bd7c5"
 route = "dev.danestves.com/*"
 
+kv_namespaces = [
+  { binding = "CONTENT", id = "760848efe5c4465290589b70a68d3a33" }
+]
+
 [site]
 bucket = "./public"
 entry-point = "."
 
 [build]
-command = "npm run build"
+command = "npm run build:worker"
 watch_dir = "./build/index.js"
 
 [build.upload]
-format = "modules"
-dir = "./dist"
-main = "./worker.mjs"
+format = "service-woerker"
+
+[miniflare]
+kv_persist = true
