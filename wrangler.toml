@@ -2,7 +2,7 @@ name = "danestves-com"
 type = "javascript"
 workers_dev = true
 account_id = "4f24d74527ce9e478456c5a88e466269"
-zone_id = "fb4b53a2355b1f7287627892124bd7c5"
+zone_id = ""
 route = "dev.danestves.com/*"
 
 kv_namespaces = [
