@@ -1,13 +1,14 @@
 // Dependencies
 const fs = require('fs');
-const fetch = require('node-fetch');
 const path = require('path');
 
 const commit = process.env.COMMIT_SHA;
 
 async function getCommit() {
   if (!commit) return { sha: '' };
+
   try {
+    const { default: fetch } = await import('node-fetch');
     const res = await fetch(
       `https://api.github.com/repos/danestves/danestves.com/commits/${commit}`
     );
