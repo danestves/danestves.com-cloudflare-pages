@@ -7,7 +7,7 @@ declare var SESSION_SECRET: string;
 let themeStorage = createCookieSessionStorage({
   cookie: {
     name: '__danestves_theme',
-    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
+    expires: new Date('2222-11-29'),
     httpOnly: true,
     path: '/',
     sameSite: 'lax',

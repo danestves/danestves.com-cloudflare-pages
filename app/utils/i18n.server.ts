@@ -12,7 +12,7 @@ let backend = new FetchBackend({
 });
 
 let i18nStorage = createCookie('__danestves_locale', {
-  expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
+  expires: new Date('2222-11-29'),
   httpOnly: true,
   path: '/',
   sameSite: 'lax',
