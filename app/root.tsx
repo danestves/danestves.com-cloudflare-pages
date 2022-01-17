@@ -50,8 +50,8 @@ export let meta: MetaFunction = ({ data }) => {
   return {
     viewport: 'width=device-width, initial-scale=1',
     ...seoMeta,
-    'twitter:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo?.path}`,
-    'og:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo?.path}`,
+    'twitter:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`,
+    'og:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`,
   };
 };
 
@@ -101,7 +101,7 @@ function App() {
   let data = useLoaderData<RootLoaderData>();
 
   let [theme] = useTheme();
-  useRemixI18Next(data?.locale || 'en');
+  useRemixI18Next(data.locale);
 
   return (
     <html className={clsx(theme)} lang="en">
@@ -109,12 +109,12 @@ function App() {
         <meta charSet="utf-8" />
         <Meta />
         <PreventFlashOnWrongTheme
-          ssrTheme={Boolean(data?.requestInfo?.session?.theme)}
+          ssrTheme={Boolean(data.requestInfo.session.theme)}
         />
 
         <link
           href={removeTrailingSlash(
-            `${data?.requestInfo?.origin}${data?.requestInfo?.path}`
+            `${data.requestInfo.origin}${data.requestInfo.path}`
           )}
           rel="canonical"
         />
@@ -143,7 +143,7 @@ export default function AppWithProviders() {
 
   return (
     <ThemeProvider
-      specifiedTheme={data?.requestInfo?.session?.theme}
+      specifiedTheme={data.requestInfo.session.theme}
       themeAction="/action/set-theme"
     >
       <App />

@@ -6,7 +6,7 @@ async function build() {
 
   console.log(`Building Worker in ${mode} mode for version ${version}`);
 
-  const outfile = './dist/worker.mjs';
+  const outfile = './dist/worker.js';
   const startTime = Date.now();
   const result = await esbuild.build({
     entryPoints: ['./worker/index.ts'],
@@ -15,7 +15,6 @@ async function build() {
     sourcemap: mode !== 'production',
     format: 'esm',
     metafile: true,
-    external: ['__STATIC_CONTENT_MANIFEST'],
     define: {
       'process.env.NODE_ENV': `"${mode}"`,
       'process.env.VERSION': `"${version}"`,
