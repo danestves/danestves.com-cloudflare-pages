@@ -1,7 +1,9 @@
 import * as esbuild from 'esbuild';
 
 async function build() {
-  const mode = process.env.NODE_ENV.toLowerCase() || 'development';
+  const mode = process.env.NODE_ENV
+    ? process.env.NODE_ENV.toLowerCase()
+    : 'development';
   const version = process.env.VERSION || new Date().toISOString();
 
   console.log(`Building Worker in ${mode} mode for version ${version}`);
