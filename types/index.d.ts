@@ -19,4 +19,4 @@ type Handler = {
 };
 
 export { Env, DLink, Handler };
-export { Context } from '../worker/context';
+export * from './youtube';
