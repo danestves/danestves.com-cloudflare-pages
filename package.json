@@ -27,7 +27,7 @@
     "dev:remix": "remix watch",
     "dev:style": "tailwindcss -o ./app/styles/tailwind.css --watch",
     "dev:worker": "miniflare --build-command \"node ./scripts/build.mjs\" --build-watch-path ./worker --build-watch-path ./build/index.js --no-cache --watch --open",
-    "dev": "concurrently \"npm:dev:*\" \"npm:content:watch\"",
+    "dev": "concurrently \"npm:dev:*\" \"npm:content:watch\" \"routes-gen -d @routes-gen/remix\"",
     "postinstall": "remix setup cloudflare-workers",
     "prebuild": "npm run cleanup",
     "prepare": "husky install"

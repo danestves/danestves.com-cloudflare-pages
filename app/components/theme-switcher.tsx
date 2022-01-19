@@ -12,7 +12,7 @@ function ThemeSwitcher() {
 
   return (
     <button
-      className="inline-flex p-2 text-white dark:text-[#292929] bg-primary rounded-full focus:outline-none focus:ring-4 focus:ring-primary/50"
+      className="inline-flex p-2 text-white dark:text-[#292929] bg-secondary rounded-full focus:outline-none focus:ring-4 focus:ring-secondary/50"
       onClick={() =>
         setTheme((previousTheme) =>
           previousTheme === Theme.DARK ? Theme.LIGHT : Theme.DARK

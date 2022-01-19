@@ -30,7 +30,7 @@ function RightSidebar() {
           <li key={uuid()}>
             <a
               {...link}
-              className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:text-[#B1B1B1] uppercase vertical-rl"
+              className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:hover:text-primary dark:text-[#B1B1B1] uppercase vertical-rl"
             >
               {name}
             </a>
@@ -40,7 +40,7 @@ function RightSidebar() {
 
       <div className="fixed right-12 bottom-8 z-10">
         <a
-          className="font-semibold text-primary uppercase"
+          className="font-semibold text-secondary uppercase"
           href="https://twitter.com/messages/compose?recipient_id=554765148"
           rel="noopener noreferrer"
           target="_blank"

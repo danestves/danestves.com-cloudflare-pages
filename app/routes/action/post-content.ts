@@ -14,7 +14,7 @@ export let action: ActionFunction = async ({ request }) => {
 
     const data = (await request.json()) as any;
 
-    await CONTENT.put(data.slug, JSON.stringify(data));
+    await CONTENT.put(data.kv_slug, JSON.stringify(data));
 
     return json({ success: true });
   } catch (e) {

@@ -100,7 +100,7 @@ import remarkGfm from 'remark-gfm';
         return options;
       },
     });
-    const radingTime = calculateReadingTime(mdxSource);
+    const readingTime = calculateReadingTime(mdxSource);
     const Component = getMDXComponent(code);
     const html = renderToString(React.createElement(Component));
     const hasComponents = Object.keys(files).length > 0;
@@ -113,13 +113,16 @@ import remarkGfm from 'remark-gfm';
     const response = await fetch(`${process.env.DOMAIN}/action/post-content`, {
       method: 'post',
       body: JSON.stringify({
-        slug,
+        // Used to save the post inside the correct URL
+        kv_slug: slug,
+        // Plain URL without the rest of the src
+        slug: parts[parts.length - 1].replace('.mdx', ''),
         hash,
         frontmatter,
         series,
         html,
         code: hasComponents ? code : undefined,
-        radingTime,
+        readingTime,
       }),
       headers: {
         authorization: `Bearer ${process.env.POST_CONTENT_BEARER_TOKEN}`,

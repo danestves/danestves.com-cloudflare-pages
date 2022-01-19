@@ -1,5 +1,6 @@
 // Dependencies
 import { NavLink } from 'remix';
+import { route } from 'routes-gen';
 import { v4 as uuid } from 'uuid';
 
 // Internals
@@ -24,8 +25,8 @@ const LINKS: DLink[] = [
     to: 'https://read.cv/danestves',
   },
   {
-    name: 'blog',
-    to: '/posts',
+    name: 'posts',
+    to: route('/posts'),
     prefetch: 'intent',
   },
 ];
@@ -34,12 +35,12 @@ function LeftSidebar() {
   return (
     <aside className="hidden fixed top-0 left-0 z-10 px-12 h-full lg:block">
       <ul className="flex flex-col justify-center items-center space-y-4 h-full rotate-180">
-        {LINKS.map(({ name, to, ...link }) => {
+        {LINKS.map(({ name, to, prefetch, ...link }) => {
           if (to.toString().startsWith('http')) {
             return (
               <li key={uuid()}>
                 <a
-                  className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:text-[#B1B1B1] uppercase vertical-rl"
+                  className="text-xs font-semibold leading-3 text-[#989898]  dark:hover:text-primary dark:text-[#B1B1B1] uppercase vertical-rl"
                   href={to.toString()}
                   {...link}
                 >
@@ -52,8 +53,9 @@ function LeftSidebar() {
           return (
             <li key={uuid()}>
               <NavLink
-                className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:text-[#B1B1B1] uppercase vertical-rl"
-                prefetch="intent"
+                {...link}
+                prefetch={prefetch}
+                className="text-xs font-semibold leading-3 text-[#989898]  dark:hover:text-primary dark:text-[#B1B1B1] uppercase vertical-rl"
                 to={to}
               >
                 {name}
@@ -64,8 +66,11 @@ function LeftSidebar() {
       </ul>
 
       <div className="fixed bottom-8 left-12 z-10">
-        <NavLink className="font-semibold text-primary uppercase" to="/posts">
-          blog
+        <NavLink
+          className="font-semibold text-secondary uppercase"
+          to={route('/posts')}
+        >
+          posts
         </NavLink>
       </div>
     </aside>

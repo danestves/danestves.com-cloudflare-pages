@@ -1,0 +1,107 @@
+---
+title: 'Why you should ditch jQuery for native JavaScript'
+cover:
+  {
+    id: 'posts/why-you-should-ditch-jquery-for-native-javascript/banner',
+    alt: 'Why you should ditch jQuery for native JavaScript',
+  }
+published_at: '2019-09-23T04:00:00.000Z'
+tags: ['Development', 'JavaScript']
+seo:
+  {
+    title: 'Why you should ditch jQuery for native JavaScript',
+    description: 'Do you wish you could relive the days when jQuery ruled? Better get your applications on steroids if you want to stand a chance.',
+  }
+---
+
+import { CodePen } from 'mdx-embed';
+
+Remember that time when jQuery was the popular kid in school? 🤩 Well let me tell you, those times are long gone 👴.
+
+## What is jQuery?
+
+jQuery is a cross-platform JavaScript library initially created so that the code we wrote in Google Chrome could also work in Mozilla, Internet Explorer and all available browsers. But that was before, nowadays jQuery is not necessary for new projects, only for legacy projects.
+
+I know you are going to tell me that there are still projects that use jQuery such as Bootstrap and WordPress 🤨, but there is news, recently [Bootstrap announced that its version five will come completely in Vanilla JavaScript](https://github.com/twbs/bootstrap/pull/23586), this means that they will no longer need jQuery in their dependencies. And as for WordPress 🤔 no one knows yet, but what is certain is that they are opting for new technologies such as React in their block editor [Gutenberg](https://github.com/WordPress/gutenberg).
+
+## You might not need jQuery
+
+[You might not need jQuery](http://youmightnotneedjquery.com/) is a site I like to visit when there are things I previously did with jQuery and I want to know how they would be done with Vanilla JavaScript, remember that jQuery is just JavaScript interpreted for cross-browser compatibility.
+
+The animations that we do with `.fadeIn()` could now comfortably be done with a CSS class and do something like this:
+
+```js
+const photo = document.getElementById('myPhoto');
+
+photo.classList.add('show');
+photo.classList.remove('hide');
+```
+
+```css
+.show {
+  transition: opacity 400ms;
+}
+
+.hide {
+  opacity: 0;
+}
+```
+
+With this we already have animations adding interactivity using JavaScript and CSS together.
+
+## Do you miss the jQuery selector?
+
+Many people used to use jQuery mostly because of its selector that attracted a lot of attention, you could select any element of the document just using `$('.myClass #myId h1')`, and it is true, it is very cool this way and I am going to show you how 🥳.
+
+1. Let's create our JavaScript with the selector we want to perform:
+
+```js
+const $ = document.querySelector.bind(document); // Create a selector that references the entire current document
+```
+
+2. We create an HTML with attributes that we can handle:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Selector like jQuery</title>
+  </head>
+  <body>
+    <h1>h1 Title</h1>
+    <p class="class-p">with class</p>
+  </body>
+</html>
+```
+
+3. Now we can change properties of the elements in the following way:
+
+```js
+const $ = document.querySelector.bind(document);
+
+$('body').style.background = 'red';
+$('body').style.color = '#fff';
+$('h1').style.fontSize = '200%';
+$('.class-p').style.fontSize = '48px';
+
+// And whatever you need to do when you call the element(s)
+```
+
+4. That's it, congratulations! You've just made your own jQuery-style selector with Vanilla JavaScript 🎉🥳.
+
+## Final result
+
+<CodePen codePenId="LYPXyeo" />
+
+## How to keep learning?
+
+I did a course on [Platzi](https://platzi.com) on how to move from [jQuery to JavaScript](https://platzi.com/clases/jquery-js/) that helped me to update myself that I really don't need to use this library anymore, unless of course I work on legacy projects. I'll leave you with this list of resources that will help you better understand how to move from jQuery to JavaScript:
+
+- [Why you should stop using jQuery](https://platzi.com/blog/debes-dejar-de-usar-jquery/)
+- [JavaScript Basics](https://platzi.com/clases/fundamentos-javascript/)
+- [You Might Not Need jQuery](http://youmightnotneedjquery.com/)
+- [JavaScript Tutorial](https://www.w3schools.com/js/default.asp)
+
+## Conclusions
+
+Finally I recommend you to learn little by little the new trends that are coming out in the market and adapt to their use. **I'm not** saying that you should follow the popularity of today's frameworks and libraries that are currently used, experiment, research, practice a lot and above all never stop learning 😎

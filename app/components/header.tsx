@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { NavLink } from 'remix';
+import { route } from 'routes-gen';
 import { v4 as uuid } from 'uuid';
 
 // Internals
@@ -32,15 +33,15 @@ const LINKS: DLink[] = [
     to: 'https://read.cv/danestves',
   },
   {
-    name: 'blog',
-    to: '/posts',
+    name: 'posts',
+    to: route('/posts'),
   },
 ];
 
 const MOBILE_LINKS: DLink[] = [
   {
     name: 'home',
-    to: '/',
+    to: route('/'),
   },
   ...LINKS,
 ];
