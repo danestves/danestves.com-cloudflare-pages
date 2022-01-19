@@ -8,9 +8,14 @@ import { bundleMDX } from 'mdx-bundler';
 import fetch from 'node-fetch';
 import * as path from 'path';
 import * as React from 'react';
-import { renderToString } from 'react-dom/server.js';
 import { getMDXComponent } from 'mdx-bundler/client/index.js';
-import rehypeHighlight from 'rehype-highlight';
+import { renderToString } from 'react-dom/server.js';
+import calculateReadingTime from 'reading-time';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeCodeTitles from 'rehype-code-titles';
+import rehypePrism from 'rehype-prism-plus';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
 (async function () {
   config();
@@ -78,17 +83,24 @@ import rehypeHighlight from 'rehype-highlight';
       source: mdxSource,
       files,
       xdmOptions(options) {
-        // options.remarkPlugins = [
-        //   ...(options.remarkPlugins ?? []),
-        //   remarkMdxCodeMeta,
-        // ]
+        options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
         options.rehypePlugins = [
           ...(options.rehypePlugins ?? []),
-          rehypeHighlight,
+          rehypeSlug,
+          rehypeAutolinkHeadings,
+          [rehypeCodeTitles, { behavior: 'wrap' }],
+          rehypeCodeTitles,
+          [
+            rehypePrism,
+            {
+              showLineNumbers: true,
+            },
+          ],
         ];
         return options;
       },
     });
+    const radingTime = calculateReadingTime(mdxSource);
     const Component = getMDXComponent(code);
     const html = renderToString(React.createElement(Component));
     const hasComponents = Object.keys(files).length > 0;
@@ -107,6 +119,7 @@ import rehypeHighlight from 'rehype-highlight';
         series,
         html,
         code: hasComponents ? code : undefined,
+        radingTime,
       }),
       headers: {
         authorization: `Bearer ${process.env.POST_CONTENT_BEARER_TOKEN}`,
