@@ -7,7 +7,6 @@ import { getImageBuilder, getImgProps, images } from '~/images';
 import { BlurrableImage } from '../blurrable-image';
 import { Rings } from '../rings';
 
-let MotionBlurrableImage = motion(BlurrableImage);
 let MotionRings = motion(Rings);
 
 function HeroSection() {
@@ -23,7 +22,7 @@ function HeroSection() {
         <MotionRings
           animate={{ opacity: 1, scale: 1 }}
           className="w-full h-auto"
-          initial={{ opacity: 0, scale: 0.75 }}
+          initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
           transition={{ delay: 0.15 }}
         />
       </div>
@@ -32,7 +31,7 @@ function HeroSection() {
         <div className="-mt-16 w-[249px] max-w-none h-auto sm:w-[248px] md:mt-auto lg:w-[320px]">
           <motion.div
             animate={{ opacity: 1, scale: 1 }}
-            initial={{ opacity: 0, scale: 0.75 }}
+            initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
             transition={{ delay: 0.3 }}
           >
             <BlurrableImage
@@ -68,7 +67,7 @@ function HeroSection() {
           opacity: 0,
           originX: 1,
           originZ: 1,
-          scale: 0.75,
+          scale: shouldReduceMotion ? 1 : 0.75,
           translateY: -50,
         }}
         transition={{ delay: 0.45 }}
