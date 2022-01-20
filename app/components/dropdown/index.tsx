@@ -4,7 +4,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 // Internals
 import { StyledContent } from './styles';
 
-export const Dropdown = (
+const Dropdown = (
   props: DropdownMenuPrimitive.DropdownMenuProps
 ): JSX.Element => {
   return <DropdownMenuPrimitive.Root {...props} />;
@@ -16,4 +16,4 @@ Dropdown.Label = DropdownMenuPrimitive.Label;
 Dropdown.Item = DropdownMenuPrimitive.Item;
 Dropdown.Group = DropdownMenuPrimitive.Group;
 
-export { Dropdown as default };
+export { Dropdown };

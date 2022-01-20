@@ -1,34 +1,40 @@
 // Dependencies
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 import { useTranslation } from 'react-i18next';
 import { Theme, useTheme } from 'remix-themes';
 
 // Internals
 import { MoonIcon } from './icons/moon-icon';
+import { Switch } from './switch';
 import { Themed } from './themed';
 
 function ThemeSwitcher() {
   let { t } = useTranslation();
-  let [, setTheme] = useTheme();
+  let [theme, setTheme] = useTheme();
+
+  const onCheckedChange = (_checked: boolean) => {
+    setTheme((previousTheme) =>
+      previousTheme === Theme.DARK ? Theme.LIGHT : Theme.DARK
+    );
+  };
 
   return (
-    <button
+    <Switch
+      aria-label="Toggle dark mode"
+      checked={theme === Theme.DARK}
       className="inline-flex p-2 text-white dark:text-[#292929] bg-secondary rounded-full focus:outline-none focus:ring-4 focus:ring-secondary/50"
-      onClick={() =>
-        setTheme((previousTheme) =>
-          previousTheme === Theme.DARK ? Theme.LIGHT : Theme.DARK
-        )
-      }
-      type="button"
+      defaultChecked={theme === Theme.DARK}
+      onCheckedChange={onCheckedChange}
     >
       <MoonIcon className="inline-block w-[21px] h-auto" />
 
-      <span className="sr-only">
+      <VisuallyHidden.Root>
         <Themed
           dark={t('header.switcher.theme.dark')}
           light={t('header.switcher.theme.light')}
         />
-      </span>
-    </button>
+      </VisuallyHidden.Root>
+    </Switch>
   );
 }
 
