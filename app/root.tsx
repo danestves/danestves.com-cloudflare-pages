@@ -1,6 +1,6 @@
 // Dependencies
 import clsx from 'clsx';
-import microtip from 'microtip/microtip.css';
+import microtip from 'microtip/microtip.min.css';
 import {
   Links,
   LiveReload,

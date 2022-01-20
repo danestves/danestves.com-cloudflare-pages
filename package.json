@@ -20,7 +20,7 @@
     "cleanup": "rimraf .cache ./dist ./build ./public/build ./app/styles/tailwind.css",
     "content:watch": "node ./other/watch-content.js",
     "build:remix": "remix build",
-    "build:style": "postcss styles/**/*.css --base styles --dir app/styles -- --env production",
+    "build:style": "postcss styles/**/*.css --base styles --dir app/styles --env production",
     "build:worker": "cross-env NODE_ENV=production VERSION=$(git rev-parse --short HEAD) node ./scripts/build.mjs",
     "build": "npm run build:style && npm run build:remix && node ./other/generate-build-info.js",
     "debug": "miniflare --debug --build-command \"npm run dev:worker\" --watch",
