@@ -7,6 +7,7 @@ import type { EntryContext } from 'remix';
 // Internals
 import { initI18n } from '~/utils/i18n';
 import { RemixI18NextProvider } from '~/lib/remix-i18n';
+import { getCssText } from '~/stitches.config';
 
 export default async function handleRequest(
   request: Request,
@@ -20,7 +21,7 @@ export default async function handleRequest(
     <RemixI18NextProvider i18n={i18next}>
       <RemixServer context={remixContext} url={request.url} />
     </RemixI18NextProvider>
-  );
+  ).replace(/<\/head>/, `<style id="stitches">${getCssText()}</style></head>`);
 
   responseHeaders.set('Content-Type', 'text/html');
 
