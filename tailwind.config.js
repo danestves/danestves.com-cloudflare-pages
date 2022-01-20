@@ -41,6 +41,10 @@ module.exports = {
         center: true,
         padding: '1rem',
       },
+      fontFamily: {
+        roboto: ['Roboto', ...defaultTheme.fontFamily.sans],
+        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
