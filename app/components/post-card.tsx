@@ -53,8 +53,14 @@ function PostCard<T extends React.ElementType = 'div'>({
         img={
           <img
             {...getImgProps(getImageBuilder(post.cover.id, post.cover.alt), {
-              widths: [240, 480],
-              sizes: ['240px', '480px'],
+              widths: [1920, 1280, 640, 320],
+              sizes: [
+                '(min-width: 1920px) 100vw, 1920px',
+                '(min-width: 1280px) 100vw, 1280px',
+                '(min-width: 640px) 100vw, 640px',
+                '(min-width: 320px) 100vw, 320px',
+                '100vw',
+              ],
             })}
             height={1080}
             width={1920}

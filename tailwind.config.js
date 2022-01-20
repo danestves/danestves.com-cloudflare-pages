@@ -1,4 +1,5 @@
 // Dependencies
+const defaultTheme = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
 
 /** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig} */
@@ -40,6 +41,39 @@ module.exports = {
         center: true,
         padding: '1rem',
       },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': '#838383',
+            '--tw-prose-headings': theme('colors.primary[500]'),
+            '--tw-prose-links': theme('colors.primary[500]'),
+            '--tw-prose-pre-code': 'var(--syntax-fg)',
+            '--tw-prose-pre-bg': 'var(--syntax-bg)',
+            '--tw-prose-quote-borders': theme('colors.gray[300]'),
+            '--tw-prose-quotes': theme('colors.gray[400]'),
+            'h2, h3, h4, h5, h6': {
+              'scroll-margin-top': theme('spacing[20]'),
+              '& > a': {
+                color: `${theme('colors.secondary')} !important`,
+              },
+            },
+            code: {
+              borderRadius: theme('borderRadius.lg'),
+              padding: `${defaultTheme.spacing[1]} ${defaultTheme.spacing[0.5]}`,
+              fontWeight: theme('fontWeight.normal'),
+            },
+          },
+        },
+        dark: {
+          css: {
+            '--tw-prose-body': '#b5b5b5',
+            '--tw-prose-bold': theme('colors.gray[300]'),
+            '--tw-prose-counters': theme('colors.white'),
+            '--tw-prose-quote-borders': theme('colors.gray[500]'),
+            '--tw-prose-quotes': theme('colors.gray[400]'),
+          },
+        },
+      }),
       screens: {
         xs: '475px',
       },

@@ -12,6 +12,16 @@ export let { getSeo, getSeoLinks, getSeoMeta } = initSeo({
   title,
   titleTemplate: '%s | @danestves',
   description: description.join(' '),
+  languageAlternates: [
+    {
+      href: 'https://danestves.com/?lng=en',
+      hrefLang: 'en',
+    },
+    {
+      href: 'https://danestves.com/?lng=es',
+      hrefLang: 'es',
+    },
+  ],
   openGraph: {
     images: [
       {

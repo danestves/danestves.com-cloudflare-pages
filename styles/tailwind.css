@@ -1,0 +1,96 @@
+/* purgecss start ignore */
+@tailwind base;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* clears the 'X' from Internet Explorer */
+  input[type='search']::-ms-clear,
+  input[type='search']::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* clears the 'X' from Chrome */
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
+}
+
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;
+@tailwind screens;
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-Medium.woff2') format('woff2'),
+    url('/fonts/Roboto-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-Regular.woff2') format('woff2'),
+    url('/fonts/Roboto-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Black.woff2') format('woff2'),
+    url('/fonts/Poppins-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Bold.woff2') format('woff2'),
+    url('/fonts/Poppins-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-SemiBold.woff2') format('woff2'),
+    url('/fonts/Poppins-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Regular.woff2') format('woff2'),
+    url('/fonts/Poppins-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.prose h2 > a,
+.prose h3 > a,
+.prose h4 > a,
+.prose h5 > a,
+.prose h6 > a {
+  @apply text-primary no-underline font-bold hover:underline;
+}
+
+.prose [data-embed-type] {
+  @apply rounded-xl overflow-hidden;
+}

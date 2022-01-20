@@ -4,6 +4,7 @@ export interface Post {
   frontmatter: PostFrontmatter;
   html: string;
   readingTime: PostReadingTime;
+  code: string;
 }
 
 export interface PostFrontmatter {

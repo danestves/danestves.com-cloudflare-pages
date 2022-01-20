@@ -13,9 +13,30 @@ import { renderToString } from 'react-dom/server.js';
 import calculateReadingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeCodeTitles from 'rehype-code-titles';
+import rehypeImageLazyLoading from 'rehype-plugin-image-native-lazy-loading';
 import rehypePrism from 'rehype-prism-plus';
+import rehypeProbeImageSize from 'rehype-probe-image-size';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+
+// Internals
+import { mdxComponents } from './mdx-components.mjs';
+
+function removePreContainerDivs() {
+  return async function preContainerDivsTransformer(tree) {
+    const { visit } = await import('unist-util-visit');
+    visit(
+      tree,
+      { type: 'element', tagName: 'pre' },
+      function visitor(node, index, parent) {
+        if (parent?.type !== 'element') return;
+        if (parent.tagName !== 'div') return;
+        if (parent.children.length !== 1 && index === 0) return;
+        Object.assign(parent, node);
+      }
+    );
+  };
+}
 
 (async function () {
   config();
@@ -86,9 +107,10 @@ import remarkGfm from 'remark-gfm';
         options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
         options.rehypePlugins = [
           ...(options.rehypePlugins ?? []),
+          rehypeImageLazyLoading,
+          rehypeProbeImageSize,
           rehypeSlug,
-          rehypeAutolinkHeadings,
-          [rehypeCodeTitles, { behavior: 'wrap' }],
+          [rehypeAutolinkHeadings, { behavior: 'wrap' }],
           rehypeCodeTitles,
           [
             rehypePrism,
@@ -96,14 +118,20 @@ import remarkGfm from 'remark-gfm';
               showLineNumbers: true,
             },
           ],
+          removePreContainerDivs,
         ];
         return options;
       },
     });
     const readingTime = calculateReadingTime(mdxSource);
     const Component = getMDXComponent(code);
-    const html = renderToString(React.createElement(Component));
-    const hasComponents = Object.keys(files).length > 0;
+    const html = renderToString(
+      React.createElement(Component, {
+        components: {
+          ...mdxComponents,
+        },
+      })
+    );
 
     const hash = crypto
       .createHash('sha256')
@@ -121,7 +149,7 @@ import remarkGfm from 'remark-gfm';
         frontmatter,
         series,
         html,
-        code: hasComponents ? code : undefined,
+        code,
         readingTime,
       }),
       headers: {

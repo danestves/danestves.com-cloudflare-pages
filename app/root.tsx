@@ -1,5 +1,6 @@
 // Dependencies
 import clsx from 'clsx';
+import microtip from 'microtip/microtip.css';
 import {
   Links,
   LiveReload,
@@ -27,7 +28,7 @@ import { Header } from './components/header';
 import { LeftSidebar } from './components/left-sidebar';
 import { RightSidebar } from './components/right-sidebar';
 import { useRemixI18Next } from './lib/remix-i18n';
-import stylesUrl from './styles/tailwind.css';
+import tailwind from './styles/tailwind.css';
 import { i18n, i18nStorage } from './utils/i18n.server';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
 import { getSeo } from './utils/seo';
@@ -41,7 +42,77 @@ export let handle: Handler = {
 let [seoMeta, seoLinks] = getSeo();
 
 export let links: LinksFunction = () => {
-  return [...seoLinks, { rel: 'stylesheet', href: stylesUrl }];
+  return [
+    ...seoLinks,
+    {
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/Roboto-Medium.woff2',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
+    },
+    {
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/Roboto-Regular.woff2',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
+    },
+    {
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/Poppins-Black.woff2',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
+    },
+    {
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/Poppins-Bold.woff2',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
+    },
+    {
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/Poppins-SemiBold.woff2',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
+    },
+    {
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/Poppins-Regular.woff2',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
+    },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: '/favicons/apple-touch-icon.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      href: '/favicons/favicon-32x32.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      href: '/favicons/favicon-16x16.png',
+    },
+    { rel: 'manifest', href: '/site.webmanifest' },
+    {
+      href: '/safari-pinned-tab.svg',
+      rel: 'mask-icon',
+      color: '#29abe2',
+    },
+    { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'stylesheet', href: tailwind },
+    { rel: 'stylesheet', href: microtip },
+  ];
 };
 
 export let meta: MetaFunction = ({ data }) => {

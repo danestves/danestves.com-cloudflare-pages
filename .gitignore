@@ -10,8 +10,9 @@ node_modules
 # Custom Build
 /dist
 
-# Tailwind
+# Styles
 /app/styles/tailwind.css
+/app/styles/prism-one.css
 
 # Cypress
 /cypress/videos
