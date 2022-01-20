@@ -108,13 +108,11 @@ export default function PostPage() {
                   {...getImgProps(
                     getImageBuilder(post.cover.id, post.cover.alt),
                     {
-                      widths: [1920, 1280, 640, 320],
+                      widths: [240, 480, 960, 1440, 1920, 2560],
                       sizes: [
-                        '(min-width: 1920px) 100vw, 1920px',
-                        '(min-width: 1280px) 100vw, 1280px',
-                        '(min-width: 640px) 100vw, 640px',
-                        '(min-width: 320px) 100vw, 320px',
-                        '100vw',
+                        '(max-width:1023px) 80vw',
+                        '(min-width:1024px) and (max-width:1620px) 67vw',
+                        '960px',
                       ],
                     }
                   )}
@@ -126,7 +124,8 @@ export default function PostPage() {
             <div className="flex relative items-end px-6 -mt-10 space-x-4">
               <BlurrableImage
                 blurDataUrl={getImageBlur(
-                  getImageBuilder(images.me.id, images.me.alt)
+                  getImageBuilder(images.me.id, images.me.alt),
+                  10
                 )}
                 className="overflow-hidden relative w-20 h-20 rounded-full drop-shadow-lg"
                 img={
@@ -135,13 +134,8 @@ export default function PostPage() {
                     {...getImgProps(
                       getImageBuilder(images.me.id, images.me.alt),
                       {
-                        widths: [512, 256, 128],
-                        sizes: [
-                          '(min-width: 512px) 100vw, 512px',
-                          '(min-width: 256px) 100vw, 256px',
-                          '(min-width: 128px) 100vw, 128px',
-                          '100vw',
-                        ],
+                        widths: [128],
+                        sizes: ['(min-width: 128px) 100vw, 128px', '100vw'],
                       }
                     )}
                     height={80}
