@@ -23,11 +23,17 @@ export let loader: LoaderFunction = async ({ request }) => {
       let { html: _html, ...data } = post;
 
       return data as Omit<Post, 'html'>;
+      // order by published_at
     })
   );
 
   let data: LoaderData = {
-    posts,
+    posts: posts.sort((a, b) => {
+      let aDate = new Date(a.frontmatter.published_at);
+      let bDate = new Date(b.frontmatter.published_at);
+
+      return bDate.getTime() - aDate.getTime();
+    }),
   };
 
   return json(data);
