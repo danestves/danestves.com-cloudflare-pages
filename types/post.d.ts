@@ -18,6 +18,7 @@ export interface PostFrontmatter {
 export interface PostCover {
   id: string;
   alt: string;
+  blur: string;
 }
 
 export interface PostSEO {

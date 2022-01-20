@@ -30,7 +30,7 @@ function RightSidebar() {
           <li key={uuid()}>
             <a
               {...link}
-              className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:hover:text-primary dark:text-[#B1B1B1] uppercase vertical-rl"
+              className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:text-[#B1B1B1] dark:hover:text-primary uppercase vertical-rl"
             >
               {name}
             </a>

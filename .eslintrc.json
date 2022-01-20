@@ -1,6 +1,8 @@
 {
-  "extends": ["@remix-run", "prettier"],
+  "extends": ["@remix-run", "plugin:tailwindcss/recommended", "prettier"],
+  "plugins": ["tailwindcss"],
   "rules": {
-    "jsx-a11y/alt-text": "off"
+    "jsx-a11y/alt-text": "off",
+    "react/jsx-sort-props": 2
   }
 }

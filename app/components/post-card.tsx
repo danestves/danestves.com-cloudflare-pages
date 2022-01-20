@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useTranslation } from 'react-i18next';
 
 // Internals
-import { getImageBlur, getImageBuilder, getImgProps } from '~/images';
+import { getImageBuilder, getImgProps } from '~/images';
 import { formatDate } from '~/utils/date';
 import { BlurrableImage } from './blurrable-image';
 import type { PostFrontmatter } from '~/types';
@@ -39,19 +39,12 @@ function PostCard<T extends React.ElementType = 'div'>({
 
   return (
     <Wrapper {...props}>
-      <div className="flex overflow-hidden rounded-lg">
-        {/* <Image
-          data={post.cover?.responsiveImage as ResponsiveImageType}
-          objectFit="cover"
-        /> */}
-      </div>
       <BlurrableImage
-        blurDataUrl={getImageBlur(
-          getImageBuilder(post.cover.id, post.cover.alt)
-        )}
-        className="flex overflow-hidden rounded-lg aspect-w-16 aspect-h-9"
+        blurDataUrl={post.cover.blur}
+        className="flex overflow-hidden bg-primary/50 rounded-lg aspect-w-16 aspect-h-9"
         img={
           <img
+            className="rounded-lg"
             {...getImgProps(getImageBuilder(post.cover.id, post.cover.alt), {
               widths: [1920, 1280, 640, 320],
               sizes: [

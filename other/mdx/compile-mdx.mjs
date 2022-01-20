@@ -1,4 +1,5 @@
 // Dependencies
+import { buildImageUrl, setConfig } from 'cloudinary-build-url';
 import { Command } from 'commander';
 import * as crypto from 'crypto';
 import { config } from 'dotenv';
@@ -21,6 +22,35 @@ import remarkGfm from 'remark-gfm';
 
 // Internals
 import { mdxComponents } from './mdx-components.mjs';
+
+setConfig({
+  cloudName: 'danestves',
+});
+
+async function getBlurDataUrl(cloudinaryId) {
+  const imageURL = buildImageUrl(cloudinaryId, {
+    transformations: {
+      resize: { width: 100 },
+      quality: 'auto',
+      format: 'webp',
+      effect: {
+        name: 'blur',
+        value: '1000',
+      },
+    },
+  });
+  const dataUrl = await getDataUrlForImage(imageURL);
+  return dataUrl;
+}
+
+async function getDataUrlForImage(imageUrl) {
+  const res = await fetch(imageUrl);
+  const arrayBuffer = await res.arrayBuffer();
+  const base64 = Buffer.from(arrayBuffer).toString('base64');
+  const mime = res.headers.get('Content-Type') ?? 'image/webp';
+  const dataUrl = `data:${mime};base64,${base64}`;
+  return dataUrl;
+}
 
 function removePreContainerDivs() {
   return async function preContainerDivsTransformer(tree) {
@@ -123,6 +153,7 @@ function removePreContainerDivs() {
         return options;
       },
     });
+    const blurCover = await getBlurDataUrl(frontmatter.cover.id);
     const readingTime = calculateReadingTime(mdxSource);
     const Component = getMDXComponent(code);
     const html = renderToString(
@@ -146,7 +177,13 @@ function removePreContainerDivs() {
         // Plain URL without the rest of the src
         slug: parts[parts.length - 1].replace('.mdx', ''),
         hash,
-        frontmatter,
+        frontmatter: {
+          ...frontmatter,
+          cover: {
+            ...frontmatter.cover,
+            blur: blurCover,
+          },
+        },
         series,
         html,
         code,

@@ -53,11 +53,8 @@ function BlurrableImage({
         <>
           <img
             alt={img.props.alt}
-            className={clsx(img.props.className, 'transition-opacity', {
-              'opacity-0': visible,
-            })}
+            className={img.props.className}
             key={blurDataUrl}
-            loading="lazy"
             src={blurDataUrl}
           />
           <div className={clsx(img.props.className, 'backdrop-blur-xl')} />

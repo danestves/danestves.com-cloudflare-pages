@@ -60,6 +60,7 @@ export let loader: LoaderFunction = async ({ params, request }) => {
   if (hash) {
     headers.set('ETag', hash);
   }
+  headers.set('Cache-Control', 'max-age=43200');
 
   let data: LoaderData = {
     i18n: translations,
@@ -89,7 +90,7 @@ export default function PostPage() {
 
   return (
     <section className="py-32 w-full">
-      <h2 className="text-[26px] font-black text-center text-secondary-darker dark:text-primary uppercase">
+      <h2 className="text-[26px] font-black text-center text-primary uppercase">
         Blog{' '}
         <span aria-label="victory hand" role="img">
           ✌️
@@ -100,10 +101,8 @@ export default function PostPage() {
         <div className="grid grid-cols-12 gap-y-5 items-center mb-6 md:gap-10">
           <div className="col-span-12 md:col-span-7">
             <BlurrableImage
-              blurDataUrl={getImageBlur(
-                getImageBuilder(post.cover.id, post.cover.alt)
-              )}
-              className="flex overflow-hidden rounded-[18px] aspect-w-16 aspect-h-9"
+              blurDataUrl={post.cover.blur}
+              className="flex overflow-hidden bg-primary/50 rounded-[18px] shadow aspect-w-16 aspect-h-9"
               img={
                 <img
                   {...getImgProps(
@@ -175,9 +174,7 @@ export default function PostPage() {
             </div>
           </div>
           <div className="col-span-12 space-y-4 md:col-span-5">
-            <h1 className="text-2xl font-bold text-secondary-darker dark:text-primary">
-              {post?.title}
-            </h1>
+            <h1 className="text-2xl font-bold text-primary">{post?.title}</h1>
             <p className="text-xs font-bold text-secondary">
               {t('published')}{' '}
               <time dateTime={new Date(post.published_at).toISOString()}>

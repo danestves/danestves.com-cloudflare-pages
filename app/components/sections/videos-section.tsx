@@ -16,7 +16,7 @@ const VideosSection = (props: Videos) => {
       className="overflow-hidden relative pl-4 mt-5 w-full lg:px-4 lg:-mt-24"
       id="danestves-section-latest-videos"
     >
-      <h2 className="mx-auto w-full max-w-[977px] text-[26px] font-black text-secondary-darker dark:text-primary uppercase lg:pl-8">
+      <h2 className="mx-auto w-full max-w-[977px] text-[26px] font-black text-primary uppercase lg:pl-8">
         <span>{t('videos.title')}</span>{' '}
         <YoutubeIcon className="inline-block ml-3 w-8 h-[22px]" />
       </h2>

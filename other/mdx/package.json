@@ -11,6 +11,7 @@
   "author": "Michael J. Carter <kiliman@gmail.com> (https://kiliman.dev/)",
   "license": "MIT",
   "dependencies": {
+    "cloudinary-build-url": "^0.2.4",
     "commander": "^8.3.0",
     "dotenv": "^10.0.0",
     "esbuild": "^0.14.8",

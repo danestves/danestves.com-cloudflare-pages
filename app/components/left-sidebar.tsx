@@ -40,7 +40,7 @@ function LeftSidebar() {
             return (
               <li key={uuid()}>
                 <a
-                  className="text-xs font-semibold leading-3 text-[#989898]  dark:hover:text-primary dark:text-[#B1B1B1] uppercase vertical-rl"
+                  className="text-xs font-semibold leading-3 text-[#989898] dark:text-[#B1B1B1] dark:hover:text-primary uppercase vertical-rl"
                   href={to.toString()}
                   {...link}
                 >
@@ -54,8 +54,8 @@ function LeftSidebar() {
             <li key={uuid()}>
               <NavLink
                 {...link}
+                className="text-xs font-semibold leading-3 text-[#989898] dark:text-[#B1B1B1] dark:hover:text-primary uppercase vertical-rl"
                 prefetch={prefetch}
-                className="text-xs font-semibold leading-3 text-[#989898]  dark:hover:text-primary dark:text-[#B1B1B1] uppercase vertical-rl"
                 to={to}
               >
                 {name}

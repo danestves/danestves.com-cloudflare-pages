@@ -38,7 +38,7 @@ function Footer() {
       <div className="container flex flex-col justify-center space-y-8">
         <NavLink className="inline-block mx-auto w-9 h-9" to={route('/')}>
           <span className="sr-only">@danestves</span>
-          <Logo aria-hidden="true" className="h-9 w-9" />
+          <Logo aria-hidden="true" className="w-9 h-9" />
         </NavLink>
 
         <ul className="flex flex-col justify-center items-center xs:flex-row xs:space-x-4">
@@ -48,7 +48,7 @@ function Footer() {
                 <li key={uuid()}>
                   <a
                     {...link}
-                    className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:hover:text-primary dark:text-[#B1B1B1] uppercase"
+                    className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:text-[#B1B1B1] dark:hover:text-primary uppercase"
                     href={to.toString()}
                   >
                     {name}
@@ -61,8 +61,8 @@ function Footer() {
               <li key={uuid()}>
                 <NavLink
                   {...link}
+                  className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:text-[#B1B1B1] dark:hover:text-primary uppercase"
                   prefetch={prefetch}
-                  className="text-xs font-semibold leading-3 text-[#989898] hover:text-primary dark:hover:text-primary dark:text-[#B1B1B1] uppercase"
                   to={to}
                 >
                   {name}
