@@ -203,6 +203,12 @@ function App() {
 
         <ScrollRestoration />
         <Scripts />
+        <script
+          async
+          data-website-id="76378b8f-ea3f-43bf-bf63-bd4c4f273607"
+          defer
+          src="https://analytics.danestves.com/umami.js"
+        ></script>
         {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
       </body>
     </html>
