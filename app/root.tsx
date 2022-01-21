@@ -45,7 +45,7 @@ export let links: LinksFunction = () => {
   return [
     ...seoLinks,
     {
-      rel: 'preload',
+      rel: 'preconnect',
       href: 'https://fonts.googleapis.com',
     },
     {
