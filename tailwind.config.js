@@ -21,7 +21,6 @@ module.exports = {
           800: '#196788',
           900: '#14546f',
           DEFAULT: '#29ABE2',
-          darker: '#071D49',
         },
         secondary: {
           50: '#f2fcf9',
@@ -58,7 +57,11 @@ module.exports = {
             'h2, h3, h4, h5, h6': {
               'scroll-margin-top': theme('spacing[20]'),
               '& > a': {
-                color: `${theme('colors.secondary')} !important`,
+                fontWeight: theme('fontWeight.bold'),
+                textDecoration: 'none',
+                '&:hover': {
+                  textDecoration: 'underline !important',
+                },
               },
             },
             code: {

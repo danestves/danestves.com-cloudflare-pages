@@ -28,6 +28,7 @@ import { Header } from './components/header';
 import { LeftSidebar } from './components/left-sidebar';
 import { RightSidebar } from './components/right-sidebar';
 import { useRemixI18Next } from './lib/remix-i18n';
+import global from './styles/global.css';
 import tailwind from './styles/tailwind.css';
 import { i18n, i18nStorage } from './utils/i18n.server';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
@@ -82,6 +83,7 @@ export let links: LinksFunction = () => {
       color: '#29abe2',
     },
     { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'stylesheet', href: global },
     { rel: 'stylesheet', href: tailwind },
     { rel: 'stylesheet', href: microtip },
   ];
