@@ -47,20 +47,6 @@ export let links: LinksFunction = () => {
     {
       rel: 'preload',
       as: 'font',
-      href: '/fonts/Roboto-Medium.woff2',
-      type: 'font/woff2',
-      crossOrigin: 'anonymous',
-    },
-    {
-      rel: 'preload',
-      as: 'font',
-      href: '/fonts/Roboto-Regular.woff2',
-      type: 'font/woff2',
-      crossOrigin: 'anonymous',
-    },
-    {
-      rel: 'preload',
-      as: 'font',
       href: '/fonts/Poppins-Black.woff2',
       type: 'font/woff2',
       crossOrigin: 'anonymous',
