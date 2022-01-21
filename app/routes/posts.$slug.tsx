@@ -109,11 +109,11 @@ export default function PostPage() {
                   {...getImgProps(
                     getImageBuilder(post.cover.id, post.cover.alt),
                     {
-                      widths: [240, 480, 960, 1440, 1920, 2560],
+                      widths: [240, 480, 534, 960, 1440, 1920, 2560],
                       sizes: [
                         '(max-width:1023px) 80vw',
                         '(min-width:1024px) and (max-width:1620px) 67vw',
-                        '960px',
+                        '534px',
                       ],
                     }
                   )}
