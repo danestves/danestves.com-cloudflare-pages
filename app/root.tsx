@@ -203,13 +203,19 @@ function App() {
 
         <ScrollRestoration />
         <Scripts />
+        {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
         <script
           async
           data-website-id="76378b8f-ea3f-43bf-bf63-bd4c4f273607"
           defer
           src="https://analytics.danestves.com/umami.js"
         ></script>
-        {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
+        {/* Cloudflare Web Analytics */}
+        <script
+          data-cf-beacon='{"token": "fd6169f72af14672a05fc35ed7ffdbc1"}'
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+        ></script>
       </body>
     </html>
   );
