@@ -14,7 +14,7 @@ async function build() {
     entryPoints: ['./worker/index.ts'],
     bundle: true,
     minify: mode === 'production',
-    sourcemap: mode !== 'production',
+    sourcemap: true,
     format: 'esm',
     metafile: true,
     define: {
