@@ -46,31 +46,16 @@ export let links: LinksFunction = () => {
     ...seoLinks,
     {
       rel: 'preload',
-      as: 'font',
-      href: '/fonts/Poppins-Black.woff2',
-      type: 'font/woff2',
+      href: 'https://fonts.googleapis.com',
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
       crossOrigin: 'anonymous',
     },
     {
-      rel: 'preload',
-      as: 'font',
-      href: '/fonts/Poppins-Bold.woff2',
-      type: 'font/woff2',
-      crossOrigin: 'anonymous',
-    },
-    {
-      rel: 'preload',
-      as: 'font',
-      href: '/fonts/Poppins-SemiBold.woff2',
-      type: 'font/woff2',
-      crossOrigin: 'anonymous',
-    },
-    {
-      rel: 'preload',
-      as: 'font',
-      href: '/fonts/Poppins-Regular.woff2',
-      type: 'font/woff2',
-      crossOrigin: 'anonymous',
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap',
     },
     {
       rel: 'apple-touch-icon',
