@@ -51,16 +51,17 @@ export let loader: LoaderFunction = async ({ params, request }) => {
   }
   let { code, frontmatter, hash, html } = post as Post;
 
+  let weakHash = `W/"${hash}"`;
   let etag = request.headers.get('If-None-Match');
-  if (etag === hash) {
-    throw new Response('Not Modified', { status: 304 });
+  if (etag === weakHash) {
+    throw new Response(null, { status: 304 });
   }
 
   let headers = new Headers();
   if (hash) {
-    headers.set('ETag', hash);
+    headers.set('ETag', weakHash);
   }
-  headers.set('Cache-Control', 'max-age=43200');
+  headers.set('Cache-Control', 'max-age=43200, stale-while-revalidate');
 
   let data: LoaderData = {
     i18n: translations,
