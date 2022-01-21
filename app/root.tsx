@@ -45,17 +45,18 @@ export let links: LinksFunction = () => {
   return [
     ...seoLinks,
     {
-      rel: 'preconnect',
-      href: 'https://fonts.googleapis.com',
-    },
-    {
-      rel: 'preconnect',
-      href: 'https://fonts.gstatic.com',
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/Poppins-Bold.woff2',
+      type: 'font/woff2',
       crossOrigin: 'anonymous',
     },
     {
-      rel: 'stylesheet',
-      href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap',
+      rel: 'preload',
+      as: 'font',
+      href: '/fonts/Poppins-Regular.woff2',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
     },
     {
       rel: 'apple-touch-icon',
