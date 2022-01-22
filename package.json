@@ -83,7 +83,7 @@
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.3",
     "cssnano": "^5.0.15",
-    "esbuild": "^0.14.12",
+    "esbuild": "^0.14.13",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-tailwindcss": "^3.3.1",
