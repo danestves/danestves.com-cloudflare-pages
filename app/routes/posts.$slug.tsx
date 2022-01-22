@@ -106,6 +106,7 @@ export default function PostPage() {
               className="flex overflow-hidden bg-primary/50 rounded-[18px] shadow aspect-w-16 aspect-h-9"
               img={
                 <img
+                  className="rounded-[18px]"
                   {...getImgProps(
                     getImageBuilder(post.cover.id, post.cover.alt),
                     {
