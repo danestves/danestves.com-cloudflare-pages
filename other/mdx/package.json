@@ -9,6 +9,13 @@
   },
   "keywords": [],
   "author": "Michael J. Carter <kiliman@gmail.com> (https://kiliman.dev/)",
+  "contributors": [
+    {
+      "email": "me+github@danestves.com",
+      "name": "Daniel Esteves",
+      "url": "https://danestves.com"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "cloudinary-build-url": "^0.2.4",
@@ -31,6 +38,7 @@
     "rehype-slug": "^5.0.1",
     "remark-gfm": "^3.0.1",
     "remark-mdx-code-meta": "^1.0.0",
+    "remark-oembed": "^1.2.2",
     "typescript": "^4.5.4",
     "typescript-run": "^0.1.0"
   }

@@ -1,5 +1,5 @@
 {
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "video.js"],
   "compilerOptions": {
     "jsx": "react",
     "moduleResolution": "node",

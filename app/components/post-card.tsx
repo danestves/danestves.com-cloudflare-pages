@@ -65,14 +65,7 @@ function PostCard<T extends React.ElementType = 'div'>({
           })}
         </time>
       </p>
-      <h2
-        className={clsx(
-          'mt-[6px] text-xl font-bold text-primary-darker',
-          isHome ? 'dark:text-white' : 'dark:text-primary'
-        )}
-      >
-        {post.title}
-      </h2>
+      <h2 className="mt-[6px] text-xl font-bold text-primary">{post.title}</h2>
       <p
         className={clsx(
           'mt-[6px] text-xs font-semibold text-[#838383]',

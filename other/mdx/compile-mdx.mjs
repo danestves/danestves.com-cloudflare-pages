@@ -19,6 +19,7 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeProbeImageSize from 'rehype-probe-image-size';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import remarkOembed from 'remark-oembed';
 
 // Internals
 import { mdxComponents } from './mdx-components.mjs';
@@ -134,7 +135,11 @@ function removePreContainerDivs() {
       source: mdxSource,
       files,
       xdmOptions(options) {
-        options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
+        options.remarkPlugins = [
+          ...(options.remarkPlugins ?? []),
+          remarkGfm,
+          remarkOembed,
+        ];
         options.rehypePlugins = [
           ...(options.rehypePlugins ?? []),
           rehypeImageLazyLoading,

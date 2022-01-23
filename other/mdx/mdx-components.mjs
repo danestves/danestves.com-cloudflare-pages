@@ -1,8 +1,9 @@
 // Dependencies
-import { CodePen } from 'mdx-embed';
+import { CodePen, CodeSandbox } from 'mdx-embed';
 
-const mdxComponents = {
+let mdxComponents = {
   CodePen,
+  CodeSandbox,
 };
 
 export { mdxComponents };
