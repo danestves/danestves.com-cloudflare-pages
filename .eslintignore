@@ -6,5 +6,6 @@
 /public
 /node_modules
 /dist
+/app/routes.d.ts
 /app/styles/tailwind.css
 /other/shared-tsconfig.json
