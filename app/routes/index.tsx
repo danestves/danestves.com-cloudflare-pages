@@ -8,7 +8,10 @@ import { HeroSection } from '~/components/sections/hero-section';
 import { i18n } from '~/utils/i18n.server';
 import { getVideos } from '~/utils/youtube.server';
 import { VideosSection } from '~/components/sections/videos-section';
-import type { Videos } from '~/types';
+import type { Post, Videos } from '~/types';
+import { PostsSection } from '~/components/sections/posts-section';
+
+declare var CONTENT: KVNamespace;
 
 export let links: LinksFunction = () => {
   return [
@@ -31,17 +34,36 @@ export let links: LinksFunction = () => {
 
 type LoaderData = {
   i18n: Record<string, Language>;
+  posts: Omit<Post, 'html'>[];
   videos: Videos;
 };
 
 export let loader: LoaderFunction = async ({ request }) => {
-  let [translations, videos] = await Promise.all([
+  let [locale, translations, videos] = await Promise.all([
+    i18n.getLocale(request),
     i18n.getTranslations(request, 'sections'),
     getVideos(),
   ]);
+  let slugs = await CONTENT.list({ prefix: `posts/${locale}/` });
+  let posts = await Promise.all(
+    slugs.keys.map(async ({ name }) => {
+      let post = (await CONTENT.get(name, 'json')) as Post;
+      let { html: _html, ...data } = post;
+
+      return data as Omit<Post, 'html'>;
+      // order by published_at
+    })
+  );
+  let orderedPosts = posts.sort((a, b) => {
+    let aDate = new Date(a.frontmatter.published_at);
+    let bDate = new Date(b.frontmatter.published_at);
+
+    return bDate.getTime() - aDate.getTime();
+  });
 
   let data: LoaderData = {
     i18n: translations,
+    posts: orderedPosts.slice(0, 3),
     videos,
   };
 
@@ -60,6 +82,7 @@ export default function Index() {
     <>
       <HeroSection />
       <VideosSection {...data.videos} />
+      <PostsSection posts={data.posts} />
     </>
   );
 }
