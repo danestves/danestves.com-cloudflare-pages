@@ -11,11 +11,11 @@ import type { PostFrontmatter } from '~/types';
 
 type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 type Prefer<P, T> = P & Omit<T, keyof P>;
-type ElementPropsWithoutRef<T extends React.ReactType> = Pick<
+type ElementPropsWithoutRef<T extends React.ElementType> = Pick<
   React.ComponentPropsWithoutRef<T>,
   keyof React.ComponentPropsWithoutRef<T>
 >;
-type OverwritableType<OwnProps, Type extends React.ReactType> = Prefer<
+type OverwritableType<OwnProps, Type extends React.ElementType> = Prefer<
   OwnProps,
   ElementPropsWithoutRef<Type>
 >;
