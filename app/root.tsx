@@ -166,7 +166,7 @@ function App() {
         <Links />
       </head>
 
-      <body className="bg-white dark:bg-[#292929] transition duration-500">
+      <body className="bg-white transition duration-500 dark:bg-[#292929]">
         <Header />
         <LeftSidebar />
         <RightSidebar />

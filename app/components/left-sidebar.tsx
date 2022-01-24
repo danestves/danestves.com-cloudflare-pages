@@ -33,14 +33,14 @@ const LINKS: DLink[] = [
 
 function LeftSidebar() {
   return (
-    <aside className="hidden fixed top-0 left-0 z-10 px-12 h-full lg:block">
-      <ul className="flex flex-col justify-center items-center space-y-4 h-full rotate-180">
+    <aside className="fixed top-0 left-0 z-10 hidden h-full px-12 lg:block">
+      <ul className="flex h-full rotate-180 flex-col items-center justify-center space-y-4">
         {LINKS.map(({ name, to, prefetch, ...link }) => {
           if (to.toString().startsWith('http')) {
             return (
               <li key={uuid()}>
                 <a
-                  className="text-xs font-semibold leading-3 text-[#989898] dark:text-[#B1B1B1] dark:hover:text-primary uppercase vertical-rl"
+                  className="text-xs font-semibold uppercase leading-3 text-[#989898] vertical-rl dark:text-[#B1B1B1] dark:hover:text-primary"
                   href={to.toString()}
                   {...link}
                 >
@@ -54,7 +54,7 @@ function LeftSidebar() {
             <li key={uuid()}>
               <NavLink
                 {...link}
-                className="text-xs font-semibold leading-3 text-[#989898] dark:text-[#B1B1B1] dark:hover:text-primary uppercase vertical-rl"
+                className="text-xs font-semibold uppercase leading-3 text-[#989898] vertical-rl dark:text-[#B1B1B1] dark:hover:text-primary"
                 prefetch={prefetch}
                 to={to}
               >
@@ -67,7 +67,7 @@ function LeftSidebar() {
 
       <div className="fixed bottom-8 left-12 z-10">
         <NavLink
-          className="font-semibold text-secondary uppercase"
+          className="font-semibold uppercase text-secondary"
           to={route('/posts')}
         >
           posts

@@ -52,16 +52,16 @@ function Header() {
   return (
     <header
       className={clsx(
-        'fixed top-0 left-0 z-20 px-6 w-full transition-all duration-200 lg:px-12',
-        y >= 104 ? 'py-2 bg-white dark:bg-[#292929] shadow' : 'py-6'
+        'fixed top-0 left-0 z-20 w-full px-6 transition-all duration-200 lg:px-12',
+        y >= 104 ? 'bg-white py-2 shadow dark:bg-[#292929]' : 'py-6'
       )}
     >
-      <div className="flex justify-between items-center w-full">
+      <div className="flex w-full items-center justify-between">
         <div className="flex items-center space-x-6 lg:space-x-0">
           <Popover className="lg:hidden">
             <Popover.Button className="block rounded-md focus:outline-none focus:ring-4 focus:ring-secondary/50">
               <span className="sr-only">Open menu</span>
-              <MenuIcon className="w-[31px] h-auto text-secondary" />
+              <MenuIcon className="h-auto w-[31px] text-secondary" />
             </Popover.Button>
 
             <Transition
@@ -74,18 +74,18 @@ function Header() {
               leaveTo="opacity-0 scale-95"
             >
               <Popover.Panel
-                className="absolute inset-x-0 top-0 z-10 p-2 transition origin-top-left lg:hidden"
+                className="absolute inset-x-0 top-0 z-10 origin-top-left p-2 transition lg:hidden"
                 focus
               >
-                <div className="overflow-hidden bg-white rounded-lg ring-1 ring-black shadow-md ring-opacity-5">
-                  <div className="flex justify-between items-center px-5 pt-4">
+                <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
+                  <div className="flex items-center justify-between px-5 pt-4">
                     <NavLink to="/">
-                      <Logo className="w-auto h-8" />
+                      <Logo className="h-8 w-auto" />
                     </NavLink>
                     <div className="-mr-2">
-                      <Popover.Button className="inline-flex justify-center items-center p-2 text-gray-400 hover:text-gray-500 bg-white hover:bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary">
+                      <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary">
                         <span className="sr-only">Close menu</span>
-                        <XIcon aria-hidden="true" className="w-6 h-6" />
+                        <XIcon aria-hidden="true" className="h-6 w-6" />
                       </Popover.Button>
                     </div>
                   </div>
@@ -95,7 +95,7 @@ function Header() {
                         return (
                           <a
                             {...link}
-                            className="block py-2 px-3 text-base font-semibold text-[#989898] hover:text-primary uppercase rounded-md"
+                            className="block rounded-md py-2 px-3 text-base font-semibold uppercase text-[#989898] hover:text-primary"
                             href={to.toString()}
                             key={uuid()}
                           >
@@ -107,7 +107,7 @@ function Header() {
                       return (
                         <NavLink
                           {...link}
-                          className="block py-2 px-3 text-base font-semibold text-[#989898] hover:text-primary uppercase rounded-md"
+                          className="block rounded-md py-2 px-3 text-base font-semibold uppercase text-[#989898] hover:text-primary"
                           key={uuid()}
                           to={to}
                         >
@@ -117,8 +117,8 @@ function Header() {
                     })}
                   </div>
 
-                  <div className="py-3 px-5 bg-gray-50">
-                    <div className="flex justify-between mx-auto max-w-xs">
+                  <div className="bg-gray-50 py-3 px-5">
+                    <div className="mx-auto flex max-w-xs justify-between">
                       {/* {SOCIAL.map(({ icon: Icon, label, ...item }) => (
                         <Link
                           {...item}
@@ -153,21 +153,21 @@ function Header() {
           </div>
 
           <NavLink
-            className="hidden w-9 h-9 focus:rounded focus:outline-none focus:ring-4 focus:ring-secondary/50 lg:inline-block"
+            className="hidden h-9 w-9 focus:rounded focus:outline-none focus:ring-4 focus:ring-secondary/50 lg:inline-block"
             to="/"
           >
             <span className="sr-only">@danestves</span>
-            <Logo aria-hidden="true" className="w-9 h-9" />
+            <Logo aria-hidden="true" className="h-9 w-9" />
           </NavLink>
         </div>
 
         <div className="flex lg:pl-24">
           <NavLink
-            className="inline-block w-9 h-9 focus:rounded focus:outline-none focus:ring-4 focus:ring-secondary/50 lg:hidden"
+            className="inline-block h-9 w-9 focus:rounded focus:outline-none focus:ring-4 focus:ring-secondary/50 lg:hidden"
             to="/"
           >
             <span className="sr-only">@danestves</span>
-            <Logo aria-hidden="true" className="w-9 h-9" />
+            <Logo aria-hidden="true" className="h-9 w-9" />
           </NavLink>
 
           {/* We put a padding left to simulate that in desktop is centered */}

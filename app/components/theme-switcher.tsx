@@ -22,11 +22,11 @@ function ThemeSwitcher() {
     <Switch
       aria-label="Toggle dark mode"
       checked={theme === Theme.DARK}
-      className="inline-flex p-2 text-white dark:text-[#292929] bg-secondary rounded-full focus:outline-none focus:ring-4 focus:ring-secondary/50"
+      className="inline-flex rounded-full bg-secondary p-2 text-white focus:outline-none focus:ring-4 focus:ring-secondary/50 dark:text-[#292929]"
       defaultChecked={theme === Theme.DARK}
       onCheckedChange={onCheckedChange}
     >
-      <MoonIcon className="inline-block w-[21px] h-auto" />
+      <MoonIcon className="inline-block h-auto w-[21px]" />
 
       <VisuallyHidden.Root>
         <Themed

@@ -42,7 +42,7 @@ function PostCard<T extends React.ElementType = 'div'>({
     <Wrapper {...props}>
       <BlurrableImage
         blurDataUrl={post.cover.blur}
-        className="flex overflow-hidden bg-primary/50 rounded-lg aspect-w-16 aspect-h-9"
+        className="aspect-w-16 aspect-h-9 flex overflow-hidden rounded-lg bg-primary/50"
         img={
           <img
             className="rounded-lg"

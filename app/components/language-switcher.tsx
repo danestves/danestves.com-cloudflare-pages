@@ -25,11 +25,11 @@ const LanguageSwitcher = (): JSX.Element => {
 
   return (
     <Dropdown>
-      <Dropdown.Trigger className="inline-flex items-center space-x-4 rounded-full focus:outline-none focus:ring-4 focus:ring-secondary/50 md:py-2 md:px-4 md:rounded-md">
-        <div className="w-9 h-9 rounded-full md:w-6 md:h-6">
+      <Dropdown.Trigger className="inline-flex items-center space-x-4 rounded-full focus:outline-none focus:ring-4 focus:ring-secondary/50 md:rounded-md md:py-2 md:px-4">
+        <div className="h-9 w-9 rounded-full md:h-6 md:w-6">
           <Flag countryCode={rootData?.country} />
         </div>
-        <span className="font-semibold text-secondary uppercase sr-only md:not-sr-only">
+        <span className="sr-only font-semibold uppercase text-secondary md:not-sr-only">
           {t('header.switcher.language.text')}{' '}
           <span aria-label="waving hand" role="img">
             👋🏻
@@ -37,16 +37,16 @@ const LanguageSwitcher = (): JSX.Element => {
         </span>
       </Dropdown.Trigger>
 
-      <Dropdown.Content className="!min-w-max bg-white dark:bg-[#303030] rounded-md shadow-lg">
+      <Dropdown.Content className="!min-w-max rounded-md bg-white shadow-lg dark:bg-[#303030]">
         <Dropdown.Item asChild onSelect={handleChangeLanguage}>
           <button
-            className="group inline-flex items-center py-2 px-4 mx-auto space-x-4 hover:bg-secondary transition-colors duration-200"
+            className="group mx-auto inline-flex items-center space-x-4 py-2 px-4 transition-colors duration-200 hover:bg-secondary"
             type="button"
           >
-            <div className="w-6 h-6 rounded-full">
+            <div className="h-6 w-6 rounded-full">
               <Flag countryCode={rootData?.country} locale={locale} />
             </div>
-            <span className="font-semibold text-secondary group-hover:text-white uppercase transition-colors duration-200">
+            <span className="font-semibold uppercase text-secondary transition-colors duration-200 group-hover:text-white">
               {i18n.language === 'en' ? 'Hola' : 'Hello'}{' '}
               <span aria-label="waving hand" role="img">
                 👋🏻

@@ -28,6 +28,7 @@
     "dev:style": "postcss styles/**/*.css --base styles --dir app/styles --watch",
     "dev:worker": "miniflare --build-command \"node ./scripts/build.mjs\" --build-watch-path ./worker --build-watch-path ./build/index.js --no-cache --watch --open",
     "dev": "concurrently \"npm:dev:*\" \"npm:content:watch\" \"routes-gen -d @routes-gen/remix\"",
+    "format": "prettier --write \"**/*.{js,jsx,md,mdx,ts,tsx}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "postinstall": "remix setup cloudflare-workers",
     "prebuild": "npm run cleanup",
@@ -88,7 +89,6 @@
     "esbuild": "^0.14.13",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-tailwindcss": "^3.3.2",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.1",
     "miniflare": "^2.2.0",
@@ -96,6 +96,7 @@
     "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0",
     "prettier": "2.5.1",
+    "prettier-plugin-tailwindcss": "^0.1.1",
     "rimraf": "^3.0.2",
     "tailwindcss": "^3.0.16",
     "typescript": "^4.5.5"

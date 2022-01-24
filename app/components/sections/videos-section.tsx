@@ -13,16 +13,16 @@ const VideosSection = (props: Videos) => {
 
   return (
     <section
-      className="overflow-hidden relative pl-4 mt-5 w-full lg:px-4 lg:-mt-24"
+      className="relative mt-5 w-full overflow-hidden pl-4 lg:-mt-24 lg:px-4"
       id="danestves-section-latest-videos"
     >
-      <h2 className="mx-auto w-full max-w-[977px] text-[26px] font-black text-primary uppercase lg:pl-8">
+      <h2 className="mx-auto w-full max-w-[977px] text-[26px] font-black uppercase text-primary lg:pl-8">
         <span>{t('videos.title')}</span>{' '}
-        <YoutubeIcon className="inline-block ml-3 w-8 h-[22px]" />
+        <YoutubeIcon className="ml-3 inline-block h-[22px] w-8" />
       </h2>
 
       <div className="overflow-x-auto">
-        <div className="p-5 mx-auto mt-3 w-[977px] bg-primary/80 rounded-[20px] backdrop-blur-sm lg:py-8 lg:px-12">
+        <div className="mx-auto mt-3 w-[977px] rounded-[20px] bg-primary/80 p-5 backdrop-blur-sm lg:py-8 lg:px-12">
           <ul className="grid grid-cols-4 gap-5">
             {props.items?.map((video) => (
               <li key={video.id}>
@@ -40,7 +40,7 @@ const VideosSection = (props: Videos) => {
                         'fetch'
                       )
                     )}
-                    className="overflow-hidden relative rounded-xl aspect-w-16 aspect-h-9"
+                    className="aspect-w-16 aspect-h-9 relative overflow-hidden rounded-xl"
                     img={
                       <img
                         {...getImgProps(
@@ -54,17 +54,17 @@ const VideosSection = (props: Videos) => {
                             sizes: ['224px'],
                           }
                         )}
-                        className="object-cover object-center absolute rounded-xl"
+                        className="absolute rounded-xl object-cover object-center"
                         height={1080}
                         loading="lazy"
                         width={1920}
                       />
                     }
                   />
-                  <h3 className="font-roboto text-xs font-bold text-white sr-only lg:mt-3 lg:not-sr-only lg:line-clamp-2">
+                  <h3 className="sr-only font-roboto text-xs font-bold text-white lg:not-sr-only lg:mt-3 lg:line-clamp-2">
                     {video?.snippet?.title}
                   </h3>
-                  <p className="font-roboto text-xs font-medium text-white sr-only lg:mt-2 lg:not-sr-only">
+                  <p className="sr-only font-roboto text-xs font-medium text-white lg:not-sr-only lg:mt-2">
                     {video?.statistics?.viewCount} views •{' '}
                     {fromNow({
                       date: video?.snippet?.publishedAt as string,

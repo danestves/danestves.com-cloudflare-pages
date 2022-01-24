@@ -50,8 +50,8 @@ export default function Posts() {
   };
 
   return (
-    <section className="py-32 w-full">
-      <h1 className="text-[26px] font-black text-center text-primary uppercase">
+    <section className="w-full py-32">
+      <h1 className="text-center text-[26px] font-black uppercase text-primary">
         Blog{' '}
         <span aria-label="victory hand" role="img">
           ✌️
@@ -70,7 +70,7 @@ export default function Posts() {
             >
               <PostCard
                 as={Link}
-                className="block overflow-hidden p-1 rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20 focus:ring-offset-2 focus:ring-offset-primary transition-colors duration-200"
+                className="block overflow-hidden rounded-lg p-1 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-primary/20 focus:ring-offset-2 focus:ring-offset-primary"
                 descriptionClassName="line-clamp-3"
                 post={post.frontmatter}
                 prefetch="intent"

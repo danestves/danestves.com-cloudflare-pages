@@ -90,8 +90,8 @@ export default function PostPage() {
   }
 
   return (
-    <section className="py-32 w-full">
-      <h2 className="text-[26px] font-black text-center text-primary uppercase">
+    <section className="w-full py-32">
+      <h2 className="text-center text-[26px] font-black uppercase text-primary">
         Blog{' '}
         <span aria-label="victory hand" role="img">
           ✌️
@@ -99,11 +99,11 @@ export default function PostPage() {
       </h2>
 
       <div className="container mx-auto mt-5 max-w-[977px]">
-        <div className="grid grid-cols-12 gap-y-5 items-center mb-6 md:gap-10">
+        <div className="mb-6 grid grid-cols-12 items-center gap-y-5 md:gap-10">
           <div className="col-span-12 md:col-span-7">
             <BlurrableImage
               blurDataUrl={post.cover.blur}
-              className="flex overflow-hidden bg-primary/50 rounded-[18px] shadow aspect-w-16 aspect-h-9"
+              className="aspect-w-16 aspect-h-9 flex overflow-hidden rounded-[18px] bg-primary/50 shadow"
               img={
                 <img
                   className="rounded-[18px]"
@@ -123,13 +123,13 @@ export default function PostPage() {
                 />
               }
             />
-            <div className="flex relative items-end px-6 -mt-10 space-x-4">
+            <div className="relative -mt-10 flex items-end space-x-4 px-6">
               <BlurrableImage
                 blurDataUrl={getImageBlur(
                   getImageBuilder(images.me.id, images.me.alt),
                   10
                 )}
-                className="overflow-hidden relative w-20 h-20 rounded-full drop-shadow-lg"
+                className="relative h-20 w-20 overflow-hidden rounded-full drop-shadow-lg"
                 img={
                   <img
                     className="absolute w-full"
@@ -148,9 +148,9 @@ export default function PostPage() {
 
               {/* <Views slug={post.slug} views={views} /> */}
 
-              <div className="flex absolute right-6 bottom-6 flex-1 justify-end">
+              <div className="absolute right-6 bottom-6 flex flex-1 justify-end">
                 <button
-                  className="flex z-10 items-center py-2 px-3 text-xs font-bold text-black bg-secondary rounded-full"
+                  className="z-10 flex items-center rounded-full bg-secondary py-2 px-3 text-xs font-bold text-black"
                   onClick={share}
                   type="button"
                 >
@@ -163,7 +163,7 @@ export default function PostPage() {
                   </span>
                   <ShareIcon
                     aria-hidden="true"
-                    className="w-4 h-4 sm:-mr-1 sm:ml-2"
+                    className="h-4 w-4 sm:-mr-1 sm:ml-2"
                   />
                 </button>
               </div>
@@ -181,14 +181,14 @@ export default function PostPage() {
                 })}
               </time>
             </p>
-            <p className="text-xs font-bold text-[#B5B5B5] dark:text-[#b5b5b5] whitespace-pre-line">
+            <p className="whitespace-pre-line text-xs font-bold text-[#B5B5B5] dark:text-[#b5b5b5]">
               {post?.seo?.description}
             </p>
           </div>
         </div>
 
         <div
-          className="max-w-full prose prose-lg dark:prose-dark"
+          className="prose prose-lg max-w-full dark:prose-dark"
           dangerouslySetInnerHTML={!Component ? { __html: html } : undefined}
         >
           {Component ? (

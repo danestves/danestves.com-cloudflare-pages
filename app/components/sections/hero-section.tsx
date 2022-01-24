@@ -15,20 +15,20 @@ function HeroSection() {
 
   return (
     <section
-      className="container overflow-hidden relative"
+      className="container relative overflow-hidden"
       id="danestves-section-hero"
     >
-      <div className="relative left-1/2 mx-auto w-[563px] h-auto -translate-x-1/2 sm:left-[46%] md:left-[38%] lg:left-auto lg:w-full lg:max-w-[731px] lg:transform-none">
+      <div className="relative left-1/2 mx-auto h-auto w-[563px] -translate-x-1/2 sm:left-[46%] md:left-[38%] lg:left-auto lg:w-full lg:max-w-[731px] lg:transform-none">
         <MotionRings
           animate={{ opacity: 1, scale: 1 }}
-          className="w-full h-auto"
+          className="h-auto w-full"
           initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
           transition={{ delay: 0.15 }}
         />
       </div>
 
       <div className="absolute top-1/2 left-1/2 mt-2 -translate-x-1/2 -translate-y-1/2 lg:mt-3">
-        <div className="-mt-16 w-[249px] max-w-none h-auto sm:w-[248px] md:mt-auto lg:w-[320px]">
+        <div className="-mt-16 h-auto w-[249px] max-w-none sm:w-[248px] md:mt-auto lg:w-[320px]">
           <motion.div
             animate={{ opacity: 1, scale: 1 }}
             initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
@@ -62,7 +62,7 @@ function HeroSection() {
       {/* Floating Card */}
       <motion.div
         animate={{ opacity: 1, scale: 1 }}
-        className="pt-3 pr-5 pb-4 pl-8 mx-auto -mt-16 w-full max-w-[332px] bg-secondary/80 dark:bg-secondary/[0.65] rounded-[20px] backdrop-blur-sm md:-mt-32 lg:absolute lg:top-1/2 lg:right-1/2 lg:mt-auto lg:mr-32"
+        className="mx-auto -mt-16 w-full max-w-[332px] rounded-[20px] bg-secondary/80 pt-3 pr-5 pb-4 pl-8 backdrop-blur-sm dark:bg-secondary/[0.65] md:-mt-32 lg:absolute lg:top-1/2 lg:right-1/2 lg:mt-auto lg:mr-32"
         initial={{
           opacity: 0,
           originX: 1,
@@ -72,7 +72,7 @@ function HeroSection() {
         }}
         transition={{ delay: 0.45 }}
       >
-        <h1 className="text-2xl font-black text-white uppercase">
+        <h1 className="text-2xl font-black uppercase text-white">
           daniel esteves{' '}
           <span aria-label="victory hand" role="img">
             ✌️
@@ -97,7 +97,7 @@ function HeroSection() {
       </motion.div>
 
       {/* Search Trigger */}
-      <div className="hidden absolute bottom-1/4 lg:block lg:right-[13%] xl:right-[20%]">
+      <div className="absolute bottom-1/4 hidden lg:right-[13%] lg:block xl:right-[20%]">
         {/* <Search /> */}
       </div>
     </section>

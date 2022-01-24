@@ -35,19 +35,19 @@ const Pre: React.FC<CodeProps> = ({ children, className }): JSX.Element => {
         <Tooltip>
           <Tooltip.Trigger asChild>
             <button
-              className="inline-flex bg-[color:var(--syntax-bg)] rounded-md ring-1 shadow-md opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100 transition-opacity duration-150"
+              className="inline-flex rounded-md bg-[color:var(--syntax-bg)] opacity-0 shadow-md ring-1 transition-opacity duration-150 hover:opacity-100 focus:opacity-100 group-hover:opacity-100"
               onClick={() => setHasCopied(true)}
               type="button"
             >
               {hasCopied ? (
-                <CheckIcon className="m-2 w-5 h-5" />
+                <CheckIcon className="m-2 h-5 w-5" />
               ) : (
-                <ClipboardIcon className="m-2 w-5 h-5" />
+                <ClipboardIcon className="m-2 h-5 w-5" />
               )}
             </button>
           </Tooltip.Trigger>
           <Tooltip.Content
-            className="text-[color:var(--syntax-fg)] bg-gray-200 dark:bg-gray-700 shadow-md"
+            className="bg-gray-200 text-[color:var(--syntax-fg)] shadow-md dark:bg-gray-700"
             side="left"
             sideOffset={5}
           >
