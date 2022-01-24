@@ -54,7 +54,7 @@ const VideosSection = (props: Videos) => {
                             sizes: ['224px'],
                           }
                         )}
-                        className="object-cover object-center absolute"
+                        className="object-cover object-center absolute rounded-xl"
                         height={1080}
                         loading="lazy"
                         width={1920}
