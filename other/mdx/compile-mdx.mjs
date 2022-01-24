@@ -19,6 +19,7 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeProbeImageSize from 'rehype-probe-image-size';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import remarkHint from 'remark-hint';
 import remarkOembed from 'remark-oembed';
 
 // Internals
@@ -138,6 +139,7 @@ function removePreContainerDivs() {
         options.remarkPlugins = [
           ...(options.remarkPlugins ?? []),
           remarkGfm,
+          remarkHint,
           remarkOembed,
         ];
         options.rehypePlugins = [

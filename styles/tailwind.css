@@ -28,3 +28,34 @@
 
 @tailwind utilities;
 @tailwind screens;
+
+p.hint {
+  @apply p-4 border-l-4 rounded-md text-sm;
+
+  &.tip {
+    @apply bg-blue-50 border-blue-400 text-blue-700;
+
+    & a,
+    & strong {
+      @apply text-blue-700 font-bold;
+    }
+  }
+
+  &.error {
+    @apply bg-red-50 border-red-400 text-red-700;
+
+    & a,
+    & strong {
+      @apply text-red-700 font-bold;
+    }
+  }
+
+  &.warn {
+    @apply bg-yellow-50 border-yellow-400 text-yellow-700;
+
+    & a,
+    & strong {
+      @apply text-yellow-700 font-bold;
+    }
+  }
+}
