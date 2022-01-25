@@ -86,7 +86,7 @@
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.3",
     "cssnano": "^5.0.16",
-    "esbuild": "^0.14.13",
+    "esbuild": "^0.14.14",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",
