@@ -30,26 +30,22 @@ const handleEvent = async (event: FetchEvent) => {
   response = new Response(response.body, response);
   let relativePath = request.url.replace(/^https?:\/\/[^/]+/, '');
 
-  if (relativePath.startsWith('build/info.json')) {
-    response.headers.set('Cache-Control', 'no-cache');
+  response.headers.append('Cache-Control', 's-maxage=10');
 
-    event.waitUntil(cache.put(request, response.clone()));
-
-    return response;
+  if (relativePath.includes('build/info.json')) {
+    // We need to first delete the cache to avoid the s-maxage for the rest of responses
+    response.headers.delete('Cache-Control');
+    response.headers.append('Cache-Control', 'no-cache');
   }
 
-  if (relativePath.startsWith('fonts') || relativePath.startsWith('build')) {
-    response.headers.set(
+  if (relativePath.includes('fonts') || relativePath.includes('build')) {
+    // We need to first delete the cache to avoid the s-maxage for the rest of responses
+    response.headers.delete('Cache-Control');
+    response.headers.append(
       'Cache-Control',
       'public, max-age=31536000, immutable'
     );
-
-    event.waitUntil(cache.put(request, response.clone()));
-
-    return response;
   }
-
-  response.headers.append('Cache-Control', 's-maxage=10');
 
   event.waitUntil(cache.put(request, response.clone()));
 

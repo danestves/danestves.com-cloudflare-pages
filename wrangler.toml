@@ -21,4 +21,5 @@ watch_dir = "./build/index.js"
 format = "service-worker"
 
 [miniflare]
+env_path = ".env"
 kv_persist = true

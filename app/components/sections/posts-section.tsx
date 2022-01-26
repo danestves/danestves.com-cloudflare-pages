@@ -43,12 +43,11 @@ const PostsSection = ({ posts }: PostsSectionProps) => {
 
           <div className="mx-auto mt-6 grid max-w-[977px] grid-cols-1 gap-5 lg:grid-cols-3">
             {posts?.map((post, i) => (
-              <InView>
+              <InView key={post.hash}>
                 {({ inView, ref }) => (
                   <motion.div
                     animate={inView && 'animate'}
                     initial="initial"
-                    key={post.hash}
                     ref={ref}
                     transition={{ delay: i * 0.3, duration: 0.5 }}
                     variants={{
