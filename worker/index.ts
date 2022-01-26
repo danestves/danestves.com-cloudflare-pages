@@ -28,7 +28,14 @@ const handleEvent = async (event: FetchEvent) => {
   }
 
   response = new Response(response.body, response);
-  response.headers.append('Cache-Control', 's-maxage=10');
+  if (response.url.includes('/fonts/')) {
+    response.headers.append(
+      'Cache-Control',
+      'public, max-age=31536000, immutable'
+    );
+  } else {
+    response.headers.append('Cache-Control', 's-maxage=10');
+  }
 
   event.waitUntil(cache.put(request, response.clone()));
 
