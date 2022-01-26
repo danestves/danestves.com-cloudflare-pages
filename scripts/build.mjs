@@ -1,7 +1,10 @@
 // Dependencies
+import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 import * as esbuild from 'esbuild';
 import alias from 'esbuild-plugin-alias';
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import path from 'path';
+
+let __dirname = path.resolve();
 
 async function build() {
   const mode = process.env.NODE_ENV
