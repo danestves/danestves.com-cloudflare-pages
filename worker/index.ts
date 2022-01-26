@@ -29,11 +29,11 @@ const handleEvent = async (event: FetchEvent) => {
 
   response = new Response(response.body, response);
   if (response.url.includes('/fonts/')) {
-    response.headers.append(
+    response.headers.set(
       'Cache-Control',
       'public, max-age=31536000, immutable'
     );
-  } else {
+  } else if (!response.url.includes('/fonts/')) {
     response.headers.append('Cache-Control', 's-maxage=10');
   }
 

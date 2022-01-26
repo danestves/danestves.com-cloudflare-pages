@@ -77,6 +77,7 @@ jobs:
         run: npm run build
         env:
           COMMIT_SHA: ${{ github.sha }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           PRISMA_CLIENT_ENGINE_TYPE: dataproxy
 
       - name: 🎉 Publish
