@@ -16,6 +16,10 @@ async function build() {
     ? process.env.VERSION
     : new Date().toISOString();
 
+  if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL is required');
+  }
+
   console.log(`Building Worker in ${mode} mode for version ${version}`);
 
   const outfile = './dist/worker.js';
@@ -37,6 +41,7 @@ async function build() {
         env: {
           NODE_ENV: mode,
           VERSION: version,
+          DATABASE_URL: process.env.DATABASE_URL,
         },
       }),
     },
