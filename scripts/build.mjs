@@ -1,19 +1,22 @@
 // Dependencies
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
-import * as esbuild from 'esbuild';
+import NodeModulesPolyfill from '@esbuild-plugins/node-modules-polyfill';
+import esbuild from 'esbuild';
 import alias from 'esbuild-plugin-alias';
-import { createRequire } from 'module';
-import path from 'path';
+import NodeModule from 'module';
 
+let { NodeModulesPolyfillPlugin } = NodeModulesPolyfill;
+let { createRequire } = NodeModule;
 let require = createRequire(import.meta.url);
-let __dirname = path.resolve();
 
 async function build() {
   const mode = process.env.NODE_ENV
     ? process.env.NODE_ENV.toLowerCase()
     : 'development';
+  const version = process.env.VERSION
+    ? process.env.VERSION
+    : new Date().toISOString();
 
-  console.log(`Building Worker in ${mode} mode`);
+  console.log(`Building Worker in ${mode} mode for version ${version}`);
 
   const outfile = './dist/worker.js';
   const startTime = Date.now();
@@ -21,21 +24,24 @@ async function build() {
     entryPoints: ['./worker/index.ts'],
     bundle: true,
     minify: mode === 'production',
-    sourcemap: true,
+    sourcemap: mode !== 'production',
+    incremental: mode !== 'production',
     format: 'esm',
     metafile: true,
+    external:
+      mode === 'production'
+        ? ['*.development.js']
+        : ['*.production.js', '*.production.min.js'],
     define: {
       'process.env.NODE_ENV': `"${mode}"`,
-      __dirname: JSON.stringify(__dirname),
     },
+    outfile,
     plugins: [
       NodeModulesPolyfillPlugin(),
       alias({
         '@prisma/client': require.resolve('@prisma/client'),
       }),
     ],
-    inject: ['./other/process-env-shim.js'],
-    outfile,
   });
   const endTime = Date.now();
 
@@ -44,6 +50,8 @@ async function build() {
   if (mode === 'production') {
     console.log(await esbuild.analyzeMetafile(result.metafile));
   }
+
+  process.exit(0);
 }
 
 build().catch((e) => console.error('Unknown error caught during build:', e));
