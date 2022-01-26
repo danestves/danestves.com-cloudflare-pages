@@ -15,11 +15,11 @@ _<small>Some of the code is inspired/copied/modified from these projects, all cr
 
 ## Stack 🏗
 
-- **Framework:** [NextJS](https://nextjs.org/)
+- **Framework:** [Remix](https://remix.run/)
 - **Database**: [PlanetScale](https://planetscale.com)
 - **ORM**: [Prisma](https://prisma.io/)
-- **Deployment:** [Vercel](https://vercel.com/)
-- **Content:** [MDX](https://github.com/mdx-js/mdx) + [Contentlayer](https://www.contentlayer.dev/)
+- **Deployment:** [Cloudflare Workers](https://workers.cloudflare.com/)
+- **Content:** [MDX](https://github.com/mdx-js/mdx)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 
 ## Contributors ✨
