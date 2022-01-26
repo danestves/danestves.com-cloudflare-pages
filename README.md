@@ -1,68 +1,47 @@
-# remix-worker-template
+# danestves.com
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/edmundhung/remix-worker-template)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-> The current starter template is based on Remix 1.1.1
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 
-- [Repository](https://github.com/remix-run/remix)
-- [Remix Docs](https://remix.run/docs)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-## Differences with the Official CF Workers template
+_<small>Some of the code is inspired/copied/modified from these projects, all credit goes to them:</small>_
 
-While the official template provides the bare minimums for you to kickstart a Remix app running on Cloudflare Workers, this starter template adds a few extra tools that are common for development and let you be productive right away. These tools include:
+- [kentcdodds/kentcdodds.com](https://github.com/kentcdodds/kentcdodds.com)
+- [edmundhung/remix-worker-template](https://github.com/edmundhung/remix-worker-template)
+- [kiliman/kiliman-dev](https://github.com/kiliman/kiliman-dev)
+- [marcomafessolli/remix-prisma-cloudflare-workers](https://github.com/marcomafessolli/remix-prisma-cloudflare-workers)
 
-- Tailwind
-- Playwright
-- ESLint
-- Prettier
+## Stack 🏗
 
-In addition, it is now setup using a custom adapter based on the official **Cloudflare Pages adapter**. This allows us running a module worker with supports of `Durable Objects`. This is a temporay workaround until an official update is landed on the CF Worker adapter.
+- **Framework:** [NextJS](https://nextjs.org/)
+- **Database**: [PlanetScale](https://planetscale.com)
+- **ORM**: [Prisma](https://prisma.io/)
+- **Deployment:** [Vercel](https://vercel.com/)
+- **Content:** [MDX](https://github.com/mdx-js/mdx) + [Contentlayer](https://www.contentlayer.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 
-## Node Version
+## Contributors ✨
 
-Please make sure the node version is **>= 16.7**. If you are using `nvm`, just run:
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-```sh
-nvm use
-```
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://danestves.com/"><img src="https://avatars.githubusercontent.com/u/31737273?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel Esteves</b></sub></a><br /><a href="https://github.com/danestves/website/commits?author=danestves" title="Code">💻</a> <a href="https://github.com/danestves/website/commits?author=danestves" title="Documentation">📖</a> <a href="#example-danestves" title="Examples">💡</a> <a href="https://github.com/danestves/website/commits?author=danestves" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/SalomonDev"><img src="https://avatars.githubusercontent.com/u/66646454?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Salomon Sanchez</b></sub></a><br /><a href="#design-SalomonDev" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/ielijose"><img src="https://avatars.githubusercontent.com/u/2319641?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eli José Carrasquero</b></sub></a><br /><a href="#blog-ielijose" title="Blogposts">📝</a></td>
+    <td align="center"><a href="https://github.com/Andresdamelio"><img src="https://avatars.githubusercontent.com/u/36086897?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrés D' Amelio</b></sub></a><br /><a href="https://github.com/danestves/website/issues?q=author%3Aandresdamelio" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/jasba24"><img src="https://avatars.githubusercontent.com/u/71221550?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebastian Buitrago</b></sub></a><br /><a href="#content-jasba24" title="Content">🖋</a></td>
+  </tr>
+</table>
 
-This allows [miniflare](https://github.com/cloudflare/miniflare) to serve a development environment as close to the actual worker runtime as possibile.
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
-## Development
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
-To starts your app in development mode, rebuilding assets on file changes, the recommended approach is:
-
-```sh
-npm run dev
-```
-
-This will run your remix app in dev mode using miniflare.
-
-## Testing
-
-Before running the tests, please ensure the worker is built:
-
-```sh
-npm run build && npm run test
-```
-
-## Deployment
-
-To deploy your Remix app, simply do it with Wrangler using:
-
-```sh
-npx wrangler publish
-```
-
-## CI/CD
-
-The template ships a [development workflow](./.github/workflows/development.yml) which is triggered whenever new changes are pushed.
-
-To allow GitHub deploying the worker for you, following variables are required:
-
-- CF_API_TOKEN
-- CF_ACCOUNT_ID
-
-These values could be found / created on your Cloudflare Dashboard. If your project is bootstrapped with the deploy button above, both should be already set in the repository.
-
-Alternatively, **CF_ACCOUNT_ID** can be set as `account_id` on the [wrangler.toml](./wrangler.toml).
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
