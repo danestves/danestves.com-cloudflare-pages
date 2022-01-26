@@ -9,7 +9,9 @@ let require = createRequire(import.meta.url);
 let __dirname = path.resolve();
 
 async function build() {
-  const mode = process.env.NODE_ENV?.toLowerCase() ?? 'development';
+  const mode = process.env.NODE_ENV
+    ? process.env.NODE_ENV.toLowerCase()
+    : 'development';
 
   console.log(`Building Worker in ${mode} mode`);
 
