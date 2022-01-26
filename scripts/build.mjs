@@ -1,12 +1,14 @@
+// Dependencies
 import * as esbuild from 'esbuild';
+import alias from 'esbuild-plugin-alias';
+import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 
 async function build() {
   const mode = process.env.NODE_ENV
     ? process.env.NODE_ENV.toLowerCase()
     : 'development';
-  const version = process.env.VERSION || new Date().toISOString();
 
-  console.log(`Building Worker in ${mode} mode for version ${version}`);
+  console.log(`Building Worker in ${mode} mode`);
 
   const outfile = './dist/worker.js';
   const startTime = Date.now();
@@ -19,8 +21,15 @@ async function build() {
     metafile: true,
     define: {
       'process.env.NODE_ENV': `"${mode}"`,
-      'process.env.VERSION': `"${version}"`,
+      __dirname: JSON.stringify(__dirname),
     },
+    plugins: [
+      NodeModulesPolyfillPlugin(),
+      alias({
+        '@prisma/client': require.resolve('@prisma/client'),
+      }),
+    ],
+    inject: ['./other/process-env-shim.js'],
     outfile,
   });
   const endTime = Date.now();
