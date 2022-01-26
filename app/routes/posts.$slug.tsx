@@ -14,6 +14,7 @@ import prismOne from '~/styles/prism-one.css';
 import { formatDate } from '~/utils/date';
 import { i18n } from '~/utils/i18n.server';
 import { getMDXComponent } from '~/utils/mdx.client';
+import { getPostViews } from '~/utils/prisma.server';
 import type { Post, PostFrontmatter } from '~/types';
 
 declare var CONTENT: KVNamespace;
@@ -33,6 +34,7 @@ type LoaderData = {
   html: string;
   slug: string;
   code?: string;
+  views?: number;
 };
 
 export let loader: LoaderFunction = async ({ params, request }) => {
@@ -41,9 +43,10 @@ export let loader: LoaderFunction = async ({ params, request }) => {
     throw new Response('Not Found', { status: 404 });
   }
 
-  let [locale, translations] = await Promise.all([
+  let [locale, translations, views] = await Promise.all([
     i18n.getLocale(request),
     i18n.getTranslations(request, 'posts'),
+    getPostViews(slug),
   ]);
   let post = await CONTENT.get(`posts/${locale}/${slug}`, 'json');
   if (post === undefined) {
@@ -69,6 +72,7 @@ export let loader: LoaderFunction = async ({ params, request }) => {
     frontmatter,
     html,
     slug,
+    views: +views.toString(),
   };
 
   return json(data, { headers });

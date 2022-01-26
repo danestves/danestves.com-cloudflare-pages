@@ -11,11 +11,11 @@ import * as build from '../build/index.js';
 const handleRequest = createRequestHandler({ build });
 
 const handleEvent = async (event: FetchEvent) => {
-  let { request } = event;
+  const { request } = event;
 
   // @ts-ignore
-  let cache = caches.default;
-  let cached = await cache.match(request);
+  const cache = caches.default;
+  const cached = await cache.match(request);
 
   if (cached) {
     return cached;
