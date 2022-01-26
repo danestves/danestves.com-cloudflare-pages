@@ -33,7 +33,12 @@ async function build() {
         ? ['*.development.js']
         : ['*.production.js', '*.production.min.js'],
     define: {
-      'process.env.NODE_ENV': `"${mode}"`,
+      process: JSON.stringify({
+        env: {
+          NODE_ENV: mode,
+          VERSION: version,
+        },
+      }),
     },
     outfile,
     plugins: [
