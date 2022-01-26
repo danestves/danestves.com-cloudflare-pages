@@ -7,5 +7,5 @@
 /node_modules
 /dist
 /app/routes.d.ts
-/app/styles/tailwind.css
+/app/styles/*.css
 /other/shared-tsconfig.json

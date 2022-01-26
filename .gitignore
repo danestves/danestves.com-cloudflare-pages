@@ -11,8 +11,7 @@ node_modules
 /dist
 
 # Styles
-/app/styles/tailwind.css
-/app/styles/prism-one.css
+/app/styles/*.css
 
 # Cypress
 /cypress/videos
