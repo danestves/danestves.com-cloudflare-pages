@@ -1,15 +1,15 @@
 // Dependencies
-import NodeModulesPolyfillPlugin from '@esbuild-plugins/node-modules-polyfill';
+import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 import * as esbuild from 'esbuild';
 import alias from 'esbuild-plugin-alias';
+import { createRequire } from 'module';
 import path from 'path';
 
+let require = createRequire(import.meta.url);
 let __dirname = path.resolve();
 
 async function build() {
-  const mode = process.env.NODE_ENV
-    ? process.env.NODE_ENV.toLowerCase()
-    : 'development';
+  const mode = process.env.NODE_ENV?.toLowerCase() ?? 'development';
 
   console.log(`Building Worker in ${mode} mode`);
 

@@ -6,7 +6,7 @@ import {
 
 // Internals
 // @ts-ignore
-import * as build from '../build';
+import * as build from '../build/index.js';
 
 const handleRequest = createRequestHandler({ build });
 

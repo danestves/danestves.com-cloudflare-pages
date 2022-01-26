@@ -22,7 +22,7 @@
     "build:remix": "remix build --sourcemap",
     "build:style": "postcss styles/**/*.css --base styles --dir app/styles --env production",
     "build:worker": "cross-env NODE_ENV=production VERSION=$(git rev-parse --short HEAD) node ./scripts/build.mjs",
-    "build": "npm run build:style && npm run build:remix && node ./other/generate-build-info.js",
+    "build": "npm run build:style && npm run build:remix && node ./other/generate-build-info.js && npm run build:worker",
     "debug": "miniflare --debug --build-command \"npm run dev:worker\" --watch",
     "dev:remix": "remix watch",
     "dev:style": "postcss styles/**/*.css --base styles --dir app/styles --watch",
