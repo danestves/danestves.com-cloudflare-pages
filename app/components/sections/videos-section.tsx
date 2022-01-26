@@ -28,7 +28,7 @@ const VideosSection = (props: Videos) => {
           id="danestves-section-latest-videos"
           initial="initial"
           ref={ref}
-          transition={{ delay: 0.45, duration: 0.5 }}
+          transition={{ duration: 0.5 }}
           variants={variants}
         >
           <h2 className="mx-auto w-full max-w-[977px] text-[26px] font-black uppercase text-primary lg:pl-8">

@@ -31,7 +31,7 @@ const PostsSection = ({ posts }: PostsSectionProps) => {
           id="danestves-section-posts"
           initial="initial"
           ref={ref}
-          transition={{ delay: 0.3, duration: 0.5 }}
+          transition={{ duration: 0.5 }}
           variants={variants}
         >
           <h2 className="text-center text-[26px] font-black uppercase text-primary">
