@@ -1,5 +1,5 @@
 // Dependencies
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import NodeModulesPolyfillPlugin from '@esbuild-plugins/node-modules-polyfill';
 import * as esbuild from 'esbuild';
 import alias from 'esbuild-plugin-alias';
 import path from 'path';
