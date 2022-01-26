@@ -20,8 +20,8 @@
   "dependencies": {
     "cloudinary-build-url": "^0.2.4",
     "commander": "^8.3.0",
-    "dotenv": "^14.2.0",
-    "esbuild": "^0.14.13",
+    "dotenv": "^14.3.2",
+    "esbuild": "^0.14.14",
     "esbuild-runner": "^2.2.1",
     "mdx-bundler": "^8.0.1",
     "mdx-embed": "^0.0.22",
