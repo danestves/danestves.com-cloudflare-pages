@@ -23,7 +23,7 @@ function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           className="h-auto w-full"
           initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
-          transition={{ delay: 0.15 }}
+          transition={{ delay: 0.15, duration: 0.5 }}
         />
       </div>
 
@@ -32,7 +32,7 @@ function HeroSection() {
           <motion.div
             animate={{ opacity: 1, scale: 1 }}
             initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.75 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
           >
             <BlurrableImage
               className="relative pb-[calc((637/646)*100%)]"
@@ -70,7 +70,7 @@ function HeroSection() {
           scale: shouldReduceMotion ? 1 : 0.75,
           translateY: -50,
         }}
-        transition={{ delay: 0.45 }}
+        transition={{ delay: 0.45, duration: 0.5 }}
       >
         <h1 className="text-2xl font-black uppercase text-white">
           daniel esteves{' '}

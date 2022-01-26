@@ -1,5 +1,6 @@
 // Dependencies
 import { motion } from 'framer-motion';
+import { InView } from 'react-intersection-observer';
 import { Link, json, useLoaderData } from 'remix';
 import { route } from 'routes-gen';
 import type { Variants } from 'framer-motion';
@@ -25,7 +26,6 @@ export let loader: LoaderFunction = async ({ request }) => {
       let { html: _html, ...data } = post;
 
       return data as Omit<Post, 'html'>;
-      // order by published_at
     })
   );
 
@@ -45,7 +45,7 @@ export default function Posts() {
   let data = useLoaderData<LoaderData>();
 
   let variants: Variants = {
-    initial: { y: -10, opacity: 0 },
+    initial: { y: 10, opacity: 0 },
     animate: { y: 0, opacity: 1 },
   };
 
@@ -61,22 +61,29 @@ export default function Posts() {
       <div className="container mx-auto mt-5 max-w-[977px]">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {data.posts.map((post, i) => (
-            <motion.div
-              animate="animate"
-              initial="initial"
-              key={post.hash}
-              transition={{ duration: 0.3, delay: i * 0.2 }}
-              variants={variants}
-            >
-              <PostCard
-                as={Link}
-                className="block overflow-hidden rounded-lg p-1 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-primary/20 focus:ring-offset-2 focus:ring-offset-primary"
-                descriptionClassName="line-clamp-3"
-                post={post.frontmatter}
-                prefetch="intent"
-                to={route('/posts/:slug', { slug: post.slug as string })}
-              />
-            </motion.div>
+            <InView key={post.hash} threshold={0.25}>
+              {({ inView, ref }) => (
+                <motion.div
+                  animate={inView && 'animate'}
+                  initial="initial"
+                  ref={ref}
+                  transition={{
+                    delay: i * 0.1,
+                    duration: 0.5,
+                  }}
+                  variants={variants}
+                >
+                  <PostCard
+                    as={Link}
+                    className="block overflow-hidden rounded-lg p-1 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-primary/20 focus:ring-offset-2 focus:ring-offset-primary"
+                    descriptionClassName="line-clamp-3"
+                    post={post.frontmatter}
+                    prefetch="intent"
+                    to={route('/posts/:slug', { slug: post.slug as string })}
+                  />
+                </motion.div>
+              )}
+            </InView>
           ))}
         </div>
       </div>

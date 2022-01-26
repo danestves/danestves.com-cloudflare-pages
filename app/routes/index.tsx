@@ -5,11 +5,11 @@ import type { Language } from 'remix-i18next';
 
 // Internals
 import { HeroSection } from '~/components/sections/hero-section';
+import { PostsSection } from '~/components/sections/posts-section';
 import { i18n } from '~/utils/i18n.server';
 import { getVideos } from '~/utils/youtube.server';
 import { VideosSection } from '~/components/sections/videos-section';
 import type { Post, Videos } from '~/types';
-import { PostsSection } from '~/components/sections/posts-section';
 
 declare var CONTENT: KVNamespace;
 
@@ -44,14 +44,15 @@ export let loader: LoaderFunction = async ({ request }) => {
     i18n.getTranslations(request, 'sections'),
     getVideos(),
   ]);
-  let slugs = await CONTENT.list({ prefix: `posts/${locale}/` });
+  let slugs = await CONTENT.list({
+    prefix: `posts/${locale}/`,
+  });
   let posts = await Promise.all(
     slugs.keys.map(async ({ name }) => {
       let post = (await CONTENT.get(name, 'json')) as Post;
       let { html: _html, ...data } = post;
 
       return data as Omit<Post, 'html'>;
-      // order by published_at
     })
   );
   let orderedPosts = posts.sort((a, b) => {
