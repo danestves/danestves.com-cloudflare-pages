@@ -47,12 +47,12 @@ function PostCard<T extends React.ElementType = 'div'>({
           <img
             className="rounded-lg"
             {...getImgProps(getImageBuilder(post.cover.id, post.cover.alt), {
-              widths: [280, 560, 840, 1100, 1300, 1650],
+              widths: [240, 320, 480, 640, 960, 1280, 1920],
               sizes: [
                 '(max-width:639px) 80vw',
                 '(min-width:640px) and (max-width:1023px) 40vw',
                 '(min-width:1024px) and (max-width:1620px) 25vw',
-                '420px',
+                '240px',
               ],
             })}
             height={1080}
