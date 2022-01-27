@@ -30,8 +30,6 @@ const handleEvent = async (event: FetchEvent) => {
   response = new Response(response.body, response);
   let relativePath = request.url.replace(/^https?:\/\/[^/]+/, '');
 
-  response.headers.append('Cache-Control', 's-maxage=10');
-
   if (relativePath.includes('build/info.json')) {
     // We need to first delete the cache to avoid the s-maxage for the rest of responses
     response.headers.delete('Cache-Control');
