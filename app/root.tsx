@@ -1,7 +1,6 @@
 // Dependencies
 import clsx from 'clsx';
 import { LazyMotion, domAnimation } from 'framer-motion';
-import microtip from 'microtip/microtip.min.css';
 import {
   Links,
   LiveReload,
@@ -31,6 +30,7 @@ import { RightSidebar } from './components/right-sidebar';
 import { useRemixI18Next } from './lib/remix-i18n';
 import global from './styles/global.css';
 import tailwind from './styles/tailwind.css';
+import vendors from './styles/vendors.css';
 import { i18n, i18nStorage } from './utils/i18n.server';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
 import { getSeo } from './utils/seo';
@@ -84,9 +84,9 @@ export let links: LinksFunction = () => {
       color: '#29abe2',
     },
     { rel: 'icon', href: '/favicon.ico' },
-    { rel: 'stylesheet', href: global },
+    { rel: 'stylesheet', href: vendors },
     { rel: 'stylesheet', href: tailwind },
-    { rel: 'stylesheet', href: microtip },
+    { rel: 'stylesheet', href: global },
   ];
 };
 
