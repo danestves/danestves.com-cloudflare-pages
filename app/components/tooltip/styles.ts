@@ -1,7 +1,8 @@
 // Dependencies
-import { keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
-import { TooltipPopup } from '@reach/tooltip';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+
+// Internals
+import { keyframes, styled } from '~/stitches.config';
 
 const slideUpAndFade = keyframes({
   '0%': { opacity: 0, transform: 'translateY(2px)' },
@@ -23,49 +24,24 @@ const slideLeftAndFade = keyframes({
   '100%': { opacity: 1, transform: 'translateX(0)' },
 });
 
-let TooltipArrow = styled.div<{ $left?: number; $top?: number }>`
-  left: ${({ $left }) => $left}px;
-  top: ${({ $top }) => $top}px;
+const StyledArrow = styled(TooltipPrimitive.Arrow, {});
 
-  @media (prefers-reduced-motion: no-preference) {
-    animation-duration: 400ms;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity;
-    &[data-side='top'] {
-      animation-name: ${slideDownAndFade};
-    }
-    &[data-side='right'] {
-      animation-name: ${slideLeftAndFade};
-    }
-    &[data-side='bottom'] {
-      animation-name: ${slideUpAndFade};
-    }
-    &[data-side='left'] {
-      animation-name: ${slideRightAndFade};
-    }
-  }
-`;
+const StyledContent = styled(TooltipPrimitive.Content, {
+  borderRadius: '0.375rem',
+  padding: '10px 15px',
+  fontSize: 14,
+  lineHeight: 1,
+  '@media (prefers-reduced-motion: no-preference)': {
+    animationDuration: '400ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    willChange: 'transform, opacity',
+    '&[data-state="delayed-open"]': {
+      '&[data-side="top"]': { animationName: slideDownAndFade },
+      '&[data-side="right"]': { animationName: slideLeftAndFade },
+      '&[data-side="bottom"]': { animationName: slideUpAndFade },
+      '&[data-side="left"]': { animationName: slideRightAndFade },
+    },
+  },
+});
 
-let TooltipContent = styled(TooltipPopup)`
-  border: none;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation-duration: 400ms;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity;
-    &[data-side='top'] {
-      animation-name: ${slideDownAndFade};
-    }
-    &[data-side='right'] {
-      animation-name: ${slideLeftAndFade};
-    }
-    &[data-side='bottom'] {
-      animation-name: ${slideUpAndFade};
-    }
-    &[data-side='left'] {
-      animation-name: ${slideRightAndFade};
-    }
-  }
-`;
-
-export { TooltipArrow, TooltipContent };
+export { StyledArrow, StyledContent };

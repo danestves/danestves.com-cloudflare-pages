@@ -1,5 +1,5 @@
 // Dependencies
-import VisuallyHidden from '@reach/visually-hidden';
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 import { useTranslation } from 'react-i18next';
 import { Theme, useTheme } from 'remix-themes';
 
@@ -28,12 +28,12 @@ function ThemeSwitcher() {
     >
       <MoonIcon className="inline-block h-auto w-[21px]" />
 
-      <VisuallyHidden>
+      <VisuallyHidden.Root>
         <Themed
           dark={t('header.switcher.theme.dark')}
           light={t('header.switcher.theme.light')}
         />
-      </VisuallyHidden>
+      </VisuallyHidden.Root>
     </Switch>
   );
 }
