@@ -78,14 +78,19 @@ const VideosSection = (props: Videos) => {
                                     'fetch'
                                   ),
                                   {
-                                    widths: [224],
-                                    sizes: ['224px'],
+                                    widths: [213, 320, 426, 640, 853, 1280],
+                                    sizes: [
+                                      '(max-width:639px) 80vw',
+                                      '(min-width:640px) and (max-width:1023px) 40vw',
+                                      '(min-width:1024px) and (max-width:1620px) 25vw',
+                                      '213',
+                                    ],
                                   }
                                 )}
                                 className="absolute rounded-xl object-cover object-center"
-                                height={1080}
+                                height={720}
                                 loading="lazy"
-                                width={1920}
+                                width={1280}
                               />
                             }
                           />
