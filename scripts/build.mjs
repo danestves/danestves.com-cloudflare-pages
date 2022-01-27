@@ -33,7 +33,7 @@ async function build() {
     format: 'esm',
     metafile: true,
     external:
-      mode !== 'production'
+      mode === 'production'
         ? ['*.development.js']
         : ['*.production.js', '*.production.min.js'],
     define: {
