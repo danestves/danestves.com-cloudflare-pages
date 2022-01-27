@@ -12,6 +12,7 @@ _<small>Some of the code is inspired/copied/modified from these projects, all cr
 - [edmundhung/remix-worker-template](https://github.com/edmundhung/remix-worker-template)
 - [kiliman/kiliman-dev](https://github.com/kiliman/kiliman-dev)
 - [marcomafessolli/remix-prisma-cloudflare-workers](https://github.com/marcomafessolli/remix-prisma-cloudflare-workers)
+- [jacobPARIS/remix-cloudflare-prisma](https://github.com/jacobPARIS/remix-cloudflare-prisma)
 
 ## Stack 🏗
 
