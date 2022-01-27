@@ -1,5 +1,6 @@
 // Dependencies
 import clsx from 'clsx';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import microtip from 'microtip/microtip.min.css';
 import {
   Links,
@@ -203,7 +204,9 @@ export default function AppWithProviders() {
       specifiedTheme={data.requestInfo.session.theme}
       themeAction="/action/set-theme"
     >
-      <App />
+      <LazyMotion features={domAnimation}>
+        <App />
+      </LazyMotion>
     </ThemeProvider>
   );
 }

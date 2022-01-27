@@ -1,5 +1,5 @@
 // Dependencies
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { InView } from 'react-intersection-observer';
 import type { Variants } from 'framer-motion';

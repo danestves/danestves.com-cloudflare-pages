@@ -1,5 +1,5 @@
 // Dependencies
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { InView } from 'react-intersection-observer';
 import { Link, json, useLoaderData } from 'remix';
 import { route } from 'routes-gen';
