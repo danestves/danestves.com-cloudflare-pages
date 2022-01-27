@@ -1,12 +1,5 @@
 // Dependencies
-import NodeModulesPolyfill from '@esbuild-plugins/node-modules-polyfill';
 import esbuild from 'esbuild';
-import alias from 'esbuild-plugin-alias';
-import NodeModule from 'module';
-
-let { NodeModulesPolyfillPlugin } = NodeModulesPolyfill;
-let { createRequire } = NodeModule;
-let require = createRequire(import.meta.url);
 
 async function build() {
   const mode = process.env.NODE_ENV
@@ -15,10 +8,6 @@ async function build() {
   const version = process.env.VERSION
     ? process.env.VERSION
     : new Date().toISOString();
-
-  if (!process.env.DATABASE_URL) {
-    throw new Error('DATABASE_URL is required');
-  }
 
   console.log(`Building Worker in ${mode} mode for version ${version}`);
 
@@ -41,17 +30,10 @@ async function build() {
         env: {
           NODE_ENV: mode,
           VERSION: version,
-          DATABASE_URL: process.env.DATABASE_URL,
         },
       }),
     },
     outfile,
-    plugins: [
-      NodeModulesPolyfillPlugin(),
-      alias({
-        '@prisma/client': require.resolve('@prisma/client'),
-      }),
-    ],
   });
   const endTime = Date.now();
 

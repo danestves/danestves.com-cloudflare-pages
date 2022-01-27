@@ -4,16 +4,6 @@ module.exports = {
    */
   apps: [
     {
-      name: 'Prisma',
-      script: 'prisma generate',
-      watch: ['./prisma'],
-      autorestart: false,
-      env: {
-        NODE_ENV: process.env.NODE_ENV ?? 'development',
-        PRISMA_CLIENT_ENGINE_TYPE: 'dataproxy',
-      },
-    },
-    {
       name: 'Styles',
       script: 'postcss styles/**/*.css --base styles --dir app/styles --watch',
       ignore_watch: ['.'],
@@ -27,7 +17,6 @@ module.exports = {
       ignore_watch: ['.'],
       env: {
         NODE_ENV: process.env.NODE_ENV ?? 'development',
-        DATABASE_URL: process.env.DATABASE_URL,
       },
     },
     {
@@ -37,7 +26,6 @@ module.exports = {
       ignore_watch: ['.'],
       env: {
         NODE_ENV: process.env.NODE_ENV ?? 'development',
-        DATABASE_URL: process.env.DATABASE_URL,
       },
     },
   ],

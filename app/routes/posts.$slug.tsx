@@ -14,10 +14,10 @@ import prismOne from '~/styles/prism-one.css';
 import { formatDate } from '~/utils/date';
 import { i18n } from '~/utils/i18n.server';
 import { getMDXComponent } from '~/utils/mdx.client';
-import { getPostViews } from '~/utils/prisma.server';
 import type { Post, PostFrontmatter } from '~/types';
 
 declare var CONTENT: KVNamespace;
+declare var VIEWS: KVNamespace;
 
 export let links: LinksFunction = () => {
   return [
@@ -46,7 +46,7 @@ export let loader: LoaderFunction = async ({ params, request }) => {
   let [locale, translations, views] = await Promise.all([
     i18n.getLocale(request),
     i18n.getTranslations(request, 'posts'),
-    getPostViews(slug),
+    VIEWS.get(slug, 'text'),
   ]);
   let post = await CONTENT.get(`posts/${locale}/${slug}`, 'json');
   if (post === undefined) {
@@ -73,7 +73,7 @@ export let loader: LoaderFunction = async ({ params, request }) => {
     frontmatter,
     html,
     slug,
-    views: +views.toString(),
+    views: Number(views),
   };
 
   return json(data, { headers });
