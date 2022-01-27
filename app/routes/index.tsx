@@ -62,6 +62,10 @@ export let loader: LoaderFunction = async ({ request }) => {
     return bDate.getTime() - aDate.getTime();
   });
 
+  let headers = new Headers();
+  headers.set('Cache-Control', 'private, max-age=21600');
+  headers.set('Vary', 'Cookie');
+
   let data: LoaderData = {
     i18n: translations,
     posts: orderedPosts.slice(0, 3),
@@ -69,10 +73,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   };
 
   return json(data, {
-    headers: {
-      'Cache-Control': `private, max-age=21600, must-revalidate`,
-      Vary: 'Cookie',
-    },
+    headers,
   });
 };
 

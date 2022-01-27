@@ -29,6 +29,10 @@ export let loader: LoaderFunction = async ({ request }) => {
     })
   );
 
+  let headers = new Headers();
+  headers.set('Cache-Control', 'public, max-age=3600');
+  headers.set('Vary', 'Cookie');
+
   let data: LoaderData = {
     posts: posts.sort((a, b) => {
       let aDate = new Date(a.frontmatter.published_at);
@@ -38,7 +42,7 @@ export let loader: LoaderFunction = async ({ request }) => {
     }),
   };
 
-  return json(data);
+  return json(data, { headers });
 };
 
 export default function Posts() {

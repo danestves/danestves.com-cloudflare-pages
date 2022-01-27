@@ -65,6 +65,7 @@ export let loader: LoaderFunction = async ({ params, request }) => {
     headers.set('ETag', weakHash);
   }
   headers.set('Cache-Control', 'max-age=43200, stale-while-revalidate');
+  headers.set('Vary', 'Cookie');
 
   let data: LoaderData = {
     i18n: translations,
