@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "cloudinary-build-url": "^0.2.4",
-    "commander": "^8.3.0",
+    "commander": "^9.0.0",
     "dotenv": "^14.3.2",
     "esbuild": "^0.14.14",
     "esbuild-runner": "^2.2.1",
