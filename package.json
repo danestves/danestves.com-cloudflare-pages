@@ -39,7 +39,7 @@
     "contentlayer": "^0.0.33",
     "copy-to-clipboard": "^3.3.1",
     "date-fns": "^2.28.0",
-    "mdx-embed": "^0.0.22",
+    "mdx-embed": "^0.0.23",
     "microtip": "^0.2.2",
     "nanoid": "^3.1.30",
     "next": "^12.0.8-canary.19",
