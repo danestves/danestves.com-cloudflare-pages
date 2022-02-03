@@ -7,6 +7,7 @@ import type { Language } from 'remix-i18next';
 // Internals
 import { BlurrableImage } from '~/components/blurrable-image';
 import { mdxComponents } from '~/components/mdx-components';
+import { Views } from '~/components/views';
 import { ShareIcon } from '~/components/icons/share-icon';
 import { useShare } from '~/hooks/use-share';
 import { getImageBlur, getImageBuilder, getImgProps, images } from '~/images';
@@ -33,8 +34,8 @@ type LoaderData = {
   frontmatter: PostFrontmatter;
   html: string;
   slug: string;
+  views: number;
   code?: string;
-  views?: number;
 };
 
 export let loader: LoaderFunction = async ({ params, request }) => {
@@ -81,7 +82,13 @@ export let loader: LoaderFunction = async ({ params, request }) => {
 
 export default function PostPage() {
   let { i18n, t } = useTranslation('posts');
-  let { code, html, frontmatter: post, slug } = useLoaderData<LoaderData>();
+  let {
+    code,
+    html,
+    frontmatter: post,
+    slug,
+    views,
+  } = useLoaderData<LoaderData>();
 
   let { canShare, hasShared, share } = useShare({
     title: post?.title as string,
@@ -151,7 +158,7 @@ export default function PostPage() {
                 }
               />
 
-              {/* <Views slug={post.slug} views={views} /> */}
+              <Views slug={slug} views={views} />
 
               <div className="absolute right-6 bottom-6 flex flex-1 justify-end">
                 <button
