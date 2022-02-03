@@ -21,7 +21,7 @@ const Views = ({ slug, views }: ViewsProps): JSX.Element => {
     persistViewsRef.current.submit(
       {},
       {
-        action: `api/posts/${slug}/views`,
+        action: `action/posts/${slug}/set-views`,
         method: 'post',
       }
     );
