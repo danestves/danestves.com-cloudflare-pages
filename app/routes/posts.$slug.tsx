@@ -1,7 +1,7 @@
 // Dependencies
 import { useTranslation } from 'react-i18next';
 import { json, useLoaderData } from 'remix';
-import type { LinksFunction, LoaderFunction } from 'remix';
+import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
 import type { Language } from 'remix-i18next';
 
 // Internals
@@ -15,6 +15,7 @@ import prismOne from '~/styles/prism-one.css';
 import { formatDate } from '~/utils/date';
 import { i18n } from '~/utils/i18n.server';
 import { getMDXComponent } from '~/utils/mdx.client';
+import { getSeoMeta } from '~/utils/seo';
 import type { Post, PostFrontmatter } from '~/types';
 
 declare var CONTENT: KVNamespace;
@@ -27,6 +28,29 @@ export let links: LinksFunction = () => {
       href: prismOne,
     },
   ];
+};
+
+export let meta: MetaFunction = ({ data, parentsData }) => {
+  let post = data?.frontmatter as PostFrontmatter;
+  let locale = parentsData?.root?.locale;
+
+  return {
+    ...getSeoMeta({
+      title: post?.title,
+      description: post?.seo?.description,
+      openGraph: {
+        type: 'article',
+      },
+    }),
+    'flyyer:content': post?.seo?.description,
+    'flyyer:date': new Date(post?.published_at).toISOString(),
+    'flyyer:image': getImageBuilder(post?.cover?.id, post?.cover?.alt)(),
+    'flyyer:locale': locale,
+    'flyyer:title': post?.title,
+    'flyyer:views': data?.views,
+    'og:image:alt': post?.cover?.alt,
+    'twitter:image:alt': post?.cover?.alt,
+  };
 };
 
 type LoaderData = {

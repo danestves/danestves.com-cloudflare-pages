@@ -92,12 +92,13 @@ export let links: LinksFunction = () => {
 
 export let meta: MetaFunction = ({ data }) => {
   let { requestInfo } = data as RootLoaderData;
+  let ogImage = `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`;
 
   return {
     viewport: 'width=device-width, initial-scale=1',
     ...seoMeta,
-    'twitter:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`,
-    'og:image': `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`,
+    'og:image': ogImage,
+    'twitter:image': ogImage,
   };
 };
 

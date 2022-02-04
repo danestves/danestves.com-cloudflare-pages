@@ -10,7 +10,6 @@ let description = [
 
 export let { getSeo, getSeoLinks, getSeoMeta } = initSeo({
   title,
-  titleTemplate: '%s | @danestves',
   description: description.join(' '),
   languageAlternates: [
     {
@@ -22,22 +21,10 @@ export let { getSeo, getSeoLinks, getSeoMeta } = initSeo({
       hrefLang: 'es',
     },
   ],
-  openGraph: {
-    images: [
-      {
-        alt: `${title} | @danestves`,
-        url: 'https://cdn.flyyer.io/v2/danestves/_/_/',
-      },
-    ],
-  },
   twitter: {
     card: 'summary_large_image',
     creator: {
       id: 'danestves',
-    },
-    image: {
-      alt: `${title} | @danestves`,
-      url: 'https://cdn.flyyer.io/v2/danestves/_/_/',
     },
     site: {
       id: 'danestves',
