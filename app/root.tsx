@@ -33,7 +33,7 @@ import tailwind from './styles/tailwind.css';
 import vendors from './styles/vendors.css';
 import { i18n, i18nStorage } from './utils/i18n.server';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
-import { getSeo } from './utils/seo';
+import { description as seoDescription, getSeo, getSeoMeta } from './utils/seo';
 import { themeSessionResolver } from './utils/theme.server';
 import type { Handler } from '~/types';
 
@@ -91,12 +91,16 @@ export let links: LinksFunction = () => {
 };
 
 export let meta: MetaFunction = ({ data }) => {
-  let { requestInfo } = data as RootLoaderData;
+  let { locale, requestInfo } = data as RootLoaderData;
   let ogImage = `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`;
 
   return {
     viewport: 'width=device-width, initial-scale=1',
     ...seoMeta,
+    ...getSeoMeta({
+      // @ts-ignore
+      description: seoDescription[locale as any].join(' '),
+    }),
     'og:image': ogImage,
     'twitter:image': ogImage,
   };
@@ -151,7 +155,7 @@ function App() {
   useRemixI18Next(data.locale);
 
   return (
-    <html className={clsx(theme)} lang="en">
+    <html className={clsx(theme)} lang={data.locale}>
       <head>
         <meta charSet="utf-8" />
         <Meta />
