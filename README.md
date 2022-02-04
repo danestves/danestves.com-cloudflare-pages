@@ -17,8 +17,7 @@ _<small>Some of the code is inspired/copied/modified from these projects, all cr
 ## Stack 🏗
 
 - **Framework:** [Remix](https://remix.run/)
-- **Database**: [PlanetScale](https://planetscale.com)
-- **ORM**: [Prisma](https://prisma.io/)
+- **Database**: [Workers KV](https://developers.cloudflare.com/workers/runtime-apis/kv)
 - **Deployment:** [Cloudflare Workers](https://workers.cloudflare.com/)
 - **Content:** [MDX](https://github.com/mdx-js/mdx)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
