@@ -1,6 +1,7 @@
 // Dependencies
 import * as React from 'react';
 import { Popover, Transition } from '@headlessui/react';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import clsx from 'clsx';
 import { NavLink } from 'remix';
 import { route } from 'routes-gen';
@@ -9,7 +10,6 @@ import { v4 as uuid } from 'uuid';
 // Internals
 import { TwitterIcon } from './icons/twitter-icon';
 import { YoutubeIcon } from './icons/youtube-icon';
-import { GithubIcon } from './icons/github-icon';
 import { LanguageSwitcher } from './language-switcher';
 import { Logo } from './logo';
 import { ThemeSwitcher } from './theme-switcher';
@@ -17,7 +17,6 @@ import { useWindowScroll } from '../hooks/use-window-scroll';
 import { MenuIcon } from './icons/menu-icon';
 import { XIcon } from './icons/x-icon';
 import type { DLink } from '~/types';
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
 
 const LINKS: DLink[] = [
   {
@@ -61,6 +60,7 @@ const SOCIAL_LINKS: DLink[] = [
     rel: 'noopener noreferrer',
     target: '_blank',
     to: 'https://github.com/danestves',
+    // @ts-ignore we don't have a type for this type icon
     icon: GitHubLogoIcon,
   },
 ];

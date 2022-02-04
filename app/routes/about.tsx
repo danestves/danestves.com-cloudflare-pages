@@ -1,6 +1,6 @@
 // Dependencies
 import { useTranslation } from 'react-i18next';
-import { json } from 'remix';
+import { json, MetaFunction } from 'remix';
 import type { LoaderFunction } from 'remix';
 import type { Language } from 'remix-i18next';
 
@@ -9,6 +9,15 @@ import { HeroSection } from '~/components/sections/hero-section';
 import { i18n } from '~/utils/i18n.server';
 import { FileIcon } from '@radix-ui/react-icons';
 import { LinkedInIcon } from '~/components/icons/linkedin-icon';
+import { getSeoMeta } from '~/utils/seo';
+
+export let meta: MetaFunction = () => {
+  return {
+    ...getSeoMeta({
+      description: '',
+    }),
+  };
+};
 
 type LoaderData = {
   i18n: Record<string, Language>;

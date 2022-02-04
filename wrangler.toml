@@ -3,7 +3,7 @@ type = "javascript"
 workers_dev = true
 account_id = "4f24d74527ce9e478456c5a88e466269"
 zone_id = ""
-route = "dev.danestves.com/*"
+route = "danestves.com/*"
 
 kv_namespaces = [
   { binding = "CONTENT", id = "760848efe5c4465290589b70a68d3a33" },
