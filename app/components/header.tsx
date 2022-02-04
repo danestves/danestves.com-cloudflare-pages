@@ -18,7 +18,7 @@ import type { DLink } from '~/types';
 const LINKS: DLink[] = [
   {
     name: 'about me',
-    to: '/about',
+    to: route('/about'),
   },
   {
     name: 'open source',
