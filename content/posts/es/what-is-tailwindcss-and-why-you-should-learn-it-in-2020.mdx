@@ -1,0 +1,71 @@
+---
+title: 'Qué es TailwindCSS y por qué deberías aprenderlo en 2020'
+cover:
+  {
+    id: 'posts/what-is-tailwindcss-and-why-you-should-learn-it-in-2020/banner',
+    alt: 'Qué es TailwindCSS y por qué deberías aprenderlo en 2020',
+  }
+published_at: '2020-01-13T00:00:00.000-04:00'
+tags: ['CSS']
+seo:
+  {
+    title: 'Qué es TailwindCSS y por qué deberías aprenderlo en 2020',
+    description: 'TailwindCSS es un framework CSS de bajo nivel que hace que el CSS sea más fácil, rápido y divertido para todos.',
+  }
+---
+
+## ¿Qué es TailwindCSS?
+
+Tomando lo que dice en su sitio web:
+
+> TailwindCSS es CSS de bajo nivel y altamente personalizable, que le brinda todos los bloques de construcción que necesita para crear diseños a medida sin ningún estilo contradictorio que tenga que luchar para anular.
+
+¿Qué significa esto? Básicamente Tailwind nos brindará las clases utilitarias que necesitamos para poder crear interfaces rápidas y totalmente personalizables. Está construido con PostCSS que en mi opinión personal es uno de los mejores procesadores de CSS, y gracias a esto podremos agregarle una funcionalidad que cuando hagamos _build_ de nuestra aplicación eliminará todas las clases de nuestros archivo de CSS que no se estén usando para entregar un `.css` mucho más optimizado.
+
+## ¿Qué pasa con los comportamiento como dropdown?
+
+Sinceramente este fue uno de los puntos que más me detuvo a probar Tailwind cuando empecé a usarlo, ya que si necesito hacer un menú responsive debo crear la funcionalidad desde cero, pero tomando esto como punto de partida me llevé una grata sorpresa; crear las funcionalidades de los dropdown, modal o menús son muy fáciles de hacer.
+
+Tengo varios proyectos que he contruido en Codepen para mostrar la versatilidad de TailwindCSS tanto con funcionalidad como sin funcionalidad para mostrar en este ejemplo:
+
+- **Product Cards**:
+
+<CodePen codePenId="ZEYvVQq" />
+
+- **Modal**:
+
+<CodePen codePenId="oNgLama" />
+
+- **Classic Footer**:
+
+<CodePen codePenId="xxbYREE" />
+
+## ¿Qué tan usado es Tailwind?
+
+Si vemos el [State of CSS - 2019](https://2019.stateofcss.com/technologies/css-frameworks/) en los frameworks de CSS veremos estos resultados muy favorables con Tailwind:
+
+![Estadísticas del uso de frameworks de CSS en 2019](https://res.cloudinary.com/danestves/image/upload/f_auto,q_auto,dpr_2.0/posts/what-is-tailwindcss-and-why-you-should-learn-it-in-2020/image-1)
+
+Luego del otro lado tenemos aún personas que no han escuchado nada de este framework:
+
+![Uso de TailwindCSS como framework de CSS](https://res.cloudinary.com/danestves/image/upload/f_auto,q_auto,dpr_2.0/posts/what-is-tailwindcss-and-why-you-should-learn-it-in-2020/image-2.png)
+
+Es cierto que aun las personas no usan Tailwind por completo, pero poco a poco se ha ido acoplando al mercado y más ahora que tiene unas funcionalidades muy buenas como crear tus propios plugins para extender sus capacidades.
+
+Yo me uní a ese esfuerzo por aumentar las capacidades y creé un plugin para agregar variantes para poder usar nuestro querido [Dark Mode](https://github.com/danestves/tailwindcss-darkmode).
+
+Aprender Tailwind no es nada difícil, de hecho con ver todo un día la documentación sabrás cuales clases tiene de base y que otras puedes agregar, porque recuerden que es personalizable así que puedes agregar miles y miles de clases para usarlas como utilidades.
+
+Lo que me gusta del equipo que lleva la documentación es que van de la mano con la misma filosofía de Vue, una documentación fácil, interactiva y por sobretodo amena a la vista para aprender rápidamente a como usar este **Utility-First Framework**.
+
+## ¿Qué pasará este 2020?
+
+La tecnología avanza a pasos gigantescos y no me sorprendería que sacaran una librería para React donde ya esté la funcionalidad de JavaScript y unos estilos bases para arrancar con el desarrollo (_spoiler alert: pienso hacer una librería UI de React con Tailwind, ayudas bienvenidas_), así que lo que te recomendaría es que empieces a experimentar con este framework y hacer in híbrido con lo que ya uses.
+
+Por ejemplo yo he integrado Tailwind con Material-UI y Ant Design, y el desarrollo del frontend se me ha hecho muchísimo más ameno que de costumbre, layouts construidos increíblemente rápidos y una comunidad llena de plugins muy buenos para extender su funcionalidad.
+
+## Conclusiones
+
+Empápate de las nuevas tecnologías o soluciones que van saliendo, experimenta, crea proyectos y por sobretodo diviertete, porque, ¿para que vamos a experimentar si no nos divertimos en el camino? Recuerda siempre que aprender cosas nuevas cada día puede ayudarte a ser ese desarrollador que tanto quieres, aunque sea aprendiendo a hacer una card o una consulta a una api todo eso al final se transforma en conocimientos que vas a aplicar en todo tu camino.
+
+Sin más que agregar espero que les haya gustado este corto blogpost y trataré de mantener actualizado el blog con tutoriales, noticias y prácticas divertidas para nuestro aprendizaje; **los veo en el código**.

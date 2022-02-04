@@ -1,0 +1,61 @@
+/* purgecss start ignore */
+@tailwind base;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* clears the 'X' from Internet Explorer */
+  input[type='search']::-ms-clear,
+  input[type='search']::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* clears the 'X' from Chrome */
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
+}
+
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;
+@tailwind screens;
+
+p.hint {
+  @apply p-4 border-l-4 rounded-md text-sm;
+
+  &.tip {
+    @apply bg-blue-50 border-blue-400 text-blue-700;
+
+    & a,
+    & strong {
+      @apply text-blue-700 font-bold;
+    }
+  }
+
+  &.error {
+    @apply bg-red-50 border-red-400 text-red-700;
+
+    & a,
+    & strong {
+      @apply text-red-700 font-bold;
+    }
+  }
+
+  &.warn {
+    @apply bg-yellow-50 border-yellow-400 text-yellow-700;
+
+    & a,
+    & strong {
+      @apply text-yellow-700 font-bold;
+    }
+  }
+}

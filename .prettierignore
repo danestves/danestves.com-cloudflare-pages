@@ -1,6 +1,11 @@
-node_modules
-.next
-yarn.lock
-package-lock.json
-public
-src/types/**
+/.cache
+/.github
+/.husky
+/.idea
+/build
+/public
+/node_modules
+/dist
+/app/routes.d.ts
+/app/styles/*.css
+/other/shared-tsconfig.json

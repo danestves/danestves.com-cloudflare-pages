@@ -6,20 +6,21 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-_<small>Inspired by Leerob README.md</small>_
+_<small>Some of the code is inspired/copied/modified from these projects, all credit goes to them:</small>_
 
-- **Framework:** [NextJS](https://nextjs.org/)
-- **Database**: [PlanetScale](https://planetscale.com)
-- **ORM**: [Prisma](https://prisma.io/)
-- **Deployment:** [Vercel](https://vercel.com/)
-- **Content:** [MDX](https://github.com/mdx-js/mdx) + [Contentlayer](https://www.contentlayer.dev/)
+- [kentcdodds/kentcdodds.com](https://github.com/kentcdodds/kentcdodds.com)
+- [edmundhung/remix-worker-template](https://github.com/edmundhung/remix-worker-template)
+- [kiliman/kiliman-dev](https://github.com/kiliman/kiliman-dev)
+- [marcomafessolli/remix-prisma-cloudflare-workers](https://github.com/marcomafessolli/remix-prisma-cloudflare-workers)
+- [jacobPARIS/remix-cloudflare-prisma](https://github.com/jacobPARIS/remix-cloudflare-prisma)
+
+## Stack 🏗
+
+- **Framework:** [Remix](https://remix.run/)
+- **Database**: [Workers KV](https://developers.cloudflare.com/workers/runtime-apis/kv)
+- **Deployment:** [Cloudflare Workers](https://workers.cloudflare.com/)
+- **Content:** [MDX](https://github.com/mdx-js/mdx)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-
-## Overview
-
-- `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering Giphy, country flags, and post views.
-- `pages/posts/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx) and [Contentlayer](https://www.contentlayer.dev/).
-- `pages/*` - All other static pages.
 
 ## Contributors ✨
 

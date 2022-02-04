@@ -1,4 +1,11 @@
-**/node_modules/*
-**/out/*
-**/.next/*
-src/types/**
+/.cache
+/.github
+/.husky
+/.idea
+/build
+/public
+/node_modules
+/dist
+/app/routes.d.ts
+/app/styles/*.css
+/other/shared-tsconfig.json

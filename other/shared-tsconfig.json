@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "strict": true,
+    "noEmit": true,
+    "typeRoots": [
+      "../types",
+      "../node_modules/@types"
+    ]
+  }
+}
