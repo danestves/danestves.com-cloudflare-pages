@@ -6,6 +6,7 @@ import type { LinkProps } from 'remix';
 
 type DLink = LinkProps & {
   name: string;
+  icon?: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
 };
 
 interface Env {

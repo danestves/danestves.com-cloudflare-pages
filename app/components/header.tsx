@@ -7,6 +7,9 @@ import { route } from 'routes-gen';
 import { v4 as uuid } from 'uuid';
 
 // Internals
+import { TwitterIcon } from './icons/twitter-icon';
+import { YoutubeIcon } from './icons/youtube-icon';
+import { GithubIcon } from './icons/github-icon';
 import { LanguageSwitcher } from './language-switcher';
 import { Logo } from './logo';
 import { ThemeSwitcher } from './theme-switcher';
@@ -14,6 +17,7 @@ import { useWindowScroll } from '../hooks/use-window-scroll';
 import { MenuIcon } from './icons/menu-icon';
 import { XIcon } from './icons/x-icon';
 import type { DLink } from '~/types';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 
 const LINKS: DLink[] = [
   {
@@ -35,6 +39,29 @@ const LINKS: DLink[] = [
   {
     name: 'posts',
     to: route('/posts'),
+  },
+];
+const SOCIAL_LINKS: DLink[] = [
+  {
+    name: 'twitter',
+    rel: 'noopener noreferrer',
+    target: '_blank',
+    to: 'https://twitter.com/danestves',
+    icon: TwitterIcon,
+  },
+  {
+    name: 'youtube',
+    rel: 'noopener noreferrer',
+    target: '_blank',
+    to: 'https://www.youtube.com/channel/UC6YYVDKZC3mu1iB8IOCFqcw',
+    icon: YoutubeIcon,
+  },
+  {
+    name: 'github',
+    rel: 'noopener noreferrer',
+    target: '_blank',
+    to: 'https://github.com/danestves',
+    icon: GitHubLogoIcon,
   },
 ];
 
@@ -74,16 +101,16 @@ function Header() {
               leaveTo="opacity-0 scale-95"
             >
               <Popover.Panel
-                className="absolute inset-x-0 top-0 z-10 origin-top-left p-2 transition lg:hidden"
+                className="absolute inset-x-0 top-0 z-10 origin-top-left bg-white/80 p-2 backdrop-blur-lg transition dark:bg-[#292929]/80 lg:hidden"
                 focus
               >
-                <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
+                <div className="overflow-hidden rounded-lg  shadow-md ring-1 ring-black/10 dark:ring-white/10">
                   <div className="flex items-center justify-between px-5 pt-4">
                     <NavLink to="/">
                       <Logo className="h-8 w-auto" />
                     </NavLink>
                     <div className="-mr-2">
-                      <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary">
+                      <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 ring-1 ring-black/10 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-secondary dark:bg-[#292929] dark:text-gray-200 dark:ring-white/10">
                         <span className="sr-only">Close menu</span>
                         <XIcon aria-hidden="true" className="h-6 w-6" />
                       </Popover.Button>
@@ -93,54 +120,54 @@ function Header() {
                     {MOBILE_LINKS.map(({ name, to, ...link }) => {
                       if (to.toString().startsWith('http')) {
                         return (
-                          <a
+                          <Popover.Button
                             {...link}
+                            as="a"
                             className="block rounded-md py-2 px-3 text-base font-semibold uppercase text-[#989898] hover:text-primary"
                             href={to.toString()}
                             key={uuid()}
                           >
                             {name}
-                          </a>
+                          </Popover.Button>
                         );
                       }
 
                       return (
-                        <NavLink
+                        <Popover.Button
                           {...link}
+                          as={NavLink}
                           className="block rounded-md py-2 px-3 text-base font-semibold uppercase text-[#989898] hover:text-primary"
                           key={uuid()}
                           to={to}
                         >
                           {name}
-                        </NavLink>
+                        </Popover.Button>
                       );
                     })}
                   </div>
 
-                  <div className="bg-gray-50 py-3 px-5">
+                  <div className="bg-gray-50/20 py-3 px-5 dark:bg-[#191919]/20">
                     <div className="mx-auto flex max-w-xs justify-between">
-                      {/* {SOCIAL.map(({ icon: Icon, label, ...item }) => (
-                        <Link
+                      {SOCIAL_LINKS.map(({ icon: Icon, name, to, ...item }) => (
+                        <Popover.Button
                           {...item}
-                          className="block px-3 py-2 text-base text-[#989898] font-semibold rounded-md uppercase hover:text-primary"
-                          key={nanoid()}
-                          locale={router.locale}
-                          onClick={() =>
-                            plausible("Clicked on social link", {
-                              props: {
-                                device: "mobile",
-                                label: label[router.locale] || label,
-                                locale: router.locale,
-                              },
-                            })
-                          }
+                          as="a"
+                          className="block rounded-md px-3 py-2 text-base font-semibold uppercase text-[#989898] hover:text-primary"
+                          href={to.toString()}
+                          key={uuid()}
                         >
-                          <span className="sr-only">
-                            {label[router.locale] || label}
-                          </span>
-                          <Icon aria-hidden="true" className="w-6 h-6" />
-                        </Link>
-                      ))} */}
+                          <span className="sr-only">{name}</span>
+                          {Icon && (
+                            <Icon
+                              className={clsx(
+                                'h-6 w-6',
+                                name.includes('github') &&
+                                  'text-[#333] dark:text-white'
+                              )}
+                            />
+                          )}
+                        </Popover.Button>
+                      ))}
                     </div>
                   </div>
                 </div>
