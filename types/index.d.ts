@@ -21,4 +21,5 @@ type Handler = {
 
 export { Env, DLink, Handler };
 export * from './post';
+export * from './seo';
 export * from './youtube';
