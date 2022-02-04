@@ -1,7 +1,7 @@
 // Internals
 import { initSeo } from '~/lib/remix-seo';
 
-let title = 'Daniel Esteves';
+let title = 'Daniel Esteves - @danestves';
 let description = [
   'Daniel Esteves a geek that love to read comics working as a frontend engineer,',
   'speaker, and teacher who haves years of experience building,',

@@ -11,10 +11,13 @@ import { FileIcon } from '@radix-ui/react-icons';
 import { LinkedInIcon } from '~/components/icons/linkedin-icon';
 import { getSeoMeta } from '~/utils/seo';
 
-export let meta: MetaFunction = () => {
+export let meta: MetaFunction = ({ data }) => {
+  let i18n = data?.i18n;
+
   return {
     ...getSeoMeta({
-      description: '',
+      title: i18n?.pages?.about?.seo?.title,
+      description: i18n?.pages?.about?.seo?.description,
     }),
   };
 };
