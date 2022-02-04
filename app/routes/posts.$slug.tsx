@@ -51,6 +51,9 @@ export let links: LinksFunction = () => {
 export let meta: MetaFunction = ({ data, parentsData }) => {
   let post = data?.frontmatter as PostFrontmatter;
   let locale = parentsData?.root?.locale;
+  let image = getImageBuilder(post?.cover?.id, post?.cover?.alt);
+  let flyyerImage = image({ format: 'jpg' });
+  let flyyer = `https://cdn.flyyer.io/v2/danestves/_/_/posts/${data?.slug}`;
 
   return {
     ...getSeoMeta({
@@ -62,11 +65,13 @@ export let meta: MetaFunction = ({ data, parentsData }) => {
     }),
     'flyyer:content': post?.seo?.description,
     'flyyer:date': new Date(post?.published_at).toISOString(),
-    'flyyer:image': getImageBuilder(post?.cover?.id, post?.cover?.alt)(),
+    'flyyer:image': flyyerImage,
     'flyyer:locale': locale,
     'flyyer:title': post?.title,
     'flyyer:views': data?.views,
+    'og:image': flyyer,
     'og:image:alt': post?.cover?.alt,
+    'twitter:image': flyyer,
     'twitter:image:alt': post?.cover?.alt,
   };
 };

@@ -27,6 +27,7 @@ import { Footer } from './components/footer';
 import { Header } from './components/header';
 import { LeftSidebar } from './components/left-sidebar';
 import { RightSidebar } from './components/right-sidebar';
+import { getImageBuilder, images } from './images';
 import { useRemixI18Next } from './lib/remix-i18n';
 import global from './styles/global.css';
 import tailwind from './styles/tailwind.css';
@@ -90,22 +91,6 @@ export let links: LinksFunction = () => {
   ];
 };
 
-export let meta: MetaFunction = ({ data }) => {
-  let { locale, requestInfo } = data as RootLoaderData;
-  let ogImage = `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`;
-
-  return {
-    viewport: 'width=device-width, initial-scale=1',
-    ...seoMeta,
-    ...getSeoMeta({
-      // @ts-ignore
-      description: seoDescription[locale as any].join(' '),
-    }),
-    'og:image': ogImage,
-    'twitter:image': ogImage,
-  };
-};
-
 export type RootLoaderData = {
   country: string;
   i18n: Record<string, Language>;
@@ -146,6 +131,25 @@ export let loader: LoaderFunction = async ({ request }) => {
   return json(data, {
     headers,
   });
+};
+
+export let meta: MetaFunction = ({ data }) => {
+  let { locale } = data as RootLoaderData;
+  let image = getImageBuilder(images.og.id, images.og.alt);
+  let og = image({
+    format: 'jpg',
+  });
+
+  return {
+    viewport: 'width=device-width, initial-scale=1',
+    ...seoMeta,
+    ...getSeoMeta({
+      // @ts-ignore
+      description: seoDescription[locale as any].join(' '),
+    }),
+    'og:image': og,
+    'twitter:image': og,
+  };
 };
 
 function App() {

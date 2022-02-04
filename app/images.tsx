@@ -115,6 +115,10 @@ const images = createImages({
     id: 'danestves.com/me',
     alt: 'Daniel Esteves',
   },
+  og: {
+    id: 'danestves.com/og',
+    alt: 'Daniel Esteves',
+  },
 });
 const es_flags = createImages({
   AR: getFlagImage('AR'),

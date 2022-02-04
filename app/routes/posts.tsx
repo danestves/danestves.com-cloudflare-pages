@@ -52,12 +52,15 @@ export let loader: LoaderFunction = async ({ request }) => {
 
 export let meta: MetaFunction = ({ data }) => {
   let i18n = data?.i18n;
+  let title = i18n?.pages?.posts?.seo?.title;
 
   return {
     ...getSeoMeta({
-      title: i18n?.pages?.posts?.seo?.title,
+      title,
       description: i18n?.pages?.posts?.seo?.description,
     }),
+    'og:image:alt': title,
+    'twitter:image:alt': title,
   };
 };
 
