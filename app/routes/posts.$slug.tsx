@@ -16,10 +16,28 @@ import { formatDate } from '~/utils/date';
 import { i18n } from '~/utils/i18n.server';
 import { getMDXComponent } from '~/utils/mdx.client';
 import { getSeoMeta } from '~/utils/seo';
-import type { Post, PostFrontmatter } from '~/types';
+import type { Post, PostFrontmatter, SEOHandle } from '~/types';
 
 declare var CONTENT: KVNamespace;
 declare var VIEWS: KVNamespace;
+
+export let handle: SEOHandle = {
+  getSitemapEntries: async () => {
+    let slugs = await CONTENT.list({ prefix: 'posts/en/' });
+    let posts = await Promise.all(
+      slugs.keys.map(async ({ name }) => {
+        let post = (await CONTENT.get(name, 'json')) as Post;
+
+        return post.slug;
+      })
+    );
+
+    return posts.map((post) => ({
+      route: `/posts/${post}`,
+      priority: 0.7,
+    }));
+  },
+};
 
 export let links: LinksFunction = () => {
   return [

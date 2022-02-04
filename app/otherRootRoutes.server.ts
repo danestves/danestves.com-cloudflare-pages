@@ -1,4 +1,5 @@
 // Dependencies
+import { generateSitemap } from './lib/sitemap.xml';
 import type { EntryContext } from 'remix';
 
 type Handler = (
@@ -6,7 +7,13 @@ type Handler = (
   remixContext: EntryContext
 ) => Promise<Response | null> | null;
 
-export let otherRootRoutes: Record<string, Handler> = {};
+export let otherRootRoutes: Record<string, Handler> = {
+  '/sitemap.xml': async (request, remixContext) => {
+    return generateSitemap(request, remixContext, {
+      siteUrl: 'https://danestves.com',
+    });
+  },
+};
 
 export let otherRootRouteHandlers: Array<Handler> = [
   ...Object.entries(otherRootRoutes).map(([path, handler]) => {
