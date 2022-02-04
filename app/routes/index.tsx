@@ -1,6 +1,6 @@
 // Dependencies
 import { json, useLoaderData } from 'remix';
-import type { LinksFunction, LoaderFunction } from 'remix';
+import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
 import type { Language } from 'remix-i18next';
 
 // Internals
@@ -10,6 +10,7 @@ import { i18n } from '~/utils/i18n.server';
 import { getVideos } from '~/utils/youtube.server';
 import { VideosSection } from '~/components/sections/videos-section';
 import type { Post, Videos } from '~/types';
+import { getSeoMeta } from '~/utils/seo';
 
 declare var CONTENT: KVNamespace;
 
@@ -75,6 +76,14 @@ export let loader: LoaderFunction = async ({ request }) => {
   return json(data, {
     headers,
   });
+};
+
+export let meta: MetaFunction = () => {
+  return {
+    ...getSeoMeta({
+      title: 'Daniel Esteves - @danestves',
+    }),
+  };
 };
 
 export default function Index() {
