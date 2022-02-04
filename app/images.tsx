@@ -119,6 +119,10 @@ const images = createImages({
     id: 'danestves.com/og',
     alt: 'Daniel Esteves',
   },
+  aboutOg: {
+    id: 'danestves.com/about-og',
+    alt: 'A little about me',
+  },
 });
 const es_flags = createImages({
   AR: getFlagImage('AR'),

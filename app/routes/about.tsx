@@ -10,15 +10,23 @@ import { i18n } from '~/utils/i18n.server';
 import { FileIcon } from '@radix-ui/react-icons';
 import { LinkedInIcon } from '~/components/icons/linkedin-icon';
 import { getSeoMeta } from '~/utils/seo';
+import { getImageBuilder, images } from '~/images';
 
 export let meta: MetaFunction = ({ data }) => {
   let i18n = data?.i18n;
+  let title = i18n?.pages?.about?.seo?.title;
+  let image = getImageBuilder(images.aboutOg.id, images.aboutOg.alt);
+  let og = image({ format: 'jpg' });
 
   return {
     ...getSeoMeta({
-      title: i18n?.pages?.about?.seo?.title,
+      title,
       description: i18n?.pages?.about?.seo?.description,
     }),
+    'og:image': og,
+    'og:image:alt': title,
+    'twitter:image': og,
+    'twitter:image:alt': title,
   };
 };
 
@@ -59,11 +67,12 @@ export default function AboutPage() {
             ✌️
           </span>
         </h1>
-        {console.info()}
         {paragraphs.map((text, i) => (
-          <p className="text-lg text-[#989898] dark:text-[#B1B1B1]" key={i}>
-            {text}
-          </p>
+          <p
+            className="text-lg text-[#989898] dark:text-[#B1B1B1]"
+            dangerouslySetInnerHTML={{ __html: text }}
+            key={i}
+          />
         ))}
         <div className="flex justify-center space-x-4">
           <a

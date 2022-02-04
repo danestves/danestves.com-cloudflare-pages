@@ -148,6 +148,9 @@ export let meta: MetaFunction = ({ data }) => {
       description: seoDescription[locale as any].join(' '),
     }),
     'og:image': og,
+    'og:image:type': 'image/jpeg',
+    'og:image:width': '1200',
+    'og:image:height': '630',
     'twitter:image': og,
   };
 };
