@@ -4,16 +4,19 @@ import { InView } from 'react-intersection-observer';
 import { Link, json, useLoaderData } from 'remix';
 import { route } from 'routes-gen';
 import type { Variants } from 'framer-motion';
-import type { LoaderFunction } from 'remix';
+import type { LoaderFunction, MetaFunction } from 'remix';
+import type { Language } from 'remix-i18next';
 
 // Internals
 import { PostCard } from '~/components/post-card';
 import { i18n } from '~/utils/i18n.server';
+import { getSeoMeta } from '~/utils/seo';
 import type { Post } from '~/types';
 
 declare var CONTENT: KVNamespace;
 
 type LoaderData = {
+  i18n: Record<string, Language>;
   posts: Omit<Post, 'html'>[];
 };
 
@@ -28,12 +31,14 @@ export let loader: LoaderFunction = async ({ request }) => {
       return data as Omit<Post, 'html'>;
     })
   );
+  let translations = await i18n.getTranslations(request, 'pages');
 
   let headers = new Headers();
   headers.set('Cache-Control', 'public, max-age=3600');
   headers.set('Vary', 'Cookie');
 
   let data: LoaderData = {
+    i18n: translations,
     posts: posts.sort((a, b) => {
       let aDate = new Date(a.frontmatter.published_at);
       let bDate = new Date(b.frontmatter.published_at);
@@ -43,6 +48,17 @@ export let loader: LoaderFunction = async ({ request }) => {
   };
 
   return json(data, { headers });
+};
+
+export let meta: MetaFunction = ({ data }) => {
+  let i18n = data?.i18n;
+
+  return {
+    ...getSeoMeta({
+      title: i18n?.pages?.posts?.seo?.title,
+      description: i18n?.pages?.posts?.seo?.description,
+    }),
+  };
 };
 
 export default function Posts() {
