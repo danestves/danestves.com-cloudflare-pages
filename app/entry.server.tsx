@@ -8,6 +8,7 @@ import type { EntryContext } from 'remix';
 import { initI18n } from '~/utils/i18n';
 import { RemixI18NextProvider } from '~/lib/remix-i18n';
 import { getCssText } from '~/stitches.config';
+import { otherRootRouteHandlers } from './otherRootRoutes.server';
 
 export default async function handleRequest(
   request: Request,
@@ -15,6 +16,11 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
+  for (const handler of otherRootRouteHandlers) {
+    const otherRouteResponse = await handler(request, remixContext);
+    if (otherRouteResponse) return otherRouteResponse;
+  }
+
   await initI18n();
 
   let markup = ReactDOMServer.renderToString(
