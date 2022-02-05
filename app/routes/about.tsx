@@ -54,7 +54,6 @@ export let loader: LoaderFunction = async ({ request }) => {
 
 export default function AboutPage() {
   let { t } = useTranslation('pages');
-  let paragraphs = t('about.paragraphs', { returnObjects: true }) as string[];
 
   return (
     <>
@@ -67,15 +66,12 @@ export default function AboutPage() {
             ✌️
           </span>
         </h1>
-        {paragraphs?.length
-          ? paragraphs?.map((text, i) => (
-              <p
-                className="text-lg text-[#989898] dark:text-[#B1B1B1]"
-                dangerouslySetInnerHTML={{ __html: text }}
-                key={i}
-              />
-            ))
-          : null}
+        <p
+          className="text-lg text-[#989898] dark:text-[#B1B1B1]"
+          dangerouslySetInnerHTML={{
+            __html: t('about.paragraphs', { joinArrays: '<br /><br />' }),
+          }}
+        ></p>
         <div className="flex justify-center space-x-4">
           <a
             className="text-secondary-darker inline-flex min-w-[100px] items-center rounded-md border border-primary bg-transparent py-2 px-4 hover:bg-primary dark:text-[#B1B1B1] dark:hover:text-[#292929]"

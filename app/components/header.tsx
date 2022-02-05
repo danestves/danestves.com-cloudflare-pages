@@ -22,6 +22,7 @@ const LINKS: DLink[] = [
   {
     name: 'about me',
     to: route('/about'),
+    prefetch: 'intent',
   },
   {
     name: 'open source',
@@ -34,6 +35,7 @@ const LINKS: DLink[] = [
     rel: 'noopener noreferrer',
     target: '_blank',
     to: 'https://read.cv/danestves',
+    prefetch: 'intent',
   },
   {
     name: 'posts',
