@@ -225,8 +225,8 @@ export default function AppWithProviders() {
 
 // https://remix.run/docs/en/v1/api/conventions#catchboundary
 export function CatchBoundary() {
-  let caught = useCatch();
-  let location = useLocation();
+  const caught = useCatch();
+  const location = useLocation();
 
   console.error('CatchBoundary', caught);
 
@@ -256,7 +256,7 @@ export function CatchBoundary() {
 
 // https://remix.run/docs/en/v1/api/conventions#errorboundary
 export function ErrorBoundary({ error }: { error: Error }) {
-  let location = useLocation();
+  const location = useLocation();
 
   console.error(error);
 

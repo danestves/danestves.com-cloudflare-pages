@@ -16,6 +16,14 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
+  // Response with status (101, 204, 205, or 304) cannot have a body
+  if ([101, 204, 205, 304].includes(responseStatusCode)) {
+    return new Response(null, {
+      status: responseStatusCode,
+      headers: responseHeaders,
+    });
+  }
+
   for (const handler of otherRootRouteHandlers) {
     const otherRouteResponse = await handler(request, remixContext);
     if (otherRouteResponse) return otherRouteResponse;
@@ -28,14 +36,6 @@ export default async function handleRequest(
       <RemixServer context={remixContext} url={request.url} />
     </RemixI18NextProvider>
   ).replace(/<\/head>/, `<style id="stitches">${getCssText()}</style></head>`);
-
-  // Response with status (101, 204, 205, or 304) cannot have a body
-  if ([101, 204, 205, 304].includes(responseStatusCode)) {
-    return new Response(null, {
-      status: responseStatusCode,
-      headers: responseHeaders,
-    });
-  }
 
   responseHeaders.set('Content-Type', 'text/html');
 
