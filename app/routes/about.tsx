@@ -67,13 +67,15 @@ export default function AboutPage() {
             ✌️
           </span>
         </h1>
-        {paragraphs?.map((text, i) => (
-          <p
-            className="text-lg text-[#989898] dark:text-[#B1B1B1]"
-            dangerouslySetInnerHTML={{ __html: text }}
-            key={i}
-          />
-        ))}
+        {paragraphs?.length
+          ? paragraphs?.map((text, i) => (
+              <p
+                className="text-lg text-[#989898] dark:text-[#B1B1B1]"
+                dangerouslySetInnerHTML={{ __html: text }}
+                key={i}
+              />
+            ))
+          : null}
         <div className="flex justify-center space-x-4">
           <a
             className="text-secondary-darker inline-flex min-w-[100px] items-center rounded-md border border-primary bg-transparent py-2 px-4 hover:bg-primary dark:text-[#B1B1B1] dark:hover:text-[#292929]"
