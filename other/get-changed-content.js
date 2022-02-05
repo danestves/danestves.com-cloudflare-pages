@@ -6,7 +6,7 @@ const { getChangedFiles, fetchJson } = require('./get-changed-files');
 const [currentCommitSha] = process.argv.slice(2);
 async function go() {
   const buildInfo = await fetchJson(
-    'https://dev.danestves.com/api/get-content-sha'
+    'https://danestves.com/api/get-content-sha'
   );
   const compareCommitSha = buildInfo.commit.sha;
   let changedFiles = [];
