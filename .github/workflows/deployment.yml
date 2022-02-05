@@ -2,9 +2,7 @@ name: 🚀 Deploy
 
 on:
   push:
-    branches:
-      - main
-      - "feat/remix-cf-pages"
+    branches: [main]
 jobs:
   changes:
     name: 🔎 Determine deployable changes
