@@ -89,7 +89,18 @@ $('.class-p').style.fontSize = '48px';
 
 ## Resultado final
 
-<CodePen codePenId="LYPXyeo" />
+<Sandpack
+  template="vanilla"
+  files={{
+    "/index.html": `<p>Hello World</p>`,
+    "/src/index.js": `const $ = document.querySelector.bind(document)
+
+$('body').style.background = '#333'
+$('body').style.color = '#fff'
+$('p').style.fontSize = '200%'`
+
+}}
+/>
 
 ## ¿Cómo seguir aprendiendo?
 
