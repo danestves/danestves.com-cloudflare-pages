@@ -67,7 +67,7 @@ export default function AboutPage() {
             ✌️
           </span>
         </h1>
-        {paragraphs.map((text, i) => (
+        {paragraphs?.map((text, i) => (
           <p
             className="text-lg text-[#989898] dark:text-[#B1B1B1]"
             dangerouslySetInnerHTML={{ __html: text }}
