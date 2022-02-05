@@ -32,7 +32,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "^0.13.10",
     "@headlessui/react": "^1.4.3",
     "@radix-ui/react-dropdown-menu": "^0.1.4",
     "@radix-ui/react-icons": "^1.0.3",
