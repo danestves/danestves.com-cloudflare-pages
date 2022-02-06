@@ -19,7 +19,7 @@
     "act": "act compile-mdx -j compile --secret-file .env",
     "cleanup": "rimraf .cache ./dist ./build ./public/build ./app/styles",
     "content:watch": "node ./other/watch-content.js",
-    "build": "cross-env NODE_ENV=production run-s build:* && node ./other/generate-build-info.js",
+    "build": "cross-env NODE_ENV=production run-s build:*",
     "build:style": "postcss styles/**/*.css --base styles --dir app/styles --env production",
     "build:remix": "remix build",
     "debug": "miniflare --debug --build-command \"npm run dev:worker\" --watch",
