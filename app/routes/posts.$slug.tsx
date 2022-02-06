@@ -13,10 +13,9 @@ import { useShare } from '~/hooks/use-share';
 import { getImageBlur, getImageBuilder, getImgProps, images } from '~/images';
 import prismOne from '~/styles/prism-one.css';
 import { formatDate } from '~/utils/date';
-import { i18n } from '~/utils/i18n.server';
 import { getMDXComponent } from '~/utils/mdx.client';
 import { getSeoMeta } from '~/utils/seo';
-import type { Post, PostFrontmatter, SEOHandle } from '~/types';
+import type { Context, Post, PostFrontmatter, SEOHandle } from '~/types';
 
 export let handle: SEOHandle = {
   getSitemapEntries: async () => {
@@ -92,6 +91,7 @@ type LoaderData = {
 };
 
 export let loader: LoaderFunction = async ({ context, params, request }) => {
+  let { i18n } = context as Context;
   let CONTENT = context.env.CONTENT as KVNamespace;
   let VIEWS = context.env.VIEWS as KVNamespace;
   let slug = params.slug;
@@ -100,8 +100,8 @@ export let loader: LoaderFunction = async ({ context, params, request }) => {
   }
 
   let [locale, translations, views] = await Promise.all([
-    i18n.getLocale(request),
-    i18n.getTranslations(request, 'posts'),
+    i18n.lib.getLocale(request),
+    i18n.lib.getTranslations(request, 'posts'),
     VIEWS.get(slug, 'text'),
   ]);
   let post = await CONTENT.get(`posts/${locale}/${slug}`, 'json');

@@ -6,11 +6,10 @@ import type { Language } from 'remix-i18next';
 // Internals
 import { HeroSection } from '~/components/sections/hero-section';
 import { PostsSection } from '~/components/sections/posts-section';
-import { i18n } from '~/utils/i18n.server';
-import { getVideos } from '~/utils/youtube.server';
 import { VideosSection } from '~/components/sections/videos-section';
-import type { Post, Videos } from '~/types';
 import { getSeoMeta } from '~/utils/seo';
+import { getVideos } from '~/utils/youtube.server';
+import type { Context, Post, Videos } from '~/types';
 
 export let links: LinksFunction = () => {
   return [
@@ -38,10 +37,11 @@ type LoaderData = {
 };
 
 export let loader: LoaderFunction = async ({ context, request }) => {
+  let { i18n } = context as Context;
   let CONTENT = context.env.CONTENT as KVNamespace;
   let [locale, translations, videos] = await Promise.all([
-    i18n.getLocale(request),
-    i18n.getTranslations(request, 'sections'),
+    i18n.lib.getLocale(request),
+    i18n.lib.getTranslations(request, 'sections'),
     getVideos(context.env.YOUTUBE_API_KEY),
   ]);
   let slugs = await CONTENT.list({

@@ -1,5 +1,5 @@
 /// <reference types="@remix-run/dev" />
-/// <reference types="@remix-run/cloudflare-workers/globals" />
+/// <reference types="@remix-run/cloudflare-pages/globals" />
 /// <reference types="@cloudflare/workers-types" />
 
 import type { LinkProps } from 'remix';
@@ -24,3 +24,4 @@ export * from './post';
 export * from './seo';
 export * from './sitemap';
 export * from './youtube';
+export { Context } from '../functions/context';

@@ -9,9 +9,8 @@ import type { Language } from 'remix-i18next';
 
 // Internals
 import { PostCard } from '~/components/post-card';
-import { i18n } from '~/utils/i18n.server';
 import { getSeoMeta } from '~/utils/seo';
-import type { Post } from '~/types';
+import type { Context, Post } from '~/types';
 
 type LoaderData = {
   i18n: Record<string, Language>;
@@ -19,8 +18,9 @@ type LoaderData = {
 };
 
 export let loader: LoaderFunction = async ({ context, request }) => {
+  let { i18n } = context as Context;
   let CONTENT = context.env.CONTENT as KVNamespace;
-  let locale = await i18n.getLocale(request);
+  let locale = await i18n.lib.getLocale(request);
   let slugs = await CONTENT.list({ prefix: `posts/${locale}/` });
   let posts = await Promise.all(
     slugs.keys.map(async ({ name }) => {
@@ -30,7 +30,7 @@ export let loader: LoaderFunction = async ({ context, request }) => {
       return data as Omit<Post, 'html'>;
     })
   );
-  let translations = await i18n.getTranslations(request, 'pages');
+  let translations = await i18n.lib.getTranslations(request, 'pages');
 
   let headers = new Headers();
   headers.set('Cache-Control', 'public, max-age=3600');
