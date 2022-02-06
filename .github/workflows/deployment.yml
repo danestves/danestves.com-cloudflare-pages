@@ -2,7 +2,7 @@ name: 🚀 Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, "feat/cloudflare-pages"]
 jobs:
   changes:
     name: 🔎 Determine deployable changes
@@ -21,16 +21,6 @@ jobs:
         with:
           node-version: 16
 
-      - name: 🔎 Determine deployable changes
-        id: deploy_changes
-        run: >-
-          echo ::set-output name=DEPLOYABLE::$(node ./other/is-deployable.js ${{
-          github.sha }})
-
-      - name: ❓ Deployable
-        run: >-
-          echo "DEPLOYABLE: ${{steps.deploy_changes.outputs.DEPLOYABLE}}"
-
       - name: 🔎 Determine content changes
         id: content_changes
         run: >-
@@ -40,47 +30,7 @@ jobs:
       - name: ❓ Content
         run: >-
           echo "CONTENT: ${{steps.content_changes.outputs.CONTENT}}"
-
-  deploy:
-    name: Deploy
-    needs: [changes]
-    if: needs.changes.outputs.DEPLOYABLE == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🛑 Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-
-      - name: ⬇️ Checkout repo
-        uses: actions/checkout@v2
-
-      - name: 🥶 Cache dependencies
-        if: $${{ !env.ACT }}
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-npm-
-            ${{ runner.OS }}-
-
-      - name: ⎔ Setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16
-
-      - name: 📦 Install npm packages
-        run: npm install && npm run postinstall
-
-      - name: 🛠 Build Remix app
-        run: npm run build
-        env:
-          COMMIT_SHA: ${{ github.sha }}
-
-      - name: 🎉 Publish
-        uses: cloudflare/wrangler-action@1.3.0
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-
+        
   compile:
     name: 🛠 Compile MDX
     if: needs.changes.outputs.CONTENT != ''
