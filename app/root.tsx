@@ -34,7 +34,6 @@ import tailwind from './styles/tailwind.css';
 import vendors from './styles/vendors.css';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
 import { description as seoDescription, getSeo, getSeoMeta } from './utils/seo';
-import { themeSessionResolver } from './utils/theme.server';
 import type { Context, Handler } from '~/types';
 
 export let handle: Handler = {
@@ -104,9 +103,9 @@ export type RootLoaderData = {
 };
 
 export let loader: LoaderFunction = async ({ request, context }) => {
-  let { i18n } = context as Context;
-  let [theme, locale, translations] = await Promise.all([
-    themeSessionResolver(request),
+  let { i18n, theme } = context as Context;
+  let [{ getTheme }, locale, translations] = await Promise.all([
+    theme.resolver(request),
     i18n.lib.getLocale(request),
     i18n.lib.getTranslations(request, 'common'),
   ]);
@@ -120,7 +119,7 @@ export let loader: LoaderFunction = async ({ request, context }) => {
       origin: getDomainUrl(request),
       path: new URL(request.url).pathname,
       session: {
-        theme: theme.getTheme(),
+        theme: getTheme(),
       },
     },
   };

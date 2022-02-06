@@ -1,12 +1,32 @@
 // Dependencies
-import { createThemeAction } from 'remix-themes';
+import { json } from 'remix';
+import { isTheme } from 'remix-themes';
 import { notFound } from 'remix-utils';
 import type { ActionFunction, LoaderFunction } from 'remix';
 
 // Internals
-import { themeSessionResolver } from '~/utils/theme.server';
+import type { Context } from '~/types';
 
-export let action: ActionFunction = createThemeAction(themeSessionResolver);
+export let action: ActionFunction = async ({ context, request }) => {
+  let { theme: themeContext } = context as Context;
+  let session = await themeContext.resolver(request);
+  let { theme } = await request.json();
+
+  if (!isTheme(theme)) {
+    return json({
+      success: false,
+      message: `theme value of ${theme} is not a valid theme.`,
+    });
+  }
+
+  session.setTheme(theme);
+  return json(
+    { success: true },
+    {
+      headers: { 'Set-Cookie': await session.commit() },
+    }
+  );
+};
 
 export let loader: LoaderFunction = async () => {
   return notFound({
