@@ -1,6 +1,6 @@
 // This is adapted from https://github.com/kentcdodds/kentcdodds.com
 // Dependencies
-import { isEqual } from 'lodash';
+import isEqual from 'lodash.isequal';
 import type { EntryContext } from '@remix-run/server-runtime';
 
 // Internals

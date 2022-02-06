@@ -1,5 +1,5 @@
-// Internals
-import { initSeo } from '~/lib/remix-seo';
+// Dependencies
+import { initSeo } from 'remix-seo';
 
 let title = 'Daniel Esteves - @danestves';
 export let description = {

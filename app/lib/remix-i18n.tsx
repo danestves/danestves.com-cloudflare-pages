@@ -1,15 +1,21 @@
-// Dependencies
-import * as React from 'react';
 import { useMatches } from '@remix-run/react';
 import { i18n } from 'i18next';
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react';
 import { I18nextProvider } from 'react-i18next';
 import useConsistentValue from 'use-consistent-value';
 import type { Language } from 'remix-i18next';
 
-let context = React.createContext<i18n | null>(null);
+let context = createContext<i18n | null>(null);
 
-function useI18NextInstance() {
-  let value = React.useContext(context);
+function useInstance() {
+  let value = useContext(context);
   if (!value) throw new Error('Missing I18Next instance');
   return value;
 }
@@ -17,7 +23,7 @@ function useI18NextInstance() {
 export function useRemixI18Next(locale: string) {
   if (!locale) throw new Error('Missing locale');
 
-  let i18next = useI18NextInstance();
+  let i18next = useInstance();
 
   let namespaces = useConsistentValue(
     useMatches()
@@ -28,16 +34,24 @@ export function useRemixI18Next(locale: string) {
       )
   );
 
-  React.useMemo(() => {
-    i18next.changeLanguage(locale);
+  let handleLocaleUpdate = useCallback(() => {
+    void i18next.changeLanguage(locale);
     for (let [namespace, messages] of Object.entries(namespaces)) {
       i18next.addResourceBundle(locale, namespace, messages);
     }
   }, [i18next, namespaces, locale]);
+
+  useMemo(() => {
+    handleLocaleUpdate();
+  }, []);
+
+  useEffect(() => {
+    handleLocaleUpdate();
+  }, [handleLocaleUpdate]);
 }
 
 interface RemixI18NextProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
   i18n: i18n;
 }
 

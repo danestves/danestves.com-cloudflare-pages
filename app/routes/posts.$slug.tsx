@@ -60,7 +60,19 @@ export let meta: MetaFunction = ({ data, parentsData }) => {
       title: post?.title,
       description: post?.seo?.description,
       openGraph: {
+        images: [
+          {
+            alt: post?.title,
+            url: flyyer,
+          },
+        ],
         type: 'article',
+      },
+      twitter: {
+        image: {
+          alt: post?.title,
+          url: flyyer,
+        },
       },
     }),
     'flyyer:content': post?.seo?.description,
@@ -69,10 +81,6 @@ export let meta: MetaFunction = ({ data, parentsData }) => {
     'flyyer:locale': locale,
     'flyyer:title': post?.title,
     'flyyer:views': data?.views,
-    'og:image': flyyer,
-    'og:image:alt': post?.cover?.alt,
-    'twitter:image': flyyer,
-    'twitter:image:alt': post?.cover?.alt,
   };
 };
 
