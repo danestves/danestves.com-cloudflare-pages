@@ -1,8 +1,6 @@
 // Internals
 import type { Videos } from '~/types';
 
-declare var YOUTUBE_API_KEY: string;
-
 const GOOGLE_API = 'https://www.googleapis.com/youtube/v3';
 const PLAYLIST_ID = 'UU6YYVDKZC3mu1iB8IOCFqcw';
 
@@ -12,7 +10,7 @@ const PLAYLIST_ID = 'UU6YYVDKZC3mu1iB8IOCFqcw';
  * @param {string} source The source of the request
  */
 const getYouTubeAPIURL = (source: string): string => {
-  return `${GOOGLE_API}${source}&key=${YOUTUBE_API_KEY}`;
+  return `${GOOGLE_API}${source}&key=${'YOUTUBE_API_KEY'}`;
 };
 
 export type GetVideosProps = {

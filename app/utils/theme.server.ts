@@ -2,8 +2,6 @@
 import { createCookieSessionStorage } from 'remix';
 import { createThemeSessionResolver } from 'remix-themes';
 
-declare var SESSION_SECRET: string;
-
 let themeStorage = createCookieSessionStorage({
   cookie: {
     name: '__danestves_theme',
@@ -11,7 +9,7 @@ let themeStorage = createCookieSessionStorage({
     httpOnly: true,
     path: '/',
     sameSite: 'lax',
-    secrets: [SESSION_SECRET],
+    secrets: ['SESSION_SECRET'],
     // normally you want this to be `secure: true`
     // but that doesn't work on localhost for Safari
     // https://web.dev/when-to-use-local-https/

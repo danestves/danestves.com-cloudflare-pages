@@ -3,8 +3,6 @@ import { createCookie } from 'remix';
 import { RemixI18Next } from 'remix-i18next';
 import { FetchBackend } from 'remix-i18next/build/backends/fetch';
 
-declare var SESSION_SECRET: string;
-
 let backend = new FetchBackend({
   // I use a service that I deploy on Vercel to server the translations
   baseUrl: new URL('https://danestves-locales.vercel.app/'),
@@ -16,7 +14,7 @@ let i18nStorage = createCookie('__danestves_locale', {
   httpOnly: true,
   path: '/',
   sameSite: 'lax',
-  secrets: [SESSION_SECRET],
+  secrets: ['SESSION_SECRET'],
   // normally you want this to be `secure: true`
   // but that doesn't work on localhost for Safari
   // https://web.dev/when-to-use-local-https/
