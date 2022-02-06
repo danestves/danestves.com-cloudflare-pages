@@ -27,7 +27,6 @@ import { Footer } from './components/footer';
 import { Header } from './components/header';
 import { LeftSidebar } from './components/left-sidebar';
 import { RightSidebar } from './components/right-sidebar';
-import { getImageBuilder, images } from './images';
 import { useRemixI18Next } from './lib/remix-i18n';
 import global from './styles/global.css';
 import tailwind from './styles/tailwind.css';
@@ -134,11 +133,8 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export let meta: MetaFunction = ({ data }) => {
-  let { locale } = data as RootLoaderData;
-  let image = getImageBuilder(images.og.id, images.og.alt);
-  let og = image({
-    format: 'jpg',
-  });
+  let { locale, requestInfo } = data as RootLoaderData;
+  let og = `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`;
 
   return {
     viewport: 'width=device-width, initial-scale=1',
@@ -146,12 +142,24 @@ export let meta: MetaFunction = ({ data }) => {
     ...getSeoMeta({
       // @ts-ignore
       description: seoDescription[locale as any].join(' '),
+      openGraph: {
+        images: [
+          {
+            alt: 'Daniel Esteves - @danestves',
+            url: og,
+            height: 630,
+            width: 1200,
+          },
+        ],
+        type: 'website',
+      },
+      twitter: {
+        image: {
+          alt: 'Daniel Esteves - @danestves',
+          url: og,
+        },
+      },
     }),
-    'og:image': og,
-    'og:image:type': 'image/jpeg',
-    'og:image:width': '1200',
-    'og:image:height': '630',
-    'twitter:image': og,
   };
 };
 
