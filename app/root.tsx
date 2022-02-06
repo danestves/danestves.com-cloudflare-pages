@@ -158,6 +158,7 @@ export let meta: MetaFunction = ({ data }) => {
         type: 'website',
       },
       twitter: {
+        card: 'summary_large_image',
         image: {
           alt: 'Daniel Esteves - @danestves',
           url: flyyer.href(),
