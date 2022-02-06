@@ -22,7 +22,6 @@
     "build": "cross-env NODE_ENV=production run-s build:* && node ./other/generate-build-info.js",
     "build:style": "postcss styles/**/*.css --base styles --dir app/styles --env production",
     "build:remix": "remix build",
-    "build:worker": "cross-env NODE_ENV=production VERSION=$(git rev-parse --short HEAD) node ./scripts/build.mjs",
     "debug": "miniflare --debug --build-command \"npm run dev:worker\" --watch",
     "dev": "routes-gen -d @routes-gen/remix && pm2-dev ./other/pm2.config.js",
     "format": "prettier --write \"**/*.{js,jsx,md,mdx,ts,tsx}\"",
