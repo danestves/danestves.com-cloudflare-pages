@@ -9,8 +9,8 @@ const PLAYLIST_ID = 'UU6YYVDKZC3mu1iB8IOCFqcw';
  *
  * @param {string} source The source of the request
  */
-const getYouTubeAPIURL = (source: string): string => {
-  return `${GOOGLE_API}${source}&key=${'YOUTUBE_API_KEY'}`;
+const getYouTubeAPIURL = (source: string, key: string): string => {
+  return `${GOOGLE_API}${source}&key=${key}`;
 };
 
 export type GetVideosProps = {
@@ -28,11 +28,15 @@ export type GetVideosProps = {
  *
  * @param {GetVideosProps} props
  */
-export async function getVideos(props?: GetVideosProps): Promise<Videos> {
+export async function getVideos(
+  key: string,
+  props?: GetVideosProps
+): Promise<Videos> {
   const limit = props?.limit || 4;
   const latestVideos = await fetch(
     getYouTubeAPIURL(
-      `/playlistItems?part=contentDetails&playlistId=${PLAYLIST_ID}&maxResults=${limit}`
+      `/playlistItems?part=contentDetails&playlistId=${PLAYLIST_ID}&maxResults=${limit}`,
+      key
     )
   ).then((res) => res.json() as any);
 
@@ -44,7 +48,7 @@ export async function getVideos(props?: GetVideosProps): Promise<Videos> {
     return video?.contentDetails?.videoId;
   });
   const result: Videos = await fetch(
-    getYouTubeAPIURL(`/videos?part=snippet,statistics&id=${ids.join(',')}`)
+    getYouTubeAPIURL(`/videos?part=snippet,statistics&id=${ids.join(',')}`, key)
   ).then((response) => response.json());
 
   return result;

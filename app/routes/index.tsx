@@ -12,8 +12,6 @@ import { VideosSection } from '~/components/sections/videos-section';
 import type { Post, Videos } from '~/types';
 import { getSeoMeta } from '~/utils/seo';
 
-declare var CONTENT: KVNamespace;
-
 export let links: LinksFunction = () => {
   return [
     {
@@ -39,46 +37,44 @@ type LoaderData = {
   videos: Videos;
 };
 
-export let loader: LoaderFunction = async ({ request, context }) => {
-  console.info(context);
-  // let [locale, translations, videos] = await Promise.all([
-  //   i18n.getLocale(request),
-  //   i18n.getTranslations(request, 'sections'),
-  //   getVideos(),
-  // ]);
-  // let slugs = await CONTENT.list({
-  //   prefix: `posts/${locale}/`,
-  // });
-  // let posts = await Promise.all(
-  //   slugs.keys.map(async ({ name }) => {
-  //     let post = (await CONTENT.get(name, 'json')) as Post;
-  //     let { html: _html, ...data } = post;
+export let loader: LoaderFunction = async ({ context, request }) => {
+  let CONTENT = context.env.CONTENT as KVNamespace;
+  let [locale, translations, videos] = await Promise.all([
+    i18n.getLocale(request),
+    i18n.getTranslations(request, 'sections'),
+    getVideos(context.env.YOUTUBE_API_KEY),
+  ]);
+  let slugs = await CONTENT.list({
+    prefix: `posts/${locale}/`,
+  });
+  let posts = await Promise.all(
+    slugs.keys.map(async ({ name }) => {
+      let post = (await CONTENT.get(name, 'json')) as Post;
+      let { html: _html, ...data } = post;
 
-  //     return data as Omit<Post, 'html'>;
-  //   })
-  // );
-  // let orderedPosts = posts.sort((a, b) => {
-  //   let aDate = new Date(a.frontmatter.published_at);
-  //   let bDate = new Date(b.frontmatter.published_at);
+      return data as Omit<Post, 'html'>;
+    })
+  );
+  let orderedPosts = posts.sort((a, b) => {
+    let aDate = new Date(a.frontmatter.published_at);
+    let bDate = new Date(b.frontmatter.published_at);
 
-  //   return bDate.getTime() - aDate.getTime();
-  // });
+    return bDate.getTime() - aDate.getTime();
+  });
 
-  // let headers = new Headers();
-  // headers.set('Cache-Control', 'private, max-age=21600');
-  // headers.set('Vary', 'Cookie');
+  let headers = new Headers();
+  headers.set('Cache-Control', 'private, max-age=21600');
+  headers.set('Vary', 'Cookie');
 
-  // let data: LoaderData = {
-  //   i18n: translations,
-  //   posts: orderedPosts.slice(0, 3),
-  //   videos,
-  // };
+  let data: LoaderData = {
+    i18n: translations,
+    posts: orderedPosts.slice(0, 3),
+    videos,
+  };
 
-  // return json(data, {
-  //   headers,
-  // });
-
-  return {};
+  return json(data, {
+    headers,
+  });
 };
 
 export let meta: MetaFunction = () => {

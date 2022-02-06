@@ -1,10 +1,22 @@
 name = "danestves-com"
 type = "javascript"
+workers_dev = false
 account_id = "4f24d74527ce9e478456c5a88e466269"
 zone_id = ""
 route = "danestves.com/*"
 
-kv_namespaces = [
-  { binding = "CONTENT", id = "760848efe5c4465290589b70a68d3a33" },
-  { binding = "VIEWS", id = "6c5859e1b34b48db9cf1f86bec228caf" }
-]
+[[kv_namespaces]]
+binding = "CONTENT"
+id = "760848efe5c4465290589b70a68d3a33"
+
+[[kv_namespaces]]
+binding = "VIEWS"
+id = "6c5859e1b34b48db9cf1f86bec228caf"
+
+[site]
+bucket = "./public"
+entry-point = "."
+
+[build]
+command = "npm run build"
+watch_dir = "./build/index.js"

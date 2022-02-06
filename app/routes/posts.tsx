@@ -13,14 +13,13 @@ import { i18n } from '~/utils/i18n.server';
 import { getSeoMeta } from '~/utils/seo';
 import type { Post } from '~/types';
 
-declare var CONTENT: KVNamespace;
-
 type LoaderData = {
   i18n: Record<string, Language>;
   posts: Omit<Post, 'html'>[];
 };
 
-export let loader: LoaderFunction = async ({ request }) => {
+export let loader: LoaderFunction = async ({ context, request }) => {
+  let CONTENT = context.env.CONTENT as KVNamespace;
   let locale = await i18n.getLocale(request);
   let slugs = await CONTENT.list({ prefix: `posts/${locale}/` });
   let posts = await Promise.all(

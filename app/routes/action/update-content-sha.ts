@@ -1,18 +1,17 @@
 // Dependencies
 import { ActionFunction, json } from 'remix';
 
-declare var CONTENT: KVNamespace;
-declare var POST_CONTENT_BEARER_TOKEN: string;
-
-export let action: ActionFunction = async ({ request }) => {
+export let action: ActionFunction = async ({ context, request }) => {
   try {
-    const key = request.headers.get('Authorization');
+    let CONTENT = context.env.CONTENT as KVNamespace;
+    let POST_CONTENT_BEARER_TOKEN = context.env.POST_CONTENT_BEARER_TOKEN;
+    let key = request.headers.get('Authorization');
 
     if (key !== `Bearer ${POST_CONTENT_BEARER_TOKEN}`) {
       return new Response(`Unauthorized ${key}`, { status: 401 });
     }
 
-    const data = await request.json();
+    let data = await request.json();
 
     await CONTENT.put('$$content-sha', JSON.stringify(data));
 
