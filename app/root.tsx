@@ -1,4 +1,5 @@
 // Dependencies
+import { Flyyer } from '@flyyer/flyyer';
 import clsx from 'clsx';
 import { LazyMotion, domAnimation } from 'framer-motion';
 import {
@@ -134,7 +135,10 @@ export let loader: LoaderFunction = async ({ request }) => {
 
 export let meta: MetaFunction = ({ data }) => {
   let { locale, requestInfo } = data as RootLoaderData;
-  let og = `https://cdn.flyyer.io/v2/danestves/_/_${requestInfo.path}`;
+  let flyyer = new Flyyer({
+    project: 'danestves',
+    path: requestInfo.path,
+  });
 
   return {
     viewport: 'width=device-width, initial-scale=1',
@@ -146,7 +150,7 @@ export let meta: MetaFunction = ({ data }) => {
         images: [
           {
             alt: 'Daniel Esteves - @danestves',
-            url: og,
+            url: flyyer.href(),
             height: 630,
             width: 1200,
           },
@@ -156,7 +160,7 @@ export let meta: MetaFunction = ({ data }) => {
       twitter: {
         image: {
           alt: 'Daniel Esteves - @danestves',
-          url: og,
+          url: flyyer.href(),
         },
       },
     }),
