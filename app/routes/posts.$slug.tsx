@@ -267,6 +267,8 @@ export default function PostPage() {
           ) : null}
         </div>
 
+        <hr className="my-6 dark:border-[#494949]" />
+
         <Giscus
           category="Comments"
           categoryId="DIC_kwDODBPThs4CBCeF"

@@ -22,7 +22,7 @@ module.exports = {
     {
       name: 'Wrangler',
       script:
-        'wrangler pages dev ./public --watch ./build --binding $(cat .env) --config wrangler.toml --kv CONTENT',
+        'wrangler pages dev ./public --watch ./build --binding $(cat .env) --config wrangler.toml --kv CONTENT --kv VIEWS',
       ignore_watch: ['.'],
       env: {
         NODE_ENV: process.env.NODE_ENV ?? 'development',
