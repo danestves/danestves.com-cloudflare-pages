@@ -202,7 +202,6 @@ function App() {
 
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
         <script
           async
           data-website-id="76378b8f-ea3f-43bf-bf63-bd4c4f273607"
@@ -215,6 +214,7 @@ function App() {
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
         ></script>
+        <LiveReload />
       </body>
     </html>
   );
