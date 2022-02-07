@@ -1,6 +1,8 @@
 // Dependencies
+import { Giscus } from '@giscus/react';
 import { useTranslation } from 'react-i18next';
 import { json, useLoaderData } from 'remix';
+import { useTheme } from 'remix-themes';
 import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
 import type { Language } from 'remix-i18next';
 
@@ -134,6 +136,7 @@ export let loader: LoaderFunction = async ({ context, params, request }) => {
 };
 
 export default function PostPage() {
+  let [theme] = useTheme();
   let { i18n, t } = useTranslation('posts');
   let {
     code,
@@ -263,6 +266,18 @@ export default function PostPage() {
             />
           ) : null}
         </div>
+
+        <Giscus
+          category="Comments"
+          categoryId="DIC_kwDODBPThs4CBCeF"
+          inputPosition="top"
+          lang={i18n.language}
+          mapping="pathname"
+          reactionsEnabled="1"
+          repo="danestves/danestves.com"
+          repoId="MDEwOlJlcG9zaXRvcnkyMDI2MjU5MjY="
+          theme={theme || 'dark'}
+        />
       </div>
     </section>
   );

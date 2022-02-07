@@ -4,6 +4,7 @@ declare module "routes-gen" {
     "/action/update-content-sha": {};
     "/action/post-content": {};
     "/api/get-content-sha": {};
+    "/api/get-posts-slugs": {};
     "/action/set-theme": {};
     "/robots.txt": {};
     "/posts/:slug": { slug: string };
@@ -18,6 +19,7 @@ declare module "routes-gen" {
       | ["/action/update-content-sha"]
       | ["/action/post-content"]
       | ["/api/get-content-sha"]
+      | ["/api/get-posts-slugs"]
       | ["/action/set-theme"]
       | ["/robots.txt"]
       | ["/posts/:slug", RouteParams["/posts/:slug"]]
