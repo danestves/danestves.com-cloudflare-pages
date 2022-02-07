@@ -15,24 +15,22 @@ import prismOne from '~/styles/prism-one.css';
 import { formatDate } from '~/utils/date';
 import { getMDXComponent } from '~/utils/mdx.client';
 import { getSeoMeta } from '~/utils/seo';
-import type { Context, Post, PostFrontmatter, SEOHandle } from '~/types';
+import type {
+  Context,
+  Post,
+  PostFrontmatter,
+  SEOHandle,
+  SitemapEntry,
+} from '~/types';
 
 export let handle: SEOHandle = {
-  getSitemapEntries: async () => {
-    // let slugs = await CONTENT.list({ prefix: 'posts/en/' });
-    // let posts = await Promise.all(
-    //   slugs.keys.map(async ({ name }) => {
-    //     let post = (await CONTENT.get(name, 'json')) as Post;
+  getSitemapEntries: async (request) => {
+    let url = new URL(request.url);
+    let posts = await fetch(`${url.origin}/api/get-posts-slugs`).then(
+      (res) => res.json() as unknown as Array<SitemapEntry>
+    );
 
-    //     return post.slug;
-    //   })
-    // );
-
-    // return posts.map((post) => ({
-    //   route: `/posts/${post}`,
-    //   priority: 0.7,
-    // }));
-    return [];
+    return posts;
   },
 };
 
