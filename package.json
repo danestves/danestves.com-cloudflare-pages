@@ -19,15 +19,14 @@
     "act": "act compile-mdx -j compile --secret-file .env",
     "cleanup": "rimraf .cache ./dist ./build ./public/build ./app/styles",
     "content:watch": "node ./other/watch-content.js",
-    "build": "cross-env NODE_ENV=production run-s build:* && node ./other/generate-build-info.js",
+    "build": "cross-env NODE_ENV=production run-s build:*",
     "build:style": "postcss styles/**/*.css --base styles --dir app/styles --env production",
     "build:remix": "remix build",
-    "build:worker": "cross-env NODE_ENV=production VERSION=$(git rev-parse --short HEAD) node ./scripts/build.mjs",
     "debug": "miniflare --debug --build-command \"npm run dev:worker\" --watch",
     "dev": "routes-gen -d @routes-gen/remix && pm2-dev ./other/pm2.config.js",
     "format": "prettier --write \"**/*.{js,jsx,md,mdx,ts,tsx}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js",
-    "postinstall": "remix setup cloudflare-workers",
+    "postinstall": "remix setup cloudflare-pages",
     "prebuild": "npm run cleanup",
     "prepare": "husky install"
   },
@@ -42,7 +41,7 @@
     "@reach/portal": "^0.16.2",
     "@reach/tooltip": "^0.16.2",
     "@reach/visually-hidden": "^0.16.0",
-    "@remix-run/cloudflare-workers": "^1.1.3",
+    "@remix-run/cloudflare-pages": "^1.1.3",
     "@remix-run/react": "^1.1.3",
     "@stitches/react": "^1.2.6",
     "@types/lodash": "^4.14.178",
@@ -107,7 +106,8 @@
     "prettier-plugin-tailwindcss": "^0.1.5",
     "rimraf": "^3.0.2",
     "tailwindcss": "^3.0.18",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "wrangler": "^0.0.15"
   },
   "engines": {
     "node": ">=16.7"

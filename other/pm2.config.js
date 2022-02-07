@@ -20,9 +20,9 @@ module.exports = {
       },
     },
     {
-      name: 'Miniflare',
+      name: 'Wrangler',
       script:
-        'miniflare --global-async-io --global-timers --global-random --build-command "node -r dotenv/config ./scripts/build.mjs" --build-watch-path ./worker --build-watch-path ./build/index.js --no-cache --watch --open',
+        'wrangler pages dev ./public --watch ./build --binding $(cat .env) --config wrangler.toml --kv CONTENT',
       ignore_watch: ['.'],
       env: {
         NODE_ENV: process.env.NODE_ENV ?? 'development',

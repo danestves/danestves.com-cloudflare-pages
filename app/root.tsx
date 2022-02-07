@@ -32,11 +32,9 @@ import { useRemixI18Next } from './lib/remix-i18n';
 import global from './styles/global.css';
 import tailwind from './styles/tailwind.css';
 import vendors from './styles/vendors.css';
-import { i18n, i18nStorage } from './utils/i18n.server';
 import { getDomainUrl, removeTrailingSlash } from './utils/misc';
 import { description as seoDescription, getSeo, getSeoMeta } from './utils/seo';
-import { themeSessionResolver } from './utils/theme.server';
-import type { Handler } from '~/types';
+import type { Context, Handler } from '~/types';
 
 export let handle: Handler = {
   id: 'root',
@@ -104,11 +102,12 @@ export type RootLoaderData = {
   };
 };
 
-export let loader: LoaderFunction = async ({ request }) => {
-  let [theme, locale, translations] = await Promise.all([
-    themeSessionResolver(request),
-    i18n.getLocale(request),
-    i18n.getTranslations(request, 'common'),
+export let loader: LoaderFunction = async ({ request, context }) => {
+  let { i18n, theme } = context as Context;
+  let [{ getTheme }, locale, translations] = await Promise.all([
+    theme.resolver(request),
+    i18n.lib.getLocale(request),
+    i18n.lib.getTranslations(request, 'common'),
   ]);
   let country = request.headers.get('CF-IPCOUNTRY') || 'US';
 
@@ -120,13 +119,13 @@ export let loader: LoaderFunction = async ({ request }) => {
       origin: getDomainUrl(request),
       path: new URL(request.url).pathname,
       session: {
-        theme: theme.getTheme(),
+        theme: getTheme(),
       },
     },
   };
 
-  const headers: HeadersInit = new Headers();
-  headers.append('Set-Cookie', await i18nStorage.serialize(locale));
+  let headers: HeadersInit = new Headers();
+  headers.append('Set-Cookie', await i18n.storage.serialize(locale));
 
   return json(data, {
     headers,

@@ -6,7 +6,6 @@
     { "path": "app" },
     {
       "path": "types"
-    },
-    { "path": "worker" }
+    }
   ]
 }

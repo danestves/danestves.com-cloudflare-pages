@@ -1,10 +1,9 @@
 // Dependencies
 import { json, LoaderFunction } from 'remix';
 
-declare var CONTENT: KVNamespace;
-
-export let loader: LoaderFunction = async () => {
-  const data = (await CONTENT.get('$$content-sha', 'json')) || {
+export let loader: LoaderFunction = async ({ context }) => {
+  let CONTENT = context.env.CONTENT as KVNamespace;
+  let data = (await CONTENT.get('$$content-sha', 'json')) || {
     commit: { sha: '' },
   };
 

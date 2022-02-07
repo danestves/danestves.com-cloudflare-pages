@@ -3,9 +3,8 @@ import { json } from 'remix';
 import { notFound } from 'remix-utils';
 import type { ActionFunction, LoaderFunction } from 'remix';
 
-declare var VIEWS: KVNamespace;
-
-export let action: ActionFunction = async ({ params }) => {
+export let action: ActionFunction = async ({ context, params }) => {
+  let VIEWS = context.env.VIEWS as KVNamespace;
   let { slug } = params;
   let initViews = await VIEWS.get(slug as string, 'text');
   let views = Number(initViews) + 1;

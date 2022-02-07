@@ -13,29 +13,24 @@ import { useShare } from '~/hooks/use-share';
 import { getImageBlur, getImageBuilder, getImgProps, images } from '~/images';
 import prismOne from '~/styles/prism-one.css';
 import { formatDate } from '~/utils/date';
-import { i18n } from '~/utils/i18n.server';
 import { getMDXComponent } from '~/utils/mdx.client';
 import { getSeoMeta } from '~/utils/seo';
-import type { Post, PostFrontmatter, SEOHandle } from '~/types';
-
-declare var CONTENT: KVNamespace;
-declare var VIEWS: KVNamespace;
+import type {
+  Context,
+  Post,
+  PostFrontmatter,
+  SEOHandle,
+  SitemapEntry,
+} from '~/types';
 
 export let handle: SEOHandle = {
-  getSitemapEntries: async () => {
-    let slugs = await CONTENT.list({ prefix: 'posts/en/' });
-    let posts = await Promise.all(
-      slugs.keys.map(async ({ name }) => {
-        let post = (await CONTENT.get(name, 'json')) as Post;
-
-        return post.slug;
-      })
+  getSitemapEntries: async (request) => {
+    let url = new URL(request.url);
+    let posts = await fetch(`${url.origin}/api/get-posts-slugs`).then(
+      (res) => res.json() as unknown as Array<SitemapEntry>
     );
 
-    return posts.map((post) => ({
-      route: `/posts/${post}`,
-      priority: 0.7,
-    }));
+    return posts;
   },
 };
 
@@ -93,15 +88,18 @@ type LoaderData = {
   code?: string;
 };
 
-export let loader: LoaderFunction = async ({ params, request }) => {
+export let loader: LoaderFunction = async ({ context, params, request }) => {
+  let { i18n } = context as Context;
+  let CONTENT = context.env.CONTENT as KVNamespace;
+  let VIEWS = context.env.VIEWS as KVNamespace;
   let slug = params.slug;
   if (slug === undefined) {
     throw new Response('Not Found', { status: 404 });
   }
 
   let [locale, translations, views] = await Promise.all([
-    i18n.getLocale(request),
-    i18n.getTranslations(request, 'posts'),
+    i18n.lib.getLocale(request),
+    i18n.lib.getTranslations(request, 'posts'),
     VIEWS.get(slug, 'text'),
   ]);
   let post = await CONTENT.get(`posts/${locale}/${slug}`, 'json');

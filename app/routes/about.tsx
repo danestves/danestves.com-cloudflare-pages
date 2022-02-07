@@ -6,10 +6,10 @@ import type { Language } from 'remix-i18next';
 
 // Internals
 import { HeroSection } from '~/components/sections/hero-section';
-import { i18n } from '~/utils/i18n.server';
 import { FileIcon } from '@radix-ui/react-icons';
 import { LinkedInIcon } from '~/components/icons/linkedin-icon';
 import { getSeoMeta } from '~/utils/seo';
+import type { Context } from '~/types';
 
 export let meta: MetaFunction = ({ data }) => {
   let i18n = data?.i18n;
@@ -29,9 +29,10 @@ type LoaderData = {
   i18n: Record<string, Language>;
 };
 
-export let loader: LoaderFunction = async ({ request }) => {
+export let loader: LoaderFunction = async ({ context, request }) => {
+  let { i18n } = context as Context;
   let [translations] = await Promise.all([
-    i18n.getTranslations(request, ['pages', 'sections']),
+    i18n.lib.getTranslations(request, ['pages', 'sections']),
   ]);
 
   let headers = new Headers();
