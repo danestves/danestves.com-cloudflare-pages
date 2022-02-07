@@ -211,7 +211,7 @@ function App() {
         ></script>
         {/* Cloudflare Web Analytics */}
         <script
-          data-cf-beacon='{"token": "fd6169f72af14672a05fc35ed7ffdbc1"}'
+          data-cf-beacon='{"token": "43c6ba9961f942c28ccacb530d74e5d4"}'
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
         ></script>
