@@ -24,6 +24,8 @@ import type {
   SEOHandle,
   SitemapEntry,
 } from '~/types';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { TwitterIcon } from '~/components/icons/twitter-icon';
 
 export let handle: SEOHandle = {
   getSitemapEntries: async (request) => {
@@ -88,6 +90,9 @@ type LoaderData = {
   slug: string;
   views: number;
   code?: string;
+  share?: {
+    url?: string;
+  };
 };
 
 export let loader: LoaderFunction = async ({ context, params, request }) => {
@@ -123,6 +128,8 @@ export let loader: LoaderFunction = async ({ context, params, request }) => {
   headers.set('Cache-Control', 'max-age=43200, stale-while-revalidate');
   headers.set('Vary', 'Cookie');
 
+  let url = new URL(request.url);
+
   let data: LoaderData = {
     i18n: translations,
     code,
@@ -130,6 +137,9 @@ export let loader: LoaderFunction = async ({ context, params, request }) => {
     html,
     slug,
     views: Number(views),
+    share: {
+      url: url.toString(),
+    },
   };
 
   return json(data, { headers });
@@ -144,6 +154,7 @@ export default function PostPage() {
     frontmatter: post,
     slug,
     views,
+    ...loaderData
   } = useLoaderData<LoaderData>();
 
   let { canShare, hasShared, share } = useShare({
@@ -265,6 +276,34 @@ export default function PostPage() {
               components={mdxComponents}
             />
           ) : null}
+        </div>
+
+        <div className="mt-6 flex justify-end">
+          <div className="flex items-center space-x-6">
+            <a
+              className="inline-flex items-center font-semibold text-primary hover:underline hover:underline-offset-8"
+              href={`https://twitter.com/intent/tweet?url=${
+                loaderData.share?.url
+              }&text=${t('bottomShare.twitter.href', {
+                title: post.title,
+                username: 'danestves',
+              })}`}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {t('bottomShare.twitter.label')}
+              <TwitterIcon className="h-4 w-4 sm:-mr-1 sm:ml-2" />
+            </a>
+            <a
+              className="inline-flex items-center font-semibold text-primary hover:underline hover:underline-offset-8"
+              href={`https://github.com/danestves/danestves.com/edit/main/content/posts/${i18n.language}/${slug}.mdx`}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {t('bottomShare.github')}{' '}
+              <GitHubLogoIcon className="h-4 w-4 sm:-mr-1 sm:ml-2" />
+            </a>
+          </div>
         </div>
 
         <hr className="my-6 dark:border-[#494949]" />
