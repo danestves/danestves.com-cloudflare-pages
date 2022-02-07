@@ -68,6 +68,7 @@ export let meta: MetaFunction = ({ data, parentsData }) => {
         type: 'article',
       },
       twitter: {
+        card: 'summary_large_image',
         image: {
           alt: post?.title,
           url: flyyer,
