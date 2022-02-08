@@ -214,7 +214,7 @@ function App() {
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
         ></script>
-        <LiveReload />
+        {process.env.NODE_ENV !== 'production' ? <LiveReload /> : null}
       </body>
     </html>
   );
