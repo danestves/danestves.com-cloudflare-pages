@@ -111,7 +111,7 @@
     "wrangler": "beta"
   },
   "engines": {
-    "node": ">=16.7"
+    "node": ">=14"
   },
   "sideEffects": false,
   "lint-staged": {
