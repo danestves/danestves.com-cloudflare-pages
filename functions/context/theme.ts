@@ -4,7 +4,11 @@ import { createThemeSessionResolver } from 'remix-themes';
 
 type ThemeFunction = ReturnType<typeof createTheme>;
 
-function createTheme(_request: Request, env: any, _ctx: ExecutionContext) {
+function createTheme(
+  _request: Request,
+  env: any,
+  _ctx: Omit<EventContext<any, any, any>, 'request' | 'env'>
+) {
   if (!env.SESSION_SECRET) {
     throw new Error(
       'Fail initialising the session storge; SESSION_SECRET is missing'

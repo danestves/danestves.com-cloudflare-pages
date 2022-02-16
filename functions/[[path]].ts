@@ -10,7 +10,6 @@ const handleRequest = createPagesFunctionHandler({
   getLoadContext: ({ env, request, ...ctx }) => {
     return {
       env,
-      // @ts-ignore: context is well defined
       ...createContext(request, env, ctx),
     };
   },

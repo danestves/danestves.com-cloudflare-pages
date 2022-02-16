@@ -11,7 +11,11 @@ let backend = new FetchBackend({
 
 type I18n = ReturnType<typeof createI18n>;
 
-function createI18n(_request: Request, env: any, _ctx: ExecutionContext) {
+function createI18n(
+  _request: Request,
+  env: any,
+  _ctx: Omit<EventContext<any, any, any>, 'request' | 'env'>
+) {
   if (!env.SESSION_SECRET) {
     throw new Error(
       'Fail initialising the session storge; SESSION_SECRET is missing'
