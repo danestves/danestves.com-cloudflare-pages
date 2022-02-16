@@ -13,6 +13,7 @@ const handleRequest = createPagesFunctionHandler({
       ...createContext(request, env, ctx),
     };
   },
+  mode: process.env.NODE_ENV,
 });
 
 export function onRequest(context: EventContext<any, any, any>) {
