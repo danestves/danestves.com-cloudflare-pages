@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "jsx": "react-jsx",
-    "module": "CommonJS",
     "moduleResolution": "node",
-    "target": "ESNext",
+    "target": "ES2019",
     "strict": true,
     "noEmit": true,
     "typeRoots": [
