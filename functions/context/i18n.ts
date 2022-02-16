@@ -1,6 +1,6 @@
 // Dependencies
 import { createCookie } from 'remix';
-import { RemixI18Next } from 'remix-i18next';
+import { RemixI18Next } from 'remix-i18next/build/i18next';
 import { FetchBackend } from 'remix-i18next/build/backends/fetch';
 
 let backend = new FetchBackend({
