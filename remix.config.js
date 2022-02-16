@@ -8,6 +8,7 @@ module.exports = {
   serverModuleFormat: 'esm',
   serverPlatform: 'neutral',
   serverBuildDirectory: 'build',
+  serverBuildTarget: 'cloudflare-pages',
   devServerBroadcastDelay: 1000,
   ignoredRouteFiles: ['.*'],
 };
