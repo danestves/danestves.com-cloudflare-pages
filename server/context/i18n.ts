@@ -5,7 +5,7 @@ import { FetchBackend } from 'remix-i18next/build/backends/fetch';
 
 let backend = new FetchBackend({
   // I use a service that I deploy on Vercel to server the translations
-  baseUrl: new URL('https://danestves-locales.vercel.app/'),
+  baseUrl: new URL('https://i18n.danestves.com/'),
   pathPattern: '/locales/:locale/:namespace.json',
 });
 
