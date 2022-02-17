@@ -2,7 +2,7 @@
  * @type {import('@remix-run/dev').AppConfig}
  */
 module.exports = {
-  server: 'functions/[[path]].ts',
+  server: './server/index.ts',
   serverBuildTarget: 'cloudflare-pages',
   devServerBroadcastDelay: 1000,
   ignoredRouteFiles: ['.*'],
