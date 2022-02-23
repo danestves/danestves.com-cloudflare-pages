@@ -18,7 +18,7 @@ _<small>Some of the code is inspired/copied/modified from these projects, all cr
 
 - **Framework:** [Remix](https://remix.run/)
 - **Database**: [Workers KV](https://developers.cloudflare.com/workers/runtime-apis/kv)
-- **Deployment:** [Cloudflare Workers](https://workers.cloudflare.com/)
+- **Deployment:** [Cloudflare Pages](https://pages.cloudflare.com/)
 - **Content:** [MDX](https://github.com/mdx-js/mdx)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 
