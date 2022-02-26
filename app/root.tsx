@@ -129,6 +129,7 @@ export let loader: LoaderFunction = async ({ request, context }) => {
 
   let headers: HeadersInit = new Headers();
   headers.append('Set-Cookie', await i18n.storage.serialize(locale));
+  headers.append('Cache-Control', 'max-age=43200');
 
   return json(data, {
     headers,
