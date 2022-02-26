@@ -1,4 +1,5 @@
 // Dependencies
+import * as React from 'react';
 import { Flyyer } from '@flyyer/flyyer';
 import clsx from 'clsx';
 import { LazyMotion, domAnimation } from 'framer-motion';
@@ -28,6 +29,8 @@ import { Footer } from './components/footer';
 import { Header } from './components/header';
 import { LeftSidebar } from './components/left-sidebar';
 import { RightSidebar } from './components/right-sidebar';
+import { ClientStyleContext } from './contexts/client.context';
+import { ServerStyleContext } from './contexts/server.context';
 import { useRemixI18Next } from './lib/remix-i18n';
 import global from './styles/global.css';
 import tailwind from './styles/tailwind.css';
@@ -168,10 +171,18 @@ export let meta: MetaFunction = ({ data }) => {
 };
 
 function App() {
+  let serverStyleData = React.useContext(ServerStyleContext);
+  let clientStyleData = React.useContext(ClientStyleContext);
   let data = useLoaderData<RootLoaderData>();
 
   let [theme] = useTheme();
   useRemixI18Next(data.locale);
+
+  // Only executed on client
+  React.useEffect(() => {
+    // reset cache to re-apply global styles
+    clientStyleData.reset();
+  }, [clientStyleData, serverStyleData]);
 
   return (
     <html className={clsx(theme)} lang={data.locale}>
@@ -189,6 +200,12 @@ function App() {
           rel="canonical"
         />
         <Links />
+
+        <style
+          dangerouslySetInnerHTML={{ __html: clientStyleData.sheet }}
+          id="stitches"
+          suppressHydrationWarning
+        />
       </head>
 
       <body className="bg-white transition duration-500 dark:bg-[#292929]">

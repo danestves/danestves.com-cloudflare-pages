@@ -8,6 +8,7 @@ import type { EntryContext } from 'remix';
 import { initI18n } from '~/utils/i18n';
 import { RemixI18NextProvider } from '~/lib/remix-i18n';
 import { getCssText } from '~/stitches.config';
+import { ServerStyleContext } from './contexts/server.context';
 import { otherRootRouteHandlers } from './otherRootRoutes.server';
 
 export default async function handleRequest(
@@ -16,6 +17,8 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
+  let sheet = getCssText();
+
   for (const handler of otherRootRouteHandlers) {
     const otherRouteResponse = await handler(request, remixContext);
     if (otherRouteResponse) return otherRouteResponse;
@@ -25,9 +28,13 @@ export default async function handleRequest(
 
   let markup = ReactDOMServer.renderToString(
     <RemixI18NextProvider i18n={i18next}>
-      <RemixServer context={remixContext} url={request.url} />
+      <ServerStyleContext.Provider value={sheet}>
+        <RemixServer context={remixContext} url={request.url} />
+      </ServerStyleContext.Provider>
     </RemixI18NextProvider>
-  ).replace(/<\/head>/, `<style id="stitches">${getCssText()}</style></head>`);
+  );
+
+  markup = markup.replace('__STYLES__', sheet);
 
   responseHeaders.set('Content-Type', 'text/html');
 
