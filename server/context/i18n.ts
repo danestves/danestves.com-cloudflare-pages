@@ -1,13 +1,22 @@
 // Dependencies
 import { createCookie } from 'remix';
 import { RemixI18Next } from 'remix-i18next/build/i18next';
-import { FetchBackend } from 'remix-i18next/build/backends/fetch';
+import type { Backend, Language } from 'remix-i18next/build/backend';
 
-let backend = new FetchBackend({
-  // I use a service that I deploy on Vercel to server the translations
-  baseUrl: new URL('https://i18n.danestves.com/'),
-  pathPattern: '/locales/:locale/:namespace.json',
-});
+export interface KvBackendOptions {
+  kv: KVNamespace;
+}
+
+export class KvBackend implements Backend {
+  constructor(private options: KvBackendOptions) {}
+
+  async getTranslations(namespace: string, locale: string) {
+    let kv = this.options.kv;
+    let data = await kv.get(`${namespace}-${locale}`, 'json');
+
+    return data as Language;
+  }
+}
 
 type I18n = ReturnType<typeof createI18n>;
 
@@ -32,6 +41,12 @@ function createI18n(
     // but that doesn't work on localhost for Safari
     // https://web.dev/when-to-use-local-https/
     secure: process.env.NODE_ENV === 'production',
+  });
+
+  console.info(env);
+
+  let backend = new KvBackend({
+    kv: env.LOCALES,
   });
 
   let i18nInstance = new RemixI18Next(backend, {

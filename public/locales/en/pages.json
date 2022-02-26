@@ -1,0 +1,21 @@
+{
+  "about": {
+    "seo": {
+      "title": "About Daniel Esteves 📑",
+      "description": "I love to code, but I am curious. Every day I try to be better at something and that's why I keep learning, to improve a skill or learn a new one."
+    },
+    "title": "About me",
+    "paragraphs": [
+      "Since I was a child I have been interested in computers starting from video games, every time I played I felt a need to know how it is working and how my character makes any movement",
+      "When I got to high school I started researching computers and became interested in how websites are built on top of all the social networks, I liked the idea that when a user selected a menu it showed more options and animations, and that&apos;s what made me fall in love with web development.",
+      "I started from the age of sixteen to work and learn from the frontend, the visual part of the web; today I consider myself a fullstack because thanks to the knowledge I have acquired I can build applications from views to databases and routes. I like to learn more every day, integrate new technologies and contribute to new projects to improve productivity."
+    ],
+    "buttons": ["LinkedIn", "Watch CV"]
+  },
+  "posts": {
+    "seo": {
+      "title": "The digital garden 🌱 of Daniel Esteves",
+      "description": "Read about web development, web applications, React, Vue, JavaScript, TypeScript, Tailwind, and much more on Daniel Esteves' blog."
+    }
+  }
+}

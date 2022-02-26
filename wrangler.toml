@@ -13,6 +13,10 @@ id = "760848efe5c4465290589b70a68d3a33"
 binding = "VIEWS"
 id = "6c5859e1b34b48db9cf1f86bec228caf"
 
+[[kv_namespaces]]
+binding = "LOCALES"
+id = "0e1c0eefd22f40a2a36dc45d53972e02"
+
 [site]
 bucket = "./public"
 entry-point = "."

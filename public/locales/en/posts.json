@@ -1,0 +1,15 @@
+{
+  "published": "Published",
+  "sharer": {
+    "share": "Share this post",
+    "shared": "Shared!",
+    "copied": "Link copied! 📋"
+  },
+  "bottomShare": {
+    "twitter": {
+      "label": "Share on Twitter",
+      "href": "I recently finished reading “{{title}}” by @{{username}}%0A%0A"
+    },
+    "github": "Edit on GitHub"
+  }
+}

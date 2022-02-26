@@ -1,0 +1,21 @@
+{
+  "about": {
+    "seo": {
+      "title": "Sobre Daniel Esteves 📑",
+      "description": "Me encanta programar, pero soy curioso. Cada día intento ser mejor en algo y por eso sigo aprendiendo, para mejorar una habilidad o aprender una nueva."
+    },
+    "title": "Sobre mí",
+    "paragraphs": [
+      "Desde pequeño me he interesado por la informática empezando por los videojuegos, cada vez que jugaba sentía la necesidad de saber cómo está funcionamiento y cómo mi personaje hace cualquier movimiento",
+      "Cuando llegué al instituto empecé a investigar sobre informática y me interesé por cómo se construyen los sitios web sobre todas las redes sociales, me gustaba la idea de que cuando un usuario seleccionaba un menú mostraba más opciones y animaciones, y eso fue lo que me hizo enamorarme del desarrollo web.",
+      "Empecé desde los dieciséis años a trabajar y aprender del frontend, la parte visual de la web; hoy me considero un fullstack porque gracias a los conocimientos que he adquirido puedo construir aplicaciones desde vistas hasta bases de datos y rutas. Me gusta aprender cada día más, integrar nuevas tecnologías y contribuir a nuevos proyectos para mejorar la productividad."
+    ],
+    "buttons": ["LinkedIn", "Ver CV"]
+  },
+  "posts": {
+    "seo": {
+      "title": "El jardín digital 🌱 de Daniel Esteves",
+      "description": "Lee sobre desarrollo web, aplicaciones web, React, Vue, JavaScript, TypeScript, Tailwind, y mucho más en el blog de Daniel Esteves."
+    }
+  }
+}

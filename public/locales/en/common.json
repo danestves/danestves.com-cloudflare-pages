@@ -1,0 +1,22 @@
+{
+  "header": {
+    "switcher": {
+      "language": {
+        "text": "Hello"
+      },
+      "theme": {
+        "dark": "switch to light mode",
+        "light": "switch to dark mode"
+      }
+    }
+  },
+  "components": {
+    "post-card": {
+      "published": "Published at"
+    },
+    "views": {
+      "plural": "views",
+      "singular": "view"
+    }
+  }
+}
