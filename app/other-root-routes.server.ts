@@ -1,5 +1,5 @@
 // Dependencies
-import { generateSitemap } from './lib/sitemap.xml';
+import { generateRobotsTxt, generateSitemap } from '@balavishnuvj/remix-seo';
 import type { EntryContext } from 'remix';
 
 type Handler = (
@@ -12,6 +12,11 @@ export let otherRootRoutes: Record<string, Handler> = {
     return generateSitemap(request, remixContext, {
       siteUrl: 'https://danestves.com',
     });
+  },
+  '/robots.txt': async () => {
+    return generateRobotsTxt([
+      { type: 'sitemap', value: 'https://danestves.com/sitemap.xml' },
+    ]);
   },
 };
 

@@ -1,31 +1,26 @@
 // Dependencies
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import { Giscus } from '@giscus/react';
 import { useTranslation } from 'react-i18next';
 import { json, useLoaderData } from 'remix';
 import { useTheme } from 'remix-themes';
 import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
 import type { Language } from 'remix-i18next';
+import type { SEOHandle } from '@balavishnuvj/remix-seo';
 
 // Internals
 import { BlurrableImage } from '~/components/blurrable-image';
+import { ShareIcon } from '~/components/icons/share-icon';
+import { TwitterIcon } from '~/components/icons/twitter-icon';
 import { mdxComponents } from '~/components/mdx-components';
 import { Views } from '~/components/views';
-import { ShareIcon } from '~/components/icons/share-icon';
 import { useShare } from '~/hooks/use-share';
 import { getImageBlur, getImageBuilder, getImgProps, images } from '~/images';
 import prismOne from '~/styles/prism-one.css';
 import { formatDate } from '~/utils/date';
 import { getMDXComponent } from '~/utils/mdx.client';
 import { getSeoMeta } from '~/utils/seo';
-import type {
-  Context,
-  Post,
-  PostFrontmatter,
-  SEOHandle,
-  SitemapEntry,
-} from '~/types';
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import { TwitterIcon } from '~/components/icons/twitter-icon';
+import type { Context, Post, PostFrontmatter, SitemapEntry } from '~/types';
 
 export let handle: SEOHandle = {
   getSitemapEntries: async (request) => {

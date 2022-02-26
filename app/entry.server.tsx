@@ -9,7 +9,7 @@ import { initI18n } from '~/utils/i18n';
 import { RemixI18NextProvider } from '~/lib/remix-i18n';
 import { getCssText } from '~/stitches.config';
 import { ServerStyleContext } from './contexts/server.context';
-import { otherRootRouteHandlers } from './otherRootRoutes.server';
+import { otherRootRouteHandlers } from './other-root-routes.server';
 
 export default async function handleRequest(
   request: Request,

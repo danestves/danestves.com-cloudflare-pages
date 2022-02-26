@@ -30,6 +30,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@balavishnuvj/remix-seo": "^1.0.2",
     "@flyyer/flyyer": "^3.4.1",
     "@giscus/react": "^1.1.2",
     "@headlessui/react": "^1.5.0",
