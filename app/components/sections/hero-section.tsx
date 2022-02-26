@@ -2,7 +2,7 @@
 import { useTranslation } from 'react-i18next';
 
 // Internals
-import { getImageBuilder, getImgProps, images } from '~/images';
+import { getImageBlur, getImageBuilder, getImgProps, images } from '~/images';
 import { BlurrableImage } from '../blurrable-image';
 import { Rings } from '../rings';
 
@@ -21,6 +21,9 @@ function HeroSection() {
       <div className="absolute top-1/2 left-1/2 mt-2 -translate-x-1/2 -translate-y-1/2 lg:mt-3">
         <div className="-mt-16 h-auto w-[249px] max-w-none sm:w-[248px] md:mt-auto lg:w-[320px]">
           <BlurrableImage
+            blurDataUrl={getImageBlur(
+              getImageBuilder(images.heroMask.id, images.heroMask.alt)
+            )}
             className="relative pb-[calc((637/646)*100%)]"
             img={
               <img
