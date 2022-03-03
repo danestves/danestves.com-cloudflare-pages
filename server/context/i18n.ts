@@ -43,8 +43,6 @@ function createI18n(
     secure: process.env.NODE_ENV === 'production',
   });
 
-  console.info(env);
-
   let backend = new KvBackend({
     kv: env.LOCALES,
   });

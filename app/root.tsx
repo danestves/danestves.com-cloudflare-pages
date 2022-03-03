@@ -20,6 +20,7 @@ import {
   ThemeProvider,
   useTheme,
 } from 'remix-themes';
+import { useSetupTranslations } from 'remix-i18next/build/react';
 import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
 import type { Language } from 'remix-i18next';
 import type { Theme } from 'remix-themes';
@@ -31,7 +32,6 @@ import { LeftSidebar } from './components/left-sidebar';
 import { RightSidebar } from './components/right-sidebar';
 import { ClientStyleContext } from './contexts/client.context';
 import { ServerStyleContext } from './contexts/server.context';
-import { useRemixI18Next } from './lib/remix-i18n';
 import global from './styles/global.css';
 import tailwind from './styles/tailwind.css';
 import vendors from './styles/vendors.css';
@@ -177,7 +177,7 @@ function App() {
   let data = useLoaderData<RootLoaderData>();
 
   let [theme] = useTheme();
-  useRemixI18Next(data.locale);
+  useSetupTranslations(data.locale);
 
   // Only executed on client
   React.useEffect(() => {
