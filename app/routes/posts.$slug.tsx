@@ -4,9 +4,10 @@ import { Giscus } from '@giscus/react';
 import { useTranslation } from 'react-i18next';
 import { json, useLoaderData } from 'remix';
 import { useTheme } from 'remix-themes';
+import type { SEOHandle } from '@balavishnuvj/remix-seo';
 import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
 import type { Language } from 'remix-i18next';
-import type { SEOHandle } from '@balavishnuvj/remix-seo';
+import type { HandleStructuredData } from 'remix-utils';
 
 // Internals
 import { BlurrableImage } from '~/components/blurrable-image';
@@ -14,6 +15,7 @@ import { ShareIcon } from '~/components/icons/share-icon';
 import { TwitterIcon } from '~/components/icons/twitter-icon';
 import { mdxComponents } from '~/components/mdx-components';
 import { Views } from '~/components/views';
+import { externalLinks } from '~/external-links';
 import { useShare } from '~/hooks/use-share';
 import { getImageBlur, getImageBuilder, getImgProps, images } from '~/images';
 import prismOne from '~/styles/prism-one.css';
@@ -22,7 +24,7 @@ import { getMDXComponent } from '~/utils/mdx.client';
 import { getSeoMeta } from '~/utils/seo';
 import type { Context, Post, PostFrontmatter, SitemapEntry } from '~/types';
 
-export let handle: SEOHandle = {
+export let handle: HandleStructuredData<LoaderData> & SEOHandle = {
   getSitemapEntries: async (request) => {
     let url = new URL(request.url);
     let posts = await fetch(`${url.origin}/api/get-posts-slugs`).then(
@@ -30,6 +32,25 @@ export let handle: SEOHandle = {
     );
 
     return posts;
+  },
+  structuredData(data) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      author: {
+        '@type': 'Person',
+        name: 'Daniel Esteves',
+        url: externalLinks.self,
+      },
+      datePublished: new Date(data?.frontmatter?.published_at).toISOString(),
+      description: data?.frontmatter?.seo?.description,
+      headline: data?.frontmatter?.seo?.title,
+      image: `https://cdn.flyyer.io/v2/danestves/_/_/posts/${data?.slug}`,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        id: `${externalLinks.self}/posts/${data.slug}`,
+      },
+    };
   },
 };
 

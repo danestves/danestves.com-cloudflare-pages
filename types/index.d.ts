@@ -24,4 +24,4 @@ export * from './post';
 export * from './seo';
 export * from './sitemap';
 export * from './youtube';
-export { Context } from '../functions/context';
+export { Context } from '../server/context';

@@ -15,15 +15,17 @@ import {
   useLoaderData,
   useLocation,
 } from 'remix';
+import { useSetupTranslations } from 'remix-i18next/build/react';
 import {
   PreventFlashOnWrongTheme,
   ThemeProvider,
   useTheme,
 } from 'remix-themes';
-import { useSetupTranslations } from 'remix-i18next/build/react';
+import { StructuredData } from 'remix-utils';
 import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
 import type { Language } from 'remix-i18next';
 import type { Theme } from 'remix-themes';
+import type { HandleStructuredData } from 'remix-utils';
 
 // Internals
 import { Footer } from './components/footer';
@@ -32,6 +34,7 @@ import { LeftSidebar } from './components/left-sidebar';
 import { RightSidebar } from './components/right-sidebar';
 import { ClientStyleContext } from './contexts/client.context';
 import { ServerStyleContext } from './contexts/server.context';
+import { externalLinks } from './external-links';
 import global from './styles/global.css';
 import tailwind from './styles/tailwind.css';
 import vendors from './styles/vendors.css';
@@ -39,7 +42,38 @@ import { getDomainUrl, removeTrailingSlash } from './utils/misc';
 import { description as seoDescription, getSeo, getSeoMeta } from './utils/seo';
 import type { Context, Handler } from '~/types';
 
-export let handle: Handler = {
+export let handle: HandleStructuredData<RootLoaderData> & Handler = {
+  structuredData() {
+    return [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Daniel Esteves - @danestves',
+        url: externalLinks.self,
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        image:
+          'https://res.cloudinary.com/danestves/image/upload/v1642025007/danestves.com/me.jpg',
+        jobTitle: 'Senior Frontend Engineer',
+        name: 'Daniel Esteves',
+        sameAs: [
+          externalLinks.github,
+          externalLinks.instagram,
+          externalLinks.linkedin,
+          externalLinks.self,
+          externalLinks.twitter,
+          externalLinks.youtube,
+        ],
+        url: externalLinks.self,
+        worksFor: {
+          '@type': 'Organization',
+          name: 'REWORTH',
+        },
+      },
+    ];
+  },
   id: 'root',
 };
 
@@ -207,6 +241,8 @@ function App() {
           id="stitches"
           suppressHydrationWarning
         />
+
+        <StructuredData />
       </head>
 
       <body className="bg-white transition duration-500 dark:bg-[#292929]">

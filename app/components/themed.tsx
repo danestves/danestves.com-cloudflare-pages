@@ -28,14 +28,15 @@ function Themed({
     // what we'll render in the client during hydration.
     return (
       <ClientOnly>
-        {React.createElement('dark-mode', null, dark)}
-        {React.createElement('light-mode', null, light)}
+        {() => React.createElement('dark-mode', null, dark)}
+        {() => React.createElement('light-mode', null, light)}
       </ClientOnly>
     );
   } else {
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     return (
-      <ClientOnly>{themeToReference === 'light' ? light : dark}</ClientOnly>
+      <ClientOnly>
+        {() => (themeToReference === 'light' ? light : dark)}
+      </ClientOnly>
     );
   }
 }

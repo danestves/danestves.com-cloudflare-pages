@@ -34,14 +34,19 @@ const LINKS: DLink[] = [
 function LeftSidebar() {
   return (
     <aside className="fixed top-0 left-0 z-10 hidden h-full px-12 lg:block">
-      <ul className="flex h-full rotate-180 flex-col items-center justify-center space-y-4">
+      <ul
+        className="flex h-full rotate-180 flex-col items-center justify-center space-y-4"
+        itemScope
+        itemType="https://schema.org/SiteNavigationElement"
+      >
         {LINKS.map(({ name, to, prefetch, ...link }) => {
           if (to.toString().startsWith('http')) {
             return (
-              <li key={uuid()}>
+              <li itemProp="name" key={uuid()}>
                 <a
                   className="text-xs font-semibold uppercase leading-3 text-[#989898] vertical-rl dark:text-[#B1B1B1] dark:hover:text-primary"
                   href={to.toString()}
+                  itemProp="url"
                   {...link}
                 >
                   {name}
@@ -51,10 +56,11 @@ function LeftSidebar() {
           }
 
           return (
-            <li key={uuid()}>
+            <li itemProp="name" key={uuid()}>
               <NavLink
                 {...link}
                 className="text-xs font-semibold uppercase leading-3 text-[#989898] vertical-rl dark:text-[#B1B1B1] dark:hover:text-primary"
+                itemProp="url"
                 prefetch={prefetch}
                 to={to}
               >

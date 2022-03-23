@@ -1,15 +1,32 @@
 // Dependencies
+import { FileIcon } from '@radix-ui/react-icons';
 import { useTranslation } from 'react-i18next';
 import { json, MetaFunction } from 'remix';
 import type { LoaderFunction } from 'remix';
 import type { Language } from 'remix-i18next';
+import type { HandleStructuredData } from 'remix-utils';
 
 // Internals
 import { HeroSection } from '~/components/sections/hero-section';
-import { FileIcon } from '@radix-ui/react-icons';
 import { LinkedInIcon } from '~/components/icons/linkedin-icon';
+import { externalLinks } from '~/external-links';
 import { getSeoMeta } from '~/utils/seo';
 import type { Context } from '~/types';
+
+export let handle: HandleStructuredData<LoaderData> = {
+  structuredData(data) {
+    let i18n = data?.i18n as any;
+    let title = i18n?.pages?.about?.seo?.title;
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'AboutPage',
+      name: title,
+      description: i18n?.pages?.about?.seo?.description,
+      url: `${externalLinks.self}/about`,
+    };
+  },
+};
 
 export let meta: MetaFunction = ({ data }) => {
   let i18n = data?.i18n;

@@ -118,35 +118,43 @@ function Header() {
                       </Popover.Button>
                     </div>
                   </div>
-                  <div className="px-2 pt-2 pb-3">
+                  <ul
+                    className="px-2 pt-2 pb-3"
+                    itemScope
+                    itemType="https://schema.org/SiteNavigationElement"
+                  >
                     {MOBILE_LINKS.map(({ name, to, ...link }) => {
                       if (to.toString().startsWith('http')) {
                         return (
-                          <Popover.Button
-                            {...link}
-                            as="a"
-                            className="block rounded-md py-2 px-3 text-base font-semibold uppercase text-[#989898] hover:text-primary"
-                            href={to.toString()}
-                            key={uuid()}
-                          >
-                            {name}
-                          </Popover.Button>
+                          <li itemProp="name" key={uuid()}>
+                            <Popover.Button
+                              as="a"
+                              className="block rounded-md py-2 px-3 text-base font-semibold uppercase text-[#989898] hover:text-primary"
+                              href={to.toString()}
+                              itemProp="url"
+                              {...link}
+                            >
+                              {name}
+                            </Popover.Button>
+                          </li>
                         );
                       }
 
                       return (
-                        <Popover.Button
-                          {...link}
-                          as={NavLink}
-                          className="block rounded-md py-2 px-3 text-base font-semibold uppercase text-[#989898] hover:text-primary"
-                          key={uuid()}
-                          to={to}
-                        >
-                          {name}
-                        </Popover.Button>
+                        <li itemProp="name" key={uuid()}>
+                          <Popover.Button
+                            as={NavLink}
+                            className="block rounded-md py-2 px-3 text-base font-semibold uppercase text-[#989898] hover:text-primary"
+                            itemProp="url"
+                            to={to}
+                            {...link}
+                          >
+                            {name}
+                          </Popover.Button>
+                        </li>
                       );
                     })}
-                  </div>
+                  </ul>
 
                   <div className="bg-gray-50/20 py-3 px-5 dark:bg-[#191919]/20">
                     <div className="mx-auto flex max-w-xs justify-between">
