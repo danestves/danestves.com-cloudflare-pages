@@ -64,7 +64,7 @@
     "remix-i18next": "^3.0.0",
     "remix-seo": "^0.1.0",
     "remix-themes": "^1.1.4",
-    "remix-utils": "^2.10.0",
+    "remix-utils": "^2.11.1",
     "routes-gen": "^0.3.1",
     "use-consistent-value": "^1.0.0",
     "uuid": "^8.3.2"
@@ -90,7 +90,7 @@
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.3",
     "cssnano": "^5.1.5",
-    "eslint": "^8.11.0",
+    "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
