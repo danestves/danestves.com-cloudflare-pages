@@ -1,7 +1,7 @@
 // Dependencies
 import * as React from 'react';
 import i18next from 'i18next';
-import { createRoot } from 'react-dom/client';
+import { hydrate } from 'react-dom';
 import { I18nextProvider } from 'react-i18next';
 import { RemixBrowser } from 'remix';
 
@@ -29,14 +29,12 @@ function ClientCacheProvider({ children }: ClientCacheProviderProps) {
 }
 
 initI18n().then(() => {
-  // @ts-ignore - this is safe but we need to wait for fully react types
-  let root = createRoot(document);
-
-  return root.render(
+  return hydrate(
     <I18nextProvider i18n={i18next}>
       <ClientCacheProvider>
         <RemixBrowser />
       </ClientCacheProvider>
-    </I18nextProvider>
+    </I18nextProvider>,
+    document
   );
 });
