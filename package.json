@@ -1,33 +1,37 @@
 {
-  "private": true,
   "name": "danestves.com",
   "version": "3.0.0",
+  "private": true,
   "description": "Daniel Esteves website made with remix-worker-template an all-in-one remix starter template for Cloudflare Workers by @edmundhung",
-  "main": "./dist/worker.js",
+  "keywords": [],
+  "homepage": "https://github.com/danestves/danestves.com#readme",
+  "bugs": {
+    "url": "https://github.com/danestves/danestves.com/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/danestves/danestves.com.git"
   },
-  "keywords": [],
-  "author": "Daniel Esteves <me@danestves.com> (https://danestves.com)",
   "license": "GPL-3.0-only",
-  "bugs": {
-    "url": "https://github.com/danestves/danestves.com/issues"
-  },
-  "homepage": "https://github.com/danestves/danestves.com#readme",
+  "author": "Daniel Esteves <me@danestves.com> (https://danestves.com)",
+  "sideEffects": false,
+  "main": "./dist/worker.js",
   "scripts": {
     "act": "act compile-mdx -j compile --secret-file .env",
     "cleanup": "rimraf .cache ./dist ./build ./public/build ./app/styles",
     "content:watch": "node ./other/watch-content.js",
+    "prebuild": "npm run cleanup",
     "build": "cross-env NODE_ENV=production run-s build:*",
     "build:style": "postcss styles/**/*.css --base styles --dir app/styles --env production",
     "build:remix": "remix build",
     "dev": "routes-gen -d @routes-gen/remix && pm2-dev ./other/pm2.config.js",
     "format": "prettier --write \"**/*.{js,jsx,md,mdx,ts,tsx}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js",
-    "postinstall": "remix setup cloudflare-pages",
-    "prebuild": "npm run cleanup",
+    "postinstall": "remix setup cloudflare",
     "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,mjs,ts,tsx,css,md,yml}": "prettier --write"
   },
   "dependencies": {
     "@balavishnuvj/remix-seo": "^1.0.2",
@@ -108,9 +112,5 @@
   },
   "engines": {
     "node": ">=14"
-  },
-  "sideEffects": false,
-  "lint-staged": {
-    "*.{js,mjs,ts,tsx,css,md,yml}": "prettier --write"
   }
 }
