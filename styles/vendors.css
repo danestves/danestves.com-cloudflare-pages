@@ -1,0 +1,4 @@
+giscus-widget#comments::part(native),
+giscus-widget#comments::part(iframe) {
+  color-scheme: none;
+}

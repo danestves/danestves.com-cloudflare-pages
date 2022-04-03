@@ -1,10 +1,12 @@
 // Dependencies
+import * as React from 'react';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import { Giscus } from '@giscus/react';
+import Giscus from '@giscus/react';
 import { useTranslation } from 'react-i18next';
 import { json, useLoaderData } from 'remix';
 import { useTheme } from 'remix-themes';
 import type { SEOHandle } from '@balavishnuvj/remix-seo';
+import type { Theme } from '@giscus/react';
 import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
 import type { Language } from 'remix-i18next';
 import type { HandleStructuredData } from 'remix-utils';
@@ -328,13 +330,15 @@ export default function PostPage() {
         <Giscus
           category="Comments"
           categoryId="DIC_kwDODBPThs4CBCeF"
+          id="comments"
           inputPosition="top"
           lang={i18n.language}
+          loading="lazy"
           mapping="pathname"
           reactionsEnabled="1"
           repo="danestves/danestves.com"
           repoId="MDEwOlJlcG9zaXRvcnkyMDI2MjU5MjY="
-          theme={theme || 'dark'}
+          theme={theme as Theme}
         />
       </div>
     </section>
