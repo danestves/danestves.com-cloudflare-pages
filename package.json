@@ -36,7 +36,7 @@
   "dependencies": {
     "@balavishnuvj/remix-seo": "^1.0.2",
     "@flyyer/flyyer": "^3.4.1",
-    "@giscus/react": "^2.0.0",
+    "@giscus/react": "^2.0.1",
     "@headlessui/react": "^1.5.0",
     "@radix-ui/react-dropdown-menu": "^0.1.6",
     "@radix-ui/react-icons": "^1.1.0",
