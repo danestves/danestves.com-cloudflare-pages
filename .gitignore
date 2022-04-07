@@ -4,6 +4,7 @@ node_modules
 # Remix
 /.cache
 /functions/\[\[path\]\].js
+/functions/\[\[path\]\].js.map
 /public/build
 /content/.cache.json
 

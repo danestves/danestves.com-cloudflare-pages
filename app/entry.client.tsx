@@ -1,7 +1,7 @@
 // Dependencies
 import * as React from 'react';
 import i18next from 'i18next';
-import { hydrate } from 'react-dom';
+import { hydrateRoot } from 'react-dom/client';
 import { I18nextProvider } from 'react-i18next';
 import { RemixBrowser } from 'remix';
 
@@ -29,12 +29,12 @@ function ClientCacheProvider({ children }: ClientCacheProviderProps) {
 }
 
 initI18n().then(() => {
-  return hydrate(
+  return hydrateRoot(
+    document,
     <I18nextProvider i18n={i18next}>
       <ClientCacheProvider>
         <RemixBrowser />
       </ClientCacheProvider>
-    </I18nextProvider>,
-    document
+    </I18nextProvider>
   );
 });
