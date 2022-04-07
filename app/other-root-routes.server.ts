@@ -15,6 +15,7 @@ export let otherRootRoutes: Record<string, Handler> = {
   },
   '/robots.txt': async () => {
     return generateRobotsTxt([
+      { type: 'disallow', value: '/maria-quieres-ser-mi-novia' },
       { type: 'sitemap', value: 'https://danestves.com/sitemap.xml' },
     ]);
   },

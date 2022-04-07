@@ -1,12 +1,13 @@
 declare module "routes-gen" {
   export type RouteParams = {
-    "/action/posts/:slug/set-views": { slug: string };
+    "/action/posts/:slug/set-views": { "slug": string };
+    "/maria-quieres-ser-mi-novia": {};
     "/action/update-content-sha": {};
     "/action/post-content": {};
     "/api/get-content-sha": {};
     "/api/get-posts-slugs": {};
     "/action/set-theme": {};
-    "/posts/:slug": { slug: string };
+    "/posts/:slug": { "slug": string };
     "/about": {};
     "/": {};
     "/posts": {};
@@ -15,6 +16,7 @@ declare module "routes-gen" {
   export function route<
     T extends
       | ["/action/posts/:slug/set-views", RouteParams["/action/posts/:slug/set-views"]]
+      | ["/maria-quieres-ser-mi-novia"]
       | ["/action/update-content-sha"]
       | ["/action/post-content"]
       | ["/api/get-content-sha"]
