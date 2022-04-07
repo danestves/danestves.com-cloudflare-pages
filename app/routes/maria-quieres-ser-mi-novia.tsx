@@ -581,10 +581,14 @@ export default function MariaPage() {
           siguiente:
         </p>
 
-        <h1 className="text-center text-4xl font-bold text-primary">
+        <h2 className="text-center text-4xl font-bold text-primary">
           Maria Emilia Marcano Mora,{' '}
           <span className="text-secondary">¿quieres ser mi novia?</span>
-        </h1>
+        </h2>
+
+        <h2 className="mt-4 text-center text-4xl font-bold italic text-primary">
+          Porque contigo quiero todo, y nada a medias 💙
+        </h2>
       </div>
     </main>
   );
