@@ -6,6 +6,7 @@ import * as build from '@remix-run/dev/server-build';
 import { createContext } from './context';
 
 const handleRequest = createPagesFunctionHandler({
+  // @ts-ignore
   build,
   getLoadContext: ({ env, request, ...ctx }) => {
     return {
