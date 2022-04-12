@@ -1,9 +1,9 @@
 // Dependencies
 import * as React from 'react';
+import { RemixBrowser } from '@remix-run/react';
 import i18next from 'i18next';
 import { hydrateRoot } from 'react-dom/client';
 import { I18nextProvider } from 'react-i18next';
-import { RemixBrowser } from 'remix';
 
 // Internals
 import { initI18n } from '~/utils/i18n';

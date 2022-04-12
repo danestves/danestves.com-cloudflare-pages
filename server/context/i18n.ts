@@ -1,5 +1,5 @@
 // Dependencies
-import { createCookie } from 'remix';
+import { createCookie } from '@remix-run/cloudflare';
 import { RemixI18Next } from 'remix-i18next/build/i18next';
 import type { Backend, Language } from 'remix-i18next/build/backend';
 

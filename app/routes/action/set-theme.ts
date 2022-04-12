@@ -1,8 +1,8 @@
 // Dependencies
-import { json } from 'remix';
+import { json } from '@remix-run/cloudflare';
 import { isTheme } from 'remix-themes';
 import { notFound } from 'remix-utils';
-import type { ActionFunction, LoaderFunction } from 'remix';
+import type { ActionFunction, LoaderFunction } from '@remix-run/server-runtime';
 
 // Internals
 import type { Context } from '~/types';

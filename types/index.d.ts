@@ -2,7 +2,7 @@
 /// <reference types="@remix-run/cloudflare-pages/globals" />
 /// <reference types="@cloudflare/workers-types" />
 
-import type { LinkProps } from 'remix';
+import type { LinkProps } from '@remix-run/react';
 
 type DLink = LinkProps & {
   name: string;

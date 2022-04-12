@@ -1,7 +1,7 @@
 // Dependencies
-import { json } from 'remix';
+import { json } from '@remix-run/cloudflare';
 import { notFound } from 'remix-utils';
-import type { ActionFunction, LoaderFunction } from 'remix';
+import type { ActionFunction, LoaderFunction } from '@remix-run/server-runtime';
 
 export let action: ActionFunction = async ({ context, params }) => {
   let VIEWS = context.env.VIEWS as KVNamespace;

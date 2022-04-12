@@ -1,10 +1,11 @@
 // Dependencies
+import { json } from '@remix-run/cloudflare';
+import { Link, useLoaderData } from '@remix-run/react';
 import { m as motion } from 'framer-motion';
 import { InView } from 'react-intersection-observer';
-import { Link, json, useLoaderData } from 'remix';
 import { route } from 'routes-gen';
+import type { LoaderFunction, MetaFunction } from '@remix-run/server-runtime';
 import type { Variants } from 'framer-motion';
-import type { LoaderFunction, MetaFunction } from 'remix';
 import type { Language } from 'remix-i18next';
 
 // Internals

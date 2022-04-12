@@ -1,7 +1,7 @@
 // Dependencies
 import * as React from 'react';
+import { useFetcher } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
-import { useFetcher } from 'remix';
 
 type ViewsProps = {
   slug: string;

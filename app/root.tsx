@@ -1,8 +1,7 @@
 // Dependencies
 import * as React from 'react';
 import { Flyyer } from '@flyyer/flyyer';
-import clsx from 'clsx';
-import { LazyMotion, domAnimation } from 'framer-motion';
+import { json } from '@remix-run/cloudflare';
 import {
   Links,
   LiveReload,
@@ -10,11 +9,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  json,
   useCatch,
   useLoaderData,
   useLocation,
-} from 'remix';
+} from '@remix-run/react';
+import clsx from 'clsx';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { useSetupTranslations } from 'remix-i18next/build/react';
 import {
   PreventFlashOnWrongTheme,
@@ -22,7 +22,11 @@ import {
   useTheme,
 } from 'remix-themes';
 import { StructuredData } from 'remix-utils';
-import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from '@remix-run/server-runtime';
 import type { Language } from 'remix-i18next';
 import type { Theme } from 'remix-themes';
 import type { HandleStructuredData } from 'remix-utils';

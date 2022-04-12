@@ -1,8 +1,8 @@
 // Dependencies
+import { Link } from '@remix-run/react';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { InView } from 'react-intersection-observer';
-import { Link } from 'remix';
 import { route } from 'routes-gen';
 import type { Variants } from 'framer-motion';
 

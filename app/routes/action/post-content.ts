@@ -1,5 +1,6 @@
 // Dependencies
-import { ActionFunction, json } from 'remix';
+import { json } from '@remix-run/cloudflare';
+import type { ActionFunction } from '@remix-run/server-runtime';
 
 export let action: ActionFunction = async ({ context, request }) => {
   try {

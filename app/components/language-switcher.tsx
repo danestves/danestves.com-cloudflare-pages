@@ -1,6 +1,6 @@
 // Dependencies
+import { useNavigate } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'remix';
 
 // Internals
 import { useMatchLoaderData } from '~/hooks/use-match-loader-data';

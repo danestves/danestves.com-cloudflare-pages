@@ -1,5 +1,5 @@
 // Dependencies
-import { NavLink } from 'remix';
+import { NavLink } from '@remix-run/react';
 import { route } from 'routes-gen';
 import { v4 as uuid } from 'uuid';
 

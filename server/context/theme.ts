@@ -1,5 +1,5 @@
 // Dependencies
-import { createCookieSessionStorage } from 'remix';
+import { createCookieSessionStorage } from '@remix-run/cloudflare';
 import { createThemeSessionResolver } from 'remix-themes';
 
 type ThemeFunction = ReturnType<typeof createTheme>;

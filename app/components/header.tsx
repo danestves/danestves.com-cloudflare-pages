@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { NavLink } from '@remix-run/react';
 import clsx from 'clsx';
-import { NavLink } from 'remix';
 import { route } from 'routes-gen';
 import { v4 as uuid } from 'uuid';
 

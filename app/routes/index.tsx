@@ -1,6 +1,11 @@
 // Dependencies
-import { json, useLoaderData } from 'remix';
-import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
+import { useLoaderData } from '@remix-run/react';
+import { json } from '@remix-run/cloudflare';
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from '@remix-run/server-runtime';
 import type { Language } from 'remix-i18next';
 
 // Internals

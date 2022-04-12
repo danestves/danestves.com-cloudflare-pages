@@ -1,5 +1,5 @@
 // Dependencies
-import { useMatches } from 'remix';
+import { useMatches } from '@remix-run/react';
 
 // Internals
 import type { Handler } from '~/types';

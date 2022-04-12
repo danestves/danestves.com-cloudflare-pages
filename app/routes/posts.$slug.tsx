@@ -1,13 +1,17 @@
 // Dependencies
-import * as React from 'react';
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import Giscus from '@giscus/react';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { json } from '@remix-run/cloudflare';
+import { useLoaderData } from '@remix-run/react';
 import { useTranslation } from 'react-i18next';
-import { json, useLoaderData } from 'remix';
 import { useTheme } from 'remix-themes';
 import type { SEOHandle } from '@balavishnuvj/remix-seo';
 import type { Theme } from '@giscus/react';
-import type { LinksFunction, LoaderFunction, MetaFunction } from 'remix';
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from '@remix-run/server-runtime';
 import type { Language } from 'remix-i18next';
 import type { HandleStructuredData } from 'remix-utils';
 
