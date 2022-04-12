@@ -2,7 +2,7 @@
 import { FileIcon } from '@radix-ui/react-icons';
 import { json } from '@remix-run/cloudflare';
 import { useTranslation } from 'react-i18next';
-import type { LoaderFunction, MetaFunction } from '@remix-run/server-runtime';
+import type { LoaderFunction, MetaFunction } from '@remix-run/cloudflare';
 import type { Language } from 'remix-i18next';
 import type { HandleStructuredData } from 'remix-utils';
 

@@ -1,7 +1,7 @@
 // Dependencies
 import endent from 'endent';
 import type { SEOHandle } from '@balavishnuvj/remix-seo';
-import type { MetaFunction } from '@remix-run/server-runtime';
+import type { MetaFunction } from '@remix-run/cloudflare';
 
 // Internals
 import { BlurrableImage } from '~/components/blurrable-image';

@@ -3,7 +3,10 @@
 /.husky
 /.idea
 /build
+/functions
+/other/mdx
 /public
+/public/build
 /node_modules
 /dist
 /app/routes.d.ts

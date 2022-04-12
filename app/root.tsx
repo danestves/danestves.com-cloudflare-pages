@@ -26,7 +26,7 @@ import type {
   LinksFunction,
   LoaderFunction,
   MetaFunction,
-} from '@remix-run/server-runtime';
+} from '@remix-run/cloudflare';
 import type { Language } from 'remix-i18next';
 import type { Theme } from 'remix-themes';
 import type { HandleStructuredData } from 'remix-utils';

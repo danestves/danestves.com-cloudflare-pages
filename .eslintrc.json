@@ -2,6 +2,7 @@
   "extends": ["@remix-run", "prettier"],
   "rules": {
     "jsx-a11y/alt-text": "off",
-    "react/jsx-sort-props": 2
+    "react/jsx-sort-props": 2,
+    "react/display-name": 0
   }
 }

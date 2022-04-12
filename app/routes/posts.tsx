@@ -4,7 +4,7 @@ import { Link, useLoaderData } from '@remix-run/react';
 import { m as motion } from 'framer-motion';
 import { InView } from 'react-intersection-observer';
 import { route } from 'routes-gen';
-import type { LoaderFunction, MetaFunction } from '@remix-run/server-runtime';
+import type { LoaderFunction, MetaFunction } from '@remix-run/cloudflare';
 import type { Variants } from 'framer-motion';
 import type { Language } from 'remix-i18next';
 

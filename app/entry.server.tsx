@@ -3,7 +3,7 @@ import i18next from 'i18next';
 import ReactDOMServer from 'react-dom/server';
 import { I18nextProvider } from 'react-i18next';
 import { RemixServer } from '@remix-run/react';
-import type { EntryContext } from '@remix-run/server-runtime';
+import type { EntryContext } from '@remix-run/cloudflare';
 
 // Internals
 import { initI18n } from '~/utils/i18n';

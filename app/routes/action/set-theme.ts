@@ -2,7 +2,7 @@
 import { json } from '@remix-run/cloudflare';
 import { isTheme } from 'remix-themes';
 import { notFound } from 'remix-utils';
-import type { ActionFunction, LoaderFunction } from '@remix-run/server-runtime';
+import type { ActionFunction, LoaderFunction } from '@remix-run/cloudflare';
 
 // Internals
 import type { Context } from '~/types';

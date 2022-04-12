@@ -5,7 +5,7 @@ import type {
   LinksFunction,
   LoaderFunction,
   MetaFunction,
-} from '@remix-run/server-runtime';
+} from '@remix-run/cloudflare';
 import type { Language } from 'remix-i18next';
 
 // Internals
