@@ -3,7 +3,10 @@ import i18next from 'i18next';
 import ReactDOMServer from 'react-dom/server';
 import { I18nextProvider } from 'react-i18next';
 import { RemixServer } from '@remix-run/react';
-import type { EntryContext } from '@remix-run/cloudflare';
+import type {
+  EntryContext,
+  HandleDataRequestFunction,
+} from '@remix-run/cloudflare';
 
 // Internals
 import { initI18n } from '~/utils/i18n';
@@ -13,14 +16,14 @@ import { otherRootRouteHandlers } from './other-root-routes.server';
 
 export default async function handleRequest(
   request: Request,
-  responseStatusCode: number,
-  responseHeaders: Headers,
-  remixContext: EntryContext
+  statusCode: number,
+  headers: Headers,
+  context: EntryContext
 ) {
   let sheet = getCssText();
 
   for (const handler of otherRootRouteHandlers) {
-    const otherRouteResponse = await handler(request, remixContext);
+    const otherRouteResponse = await handler(request, context);
     if (otherRouteResponse) return otherRouteResponse;
   }
 
@@ -29,17 +32,34 @@ export default async function handleRequest(
   let markup = ReactDOMServer.renderToString(
     <I18nextProvider i18n={i18next}>
       <ServerStyleContext.Provider value={sheet}>
-        <RemixServer context={remixContext} url={request.url} />
+        <RemixServer context={context} url={request.url} />
       </ServerStyleContext.Provider>
     </I18nextProvider>
   );
 
   markup = markup.replace('__STYLES__', sheet);
 
-  responseHeaders.set('Content-Type', 'text/html');
+  headers.set('Content-Type', 'text/html');
+  addSecurityHeaders(headers);
 
   return new Response('<!DOCTYPE html>' + markup, {
-    status: responseStatusCode,
-    headers: responseHeaders,
+    status: statusCode,
+    headers,
   });
+}
+
+export let handleDataRequest: HandleDataRequestFunction = (
+  response: Response
+) => {
+  addSecurityHeaders(response.headers);
+  return response;
+};
+
+function addSecurityHeaders(headers: Headers) {
+  headers.set(
+    'Strict-Transport-Security',
+    'max-age=31536000; includeSubDomains'
+  );
+  headers.set('X-Frame-Options', 'SAMEORIGIN');
+  headers.set('X-Content-Type-Options', 'nosniff');
 }

@@ -5,17 +5,11 @@ account_id = "4f24d74527ce9e478456c5a88e466269"
 zone_id = ""
 route = "danestves.com/*"
 
-[[kv_namespaces]]
-binding = "CONTENT"
-id = "760848efe5c4465290589b70a68d3a33"
-
-[[kv_namespaces]]
-binding = "VIEWS"
-id = "6c5859e1b34b48db9cf1f86bec228caf"
-
-[[kv_namespaces]]
-binding = "LOCALES"
-id = "0e1c0eefd22f40a2a36dc45d53972e02"
+kv_namespaces = [
+  { binding = "CONTENT", id = "760848efe5c4465290589b70a68d3a33" },
+  { binding = "LOCALES", id = "0e1c0eefd22f40a2a36dc45d53972e02" },
+  { binding = "VIEWS", id = "6c5859e1b34b48db9cf1f86bec228caf" },
+]
 
 [site]
 bucket = "./public"
