@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { RemixBrowser } from '@remix-run/react';
 import i18next from 'i18next';
-import { hydrateRoot } from 'react-dom/client';
+import { hydrate } from 'react-dom';
 import { I18nextProvider } from 'react-i18next';
 
 // Internals
@@ -29,12 +29,12 @@ function ClientCacheProvider({ children }: ClientCacheProviderProps) {
 }
 
 initI18n().then(() => {
-  return hydrateRoot(
-    document,
+  return hydrate(
     <I18nextProvider i18n={i18next}>
       <ClientCacheProvider>
         <RemixBrowser />
       </ClientCacheProvider>
-    </I18nextProvider>
+    </I18nextProvider>,
+    document
   );
 });
